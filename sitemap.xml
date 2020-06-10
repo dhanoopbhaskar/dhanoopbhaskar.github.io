@@ -328,11 +328,6 @@
   </url>
   
   <url>
-    <loc>https://dhanoopbhaskar.github.io/categories/crypto/</loc>
-    <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://dhanoopbhaskar.github.io/tags/cryptography/</loc>
     <lastmod>2014-07-30T23:19:00+05:30</lastmod>
   </url>
@@ -348,17 +343,7 @@
   </url>
   
   <url>
-    <loc>https://dhanoopbhaskar.github.io/categories/decryption/</loc>
-    <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://dhanoopbhaskar.github.io/tags/encryption/</loc>
-    <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/categories/encryption/</loc>
     <lastmod>2014-07-30T23:19:00+05:30</lastmod>
   </url>
   
@@ -479,16 +464,41 @@
   
   <url>
     <loc>https://dhanoopbhaskar.github.io/tags/design-pattern/</loc>
-    <lastmod>2013-08-31T16:29:00+05:30</lastmod>
+    <lastmod>2013-08-31T19:19:00+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-31-singleton-pattern/</loc>
-    <lastmod>2013-08-31T16:29:00+05:30</lastmod>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-31-initialization-on-demand-holder-idiom/</loc>
+    <lastmod>2013-08-31T19:19:00+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://dhanoopbhaskar.github.io/tags/software-design/</loc>
+    <lastmod>2013-08-31T19:19:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/software-design-patterns/</loc>
+    <lastmod>2013-08-31T19:19:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/software-engineering/</loc>
+    <lastmod>2013-08-31T19:19:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-31-eager-initialization/</loc>
+    <lastmod>2013-08-31T17:20:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-31-double-checked-locking-and-lazy-initialization/</loc>
+    <lastmod>2013-08-31T16:58:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-31-singleton-pattern/</loc>
     <lastmod>2013-08-31T16:29:00+05:30</lastmod>
   </url>
   
@@ -498,8 +508,83 @@
   </url>
   
   <url>
-    <loc>https://dhanoopbhaskar.github.io/categories/software-engineering/</loc>
-    <lastmod>2013-08-31T15:33:00+05:30</lastmod>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-29-solved-missing-verify-dll/</loc>
+    <lastmod>2013-08-29T23:58:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-29-solved-could-not-open-jvm-cfg/</loc>
+    <lastmod>2013-08-29T23:49:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-29-java-avoid-multiple-occurrence-of-some-character-in-a-string/</loc>
+    <lastmod>2013-08-29T23:34:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/string/</loc>
+    <lastmod>2013-08-29T23:34:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/string/</loc>
+    <lastmod>2013-08-29T23:34:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-20-another-milestone/</loc>
+    <lastmod>2013-08-20T00:54:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-15-independence-day-wishes/</loc>
+    <lastmod>2013-08-15T00:10:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-11-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm/</loc>
+    <lastmod>2013-08-11T19:16:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-11-java-blowfish-encryption-algorithm/</loc>
+    <lastmod>2013-08-11T16:08:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-11-java-advanced-encryption-standard-aes-algorithm/</loc>
+    <lastmod>2013-08-11T15:23:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jbutton-in-a-jtable-cell/</loc>
+    <lastmod>2013-08-03T17:04:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/swing/</loc>
+    <lastmod>2013-08-03T17:04:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/swing/</loc>
+    <lastmod>2013-08-03T17:04:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcheckbox-in-a-jtable-cell/</loc>
+    <lastmod>2013-08-03T14:56:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/</loc>
+    <lastmod>2013-08-03T14:04:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell/</loc>
+    <lastmod>2013-08-03T00:47:00+05:30</lastmod>
   </url>
   
   <url>

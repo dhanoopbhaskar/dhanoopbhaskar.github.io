@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>string on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/categories/string/</link>
+    <description>Recent content in string on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 29 Aug 2013 23:34:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/categories/string/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java - Avoid multiple occurrence of some character in a String</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-29-java-avoid-multiple-occurrence-of-some-character-in-a-string/</link>
+      <pubDate>Thu, 29 Aug 2013 23:34:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-29-java-avoid-multiple-occurrence-of-some-character-in-a-string/</guid>
+      <description>The following is a Java method/function which avoids multiple occurrence (in a row) of some character in an input String. The parameters to the method (i.e., inputs) to the method/function include:
+ input - The parent String under consideration character - The character of which multiple occurrence (in a row) should be avoided.  public static String avoidMultipleOccurrence(String input, char character) { if (input == null) { return null; } if (input.</description>
+    </item>
+    
+  </channel>
+</rss>

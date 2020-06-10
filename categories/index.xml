@@ -147,38 +147,11 @@
     </item>
     
     <item>
-      <title>crypto</title>
-      <link>https://dhanoopbhaskar.github.io/categories/crypto/</link>
-      <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
-      <guid>https://dhanoopbhaskar.github.io/categories/crypto/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>cryptography</title>
       <link>https://dhanoopbhaskar.github.io/categories/cryptography/</link>
       <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
       
       <guid>https://dhanoopbhaskar.github.io/categories/cryptography/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>decryption</title>
-      <link>https://dhanoopbhaskar.github.io/categories/decryption/</link>
-      <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
-      <guid>https://dhanoopbhaskar.github.io/categories/decryption/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>encryption</title>
-      <link>https://dhanoopbhaskar.github.io/categories/encryption/</link>
-      <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
-      <guid>https://dhanoopbhaskar.github.io/categories/encryption/</guid>
       <description></description>
     </item>
     
@@ -210,11 +183,38 @@
     </item>
     
     <item>
+      <title>software design patterns</title>
+      <link>https://dhanoopbhaskar.github.io/categories/software-design-patterns/</link>
+      <pubDate>Sat, 31 Aug 2013 19:19:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/categories/software-design-patterns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>software engineering</title>
       <link>https://dhanoopbhaskar.github.io/categories/software-engineering/</link>
-      <pubDate>Sat, 31 Aug 2013 15:33:00 +0530</pubDate>
+      <pubDate>Sat, 31 Aug 2013 19:19:00 +0530</pubDate>
       
       <guid>https://dhanoopbhaskar.github.io/categories/software-engineering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>string</title>
+      <link>https://dhanoopbhaskar.github.io/categories/string/</link>
+      <pubDate>Thu, 29 Aug 2013 23:34:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/categories/string/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>swing</title>
+      <link>https://dhanoopbhaskar.github.io/categories/swing/</link>
+      <pubDate>Sat, 03 Aug 2013 17:04:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/categories/swing/</guid>
       <description></description>
     </item>
     

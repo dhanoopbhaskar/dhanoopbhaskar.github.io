@@ -6,10 +6,42 @@
     <description>Recent content in software design on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 31 Aug 2013 16:29:00 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 31 Aug 2013 19:19:00 +0530</lastBuildDate>
     
 	<atom:link href="https://dhanoopbhaskar.github.io/tags/software-design/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Initialization-on-demand holder idiom</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-31-initialization-on-demand-holder-idiom/</link>
+      <pubDate>Sat, 31 Aug 2013 19:19:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-31-initialization-on-demand-holder-idiom/</guid>
+      <description>See Singleton Pattern here&amp;hellip;
+package me.dhanoop.singleton; /** * * @author dhanoopbhaskar */ public class Singleton { private static class HelperHolder { public static Helper helper = new Helper(); } public static Helper getHelper() { return HelperHolder.helper; } public static void main(String[] args) { Runnable runnable = new Runnable() { @Override public void run() { Singleton.getHelper(); } }; new Thread(runnable).start(); new Thread(runnable).start(); new Thread(runnable).start(); } }  Here, as the helper object is static, an alternative is used - initialization-on-demand holder idiom.</description>
+    </item>
+    
+    <item>
+      <title>Eager initialization</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-31-eager-initialization/</link>
+      <pubDate>Sat, 31 Aug 2013 17:20:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-31-eager-initialization/</guid>
+      <description>See Singleton Pattern here&amp;hellip;
+If the program will always need an instance, or if the cost of creating the instance is not too large in terms of time/resources, the programmer can switch to eager initialization, which always creates an instance.
+Singleton.java
+package me.dhanoop.singleton; /** * * @author dhanoopbhaskar */ public class Singleton { private static final Helper helper = new Helper(); public static Helper getHelper() { return helper; } public static void main(String[] args) { Runnable runnable = new Runnable() { @Override public void run() { Singleton.</description>
+    </item>
+    
+    <item>
+      <title>Double-checked locking and Lazy initialization</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-31-double-checked-locking-and-lazy-initialization/</link>
+      <pubDate>Sat, 31 Aug 2013 16:58:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-31-double-checked-locking-and-lazy-initialization/</guid>
+      <description>Lazy initialization is the tactic of delaying the creation of an object, the calculation of a value, or some other expensive process until the first time it is needed.
+This is generally accomplished by maintaining a flag indicating whether the process has taken place. Each time the desired object is summoned, the flag is tested. If it is ready, it is returned. If not, it is initialized on the spot. In multithreaded code, access to the flag must be synchronized to guard against a race condition.</description>
+    </item>
     
     <item>
       <title>Singleton Pattern</title>

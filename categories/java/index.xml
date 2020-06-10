@@ -83,7 +83,7 @@ public class DES { /* Initial Permutation */ static final int[] IP = { 58, 50, 4
       <pubDate>Sat, 26 Apr 2014 17:51:00 +0530</pubDate>
       
       <guid>https://dhanoopbhaskar.github.io/blog/2014-04-26-java-common-problems-and-their-solutions/</guid>
-      <description>**Original Link: **
+      <description>Original Link:
 http://docs.oracle.com/javase/tutorial/getStarted/problems/
 Check the license before redistribution: http://docs.oracle.com/javase/tutorial/information/license.html</description>
     </item>
@@ -94,7 +94,8 @@ Check the license before redistribution: http://docs.oracle.com/javase/tutorial/
       <pubDate>Wed, 09 Apr 2014 20:00:00 +0530</pubDate>
       
       <guid>https://dhanoopbhaskar.github.io/blog/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/</guid>
-      <description>/* EncryptFile.java */ import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { SecretKey secretKey = null; Cipher cipher = null; String filePath = null; public EncryptFile(String filePath) { this.filePath = filePath; try { /** * Create a Blowfish key */ byte[] password = getPasswordFromFile(filePath); if (password == null) { System.</description>
+      <description>Here an image file is encrypted and decrypted using another image file as the password
+/* EncryptFile.java */ import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { SecretKey secretKey = null; Cipher cipher = null; String filePath = null; public EncryptFile(String filePath) { this.</description>
     </item>
     
     <item>
@@ -104,6 +105,156 @@ Check the license before redistribution: http://docs.oracle.com/javase/tutorial/
       
       <guid>https://dhanoopbhaskar.github.io/blog/2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password/</guid>
       <description>package com.java.blowfish; import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; String masterPassword = null; public EncryptFile(String masterPassword) { this.masterPassword = masterPassword; try { /** * Create a Blowfish key */ keyGenerator = KeyGenerator.</description>
+    </item>
+    
+    <item>
+      <title>Initialization-on-demand holder idiom</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-31-initialization-on-demand-holder-idiom/</link>
+      <pubDate>Sat, 31 Aug 2013 19:19:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-31-initialization-on-demand-holder-idiom/</guid>
+      <description>See Singleton Pattern here&amp;hellip;
+package me.dhanoop.singleton; /** * * @author dhanoopbhaskar */ public class Singleton { private static class HelperHolder { public static Helper helper = new Helper(); } public static Helper getHelper() { return HelperHolder.helper; } public static void main(String[] args) { Runnable runnable = new Runnable() { @Override public void run() { Singleton.getHelper(); } }; new Thread(runnable).start(); new Thread(runnable).start(); new Thread(runnable).start(); } }  Here, as the helper object is static, an alternative is used - initialization-on-demand holder idiom.</description>
+    </item>
+    
+    <item>
+      <title>Eager initialization</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-31-eager-initialization/</link>
+      <pubDate>Sat, 31 Aug 2013 17:20:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-31-eager-initialization/</guid>
+      <description>See Singleton Pattern here&amp;hellip;
+If the program will always need an instance, or if the cost of creating the instance is not too large in terms of time/resources, the programmer can switch to eager initialization, which always creates an instance.
+Singleton.java
+package me.dhanoop.singleton; /** * * @author dhanoopbhaskar */ public class Singleton { private static final Helper helper = new Helper(); public static Helper getHelper() { return helper; } public static void main(String[] args) { Runnable runnable = new Runnable() { @Override public void run() { Singleton.</description>
+    </item>
+    
+    <item>
+      <title>Double-checked locking and Lazy initialization</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-31-double-checked-locking-and-lazy-initialization/</link>
+      <pubDate>Sat, 31 Aug 2013 16:58:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-31-double-checked-locking-and-lazy-initialization/</guid>
+      <description>Lazy initialization is the tactic of delaying the creation of an object, the calculation of a value, or some other expensive process until the first time it is needed.
+This is generally accomplished by maintaining a flag indicating whether the process has taken place. Each time the desired object is summoned, the flag is tested. If it is ready, it is returned. If not, it is initialized on the spot. In multithreaded code, access to the flag must be synchronized to guard against a race condition.</description>
+    </item>
+    
+    <item>
+      <title>Singleton Pattern</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-31-singleton-pattern/</link>
+      <pubDate>Sat, 31 Aug 2013 16:29:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-31-singleton-pattern/</guid>
+      <description>In software engineering, the singleton pattern is a design pattern that restricts a class from creating more than one object (Instantiation is restricted to one object). Such a design is generally used in a software system which operates more efficiently when only one object exists. It is useful when exactly one object is needed to coordinate actions across the system.
+Read more about singleton pattern here&amp;hellip;
+Java implementation
+1. Single Threaded version</description>
+    </item>
+    
+    <item>
+      <title>[SOLVED] Missing verify.dll</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-29-solved-missing-verify-dll/</link>
+      <pubDate>Thu, 29 Aug 2013 23:58:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-29-solved-missing-verify-dll/</guid>
+      <description>Error: The program can&amp;rsquo;t start because verify.dll is missing from your computer. Try reinstalling the program to fix this problem.
+This error also occurred when I tried to run a program using Java Virtual Machine Launcher.
+The permanent solution to this error is adding the path JDK_HOME\jre\bin (e.g. C:\Java\jdk1.7.0\jre\bin; - in my case) to the System Environment Variable - PATH</description>
+    </item>
+    
+    <item>
+      <title>[SOLVED] Could not open jvm.cfg</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-29-solved-could-not-open-jvm-cfg/</link>
+      <pubDate>Thu, 29 Aug 2013 23:49:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-29-solved-could-not-open-jvm-cfg/</guid>
+      <description>Error: could not open &amp;lsquo;C:\Java\jre7\lib\i386\jvm.cfg&amp;rsquo; This error occurred when I tried to run a program using Java Virtual Machine Launcher.
+Solution: As a temporary fix what I did was searching for the file jvm.cfg (which was found somewhere under JDK_HOME) and made the file available in the path mentioned in the error message.
+The following is the content of the file jvm.cfg
+-client KNOWN -server KNOWN -hotspot ALIASED_TO -client -classic WARN -native ERROR -green ERROR  The permanent solution to this error is adding the path JDK_HOME\jre\bin (e.</description>
+    </item>
+    
+    <item>
+      <title>Java - Avoid multiple occurrence of some character in a String</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-29-java-avoid-multiple-occurrence-of-some-character-in-a-string/</link>
+      <pubDate>Thu, 29 Aug 2013 23:34:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-29-java-avoid-multiple-occurrence-of-some-character-in-a-string/</guid>
+      <description>The following is a Java method/function which avoids multiple occurrence (in a row) of some character in an input String. The parameters to the method (i.e., inputs) to the method/function include:
+ input - The parent String under consideration character - The character of which multiple occurrence (in a row) should be avoided.  public static String avoidMultipleOccurrence(String input, char character) { if (input == null) { return null; } if (input.</description>
+    </item>
+    
+    <item>
+      <title>Java - Encryption and Decryption of an Image Using Blowfish Algorithm</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-11-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm/</link>
+      <pubDate>Sun, 11 Aug 2013 19:16:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-11-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm/</guid>
+      <description>EncryptFile.java
+package com.java.blowfish; import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; /** * * @author dhanoopbhaskar */ public class EncryptFile { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; public EncryptFile() { try { /** * Create a Blowfish key */ keyGenerator = KeyGenerator.getInstance(&amp;#34;Blowfish&amp;#34;); secretKey = keyGenerator.</description>
+    </item>
+    
+    <item>
+      <title>Java - Blowfish Encryption Algorithm</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-11-java-blowfish-encryption-algorithm/</link>
+      <pubDate>Sun, 11 Aug 2013 16:08:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-11-java-blowfish-encryption-algorithm/</guid>
+      <description>BlowfishAlgorithm.java
+package com.java.blowfish; import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException; import com.sun.org.apache.xml.internal.security.utils.Base64; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; /** * * @author dhanoopbhaskar */ public class BlowfishAlgorithm { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; public BlowfishAlgorithm() { try { /** * Create a Blowfish key */ keyGenerator = KeyGenerator.getInstance(&amp;#34;Blowfish&amp;#34;); secretKey = keyGenerator.generateKey(); /** * Create an instance of cipher mentioning the name of algorithm * - Blowfish */ cipher = Cipher.</description>
+    </item>
+    
+    <item>
+      <title>Java - Advanced Encryption Standard (AES) Algorithm</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-11-java-advanced-encryption-standard-aes-algorithm/</link>
+      <pubDate>Sun, 11 Aug 2013 15:23:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-11-java-advanced-encryption-standard-aes-algorithm/</guid>
+      <description>AESAlgorithm.java
+package com.java.aes; import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException; import com.sun.org.apache.xml.internal.security.utils.Base64; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; /** * * @author dhanoopbhaskar */ public class AESAlgorithm { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; public AESAlgorithm() { try { /** * Create a AES key */ keyGenerator = KeyGenerator.getInstance(&amp;#34;AES&amp;#34;); secretKey = keyGenerator.generateKey(); /** * Create an instance of cipher providing the following info * separated by slash.</description>
+    </item>
+    
+    <item>
+      <title>Java - JButton in a JTable cell</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jbutton-in-a-jtable-cell/</link>
+      <pubDate>Sat, 03 Aug 2013 17:04:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jbutton-in-a-jtable-cell/</guid>
+      <description>Now we shall discuss how to include a JButton in a table cell.
+ButtonJTable.java
+/* * ButtonJTable.java * * Created on Aug 3, 2013, 02:57:58 PM */ package me.dhanoop.forblog; import java.awt.Component; import java.awt.event.ActionEvent; import java.awt.event.ActionListener; import javax.swing.JButton; import javax.swing.JCheckBox; import javax.swing.JFrame; import javax.swing.JOptionPane; import javax.swing.JTable; import javax.swing.UIManager; import javax.swing.table.DefaultTableModel; import javax.swing.table.TableCellRenderer; /** * * @author dhanoopbhaskar */ public class ButtonJTable extends javax.swing.JFrame { private JButton tableData = null; /** Creates new form ButtonJTable */ public ButtonJTable() { initComponents(); customizeTable(); } /** This method is called from within the constructor to * initialize the form.</description>
+    </item>
+    
+    <item>
+      <title>Java - JCheckBox in a JTable cell</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcheckbox-in-a-jtable-cell/</link>
+      <pubDate>Sat, 03 Aug 2013 14:56:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcheckbox-in-a-jtable-cell/</guid>
+      <description>Now we shall discuss how to include a JCheckBox in a table cell.
+CheckBoxJFrame.java
+/** * CheckBoxJFrame.java * * Created on Aug 2, 2013, 11:57:36 PM */ package me.dhanoop.forblog; import java.awt.Component; import java.awt.event.ItemEvent; import java.awt.event.ItemListener; import javax.swing.DefaultCellEditor; import javax.swing.JCheckBox; import javax.swing.JFrame; import javax.swing.JOptionPane; import javax.swing.JTable; import javax.swing.table.DefaultTableModel; import javax.swing.table.TableCellRenderer; /** * * @author dhanoopbhaskar */ public class CheckBoxJFrame extends javax.swing.JFrame { private JCheckBox tableData = null; /** Creates new form CheckBoxJFrame */ public CheckBoxJFrame() { initComponents(); customizeTable(); } /** This method is called from within the constructor to * initialize the form.</description>
+    </item>
+    
+    <item>
+      <title>Java - JComboBox in a JTable cell (with event handling)</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/</link>
+      <pubDate>Sat, 03 Aug 2013 14:04:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/</guid>
+      <description>Please refer to the previous post here&amp;hellip;
+The function customizeTable() has been modified in order to include event handling functionality in the combo box.
+private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &amp;#34;ComboBox&amp;#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &amp;#34;select gender&amp;#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&amp;#34;Male&amp;#34;, &amp;#34;Female&amp;#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData.</description>
+    </item>
+    
+    <item>
+      <title>Java - JComboBox in a JTable cell</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell/</link>
+      <pubDate>Sat, 03 Aug 2013 00:47:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell/</guid>
+      <description>MainJFrame.java
+/** * MainJFrame.java * * Created on Aug 2, 2013, 11:57:36 PM */ package me.dhanoop.forblog; import javax.swing.DefaultCellEditor; import javax.swing.JComboBox; import javax.swing.table.DefaultTableModel; import javax.swing.table.TableCellEditor; /** * * @author dhanoopbhaskar */ public class MainJFrame extends javax.swing.JFrame { /** Creates new form MainJFrame */ public MainJFrame() { initComponents(); customizeTable(); } /** This method is called from within the constructor to * initialize the form. * WARNING: Do NOT modify this code. The content of this method is * always regenerated by the Form Editor.</description>
     </item>
     
   </channel>

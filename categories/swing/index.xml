@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>swing on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/categories/swing/</link>
+    <description>Recent content in swing on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 03 Aug 2013 17:04:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/categories/swing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java - JButton in a JTable cell</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jbutton-in-a-jtable-cell/</link>
+      <pubDate>Sat, 03 Aug 2013 17:04:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jbutton-in-a-jtable-cell/</guid>
+      <description>Now we shall discuss how to include a JButton in a table cell.
+ButtonJTable.java
+/* * ButtonJTable.java * * Created on Aug 3, 2013, 02:57:58 PM */ package me.dhanoop.forblog; import java.awt.Component; import java.awt.event.ActionEvent; import java.awt.event.ActionListener; import javax.swing.JButton; import javax.swing.JCheckBox; import javax.swing.JFrame; import javax.swing.JOptionPane; import javax.swing.JTable; import javax.swing.UIManager; import javax.swing.table.DefaultTableModel; import javax.swing.table.TableCellRenderer; /** * * @author dhanoopbhaskar */ public class ButtonJTable extends javax.swing.JFrame { private JButton tableData = null; /** Creates new form ButtonJTable */ public ButtonJTable() { initComponents(); customizeTable(); } /** This method is called from within the constructor to * initialize the form.</description>
+    </item>
+    
+    <item>
+      <title>Java - JCheckBox in a JTable cell</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcheckbox-in-a-jtable-cell/</link>
+      <pubDate>Sat, 03 Aug 2013 14:56:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcheckbox-in-a-jtable-cell/</guid>
+      <description>Now we shall discuss how to include a JCheckBox in a table cell.
+CheckBoxJFrame.java
+/** * CheckBoxJFrame.java * * Created on Aug 2, 2013, 11:57:36 PM */ package me.dhanoop.forblog; import java.awt.Component; import java.awt.event.ItemEvent; import java.awt.event.ItemListener; import javax.swing.DefaultCellEditor; import javax.swing.JCheckBox; import javax.swing.JFrame; import javax.swing.JOptionPane; import javax.swing.JTable; import javax.swing.table.DefaultTableModel; import javax.swing.table.TableCellRenderer; /** * * @author dhanoopbhaskar */ public class CheckBoxJFrame extends javax.swing.JFrame { private JCheckBox tableData = null; /** Creates new form CheckBoxJFrame */ public CheckBoxJFrame() { initComponents(); customizeTable(); } /** This method is called from within the constructor to * initialize the form.</description>
+    </item>
+    
+    <item>
+      <title>Java - JComboBox in a JTable cell (with event handling)</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/</link>
+      <pubDate>Sat, 03 Aug 2013 14:04:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/</guid>
+      <description>Please refer to the previous post here&amp;hellip;
+The function customizeTable() has been modified in order to include event handling functionality in the combo box.
+private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &amp;#34;ComboBox&amp;#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &amp;#34;select gender&amp;#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&amp;#34;Male&amp;#34;, &amp;#34;Female&amp;#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData.</description>
+    </item>
+    
+    <item>
+      <title>Java - JComboBox in a JTable cell</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell/</link>
+      <pubDate>Sat, 03 Aug 2013 00:47:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell/</guid>
+      <description>MainJFrame.java
+/** * MainJFrame.java * * Created on Aug 2, 2013, 11:57:36 PM */ package me.dhanoop.forblog; import javax.swing.DefaultCellEditor; import javax.swing.JComboBox; import javax.swing.table.DefaultTableModel; import javax.swing.table.TableCellEditor; /** * * @author dhanoopbhaskar */ public class MainJFrame extends javax.swing.JFrame { /** Creates new form MainJFrame */ public MainJFrame() { initComponents(); customizeTable(); } /** This method is called from within the constructor to * initialize the form. * WARNING: Do NOT modify this code. The content of this method is * always regenerated by the Form Editor.</description>
+    </item>
+    
+  </channel>
+</rss>
