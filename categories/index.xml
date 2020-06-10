@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on The Insane Techie</title>
+    <link>https://theinsantechie.in/categories/</link>
+    <description>Recent content in Categories on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 07 May 2020 14:35:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://theinsantechie.in/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker</title>
+      <link>https://theinsantechie.in/categories/docker/</link>
+      <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://theinsantechie.in/categories/python/</link>
+      <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ROS</title>
+      <link>https://theinsantechie.in/categories/ros/</link>
+      <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/ros/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arduino</title>
+      <link>https://theinsantechie.in/categories/arduino/</link>
+      <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>robotics</title>
+      <link>https://theinsantechie.in/categories/robotics/</link>
+      <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/robotics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iphone</title>
+      <link>https://theinsantechie.in/categories/iphone/</link>
+      <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/iphone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://theinsantechie.in/categories/linux/</link>
+      <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://theinsantechie.in/categories/java/</link>
+      <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>REST</title>
+      <link>https://theinsantechie.in/categories/rest/</link>
+      <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/rest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Services</title>
+      <link>https://theinsantechie.in/categories/web-services/</link>
+      <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/web-services/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://theinsantechie.in/categories/mysql/</link>
+      <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>phpmyadmin</title>
+      <link>https://theinsantechie.in/categories/phpmyadmin/</link>
+      <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/phpmyadmin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C</title>
+      <link>https://theinsantechie.in/categories/c/</link>
+      <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gcc</title>
+      <link>https://theinsantechie.in/categories/gcc/</link>
+      <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/gcc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aes algorithm</title>
+      <link>https://theinsantechie.in/categories/aes-algorithm/</link>
+      <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/aes-algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crypto</title>
+      <link>https://theinsantechie.in/categories/crypto/</link>
+      <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/crypto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cryptography</title>
+      <link>https://theinsantechie.in/categories/cryptography/</link>
+      <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/cryptography/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>decryption</title>
+      <link>https://theinsantechie.in/categories/decryption/</link>
+      <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/decryption/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>encryption</title>
+      <link>https://theinsantechie.in/categories/encryption/</link>
+      <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/encryption/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>des algorithm</title>
+      <link>https://theinsantechie.in/categories/des-algorithm/</link>
+      <pubDate>Wed, 30 Jul 2014 21:35:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/des-algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gratitude</title>
+      <link>https://theinsantechie.in/categories/gratitude/</link>
+      <pubDate>Mon, 19 May 2014 23:23:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/gratitude/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blowfish algorithm</title>
+      <link>https://theinsantechie.in/categories/blowfish-algorithm/</link>
+      <pubDate>Wed, 09 Apr 2014 20:00:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/blowfish-algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software engineering</title>
+      <link>https://theinsantechie.in/categories/software-engineering/</link>
+      <pubDate>Sat, 31 Aug 2013 15:33:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/categories/software-engineering/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

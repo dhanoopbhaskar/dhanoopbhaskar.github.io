@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Java - Encryption and Decryption of an Image Using Blowfish Algorithm (using password) - The Insane Techie</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="Java - Encryption and Decryption of an Image Using Blowfish Algorithm (using password)">
+<meta itemprop="description" content="package com.java.blowfish; import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; String masterPassword = null; public EncryptFile(String masterPassword) { this.masterPassword = masterPassword; try { /** * Create a Blowfish key */ keyGenerator = KeyGenerator.">
+<meta itemprop="datePublished" content="2014-04-05T22:22:00&#43;05:30" />
+<meta itemprop="dateModified" content="2014-04-05T22:22:00&#43;05:30" />
+<meta itemprop="wordCount" content="428">
+
+
+
+<meta itemprop="keywords" content="blowfish algorithm,encryption,crypto,decryption,cryptography,java," /><meta property="og:title" content="Java - Encryption and Decryption of an Image Using Blowfish Algorithm (using password)" />
+<meta property="og:description" content="package com.java.blowfish; import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; String masterPassword = null; public EncryptFile(String masterPassword) { this.masterPassword = masterPassword; try { /** * Create a Blowfish key */ keyGenerator = KeyGenerator." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://theinsantechie.in/blog/2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password/" />
+<meta property="article:published_time" content="2014-04-05T22:22:00+05:30" />
+<meta property="article:modified_time" content="2014-04-05T22:22:00+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java - Encryption and Decryption of an Image Using Blowfish Algorithm (using password)"/>
+<meta name="twitter:description" content="package com.java.blowfish; import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; String masterPassword = null; public EncryptFile(String masterPassword) { this.masterPassword = masterPassword; try { /** * Create a Blowfish key */ keyGenerator = KeyGenerator."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Blowfish%20Algorithm%20%28using%20password%29&amp;url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Blowfish%20Algorithm%20%28using%20password%29" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Blowfish%20Algorithm%20%28using%20password%29" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f&amp;description=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Blowfish%20Algorithm%20%28using%20password%29" target="_blank" rel="noopener" class="nav share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://theinsantechie.in/img/main/logo.jpeg" class="circle" width="" alt="Dhanoop Bhaskar" /></a>
+  <header>
+    <h1>The Insane Techie</h1>
+  </header>
+  <main>
+    <p>let's talk with the computers!</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
+
+
+
+
+
+
+<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
+<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/blog/2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password/">Java - Encryption and Decryption of an Image Using Blowfish Algorithm (using password)</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2014-04-05 22:22:00 &#43;0530 IST">
+      April 5, 2014
+    </time>
+    <span class="author">Dhanoop Bhaskar</span>
+    
+      <p>3 minute read</p>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Blowfish%20Algorithm%20%28using%20password%29&amp;url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Blowfish%20Algorithm%20%28using%20password%29" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Blowfish%20Algorithm%20%28using%20password%29" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f&amp;description=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Blowfish%20Algorithm%20%28using%20password%29" target="_blank" rel="noopener" class="nav share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </section>
+    
+
+    <div class="content">
+      <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">         
+        <span style="color:#f92672">package</span> com.java.blowfish<span style="color:#f92672">;</span>
+
+        <span style="color:#f92672">import</span> java.io.File<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.FileInputStream<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.FileNotFoundException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.FileOutputStream<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.InputStream<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.OutputStream<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.security.InvalidKeyException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.security.NoSuchAlgorithmException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.BadPaddingException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.Cipher<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.IllegalBlockSizeException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.KeyGenerator<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.NoSuchPaddingException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.SecretKey<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.spec.SecretKeySpec<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">/**
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * @author dhanoopbhaskar
+</span><span style="color:#75715e">         */</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EncryptFile</span> <span style="color:#f92672">{</span>
+
+            KeyGenerator keyGenerator <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            SecretKey secretKey <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            Cipher cipher <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            String masterPassword <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+            <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">EncryptFile</span><span style="color:#f92672">(</span>String masterPassword<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">masterPassword</span> <span style="color:#f92672">=</span> masterPassword<span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Create a Blowfish key
+</span><span style="color:#75715e">                     */</span>
+                    keyGenerator <span style="color:#f92672">=</span> KeyGenerator<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Blowfish&#34;</span><span style="color:#f92672">);</span>            
+                    secretKey <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SecretKeySpec<span style="color:#f92672">(</span>masterPassword<span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(),</span> <span style="color:#e6db74">&#34;Blowfish&#34;</span><span style="color:#f92672">);</span>
+
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Create an instance of cipher mentioning the name of algorithm
+</span><span style="color:#75715e">                     *     - Blowfish
+</span><span style="color:#75715e">                     */</span>
+                    cipher <span style="color:#f92672">=</span> Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Blowfish&#34;</span><span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchPaddingException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchAlgorithmException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                String fileToEncrypt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fileToEncrypt.jpg&#34;</span><span style="color:#f92672">;</span>
+                String encryptedFile <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;encryptedFile.jpg&#34;</span><span style="color:#f92672">;</span>
+                String decryptedFile <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;decryptedFile.jpg&#34;</span><span style="color:#f92672">;</span>
+                String directoryPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/home/dhanoopbhaskar/Desktop/blowfish/&#34;</span><span style="color:#f92672">;</span>
+                EncryptFile encryptFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EncryptFile<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;thisismypassword&#34;</span><span style="color:#f92672">);</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Starting Encryption...&#34;</span><span style="color:#f92672">);</span>
+                encryptFile<span style="color:#f92672">.</span><span style="color:#a6e22e">encrypt</span><span style="color:#f92672">(</span>directoryPath <span style="color:#f92672">+</span> fileToEncrypt<span style="color:#f92672">,</span>
+                        directoryPath <span style="color:#f92672">+</span> encryptedFile<span style="color:#f92672">);</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Encryption completed...&#34;</span><span style="color:#f92672">);</span>
+                encryptFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EncryptFile<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;thisismypassword&#34;</span><span style="color:#f92672">);</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Starting Decryption...&#34;</span><span style="color:#f92672">);</span>
+                encryptFile<span style="color:#f92672">.</span><span style="color:#a6e22e">decrypt</span><span style="color:#f92672">(</span>directoryPath <span style="color:#f92672">+</span> encryptedFile<span style="color:#f92672">,</span>
+                        directoryPath <span style="color:#f92672">+</span> decryptedFile<span style="color:#f92672">);</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Decryption completed...&#34;</span><span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#75715e">/**
+</span><span style="color:#75715e">             * 
+</span><span style="color:#75715e">             * @param srcPath
+</span><span style="color:#75715e">             * @param destPath
+</span><span style="color:#75715e">             *
+</span><span style="color:#75715e">             * Encrypts the file in srcPath and creates a file in destPath
+</span><span style="color:#75715e">             */</span>
+            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">encrypt</span><span style="color:#f92672">(</span>String srcPath<span style="color:#f92672">,</span> String destPath<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                File rawFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>srcPath<span style="color:#f92672">);</span>
+                File encryptedFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>destPath<span style="color:#f92672">);</span>
+                InputStream inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+                OutputStream outStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Initialize the cipher for encryption
+</span><span style="color:#75715e">                     */</span>
+                    cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">ENCRYPT_MODE</span><span style="color:#f92672">,</span> secretKey<span style="color:#f92672">);</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Initialize input and output streams
+</span><span style="color:#75715e">                     */</span>
+                    inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>rawFile<span style="color:#f92672">);</span>
+                    outStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>encryptedFile<span style="color:#f92672">);</span>
+                    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">];</span>
+                    <span style="color:#66d9ef">int</span> len<span style="color:#f92672">;</span>
+                    <span style="color:#66d9ef">while</span> <span style="color:#f92672">((</span>len <span style="color:#f92672">=</span> inStream<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">))</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> len<span style="color:#f92672">));</span>
+                        outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">flush</span><span style="color:#f92672">();</span>
+                    <span style="color:#f92672">}</span>
+                    outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">());</span>
+                    inStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+                    outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalBlockSizeException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>BadPaddingException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InvalidKeyException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#75715e">/**
+</span><span style="color:#75715e">             * 
+</span><span style="color:#75715e">             * @param srcPath
+</span><span style="color:#75715e">             * @param destPath
+</span><span style="color:#75715e">             *
+</span><span style="color:#75715e">             * Decrypts the file in srcPath and creates a file in destPath
+</span><span style="color:#75715e">             */</span>
+            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">decrypt</span><span style="color:#f92672">(</span>String srcPath<span style="color:#f92672">,</span> String destPath<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                File encryptedFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>srcPath<span style="color:#f92672">);</span>
+                File decryptedFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>destPath<span style="color:#f92672">);</span>
+                InputStream inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+                OutputStream outStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Initialize the cipher for decryption
+</span><span style="color:#75715e">                     */</span>
+                    cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">DECRYPT_MODE</span><span style="color:#f92672">,</span> secretKey<span style="color:#f92672">);</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Initialize input and output streams
+</span><span style="color:#75715e">                     */</span>
+                    inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>encryptedFile<span style="color:#f92672">);</span>
+                    outStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>decryptedFile<span style="color:#f92672">);</span>
+                    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">];</span>
+                    <span style="color:#66d9ef">int</span> len<span style="color:#f92672">;</span>
+                    <span style="color:#66d9ef">while</span> <span style="color:#f92672">((</span>len <span style="color:#f92672">=</span> inStream<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">))</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> len<span style="color:#f92672">));</span>
+                        outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">flush</span><span style="color:#f92672">();</span>
+                    <span style="color:#f92672">}</span>
+                    outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">());</span>
+                    inStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+                    outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalBlockSizeException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>BadPaddingException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InvalidKeyException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span></code></pre></div>
+<p><a href="/img/2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password-blog.png"><img src="/img/thumbnails/2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password-blog.png" alt=""></a></p>
+
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/categories/blowfish-algorithm/">blowfish algorithm</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/encryption/">encryption</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/crypto/">crypto</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/decryption/">decryption</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/cryptography/">cryptography</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/java/">java</a></li>
+        
+      
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/blowfish-algorithm/">blowfish algorithm</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/encryption/">encryption</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/crypto/">crypto</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/decryption/">decryption</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/cryptography/">cryptography</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/java/">java</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+  <article class="post">
+    
+<div>
+  <h2>Say something</h2>
+    <form id="post-js-form" class="post-new-comment" method="POST">
+      
+      <h5 class='post-reply-notice hidden'>
+        <span class='post-reply-arrow'></span><span class='post-reply-name'></span>
+      </h5>
+
+      
+      <input type="hidden" name="options[entryId]" value="8a14fad3d5f5f1514f2b50ac01f5e84d">
+      <input type='hidden' name='fields[replyThread]' value=''>
+      <input type='hidden' name='fields[replyID]' value=''>
+      <input type='hidden' name='fields[replyName]' value=''>
+
+      
+      <input required name='fields[name]' type='text' placeholder='Your name (Required)'>
+      <input name='fields[website]' type='text' placeholder='Your website'>
+      <input required name='fields[email]' type='email' placeholder='Your email address (Required for Gravatar)'>
+      <textarea required name='fields[body]' placeholder='Your message. Feel free to use Markdown (Google &#39;Markdown Cheat Sheet&#39;).' rows='10'></textarea>
+
+      
+      
+
+      
+      <p class='post-submit-notice'>
+        <strong class='post-submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+        <strong class='post-submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission.  Please make sure all required fields have been completed and try again.</strong>
+      </p>
+
+      
+      <input type='submit' value='Submit' class='button'>
+      <input type='submit' value='Submitted' class='hidden button' disabled>
+      <input type='reset' value='Reset' class='button'>
+    </form>
+</div>
+
+
+<div>
+  <h2>Comments</h2>
+
+  
+</div>
+
+  </article>
+
+
+  <div class="pagination">
+  
+    <a href="/blog/2014-02-13-a-simple-http-client-and-a-server-in-c/" class="button"><div class="previous"><div>A simple HTTP client and a server in C</div></div></a>
+  
+  
+    <a href="/blog/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/" class="button"><div class="next"><div>Java - Encryption and Decryption of an Image Using Another Image (Blowfish Algorithm)</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2020-05-07-ros-in-docker-container/">ROS In Docker Container</a></h2>
+          <time class="published" datetime="">May 7, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/">Working With Python 3 In ROS Kinetic Or Melodic</a></h2>
+          <time class="published" datetime="">May 7, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-biped-walking-robot/">Biped Walking Robot</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-robotic-arm/">Robotic Arm</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-7-robots-in-6-days/">7 Robots in 6 Days</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/blog/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/java/">java<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/c/">c<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gcc/">gcc<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/crypto/">crypto<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/cryptography/">cryptography<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/decryption/">decryption<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/encryption/">encryption<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/arduino/">arduino<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/robotics/">robotics<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aes-algorithm/">aes-algorithm<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/blowfish-algorithm/">blowfish-algorithm<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/des-algorithm/">des-algorithm<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/linux/">linux<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/python/">python<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/ros/">ros<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/docker/">docker<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gratitude/">gratitude<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/iphone/">iphone<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/mysql/">mysql<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/phpmyadmin/">phpmyadmin<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/rest/">rest<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/software-engineering/">software-engineering<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/web-services/">web-services<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
+
+
+
+
+
+
+<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
+<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        The Insane Techie
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.21cb52af62d194162499e7777fed3cd2389430c3c4f8d833027cb71e6e95dc38.js" integrity="sha256-IctSr2LRlBYkmed3f&#43;080jiUMMPE&#43;NgzAny3Hm6V3Dg="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

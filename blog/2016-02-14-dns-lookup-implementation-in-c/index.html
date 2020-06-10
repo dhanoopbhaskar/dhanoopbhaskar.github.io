@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>DNS Lookup - Implementation in C - The Insane Techie</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="DNS Lookup - Implementation in C">
+<meta itemprop="description" content="Read about DNS here&hellip;
+DNS Lookup - Implementation in C
+/**dnsclient.c**/ #include&#34;stdio.h&#34;  #include&#34;stdlib.h&#34;  #include&#34;sys/types.h&#34;  #include&#34;sys/socket.h&#34;  #include&#34;string.h&#34;  #include&#34;netinet/in.h&#34;  #include&#34;netdb.h&#34; #include&#34;arpa/inet.h&#34; #define BUF_SIZE 512  #define SERVER &#34;8.8.8.8&#34;  #define PORT 53  #define WIDTH 16  int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { .">
+<meta itemprop="datePublished" content="2016-02-14T01:23:00&#43;05:30" />
+<meta itemprop="dateModified" content="2016-02-14T01:23:00&#43;05:30" />
+<meta itemprop="wordCount" content="1189">
+
+
+
+<meta itemprop="keywords" content="dns,gcc,C/CPP,network," /><meta property="og:title" content="DNS Lookup - Implementation in C" />
+<meta property="og:description" content="Read about DNS here&hellip;
+DNS Lookup - Implementation in C
+/**dnsclient.c**/ #include&#34;stdio.h&#34;  #include&#34;stdlib.h&#34;  #include&#34;sys/types.h&#34;  #include&#34;sys/socket.h&#34;  #include&#34;string.h&#34;  #include&#34;netinet/in.h&#34;  #include&#34;netdb.h&#34; #include&#34;arpa/inet.h&#34; #define BUF_SIZE 512  #define SERVER &#34;8.8.8.8&#34;  #define PORT 53  #define WIDTH 16  int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://theinsantechie.in/blog/2016-02-14-dns-lookup-implementation-in-c/" />
+<meta property="article:published_time" content="2016-02-14T01:23:00+05:30" />
+<meta property="article:modified_time" content="2016-02-14T01:23:00+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DNS Lookup - Implementation in C"/>
+<meta name="twitter:description" content="Read about DNS here&hellip;
+DNS Lookup - Implementation in C
+/**dnsclient.c**/ #include&#34;stdio.h&#34;  #include&#34;stdlib.h&#34;  #include&#34;sys/types.h&#34;  #include&#34;sys/socket.h&#34;  #include&#34;string.h&#34;  #include&#34;netinet/in.h&#34;  #include&#34;netdb.h&#34; #include&#34;arpa/inet.h&#34; #define BUF_SIZE 512  #define SERVER &#34;8.8.8.8&#34;  #define PORT 53  #define WIDTH 16  int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { ."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=DNS%20Lookup%20-%20Implementation%20in%20C&amp;url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f&amp;title=DNS%20Lookup%20-%20Implementation%20in%20C" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f&amp;title=DNS%20Lookup%20-%20Implementation%20in%20C" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f&amp;description=DNS%20Lookup%20-%20Implementation%20in%20C" target="_blank" rel="noopener" class="nav share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://theinsantechie.in/img/main/logo.jpeg" class="circle" width="" alt="Dhanoop Bhaskar" /></a>
+  <header>
+    <h1>The Insane Techie</h1>
+  </header>
+  <main>
+    <p>let's talk with the computers!</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
+
+
+
+
+
+
+<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
+<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/blog/2016-02-14-dns-lookup-implementation-in-c/">DNS Lookup - Implementation in C</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2016-02-14 01:23:00.001 &#43;0530 IST">
+      February 14, 2016
+    </time>
+    <span class="author">Dhanoop Bhaskar</span>
+    
+      <p>6 minute read</p>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=DNS%20Lookup%20-%20Implementation%20in%20C&amp;url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f&amp;title=DNS%20Lookup%20-%20Implementation%20in%20C" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f&amp;title=DNS%20Lookup%20-%20Implementation%20in%20C" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f&amp;description=DNS%20Lookup%20-%20Implementation%20in%20C" target="_blank" rel="noopener" class="nav share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2ftheinsantechie.in%2fblog%2f2016-02-14-dns-lookup-implementation-in-c%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </section>
+    
+
+    <div class="content">
+      <p>Read about DNS
+<a href="https://en.wikipedia.org/wiki/Domain_Name_System">here&hellip;</a></p>
+<p><strong>DNS Lookup - Implementation in C</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">     
+
+    <span style="color:#75715e">/**dnsclient.c**/</span>
+    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdio.h&#34;  </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdlib.h&#34;  </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/types.h&#34;  </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/socket.h&#34;  </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;string.h&#34;  </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netinet/in.h&#34;  </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netdb.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;arpa/inet.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>      
+    <span style="color:#75715e">#define BUF_SIZE 512
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define SERVER &#34;8.8.8.8&#34;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define PORT 53
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define WIDTH 16
+</span><span style="color:#75715e"></span>      
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>();
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">createRequest</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url);
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hexdump</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>desc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>addr, <span style="color:#66d9ef">int</span> len);
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">lookUp</span>();
+
+    <span style="color:#66d9ef">struct</span> query {
+        uint16_t length;
+        <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> request[BUF_SIZE];
+        uint16_t reqType;
+    };
+
+    <span style="color:#66d9ef">struct</span> query dnsQuery <span style="color:#f92672">=</span> {
+                    .length <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>,
+                    .url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>,
+                    .reqType <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01</span>,
+                    .request <span style="color:#f92672">=</span> { <span style="color:#ae81ff">0xDB</span>, <span style="color:#ae81ff">0x42</span>, <span style="color:#ae81ff">0x01</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x01</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span> }
+                };
+
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">**</span> argv) {
+        <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url;
+
+        <span style="color:#66d9ef">if</span> (argc <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>) {
+            fprintf(stderr,<span style="color:#e6db74">&#34;usage: %s hostnameToResolve</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, argv[<span style="color:#ae81ff">0</span>]);
+            exit(<span style="color:#ae81ff">1</span>);
+        }
+
+        url <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">1</span>];
+            
+        createRequest(url);
+        lookUp();
+    }
+
+
+
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>() {
+        <span style="color:#66d9ef">int</span> sockfd;
+
+        sockfd <span style="color:#f92672">=</span> socket(AF_INET, SOCK_DGRAM, <span style="color:#ae81ff">0</span>);
+        <span style="color:#66d9ef">if</span> (sockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
+            printf(<span style="color:#e6db74">&#34;Error creating socket!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
+            exit(<span style="color:#ae81ff">1</span>);  
+        }  
+        <span style="color:#75715e">//printf(&#34;Socket created...\n&#34;);
+</span><span style="color:#75715e"></span>
+        <span style="color:#66d9ef">return</span> sockfd;
+    }
+
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">createRequest</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url) {
+        <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> word;
+        <span style="color:#66d9ef">int</span> i;  
+        printf(<span style="color:#e6db74">&#34;Asking DNS server %s about %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, SERVER, url);
+        dnsQuery.url <span style="color:#f92672">=</span> strdup(url);
+        dnsQuery.reqType <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01</span>;
+
+        word <span style="color:#f92672">=</span> strtok(url, <span style="color:#e6db74">&#34;.&#34;</span>);
+        <span style="color:#66d9ef">while</span> (word) {
+            printf(<span style="color:#e6db74">&#34;parsing hostname: </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> is %d characters</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, word, strlen(word));
+            dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> strlen(word);
+            <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> strlen(word); i<span style="color:#f92672">++</span>) {
+                dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> word[i];
+            }
+            word <span style="color:#f92672">=</span> strtok(NULL, <span style="color:#e6db74">&#34;.&#34;</span>);
+        }
+
+        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>; <span style="color:#75715e">// End of the host name
+</span><span style="color:#75715e"></span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>; <span style="color:#75715e">// 0x0001 - Query is a Type A query (host address)
+</span><span style="color:#75715e"></span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> dnsQuery.reqType;
+        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>; <span style="color:#75715e">// 0x0001 - Query is class IN (Internet address)
+</span><span style="color:#75715e"></span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01</span>;
+    }
+
+
+    <span style="color:#75715e">// http://stackoverflow.com/questions/7775991/how-to-get-hexdump-of-a-structure-data
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hexdump</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>desc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>addr, <span style="color:#66d9ef">int</span> len) {
+        <span style="color:#66d9ef">int</span> i;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> buff[<span style="color:#ae81ff">17</span>];
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>pc <span style="color:#f92672">=</span> addr;
+
+        <span style="color:#75715e">// Output description if given.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (desc <span style="color:#f92672">!=</span> NULL)
+            printf (<span style="color:#e6db74">&#34;%s:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, desc);
+
+        <span style="color:#75715e">// Process every byte in the data.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; i<span style="color:#f92672">++</span>) {
+            <span style="color:#75715e">// Multiple of 16 means new line (with line offset).
+</span><span style="color:#75715e"></span>
+            <span style="color:#66d9ef">if</span> ((i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+                <span style="color:#75715e">// Just don&#39;t print ASCII for the zeroth line.
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+                    printf (<span style="color:#e6db74">&#34;  %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buff);
+
+                <span style="color:#75715e">// Output the offset.
+</span><span style="color:#75715e"></span>                printf (<span style="color:#e6db74">&#34;  %04x &#34;</span>, i);
+            }
+
+            <span style="color:#75715e">// Now the hex code for the specific character.
+</span><span style="color:#75715e"></span>            printf (<span style="color:#e6db74">&#34; %02x&#34;</span>, pc[i]);
+
+            <span style="color:#75715e">// And store a printable ASCII character for later.
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> ((pc[i] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0x20</span>) <span style="color:#f92672">||</span> (pc[i] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0x7e</span>))
+                buff[i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span>;
+            <span style="color:#66d9ef">else</span>
+                buff[i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>] <span style="color:#f92672">=</span> pc[i];
+            buff[(i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
+        }
+
+        <span style="color:#75715e">// Pad out last line if not exactly 16 characters.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> ((i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+            printf (<span style="color:#e6db74">&#34;   &#34;</span>);
+            i<span style="color:#f92672">++</span>;
+        }
+
+        <span style="color:#75715e">// And print the final ASCII bit.
+</span><span style="color:#75715e"></span>        printf (<span style="color:#e6db74">&#34;  %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buff);
+    }
+
+
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">lookUp</span>() {
+        <span style="color:#66d9ef">struct</span> sockaddr_in addr;
+        <span style="color:#66d9ef">int</span> socket;
+        <span style="color:#66d9ef">int</span> ret, rcode, size, i;
+        <span style="color:#66d9ef">int</span> ip <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, dom <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">int</span> length;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> buffer[BUF_SIZE];
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> tempBuf[<span style="color:#ae81ff">3</span>];
+        uint16_t QDCOUNT; <span style="color:#75715e">//No. of items in Question Section
+</span><span style="color:#75715e"></span>        uint16_t ANCOUNT; <span style="color:#75715e">//No. of items in Answer Section
+</span><span style="color:#75715e"></span>        uint16_t NSCOUNT; <span style="color:#75715e">//No. of items in Authority Section
+</span><span style="color:#75715e"></span>        uint16_t ARCOUNT; <span style="color:#75715e">//No. of items in Additional Section
+</span><span style="color:#75715e"></span>        uint16_t QCLASS; <span style="color:#75715e">//Specifies the class of the query
+</span><span style="color:#75715e"></span>        uint16_t ATYPE; <span style="color:#75715e">//Specifies the meaning of the data in the RDATA field
+</span><span style="color:#75715e"></span>        uint16_t ACLASS; <span style="color:#75715e">//Specifies the class of the data in the RDATA field
+</span><span style="color:#75715e"></span>        uint32_t TTL; <span style="color:#75715e">//The number of seconds the results can be cached
+</span><span style="color:#75715e"></span>        uint16_t RDLENGTH; <span style="color:#75715e">//The length of the RDATA field
+</span><span style="color:#75715e"></span>        uint16_t MSGID;
+
+        socket <span style="color:#f92672">=</span> createSocket();
+
+        memset(<span style="color:#f92672">&amp;</span>addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(addr));  
+        addr.sin_family <span style="color:#f92672">=</span> AF_INET;  
+        addr.sin_addr.s_addr <span style="color:#f92672">=</span> inet_addr(SERVER);
+        addr.sin_port <span style="color:#f92672">=</span> htons(PORT);
+        size <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(addr);
+
+        hexdump(<span style="color:#e6db74">&#34;sending packet&#34;</span>, <span style="color:#f92672">&amp;</span>dnsQuery.request, dnsQuery.length);
+        ret <span style="color:#f92672">=</span> sendto(socket, dnsQuery.request, dnsQuery.length, <span style="color:#ae81ff">0</span>, (<span style="color:#66d9ef">struct</span> sockaddr<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, size);
+        <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+            printf(<span style="color:#e6db74">&#34;Error Sending Request&#34;</span>);
+            exit(<span style="color:#ae81ff">1</span>);        
+        }
+        <span style="color:#75715e">//printf(&#34;Sent\n&#34;);
+</span><span style="color:#75715e"></span>
+        memset(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, BUF_SIZE);
+        ret <span style="color:#f92672">=</span> recvfrom(socket, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>, (<span style="color:#66d9ef">struct</span> sockaddr<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, <span style="color:#f92672">&amp;</span>size);
+        <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+            printf(<span style="color:#e6db74">&#34;Error Receiving Response&#34;</span>);
+            exit(<span style="color:#ae81ff">1</span>);
+        }   
+            
+        hexdump(<span style="color:#e6db74">&#34;received packet&#34;</span>, <span style="color:#f92672">&amp;</span>buffer, ret);
+
+        close(socket);
+
+        rcode <span style="color:#f92672">=</span> (buffer[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x0F</span>);
+
+        <span style="color:#75715e">//tempBuf[0] = buffer[4];
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//tempBuf[1] = buffer[5];
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//tempBuf[2] = &#39;\0&#39;;
+</span><span style="color:#75715e"></span>        
+        <span style="color:#75715e">//printf(&#34;%0x %0x %0x %0x\n&#34;, buffer[4], buffer[5], tempBuf[0], tempBuf[1]);
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">//QDCOUNT = (uint16_t) strtol(tempBuf, NULL, 16);
+</span><span style="color:#75715e"></span>        QDCOUNT <span style="color:#f92672">=</span> (uint16_t)  buffer[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">5</span>];
+        printf(<span style="color:#e6db74">&#34;entries in question section: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, QDCOUNT);
+        ANCOUNT <span style="color:#f92672">=</span> (uint16_t)  buffer[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">7</span>];
+        printf(<span style="color:#e6db74">&#34;records in answer section: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ANCOUNT);
+        NSCOUNT <span style="color:#f92672">=</span> (uint16_t)  buffer[<span style="color:#ae81ff">8</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">9</span>];
+        printf(<span style="color:#e6db74">&#34;name server resource record count: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, NSCOUNT);
+        ARCOUNT <span style="color:#f92672">=</span> (uint16_t)  buffer[<span style="color:#ae81ff">10</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">11</span>];
+        printf(<span style="color:#e6db74">&#34;additional records count: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ARCOUNT);
+
+        printf(<span style="color:#e6db74">&#34;query type: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, dnsQuery.reqType);
+        QCLASS <span style="color:#f92672">=</span> (uint16_t) dnsQuery.request[dnsQuery.length <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> dnsQuery.request[dnsQuery.length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+        printf(<span style="color:#e6db74">&#34;query class: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, QCLASS);
+        length <span style="color:#f92672">=</span> dnsQuery.length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;    <span style="color:#75715e">// to skip 0xc00c
+</span><span style="color:#75715e"></span>        ATYPE <span style="color:#f92672">=</span> (uint16_t) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>];
+        printf(<span style="color:#e6db74">&#34;answer type: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ATYPE);
+        ACLASS <span style="color:#f92672">=</span> (uint16_t) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>];
+        printf(<span style="color:#e6db74">&#34;answer class: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ACLASS);
+        TTL <span style="color:#f92672">=</span> (uint32_t) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x1000000</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">6</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x10000</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">8</span>];
+        printf(<span style="color:#e6db74">&#34;seconds to cache: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, TTL);
+        RDLENGTH <span style="color:#f92672">=</span> (uint16_t) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">9</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>];
+        printf(<span style="color:#e6db74">&#34;bytes in answer: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, RDLENGTH);
+        MSGID <span style="color:#f92672">=</span> (uint16_t) buffer[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">1</span>];
+        printf(<span style="color:#e6db74">&#34;answer msg id: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, MSGID);   
+        
+        
+
+        <span style="color:#66d9ef">if</span> (rcode <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) {
+            printf(<span style="color:#e6db74">&#34;nameserver %s returned SERVFAIL:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, SERVER);
+            printf(<span style="color:#e6db74">&#34;  the name server was unable to process this query due to a</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  problem with the name server.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+            exit(<span style="color:#ae81ff">1</span>);
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (rcode <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) {
+            printf(<span style="color:#e6db74">&#34;nameserver %s returned NXDOMAIN for %s:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, SERVER, dnsQuery.url);
+            printf(<span style="color:#e6db74">&#34;  the domain name referenced in the query does not exist</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+            exit(<span style="color:#ae81ff">1</span>);
+        }
+
+        <span style="color:#75715e">/* search for and print IPv4 addresses */</span>
+        <span style="color:#66d9ef">if</span> (dnsQuery.reqType <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x01</span>) {
+            printf(<span style="color:#e6db74">&#34;DNS server&#39;s answer is: (type#=%u):&#34;</span>, ATYPE);
+            <span style="color:#75715e">//printf(&#34;IPv4 address(es) for %s:\n&#34;, dnsQuery.url);
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> ; i <span style="color:#f92672">&lt;</span> ret ; i<span style="color:#f92672">++</span>) {
+                <span style="color:#66d9ef">if</span> (buffer[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xC0</span> <span style="color:#f92672">&amp;&amp;</span> buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x01</span>) {
+                    ip<span style="color:#f92672">++</span>; i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">12</span>; <span style="color:#75715e">/* ! += buf[i+1]; */</span>
+                    printf(<span style="color:#e6db74">&#34; %u.%u.%u.%u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer[i], buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>], buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>], buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>]);
+                }
+            }
+
+            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ip) {
+                printf(<span style="color:#e6db74">&#34;  No IPv4 address found in the DNS response!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                exit(<span style="color:#ae81ff">1</span>);
+            }
+        }
+    }</code></pre></div>
+<p><strong>Output</strong></p>
+<pre><code>dhanoopbhaskar@dhanoop-laptop:~/workspace/Copy/_works$ gcc dnsclient.c 
+dhanoopbhaskar@dhanoop-laptop:~/workspace/Copy/_works$ ./a.out www.theinsanetechie.in
+
+
+Asking DNS server 8.8.8.8 about www.theinsanetechie.in
+parsing hostname: &quot;www&quot; is 3 characters
+parsing hostname: &quot;theinsanetechie&quot; is 15 characters
+parsing hostname: &quot;in&quot; is 2 characters
+sending packet:
+  0000  db 42 01 00 00 01 00 00 00 00 00 00 03 77 77 77  .B...........www
+  0010  0f 74 68 65 69 6e 73 61 6e 65 74 65 63 68 69 65  .theinsanetechie
+  0020  02 69 6e 00 00 01 00 01                          .in.....
+received packet:
+  0000  db 42 81 80 00 01 00 03 00 00 00 00 03 77 77 77  .B...........www
+  0010  0f 74 68 65 69 6e 73 61 6e 65 74 65 63 68 69 65  .theinsanetechie
+  0020  02 69 6e 00 00 01 00 01 c0 0c 00 05 00 01 00 00  .in.............
+  0030  32 c7 00 10 03 67 68 73 06 67 6f 6f 67 6c 65 03  2....ghs.google.
+  0040  63 6f 6d 00 c0 34 00 05 00 01 00 00 54 5f 00 08  com..4......T_..
+  0050  03 67 68 73 01 6c c0 38 c0 50 00 01 00 01 00 00  .ghs.l.8.P......
+  0060  01 2b 00 04 4a 7d 44 79                          .+..J}Dy
+entries in question section: 1
+records in answer section: 3
+name server resource record count: 0
+additional records count: 0
+query type: 1
+query class: 1
+answer type: 5
+answer class: 1
+seconds to cache: 12999
+bytes in answer: 16
+answer msg id: 56130
+DNS server's answer is: (type#=5): 74.125.68.121
+
+dhanoopbhaskar@dhanoop-laptop:~/workspace/Copy/_works$ </code></pre>
+
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/categories/c/">C</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/gcc/">gcc</a></li>
+        
+      
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/dns/">dns</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/gcc/">gcc</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/c/cpp/">C/CPP</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/network/">network</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+  <article class="post">
+    
+<div>
+  <h2>Say something</h2>
+    <form id="post-js-form" class="post-new-comment" method="POST">
+      
+      <h5 class='post-reply-notice hidden'>
+        <span class='post-reply-arrow'></span><span class='post-reply-name'></span>
+      </h5>
+
+      
+      <input type="hidden" name="options[entryId]" value="9566e56c12be4c15c0a48c6f3e9c9dd8">
+      <input type='hidden' name='fields[replyThread]' value=''>
+      <input type='hidden' name='fields[replyID]' value=''>
+      <input type='hidden' name='fields[replyName]' value=''>
+
+      
+      <input required name='fields[name]' type='text' placeholder='Your name (Required)'>
+      <input name='fields[website]' type='text' placeholder='Your website'>
+      <input required name='fields[email]' type='email' placeholder='Your email address (Required for Gravatar)'>
+      <textarea required name='fields[body]' placeholder='Your message. Feel free to use Markdown (Google &#39;Markdown Cheat Sheet&#39;).' rows='10'></textarea>
+
+      
+      
+
+      
+      <p class='post-submit-notice'>
+        <strong class='post-submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+        <strong class='post-submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission.  Please make sure all required fields have been completed and try again.</strong>
+      </p>
+
+      
+      <input type='submit' value='Submit' class='button'>
+      <input type='submit' value='Submitted' class='hidden button' disabled>
+      <input type='reset' value='Reset' class='button'>
+    </form>
+</div>
+
+
+<div>
+  <h2>Comments</h2>
+
+  
+</div>
+
+  </article>
+
+
+  <div class="pagination">
+  
+    <a href="/blog/2015-03-11-java-program-to-find-the-distance-between-two-gps-locations/" class="button"><div class="previous"><div>Java program to find the distance between two GPS locations.</div></div></a>
+  
+  
+    <a href="/blog/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/" class="button"><div class="next"><div>Installing and Configuring phpMyAdmin in Ubuntu/Linux Mint</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2020-05-07-ros-in-docker-container/">ROS In Docker Container</a></h2>
+          <time class="published" datetime="">May 7, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/">Working With Python 3 In ROS Kinetic Or Melodic</a></h2>
+          <time class="published" datetime="">May 7, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-biped-walking-robot/">Biped Walking Robot</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-robotic-arm/">Robotic Arm</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-7-robots-in-6-days/">7 Robots in 6 Days</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/blog/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/java/">java<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/c/">c<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gcc/">gcc<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/crypto/">crypto<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/cryptography/">cryptography<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/decryption/">decryption<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/encryption/">encryption<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/arduino/">arduino<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/robotics/">robotics<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aes-algorithm/">aes-algorithm<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/blowfish-algorithm/">blowfish-algorithm<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/des-algorithm/">des-algorithm<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/linux/">linux<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/python/">python<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/ros/">ros<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/docker/">docker<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gratitude/">gratitude<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/iphone/">iphone<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/mysql/">mysql<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/phpmyadmin/">phpmyadmin<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/rest/">rest<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/software-engineering/">software-engineering<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/web-services/">web-services<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
+
+
+
+
+
+
+<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
+<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        The Insane Techie
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.21cb52af62d194162499e7777fed3cd2389430c3c4f8d833027cb71e6e95dc38.js" integrity="sha256-IctSr2LRlBYkmed3f&#43;080jiUMMPE&#43;NgzAny3Hm6V3Dg="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

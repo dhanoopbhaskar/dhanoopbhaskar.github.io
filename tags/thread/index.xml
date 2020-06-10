@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>thread on The Insane Techie</title>
+    <link>https://theinsantechie.in/tags/thread/</link>
+    <description>Recent content in thread on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 22 Jan 2014 20:26:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://theinsantechie.in/tags/thread/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A simple chat program in C (TCP)</title>
+      <link>https://theinsantechie.in/blog/2014-01-22-a-simple-chat-program-in-c-tcp/</link>
+      <pubDate>Wed, 22 Jan 2014 20:26:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2014-01-22-a-simple-chat-program-in-c-tcp/</guid>
+      <description>tcpserver.c
+#include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #include&amp;#34;pthread.h&amp;#34; #define PORT 4444  #define BUF_SIZE 2000  #define CLADDR_LEN 100  void * receiveMessage(void * socket) { int sockfd, ret; char buffer[BUF_SIZE]; sockfd = (int) socket; memset(buffer, 0, BUF_SIZE); for (;;) { ret = recvfrom(sockfd, buffer, BUF_SIZE, 0, NULL, NULL); if (ret &amp;lt; 0) { printf(&amp;#34;Error receiving data!\n&amp;#34;); } else { printf(&amp;#34;client: &amp;#34;); fputs(buffer, stdout); //printf(&amp;#34;\n&amp;#34;);  } } } void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; pid_t childpid; char clientAddr[CLADDR_LEN]; pthread_t rThread; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kinetic on The Insane Techie</title>
+    <link>https://theinsantechie.in/tags/kinetic/</link>
+    <description>Recent content in kinetic on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 07 May 2020 14:07:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://theinsantechie.in/tags/kinetic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Working With Python 3 In ROS Kinetic Or Melodic</title>
+      <link>https://theinsantechie.in/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</link>
+      <pubDate>Thu, 07 May 2020 14:07:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</guid>
+      <description>ROS (Robot Operating System) - Documentation - http://wiki.ros.org/
+ The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms. — https://www.ros.org/ 1 ROS (upto Melodic) officially supports only python2 and NOT python3. However some libraries we use in our projects (eg.</description>
+    </item>
+    
+  </channel>
+</rss>

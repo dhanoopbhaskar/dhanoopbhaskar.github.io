@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blowfish algorithm on The Insane Techie</title>
+    <link>https://theinsantechie.in/tags/blowfish-algorithm/</link>
+    <description>Recent content in blowfish algorithm on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 09 Apr 2014 20:00:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://theinsantechie.in/tags/blowfish-algorithm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java - Encryption and Decryption of an Image Using Another Image (Blowfish Algorithm)</title>
+      <link>https://theinsantechie.in/blog/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/</link>
+      <pubDate>Wed, 09 Apr 2014 20:00:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/</guid>
+      <description>/* EncryptFile.java */ import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { SecretKey secretKey = null; Cipher cipher = null; String filePath = null; public EncryptFile(String filePath) { this.filePath = filePath; try { /** * Create a Blowfish key */ byte[] password = getPasswordFromFile(filePath); if (password == null) { System.</description>
+    </item>
+    
+    <item>
+      <title>Java - Encryption and Decryption of an Image Using Blowfish Algorithm (using password)</title>
+      <link>https://theinsantechie.in/blog/2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password/</link>
+      <pubDate>Sat, 05 Apr 2014 22:22:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password/</guid>
+      <description>package com.java.blowfish; import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; String masterPassword = null; public EncryptFile(String masterPassword) { this.masterPassword = masterPassword; try { /** * Create a Blowfish key */ keyGenerator = KeyGenerator.</description>
+    </item>
+    
+  </channel>
+</rss>

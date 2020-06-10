@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gcc on The Insane Techie</title>
+    <link>https://theinsantechie.in/categories/gcc/</link>
+    <description>Recent content in gcc on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 14 Feb 2016 01:23:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://theinsantechie.in/categories/gcc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DNS Lookup - Implementation in C</title>
+      <link>https://theinsantechie.in/blog/2016-02-14-dns-lookup-implementation-in-c/</link>
+      <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2016-02-14-dns-lookup-implementation-in-c/</guid>
+      <description>Read about DNS here&amp;hellip;
+DNS Lookup - Implementation in C
+/**dnsclient.c**/ #include&amp;#34;stdio.h&amp;#34;  #include&amp;#34;stdlib.h&amp;#34;  #include&amp;#34;sys/types.h&amp;#34;  #include&amp;#34;sys/socket.h&amp;#34;  #include&amp;#34;string.h&amp;#34;  #include&amp;#34;netinet/in.h&amp;#34;  #include&amp;#34;netdb.h&amp;#34; #include&amp;#34;arpa/inet.h&amp;#34; #define BUF_SIZE 512  #define SERVER &amp;#34;8.8.8.8&amp;#34;  #define PORT 53  #define WIDTH 16  int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { .</description>
+    </item>
+    
+    <item>
+      <title>Sum of Prime Numbers Between 1000000 and 1000100 Using Sieve of Eratosthenes</title>
+      <link>https://theinsantechie.in/blog/2014-12-30-sum-of-prime-numbers-between-1000000-and-1000100-using-sieve-of-eratosthenes/</link>
+      <pubDate>Tue, 30 Dec 2014 09:36:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2014-12-30-sum-of-prime-numbers-between-1000000-and-1000100-using-sieve-of-eratosthenes/</guid>
+      <description>For more information on Sieve of Eratosthenes please refer wikipedia page
+#include &amp;#34;stdio.h&amp;#34; #include &amp;#34;string.h&amp;#34; #include &amp;#34;stdlib.h&amp;#34; #include &amp;#34;assert.h&amp;#34; typedef unsigned long long biggerint; void findPrimeNumbers(biggerint start, biggerint end) { char * primeList = malloc(sizeof(unsigned char) * (end + 1)); int i; biggerint sum = 0; assert(primeList != NULL); /* set prime status */ for (i = 0; i &amp;lt;= end + 1 ; i++) { *(primeList + i) = 1; } primeList[0] = 0; primeList[1] = 0; /* mark all the non-prime numbers */ biggerint currentFactor = 2; biggerint lastSquare = 0; biggerint currentSquare = 0; while (currentFactor * currentFactor &amp;lt;= end) { /* mark all the multiples of the current factor */ biggerint mark = currentFactor + currentFactor; while (mark &amp;lt;= end) { *(primeList + mark) = 0; mark += currentFactor; } /* set currentFactor to next prime number */ currentFactor++; while (*(primeList+currentFactor) == 0) currentFactor++; assert(currentFactor &amp;lt;= end); } for(i = start; i &amp;lt;= end ; i++) { if(*(primeList + i)) sum += i; } free(primeList); printf(&amp;#34;%llu\n&amp;#34;, sum); } int main(int argc, char *argv[]) { biggerint start = 1000000; biggerint end = 1000100; findPrimeNumbers(start, end); return 0; } </description>
+    </item>
+    
+    <item>
+      <title>A simple HTTP client and a server in C</title>
+      <link>https://theinsantechie.in/blog/2014-02-13-a-simple-http-client-and-a-server-in-c/</link>
+      <pubDate>Thu, 13 Feb 2014 23:06:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2014-02-13-a-simple-http-client-and-a-server-in-c/</guid>
+      <description>The HTTP server sends the files requested by the client, if it is available at the server. The HTTP client uses GET method for requesting files from the server. Only .html, .txt and .pdf files are implemented. On receiving the file, the client program opens it using firefox or gedit or acrobat reader, as per the file type. Note that the given programs were done in Linux (Debian) environment.
+httpserver.c</description>
+    </item>
+    
+    <item>
+      <title>A simple chat program in C (TCP)</title>
+      <link>https://theinsantechie.in/blog/2014-01-22-a-simple-chat-program-in-c-tcp/</link>
+      <pubDate>Wed, 22 Jan 2014 20:26:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2014-01-22-a-simple-chat-program-in-c-tcp/</guid>
+      <description>tcpserver.c
+#include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #include&amp;#34;pthread.h&amp;#34; #define PORT 4444  #define BUF_SIZE 2000  #define CLADDR_LEN 100  void * receiveMessage(void * socket) { int sockfd, ret; char buffer[BUF_SIZE]; sockfd = (int) socket; memset(buffer, 0, BUF_SIZE); for (;;) { ret = recvfrom(sockfd, buffer, BUF_SIZE, 0, NULL, NULL); if (ret &amp;lt; 0) { printf(&amp;#34;Error receiving data!\n&amp;#34;); } else { printf(&amp;#34;client: &amp;#34;); fputs(buffer, stdout); //printf(&amp;#34;\n&amp;#34;);  } } } void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; pid_t childpid; char clientAddr[CLADDR_LEN]; pthread_t rThread; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!</description>
+    </item>
+    
+    <item>
+      <title>TCP in C (one server and multiple clients) </title>
+      <link>https://theinsantechie.in/blog/2014-01-16-tcp-in-c-one-server-and-multiple-clients/</link>
+      <pubDate>Thu, 16 Jan 2014 21:12:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2014-01-16-tcp-in-c-one-server-and-multiple-clients/</guid>
+      <description>tcpserver.c
+#include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #define PORT 4444  #define BUF_SIZE 2000  #define CLADDR_LEN 100  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; pid_t childpid; char clientAddr[CLADDR_LEN]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!\n&amp;#34;); exit(1); } printf(&amp;#34;Socket created...\n&amp;#34;); memset(&amp;amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;amp;addr, sizeof(addr)); if (ret &amp;lt; 0) { printf(&amp;#34;Error binding!</description>
+    </item>
+    
+    <item>
+      <title>Socket Programming in C, TCP over a network (2 systems)</title>
+      <link>https://theinsantechie.in/blog/2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems/</link>
+      <pubDate>Thu, 16 Jan 2014 20:53:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems/</guid>
+      <description>tcpserver.c
+#include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #define PORT 4444  #define BUF_SIZE 2000  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!\n&amp;#34;); exit(1); } printf(&amp;#34;Socket created...\n&amp;#34;); memset(&amp;amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;amp;addr, sizeof(addr)); if (ret &amp;lt; 0) { printf(&amp;#34;Error binding!</description>
+    </item>
+    
+    <item>
+      <title>Socket Programming In C (TCP)</title>
+      <link>https://theinsantechie.in/blog/2014-01-05-socket-programming-in-c-tcp/</link>
+      <pubDate>Sun, 05 Jan 2014 01:03:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2014-01-05-socket-programming-in-c-tcp/</guid>
+      <description>tcpserver.c
+#include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #define PORT 4444  #define BUF_SIZE 20  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!\n&amp;#34;); exit(1); } printf(&amp;#34;Socket created...\n&amp;#34;); memset(&amp;amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;amp;addr, sizeof(addr)); if (ret &amp;lt; 0) { printf(&amp;#34;Error binding!</description>
+    </item>
+    
+  </channel>
+</rss>

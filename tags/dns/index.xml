@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dns on The Insane Techie</title>
+    <link>https://theinsantechie.in/tags/dns/</link>
+    <description>Recent content in dns on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 14 Feb 2016 01:23:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://theinsantechie.in/tags/dns/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DNS Lookup - Implementation in C</title>
+      <link>https://theinsantechie.in/blog/2016-02-14-dns-lookup-implementation-in-c/</link>
+      <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
+      
+      <guid>https://theinsantechie.in/blog/2016-02-14-dns-lookup-implementation-in-c/</guid>
+      <description>Read about DNS here&amp;hellip;
+DNS Lookup - Implementation in C
+/**dnsclient.c**/ #include&amp;#34;stdio.h&amp;#34;  #include&amp;#34;stdlib.h&amp;#34;  #include&amp;#34;sys/types.h&amp;#34;  #include&amp;#34;sys/socket.h&amp;#34;  #include&amp;#34;string.h&amp;#34;  #include&amp;#34;netinet/in.h&amp;#34;  #include&amp;#34;netdb.h&amp;#34; #include&amp;#34;arpa/inet.h&amp;#34; #define BUF_SIZE 512  #define SERVER &amp;#34;8.8.8.8&amp;#34;  #define PORT 53  #define WIDTH 16  int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { .</description>
+    </item>
+    
+  </channel>
+</rss>
