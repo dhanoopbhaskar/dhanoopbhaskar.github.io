@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>biped walking robot on The Insane Techie</title>
-    <link>https://theinsantechie.in/tags/biped-walking-robot/</link>
+    <link>https://dhanoopbhaskar.github.io/tags/biped-walking-robot/</link>
     <description>Recent content in biped walking robot on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 28 Oct 2019 12:10:00 +0530</lastBuildDate>
     
-	<atom:link href="https://theinsantechie.in/tags/biped-walking-robot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/biped-walking-robot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Biped Walking Robot</title>
-      <link>https://theinsantechie.in/blog/2019-10-28-biped-walking-robot/</link>
+      <link>https://dhanoopbhaskar.github.io/blog/2019-10-28-biped-walking-robot/</link>
       <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
       
-      <guid>https://theinsantechie.in/blog/2019-10-28-biped-walking-robot/</guid>
+      <guid>https://dhanoopbhaskar.github.io/blog/2019-10-28-biped-walking-robot/</guid>
       <description>We, a team of 3, attended a course titled &amp;ldquo;2 Mechatronics Project&amp;rdquo; conducted by Skyfi Labs in the month of October 2019. Thought of sharing the assignments done as a part of the course.
 Biped Walking Robot
   </description>

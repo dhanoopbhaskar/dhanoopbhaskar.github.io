@@ -17,7 +17,7 @@
 <meta itemprop="keywords" content="blowfish algorithm,encryption,crypto,decryption,cryptography,java," /><meta property="og:title" content="Java - Encryption and Decryption of an Image Using Another Image (Blowfish Algorithm)" />
 <meta property="og:description" content="/* EncryptFile.java */ import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { SecretKey secretKey = null; Cipher cipher = null; String filePath = null; public EncryptFile(String filePath) { this.filePath = filePath; try { /** * Create a Blowfish key */ byte[] password = getPasswordFromFile(filePath); if (password == null) { System." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://theinsantechie.in/blog/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/" />
 <meta property="article:published_time" content="2014-04-09T20:00:00+05:30" />
 <meta property="article:modified_time" content="2014-04-09T20:00:00+05:30" />
 <meta name="twitter:card" content="summary"/>
@@ -106,37 +106,37 @@
 
   
     
-    <a href="//twitter.com/share?text=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29&amp;url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+    <a href="//twitter.com/share?text=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
         <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
       </a>
   
 
   
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
         <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
         </a>
   
 
   
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn reddit">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn reddit">
           <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
         </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn linkedin">
             <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
           </a>
   
 
   
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;description=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;description=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn pinterest">
           <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
         </a>
   
 
   
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
           <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
         </a>
   
@@ -148,7 +148,7 @@
 
     <div id="wrapper">
       <section id="site-intro" >
-  <a href="/"><img src="https://theinsantechie.in/img/main/logo.jpeg" class="circle" width="" alt="Dhanoop Bhaskar" /></a>
+  <a href="/"><img src="https://dhanoopbhaskar.github.io/img/main/logo.jpeg" class="circle" width="" alt="Dhanoop Bhaskar" /></a>
   <header>
     <h1>The Insane Techie</h1>
   </header>
@@ -236,37 +236,37 @@
 
   
     
-    <a href="//twitter.com/share?text=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29&amp;url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+    <a href="//twitter.com/share?text=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
         <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
       </a>
   
 
   
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
         <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
         </a>
   
 
   
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn reddit">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn reddit">
           <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
         </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;title=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn linkedin">
             <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
           </a>
   
 
   
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;description=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f&amp;description=Java%20-%20Encryption%20and%20Decryption%20of%20an%20Image%20Using%20Another%20Image%20%28Blowfish%20Algorithm%29" target="_blank" rel="noopener" class="nav share-btn pinterest">
           <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
         </a>
   
 
   
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2ftheinsantechie.in%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
           <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
         </a>
   
@@ -849,7 +849,7 @@
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.21cb52af62d194162499e7777fed3cd2389430c3c4f8d833027cb71e6e95dc38.js" integrity="sha256-IctSr2LRlBYkmed3f&#43;080jiUMMPE&#43;NgzAny3Hm6V3Dg="></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.5d79af27975749c3227a49c2927464145e6336cb82149e8919f5014d0d3a3982.js" integrity="sha256-XXmvJ5dXScMieknCknRkFF5jNsuCFJ6JGfUBTQ06OYI="></script>
     <script src="/js/add-on.js"></script>
     </div>
   </body>

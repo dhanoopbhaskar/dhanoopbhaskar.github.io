@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>iphone on The Insane Techie</title>
-    <link>https://theinsantechie.in/tags/iphone/</link>
+    <link>https://dhanoopbhaskar.github.io/tags/iphone/</link>
     <description>Recent content in iphone on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 02 Jul 2018 20:01:00 +0530</lastBuildDate>
     
-	<atom:link href="https://theinsantechie.in/tags/iphone/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/iphone/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mounting an iPhone to Linux Mint as an external drive to copy images and videos</title>
-      <link>https://theinsantechie.in/blog/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</link>
+      <link>https://dhanoopbhaskar.github.io/blog/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</link>
       <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
       
-      <guid>https://theinsantechie.in/blog/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</guid>
+      <guid>https://dhanoopbhaskar.github.io/blog/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</guid>
       <description>Phone: iPhone SE
 Operating System: Linux Mint 18.1(should work in Ubuntu as well)
 It is done by compiling most of the sources yourself.

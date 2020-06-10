@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on The Insane Techie</title>
-    <link>https://theinsantechie.in/tags/python/</link>
+    <link>https://dhanoopbhaskar.github.io/tags/python/</link>
     <description>Recent content in python on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 07 May 2020 14:35:00 +0530</lastBuildDate>
     
-	<atom:link href="https://theinsantechie.in/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ROS In Docker Container</title>
-      <link>https://theinsantechie.in/blog/2020-05-07-ros-in-docker-container/</link>
+      <link>https://dhanoopbhaskar.github.io/blog/2020-05-07-ros-in-docker-container/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
       
-      <guid>https://theinsantechie.in/blog/2020-05-07-ros-in-docker-container/</guid>
+      <guid>https://dhanoopbhaskar.github.io/blog/2020-05-07-ros-in-docker-container/</guid>
       <description>ROS (Robot Operating System) - Documentation - http://wiki.ros.org/
 In this example I use docker image of ROS Melodic and a Dockerfile for creating the required docker container. Python3 (python3.7) is also installed in this example.
 Please refer https://docs.docker.com/get-started/ for more information on Dockers.
@@ -26,10 +26,10 @@ Please refer https://docs.docker.com/get-started/ for more information on Docker
     
     <item>
       <title>Working With Python 3 In ROS Kinetic Or Melodic</title>
-      <link>https://theinsantechie.in/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</link>
+      <link>https://dhanoopbhaskar.github.io/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</link>
       <pubDate>Thu, 07 May 2020 14:07:00 +0530</pubDate>
       
-      <guid>https://theinsantechie.in/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</guid>
+      <guid>https://dhanoopbhaskar.github.io/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</guid>
       <description>ROS (Robot Operating System) - Documentation - http://wiki.ros.org/
  The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms. — https://www.ros.org/ 1 ROS (upto Melodic) officially supports only python2 and NOT python3. However some libraries we use in our projects (eg.</description>
     </item>
