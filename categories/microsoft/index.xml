@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>microsoft on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/categories/microsoft/</link>
+    <description>Recent content in microsoft on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 18 Oct 2011 17:33:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/categories/microsoft/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Microsoft Magic</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-10-18-microsoft-magic/</link>
+      <pubDate>Tue, 18 Oct 2011 17:33:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-10-18-microsoft-magic/</guid>
+      <description>MAGIC #1
+An Indian discovered that nobody can create a FOLDER anywhere on the computer which can be named as &amp;ldquo;CON&amp;rdquo;. This is something pretty cool… and unbelievable… At Microsoft the whole Team, couldn&amp;rsquo;t answer why this happened!
+TRY IT NOW, IT WILL NOT CREATE &amp;ldquo;CON&amp;rdquo; FOLDER
+MAGIC #2
+For those of you using Windows, do the following:
+ Open an empty notepad file Type &amp;ldquo;Bush hid the facts&amp;rdquo; (without the quotes) Save it as whatever you want.</description>
+    </item>
+    
+  </channel>
+</rss>

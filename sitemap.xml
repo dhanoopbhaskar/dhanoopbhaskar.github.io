@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://dhanoopbhaskar.github.io/archives/</loc>
+    <lastmod>2020-06-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dhanoopbhaskar.github.io/blog/</loc>
     <lastmod>2020-05-07T14:35:00+05:30</lastmod>
   </url>
@@ -610,6 +615,211 @@
   <url>
     <loc>https://dhanoopbhaskar.github.io/blog/2013-08-03-java-jcombobox-in-a-jtable-cell/</loc>
     <lastmod>2013-08-03T00:47:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/etl/</loc>
+    <lastmod>2013-07-21T20:48:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/etl/</loc>
+    <lastmod>2013-07-21T20:48:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/talend/</loc>
+    <lastmod>2013-07-21T20:48:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/talend/</loc>
+    <lastmod>2013-07-21T20:48:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error/</loc>
+    <lastmod>2013-07-21T20:48:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-06-16-googles-project-loon-balloon-powered-internet-access/</loc>
+    <lastmod>2013-06-16T20:43:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/technology/</loc>
+    <lastmod>2013-06-16T20:43:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/technology/</loc>
+    <lastmod>2013-06-16T20:43:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/datastage/</loc>
+    <lastmod>2013-06-16T14:38:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-06-16-talend-equivalent-for-index-function-in-datastage/</loc>
+    <lastmod>2013-06-16T14:38:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-06-16-talend-equivalent-for-trim-function-in-datastage/</loc>
+    <lastmod>2013-06-16T14:30:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-06-16-talend-equivalent-for-matchfield-function-in-datastage/</loc>
+    <lastmod>2013-06-16T13:59:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-02-26-exporting-google-contacts-to-a-nokia-phone/</loc>
+    <lastmod>2013-02-26T01:14:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/projects/</loc>
+    <lastmod>2013-02-26T01:14:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/projects/</loc>
+    <lastmod>2013-02-26T01:14:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-01-12-a-command-line-smtp-gmailing-tool-in-java/</loc>
+    <lastmod>2013-01-12T01:51:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2013-01-05-using-linux-utilities-under-windows/</loc>
+    <lastmod>2013-01-05T16:27:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2012-10-20-talend-equivalent-for-oconv-function-in-datastage-only-for-time-and-date/</loc>
+    <lastmod>2012-10-20T15:30:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2012-10-06-java-removing-leading-zeroes-from-a-string/</loc>
+    <lastmod>2012-10-06T00:31:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/regex/</loc>
+    <lastmod>2012-10-06T00:31:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/fun/</loc>
+    <lastmod>2011-10-18T17:33:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/fun/</loc>
+    <lastmod>2011-10-18T17:33:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/microsoft/</loc>
+    <lastmod>2011-10-18T17:33:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/microsoft/</loc>
+    <lastmod>2011-10-18T17:33:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-10-18-microsoft-magic/</loc>
+    <lastmod>2011-10-18T17:33:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/apjabdulkalam/</loc>
+    <lastmod>2011-10-09T23:46:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/good-read/</loc>
+    <lastmod>2011-10-09T23:46:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/must-read/</loc>
+    <lastmod>2011-10-09T23:46:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-10-09-one-of-the-best-arguments-i-have-ever-read/</loc>
+    <lastmod>2011-10-09T23:46:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-10-09-dr-a-p-j-abdul-kalams-speech-a-must-read/</loc>
+    <lastmod>2011-10-09T20:55:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-10-07-creating-a-pdf-file-in-java/</loc>
+    <lastmod>2011-10-07T20:11:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/pdf/</loc>
+    <lastmod>2011-10-07T20:11:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-10-04-http-post-in-java-using-urlconnection/</loc>
+    <lastmod>2011-10-04T16:53:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/post/</loc>
+    <lastmod>2011-10-04T16:53:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/url/</loc>
+    <lastmod>2011-10-04T16:53:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/chat-client/</loc>
+    <lastmod>2011-09-22T14:17:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/gtalk/</loc>
+    <lastmod>2011-09-22T14:17:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/im/</loc>
+    <lastmod>2011-09-22T14:17:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-22-java-gtalk-client-using-smack-xmpp-api/</loc>
+    <lastmod>2011-09-22T14:17:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/smack/</loc>
+    <lastmod>2011-09-22T14:17:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/xmpp/</loc>
+    <lastmod>2011-09-22T14:17:00+05:30</lastmod>
   </url>
   
   <url>

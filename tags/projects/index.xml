@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>projects on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/tags/projects/</link>
+    <description>Recent content in projects on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 26 Feb 2013 01:14:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Exporting Google Contacts to a Nokia Phone</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-02-26-exporting-google-contacts-to-a-nokia-phone/</link>
+      <pubDate>Tue, 26 Feb 2013 01:14:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-02-26-exporting-google-contacts-to-a-nokia-phone/</guid>
+      <description>You can export the Google Contacts to a Nokia phone very easily now!!
+Download the low sized application (only 5.7KB) dbVcfSplitter.jar from the sourceforge&amp;hellip;
+Follow the below instructions-
+  Export the Google contacts in vCard format (with .vcf extension).
+  Open a command prompt or terminal.
+  &amp;ldquo;cd&amp;rdquo; to the folder or directory where the vCard file resides.
+  Type in the command below-
+ java -jar dbVcfSplitter.</description>
+    </item>
+    
+    <item>
+      <title>A command line SMTP GMailing tool in Java.</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-01-12-a-command-line-smtp-gmailing-tool-in-java/</link>
+      <pubDate>Sat, 12 Jan 2013 01:51:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-01-12-a-command-line-smtp-gmailing-tool-in-java/</guid>
+      <description>Launched my new project in sourceforge. It is simply a command line SMTP GMailing tool.
+I googled a lot in pursuit of Linux/Unix like utilities for my windows machine. Could find some of them (Shared them in my previous post).
+Successfully installed and executed some of them :) Came across blat - A Windows (32 &amp;amp; 64 bit) command line SMTP mailer. Installed in my system. Executed - but could not connect to smtp.</description>
+    </item>
+    
+  </channel>
+</rss>

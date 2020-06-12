@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ETL on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/categories/etl/</link>
+    <description>Recent content in ETL on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 21 Jul 2013 20:48:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/categories/etl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Talend - Out of Memory Error and Java Heap Space Error</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error/</link>
+      <pubDate>Sun, 21 Jul 2013 20:48:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error/</guid>
+      <description>The Out of Memory Error and Java Heap Space Error are two of the common errors which occur in the Talend jobs handling a large volume of data. These errors can be avoided to an extent by following some design guidelines.
+ Keep in mind that tMap is a heavy component. Minimize its use in your jobs.   Avoid tMap if you need just simple transformations like trimming the string values, replacing null numbers by zeroes, etc.</description>
+    </item>
+    
+    <item>
+      <title>Talend Equivalent for Index Function in Datastage</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-06-16-talend-equivalent-for-index-function-in-datastage/</link>
+      <pubDate>Sun, 16 Jun 2013 14:38:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-06-16-talend-equivalent-for-index-function-in-datastage/</guid>
+      <description>package routines; public class UserString { public static int Index(String string, String substring, Integer instance) { int index = -1; if (string == null) { return 0; } if (substring == null) { return 0; } if (substring.equals(&amp;#34;&amp;#34;)) { return 1; } if (instance == null) { throw new UnsupportedOperationException(&amp;#34;Instance is supposed to be NOT NULL!!&amp;#34;); } if (!string.contains(substring)) { return 0; } index = string.indexOf(substring, 0); while (--instance &amp;gt; 0 &amp;amp;&amp;amp; index !</description>
+    </item>
+    
+    <item>
+      <title>Talend Equivalent for TRIM Function in Datastage</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-06-16-talend-equivalent-for-trim-function-in-datastage/</link>
+      <pubDate>Sun, 16 Jun 2013 14:30:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-06-16-talend-equivalent-for-trim-function-in-datastage/</guid>
+      <description>package routines; public class UserString { /** * * L Removes leading occurrences of character. * T Removes trailing occurrences of character. * B Removes leading and trailing occurrences of character. * R Removes leading and trailing occurrences of character, and reduces multiple occurrences to a single occurrence. * A Removes all occurrences of character. * F Removes leading spaces and tabs * E Removes trailing spaces and tabs * D Removes leading and trailing spaces and tabs, and reduces multiple spaces and tabs to single ones.</description>
+    </item>
+    
+    <item>
+      <title>Talend Equivalent for MatchField Function in Datastage</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-06-16-talend-equivalent-for-matchfield-function-in-datastage/</link>
+      <pubDate>Sun, 16 Jun 2013 13:59:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-06-16-talend-equivalent-for-matchfield-function-in-datastage/</guid>
+      <description>package routines; import java.util.regex.*; public class UserString { public static String MatchField(String sourceStr, String patternStr, Integer fieldNo) { String matchedStr = &amp;#34;&amp;#34;; if (fieldNo == null) { throw new UnsupportedOperationException(&amp;#34;fieldNo is supposed to be NOT NULL!!&amp;#34;); } if (patternStr == null) { return &amp;#34;&amp;#34;; } if (sourceStr == null) { return &amp;#34;&amp;#34;; } patternStr = formatPatternDStoTld(patternStr); Pattern pattern = Pattern.compile(patternStr); Matcher matcher = pattern.matcher(sourceStr); if (matcher.find()) { matchedStr = matcher.group(fieldNo); } else { matchedStr = &amp;#34;&amp;#34;; } return matchedStr; } public static String formatPatternDStoTld(String input) { StringBuilder output = new StringBuilder(); String outputStr = &amp;#34;&amp;#34;; for (int i = 0; i &amp;lt; input.</description>
+    </item>
+    
+    <item>
+      <title>Talend equivalent for OCONV function in Datastage (Only for time and date)</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2012-10-20-talend-equivalent-for-oconv-function-in-datastage-only-for-time-and-date/</link>
+      <pubDate>Sat, 20 Oct 2012 15:30:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2012-10-20-talend-equivalent-for-oconv-function-in-datastage-only-for-time-and-date/</guid>
+      <description>The function has been developed as a routine in the Talend.
+package routines; import java.text.ParseException; public class DateConv { public static String oConv(int secToAdd, String format) throws ParseException { final String date = &amp;#34;31/12/1967&amp;#34;;// 31 Dec 1967  java.util.Date returnDate = null; String returnString = null; java.text.DateFormat sdf = new java.text.SimpleDateFormat(&amp;#34;dd/MM/yyyy&amp;#34;); java.util.Date parsedDate = sdf.parse(date); java.util.Calendar now = java.util.Calendar.getInstance(); now.setTime(parsedDate); if (format.equals(&amp;#34;MT&amp;#34;)) { // 02:46  sdf = new java.text.SimpleDateFormat(&amp;#34;HH:mm&amp;#34;); now.</description>
+    </item>
+    
+  </channel>
+</rss>

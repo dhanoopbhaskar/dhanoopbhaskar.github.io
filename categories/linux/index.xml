@@ -41,5 +41,16 @@ If this does not work, then you have to include the phpMyAdmin-shipped Apache co
 sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf.d/phpmyadmin.conf sudo /etc/init.d/apache2 reload  Since Ubuntu 13.10 (Saucy Salamander), Apache no longer loads configuration files from the /etc/apache2/conf.d directory.</description>
     </item>
     
+    <item>
+      <title>Using Linux Utilities Under Windows</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-01-05-using-linux-utilities-under-windows/</link>
+      <pubDate>Sat, 05 Jan 2013 16:27:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-01-05-using-linux-utilities-under-windows/</guid>
+      <description>There are many utilities in Linux/Unix which are very useful in our life say for example sed, awk, grep, etc. Some of us might have wished Windows/DOS environment to have similar kind of utilities. Anyway I did. Today I came across some of the open source projects, while googling, which provide some of the utilities in Windows too and thought of sharing :)
+The projects are GnuWin and UnxUtils.
+Please find below the links to their sourceforge pages GnuWin UnxUtils  </description>
+    </item>
+    
   </channel>
 </rss>

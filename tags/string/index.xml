@@ -21,5 +21,17 @@
  input - The parent String under consideration character - The character of which multiple occurrence (in a row) should be avoided.  public static String avoidMultipleOccurrence(String input, char character) { if (input == null) { return null; } if (input.</description>
     </item>
     
+    <item>
+      <title>Java - removing leading zeroes from a string</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2012-10-06-java-removing-leading-zeroes-from-a-string/</link>
+      <pubDate>Sat, 06 Oct 2012 00:31:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2012-10-06-java-removing-leading-zeroes-from-a-string/</guid>
+      <description>Using Regular Expressions (regex)
+String str = &amp;quot;00938&amp;quot;; System.out.println(&amp;quot;*&amp;quot; + str.replaceFirst(&amp;quot;^0+&amp;quot;, &amp;quot;&amp;quot;) + &amp;quot;*&amp;quot;);	//*938*  Suppose the string contains only zeroes, then the output will be a null string.
+String str = &amp;quot;0000000&amp;quot;; System.out.println(&amp;quot;*&amp;quot; + str.replaceFirst(&amp;quot;^0+&amp;quot;, &amp;quot;&amp;quot;) + &amp;quot;*&amp;quot;); //**  If you want a zero to remain in the above case use another form -
+String str = &amp;quot;0000000&amp;quot;; System.out.println(&amp;quot;*&amp;quot; + str.replaceFirst(&amp;quot;^0+(?!$)&amp;quot;, &amp;quot;&amp;quot;) + &amp;quot;*&amp;quot;); //*0*  The negative lookahead (?</description>
+    </item>
+    
   </channel>
 </rss>

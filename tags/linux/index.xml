@@ -101,5 +101,16 @@ httpserver.c</description>
 #include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #define PORT 4444  #define BUF_SIZE 20  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!\n&amp;#34;); exit(1); } printf(&amp;#34;Socket created...\n&amp;#34;); memset(&amp;amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;amp;addr, sizeof(addr)); if (ret &amp;lt; 0) { printf(&amp;#34;Error binding!</description>
     </item>
     
+    <item>
+      <title>Using Linux Utilities Under Windows</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2013-01-05-using-linux-utilities-under-windows/</link>
+      <pubDate>Sat, 05 Jan 2013 16:27:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2013-01-05-using-linux-utilities-under-windows/</guid>
+      <description>There are many utilities in Linux/Unix which are very useful in our life say for example sed, awk, grep, etc. Some of us might have wished Windows/DOS environment to have similar kind of utilities. Anyway I did. Today I came across some of the open source projects, while googling, which provide some of the utilities in Windows too and thought of sharing :)
+The projects are GnuWin and UnxUtils.
+Please find below the links to their sourceforge pages GnuWin UnxUtils  </description>
+    </item>
+    
   </channel>
 </rss>

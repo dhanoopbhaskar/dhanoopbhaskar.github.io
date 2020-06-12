@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pdf on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/tags/pdf/</link>
+    <description>Recent content in pdf on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 07 Oct 2011 20:11:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/pdf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating a PDF file in Java</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-10-07-creating-a-pdf-file-in-java/</link>
+      <pubDate>Fri, 07 Oct 2011 20:11:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-10-07-creating-a-pdf-file-in-java/</guid>
+      <description>jPDFCreator.java
+import com.itextpdf.text.BaseColor; import com.itextpdf.text.Chapter; import com.itextpdf.text.Document; import com.itextpdf.text.DocumentException; import com.itextpdf.text.Font; import com.itextpdf.text.FontFactory; import com.itextpdf.text.List; import com.itextpdf.text.ListItem; import com.itextpdf.text.PageSize; import com.itextpdf.text.Paragraph; import com.itextpdf.text.Section; import com.itextpdf.text.pdf.PdfWriter; import java.io.FileNotFoundException; import java.io.FileOutputStream; /** * * @author dhanoopbhaskar */ public class jPDFCreator { Document document = null; PdfWriter pdfWriter = null; public jPDFCreator() { /** * Creating an instance of com.itextpdf.text.Document * The arguments * -page size * -left margin * -right margin * -top margin * -bottom margin */ document = new Document(PageSize.</description>
+    </item>
+    
+  </channel>
+</rss>
