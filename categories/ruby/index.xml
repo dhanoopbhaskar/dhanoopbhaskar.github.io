@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ruby on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/categories/ruby/</link>
+    <description>Recent content in ruby on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 16 Sep 2011 19:28:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ruby - Objects</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-09-16-ruby-objects/</link>
+      <pubDate>Fri, 16 Sep 2011 19:28:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-16-ruby-objects/</guid>
+      <description>Creating an object
+irb(main):012:0&amp;gt; g = Greeter.new(&amp;quot;Ruby&amp;quot;) =&amp;gt; #&amp;lt;Greeter:0x16cac @name=&amp;quot;Ruby&amp;quot;&amp;gt; irb(main):013:0&amp;gt; g.say_hi Hi Ruby! =&amp;gt; nil irb(main):014:0&amp;gt; g.say_bye Bye Ruby, come back soon =&amp;gt; nil  Once the object g is created, it remembers that the name is Ruby. Hmm, what if we want to get at the name directly?
+irb(main):015:0&amp;gt; g.@name SyntaxError: compile error (irb):52: syntax error from (irb):52  Nope, can’t do it.</description>
+    </item>
+    
+    <item>
+      <title>Ruby - Classes</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-09-16-ruby-classes/</link>
+      <pubDate>Fri, 16 Sep 2011 19:13:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-16-ruby-classes/</guid>
+      <description>Defining a class
+irb(main):001:0&amp;gt; class Greeter irb(main):002:1&amp;gt; def initialize(name = &amp;quot;World&amp;quot;) irb(main):003:2&amp;gt; @name = name irb(main):004:2&amp;gt; end irb(main):005:1&amp;gt; def say_hi irb(main):006:2&amp;gt; puts &amp;quot;Hi #{@name}!&amp;quot; irb(main):007:2&amp;gt; end irb(main):008:1&amp;gt; def say_bye irb(main):009:2&amp;gt; puts &amp;quot;Bye #{@name}, come back soon&amp;quot; irb(main):010:2&amp;gt; end irb(main):011:1&amp;gt; end =&amp;gt; nil  The new keyword here is class. This defines a new class called Greeter and a bunch of methods for that class. Also notice @name. This is an instance variable, and is available to all the methods of the class.</description>
+    </item>
+    
+    <item>
+      <title>Ruby- Defining a method</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-09-16-ruby-defining-a-method/</link>
+      <pubDate>Fri, 16 Sep 2011 18:44:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-16-ruby-defining-a-method/</guid>
+      <description>Let&amp;rsquo;s start with an example
+irb(main):001:0&amp;gt; def h irb(main):002:1&amp;gt; puts &amp;quot;Ruby Language&amp;quot; irb(main):003:1&amp;gt; end =&amp;gt; nil  The definition of the method starts with keyword def and an identifier to the method (i.e., h). Next comes the actual body of the method and the keyword end as the delimiter.
+Running a method
+irb(main):004:0&amp;gt; h Ruby Language =&amp;gt; nil irb(main):005:0&amp;gt; h() Ruby Language =&amp;gt; nil  Calling a method in Ruby is as easy as just mentioning its name to Ruby.</description>
+    </item>
+    
+    <item>
+      <title>Starting with Ruby!!</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-09-16-starting-with-ruby/</link>
+      <pubDate>Fri, 16 Sep 2011 13:57:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-16-starting-with-ruby/</guid>
+      <description>Interactive Ruby
+Ruby comes with a program that will show the results of any Ruby statements you feed it.
+Playing with Ruby code in interactive sessions like this is a terrific way to learn the
+language.
+To print something to the interactive ruby terminal (IRB)
+Just type in something enclosed within double quotes and click enter key.
+For example type: &amp;ldquo;Ruby Language&amp;rdquo;
+irb(main):001:0&amp;gt; &amp;quot;Ruby Language&amp;quot; =&amp;gt; &amp;quot;Ruby Language&amp;quot;  Actually the second line is just IRB’s way of telling us the result of the last expression it evaluated.</description>
+    </item>
+    
+    <item>
+      <title>About Ruby Programming Language</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-09-16-about-ruby-programming-language/</link>
+      <pubDate>Fri, 16 Sep 2011 13:43:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-16-about-ruby-programming-language/</guid>
+      <description>Wondering why Ruby is so popular? Its fans call it a beautiful, artful language. And yet, they say it’s handy and practical. What gives?
+The Ideals of Ruby’s Creator Ruby is a language of careful balance. Its creator, Yukihiro “matz” Matsumoto, blended parts of his favorite languages (Perl, Smalltalk, Eiffel, Ada, and Lisp) to form a new language that balanced functional programming with imperative programming.
+He has often said that he is trying to make Ruby natural, not simple, in a way that mirrors life.</description>
+    </item>
+    
+  </channel>
+</rss>

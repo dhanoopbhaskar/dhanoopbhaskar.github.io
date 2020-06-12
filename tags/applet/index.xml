@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>applet on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/tags/applet/</link>
+    <description>Recent content in applet on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 27 Jun 2011 18:52:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/applet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java -  A simple dictionary using applet</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-a-simple-dictionary-using-applet/</link>
+      <pubDate>Mon, 27 Jun 2011 18:52:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-a-simple-dictionary-using-applet/</guid>
+      <description>This is a simple dictionary in which you can add words and their meanings and thereafter search for the same.
+import java.awt.event.ActionEvent; import javax.swing.JButton; import javax.swing.JTextArea; import javax.swing.JTextField; /* * * @author dhanoopbhaskar */ public class Main extends javax.swing.JApplet implements java.awt.event.ActionListener { JTextField textField = null; JTextArea textArea = null; JButton addButton = null; JButton showButton = null; String[] words = null; String[] meanings = null; int ptr = -1; public Main() { initComponents(); setLayout(null); add(textArea); add(textField); add(addButton); add(showButton); } public void actionPerformed(ActionEvent e) { if(e.</description>
+    </item>
+    
+  </channel>
+</rss>

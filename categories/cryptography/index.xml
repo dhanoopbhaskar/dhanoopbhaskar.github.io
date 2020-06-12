@@ -102,5 +102,26 @@ package com.java.blowfish; import com.sun.org.apache.xml.internal.security.excep
 package com.java.aes; import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException; import com.sun.org.apache.xml.internal.security.utils.Base64; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; /** * * @author dhanoopbhaskar */ public class AESAlgorithm { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; public AESAlgorithm() { try { /** * Create a AES key */ keyGenerator = KeyGenerator.getInstance(&amp;#34;AES&amp;#34;); secretKey = keyGenerator.generateKey(); /** * Create an instance of cipher providing the following info * separated by slash.</description>
     </item>
     
+    <item>
+      <title>Java - RSA Algorithm</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-rsa-algorithm/</link>
+      <pubDate>Tue, 20 Sep 2011 16:13:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-rsa-algorithm/</guid>
+      <description>RSA stands for Rivest, Shamir and Adleman who first publicly described it.
+ RSAAlgorithm.java
+import java.security.InvalidKeyException; import java.security.KeyPair; import java.security.KeyPairGenerator; import java.security.NoSuchAlgorithmException; import java.security.PrivateKey; import java.security.PublicKey; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; /** * * @author dhanoopbhaskar */ public class RSAAlgorithm { private KeyPairGenerator keyPairGenerator = null; private PrivateKey privateKey = null; private PublicKey publicKey = null; Cipher cipher = null; public RSAAlgorithm() { try { /** * Create RSA key pairs * - private key * - public key */ keyPairGenerator = KeyPairGenerator.</description>
+    </item>
+    
+    <item>
+      <title>Java - Data Encryption Standard (DES) Algorithm</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-data-encryption-standard-des-algorithm/</link>
+      <pubDate>Tue, 20 Sep 2011 14:27:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-data-encryption-standard-des-algorithm/</guid>
+      <description>DESAlgorithm.java
+import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; /** * * @author dhanoopbhaskar */ public class DESAlgorithm { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; public DESAlgorithm() { try { /** * Create a DES key */ keyGenerator = KeyGenerator.getInstance(&amp;#34;DES&amp;#34;); secretKey = keyGenerator.generateKey(); /** * Create an instance of cipher providing the following info * separated by slash.</description>
+    </item>
+    
   </channel>
 </rss>

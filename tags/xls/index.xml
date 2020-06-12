@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xls on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/tags/xls/</link>
+    <description>Recent content in xls on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 11 Aug 2011 20:57:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/xls/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java - Creating an MS Excel File using Jakarta POI api</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-08-11-java-creating-an-ms-excel-file-using-jakarta-poi-api/</link>
+      <pubDate>Thu, 11 Aug 2011 20:57:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-08-11-java-creating-an-ms-excel-file-using-jakarta-poi-api/</guid>
+      <description>CreateXLFile.java
+import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import org.apache.poi.hssf.usermodel.HSSFCell; import org.apache.poi.hssf.usermodel.HSSFRow; import org.apache.poi.hssf.usermodel.HSSFSheet; import org.apache.poi.hssf.usermodel.HSSFWorkbook; /** * * @author dhanoopbhaskar */ public class CreateXLFile { HSSFWorkbook xlWorkbook = null; HSSFSheet xlSheet = null; HSSFRow xlRow = null; HSSFCell xlCell = null; FileOutputStream xlFileOutputStream = null; public CreateXLFile() { /** * creating a new MS Excel work book */ xlWorkbook = new HSSFWorkbook(); /** * creating a new sheet named &amp;#34;my first sheet&amp;#34; in the above created * work book */ xlSheet = xlWorkbook.</description>
+    </item>
+    
+  </channel>
+</rss>

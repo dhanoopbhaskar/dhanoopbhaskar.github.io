@@ -373,5 +373,266 @@ import java.io.BufferedReader; import java.io.IOException; import java.io.InputS
 import java.io.BufferedReader; import java.io.IOException; import java.io.InputStreamReader; import java.util.Collection; import java.util.Iterator; import org.jivesoftware.smack.Chat; import org.jivesoftware.smack.ConnectionConfiguration; import org.jivesoftware.smack.MessageListener; import org.jivesoftware.smack.Roster; import org.jivesoftware.smack.RosterEntry; import org.jivesoftware.smack.XMPPConnection; import org.jivesoftware.smack.XMPPException; import org.jivesoftware.smack.packet.Message; /** * * @author dhanoopbhaskar */ public class GtalkClient implements Runnable, MessageListener { ConnectionConfiguration connConfig = null; XMPPConnection xMPPConnection = null; BufferedReader readFromKeyboard = null; String toAddresss = null; String[] buddies = null; int buddySize = 0; public GtalkClient() { /** * Set the &amp;#39;ConnectionConfiguration&amp;#39; with * -host name * -port number * -service name */ connConfig = new ConnectionConfiguration(&amp;#34;talk.</description>
     </item>
     
+    <item>
+      <title>Java - RSA Algorithm</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-rsa-algorithm/</link>
+      <pubDate>Tue, 20 Sep 2011 16:13:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-rsa-algorithm/</guid>
+      <description>RSA stands for Rivest, Shamir and Adleman who first publicly described it.
+ RSAAlgorithm.java
+import java.security.InvalidKeyException; import java.security.KeyPair; import java.security.KeyPairGenerator; import java.security.NoSuchAlgorithmException; import java.security.PrivateKey; import java.security.PublicKey; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; /** * * @author dhanoopbhaskar */ public class RSAAlgorithm { private KeyPairGenerator keyPairGenerator = null; private PrivateKey privateKey = null; private PublicKey publicKey = null; Cipher cipher = null; public RSAAlgorithm() { try { /** * Create RSA key pairs * - private key * - public key */ keyPairGenerator = KeyPairGenerator.</description>
+    </item>
+    
+    <item>
+      <title>Java - Data Encryption Standard (DES) Algorithm</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-data-encryption-standard-des-algorithm/</link>
+      <pubDate>Tue, 20 Sep 2011 14:27:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-data-encryption-standard-des-algorithm/</guid>
+      <description>DESAlgorithm.java
+import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; /** * * @author dhanoopbhaskar */ public class DESAlgorithm { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; public DESAlgorithm() { try { /** * Create a DES key */ keyGenerator = KeyGenerator.getInstance(&amp;#34;DES&amp;#34;); secretKey = keyGenerator.generateKey(); /** * Create an instance of cipher providing the following info * separated by slash.</description>
+    </item>
+    
+    <item>
+      <title>Java - Creating an MS Excel File using Jakarta POI api</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-08-11-java-creating-an-ms-excel-file-using-jakarta-poi-api/</link>
+      <pubDate>Thu, 11 Aug 2011 20:57:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-08-11-java-creating-an-ms-excel-file-using-jakarta-poi-api/</guid>
+      <description>CreateXLFile.java
+import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import org.apache.poi.hssf.usermodel.HSSFCell; import org.apache.poi.hssf.usermodel.HSSFRow; import org.apache.poi.hssf.usermodel.HSSFSheet; import org.apache.poi.hssf.usermodel.HSSFWorkbook; /** * * @author dhanoopbhaskar */ public class CreateXLFile { HSSFWorkbook xlWorkbook = null; HSSFSheet xlSheet = null; HSSFRow xlRow = null; HSSFCell xlCell = null; FileOutputStream xlFileOutputStream = null; public CreateXLFile() { /** * creating a new MS Excel work book */ xlWorkbook = new HSSFWorkbook(); /** * creating a new sheet named &amp;#34;my first sheet&amp;#34; in the above created * work book */ xlSheet = xlWorkbook.</description>
+    </item>
+    
+    <item>
+      <title>Java -  A simple dictionary using applet</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-a-simple-dictionary-using-applet/</link>
+      <pubDate>Mon, 27 Jun 2011 18:52:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-a-simple-dictionary-using-applet/</guid>
+      <description>This is a simple dictionary in which you can add words and their meanings and thereafter search for the same.
+import java.awt.event.ActionEvent; import javax.swing.JButton; import javax.swing.JTextArea; import javax.swing.JTextField; /* * * @author dhanoopbhaskar */ public class Main extends javax.swing.JApplet implements java.awt.event.ActionListener { JTextField textField = null; JTextArea textArea = null; JButton addButton = null; JButton showButton = null; String[] words = null; String[] meanings = null; int ptr = -1; public Main() { initComponents(); setLayout(null); add(textArea); add(textField); add(addButton); add(showButton); } public void actionPerformed(ActionEvent e) { if(e.</description>
+    </item>
+    
+    <item>
+      <title>Java - Writing to serial port using Java Communication API</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-writing-to-serial-port-using-java-communication-api/</link>
+      <pubDate>Mon, 27 Jun 2011 18:42:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-writing-to-serial-port-using-java-communication-api/</guid>
+      <description>import java.io.IOException; import java.io.OutputStream; import java.util.Enumeration; import javax.comm.CommPortIdentifier; import javax.comm.PortInUseException; import javax.comm.SerialPort; import javax.comm.UnsupportedCommOperationException; /** * * @author dhanoopbhaskar */ public class SerialPortWriter { Enumeration portList; CommPortIdentifier portIdentifier; String message; SerialPort serialPort; OutputStream outputStream; String portName = &amp;#34;&amp;#34;; public SerialPortWriter(String portName) { this.portName = portName; /** * gets a list of ports */ portList = CommPortIdentifier.getPortIdentifiers(); while (portList.hasMoreElements()) { portIdentifier = (CommPortIdentifier) portList.nextElement(); /** * check whether the port is serial */ if (portIdentifier.</description>
+    </item>
+    
+    <item>
+      <title>Java - Sum and Average using RMI</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-26-java-sum-and-average-using-rmi/</link>
+      <pubDate>Sat, 26 Mar 2011 23:07:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-26-java-sum-and-average-using-rmi/</guid>
+      <description>ServerIntf.java
+import java.rmi.*; import java.rmi.server.*; public interface ServerIntf extends Remote { public double sum(double... numbers) throws RemoteException; public double average(double... numbers) throws RemoteException; } ServerImpl.java
+import java.rmi.*; import java.rmi.server.*; public class ServerImpl extends UnicastRemoteObject implements ServerIntf { public ServerImpl() throws RemoteException { } public double sum(double... numbers) throws RemoteException { double result = 0; for(double num : numbers) { result += num; } return result; } public double average(double... numbers) throws RemoteException { double result = 0; int n = numbers.</description>
+    </item>
+    
+    <item>
+      <title>Java - System time using RMI</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-system-time-using-rmi/</link>
+      <pubDate>Tue, 22 Mar 2011 18:38:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-system-time-using-rmi/</guid>
+      <description>DateServerIntf.java
+import java.rmi.*; import java.rmi.server.*; public interface DateServerIntf extends Remote { public String getSystemDate() throws RemoteException; } DateServerImpl.java
+import java.rmi.*; import java.rmi.server.*; import java.util.*; import java.text.*; public class DateServerImpl extends UnicastRemoteObject implements DateServerIntf { public DateServerImpl() throws RemoteException { } public String getSystemDate() throws RemoteException { SimpleDateFormat dateFormat = new SimpleDateFormat(&amp;#34;yyyy-MM-dd hh:mm:ss&amp;#34;); Date date = new Date(); return dateFormat.format(date); } } DateServer.java
+import java.rmi.*; import java.rmi.server.*; public class DateServer { public static void main(String[] args) { try { DateServerImpl dateServerImpl = new DateServerImpl(); Naming.</description>
+    </item>
+    
+    <item>
+      <title>Java - Mathematical Operations using RMI</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-mathematical-operations-using-rmi/</link>
+      <pubDate>Tue, 22 Mar 2011 18:31:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-mathematical-operations-using-rmi/</guid>
+      <description>MathServerIntf.java
+import java.rmi.*; import java.rmi.server.*; public interface MathServerIntf extends Remote { public int add(int a, int b) throws RemoteException; public int subtract(int a, int b) throws RemoteException; public int multiply(int a, int b) throws RemoteException; public int divide(int a, int b) throws RemoteException; } MathServerImpl.java
+import java.rmi.*; import java.rmi.server.*; public class MathServerImpl extends UnicastRemoteObject implements MathServerIntf { public MathServerImpl() throws RemoteException { } public int add(int a, int b) throws RemoteException { return a+b; } public int subtract(int a, int b) throws RemoteException { return a-b; } public int multiply(int a, int b) throws RemoteException { return a*b; } public int divide(int a, int b) throws RemoteException { if(b==0) { return -1; } else { return a/b; } } } MathServer.</description>
+    </item>
+    
+    <item>
+      <title>Java - TCP an example - MD, manager and employees</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-tcp-an-example-md-manager-and-employees/</link>
+      <pubDate>Tue, 22 Mar 2011 18:20:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-tcp-an-example-md-manager-and-employees/</guid>
+      <description>Question:
+  Unidirectional data transfer from the Managing Director to the Manager
+  Broadcast from the Manager to the Employees
+  Public Chat between Employees
+  ManagingDirector.java
+import java.io.*; import java.net.*; public class ManagingDirector { ServerSocket serverSocket = null; Socket socketToManager = null; PrintWriter toManager = null; BufferedReader fromKeyboard = null; public ManagingDirector() { try { serverSocket = new ServerSocket(9999); System.out.println(&amp;#34;Waiting for a connection...&amp;#34;); socketToManager = serverSocket.</description>
+    </item>
+    
+    <item>
+      <title>Java Notes for download</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-18-java-notes-for-download/</link>
+      <pubDate>Fri, 18 Mar 2011 17:26:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-18-java-notes-for-download/</guid>
+      <description>Java Notes - From Scribd.com</description>
+    </item>
+    
+    <item>
+      <title>Java - Bidirectional data transfer using UDP</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-bidirectional-data-transfer-using-udp/</link>
+      <pubDate>Sat, 05 Mar 2011 21:43:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-bidirectional-data-transfer-using-udp/</guid>
+      <description>UDPServer.java
+import java.io.*; import java.net.*; public class UDPServer implements Runnable { DatagramSocket socket = null; DatagramPacket packetOut = null; DatagramPacket packetIn = null; BufferedReader readFromKeyBoard = null; byte[] dataIn; byte[] dataOut; public UDPServer() { try { readFromKeyBoard = new BufferedReader( new InputStreamReader(System.in)); dataIn = new byte[1024]; dataOut = new byte[1024]; socket = new DatagramSocket(997); new Thread(this).start(); InetAddress inetAddress = InetAddress.getLocalHost(); while (true) { String message = readFromKeyBoard.readLine(); dataIn = message.getBytes(); packetOut = new DatagramPacket(dataIn, message.</description>
+    </item>
+    
+    <item>
+      <title>Java - Public chat using GUI</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-public-chat-using-gui/</link>
+      <pubDate>Sat, 05 Mar 2011 21:41:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-public-chat-using-gui/</guid>
+      <description>Server.java
+import java.io.*; import java.net.*; import java.util.*; public class Server implements Runnable { ServerSocket serverSocket = null; Socket socket = null; ArrayList clientHandlerList = new ArrayList(); ClientHandler clientHandler = null; public Server() { try { serverSocket = new ServerSocket(4444); new Thread(this).start(); } catch (Exception exp) { exp.printStackTrace(); } } public void run() { try { while (true) { socket = serverSocket.accept(); clientHandler = new ClientHandler(socket, this); clientHandlerList.add(clientHandler); } } catch (Exception exp) { exp.</description>
+    </item>
+    
+    <item>
+      <title>Java - Data broadcasting using GUI</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-data-broadcasting-using-gui/</link>
+      <pubDate>Sat, 05 Mar 2011 21:38:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-data-broadcasting-using-gui/</guid>
+      <description>Server.java
+import java.io.*; import java.net.*; import java.util.*; import javax.swing.*; import java.awt.event.*; import java.awt.*; public class Server extends JFrame implements Runnable, ActionListener { ServerSocket serverSocket = null; Socket socket = null; ArrayList clientHandlerList = new ArrayList(); ClientHandler clientHandler = null; JTextField chatField = null; JTextArea chatArea = null; JButton sendButton = null; public Server() { try { initComponents(); serverSocket = new ServerSocket(4444); new Thread(this).start(); } catch (Exception exp) { exp.printStackTrace(); } } public void initComponents() { setSize(270, 507); setResizable(false); setLayout(null); chatArea = new JTextArea(); chatField = new JTextField(20); chatArea.</description>
+    </item>
+    
+    <item>
+      <title>Java - Public chat</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-public-chat/</link>
+      <pubDate>Sat, 05 Mar 2011 21:35:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-public-chat/</guid>
+      <description>Server.java
+import java.io.*; import java.net.*; import java.util.*; public class Server implements Runnable { ServerSocket serverSocket = null; Socket socket = null; ArrayList clientHandlerList = new ArrayList(); ClientHandler clientHandler = null; public Server() { try { serverSocket = new ServerSocket(4444); new Thread(this).start(); } catch (Exception exp) { exp.printStackTrace(); } } public void run() { try { while (true) { socket = serverSocket.accept(); clientHandler = new ClientHandler(socket, this); clientHandlerList.add(clientHandler); } } catch (Exception exp) { exp.</description>
+    </item>
+    
+    <item>
+      <title>Java - Data broadcasting</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-data-broadcasting/</link>
+      <pubDate>Sat, 05 Mar 2011 21:33:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-data-broadcasting/</guid>
+      <description>Server.java
+import java.io.*; import java.net.*; import java.util.*; public class Server implements Runnable { ServerSocket serverSocket = null; Socket socket = null; ArrayList clientHandlerList = new ArrayList(); ClientHandler clientHandler = null; BufferedReader readFromKeyboard = null; public Server() { try { serverSocket = new ServerSocket(4444); readFromKeyboard = new BufferedReader( new InputStreamReader(System.in)); new Thread(this).start(); while (true) { String message = readFromKeyboard.readLine(); broadcast(message); } } catch (Exception exp) { exp.printStackTrace(); } } public void run() { try { while (true) { socket = serverSocket.</description>
+    </item>
+    
+    <item>
+      <title>Java - Bidirectional Data transfer using TCP</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-bidirectional-data-transfer-using-tcp/</link>
+      <pubDate>Sat, 05 Mar 2011 21:30:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-bidirectional-data-transfer-using-tcp/</guid>
+      <description>ServerThread.java
+import java.io.*; import java.net.*; public class ServerThread implements Runnable { ServerSocket serverSocket = null; Socket socket = null; BufferedReader readFromClient = null; BufferedReader readFromServer = null; PrintWriter writeToClient = null; String message = null; public ServerThread() { try { serverSocket = new ServerSocket(4444); System.out.println(&amp;#34;Waiting for connection...&amp;#34;); socket = serverSocket.accept(); System.out.println(&amp;#34;Connection accepted...&amp;#34;); readFromClient = new BufferedReader( new InputStreamReader( socket.getInputStream())); writeToClient = new PrintWriter( socket.getOutputStream(), true); readFromServer = new BufferedReader( new InputStreamReader( System.</description>
+    </item>
+    
+    <item>
+      <title>Java - Select Statament - My SQL</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-select-statament-my-sql/</link>
+      <pubDate>Sat, 05 Mar 2011 21:14:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-select-statament-my-sql/</guid>
+      <description>String[] names = new String[100]; Connection con = getConnection(); String query = &amp;quot;SELECT name FROM student&amp;quot;; PreparedStatement preparedStatement = con.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery(); int i=0; while(resultSet.next()) { names[i] = resultSet.getString(&amp;quot;name&amp;quot;); // name is the field name i++; }  </description>
+    </item>
+    
+    <item>
+      <title>Java - Insert Statement - My SQL</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-insert-statement-my-sql/</link>
+      <pubDate>Sat, 05 Mar 2011 21:08:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-insert-statement-my-sql/</guid>
+      <description>String rollno = &amp;quot;1&amp;quot;; String name = &amp;quot;ABC&amp;quot;; Connection con = getConnection(); String query = &amp;quot;insert into student (rollno, name) values (?,?)&amp;quot;; /*student is the table name, rollno and name are the field names*/ PreparedStatement preparedStatement = con.prepareStatement(query); preparedStatement.setString(1,rollno); preparedStatement.setString(2,name); /* * String query = &amp;quot;insert into student (rollno, name) values (&#39;1&#39;,&#39;ABC&#39;)&amp;quot;; * PreparedStatement preparedStatement = con.prepareStatement(query); * * NB: This is also correct. First format is used if the inputs are from user through JTextField.</description>
+    </item>
+    
+    <item>
+      <title>Java - Getting current time and date</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-getting-current-time-and-date/</link>
+      <pubDate>Sat, 05 Mar 2011 20:57:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-getting-current-time-and-date/</guid>
+      <description>private String getDateTime() { DateFormat dateFormat = new SimpleDateFormat(&amp;quot;yyyy/MM/dd HH:mm:ss&amp;quot;); Date date = new Date(); return dateFormat.format(date); } Date currentDateAndTime = getDateTime();  </description>
+    </item>
+    
+    <item>
+      <title>Java - Giving background picture to a JFrame</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-giving-background-picture-to-a-jframe/</link>
+      <pubDate>Sat, 05 Mar 2011 20:54:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-giving-background-picture-to-a-jframe/</guid>
+      <description>Image bgImage = Toolkit.getDefaultToolkit().createImage(getClass().getResource(&amp;quot;/src/ui/images/abc.jpg&amp;quot;)); public void paintComponent(Graphics g) { g.drawImage(bgImage,0,0,this); }  </description>
+    </item>
+    
+    <item>
+      <title>Java - Database connectivity My SQL</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-database-connectivity-my-sql/</link>
+      <pubDate>Sat, 05 Mar 2011 20:50:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-database-connectivity-my-sql/</guid>
+      <description>public Connection getConnection() { Connection con = null; try { Class.forName(&amp;quot;com.mysql.jdbc.Driver&amp;quot;); con = DriverManager.getConnection( &amp;quot;jdbc:mysql://127.0.0.1/databaseName&amp;quot;, &amp;quot;userName&amp;quot;, &amp;quot;password&amp;quot;); } catch (Exception e) { System.out.println(e); } return con; } </description>
+    </item>
+    
+    <item>
+      <title>Java - Getting Computer Name</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-getting-computer-name/</link>
+      <pubDate>Sat, 05 Mar 2011 20:46:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-getting-computer-name/</guid>
+      <description>public class GetComputerName { public static void main(String args[]) { try { String computerName = InetAddress.getLocalHost().getHostName(); System.out.println(computerName); } catch (Exception e) { System.out.println(&amp;quot;Exception caught =&amp;quot; + e.getMessage()); } } } </description>
+    </item>
+    
+    <item>
+      <title>Java-Multithreading</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-23-java-multithreading/</link>
+      <pubDate>Thu, 23 Dec 2010 00:02:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-23-java-multithreading/</guid>
+      <description>Method 1: Using Thread class
+class Threading { public static void main(String[] args) { /*Method No.1*/ Counter ctr = new Counter(); ctr.start(); } } /*Method No.1*/ class Counter extends Thread { public void run() { int ctr = 1; while (ctr &amp;lt;= 10) { System.out.println(ctr++); try { sleep(1000); } catch (InterruptedException ex) {} } } } Method 2: Using Runnable interface
+class Threading { public static void main(String[] args) { /*Method No.</description>
+    </item>
+    
+    <item>
+      <title>Java-TCP socket programming</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-23-java-tcp-socket-programming/</link>
+      <pubDate>Thu, 23 Dec 2010 00:00:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-23-java-tcp-socket-programming/</guid>
+      <description>import java.net.*; import java.io.*; public class Client1 { public static void main(String[] args) throws Exception { String hostAddr = &amp;#34;127.0.0.1&amp;#34;; // Loopback Address 	int hostPort = 8000; System.out.println(&amp;#34;Client requesting for connection...&amp;#34;); Socket clientSideSocket = new Socket(hostAddr, hostPort); System.out.println(&amp;#34;Connection established.&amp;#34;); PrintWriter serverWriter = new PrintWriter( clientSideSocket.getOutputStream(), true); System.out.println(&amp;#34;Key in a message for the server:&amp;#34;); serverWriter.println(new BufferedReader( new InputStreamReader(System.in)).readLine()); System.out.println(&amp;#34;Message sent to server.&amp;#34;); } } import java.net.*; import java.io.*; public class Server1 { public static void main(String[] args) throws Exception { int port = 8000; ServerSocket serverSocket = new ServerSocket(port); System.</description>
+    </item>
+    
+    <item>
+      <title>Java-Serialization and De-serialization</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-serialization-and-de-serialization/</link>
+      <pubDate>Wed, 22 Dec 2010 23:57:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-serialization-and-de-serialization/</guid>
+      <description>Student.java
+import java.io.*; public class Student implements Serializable { private int rollNo; private String name; transient int age; public Student(int rollNo, String name, int age) { this.rollNo = rollNo; this.name = name; this.age = age; } public int getRollNo() { return rollNo; } public String getName() { return name; } } TestObjectInputStream.java
+import java.io.*; public class TestObjectInputStream { public static void main(String s[]) throws IOException, ClassNotFoundException { /*FileInputStream fileInStream = new FileInputStream(&amp;#34;Student.</description>
+    </item>
+    
+    <item>
+      <title>Java-Renaming a file</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-renaming-a-file/</link>
+      <pubDate>Wed, 22 Dec 2010 23:56:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-renaming-a-file/</guid>
+      <description>import java.io.*; class TestFile { public static void main(String[] args) throws Exception { File file = new File(args[0]); System.out.println(file.getAbsolutePath()); File oldFile = new File(&amp;#34;a.txt&amp;#34;); File newFile = new File(&amp;#34;b.txt&amp;#34;); oldFile.renameTo(newFile); if (new File(&amp;#34;a.txt&amp;#34;).renameTo(new File(&amp;#34;b.txt&amp;#34;))) {	} else { } } } </description>
+    </item>
+    
   </channel>
 </rss>

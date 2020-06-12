@@ -823,6 +823,261 @@
   </url>
   
   <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-20-python-first-step-towards-programming/</loc>
+    <lastmod>2011-09-20T18:47:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-20-python-strings/</loc>
+    <lastmod>2011-09-20T17:53:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-rsa-algorithm/</loc>
+    <lastmod>2011-09-20T16:13:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/rsa-algorithm/</loc>
+    <lastmod>2011-09-20T16:13:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-data-encryption-standard-des-algorithm/</loc>
+    <lastmod>2011-09-20T14:27:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-19-python-an-introduction/</loc>
+    <lastmod>2011-09-19T16:31:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-19-using-the-python-interpreter/</loc>
+    <lastmod>2011-09-19T15:57:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-19-python-programming-language/</loc>
+    <lastmod>2011-09-19T15:48:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/ruby/</loc>
+    <lastmod>2011-09-16T19:28:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/ruby/</loc>
+    <lastmod>2011-09-16T19:28:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-16-ruby-objects/</loc>
+    <lastmod>2011-09-16T19:28:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-16-ruby-classes/</loc>
+    <lastmod>2011-09-16T19:13:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-16-ruby-defining-a-method/</loc>
+    <lastmod>2011-09-16T18:44:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-16-starting-with-ruby/</loc>
+    <lastmod>2011-09-16T13:57:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-09-16-about-ruby-programming-language/</loc>
+    <lastmod>2011-09-16T13:43:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/excel/</loc>
+    <lastmod>2011-08-11T20:57:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-08-11-java-creating-an-ms-excel-file-using-jakarta-poi-api/</loc>
+    <lastmod>2011-08-11T20:57:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/ms-excel/</loc>
+    <lastmod>2011-08-11T20:57:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/xls/</loc>
+    <lastmod>2011-08-11T20:57:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/applet/</loc>
+    <lastmod>2011-06-27T18:52:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-a-simple-dictionary-using-applet/</loc>
+    <lastmod>2011-06-27T18:52:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-writing-to-serial-port-using-java-communication-api/</loc>
+    <lastmod>2011-06-27T18:42:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-26-java-sum-and-average-using-rmi/</loc>
+    <lastmod>2011-03-26T23:07:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/rmi/</loc>
+    <lastmod>2011-03-26T23:07:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-system-time-using-rmi/</loc>
+    <lastmod>2011-03-22T18:38:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-mathematical-operations-using-rmi/</loc>
+    <lastmod>2011-03-22T18:31:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-tcp-an-example-md-manager-and-employees/</loc>
+    <lastmod>2011-03-22T18:20:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-18-java-notes-for-download/</loc>
+    <lastmod>2011-03-18T17:26:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-bidirectional-data-transfer-using-udp/</loc>
+    <lastmod>2011-03-05T21:43:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-public-chat-using-gui/</loc>
+    <lastmod>2011-03-05T21:41:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-data-broadcasting-using-gui/</loc>
+    <lastmod>2011-03-05T21:38:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-public-chat/</loc>
+    <lastmod>2011-03-05T21:35:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-data-broadcasting/</loc>
+    <lastmod>2011-03-05T21:33:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-bidirectional-data-transfer-using-tcp/</loc>
+    <lastmod>2011-03-05T21:30:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-select-statament-my-sql/</loc>
+    <lastmod>2011-03-05T21:14:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-insert-statement-my-sql/</loc>
+    <lastmod>2011-03-05T21:08:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-getting-current-time-and-date/</loc>
+    <lastmod>2011-03-05T20:57:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-giving-background-picture-to-a-jframe/</loc>
+    <lastmod>2011-03-05T20:54:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-database-connectivity-my-sql/</loc>
+    <lastmod>2011-03-05T20:50:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-03-05-java-getting-computer-name/</loc>
+    <lastmod>2011-03-05T20:46:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-shell-programming/</loc>
+    <lastmod>2010-12-23T22:43:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-more-commands/</loc>
+    <lastmod>2010-12-23T22:37:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-working-with-files/</loc>
+    <lastmod>2010-12-23T22:10:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-working-with-directories/</loc>
+    <lastmod>2010-12-23T22:02:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-help-commands/</loc>
+    <lastmod>2010-12-23T21:44:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-directory-layout/</loc>
+    <lastmod>2010-12-23T21:42:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-basics/</loc>
+    <lastmod>2010-12-23T21:40:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-23-java-multithreading/</loc>
+    <lastmod>2010-12-23T00:02:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-23-java-tcp-socket-programming/</loc>
+    <lastmod>2010-12-23T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-serialization-and-de-serialization/</loc>
+    <lastmod>2010-12-22T23:57:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-renaming-a-file/</loc>
+    <lastmod>2010-12-22T23:56:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dhanoopbhaskar.github.io/tags/c/cpp/</loc>
   </url>
   
