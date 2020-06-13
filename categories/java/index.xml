@@ -634,5 +634,245 @@ import java.io.*; public class TestObjectInputStream { public static void main(S
       <description>import java.io.*; class TestFile { public static void main(String[] args) throws Exception { File file = new File(args[0]); System.out.println(file.getAbsolutePath()); File oldFile = new File(&amp;#34;a.txt&amp;#34;); File newFile = new File(&amp;#34;b.txt&amp;#34;); oldFile.renameTo(newFile); if (new File(&amp;#34;a.txt&amp;#34;).renameTo(new File(&amp;#34;b.txt&amp;#34;))) {	} else { } } } </description>
     </item>
     
+    <item>
+      <title>Java-Moving a file</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-moving-a-file/</link>
+      <pubDate>Wed, 22 Dec 2010 23:55:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-moving-a-file/</guid>
+      <description>import java.io.*; public class MoveFile { public static void main(String args[]) throws IOException { switch (args.length) { case 0: System.out.println(&amp;#34;Error in usage:&amp;#34;); System.out.println(&amp;#34;Usage: java MoveFile &amp;#34;); break; case 1: System.out.println(&amp;#34;Specify the destination file.\n&amp;#34;); System.out.println(&amp;#34;\tUsage: java MoveFile &amp;#34;); break; case 2: File source_file = new File(args[0]); File dest_file = new File(args[1]); /******************************************************************** * If the file does not exist, show an error message * * and stop the program. * ********************************************************************/ if (!</description>
+    </item>
+    
+    <item>
+      <title>Java-Copying a file</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-copying-a-file/</link>
+      <pubDate>Wed, 22 Dec 2010 23:54:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-copying-a-file/</guid>
+      <description>import java.io.*; public class CopyFile { public static void main(String[] args) throws IOException { switch (args.length) { case 0: System.out.println(&amp;#34;Error in usage:&amp;#34;); System.out.println( &amp;#34; Usage: java CopyFile &amp;#34;); break; case 1: System.out.println( &amp;#34;Specify the destination file.&amp;#34;); System.out.println( &amp;#34; Usage: java CopyFile &amp;#34;); break; case 2: File sourceFile = new File(args[0]); File destFile = new File(args[1]); if (!sourceFile.exists()) { System.out.println(args[0] + &amp;#34; not found !!!&amp;#34;); System.exit(0); // stopping application 	} if (destFile.</description>
+    </item>
+    
+    <item>
+      <title>Java-Writing to a file</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-writing-to-a-file/</link>
+      <pubDate>Wed, 22 Dec 2010 23:53:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-writing-to-a-file/</guid>
+      <description>import java.io.*; public class WriteFile { public static void main(String args[]) throws IOException { if (args.length != 0) { File file = new File(args[0]); if (file.exists()) { System.out.print(&amp;#34;This file already exists. Overwrite? (y/n): &amp;#34;); int response = System.in.read(); if (response == &amp;#39;N&amp;#39; || response == &amp;#39;n&amp;#39;) { // if you do not want to overwrite the file. 	System.exit(0); // stop program 	} } else { System.out.print(&amp;#34;Creating new file: &amp;#34; + args[0] + &amp;#34;.</description>
+    </item>
+    
+    <item>
+      <title>Java-Reading a file</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-reading-a-file/</link>
+      <pubDate>Wed, 22 Dec 2010 23:52:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-reading-a-file/</guid>
+      <description>import java.io.*; public class ShowFile { public static void main(String args[]) throws IOException { if (args.length != 0) { File file = new File(args[0]); if (file.exists() &amp;amp;&amp;amp; file.isFile()) { FileInputStream input_file = new FileInputStream(file); /*FileInputStream input_file = new FileInputStream(args[0]);*/ int file_size = input_file.available(); byte[] data = new byte[file_size]; input_file.read(data); System.out.println(new String(data)); input_file.close(); } else { System.out.println(&amp;#34;\&amp;#34;&amp;#34; + args[0] + &amp;#34;\&amp;#34; not found !!!&amp;#34;); } } else { System.out.println(&amp;#34;Error in usage:&amp;#34;); System.</description>
+    </item>
+    
+    <item>
+      <title>Java-Streams</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-streams/</link>
+      <pubDate>Wed, 22 Dec 2010 23:50:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-streams/</guid>
+      <description>/********************************************************************************* * This program uses the Keyboard as the input device to accept data from the * * MS-DOS prompt (console). It gets a character from the keyboard, and prints the * * ASCII value of the character inputted as well as the character itself. * *********************************************************************************/ import java.io.*; //for IOException &amp;amp; read() throws and java.io.IOException  public class TestKeyboardIO1 { public static void main(String[] args) throws IOException {  System.</description>
+    </item>
+    
+    <item>
+      <title>Java-Exception Handling</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-exception-handling/</link>
+      <pubDate>Wed, 22 Dec 2010 23:41:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-exception-handling/</guid>
+      <description>Exceptions are runtime anomalies that may result in the abnormal termination of the program.
+Exceptions are mainly thrown by system or by a function
+Thrown by system
+ArrayIndexOutOfBoundsException ClassCastException NullPointerException  Thrown by function
+NumberFormatException  In java all exceptions are classes. Mainly there are two types of exceptions. Exceptions | x-- Checked Exceptions: that are trapped by the compiler | x-- Unchecked Exceptions: that are not trapped by the compiler    A checked exception must be either reported or caught (handled) Otherwise the compiler may fail to compile the program.</description>
+    </item>
+    
+    <item>
+      <title>Java-Packages</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-packages/</link>
+      <pubDate>Wed, 22 Dec 2010 23:39:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-packages/</guid>
+      <description>In java, packages are used to organize files, physically. It has no significance as far as source files are concerned. The real use comes when dealt with class files- they should be in the package hierarchy as defined by the package statement which comes as the first statement of the source code. Source files need not be in the package defined.
+eg:	MainFrame.java
+package src.ui;  MainFrame.java need not be in path current-directory\src\ui\ when it is compiled.</description>
+    </item>
+    
+    <item>
+      <title>Java-Interface</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-interface/</link>
+      <pubDate>Wed, 22 Dec 2010 23:33:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-interface/</guid>
+      <description>100% abstract data structure. It can contain only constant variables, abstract methods, classes and other interfaces. An interface cannot contain non-abstract functions and variables. We cannot create objects of an interface. On compilation, an interface generates a .class extension file.  TestInterface1.java
+interface Shapes { int i = 10; // implicit conversion to public static final int i = 10; void drawCircle(); // public abstract void drawCircle(); } class DrawShape1 implements Shapes { //directly implementing Shapes public void drawCircle() { //Interface methods are implicitly public abstract System.</description>
+    </item>
+    
+    <item>
+      <title>Java-Abstraction</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-abstraction/</link>
+      <pubDate>Wed, 22 Dec 2010 23:22:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-abstraction/</guid>
+      <description>/** Abstraction refers to vague definition or not very definitive nature of a class or a method. * An abstract function should not have a body. * If a class contains abstraction explicitly coded or inherited then the class must be stated as * an abstract class using abstract keyword. * A class with at least one abstract method should be declared abstract. * We cannot create objects of an abstract class.</description>
+    </item>
+    
+    <item>
+      <title>Java-Boxing and un-boxing</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-boxing-and-un-boxing/</link>
+      <pubDate>Wed, 22 Dec 2010 23:15:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-boxing-and-un-boxing/</guid>
+      <description>class Boxing { public static void main(String[] args) { Integer integer = 10; /*boxing*/ /*boxing of primitive type 10 [int] into class type integer [class Integer]. From jdk 1.5 onwards. Assigning an int to Integer was not possible in earlier version of jdk.*/ int j = integer + 10; /*un-boxing*/ System.out.println(integer); System.out.println(j); } }  </description>
+    </item>
+    
+    <item>
+      <title>Java-Object Comparison</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-object-comparison/</link>
+      <pubDate>Wed, 22 Dec 2010 23:06:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-object-comparison/</guid>
+      <description>class ObjectComparison { public static void main(String[] args) { String s1 = new String(&amp;quot;Hello&amp;quot;); String s2 = new String(&amp;quot;Hello&amp;quot;); System.out.println(&amp;quot;[Ref. Comparison]s1&amp;quot; + ((s1 == s2) ? &amp;quot; is &amp;quot; : &amp;quot; is not &amp;quot;) + &amp;quot;equal to s2.&amp;quot;); /*(s1==s2) always return false since the references are compared here*/ System.out.println(&amp;quot;[Value Comparison]s1&amp;quot; + ((s1.equals(s2)) ? &amp;quot; is &amp;quot; : &amp;quot; is not &amp;quot;) + &amp;quot;equal to s2.&amp;quot;); /*(s1.equals(s2)) always return true since the values are compared here*/ } }  &amp;mdash;Overriding hashCode() in Rectangle&amp;mdash;</description>
+    </item>
+    
+    <item>
+      <title>Java-Printing the Object</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-printing-the-object/</link>
+      <pubDate>Wed, 22 Dec 2010 23:03:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-printing-the-object/</guid>
+      <description>class PrintObject { public static void main(String[] args) { Rectangle r = new Rectangle(10, 20); Container c = new Container(100, 200, 300); System.out.println(r); /*Classname@hashCode*/ System.out.println(r.toString()); /*Classname@hashCode*/ System.out.println(r.hashCode()); /*hash code in integer form*/ System.out.println(Integer.toHexString( r.hashCode())); /*hash code in hexadecimal form*/ System.out.println(r.getClass().getName()); /*returns classname*/ System.out.println(r); System.out.println(r.getClass().getName() + &amp;quot;@&amp;quot; + Integer.toHexString(r.hashCode())); /*mimicking the operation done while an object is printed*/ System.out.println(r); System.out.println(c); } }   java.lang.Object.toString(); //programmer need to override it to personalize it java.</description>
+    </item>
+    
+    <item>
+      <title>Java-Reference variable: super</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-reference-variable-super/</link>
+      <pubDate>Wed, 22 Dec 2010 23:01:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-reference-variable-super/</guid>
+      <description>class TestSuperFunc { public static void main(String[] args) { SubClass sub = new SubClass(10, 20, 30); } } class SuperClass { private int x = 0; private int y = 0; SuperClass() {} SuperClass(int value) { x = value; y = value; } SuperClass(int x, int y) { this.x = x; this.y = y; } } class SubClass extends SuperClass { private int z = 0; SubClass() {} SubClass(int value) { super(value); z = value; } SubClass(int x, int y, int z) { super(x, y); this.</description>
+    </item>
+    
+    <item>
+      <title>Java-Reference variable: this</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-reference-variable-this/</link>
+      <pubDate>Wed, 22 Dec 2010 22:59:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-reference-variable-this/</guid>
+      <description>class TestThisFunc { public static void main(String[] args) { System.out.println(&amp;quot;Hello World!&amp;quot;); } } class SomeClass { private int x = 0; private int y = 0; private int z = 0; SomeClass(int x) { this(x, 0, 0); } SomeClass(int x, int y) { this(x, y, 0); } SomeClass(int x, int y, int z) { if (x != 0) {} if (y != 0) {} if (z != 0) {} } } </description>
+    </item>
+    
+    <item>
+      <title>Java-Testing Inheritance</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-testing-inheritance/</link>
+      <pubDate>Wed, 22 Dec 2010 22:53:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-testing-inheritance/</guid>
+      <description>class TestInheritance { public static void main(String[] args) { SomeClass sc = new SomeClass(); Shape s = sc.getShape(Integer.parseInt(args[0])); s.draw(); if (s instanceof Square) { Square sq = (Square) s; System.out.println(&amp;#34;It&amp;#39;s an instance of Square.&amp;#34;); sq.someFunction(); } else if (s instanceof Circle) { System.out.println(&amp;#34;It&amp;#39;s an instance of Circle.&amp;#34;); } else if (s instanceof Triangle) { System.out.println(&amp;#34;It&amp;#39;s an instance of Triangle.&amp;#34;); } } } class SomeClass { Shape getShape(int option) { Shape s = null; switch (option) { case 1: s = new Square(); break; case 2: s = new Circle(); break; case 3: s = new Triangle(); } return s; } } class Shape { void draw() { System.</description>
+    </item>
+    
+    <item>
+      <title>Java-Inheritance</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-inheritance/</link>
+      <pubDate>Wed, 22 Dec 2010 22:47:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-inheritance/</guid>
+      <description>&amp;mdash;Rectangle.class&amp;mdash;
+public class Rectangle { private int length = 0; private int breadth = 0; public Rectangle() {} public Rectangle(int value) { length = value; breadth = value; } public Rectangle(int length, int breadth) { this.length = length; this.breadth = breadth; } public int getLength() { return length; } public int getBreadth() { return breadth; } public void setLength(int length) { this.length = length; } public void setBreadth(int breadth) { this.</description>
+    </item>
+    
+    <item>
+      <title>Java-Counting the instance of a class</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-counting-the-instance-of-a-class/</link>
+      <pubDate>Wed, 22 Dec 2010 22:40:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-22-java-counting-the-instance-of-a-class/</guid>
+      <description>&amp;mdash;TestInstanceCounter.class&amp;mdash;
+class TestInstanceCounter { public static void main(String[] args) { SomeClass sc1 = new SomeClass(); SomeClass sc2 = new SomeClass(); System.out.println(&amp;quot;You have created &amp;quot; + SomeClass.countInstances() + &amp;quot; instances of &amp;quot; + &amp;quot;the class called \&amp;quot;SomeClass\&amp;quot;&amp;quot;); System.out.println(&amp;quot;---------------------------------------------&amp;quot;); SomeClass sc3 = new SomeClass(); SomeClass sc4 = new SomeClass(); SomeClass sc5 = new SomeClass(); System.out.println(&amp;quot;You have created &amp;quot; + SomeClass.countInstances() + &amp;quot; instances of the class called \&amp;quot;SomeClass\&amp;quot;&amp;quot;); System.out.println(&amp;quot;---------------------------------------------&amp;quot;); } }  &amp;mdash;SomeClass.</description>
+    </item>
+    
+    <item>
+      <title>Java- Constructors</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-constructors/</link>
+      <pubDate>Sun, 19 Dec 2010 18:38:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-constructors/</guid>
+      <description>class Constructors { public static void main(String[] args) { Greet g = null; //local variable should be initialized before use if (args.length != 0) { g = new Greet(args[0]); } else { /*provided to avoid NullPointerException when no command line argument is given*/ g = new Greet(); } g.showGreeting(); } } class Greet { private String name = &amp;quot;Anonymous&amp;quot;; Greet() { //provided to ensure the success of g = new Greet(); } /*if not given: cannot find symbol symbol : constructor Greet()*/ Greet(String name) { /*refining the scope of instance variable name using the predefined reference variable this since, its direct usage refers only to the local variable name*/ this.</description>
+    </item>
+    
+    <item>
+      <title>Java- Variable Declaration</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-variable-declaration/</link>
+      <pubDate>Sun, 19 Dec 2010 18:33:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-variable-declaration/</guid>
+      <description>Variable Declaration | x---------------------------- x------------------------------ x | | | Local Class-level Super class-level | | | local to a function instance variables instance variables static variables static variables private variables Private variables | x-- direct reference Instance variables | x-- direct reference | x-- instance reference Static variables | x-- direct reference | x-- instance reference (conventionally discouraged) | x-- static reference  Note: Static variable declaration in the main() causes compilation error : illegal start of expression.</description>
+    </item>
+    
+    <item>
+      <title>Java- Variable Reference</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-variable-reference/</link>
+      <pubDate>Sun, 19 Dec 2010 18:26:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-variable-reference/</guid>
+      <description>Reference | x-- Direct – reference of fields (class-level variables) inside the class | x-- Qualified | x-- Instance ref/Non-static ref – using instance variable of the class. | x-- Static ref – using class-name itself.  Note: Direct non-static reference should not be made from a static context.
+class StaticInstanceVars { String msg = &amp;quot;Hello World!&amp;quot;; //class-level var. public static void main(String[] args) { String msg = &amp;quot;Hello World!&amp;quot;; //local var.</description>
+    </item>
+    
+    <item>
+      <title>Java- Access Modifiers</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-access-modifiers/</link>
+      <pubDate>Sun, 19 Dec 2010 18:18:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-access-modifiers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java- Variables and default values</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-variables-and-default-values/</link>
+      <pubDate>Sun, 19 Dec 2010 18:14:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-variables-and-default-values/</guid>
+      <description>Class-level variables are implicitly initialized with default value.
+   DATA TYPE DEFAULT VALUE (for fields)     byte 0   short 0   int 0   long 0L   float 0.0f   double 0.0d   char &#39;\u0000&#39;   String(or any object) null   boolean false    Local variables should be initialized before accessing as they are not implicitly assigned with default value.</description>
+    </item>
+    
+    <item>
+      <title>Java- Variable length argument</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-variable-length-argument/</link>
+      <pubDate>Sun, 19 Dec 2010 18:12:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-variable-length-argument/</guid>
+      <description>class VarArgs { public static void main(String[] args) { SomeClass sc = new SomeClass(); System.out.println(&amp;quot;Sum: &amp;quot; + sc.sum(10, 20, 30, 40)); System.out.println(&amp;quot;Sum: &amp;quot; + sc.sum(10, 20)); } } class SomeClass { int sum(int...values) { int result = 0; /*common method using for loop type 1*/ for (int i = 0; i &amp;lt; values.length; i++) { result += values[i]; } /* using for loop type 2 for (int value : values) { result += value; }*/ return result; } }  Note: Variable length arguments are internally treated as arrays.</description>
+    </item>
+    
+    <item>
+      <title>Java- Object Instantiation</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-object-instantiation/</link>
+      <pubDate>Sun, 19 Dec 2010 18:09:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-object-instantiation/</guid>
+      <description>class ObjInstantiation { public static void main(String[] args) { new Greet().showGreeting(); //Nameless object Greet g = new Greet(); g = new Greet(); //implicit deref. g.showGreeting(); g = null; //explicit deref. g.showGreeting(); // NullPointerException } } class Greet { void showGreeting() { System.out.println(&amp;quot;Hello World!&amp;quot;); } }  Note: Greet g; - loads Greet.class to the memory and creates a reference variable g for class Greet.
+g = new Greet() - creates a new object of class Greet and assigns the object’s address to the reference variable g.</description>
+    </item>
+    
+    <item>
+      <title>Java- Reading Command Line Arguments</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-reading-command-line-arguments/</link>
+      <pubDate>Sun, 19 Dec 2010 17:59:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-19-java-reading-command-line-arguments/</guid>
+      <description>Reading Command Line Arguments
+  Common way
+ class ReadCmdLineArgs { public static void main(String[] args) { System.out.println(&amp;quot;Command Line Args:&amp;quot;); System.out.println(&amp;quot;------------------&amp;quot;); if (args.length != 0) { for (int i = 0; i &amp;lt; args.length; i++) { System.out.println((i + 1) + &amp;quot;. &amp;quot; + args[i]); } } else { System.out.println(&amp;quot;No command line args. specified&amp;quot;); } } }    Another for loop syntax
+class ReadCmdLineArgs { public static void main(String[] args) { System.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -81,5 +81,29 @@ httpserver.c</description>
 #include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #define PORT 4444  #define BUF_SIZE 20  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!\n&amp;#34;); exit(1); } printf(&amp;#34;Socket created...\n&amp;#34;); memset(&amp;amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;amp;addr, sizeof(addr)); if (ret &amp;lt; 0) { printf(&amp;#34;Error binding!</description>
     </item>
     
+    <item>
+      <title>Using Turbo C&#43;&#43; in Windows 7 along with graphics support</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</link>
+      <pubDate>Sun, 12 Dec 2010 13:36:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</guid>
+      <description>DOSBox Use dosbox to mount and run TC.EXE
+Download DOSBox here&amp;hellip;
+Mounting
+Z:\&amp;gt;MOUNT C &amp;quot;PATH OF BIN&amp;quot; Z:\&amp;gt;C: C:\&amp;gt;TC  [TURBO C++ IDE opens]
+NB:
+  You can include the codes for mounting and running in - C:\\Users\\username\\AppData\\Local\\DOSBox\\dosbox-0.74.conf - file at its end as autoexecute commands on startup; so that it will be executed automatically on every startup of DOSBox.
+  To run in fullscreen mode edit the .</description>
+    </item>
+    
+    <item>
+      <title>Simulate a car in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-12-simulate-a-car-in-c/</link>
+      <pubDate>Sun, 12 Dec 2010 12:52:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-12-simulate-a-car-in-c/</guid>
+      <description>/* * Control keys are: * f-&amp;gt; forward * b-&amp;gt; backward * 0-&amp;gt; brake * 1,2,3,4-&amp;gt; gears */ #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; #include&amp;lt;math.h&amp;gt; void main() { int gdriver = DETECT, gmode; int xc = 0, yc = 285, r = 15, a = 0, i, x1, y1, x2, y2, mode = 1, dtime = 75; int x3, x4, y3, y4; int kb = &#39;f&#39;; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:\\tc\\bgi&amp;quot;); cleardevice(); while (1) { if (kbhit()) { kb = getch(); if (kb == &#39;q&#39;) { cleardevice(); printf(&amp;quot;\n You are about to quit.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DosBox on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/tags/dosbox/</link>
+    <description>Recent content in DosBox on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 12 Dec 2010 13:36:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/dosbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Turbo C&#43;&#43; in Windows 7 along with graphics support</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</link>
+      <pubDate>Sun, 12 Dec 2010 13:36:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</guid>
+      <description>DOSBox Use dosbox to mount and run TC.EXE
+Download DOSBox here&amp;hellip;
+Mounting
+Z:\&amp;gt;MOUNT C &amp;quot;PATH OF BIN&amp;quot; Z:\&amp;gt;C: C:\&amp;gt;TC  [TURBO C++ IDE opens]
+NB:
+  You can include the codes for mounting and running in - C:\\Users\\username\\AppData\\Local\\DOSBox\\dosbox-0.74.conf - file at its end as autoexecute commands on startup; so that it will be executed automatically on every startup of DOSBox.
+  To run in fullscreen mode edit the .</description>
+    </item>
+    
+  </channel>
+</rss>
