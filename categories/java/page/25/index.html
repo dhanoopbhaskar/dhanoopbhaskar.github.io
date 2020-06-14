@@ -223,6 +223,67 @@
   <header>
   <div class="title">
     
+      <h2><a href="/blog/2010-12-22-java-printing-the-object/">Java-Printing the Object</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2010-12-22 23:03:00 &#43;0530 IST">
+      December 22, 2010
+    </time>
+    <span class="author">Dhanoop Bhaskar</span>
+    
+  </div>
+</header>
+
+  
+
+  
+  <pre><code>class PrintObject {
+    public static void main(String[] args) {
+        Rectangle r = new Rectangle(10, 20);
+        Container c = new Container(100, 200, 300);
+        System.out.println(r); /*Classname@hashCode*/
+        System.out.println(r.toString()); /*Classname@hashCode*/
+
+        System.out.println(r.hashCode()); /*hash code in integer form*/
+        System.out.println(Integer.toHexString(
+            r.hashCode())); /*hash code in hexadecimal form*/&hellip;</code></pre>
+  <footer>
+    <a href="/blog/2010-12-22-java-printing-the-object/" class="button big">Read more</a>
+    <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/categories/java/">java</a></li>
+        
+      
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/java/">java</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/blog/2010-12-22-java-reference-variable-super/">Java-Reference variable: super</a></h2>
     
     
@@ -294,68 +355,6 @@
   
   <footer>
     <a href="/blog/2010-12-22-java-reference-variable-this/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/java/">java</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/java/">java</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-  </footer>
-</article>
-
-  
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/blog/2010-12-22-java-testing-inheritance/">Java-Testing Inheritance</a></h2>
-    
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2010-12-22 22:53:00 &#43;0530 IST">
-      December 22, 2010
-    </time>
-    <span class="author">Dhanoop Bhaskar</span>
-    
-  </div>
-</header>
-
-  
-
-  
-  <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestInheritance</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            SomeClass sc <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SomeClass<span style="color:#f92672">();</span>
-            Shape s <span style="color:#f92672">=</span> sc<span style="color:#f92672">.</span><span style="color:#a6e22e">getShape</span><span style="color:#f92672">(</span>Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>0<span style="color:#f92672">]));</span>
-            s<span style="color:#f92672">.</span><span style="color:#a6e22e">draw</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s <span style="color:#66d9ef">instanceof</span> Square<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                Square sq <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Square<span style="color:#f92672">)</span> s<span style="color:#f92672">;</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;It&#39;s an instance of Square.&#34;</span><span style="color:#f92672">);</span>
-                sq<span style="color:#f92672">.</span><span style="color:#a6e22e">someFunction</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s <span style="color:#66d9ef">instanceof</span> Circle<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;It&#39;s an&hellip;</span></code></pre>
-  <footer>
-    <a href="/blog/2010-12-22-java-testing-inheritance/" class="button big">Read more</a>
     <ul class="stats">
   <li class="categories">
     <ul>
@@ -480,7 +479,12 @@
           
           <li>
             
-              <a href="/categories/java/">java<span class="count">85</span></a>
+              <a href="/categories/java/">java<span class="count">87</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/c/">c<span class="count">24</span></a>
             
           
           <li>
@@ -495,17 +499,17 @@
           
           <li>
             
-              <a href="/categories/c/">c<span class="count">9</span></a>
-            
-          
-          <li>
-            
               <a href="/categories/gcc/">gcc<span class="count">7</span></a>
             
           
           <li>
             
               <a href="/categories/python/">python<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/sql/">sql<span class="count">7</span></a>
             
           
           <li>
@@ -555,7 +559,17 @@
           
           <li>
             
+              <a href="/categories/c&#43;&#43;/">c&#43;&#43;<span class="count">3</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/des-algorithm/">des-algorithm<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/projects/">projects<span class="count">3</span></a>
             
           
           <li>
@@ -571,11 +585,6 @@
           <li>
             
               <a href="/categories/gratitude/">gratitude<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/projects/">projects<span class="count">2</span></a>
             
           
           <li>

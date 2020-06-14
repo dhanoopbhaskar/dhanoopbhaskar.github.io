@@ -61,5 +61,15 @@ httpserver.c</description>
 #include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #define PORT 4444  #define BUF_SIZE 20  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!\n&amp;#34;); exit(1); } printf(&amp;#34;Socket created...\n&amp;#34;); memset(&amp;amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;amp;addr, sizeof(addr)); if (ret &amp;lt; 0) { printf(&amp;#34;Error binding!</description>
     </item>
     
+    <item>
+      <title>TCP Programming in Java</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-25-tcp-programming-in-java/</link>
+      <pubDate>Tue, 25 May 2010 12:13:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-25-tcp-programming-in-java/</guid>
+      <description>Server.java
+import java.io.*; import java.net.*; public class Server { ServerSocket ss; Socket s; BufferedReader bin; PrintWriter pw; String msg, EXIT = &amp;quot;exit&amp;quot;; public Server() { try { ss = new ServerSocket(800); s = ss.accept(); bin = new BufferedReader(new InputStreamReader(System.in)); pw = new PrintWriter(s.getOutputStream(), true); while (true) { msg = bin.readLine(); if (EXIT.equals(msg)) { pw.println(&amp;quot;exit&amp;quot;); System.exit(0); } else { pw.println(msg); } } } catch (Exception e) { System.out.println(&amp;quot;Server Failed&amp;quot;); } } }  Client.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>SQL- HOSPITAL MANAGEMENT - The Insane Techie</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="SQL- HOSPITAL MANAGEMENT">
+<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in(&#39;ENT&#39;,&#39;GASTRO&#39;,&#39;CARDIO&#39;,&#39;OPTHAL&#39;, &#39;ORTHO&#39;, &#39;PSYCHO&#39;)),fees number(8,2)); create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in(&#39;M&#39;,&#39;F&#39;)),address char(20),date_reg date,category char(15) references doctors_details(specialization)); create table pat_doc_details(name char(15),doc_name char(15));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;DOCTORS_DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); SQL&gt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); Enter value for doc_id: 1 Enter value for name: Tintumon Enter value for specialization: ENT Enter value for fees: 100 old 1: insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees) new 1: insert into doctors_details values(1,&#39;Tintumon&#39;,&#39;ENT&#39;,100) 1 row created.">
+<meta itemprop="datePublished" content="2010-01-10T00:19:00&#43;05:30" />
+<meta itemprop="dateModified" content="2010-01-10T00:19:00&#43;05:30" />
+<meta itemprop="wordCount" content="556">
+
+
+
+<meta itemprop="keywords" content="DBMS,SQL,PL/SQL," /><meta property="og:title" content="SQL- HOSPITAL MANAGEMENT" />
+<meta property="og:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in(&#39;ENT&#39;,&#39;GASTRO&#39;,&#39;CARDIO&#39;,&#39;OPTHAL&#39;, &#39;ORTHO&#39;, &#39;PSYCHO&#39;)),fees number(8,2)); create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in(&#39;M&#39;,&#39;F&#39;)),address char(20),date_reg date,category char(15) references doctors_details(specialization)); create table pat_doc_details(name char(15),doc_name char(15));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;DOCTORS_DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); SQL&gt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); Enter value for doc_id: 1 Enter value for name: Tintumon Enter value for specialization: ENT Enter value for fees: 100 old 1: insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees) new 1: insert into doctors_details values(1,&#39;Tintumon&#39;,&#39;ENT&#39;,100) 1 row created." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-hospital-management/" />
+<meta property="article:published_time" content="2010-01-10T00:19:00+05:30" />
+<meta property="article:modified_time" content="2010-01-10T00:19:00+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SQL- HOSPITAL MANAGEMENT"/>
+<meta name="twitter:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in(&#39;ENT&#39;,&#39;GASTRO&#39;,&#39;CARDIO&#39;,&#39;OPTHAL&#39;, &#39;ORTHO&#39;, &#39;PSYCHO&#39;)),fees number(8,2)); create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in(&#39;M&#39;,&#39;F&#39;)),address char(20),date_reg date,category char(15) references doctors_details(specialization)); create table pat_doc_details(name char(15),doc_name char(15));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;DOCTORS_DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); SQL&gt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); Enter value for doc_id: 1 Enter value for name: Tintumon Enter value for specialization: ENT Enter value for fees: 100 old 1: insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees) new 1: insert into doctors_details values(1,&#39;Tintumon&#39;,&#39;ENT&#39;,100) 1 row created."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/pencils/" class="nav link"><i class='far fa-newspaper'></i> Pencils</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/archives/" class="nav link"><i class='fas fa-sitemap'></i> Archives</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=SQL-%20HOSPITAL%20MANAGEMENT&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f&amp;title=SQL-%20HOSPITAL%20MANAGEMENT" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f&amp;title=SQL-%20HOSPITAL%20MANAGEMENT" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f&amp;description=SQL-%20HOSPITAL%20MANAGEMENT" target="_blank" rel="noopener" class="nav share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://dhanoopbhaskar.github.io/img/main/logo.jpeg" class="circle" width="" alt="Dhanoop Bhaskar" /></a>
+  <header>
+    <h1>The Insane Techie</h1>
+  </header>
+  <main>
+    <p>let's talk with the computers!</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
+
+
+
+
+
+
+<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
+<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/blog/2010-01-10-sql-hospital-management/">SQL- HOSPITAL MANAGEMENT</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2010-01-10 00:19:00 &#43;0530 IST">
+      January 10, 2010
+    </time>
+    <span class="author">Dhanoop Bhaskar</span>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=SQL-%20HOSPITAL%20MANAGEMENT&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f&amp;title=SQL-%20HOSPITAL%20MANAGEMENT" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f&amp;title=SQL-%20HOSPITAL%20MANAGEMENT" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f&amp;description=SQL-%20HOSPITAL%20MANAGEMENT" target="_blank" rel="noopener" class="nav share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-hospital-management%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </section>
+    
+
+    <div class="content">
+      <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in('ENT','GASTRO','CARDIO','OPTHAL', 'ORTHO', 'PSYCHO')),fees number(8,2));
+
+create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in('M','F')),address char(20),date_reg date,category char(15) references doctors_details(specialization));
+
+create table pat_doc_details(name char(15),doc_name char(15));
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;DOCTORS_DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+insert into doctors_details values(&amp;doc_id,'&amp;name','&amp;specialization',&amp;fees);
+
+
+SQL&gt; insert into doctors_details values(&amp;doc_id,'&amp;name','&amp;specialization',&amp;fees);
+
+Enter value for doc_id: 1
+
+Enter value for name: Tintumon
+
+Enter value for specialization: ENT
+
+Enter value for fees: 100
+
+old   1: insert into doctors_details values(&amp;doc_id,'&amp;name','&amp;specialization',&amp;fees)
+
+new   1: insert into doctors_details values(1,'Tintumon','ENT',100)
+
+1 row created.
+
+SQL&gt; /
+
+Enter value for doc_id: 2
+
+Enter value for name: Kuttoos
+
+Enter value for specialization: CARDIO
+
+Enter value for fees: 500
+
+old   1: insert into doctors_details values(&amp;doc_id,'&amp;name','&amp;specialization',&amp;fees)
+
+new   1: insert into doctors_details values(2,'Kuttoos','CARDIO',500)
+
+1 row created.
+
+
+SQL&gt; select * from doctors_details;
+
+DOC_ID        NAME               SPECIALIZATION       FEES
+-----------------------------------------------------------------------------------
+1             Tintumon           ENT                  100
+2             Kuttoos            CARDIO               500
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PL/SQL BLOCK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+declare
+    reg number(5);
+    dname char(15);
+    pname char(15);
+    cat char(15);
+begin
+    reg:=&amp;reg;
+    insert into register values(reg,'&amp;name',&amp;age,'&amp;sex','&amp;address',sysdate,'&amp;category');
+    select name into pname from register where regno=reg;
+    select category into cat from register where regno=reg;
+    select name into dname from doctors_details where specialization=cat;
+    insert into pat_doc_details values(pname,dname);
+    dbms_output.put_line('Mr/Mrs/Miss'||pname||' has been refered to '||'Dr.'||dname);
+end;
+
+/
+
+Enter value for reg: 1
+
+old   7: reg:=&amp;reg;
+
+new   7: reg:=1;
+
+Enter value for name: Tuttu
+
+Enter value for age: 17
+
+Enter value for sex: M
+
+Enter value for address: 17/23 vietnam colony
+
+Enter value for category: ENT
+
+old   8: insert into register values(reg,'&amp;name',&amp;age,'&amp;sex','&amp;address',sysdate,'&amp;category');
+
+new   8: insert into register values(reg,'Tuttu',17,'M','17/23 vietnam colony',sysdate,'ENT');
+
+Mr/Mrs/MissTuttu           has been refered to Dr.Tintumon
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; /
+
+Enter value for reg: 2
+
+old   7: reg:=&amp;reg;
+
+new   7: reg:=2;
+
+Enter value for name: Ammu
+
+Enter value for age: 18
+
+Enter value for sex: F
+
+Enter value for address: 18/23 vietnam colony
+
+Enter value for category: ENT
+
+old   8: insert into register values(reg,'&amp;name',&amp;age,'&amp;sex','&amp;address',sysdate,'&amp;category');
+
+new   8: insert into register values(reg,'Ammu',18,'F','18/23 vietnam colony',sysdate,'ENT');
+
+Mr/Mrs/MissAmmu            has been refered to Dr.Tintumon
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; /
+
+Enter value for reg: 3
+
+old   7: reg:=&amp;reg;
+
+new   7: reg:=3;
+
+Enter value for name: Appu
+
+Enter value for age: 19
+
+Enter value for sex: M
+
+Enter value for address: 1/23 gandhi colony
+
+Enter value for category: CARDIO
+
+old   8: insert into register values(reg,'&amp;name',&amp;age,'&amp;sex','&amp;address',sysdate,'&amp;category');
+
+new   8: insert into register values(reg,'Appu',19,'M','1/23 gandhi colony',sysdate,'CARDIO');
+
+Mr/Mrs/MissAppu            has been refered to Dr.Kuttoos
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; select * from register;
+
+
+REGNO         NAME             AGE      SEX       ADDRESS                   DATE_REG      CATEGORY
+-------------------------------------------------------------------------------------------------------------------------------
+1             Tuttu            17       M         17/23 vietnam colony      07-JAN-10     ENT
+2             Ammu             18       F         18/23 vietnam colony      07-JAN-10     ENT
+3             Appu             19       M         1/23 gandhi colony        07-JAN-10     CARDIO
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;QUERIES&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+declare
+    dname1 char(15);
+    dname2 char(15);
+    dname char(15);
+    cat char(15);
+    mx number(3);
+    cnt number(3);
+    earn number(8,2);
+    mxern number(8,2);
+    f number(8,2);
+    cursor cur is select distinct category from register;
+begin
+    mx:=0;
+    mxern:=0;
+    dname1:='x';
+    dname2:='x';
+    open cur;
+
+    loop
+        fetch cur into cat;
+        if cur%found then
+            select COUNT(*) into cnt from register where category=cat;
+            select name into dname from doctors_details where specialization=cat;
+            select fees into f from doctors_details where specialization=cat;
+
+            if cnt&gt;mx then
+                mx:=cnt;
+                dname1:=dname;
+            end if;
+
+            earn:=f*cnt;
+
+            if earn&gt;mxern then
+                mxern:=earn;
+                dname2:=dname;
+            end if;
+
+        else
+            exit;
+        end if;
+
+    end loop;
+
+    commit;
+
+    close cur;
+
+    dbms_output.put_line('The doctor who has attended maximum number of patients is '||dname1);
+    dbms_output.put_line('The doctor who has earned the maximum is '||dname2);
+
+end;
+
+/
+
+
+The doctor who has attended maximum number of patients is Tintumon
+The doctor who has earned the maximum is Kuttoos
+
+
+PL/SQL procedure successfully completed.</code></pre>
+
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/categories/sql/">SQL</a></li>
+        
+      
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/dbms/">DBMS</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/sql/">SQL</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/pl/sql/">PL/SQL</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+
+  <div class="pagination">
+  
+    <a href="/blog/2010-01-10-sql-bank-account/" class="button"><div class="previous"><div>SQL- bank account</div></div></a>
+  
+  
+    <a href="/blog/2010-01-10-sql-library-management-system/" class="button"><div class="next"><div>SQL- LIBRARY MANAGEMENT SYSTEM</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2020-05-07-ros-in-docker-container/">ROS In Docker Container</a></h2>
+          <time class="published" datetime="">May 7, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/">Working With Python 3 In ROS Kinetic Or Melodic</a></h2>
+          <time class="published" datetime="">May 7, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-biped-walking-robot/">Biped Walking Robot</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-robotic-arm/">Robotic Arm</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-7-robots-in-6-days/">7 Robots in 6 Days</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/blog/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/java/">java<span class="count">87</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/c/">c<span class="count">24</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/cryptography/">cryptography<span class="count">11</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/linux/">linux<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gcc/">gcc<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/python/">python<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/sql/">sql<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/etl/">etl<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/ruby/">ruby<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/software-design-patterns/">software-design-patterns<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/software-engineering/">software-engineering<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/talend/">talend<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/blowfish-algorithm/">blowfish-algorithm<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/swing/">swing<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aes-algorithm/">aes-algorithm<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/arduino/">arduino<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/c&#43;&#43;/">c&#43;&#43;<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/des-algorithm/">des-algorithm<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/projects/">projects<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/robotics/">robotics<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/good-read/">good-read<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gratitude/">gratitude<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/ros/">ros<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/technology/">technology<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/arts/">arts<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/docker/">docker<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/fun/">fun<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/iphone/">iphone<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/microsoft/">microsoft<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/mysql/">mysql<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/pencils/">pencils<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/phpmyadmin/">phpmyadmin<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/rest/">rest<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/string/">string<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/web-services/">web-services<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
+
+
+
+
+
+
+<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
+<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        The Insane Techie
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.f1fe36cdafc3b0a105307da3f10a932daa1a01bd9cfe6a5f4f06ecf06c64dfbc.js" integrity="sha256-8f42za/DsKEFMH2j8QqTLaoaAb2c/mpfTwbs8Gxk37w="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

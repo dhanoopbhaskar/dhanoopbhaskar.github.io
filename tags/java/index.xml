@@ -405,6 +405,20 @@ import java.io.FileNotFoundException; import java.io.FileOutputStream; import ja
     </item>
     
     <item>
+      <title>Projects</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-projects/</link>
+      <pubDate>Mon, 27 Jun 2011 19:07:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-06-27-projects/</guid>
+      <description>Hi friends,
+Its glad to announce that our Mini Project and Main Project have been made open source and forged in SourceForge.net
+Our Mini Project was cybman - Cyber Cafe Management System
+Download cybman from here
+And our Main Project was XooDB - A cross platform object oriented database engine with multi client support using XML and Java.
+Download XooDB from here</description>
+    </item>
+    
+    <item>
       <title>Java -  A simple dictionary using applet</title>
       <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-a-simple-dictionary-using-applet/</link>
       <pubDate>Mon, 27 Jun 2011 18:52:00 +0530</pubDate>
@@ -872,6 +886,16 @@ g = new Greet() - creates a new object of class Greet and assigns the object’s
   Common way
  class ReadCmdLineArgs { public static void main(String[] args) { System.out.println(&amp;quot;Command Line Args:&amp;quot;); System.out.println(&amp;quot;------------------&amp;quot;); if (args.length != 0) { for (int i = 0; i &amp;lt; args.length; i++) { System.out.println((i + 1) + &amp;quot;. &amp;quot; + args[i]); } } else { System.out.println(&amp;quot;No command line args. specified&amp;quot;); } } }    Another for loop syntax
 class ReadCmdLineArgs { public static void main(String[] args) { System.</description>
+    </item>
+    
+    <item>
+      <title>TCP Programming in Java</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-25-tcp-programming-in-java/</link>
+      <pubDate>Tue, 25 May 2010 12:13:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-25-tcp-programming-in-java/</guid>
+      <description>Server.java
+import java.io.*; import java.net.*; public class Server { ServerSocket ss; Socket s; BufferedReader bin; PrintWriter pw; String msg, EXIT = &amp;quot;exit&amp;quot;; public Server() { try { ss = new ServerSocket(800); s = ss.accept(); bin = new BufferedReader(new InputStreamReader(System.in)); pw = new PrintWriter(s.getOutputStream(), true); while (true) { msg = bin.readLine(); if (EXIT.equals(msg)) { pw.println(&amp;quot;exit&amp;quot;); System.exit(0); } else { pw.println(msg); } } } catch (Exception e) { System.out.println(&amp;quot;Server Failed&amp;quot;); } } }  Client.</description>
     </item>
     
   </channel>

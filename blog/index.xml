@@ -799,6 +799,20 @@ import java.io.FileNotFoundException; import java.io.FileOutputStream; import ja
     </item>
     
     <item>
+      <title>Projects</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-projects/</link>
+      <pubDate>Mon, 27 Jun 2011 19:07:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-06-27-projects/</guid>
+      <description>Hi friends,
+Its glad to announce that our Mini Project and Main Project have been made open source and forged in SourceForge.net
+Our Mini Project was cybman - Cyber Cafe Management System
+Download cybman from here
+And our Main Project was XooDB - A cross platform object oriented database engine with multi client support using XML and Java.
+Download XooDB from here</description>
+    </item>
+    
+    <item>
       <title>Java -  A simple dictionary using applet</title>
       <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-a-simple-dictionary-using-applet/</link>
       <pubDate>Mon, 27 Jun 2011 18:52:00 +0530</pubDate>
@@ -1376,6 +1390,241 @@ NB:
       
       <guid>https://dhanoopbhaskar.github.io/blog/2010-12-12-simulate-a-car-in-c/</guid>
       <description>/* * Control keys are: * f-&amp;gt; forward * b-&amp;gt; backward * 0-&amp;gt; brake * 1,2,3,4-&amp;gt; gears */ #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; #include&amp;lt;math.h&amp;gt; void main() { int gdriver = DETECT, gmode; int xc = 0, yc = 285, r = 15, a = 0, i, x1, y1, x2, y2, mode = 1, dtime = 75; int x3, x4, y3, y4; int kb = &#39;f&#39;; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:\\tc\\bgi&amp;quot;); cleardevice(); while (1) { if (kbhit()) { kb = getch(); if (kb == &#39;q&#39;) { cleardevice(); printf(&amp;quot;\n You are about to quit.</description>
+    </item>
+    
+    <item>
+      <title>Catching a fish in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-catching-a-fish-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:49:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-catching-a-fish-in-c/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; void fish(); void fishcatch(); int fishx = 0, fishy = 460, fishang = 0, tempx, tempy, fishx2 = 350, fishy2 = 400; void main() { int gdriver = DETECT, gmode, errorcode; int x, y, ch, yincr = 0; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } x = 350; y = 240; while (!</description>
+    </item>
+    
+    <item>
+      <title>Sinking of Titanic</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-sinking-of-titanic/</link>
+      <pubDate>Thu, 18 Nov 2010 18:47:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-sinking-of-titanic/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; void titanic(int, int); void titanics(int, int); void iceberg(); int poly[] = { 0, 300, 640, 300, 640, 480, 0, 480, 0, 300 }; int ix = 1, iy = 1; void main() { int gdriver = DETECT, gmode, errorcode; int maxx, maxy; int xincr = 1, yincr = 1, i; int tempx = 400, tempy = 300; int sink = 0; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode !</description>
+    </item>
+    
+    <item>
+      <title>Sunset in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunset-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:46:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunset-in-c/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; void main() { int gdriver = DETECT, gmode, errorcode; int midx, midy, radius = 40; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } midx = getmaxx() / 2; while (radius &amp;gt;= 10) { cleardevice(); line(0, 210, 160, 50); setcolor(WHITE); line(160, 50, 320, 210); line(320, 210, 480, 50); line(480, 50, 640, 210); line(0, 210, 640, 210); arc(midx, 210, 45, 135, radius); setfillstyle(SOLID_FILL, YELLOW); floodfill(midx, 200, 15); setcolor(BLUE); setfillstyle(SOLID_FILL, LIGHTBLUE); floodfill(2, 2, 15); setfillstyle(SOLID_FILL, BROWN); floodfill(150, 150, 15); floodfill(550, 150, 15); setcolor(15); line(0, 400, 640, 300); setfillstyle(SOLID_FILL, BLUE); floodfill(2, 350, 15); setfillstyle(SOLID_FILL, GREEN); floodfill(2, 410, 15); delay(100); radius -= 1; } if (radius &amp;lt;= 10) cleardevice(); getch(); } </description>
+    </item>
+    
+    <item>
+      <title>Rotation of Fan in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-rotation-of-fan-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:44:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-rotation-of-fan-in-c/</guid>
+      <description>#include&amp;lt;graphics.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;dos.h&amp;gt; #include&amp;lt;time.h&amp;gt; #include&amp;lt;process.h&amp;gt; #include&amp;lt;math.h&amp;gt; void user(); float s1 = 0.0, s2 = 120.0, s3 = 240.0; int midx, midy; void main() { int gdriver = DETECT, gmode, errorcode; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;C:/TC/BGI&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } midx = getmaxx() / 2; midy = getmaxy() / 2; loop: cleardevice(); circle(midx, midy, 5); setcolor(10); line(midx, midy, (midx + 100 * cos(s1 * 3.</description>
+    </item>
+    
+    <item>
+      <title>Sunrise in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunrise-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:44:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunrise-in-c/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; void main() { int gdriver = DETECT, gmode, errorcode; int midx, midy, radius = 10; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } midx = getmaxx() / 2; while (radius &amp;lt;= 40) { cleardevice(); line(0, 210, 160, 50); setcolor(WHITE); line(160, 50, 320, 210); line(320, 210, 480, 50); line(480, 50, 640, 210); line(0, 210, 640, 210); arc(midx, 210, 45, 133, radius); setfillstyle(SOLID_FILL, YELLOW); floodfill(midx, 200, 15); setcolor(BLUE); setfillstyle(SOLID_FILL, LIGHTBLUE); floodfill(2, 2, 15); setfillstyle(SOLID_FILL, BROWN); floodfill(150, 150, 15); floodfill(550, 150, 15); setcolor(15); line(0, 400, 640, 300); setfillstyle(SOLID_FILL, BLUE); floodfill(2, 350, 15); setfillstyle(SOLID_FILL, GREEN); floodfill(2, 410, 15); delay(100); radius += 1; } getch(); } </description>
+    </item>
+    
+    <item>
+      <title>Analog Clock in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-analog-clock-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:42:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-analog-clock-in-c/</guid>
+      <description>/*WAP to illustrate an analog clock*/ #include&amp;lt;graphics.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;dos.h&amp;gt; #include&amp;lt;time.h&amp;gt; #include&amp;lt;process.h&amp;gt; #include&amp;lt;math.h&amp;gt; void user(); float h, ma, hour, minute, sec, m, s; void main() { int gdriver = DETECT, gmode, errorcode; struct time t; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;C:/TC/BGI&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } loop: gettime( &amp;amp; t); hour = t.ti_hour; minute = t.</description>
+    </item>
+    
+    <item>
+      <title>Mid-point Ellipse Drawing Algorithm</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-mid-point-ellipse-drawing-algorithm/</link>
+      <pubDate>Thu, 18 Nov 2010 18:41:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-mid-point-ellipse-drawing-algorithm/</guid>
+      <description>#include&amp;lt;graphics.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void ellipsemid(int xcenter, int ycenter, int rx, int ry); void point(int x, int xcenter, int ycenter, int y); int maxx, maxy, xcenter, ycenter, rx, ry, grok; void main() { int gdriver = DETECT, errorcode, gmode, a, b, c, d; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } clrscr(); maxx = getmaxx(); maxy = getmaxy(); xcenter = 200; ycenter = 200; rx = 50; ry = 50; setcolor(4); ellipsemid(xcenter, ycenter, rx, ry); getch(); //closegraph(); } void ellipsemid(int xcenter, int ycenter, int rx, int ry) { int p, px, py, x, y, ry2, rx2, tworx2, twory2; ry2 = ry * ry; rx2 = rx * rx; twory2 = 2 * ry2; tworx2 = 2 * rx2; x = 0; y = ry; point(x, xcenter, ycenter, y); p = abs(ry2 - ry2 * ry + (0.</description>
+    </item>
+    
+    <item>
+      <title>Line Clipping in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-line-clipping-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:39:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-line-clipping-in-c/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; int xwmin, ywmin, xwmax, ywmax; void rcode(int, int, int[]); int check(int[], int[]); void main() { int gdriver = DETECT, gmode, errorcode; int x1, y1, x2, y2, code1[4], code2[4], x, y, m; int point[2][2], p = 0; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } printf(&amp;quot;\n Enter the coordinates of window &amp;quot;); printf(&amp;quot;\n xwmin and ywmin: &amp;quot;); scanf(&amp;quot;%d%d&amp;quot;, &amp;amp; xwmin, &amp;amp; ywmin); printf(&amp;quot;\n xwmax and ywmax: &amp;quot;); scanf(&amp;quot;%d%d&amp;quot;, &amp;amp; xwmax, &amp;amp; ywmax); printf(&amp;quot;\n Enter the coordinates of line &amp;quot;); printf(&amp;quot;\n Enter the coordinate for the first end point of the line: &amp;quot;); scanf(&amp;quot;%d%d&amp;quot;, &amp;amp; x1, &amp;amp; y1); printf(&amp;quot;\n Enter the coordinate for the second end point of the line: &amp;quot;); scanf(&amp;quot;%d%d&amp;quot;, &amp;amp; x2, &amp;amp; y2); rcode(x1, y1, code1); rcode(x2, y2, code2); if (check(code1, code2) == 1) { rectangle(xwmin, ywmin, xwmax, ywmax); printf(&amp;quot;1&amp;quot;); } else { m = (y2 - y1) / (x2 - x1); rectangle(xwmin, ywmin, xwmax, ywmax); line(x1, y1, x2, y2); setcolor(4); if (x1 &amp;lt; xwmin) { y = y1 + m * (xwmin - x1); x = xwmin; x1 = x; y1 = y; } if (x2 &amp;gt; xwmax) { y = y2 + m * (xwmax - x2); x = xwmax; x2 = x; y2 = y; } if (y1 &amp;lt; ywmin) { x = x1 + (ywmin - y1) / m; y = ywmin; x1 = x; y1 = y; } if (y2 &amp;gt; ywmax) { x = x2 + (ywmax - y2) / m; y = ywmax; x2 = x; y2 = y; } line(x1, y1, x2, y2); } getch(); } int check(int code1[], int code2[]) { int flag = 0; if (code1[3] == 1 &amp;amp;&amp;amp; code2[3] == 1) flag = 1; if (code1[2] == 1 &amp;amp;&amp;amp; code2[2] == 1) flag = 1; if (code1[1] == 1 &amp;amp;&amp;amp; code2[1] == 1) flag = 1; if (code1[0] == 1 &amp;amp;&amp;amp; code2[0] == 1) flag = 1; return flag; } void rcode(int x, int y, int code[]) { if (y &amp;gt; ywmax) //bottom code[2] = 1; else code[2] = 0; if (y &amp;lt; ywmin) //top code[3] = 1; else code[3] = 0; if (x &amp;gt; xwmax) //right code[1] = 1; else code[1] = 0; if (x &amp;lt; xwmin) //left code[0] = 1; else code[0] = 0; } </description>
+    </item>
+    
+    <item>
+      <title>WAP in C to generate recursive descend parser</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-in-c-to-generate-recursive-descend-parser/</link>
+      <pubDate>Fri, 28 May 2010 17:40:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-in-c-to-generate-recursive-descend-parser/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;ctype.h&amp;gt; int lptr = 0; //look ahead pointer char buff[100]; //buffer to store input string int success = 1; //to reflect success or failure void E(); void EDASH(); void T(); void TDASH(); void V(); void start() { E(); } int isvalid(char ch) { if (isalpha(ch)) return 1; else if (toascii(ch) &amp;gt;= 47 &amp;amp;&amp;amp; toascii(ch) &amp;lt;= 57) return 1; else return 0; } void advance() { lptr++; } void E() { T(); EDASH(); } void EDASH() { if (buff[lptr] == &#39;+&#39;) { advance(); T(); EDASH(); } } void T() { V(); TDASH(); } void TDASH() { if (buff[lptr] == &#39;*&#39;) { advance(); V(); TDASH(); } } void V() { if (isvalid(buff[lptr])) { advance(); } else if (buff[lptr] == &#39;(&#39;) { advance(); E(); if (buff[lptr] == &#39;)&#39;) { advance(); } else { printf(&amp;quot;\n* Right parantheses missing &amp;quot;); success = 0; } } else { printf(&amp;quot;\n* Symbol(s) unidentified&amp;quot;); success = 0; getch(); exit(0); } } void main() { int n; clrscr(); printf(&amp;quot;\n\t----------------&amp;quot;); printf(&amp;quot;\n\t GRAMMAR&amp;quot;); printf(&amp;quot;\n\t----------------\n&amp;quot;); printf(&amp;quot;\n\t E ::= TE&#39;&amp;quot;); printf(&amp;quot;\n\t E&#39;::= +TE&#39;|$&amp;quot;); printf(&amp;quot;\n\t T ::= VT&#39;&amp;quot;); printf(&amp;quot;\n\t T&#39;::= *VT&#39;|$&amp;quot;); printf(&amp;quot;\n\t V ::= &amp;lt;id&amp;gt;&amp;quot;); printf(&amp;quot;\n\t----------------\n\n&amp;quot;); printf(&amp;quot;\n Enter an expression: &amp;quot;); gets(buff); n = strlen(buff); start(); if (success == 1 &amp;amp;&amp;amp; lptr &amp;gt;= n) { printf(&amp;quot;\n* Correct syntax of expression&amp;quot;); } else { printf(&amp;quot;\n* Incorrect syntax of expression&amp;quot;); } getch(); } </description>
+    </item>
+    
+    <item>
+      <title>WAP to generate symbol table</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-generate-symbol-table/</link>
+      <pubDate>Fri, 28 May 2010 17:38:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-generate-symbol-table/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; int isnum(int n) { if (n &amp;gt; 0 &amp;amp;&amp;amp; n &amp;lt; 100) return 1; else return 0; } void main() { FILE * fp; char words[50][25], str[25], ch; char name[50][25]; int size[50], add[50]; int temp, ad = 1000; int i, j, w = 0, d = 0; fp = fopen(&amp;quot;tsym.c&amp;quot;, &amp;quot;r&amp;quot;); clrscr(); printf(&amp;quot;\n File: tsym.c\n\n&amp;quot;); if (fp != NULL) { do { j = 0; ch = &#39;d&#39;; strcpy(str, &amp;quot;&amp;quot;); while (ch !</description>
+    </item>
+    
+    <item>
+      <title>WAP to print comments in a given program</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-print-comments-in-a-given-program/</link>
+      <pubDate>Fri, 28 May 2010 17:36:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-print-comments-in-a-given-program/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void main() { char str[25], ch, words[50][25]; int i, k, j, w = 0; FILE * fp; clrscr(); fp = fopen(&amp;quot;tcom.c&amp;quot;, &amp;quot;r&amp;quot;); printf(&amp;quot;\n File: tcom.c\n\n&amp;quot;); if (fp != NULL) { do { j = 0; ch = &#39;d&#39;; strcpy(str, &amp;quot;&amp;quot;); while (ch != &#39; &#39;) { ch = getc(fp); putchar(ch); if (ch == EOF) break; str[j] = ch; if (ch != &#39; &#39; &amp;amp;&amp;amp; ch != &#39;\n&#39; &amp;amp;&amp;amp; ch !</description>
+    </item>
+    
+    <item>
+      <title>WAP to check the syntax of for loops</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-check-the-syntax-of-for-loops/</link>
+      <pubDate>Fri, 28 May 2010 17:34:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-check-the-syntax-of-for-loops/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void main() { char str[25], ch, words[25][25]; int i, k, j, w = 0, s = 0, cntl = 0, cntr = 0, p = 0, parR = 0, f = 0, parL = 0; FILE * fp; clrscr(); fp = fopen(&amp;quot;tnest.c&amp;quot;, &amp;quot;r&amp;quot;); printf(&amp;quot;\n File: tnest.c\n\n&amp;quot;); if (fp != NULL) { do { j = 0; ch = &#39;d&#39;; strcpy(str, &amp;quot;&amp;quot;); while (ch != &#39; &#39;) { ch = getc(fp); putchar(ch); if (ch == EOF) break; if (ch == &#39;{&#39;) cntl++; else if (ch == &#39;}&#39;) cntr++; str[j] = ch; if (ch !</description>
+    </item>
+    
+    <item>
+      <title>WAP to perform macro expansion</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-perform-macro-expansion/</link>
+      <pubDate>Fri, 28 May 2010 17:31:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-perform-macro-expansion/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void main() { char words[25][25]; char str[25], ch; int i, j, w = 0, m = 0, flag = 0; char macro[10][25]; char val[10][25]; long l; FILE * fp, * fp1; fp = fopen(&amp;quot;text.c&amp;quot;, &amp;quot;r&amp;quot;); fp1 = fopen(&amp;quot;temp.c&amp;quot;, &amp;quot;w&amp;quot;); clrscr(); printf(&amp;quot;\n File: text.c before MACRO EXPANSION\n\n&amp;quot;); if (fp != NULL) { do { j = 0; ch = &#39;d&#39;; strcpy(str, &amp;quot;&amp;quot;); while (ch != &#39; &#39;) { ch = getc(fp); printf(&amp;quot;%c&amp;quot;, ch); if (ch == EOF) break; putc(ch, fp1); str[j] = ch; if (ch !</description>
+    </item>
+    
+    <item>
+      <title>WAP to check the correctness of braces</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-check-the-correctness-of-braces/</link>
+      <pubDate>Fri, 28 May 2010 17:30:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-check-the-correctness-of-braces/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void main() { FILE * fp; char ch; int countL = 0, countR = 0; fp = fopen(&amp;quot;tbraces.c&amp;quot;, &amp;quot;r&amp;quot;); clrscr(); printf(&amp;quot;\n File: tbraces.c\n\n&amp;quot;); if (fp != NULL) { do { ch = &#39;d&#39;; while (ch != &#39; &#39;) { ch = getc(fp); printf(&amp;quot;%c&amp;quot;, ch); if (ch == &#39;{&#39;) countL++; if (ch == &#39;}&#39;) countR++; if (ch == EOF) break; } } while (ch != EOF); } if (countL !</description>
+    </item>
+    
+    <item>
+      <title>Write a program in C to perform token separation</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-28-write-a-program-in-c-to-perform-token-separation/</link>
+      <pubDate>Fri, 28 May 2010 17:14:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-28-write-a-program-in-c-to-perform-token-separation/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void main() { FILE * fp; char words[50][25], str[25], ch; char key[50][25], op[50][10], id[50][25]; int i, j, k = 0, w = 0, p = 0, d = 0; int yes = 0; fp = fopen(&amp;quot;ttoken.c&amp;quot;, &amp;quot;r&amp;quot;); clrscr(); printf(&amp;quot;\n File: ttoken.c\n\n&amp;quot;); if (fp != NULL) { do { j = 0; ch = &#39;d&#39;; strcpy(str, &amp;quot;&amp;quot;); while (ch != &#39; &#39;) { ch = getc(fp); printf(&amp;quot;%c&amp;quot;, ch); if (ch == EOF) break; str[j++] = ch; switch (ch) { case &#39;+&#39;: strcpy(op[p++], &amp;quot;+&amp;quot;); break; case &#39;-&#39;: strcpy(op[p++], &amp;quot;-&amp;quot;); break; case &#39;*&#39;: strcpy(op[p++], &amp;quot;*&amp;quot;); break; case &#39;/&#39;: strcpy(op[p++], &amp;quot;/&amp;quot;); break; case &#39;%&#39;: strcpy(op[p++], &amp;quot;%&amp;quot;); break; case &#39;=&#39;: strcpy(op[p++], &amp;quot;=&amp;quot;); break; } if (ch == &#39; &#39; || ch == &#39;\n&#39; || ch == &#39;=&#39;) { j--; break; } if (ch == &#39;;&#39; || ch == &#39;(&#39; || ch == &#39;)&#39; || ch == &#39;,&#39;) { j--; break; } } str[j] = &#39;\0&#39;; strcpy(words[w++], str); if (ch == &#39;(&#39;) strcpy(words[w++], &amp;quot;(&amp;quot;); if (ch == &#39;;&#39;) strcpy(words[w++], &amp;quot;;&amp;quot;); if (ch == &#39;)&#39;) strcpy(words[w++], &amp;quot;)&amp;quot;); if (ch == &#39;=&#39;) strcpy(words[w++], &amp;quot;=&amp;quot;); if (ch == &#39;,&#39;) strcpy(words[w++], &amp;quot;,&amp;quot;); j = 0; } while (ch !</description>
+    </item>
+    
+    <item>
+      <title>TCP Programming in Java</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-05-25-tcp-programming-in-java/</link>
+      <pubDate>Tue, 25 May 2010 12:13:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-05-25-tcp-programming-in-java/</guid>
+      <description>Server.java
+import java.io.*; import java.net.*; public class Server { ServerSocket ss; Socket s; BufferedReader bin; PrintWriter pw; String msg, EXIT = &amp;quot;exit&amp;quot;; public Server() { try { ss = new ServerSocket(800); s = ss.accept(); bin = new BufferedReader(new InputStreamReader(System.in)); pw = new PrintWriter(s.getOutputStream(), true); while (true) { msg = bin.readLine(); if (EXIT.equals(msg)) { pw.println(&amp;quot;exit&amp;quot;); System.exit(0); } else { pw.println(msg); } } } catch (Exception e) { System.out.println(&amp;quot;Server Failed&amp;quot;); } } }  Client.</description>
+    </item>
+    
+    <item>
+      <title>SQL- UNIVERSITY EXAM REGISTRATION SYSTEM</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-university-exam-registration-system/</link>
+      <pubDate>Sun, 10 Jan 2010 00:29:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-university-exam-registration-system/</guid>
+      <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table application(slno number(5) primary key,student_name char(15),branch char(7),college char(15),date_apply date); create table university(student_name char(15),branch char(7) check( branch in(&#39;CS&#39;,&#39;IT&#39;,&#39;EC&#39;)),college char(15)); create table register_nos(regno number(5),student_name char(15),branch char(7),college char(15));   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;UNIVERSITY DATABASE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; insert into university values(&#39;&amp;amp;student_name&#39;,&#39;&amp;amp;branch&#39;,&#39;&amp;amp;college&#39;); SQL&amp;gt; insert into university values(&#39;&amp;amp;student_name&#39;,&#39;&amp;amp;branch&#39;,&#39;&amp;amp;college&#39;); Enter value for student_name: Kuttoos Enter value for branch: IT Enter value for college: UCE old 1: insert into university values(&#39;&amp;amp;student_name&#39;,&#39;&amp;amp;branch&#39;,&#39;&amp;amp;college&#39;) new 1: insert into university values(&#39;Kuttoos&#39;,&#39;IT&#39;,&#39;UCE&#39;) 1 row created.</description>
+    </item>
+    
+    <item>
+      <title>SQL- RECRUITMENT DATABASE</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-recruitment-database/</link>
+      <pubDate>Sun, 10 Jan 2010 00:27:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-recruitment-database/</guid>
+      <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table registration(regno number(6) primary key,name char(15),college char(15),date_of_reg date,degree char(10)); create table company_details(company_name char(15) primary key,salary number(8)); create table result(regno number(6) references registration(regno),marks number(5),selected char(3) default &#39;N&#39;); create table agency_income_details(company_name char(15),agency_profit number(10,2));   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;PROCEDURE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create or replace procedure insertreg (pname char,pcoll char,pdgr char) is cname char(15); no number(6); r number(6); cnt number(2); begin cname:=&#39;&amp;amp;cname&#39;; select max(regno) into no from registration; if no is null then r:=1; else r:=no+1; end if; insert into registration values(r,pname,pcoll,sysdate,pdgr); dbms_output.</description>
+    </item>
+    
+    <item>
+      <title>SQL- RAILWAY RESERVATION SYSTEM</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/</link>
+      <pubDate>Sun, 10 Jan 2010 00:25:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/</guid>
+      <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;ENTER TRAIN DETAILS&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;amp;train_name&#39;,&amp;amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;amp;train_name&#39;,&amp;amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed.</description>
+    </item>
+    
+    <item>
+      <title>SQL- LIBRARY MANAGEMENT SYSTEM</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-library-management-system/</link>
+      <pubDate>Sun, 10 Jan 2010 00:22:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-library-management-system/</guid>
+      <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5)); create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2)); create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5)); create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;ADD A NEW BOOK&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; declare bknam char(15); auth char(15); tot number(5); id number(5); no number(5); i number(3); begin bknam:=&#39;&amp;amp;bknam&#39;; auth:=&#39;&amp;amp;auth&#39;; tot:=&amp;amp;tot; insert into book_rec values(bknam,auth,tot,tot); for i in 1.</description>
+    </item>
+    
+    <item>
+      <title>SQL- HOSPITAL MANAGEMENT</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-hospital-management/</link>
+      <pubDate>Sun, 10 Jan 2010 00:19:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-hospital-management/</guid>
+      <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in(&#39;ENT&#39;,&#39;GASTRO&#39;,&#39;CARDIO&#39;,&#39;OPTHAL&#39;, &#39;ORTHO&#39;, &#39;PSYCHO&#39;)),fees number(8,2)); create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in(&#39;M&#39;,&#39;F&#39;)),address char(20),date_reg date,category char(15) references doctors_details(specialization)); create table pat_doc_details(name char(15),doc_name char(15));   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;DOCTORS_DETAILS&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; insert into doctors_details values(&amp;amp;doc_id,&#39;&amp;amp;name&#39;,&#39;&amp;amp;specialization&#39;,&amp;amp;fees); SQL&amp;gt; insert into doctors_details values(&amp;amp;doc_id,&#39;&amp;amp;name&#39;,&#39;&amp;amp;specialization&#39;,&amp;amp;fees); Enter value for doc_id: 1 Enter value for name: Tintumon Enter value for specialization: ENT Enter value for fees: 100 old 1: insert into doctors_details values(&amp;amp;doc_id,&#39;&amp;amp;name&#39;,&#39;&amp;amp;specialization&#39;,&amp;amp;fees) new 1: insert into doctors_details values(1,&#39;Tintumon&#39;,&#39;ENT&#39;,100) 1 row created.</description>
+    </item>
+    
+    <item>
+      <title>SQL- bank account</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-bank-account/</link>
+      <pubDate>Sun, 10 Jan 2010 00:17:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-bank-account/</guid>
+      <description>SQL&amp;gt; create table ACCTMASTER(accno INT primary key,name char(25),balance number(10)); SQL&amp;gt; create table ACCTTRAN(accno INT references ACCTMASTER(accno),tran_date date default sysdate,deb_cred char(7),flag char(2) default &#39;N&#39;,amount number(10));   SQL&amp;gt; insert into ACCTMASTER values(&amp;amp;accno,&#39;&amp;amp;name&#39;,&amp;amp;balance); Enter value for accno: 101 Enter value for name: Tuttu Enter value for balance: 10000 old 1: insert into ACCTMASTER values(&amp;amp;accno,&#39;&amp;amp;name&#39;,&amp;amp;balance) new 1: insert into ACCTMASTER values(101,&#39;Tuttu&#39;,10000) 1 row created. SQL&amp;gt; / Enter value for accno: 102 Enter value for name: Tintumon Enter value for balance: 19000 old 1: insert into ACCTMASTER values(&amp;amp;accno,&#39;&amp;amp;name&#39;,&amp;amp;balance) new 1: insert into ACCTMASTER values(102,&#39;Tintumon&#39;,19000) 1 row created.</description>
+    </item>
+    
+    <item>
+      <title>SQL- student database</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-student-database/</link>
+      <pubDate>Sun, 10 Jan 2010 00:13:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-student-database/</guid>
+      <description>create a student database (rollno,name,tot_marks,trade). Write a PL/SQL program to create student details for each trade adding an extra field &#39;rank&#39; which includes the ranking details of each student. Also print top 3 rankers. create table student(rollno INT,name char(25),tot_marks number(10),trade char(25)); create table IT(rollno INT,name char(25),tot_marks number(10),trade char(25),rank number(3)); create table CS(rollno INT,name char(25),tot_marks number(10),trade char(25),rank number(3));   declare rno INT; nam char(25); tot number(10); trd char(25); rnk number(3); mx number(10); cursor curr is select * from student; cursor cit is select * from IT; cursor ccs is select * from CS; i number(4); begin delete from IT; delete from CS; open curr; loop fetch curr into rno,nam,tot,trd; if(curr%found) then if trd=&#39;IT&#39; then insert into IT values(rno,nam,tot,trd,rnk); elsif trd=&#39;CS&#39; then insert into CS values(rno,nam,tot,trd,rnk); end if; else exit; end if; end loop; commit; close curr; i:=1; update CS set rank=null; open ccs; loop fetch ccs into rno,nam,tot,trd,rnk; if(ccs%found) then select max(tot_marks) into mx from CS where rank is null; update CS set rank=i where tot_marks=mx; i:=i+1; else exit; end if; end loop; commit; close ccs; i:=1; update IT set rank=null; open cit; loop fetch cit into rno,nam,tot,trd,rnk; if(cit%found) then select max(tot_marks) into mx from IT where rank is null; update IT set rank=i where tot_marks=mx; i:=i+1; else exit; end if; end loop; commit; close cit; end; select * from IT order by rank; select * from CS order by rank; SQL&amp;gt; select * from student; ROLLNO NAME TOT_MARKS TRADE ---------------------------------------------------------------------------- 1 Ammu 555 IT 2 Appu 556 IT 1 Tinto 585 CS 2 Tintumon 598 CS 3 Kuttoos 542 IT 3 Tuttu 562 CS 6 rows selected.</description>
+    </item>
+    
+    <item>
+      <title>Some Data Structure Programs in C&#43;&#43;</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2009-06-28-some-data-structure-programs/</link>
+      <pubDate>Sun, 28 Jun 2009 19:17:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2009-06-28-some-data-structure-programs/</guid>
+      <description>1. WAP to implement searching in a linked list #include&amp;lt;iostream.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;process.h&amp;gt; class node { int data; node * next; public: void insert(); void search(int); void display(); }; node *start, *head, *temp; void node::insert() { head = new node; cout&amp;lt;&amp;lt;&amp;quot;\n Enter the data item: &amp;quot;; cin&amp;gt;&amp;gt;head-&amp;gt;data; head-&amp;gt;next = NULL; if (start == NULL) { start = head; } else { temp = start; while (temp-&amp;gt;next != NULL) { temp = temp-&amp;gt;next; } temp-&amp;gt;next = head; } } void node::display() { temp = start; if (start == NULL) cout&amp;lt;&amp;lt;&amp;quot;\n Data list is empty &amp;quot;; else { cout&amp;lt;&amp;lt;&amp;quot;\n DATA LIST: &amp;quot;; while (temp !</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; - Scientific Calculator</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2009-04-30-c-scientific-calculator/</link>
+      <pubDate>Thu, 30 Apr 2009 18:54:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2009-04-30-c-scientific-calculator/</guid>
+      <description>#include&amp;lt;iostream.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;math.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;process.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; #include&amp;lt;ctype.h&amp;gt; double rfact(double); void main() { int ch; int k, n, choice; float sinx, cosx, tanx, cotx, secx, cosecx; float x, j, i; clrscr(); cin&amp;gt;&amp;gt;ch; if (ch == 4444) { int gdriver = DETECT, gmode, errorcode; initgraph( &amp;amp;gdriver, &amp;amp;gmode, &amp;quot;e:\\tc\\bgi&amp;quot;); setbkcolor(LIGHTRED); settextstyle(7, 0, 9); outtextxy(45, 160, &amp;quot;..WELCOME!..&amp;quot;); //page1 getch(); closegraph(); } getch(); clrscr(); textcolor(YELLOW + 128); gotoxy(30, 12); cprintf(&amp;quot;COMPUTER EXHIBITION\n\r&amp;quot;); //page2 textcolor(GREEN); gotoxy(30, 14); cprintf(&amp;quot; Dhanoop Bhaskar \n\r&amp;quot;); textcolor(BLUE); gotoxy(30, 15); cprintf(&amp;quot; C2 Batch\n\r&amp;quot;); textcolor(CYAN); gotoxy(30, 16); cprintf(&amp;quot; CARDINAL .</description>
+    </item>
+    
+    <item>
+      <title>DATA STRUCTURE PROGRAMS IN C&#43;&#43;</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2009-04-23-data-structure-programs-in-c/</link>
+      <pubDate>Thu, 23 Apr 2009 19:10:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2009-04-23-data-structure-programs-in-c/</guid>
+      <description>Write a C++ program to find the sparse of a matrix #include&amp;lt;iostream.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void main() { int a[50][50], sp[50][50], i, j, k = 0, m, n; clrscr(); cout&amp;lt;&amp;lt;&amp;quot;\n Enter the order of matrix: &amp;quot;; cin&amp;gt;&amp;gt;m&amp;gt;&amp;gt;n; cout&amp;lt;&amp;lt;&amp;quot;\n Enter the elements: &amp;quot;; for (i = 0; i &amp;lt; m; i++) { for (j = 0; j &amp;lt; n; j++) { cin&amp;gt;&amp;gt;a[i][j]; if (a[i][j] != 0) { k++; sp[k][0] = i; sp[k][1] = j; sp[k][2] = a[i][j]; } } } sp[0][0] = m; sp[0][1] = n; sp[0][2] = k; cout&amp;lt;&amp;lt;&amp;quot;\n The sparse matrix is:\n&amp;quot;; for (i = 0; i &amp;lt;= k; i++) { for (j = 0; j &amp;lt; 3; j++) cout&amp;lt;&amp;lt;sp[i][j] &amp;lt;&amp;lt;&amp;quot; &amp;quot;; cout&amp;lt;&amp;lt;&amp;quot;\n&amp;quot;; } getch(); }  OUTPUT Enter the order of matrix: 3 3 Enter the elements: 0 1 0 2 0 0 0 0 3 The sparse matrix is: 3 3 3 0 1 1 1 0 2 2 2 3  Write a C++ program to find the transpose of a matrix using the given sparse matrix #include&amp;lt;iostream.</description>
     </item>
     
   </channel>

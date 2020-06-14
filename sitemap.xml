@@ -918,6 +918,16 @@
   </url>
   
   <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/java-projects/</loc>
+    <lastmod>2011-06-27T19:07:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2011-06-27-projects/</loc>
+    <lastmod>2011-06-27T19:07:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dhanoopbhaskar.github.io/tags/applet/</loc>
     <lastmod>2011-06-27T18:52:00+05:30</lastmod>
   </url>
@@ -1228,11 +1238,175 @@
   </url>
   
   <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-11-18-catching-a-fish-in-c/</loc>
+    <lastmod>2010-11-18T18:49:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-11-18-sinking-of-titanic/</loc>
+    <lastmod>2010-11-18T18:47:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunset-in-c/</loc>
+    <lastmod>2010-11-18T18:46:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-11-18-rotation-of-fan-in-c/</loc>
+    <lastmod>2010-11-18T18:44:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunrise-in-c/</loc>
+    <lastmod>2010-11-18T18:44:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-11-18-analog-clock-in-c/</loc>
+    <lastmod>2010-11-18T18:42:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-11-18-mid-point-ellipse-drawing-algorithm/</loc>
+    <lastmod>2010-11-18T18:41:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-11-18-line-clipping-in-c/</loc>
+    <lastmod>2010-11-18T18:39:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-in-c-to-generate-recursive-descend-parser/</loc>
+    <lastmod>2010-05-28T17:40:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-generate-symbol-table/</loc>
+    <lastmod>2010-05-28T17:38:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-print-comments-in-a-given-program/</loc>
+    <lastmod>2010-05-28T17:36:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-check-the-syntax-of-for-loops/</loc>
+    <lastmod>2010-05-28T17:34:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-perform-macro-expansion/</loc>
+    <lastmod>2010-05-28T17:31:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-05-28-wap-to-check-the-correctness-of-braces/</loc>
+    <lastmod>2010-05-28T17:30:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-05-28-write-a-program-in-c-to-perform-token-separation/</loc>
+    <lastmod>2010-05-28T17:14:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-05-25-tcp-programming-in-java/</loc>
+    <lastmod>2010-05-25T12:13:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/dbms/</loc>
+    <lastmod>2010-01-10T00:29:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/sql/</loc>
+    <lastmod>2010-01-10T00:29:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/sql/</loc>
+    <lastmod>2010-01-10T00:29:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-university-exam-registration-system/</loc>
+    <lastmod>2010-01-10T00:29:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-recruitment-database/</loc>
+    <lastmod>2010-01-10T00:27:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/</loc>
+    <lastmod>2010-01-10T00:25:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-library-management-system/</loc>
+    <lastmod>2010-01-10T00:22:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-hospital-management/</loc>
+    <lastmod>2010-01-10T00:19:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-bank-account/</loc>
+    <lastmod>2010-01-10T00:17:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-student-database/</loc>
+    <lastmod>2010-01-10T00:13:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/c&#43;&#43;/</loc>
+    <lastmod>2009-06-28T19:17:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/data-structures/</loc>
+    <lastmod>2009-06-28T19:17:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2009-06-28-some-data-structure-programs/</loc>
+    <lastmod>2009-06-28T19:17:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2009-04-30-c-scientific-calculator/</loc>
+    <lastmod>2009-04-30T18:54:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/oops/</loc>
+    <lastmod>2009-04-30T18:54:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/blog/2009-04-23-data-structure-programs-in-c/</loc>
+    <lastmod>2009-04-23T19:10:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dhanoopbhaskar.github.io/tags/c/cpp/</loc>
   </url>
   
   <url>
     <loc>https://dhanoopbhaskar.github.io/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://dhanoopbhaskar.github.io/tags/pl/sql/</loc>
   </url>
   
 </urlset>

@@ -1,0 +1,6093 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>DATA STRUCTURE PROGRAMS IN C&#43;&#43; - The Insane Techie</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="DATA STRUCTURE PROGRAMS IN C&#43;&#43;">
+<meta itemprop="description" content="Write a C&#43;&#43; program to find the sparse of a matrix #include&lt;iostream.h&gt; #include&lt;conio.h&gt; void main() { int a[50][50], sp[50][50], i, j, k = 0, m, n; clrscr(); cout&lt;&lt;&quot;\n Enter the order of matrix: &quot;; cin&gt;&gt;m&gt;&gt;n; cout&lt;&lt;&quot;\n Enter the elements: &quot;; for (i = 0; i &lt; m; i&#43;&#43;) { for (j = 0; j &lt; n; j&#43;&#43;) { cin&gt;&gt;a[i][j]; if (a[i][j] != 0) { k&#43;&#43;; sp[k][0] = i; sp[k][1] = j; sp[k][2] = a[i][j]; } } } sp[0][0] = m; sp[0][1] = n; sp[0][2] = k; cout&lt;&lt;&quot;\n The sparse matrix is:\n&quot;; for (i = 0; i &lt;= k; i&#43;&#43;) { for (j = 0; j &lt; 3; j&#43;&#43;) cout&lt;&lt;sp[i][j] &lt;&lt;&quot; &quot;; cout&lt;&lt;&quot;\n&quot;; } getch(); }  OUTPUT Enter the order of matrix: 3 3 Enter the elements: 0 1 0 2 0 0 0 0 3 The sparse matrix is: 3 3 3 0 1 1 1 0 2 2 2 3  Write a C&#43;&#43; program to find the transpose of a matrix using the given sparse matrix #include&lt;iostream.">
+<meta itemprop="datePublished" content="2009-04-23T19:10:00&#43;05:30" />
+<meta itemprop="dateModified" content="2009-04-23T19:10:00&#43;05:30" />
+<meta itemprop="wordCount" content="14639">
+
+
+
+<meta itemprop="keywords" content="C/CPP,data structures," /><meta property="og:title" content="DATA STRUCTURE PROGRAMS IN C&#43;&#43;" />
+<meta property="og:description" content="Write a C&#43;&#43; program to find the sparse of a matrix #include&lt;iostream.h&gt; #include&lt;conio.h&gt; void main() { int a[50][50], sp[50][50], i, j, k = 0, m, n; clrscr(); cout&lt;&lt;&quot;\n Enter the order of matrix: &quot;; cin&gt;&gt;m&gt;&gt;n; cout&lt;&lt;&quot;\n Enter the elements: &quot;; for (i = 0; i &lt; m; i&#43;&#43;) { for (j = 0; j &lt; n; j&#43;&#43;) { cin&gt;&gt;a[i][j]; if (a[i][j] != 0) { k&#43;&#43;; sp[k][0] = i; sp[k][1] = j; sp[k][2] = a[i][j]; } } } sp[0][0] = m; sp[0][1] = n; sp[0][2] = k; cout&lt;&lt;&quot;\n The sparse matrix is:\n&quot;; for (i = 0; i &lt;= k; i&#43;&#43;) { for (j = 0; j &lt; 3; j&#43;&#43;) cout&lt;&lt;sp[i][j] &lt;&lt;&quot; &quot;; cout&lt;&lt;&quot;\n&quot;; } getch(); }  OUTPUT Enter the order of matrix: 3 3 Enter the elements: 0 1 0 2 0 0 0 0 3 The sparse matrix is: 3 3 3 0 1 1 1 0 2 2 2 3  Write a C&#43;&#43; program to find the transpose of a matrix using the given sparse matrix #include&lt;iostream." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2009-04-23-data-structure-programs-in-c/" />
+<meta property="article:published_time" content="2009-04-23T19:10:00+05:30" />
+<meta property="article:modified_time" content="2009-04-23T19:10:00+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DATA STRUCTURE PROGRAMS IN C&#43;&#43;"/>
+<meta name="twitter:description" content="Write a C&#43;&#43; program to find the sparse of a matrix #include&lt;iostream.h&gt; #include&lt;conio.h&gt; void main() { int a[50][50], sp[50][50], i, j, k = 0, m, n; clrscr(); cout&lt;&lt;&quot;\n Enter the order of matrix: &quot;; cin&gt;&gt;m&gt;&gt;n; cout&lt;&lt;&quot;\n Enter the elements: &quot;; for (i = 0; i &lt; m; i&#43;&#43;) { for (j = 0; j &lt; n; j&#43;&#43;) { cin&gt;&gt;a[i][j]; if (a[i][j] != 0) { k&#43;&#43;; sp[k][0] = i; sp[k][1] = j; sp[k][2] = a[i][j]; } } } sp[0][0] = m; sp[0][1] = n; sp[0][2] = k; cout&lt;&lt;&quot;\n The sparse matrix is:\n&quot;; for (i = 0; i &lt;= k; i&#43;&#43;) { for (j = 0; j &lt; 3; j&#43;&#43;) cout&lt;&lt;sp[i][j] &lt;&lt;&quot; &quot;; cout&lt;&lt;&quot;\n&quot;; } getch(); }  OUTPUT Enter the order of matrix: 3 3 Enter the elements: 0 1 0 2 0 0 0 0 3 The sparse matrix is: 3 3 3 0 1 1 1 0 2 2 2 3  Write a C&#43;&#43; program to find the transpose of a matrix using the given sparse matrix #include&lt;iostream."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/pencils/" class="nav link"><i class='far fa-newspaper'></i> Pencils</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/archives/" class="nav link"><i class='fas fa-sitemap'></i> Archives</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=DATA%20STRUCTURE%20PROGRAMS%20IN%20C%2b%2b&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f&amp;title=DATA%20STRUCTURE%20PROGRAMS%20IN%20C%2b%2b" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f&amp;title=DATA%20STRUCTURE%20PROGRAMS%20IN%20C%2b%2b" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f&amp;description=DATA%20STRUCTURE%20PROGRAMS%20IN%20C%2b%2b" target="_blank" rel="noopener" class="nav share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://dhanoopbhaskar.github.io/img/main/logo.jpeg" class="circle" width="" alt="Dhanoop Bhaskar" /></a>
+  <header>
+    <h1>The Insane Techie</h1>
+  </header>
+  <main>
+    <p>let's talk with the computers!</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
+
+
+
+
+
+
+<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
+<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/blog/2009-04-23-data-structure-programs-in-c/">DATA STRUCTURE PROGRAMS IN C&#43;&#43;</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2009-04-23 19:10:00.002 &#43;0530 IST">
+      April 23, 2009
+    </time>
+    <span class="author">Dhanoop Bhaskar</span>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=DATA%20STRUCTURE%20PROGRAMS%20IN%20C%2b%2b&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f&amp;title=DATA%20STRUCTURE%20PROGRAMS%20IN%20C%2b%2b" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f&amp;title=DATA%20STRUCTURE%20PROGRAMS%20IN%20C%2b%2b" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f&amp;description=DATA%20STRUCTURE%20PROGRAMS%20IN%20C%2b%2b" target="_blank" rel="noopener" class="nav share-btn pinterest">
+          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2009-04-23-data-structure-programs-in-c%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </section>
+    
+
+    <div class="content">
+      <h3 id="write-a-c-program-to-find-the-sparse-of-a-matrix">Write a C++ program to find the sparse of a matrix</h3>
+<pre><code>#include&lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+void main() {
+    int a[50][50], sp[50][50], i, j, k = 0, m, n;
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the order of matrix: &quot;;
+    cin&gt;&gt;m&gt;&gt;n;
+    cout&lt;&lt;&quot;\n Enter the elements: &quot;;
+    for (i = 0; i &lt; m; i++) {
+        for (j = 0; j &lt; n; j++) {
+            cin&gt;&gt;a[i][j];
+            if (a[i][j] != 0) {
+                k++;
+                sp[k][0] = i;
+                sp[k][1] = j;
+                sp[k][2] = a[i][j];
+            }
+        }
+    }
+    sp[0][0] = m;
+    sp[0][1] = n;
+    sp[0][2] = k;
+    cout&lt;&lt;&quot;\n The sparse matrix is:\n&quot;;
+    for (i = 0; i &lt;= k; i++) {
+        for (j = 0; j &lt; 3; j++)
+            cout&lt;&lt;sp[i][j] &lt;&lt;&quot; &quot;;
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    getch();
+}
+</code></pre>
+<h4 id="output">OUTPUT</h4>
+<pre><code>Enter the order of matrix: 3 3  
+  
+Enter the elements:  
+0 1 0  
+2 0 0  
+0 0 3  
+  
+The sparse matrix is:  
+3 3 3  
+0 1 1  
+1 0 2  
+2 2 3  
+</code></pre>
+<h3 id="write-a-c-program-to-find-the-transpose-of-a-matrix-using-the-given-sparse-matrix">Write a C++ program to find the transpose of a matrix using the given sparse matrix</h3>
+<pre><code>#include&lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+void main() {
+    int a[50][50], sp[50][50], i, j, k = 0, m, n, tsp[50][50], p = 0;
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the order of matrix: &quot;;
+    cin&gt;&gt;m&gt;&gt;n;
+    cout&lt;&lt;&quot;\n Enter the elements: &quot;;
+    for (i = 0; i &lt; m; i++) {
+        for (j = 0; j &lt; n; j++) {
+            cin&gt;&gt;a[i][j];
+            if (a[i][j] != 0) {
+                k++;
+                sp[k][0] = i;
+                sp[k][1] = j;
+                sp[k][2] = a[i][j];
+            }
+        }
+    }
+    sp[0][0] = m;
+    sp[0][1] = n;
+    sp[0][2] = k;
+    cout&lt;&lt;&quot;\n The sparse matrix is:\n&quot;;
+    for (i = 0; i &lt;= k; i++) {
+        for (j = 0; j &lt; 3; j++)
+            cout&lt;&lt;sp[i][j] &lt;&lt;&quot; &quot;;
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    p = 0;
+    for (j = 0; j &lt; n; j++) {
+        for (i = 1; i &lt;= k; i++) {
+            if (sp[i][1] == j) {
+                p++;
+                tsp[p][0] = sp[i][1];
+                tsp[p][1] = sp[i][0];
+                tsp[p][2] = sp[i][2];
+            }
+        }
+    }
+    tsp[0][0] = sp[0][1];
+    tsp[0][1] = sp[0][0];
+    tsp[0][2] = p;
+    cout&lt;&lt;&quot;\n Transpose of sparse \n&quot;;
+    for (i = 0; i &lt;= p; i++) {
+        for (j = 0; j &lt; 3; j++)
+            cout&lt;&lt;tsp[i][j] &lt;&lt;&quot; &quot;;
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+
+    getch();
+}
+</code></pre>
+<h4 id="output-1">OUTPUT</h4>
+<pre><code>Enter the order of matrix: 3 3  
+  
+Enter the elements:  
+1 0 0  
+0 0 2  
+0 3 0  
+  
+The sparse matrix is:  
+3 3 3  
+0 0 1  
+1 2 2  
+2 1 3  
+  
+Transpose of sparse  
+3 3 3  
+0 0 1  
+1 2 3  
+2 1 2  
+</code></pre>
+<h3 id="write-a-c-program-to-find-transpose-of-a-matrix-using-fast-transpose-method">Write a C++ program to find transpose of a matrix using fast transpose method</h3>
+<pre><code>#include&lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+void main() {
+    int a[50][50], sp[50][50], i, j, k = 0, m, n, t, tsp[50][50];
+    int start[50], size[50];
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the order of matrix: &quot;;
+    cin&gt;&gt;m&gt;&gt;n;
+    cout&lt;&lt;&quot;\n Enter the elements: &quot;;
+    for (i = 0; i &lt; m; i++) {
+        for (j = 0; j &lt; n; j++) {
+            cin&gt;&gt;a[i][j];
+            if (a[i][j] != 0) {
+                k++;
+                sp[k][0] = i;
+                sp[k][1] = j;
+                sp[k][2] = a[i][j];
+            }
+        }
+    }
+    sp[0][0] = m;
+    sp[0][1] = n;
+    sp[0][2] = k;
+    cout&lt;&lt;&quot;\n The sparse matrix is:\n&quot;;
+    for (i = 0; i &lt;= k; i++) {
+        for (j = 0; j &lt; 3; j++)
+            cout&lt;&lt;sp[i][j] &lt;&lt;&quot; &quot;;
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    for (i = 0; i &lt; n; i++)
+        size[i] = 0;
+
+    for (i = 1; i &lt;= k; i++) {
+        t = sp[i][1];
+        size[t]++;
+    }
+    start[0] = 1;
+    for (i = 1; i &lt; n; i++)
+        start[i] = start[i - 1] + size[i - 1];
+
+
+    for (i = 1; i &lt;= k; i++) {
+        j = sp[i][1];
+        t = start[j];
+        tsp[t][0] = sp[i][1];
+        tsp[t][1] = sp[i][0];
+        tsp[t][2] = sp[i][2];
+        start[j]++;
+    }
+
+    tsp[0][0] = sp[0][1];
+    tsp[0][1] = sp[0][0];
+    tsp[0][2] = sp[0][2];
+    cout&lt;&lt;&quot;\n Transpose \n&quot;;
+    for (i = 0; i &lt;= k; i++) {
+        for (j = 0; j &lt; 3; j++)
+            cout&lt;&lt;tsp[i][j] &lt;&lt;&quot; &quot;;
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    getch();
+}
+</code></pre>
+<h4 id="output-2">OUTPUT</h4>
+<pre><code>Enter the order of matrix: 3 3  
+  
+Enter the elements:  
+0 1 0  
+2 0 0  
+0 0 5  
+  
+The sparse matrix is:  
+3 3 3  
+0 1 1  
+1 0 2  
+2 2 5  
+  
+Transpose  
+3 3 3  
+0 1 2  
+1 0 1  
+2 2 5  
+</code></pre>
+<h3 id="write-a-c-program-to-convert-the-given-sparse-to-original-matrix">Write a C++ program to convert the given sparse to original matrix</h3>
+<pre><code>#include&lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+#include&lt;process.h&gt;
+
+void main() {
+    int sp[50][50], a[40][40], k, i, j, m, n, r, c;
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the order of sparse matrix: &quot;;
+    cin&gt;&gt;n;
+    cout&lt;&lt;&quot;\n Enter the sparse matrix: &quot;;
+    for (i = 0; i &lt; n; i++)
+        for (j = 0; j &lt; 3; j++)
+            cin&gt;&gt;sp[i][j];
+
+    if (sp[0][2] != (n - 1)) {
+        cout&lt;&lt;&quot;\n Error &quot;;
+        getch();
+        exit(0);
+    }
+
+    for (i = 0; i &lt; 40; i++)
+        for (j = 0; j &lt; 40; j++)
+            a[i][j] = 0;
+
+    m = sp[0][0];
+    n = sp[0][1];
+    k = sp[0][2];
+
+    for (i = 1; i &lt;= k; i++) {
+        r = sp[i][0];
+        c = sp[i][1];
+        a[r][c] = sp[i][2];
+    }
+
+    cout&lt;&lt;&quot;\n The original matrix is: \n&quot;;
+    for (i = 0; i &lt; m; i++) {
+        for (j = 0; j &lt; n; j++)
+            cout&lt;&lt;a[i][j] &lt;&lt;&quot; &quot;;
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    getch();
+}
+</code></pre>
+<h4 id="output-3">OUTPUT</h4>
+<pre><code>Enter the order of sparse matrix: 4  
+  
+Enter the sparse matrix:  
+3 3 3  
+0 1 2  
+1 0 1  
+2 1 3  
+  
+The original matrix is:  
+0 2 0  
+1 0 0  
+0 3 0  
+</code></pre>
+<h3 id="write-a-c-program-to-perform-sparse-matrix-addition">Write a C++ program to perform sparse matrix addition</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+
+void main() {
+    int num, sp1[50][50], i, j, k1 = 0, k2 = 0, k = 0, m1, n1, m2, n2, sp2[50][50], sp[50][50];
+    int m, n;
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the order of matrix1: &quot;;
+    cin&gt;&gt;m1&gt;&gt;n1;
+    cout&lt;&lt;&quot;\n Enter the elements: &quot;;
+    for (i = 0; i &lt; m1; i++) {
+        for (j = 0; j &lt; n1; j++) {
+            cin&gt;&gt;num;
+            if (num != 0) {
+                k1++;
+                sp1[k1][0] = i;
+                sp1[k1][1] = j;
+                sp1[k1][2] = num;
+            }
+        }
+    }
+    sp1[0][0] = m1;
+    sp1[0][1] = n1;
+    sp1[0][2] = k1;
+
+    cout&lt;&lt;&quot;\n Enter the order of matrix2: &quot;;
+    cin&gt;&gt;m2&gt;&gt;n2;
+    cout&lt;&lt;&quot;\n Enter the elements: &quot;;
+    for (i = 0; i &lt; m2; i++) {
+        for (j = 0; j &lt; n2; j++) {
+            cin&gt;&gt;num;
+            if (num != 0) {
+                k2++;
+                sp2[k2][0] = i;
+                sp2[k2][1] = j;
+                sp2[k2][2] = num;
+            }
+        }
+    }
+    sp2[0][0] = m2;
+    sp2[0][1] = n2;
+    sp2[0][2] = k2;
+    i = 1;
+    j = 1;
+    k = 0;
+    while (i &lt;= k1 &amp;&amp; j &lt;= k2) {
+        if (sp1[i][0] == sp2[j][0]) {
+            if (sp1[i][1] &lt; sp2[j][1]) {
+                k++;
+                sp[k][0] = sp1[i][0];
+                sp[k][1] = sp1[i][1];
+                sp[k][2] = sp1[i][2];
+                i++;
+            } else if (sp1[i][1] &gt; sp2[j][1]) {
+                k++;
+                sp[k][0] = sp2[j][0];
+                sp[k][1] = sp2[j][1];
+                sp[k][2] = sp2[j][2];
+                j++;
+            } else {
+                k++;
+                sp[k][0] = sp2[j][0];
+                sp[k][1] = sp2[j][1];
+                sp[k][2] = sp2[j][2] + sp1[i][2];
+                j++;
+                i++;
+            }
+        } else if (sp1[i][0] &lt; sp2[j][0]) {
+            k++;
+            sp[k][0] = sp1[i][0];
+            sp[k][1] = sp1[i][1];
+            sp[k][2] = sp1[i][2];
+            i++;
+        } else if (sp1[i][0] &gt; sp2[j][0]) {
+            k++;
+            sp[k][0] = sp2[j][0];
+            sp[k][1] = sp2[j][1];
+            sp[k][2] = sp2[j][2];
+            j++;
+        }
+    }
+    while (i &lt;= k1) {
+        k++;
+        sp[k][0] = sp1[i][0];
+        sp[k][1] = sp1[i][1];
+        sp[k][2] = sp1[i][2];
+        i++;
+    }
+    while (j &lt;= k2) {
+        k++;
+        sp[k][0] = sp2[j][0];
+        sp[k][1] = sp2[j][1];
+        sp[k][2] = sp2[j][2];
+        j++;
+    }
+    m = ((m1 &gt; m2) ? m1 : m2);
+    n = ((n1 &gt; n2) ? n1 : n2);
+    sp[0][0] = m;
+    sp[0][1] = n;
+    sp[0][2] = k;
+
+    cout&lt;&lt;&quot;\n The sparse of sum matrix is:\n&quot;;
+    for (i = 0; i &lt;= k; i++) {
+        for (j = 0; j &lt; 3; j++)
+            cout&lt;&lt;sp[i][j] &lt;&lt;&quot; &quot;;
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    getch();
+}
+</code></pre>
+<h4 id="output-4">OUTPUT</h4>
+<pre><code>Enter the order of matrix1: 3 3
+
+Enter the elements:
+1 0 0
+0 5 0
+0 0 6
+
+Enter the order of matrix2: 3 3
+
+Enter the elements:
+0 5 0
+0 6 0
+0 0 3
+
+The sparse of sum matrix is:
+3 3 4
+0 0 1
+0 1 5
+1 1 11
+2 2 9
+</code></pre>
+<h3 id="write-a-c-program-to-perform-sparse-multiplication">Write a C++ program to perform sparse multiplication</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+
+void main() {
+    int num, sp1[50][50], mul[50][50], i, j, k1 = 0, k2 = 0, k = 0, m1, n1, m2, n2, sp2[50][50], sp[50][50];
+    int m, n, t;
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the order of matrix1: &quot;;
+    cin&gt;&gt;m1&gt;&gt;n1;
+    cout&lt;&lt;&quot;\n Enter the elements: &quot;;
+    for (i = 0; i &lt; m1; i++) {
+        for (j = 0; j &lt; n1; j++) {
+            cin&gt;&gt;num;
+            if (num != 0) {
+                k1++;
+                sp1[k1][0] = i;
+                sp1[k1][1] = j;
+                sp1[k1][2] = num;
+            }
+        }
+    }
+    sp1[0][0] = m1;
+    sp1[0][1] = n1;
+    sp1[0][2] = k1;
+
+    cout&lt;&lt;&quot;\n Enter the order of matrix2: &quot;;
+    cin&gt;&gt;m2&gt;&gt;n2;
+    cout&lt;&lt;&quot;\n Enter the elements: &quot;;
+    for (i = 0; i &lt; m2; i++) {
+        for (j = 0; j &lt; n2; j++) {
+            cin&gt;&gt;num;
+            if (num != 0) {
+                k2++;
+                sp2[k2][0] = i;
+                sp2[k2][1] = j;
+                sp2[k2][2] = num;
+            }
+        }
+    }
+    sp2[0][0] = m2;
+    sp2[0][1] = n2;
+    sp2[0][2] = k2;
+
+    if (n1 != m2) {
+        cout&lt;&lt;&quot;\n Error &quot;;
+        getch();
+        exit(0);
+    }
+
+    k = 0;
+    for (i = 1; i &lt;= k1; i++) {
+        for (j = 1; j &lt;= k2; j++) {
+            if (sp1[i][1] == sp2[j][0]) {
+                k++;
+                sp[k][0] = sp1[i][0];
+                sp[k][1] = sp2[j][1];
+                sp[k][2] = sp1[i][2] * sp2[j][2];
+            }
+        }
+    }
+
+    sp[0][2] = k;
+    sp[0][0] = m1;
+    sp[0][1] = n2;
+
+    t = 0;
+    for (i = 0; i &lt; sp[0][0]; i++) {
+        for (j = 0; j &lt; sp[0][1]; j++) {
+            for (k1 = 1; k1 &lt;= sp[0][2]; k1++) {
+                if (sp[k1][0] == i &amp;&amp; sp[k1][1] == j) {
+                    t++;
+                    mul[t][0] = sp[k1][0];
+                    mul[t][1] = sp[k1][1];
+                    mul[t][2] = sp[k1][2];
+                }
+            }
+        }
+    }
+
+    mul[0][2] = k;
+    mul[0][0] = m1;
+    mul[0][1] = n2;
+
+    cout&lt;&lt;&quot;\n The sparse of product matrix is:\n&quot;;
+    for (i = 0; i &lt;= t; i++) {
+        for (j = 0; j &lt; 3; j++)
+            cout&lt;&lt;mul[i][j] &lt;&lt;&quot; &quot;;
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+
+    getch();
+}
+</code></pre>
+<h4 id="output-5">OUTPUT</h4>
+<pre><code>Enter the order of matrix1: 3 3
+
+Enter the elements:
+2 0 9
+0 1 0
+0 0 2
+
+Enter the order of matrix2: 3 3
+
+Enter the elements:
+0 0 3
+1 0 1
+2 1 0
+
+The sparse of product matrix is:
+3 3 7
+0 0 18
+0 1 9
+0 2 6
+1 0 1
+1 2 1
+2 0 4
+2 1 2
+</code></pre>
+<h3 id="write-a-c-program-to-convert-an-infix-expression-to-postfix-and-evaluate">Write a C++ program to convert an infix expression to postfix and evaluate</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;stdio.h&quot;
+#include&quot;ctype.h&quot;
+#include&quot;string.h&quot;
+#include&quot;process.h&quot;
+#include&quot;math.h&quot;
+
+int top = -1;
+int stack[50];
+int p;
+void evaluate(char[], int);
+
+void display(char a[], int n) {
+    int i;
+    for (i = 0; i &lt;= n; i++) {
+        cout&lt;&lt;a[i];
+    }
+    cout&lt;&lt;&quot;\n&quot;;
+}
+
+void inpst(char q[]) {
+        char stk[50], tp[50], op, ot;
+        int s = -1, p = -1, j, k, l, h, flg1, flg2;
+        char pcdn[6] = {
+            '-',
+            '+',
+            '/',
+            '*',
+            '^',
+            '\0'
+        };
+        int pval[5] = {
+            1,
+            1,
+            2,
+            2,
+            3
+        };
+
+        for (int i = 0; q[i] != '\0'; i++) {
+            flg1 = flg2 = -1;
+            if (isalpha(q[i])) {
+                p++;
+                tp[p] = q[i];
+
+            } else if (q[i] == '(') {
+                s++;
+                stk[s] = q[i];
+
+            } else if (q[i] == ')') {
+                for (j = s; j &gt;= 0; j--) {
+                    if (stk[s] == '(')
+                        break;
+
+                    if (stk[j] != '(') {
+                        p++;
+                        tp[p] = stk[j];
+
+                        s--;
+
+                    }
+                }
+
+                s--;
+
+
+            } else {
+                op = q[i];
+                flg1 = -1;
+                /* to find precedence value */
+                for (h = 0; pcdn[h] != '\0'; h++) {
+                    if (op == pcdn[h]) {
+                        flg1 = pval[h];
+                        break;
+                    }
+                }
+
+                /* check for higher precedence operator */
+
+                for (k = s; k &gt;= 0; k--) {
+                    flg2 = -1;
+                    ot = stk[k];
+
+                    for (h = 0; pcdn[h] != '\0'; h++) {
+                        if (ot == pcdn[h]) {
+                            flg2 = pval[h];
+                            break;
+                        }
+                    }
+
+                    if (flg2 &gt; flg1) {
+                        p++;
+                        tp[p] = ot;
+                        for (l = k; l {
+                                stk[k] = stk[k + 1];
+                            }
+                            s--;
+
+                        }
+
+
+                    }
+                    s++;
+                    stk[s] = op;
+                }
+            }
+
+            while (s &gt;= 0) {
+                p++;
+                tp[p] = stk[s];
+                s--;
+            }
+
+            cout&lt;&lt;&quot;\n The post fix expression is: &quot;;
+            display(tp, p);
+
+            evaluate(tp, p);
+        }
+
+        int result(int a, int b, char op) {
+            int c = 0;
+
+            switch (op) {
+                case '+':
+                    c = a + b;
+                    break;
+                case '-':
+                    c = a - b;
+                    break;
+                case '*':
+                    c = a * b;
+                    break;
+                case '/':
+                    if (b != 0)
+                        c = a / b;
+                    else {
+                        cout&lt;&lt;&quot;\n Error: &quot;;
+                        getch();
+                        exit(0);
+                    }
+                    break;
+                case '^':
+                    c = (int) pow(a, b);
+                    break;
+                case '%':
+                    c = a % b;
+                    break;
+            }
+            return c;
+        }
+
+        void push(int item) {
+            stack[++top] = item;
+        }
+
+        int pop() {
+            int s;
+            if (top &gt;= 0) {
+                s = stack[top];
+                top--;
+                return s;
+            } else
+                return 0;
+        }
+
+        void evaluate(char post[], int p) {
+            int a, b, v = 0, q;
+            top = -1;
+
+            for (int i = 0; i &lt;= p; i++) {
+                if (isalpha(post[i])) {
+                    cout&lt;&lt;&quot;\n Enter value for &quot; &lt;&lt;post[i] &lt;&lt;&quot;: &quot;;
+                    cin&gt;&gt;q;
+                    push(q);
+                    continue;
+                } else {
+                    a = pop();
+                    b = pop();
+                    v = result(a, b, post[i]);
+                    push(v);
+                }
+                a = b = 0;
+            }
+
+        }
+
+        void main() {
+            char q[50];
+            clrscr();
+            cout&lt;&lt;&quot;\n Enter the infix expression: &quot;;
+            gets(q);
+            inpst(q);
+            cout&lt;&lt;&quot;\n Value of expression &quot; &lt;&lt;stack[top];
+            getch();
+        }
+</code></pre>
+<h4 id="output-6">OUTPUT</h4>
+<pre><code>Enter the infix expression: a * b + c * d
+
+The post fix expression is: ab * cd * +
+
+Enter value for a: 2
+
+Enter value for b: 3
+
+Enter value for c: 4
+
+Enter value for d: 5
+
+Value of expression 26
+</code></pre>
+<h3 id="write-a-c-program-to-implement-stack-operations">Write a C++ program to implement stack operations</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+int stk[50], top = -1, i, j, max, num, ch;
+
+void push() {
+    top++;
+    cout&lt;&lt;&quot;\n Enter the item: &quot;;
+    cin&gt;&gt;num;
+    stk[top] = num;
+}
+
+void pop() {
+    cout&lt;&lt;&quot;\n Popped &quot; &lt;&lt;stk[top];
+    top--;
+}
+
+void display() {
+    cout&lt;&lt;&quot;\n ---------------------\n&quot;;
+    cout&lt;&lt;&quot;TOP&gt;&gt;&quot;;
+    for (i = top; i &gt;= 0; i--)
+        cout&lt;&lt;stk[i] &lt;&lt;&quot; &quot;;
+    cout&lt;&lt;&quot;\n ---------------------&quot;;
+}
+void main() {
+
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the limit: &quot;;
+    cin&gt;&gt;max;
+    do {
+        cout&lt;&lt;&quot;\n\n STACK\n&quot;;
+        cout&lt;&lt;&quot;\n1.Push\n2.Pop\n3.Display\n4.Exit&quot;;
+        cout&lt;&lt;&quot;\n Enter the choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                if (top &gt;= max - 1) {
+                    cout&lt;&lt;&quot;\n Stack full: &quot;;
+                    continue;
+                }
+                push();
+                break;
+            case 2:
+                if (top == -1) {
+                    cout&lt;&lt;&quot;\n Stack empty: &quot;;
+                    continue;
+                }
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                cout&lt;&lt;&quot;.......Thanking you.......&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n INVALID KEY-IN &quot;;
+        }
+    } while (1);
+
+}
+</code></pre>
+<h4 id="output-7">OUTPUT</h4>
+<pre><code>Enter the limit: 3
+
+
+STACK
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 23
+
+
+STACK
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 96
+
+
+STACK
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter the choice: 3
+
+    -- -- -- -- -- -- -- -- -- -- -
+    TOP&gt;&gt;96 56 23
+    -- -- -- -- -- -- -- -- -- -- -
+
+    STACK
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter the choice: 2
+
+Popped 96
+
+STACK
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter the choice: 3
+
+    -- -- -- -- -- -- -- -- -- -- -
+    TOP&gt;&gt;56 23
+    -- -- -- -- -- -- -- -- -- -- -
+
+    STACK
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter the choice: 4     
+
+.......Thanking you.......
+</code></pre>
+<h3 id="write-a-c-program-to-reverse-a-string-using-stack">Write a C++ program to reverse a string using stack</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+#include&quot;string.h&quot;
+
+void revstk(char str[]) {
+    char stk[50];
+    int top, i;
+    for (i = 0; str[i] != '\0'; i++)
+        stk[i] = str[i];
+
+    top = --i;
+    cout&lt;&lt;&quot;\n Reversed string: &quot;;
+    for (i = top; i &gt;= 0; i--)
+        cout&lt;&lt;stk[i];
+
+    return;
+}
+
+void main() {
+    char str[50];
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter a string:&quot;;
+    gets(str);
+    revstk(str);
+    getch();
+}
+</code></pre>
+<h4 id="output-8">OUTPUT</h4>
+<pre><code>Enter a string: english
+
+Reversed string: hsilgne
+</code></pre>
+<h3 id="write-a-c-program-to-implement-simple-queue-operations">Write a C++ program to implement simple queue operations</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+int que[50], rear = -1, front = -1, i, j, max, num, ch;
+
+void insert() {
+    rear++;
+    cout&lt;&lt;&quot;\n Enter the item: &quot;;
+    cin&gt;&gt;num;
+    que[rear] = num;
+    if (front == -1)
+        front = 0;
+}
+
+void delet() {
+    cout&lt;&lt;&quot;\n Deleted &quot; &lt;&lt;que[front];
+    if (front == rear)
+        front = rear = -1;
+    else
+        front++;
+}
+
+void display() {
+    if (front == -1) {
+        cout&lt;&lt;&quot;\n\t\t\t QUEUE EMPTY &quot;;
+        return;
+    }
+    cout&lt;&lt;&quot;\n -----------------------------\n&quot;;
+    cout&lt;&lt;&quot;FRONT&gt;&gt;&quot;;
+    for (i = front; i &lt;= rear; i++)
+        cout&lt;&lt;que[i] &lt;&lt;&quot; &quot;;
+    cout&lt;&lt;&quot; &lt;&lt;REAR&quot;;
+    cout&lt;&lt;&quot;\n -----------------------------&quot;;
+}
+void main() {
+
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the limit: &quot;;
+    cin&gt;&gt;max;
+    do {
+        cout&lt;&lt;&quot;\n\n SIMPLE QUEUE\n&quot;;
+        cout&lt;&lt;&quot;\n1.Insert\n2.Delete\n3.Display\n4.Exit&quot;;
+        cout&lt;&lt;&quot;\n Enter the choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                if (rear + 1 &gt; max - 1) {
+                    cout&lt;&lt;&quot;\n\t\t\t Queue full: &quot;;
+                    continue;
+                }
+                insert();
+                break;
+            case 2:
+                if (front == -1 || front &gt; rear) {
+                    cout&lt;&lt;&quot;\n\t\t\t Queue empty: &quot;;
+                    continue;
+                }
+                delet();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                cout&lt;&lt;&quot;.......Thanking you.......&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t\t\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+
+}
+</code></pre>
+<h4 id="output-9">OUTPUT</h4>
+<pre><code>Enter the limit: 2
+
+
+SIMPLE QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 23
+
+
+SIMPLE QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 96
+
+
+SIMPLE QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 3
+
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+    FRONT&gt;&gt;23 96 &lt;&lt;REAR
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+
+    SIMPLE QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 2
+
+Deleted 23
+
+SIMPLE QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 3
+
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+    FRONT&gt;&gt;96 &lt;&lt;REAR
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+    SIMPLE QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 4
+    .......Thanking you.......
+</code></pre>
+<h3 id="write-a-c-program-to-implement-circular-queue-operations">Write a C++ program to implement circular queue operations</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+int que[50], rear = -1, front = -1, i, j, max, num, ch;
+
+void insert() {
+    rear = (rear + 1) % max;
+    cout&lt;&lt;&quot;\n Enter the item: &quot;;
+    cin&gt;&gt;num;
+    que[rear] = num;
+    if (front == -1)
+        front = 0;
+}
+
+void delet() {
+    cout&lt;&lt;&quot;\n Deleted &quot; &lt;&lt;que[front];
+    if (front == rear)
+        front = rear = -1;
+    else
+        front = (front + 1) % max;
+}
+
+void display() {
+    if (front == -1) {
+        cout&lt;&lt;&quot;\n QUEUE EMPTY &quot;;
+        return;
+    }
+    cout&lt;&lt;&quot;\n -----------------------------\n&quot;;
+    cout&lt;&lt;&quot;FRONT&gt;&gt;&quot;;
+    if (rear &lt; front) {
+        for (i = front; i &lt; max; i++)
+            cout&lt;&lt;que[i] &lt;&lt;&quot; &quot;;
+        for (i = 0; i &lt;= rear; i++)
+            cout&lt;&lt;que[i] &lt;&lt;&quot; &quot;;
+    } else
+        for (i = front; i &lt;= rear; i++)
+            cout&lt;&lt;que[i] &lt;&lt;&quot; &quot;;
+    cout&lt;&lt;&quot; &lt;&lt;REAR&quot;;
+    cout&lt;&lt;&quot;\n -----------------------------&quot;;
+}
+void main() {
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the limit: &quot;;
+    cin&gt;&gt;max;
+    do {
+        cout&lt;&lt;&quot;\n\n CIRCULAR QUEUE\n&quot;;
+        cout&lt;&lt;&quot;\n1.Insert\n2.Delete\n3.Display\n4.Exit&quot;;
+        cout&lt;&lt;&quot;\n Enter the choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                if ((front == (rear + 1) % max)) {
+                    cout&lt;&lt;&quot;\n Queue full: &quot;;
+                    continue;
+                }
+                insert();
+                break;
+            case 2:
+                if (front == -1) {
+                    cout&lt;&lt;&quot;\n Queue empty: &quot;;
+                    continue;
+                }
+                delet();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                cout&lt;&lt;&quot;.......Thanking you.......&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n INVALID KEY-IN &quot;;
+        }
+    } while (1);
+}
+</code></pre>
+<h4 id="output-10">OUTPUT</h4>
+<pre><code>Enter the limit: 2
+
+
+CIRCULAR QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 44
+
+
+CIRCULAR QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 56
+
+
+CIRCULAR QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 3
+
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+    FRONT&gt;&gt;44 56 &lt;&lt;REAR
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+
+CIRCULAR QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 2
+
+Deleted 44
+
+CIRCULAR QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 99
+
+
+CIRCULAR QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 3
+
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+    FRONT&gt;&gt;56 99 &lt;&lt;REAR
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+CIRCULAR QUEUE
+
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 4
+    .......Thanking you.......
+</code></pre>
+<h3 id="write-a-c-program-to-implement-double-ended-queue-operations">Write a C++ program to implement double ended queue operations</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+int que[50], rear = -1, front = -1, i, j, max, num, ch;
+
+void r_insert() {
+    rear++;
+    cout&lt;&lt;&quot;\n Enter the item: &quot;;
+    cin&gt;&gt;num;
+    que[rear] = num;
+    if (front == -1)
+        front = 0;
+}
+
+void f_insert() {
+    if (front == -1)
+        front = rear = 0;
+    else if (front &gt; 0)
+        front--;
+
+    cout&lt;&lt;&quot;\n Enter the item: &quot;;
+    cin&gt;&gt;num;
+    que[front] = num;
+
+}
+
+void r_delet() {
+    cout&lt;&lt;&quot;\n Deleted &quot; &lt;&lt;que[rear];
+    if (front == rear)
+        front = rear = -1;
+    else
+        rear--;
+}
+
+void f_delet() {
+    cout&lt;&lt;&quot;\n Deleted &quot; &lt;&lt;que[front];
+    if (front == rear)
+        front = rear = -1;
+    else
+        front++;
+}
+
+void display() {
+    if (front == -1) {
+        cout&lt;&lt;&quot;\n\t\t\t QUEUE EMPTY &quot;;
+        return;
+    }
+    cout&lt;&lt;&quot;\n -----------------------------\n&quot;;
+    cout&lt;&lt;&quot;FRONT&gt;&gt;&quot;;
+    for (i = front; i &lt;= rear; i++)
+        cout&lt;&lt;que[i] &lt;&lt;&quot; &quot;;
+    cout&lt;&lt;&quot; &lt;&lt;REAR&quot;;
+    cout&lt;&lt;&quot;\n -----------------------------&quot;;
+}
+void main() {
+
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the limit: &quot;;
+    cin&gt;&gt;max;
+    do {
+        cout&lt;&lt;&quot;\n\n DE-QUEUE\n&quot;;
+        cout&lt;&lt;&quot;\n1.Insert at rear\n2.Insert at front\n3.Delete at front\n4.Delete at rear\n5.Display\n6.Exit&quot;;
+        cout&lt;&lt;&quot;\n Enter the choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                if (rear + 1 &gt; max - 1) {
+                    cout&lt;&lt;&quot;\n\t\t\t Queue full: &quot;;
+                    continue;
+                }
+                r_insert();
+                break;
+            case 2:
+                if (front == 0) {
+                    cout&lt;&lt;&quot;\n\t\t\t Cannot insert: &quot;;
+                    continue;
+                }
+                f_insert();
+                break;
+            case 3:
+                if (front == -1 || front &gt; rear) {
+                    cout&lt;&lt;&quot;\n\t\t\t Queue empty: &quot;;
+                    continue;
+                }
+                f_delet();
+                break;
+            case 4:
+                if (front == -1 || front &gt; rear) {
+                    cout&lt;&lt;&quot;\n\t\t\t Queue empty: &quot;;
+                    continue;
+                }
+                r_delet();
+                break;
+            case 5:
+                display();
+                break;
+            case 6:
+                cout&lt;&lt;&quot;.......Thanking you.......&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t\t\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+
+}
+</code></pre>
+<h4 id="output-11">OUTPUT</h4>
+<pre><code>Enter the limit: 3
+
+DE - QUEUE
+
+1. Insert at rear
+2. Insert at front
+3. Delete at front
+4. Delete at rear
+5. Display
+6. Exit
+
+Enter the choice: 2
+
+Enter the item: 23
+
+DE - QUEUE
+
+1. Insert at rear
+2. Insert at front
+3. Delete at front
+4. Delete at rear
+5. Display
+6. Exit
+Enter the choice: 1
+
+Enter the item: 44
+
+DE - QUEUE
+
+1. Insert at rear
+2. Insert at front
+3. Delete at front
+4. Delete at rear
+5. Display
+6. Exit
+Enter the choice: 1
+
+Enter the item: 96
+
+DE - QUEUE
+
+1. Insert at rear
+2. Insert at front
+3. Delete at front
+4. Delete at rear
+5. Display
+6. Exit
+Enter the choice: 5
+
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+    FRONT&gt;&gt;23 44 96 &lt;&lt;REAR
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+    DE - QUEUE
+
+1. Insert at rear
+2. Insert at front
+3. Delete at front
+4. Delete at rear
+5. Display
+6. Exit
+Enter the choice: 3
+
+Deleted 23
+
+DE - QUEUE
+
+1. Insert at rear
+2. Insert at front
+3. Delete at front
+4. Delete at rear
+5. Display
+6. Exit
+Enter the choice: 4
+
+Deleted 96
+
+DE - QUEUE
+
+1. Insert at rear
+2. Insert at front
+3. Delete at front
+4. Delete at rear
+5. Display
+6. Exit
+Enter the choice: 5
+
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+    FRONT&gt;&gt;44 &lt;&lt;REAR
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+    DE - QUEUE
+
+1. Insert at rear
+2. Insert at front
+3. Delete at front
+4. Delete at rear
+5. Display
+6. Exit
+Enter the choice: 6
+    .......Thanking you.......
+</code></pre>
+<h3 id="write-a-c-program-to-implement-priority-queue-operations">Write a C++ program to implement priority queue operations</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+int que[50], rear = -1, front = -1, i, j, max, item, ch;
+struct p_que {
+    int num;
+    int pr;
+};
+class pro {
+    public:
+    void insert(p_que ob[]);
+    void delet(p_que ob[]);
+    void display(p_que ob[]);
+};
+
+
+void pro::insert(p_que ob[]) {
+    rear++;
+    cout&lt;&lt;&quot;\n Enter the item: &quot;;
+    cin&gt;&gt;item;
+    ob[rear].num = item;
+    cout&lt;&lt;&quot;\n Enter the priority: &quot;;
+    cin&gt;&gt;ob[rear].pr;
+    if (front == -1)
+        front = 0;
+}
+
+void pro::delet(p_que ob[]) {
+    p_que temp;
+    int big = ob[front].pr;
+    int p = 0;
+    for (int i = front + 1; i &lt;= rear; i++) {
+        if (ob[i].pr &gt; big) {
+            big = ob[i].pr;
+            p = i;
+        }
+    }
+
+    for (i = p; i &lt;= rear; i++) {
+        ob[i].num = ob[i + 1].num;
+        ob[i].pr = ob[i + 1].pr;
+    }
+
+    if (front == rear)
+        front = rear = -1;
+    else
+        rear--;
+}
+
+void pro::display(p_que ob[]) {
+    if (front == -1) {
+        cout&lt;&lt;&quot;\n\t\t\t QUEUE EMPTY &quot;;
+        return;
+    }
+    cout&lt;&lt;&quot;\n -----------------------------\n\n&quot;;
+    cout&lt;&lt;&quot;FRONT&gt;&gt;Pr &quot;;
+    for (i = front; i &lt;= rear; i++)
+        printf(&quot;%3d&quot;, ob[i].pr);
+    cout&lt;&lt;&quot; &lt;&lt;REAR&quot;;
+    cout&lt;&lt;&quot;\n\n Data&quot;;
+    for (i = front; i &lt;= rear; i++)
+        printf(&quot;%3d&quot;, ob[i].num);
+
+    cout&lt;&lt;&quot;\n -----------------------------&quot;;
+}
+
+void main() {
+    p_que o[50];
+    pro pp;
+    clrscr();
+    cout&lt;&lt;&quot;\n Enter the limit: &quot;;
+    cin&gt;&gt;max;
+    do {
+        cout&lt;&lt;&quot;\n\n PRIORITY QUEUE\n&quot;;
+        cout&lt;&lt;&quot;\n1.Insert\n2.Delete\n3.Display\n4.Exit&quot;;
+        cout&lt;&lt;&quot;\n Enter the choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                if (rear + 1 &gt; max - 1) {
+                    cout&lt;&lt;&quot;\n\t\t\t Queue full: &quot;;
+                    continue;
+                }
+                pp.insert(o);
+                break;
+            case 2:
+                if (front == -1 || front &gt; rear) {
+                    cout&lt;&lt;&quot;\n\t\t\t Queue empty: &quot;;
+                    continue;
+                }
+                pp.delet(o);
+                break;
+            case 3:
+                pp.display(o);
+                break;
+            case 4:
+                cout&lt;&lt;&quot;.......Thanking you.......&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t\t\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+
+}
+</code></pre>
+<h4 id="output-12">OUTPUT</h4>
+<pre><code>Enter the limit: 3
+
+
+PRIORITY QUEUE
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 23
+
+Enter the priority: 5
+
+
+PRIORITY QUEUE
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 44
+
+Enter the priority: 6
+
+
+PRIORITY QUEUE
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 1
+
+Enter the item: 96
+
+Enter the priority: 7
+
+
+PRIORITY QUEUE
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+
+Enter the choice: 3
+
+
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+    FRONT&gt;&gt;Pr 5 6 7 &lt;&lt;REAR
+
+Data 23 44 96
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+PRIORITY QUEUE
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 2
+
+
+PRIORITY QUEUE
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 3
+
+    -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+    FRONT&gt;&gt;Pr 5 6 &lt;&lt;REAR
+
+Data 23 44
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+PRIORITY QUEUE
+
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter the choice: 4
+    .......Thanking you.......
+</code></pre>
+<h3 id="write-a-c-program-to-represent-a-polynomial">Write a C++ program to represent a polynomial</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+class poly {
+    int i, n;
+    struct rep {
+        int co;
+        int ex;
+    }
+    r[10];
+
+    public:
+    void read();
+    void disp();
+};
+
+void poly::read() {
+    cout&lt;&lt;&quot;\n Enter the number of terms in the polynomial: &quot;;
+    cin&gt;&gt;n;
+    cout&lt;&lt;&quot;\n Enter the coefficient and exponent: &quot;;
+
+    for (i = 0; i &lt; n; i++) {
+        cout&lt;&lt;&quot;\n Term &quot; &lt;&lt;i + 1 &lt;&lt;&quot;: &quot;;
+        cin&gt;&gt;r[i].co&gt;&gt;r[i].ex;
+    }
+}
+
+void poly::disp() {
+    cout&lt;&lt;&quot;\nThe polynomial is:\n\n&quot;;
+    for (i = 0; i &lt; n - 1; i++) {
+        cout&lt;&lt;r[i].co &lt;&lt;&quot;x^&quot; &lt;&lt;r[i].ex &lt;&lt;&quot;+&quot;;
+    }
+    cout&lt;&lt;r[i].co &lt;&lt;&quot;x^&quot; &lt;&lt;r[i].ex;
+}
+
+void main() {
+    clrscr();
+    poly ob;
+    ob.read();
+    ob.disp();
+    getch();
+}
+</code></pre>
+<h4 id="output-13">OUTPUT</h4>
+<pre><code>Enter the number of terms in the polynomial: 3
+
+Enter the coefficient and exponent:
+Term 1: 5 2
+
+Term 2: 6 1
+
+Term 3: 7 0
+
+The polynomial is:
+
+5 x ^ 2 + 6 x ^ 1 + 7 x ^ 0
+</code></pre>
+<h3 id="write-a-c-program-to-perform-polynomial-addition">Write a C++ program to perform polynomial addition</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+class poly {
+    int i, n;
+    struct rep {
+        int co;
+        int ex;
+    }
+    r[10];
+
+    public:
+    void read();
+    void sum(poly, poly);
+    void disp();
+};
+
+void poly::read() {
+    cout&lt;&lt;&quot;\n Enter the number of terms in the polynomial: &quot;;
+    cin&gt;&gt;n;
+    cout&lt;&lt;&quot;\n Enter the coefficient and exponent: &quot;;
+
+    for (i = 0; i &lt; n; i++) {
+        cout&lt;&lt;&quot;\n Term &quot; &lt;&lt;i + 1 &lt;&lt;&quot;: &quot;;
+        cin&gt;&gt;r[i].co&gt;&gt;r[i].ex;
+    }
+}
+
+void poly::disp() {
+    cout&lt;&lt;&quot;\n.........................\n&quot;;
+    for (i = 0; i &lt; n - 1; i++) {
+        cout&lt;&lt;r[i].co &lt;&lt;&quot;x^&quot; &lt;&lt;r[i].ex &lt;&lt;&quot;+&quot;;
+    }
+    cout&lt;&lt;r[i].co &lt;&lt;&quot;x^&quot; &lt;&lt;r[i].ex;
+    cout&lt;&lt;&quot;\n\n&quot;;
+}
+
+void poly::sum(poly c1, poly c2) {
+    int i = 0, j = 0, k = 0, t;
+
+    while (i &lt; c1.n &amp;&amp; j &lt; c2.n) { //1
+        if (c1.r[i].ex == c2.r[j].ex) {
+            r[k].co = c1.r[i].co + c2.r[j].co;
+            r[k].ex = c1.r[i].ex;
+            i++, j++, k++;
+        } else if (c1.r[i].ex &gt; c2.r[j].ex) {
+            r[k].co = c1.r[i].co;
+            r[k].ex = c1.r[i].ex;
+            i++, k++;
+        } else if (c1.r[i].ex &lt; c2.r[j].ex) {
+            r[k].co = c2.r[j].co;
+            r[k].ex = c2.r[j].ex;
+            j++, k++;
+        }
+    } //1
+
+    while (i &lt; c1.n) {
+        r[k].co = c1.r[i].co;
+        r[k].ex = c1.r[i].ex;
+        i++, k++;
+    }
+
+    while (j &lt; c2.n) {
+        r[k].co = c2.r[j].co;
+        r[k].ex = c2.r[j].ex;
+        j++, k++;
+    }
+    n = k--;
+
+
+}
+
+void main() {
+    clrscr();
+    poly c1, c2, c3;
+    c1.read();
+    c2.read();
+    cout&lt;&lt;&quot;\n Polynomial 1: &quot;;
+    c1.disp();
+    cout&lt;&lt;&quot;\n Polynomial 2: &quot;;
+    c2.disp();
+    c3.sum(c1, c2);
+    cout&lt;&lt;&quot;\n Sum polynomial : &quot;;
+    c3.disp();
+    getch();
+}
+</code></pre>
+<h4 id="output-14">OUTPUT</h4>
+<pre><code>Enter the number of terms in the polynomial: 3
+
+Enter the coefficient and exponent:
+Term 1: 4 2
+
+Term 2: 5 1
+
+Term 3: 3 0
+
+Enter the number of terms in the polynomial: 2
+
+Enter the coefficient and exponent:
+Term 1: 8 3
+
+Term 2: 5 1
+
+
+Polynomial 1:
+.........................
+4 x ^ 2 + 5 x ^ 1 + 3 x ^ 0
+
+
+Polynomial 2:
+.........................
+8 x ^ 3 + 5 x ^ 1
+
+
+Sum polynomial:
+.........................
+8 x ^ 3 + 4 x ^ 2 + 10 x ^ 1 + 3 x ^ 0
+</code></pre>
+<h3 id="write-a-c-program-to-implement-a-singly-linked-list">Write a C++ program to implement a singly linked list</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+class node {
+    int data;
+    node * next;
+    public:
+    void display();
+    void insertend();
+    void insertbeg();
+    void insertsp();
+    void delbeg();
+    void delend();
+    void delsp();
+};
+node * head, * temp, * start, * t;
+
+void node::display() {
+    temp = start;
+    cout&lt;&lt;&quot;\n Data list: &quot;;
+    while (temp != NULL) {
+        cout&lt;&lt;temp - &gt; data &lt;&lt;&quot; &quot;;
+        temp = temp - &gt; next;
+    }
+}
+
+void node::insertbeg() {
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+
+    if (start == NULL) {
+        head - &gt; next = NULL;
+        start = head;
+    } else {
+        head - &gt; next = start;
+        start = head;
+    }
+}
+
+void node::insertend() {
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+
+    if (start == NULL) {
+        start = head;
+    } else {
+        temp = start;
+        while (temp - &gt; next != NULL) {
+            temp = temp - &gt; next;
+        }
+        temp - &gt; next = head;
+        head - &gt; next = NULL;
+    }
+}
+
+void node::insertsp() {
+    int pos, i;
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+    cout&lt;&lt;&quot;\n Enter the position: &quot;;
+    cin&gt;&gt;pos;
+    if (pos == 1)
+        insertbeg();
+    else {
+        temp = start;
+        for (i = 1; i &lt; pos - 1; i++) {
+            temp = temp - &gt; next;
+        }
+        head - &gt; next = temp - &gt; next;
+        temp - &gt; next = head;
+
+    }
+}
+
+void node::delbeg() {
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+    else {
+        //temp=start;
+        cout&lt;&lt;start - &gt; data;
+        start = start - &gt; next;
+        delete temp;
+    }
+}
+
+void node::delend() {
+    temp = start;
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+
+    else if (temp - &gt; next == NULL) {
+        cout&lt;&lt;temp - &gt; data;
+        start = NULL;
+        delete temp;
+    } else {
+        while (temp - &gt; next != NULL) {
+            t = temp;
+            temp = temp - &gt; next;
+        }
+        cout&lt;&lt;temp - &gt; data;
+        t - &gt; next = NULL;
+        delete temp;
+    }
+}
+
+void node::delsp() {
+
+    if (start == NULL) {
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+        return;
+    }
+
+    int num;
+    cout&lt;&lt;&quot;\n Enter the item: &quot;;
+    cin&gt;&gt;num;
+    temp = start;
+    while (temp != NULL) {
+        if (temp - &gt; data == num) {
+            if (temp == start)
+                delbeg();
+            else {
+                cout&lt;&lt;temp - &gt; data;
+                t - &gt; next = temp - &gt; next;
+                delete temp;
+            }
+        } else {
+            t = temp;
+            temp = temp - &gt; next;
+        }
+
+    }
+}
+
+void main() {
+    int ch;
+    node ob;
+    start = NULL;
+    clrscr();
+    do {
+        //clrscr();
+        cout&lt;&lt;&quot;\n\n\t...SINGLY LINKED LIST...\n&quot;;
+        cout&lt;&lt;&quot;\n1.INSERT AT BEGINNING\n2.INSERT AT END\n3.INSERT AT A SPECIFIED POSITION&quot;;
+        cout&lt;&lt;&quot;\n4.DELETION FROM BEGINNING\n5.DELETION FROM END\n6.DELETION FROM A SPECIFIED POSITION&quot;;
+        cout&lt;&lt;&quot;\n7.DISPLAY\n8.EXIT\n\n&quot;;
+        cout&lt;&lt;&quot;\n Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                ob.insertbeg();
+                break;
+            case 2:
+                ob.insertend();
+                break;
+            case 3:
+                ob.insertsp();
+                break;
+            case 4:
+                ob.delbeg();
+                break;
+            case 5:
+                ob.delend();
+                break;
+            case 6:
+                ob.delsp();
+                break;
+            case 7:
+                ob.display();
+                break;
+            case 8:
+                cout&lt;&lt;&quot;\n\t ....THANKS....&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+}
+</code></pre>
+<h4 id="output-15">OUTPUT</h4>
+<pre><code>...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 1
+
+Enter the data: 23
+
+
+...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 1
+
+Enter the data: 44
+
+
+...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 2
+
+Enter the data: 56
+
+
+...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 3
+
+Enter the data: 99
+
+Enter the position: 2
+
+
+...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 7
+
+Data list: 44 99 23 56
+
+
+
+...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 4
+44
+
+
+...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 5
+56
+
+...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 6
+
+Enter the item: 23
+23
+
+...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 7
+
+Data list: 99
+
+...SINGLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 8
+
+....THANKS....
+</code></pre>
+<h3 id="write-a-c-program-to-implement-a-circular-linked-list">Write a C++ program to implement a circular linked list</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+#define MAX 25
+
+class node {
+    int data;
+    node * next;
+    public:
+    void display();
+    void insertend();
+    void insertbeg();
+    void insertsp();
+    void delbeg();
+    void delend();
+    void delsp();
+};
+node * head, * temp, * start, * t, * last;
+
+void node::display() {
+    temp = start;
+    cout&lt;&lt;&quot;\n Data list: &quot;;
+    while (temp != last) {
+        cout&lt;&lt;temp - &gt; data &lt;&lt;&quot; &quot;;
+        temp = temp - &gt; next;
+    }
+    cout&lt;&lt;last - &gt; data;
+}
+
+void node::insertbeg() {
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+
+    if (start == NULL) {
+        start = last = head;
+        last - &gt; next = NULL;
+    } else {
+        head - &gt; next = start;
+        last - &gt; next = head;
+        start = head;
+    }
+}
+
+void node::insertend() {
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+
+    if (start == NULL) {
+        start = last = head;
+        last - &gt; next = head;
+    } else {
+        last - &gt; next = head;
+        head - &gt; next = start;
+        last = head;
+    }
+}
+
+void node::insertsp() {
+    int pos, i;
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+    cout&lt;&lt;&quot;\n Enter the position: &quot;;
+    cin&gt;&gt;pos;
+    if (pos == 1) {
+        insertbeg();
+        return;
+    } else {
+        temp = start;
+        for (i = 1; i &lt; pos - 1; i++) {
+            temp = temp - &gt; next;
+        }
+        head - &gt; next = temp - &gt; next;
+        temp - &gt; next = head;
+
+    }
+}
+
+void node::delbeg() {
+
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+
+    else if (start - &gt; next == start) {
+        temp = start;
+        cout&lt;&lt;temp - &gt; data;
+        start = last = NULL;
+        delete temp;
+    } else {
+        temp = start;
+        cout&lt;&lt;start - &gt; data;
+        start = start - &gt; next;
+        last - &gt; next = start;
+        delete temp;
+    }
+}
+
+void node::delend() {
+    temp = start;
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+    else if (start - &gt; next == start) {
+        temp = start;
+        cout&lt;&lt;temp - &gt; data;
+        start = last = NULL;
+        delete temp;
+    } else {
+        temp = start;
+        if (temp - &gt; next != last) {
+            temp = temp - &gt; next;
+        }
+        t = last;
+        cout&lt;&lt;t - &gt; data;
+        temp - &gt; next = start;
+        last = temp;
+        delete t;
+    }
+}
+
+void node::delsp() {
+
+    if (start == NULL) {
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+        return;
+    }
+
+    int item;
+    cout&lt;&lt;&quot;\n Enter the item: &quot;;
+    cin&gt;&gt;item;
+    int i = 0;
+    for (temp = start; i &lt; MAX; i++, t = temp, temp = temp - &gt; next) {
+        if (temp - &gt; data == item) {
+            if (temp == start) {
+                delbeg();
+                return;
+            } else if (temp == last) {
+                delend();
+                return;
+            } else {
+                t - &gt; next = temp - &gt; next;
+                delete temp;
+                return;
+            }
+        }
+
+
+    }
+}
+
+void main() {
+    int ch;
+    node ob;
+    start = last = NULL;
+    clrscr();
+    do {
+        cout&lt;&lt;&quot;\n\n\t...CIRCULAR LINKED LIST...\n&quot;;
+        cout&lt;&lt;&quot;\n1.INSERT AT BEGINNING\n2.INSERT AT END\n3.INSERT AT A SPECIFIED POSITION&quot;;
+        cout&lt;&lt;&quot;\n4.DELETION FROM BEGINNING\n5.DELETION FROM END\n6.DELETION FROM A SPECIFIED POSITION&quot;;
+        cout&lt;&lt;&quot;\n7.DISPLAY\n8.EXIT\n\n&quot;;
+        cout&lt;&lt;&quot;\n Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                ob.insertbeg();
+                break;
+            case 2:
+                ob.insertend();
+                break;
+            case 3:
+                ob.insertsp();
+                break;
+            case 4:
+                ob.delbeg();
+                break;
+            case 5:
+                ob.delend();
+                break;
+            case 6:
+                ob.delsp();
+                break;
+            case 7:
+                ob.display();
+                break;
+            case 8:
+                cout&lt;&lt;&quot;\n\t ....THANKS....&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+}
+</code></pre>
+<h4 id="output-16">OUTPUT</h4>
+<pre><code>...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 1
+
+Enter the data: 25
+
+
+...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 1
+
+Enter the data: 47
+
+
+...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 2
+
+Enter the data: 58
+
+
+...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 3
+
+Enter the data: 101
+
+Enter the position: 2
+
+
+...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 7
+
+Data list: 47 101 25 58
+
+
+
+...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 4
+47
+
+...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 5
+58
+
+...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 6
+
+Enter the item: 25
+25
+
+...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 7
+
+Data list: 101
+
+...CIRCULAR LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 8
+
+....THANKS....
+</code></pre>
+<h3 id="write-a-c-program-to-implement-a-doubly-linked-list">Write a C++ program to implement a doubly linked list</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+class node {
+    int data;
+    node * next;
+    node * prev;
+    public:
+    void display();
+    void insertend();
+    void insertbeg();
+    void insertsp();
+    void delbeg();
+    void delend();
+    void delsp();
+};
+
+node * head, * temp, * start, * last, * t, * t1, * t2;
+
+void node::display() {
+    temp = start;
+    if (start == NULL) {
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+        return;
+    }
+    cout&lt;&lt;&quot;\n Data list: &quot;;
+    while (temp != last) {
+        cout&lt;&lt;temp - &gt; data &lt;&lt;&quot; &quot;;
+        temp = temp - &gt; next;
+    }
+    cout&lt;&lt;last - &gt; data;
+}
+
+void node::insertbeg() {
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+    head - &gt; prev = NULL;
+    if (start == NULL) {
+        head - &gt; next = NULL;
+        start = last = head;
+    } else {
+        head - &gt; next = start;
+        start - &gt; prev = head;
+        start = head;
+    }
+}
+
+void node::insertend() {
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+    head - &gt; next = NULL;
+    if (start == NULL) {
+        start = last = head;
+        head - &gt; prev = NULL;
+    } else {
+        head - &gt; prev = last;
+        last - &gt; next = head;
+        last = head;
+    }
+}
+
+void node::insertsp() {
+    int pos, i;
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the position: &quot;;
+    cin&gt;&gt;pos;
+    if (pos == 1)
+        insertbeg();
+    else {
+        cout&lt;&lt;&quot;\n Enter the data: &quot;;
+        cin&gt;&gt;head - &gt; data;
+        temp = start;
+        for (i = 1; i &lt; pos - 1; i++) {
+            temp = temp - &gt; next;
+        }
+        if (temp - &gt; next == NULL)
+            last = head;
+        head - &gt; next = temp - &gt; next;
+        temp - &gt; next = head;
+
+    }
+}
+
+void node::delbeg() {
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+    else if (start == last) {
+        cout&lt;&lt;start - &gt; data;
+        temp = start;
+        start = last = NULL;
+        delete temp;
+    } else {
+        temp = start;
+        cout&lt;&lt;start - &gt; data;
+        start = start - &gt; next;
+        start - &gt; prev = NULL;
+        delete temp;
+    }
+}
+
+void node::delend() {
+    temp = start;
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+    else if (start == last) {
+        cout&lt;&lt;last - &gt; data;
+        temp = last;
+        start = last = NULL;
+        delete temp;
+    } else {
+        temp = last;
+        cout&lt;&lt;last - &gt; data;
+        last = last - &gt; prev;
+        last - &gt; next = NULL;
+        delete temp;
+    }
+}
+
+void node::delsp() {
+
+    if (start == NULL) {
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+        return;
+    }
+
+    int num;
+    cout&lt;&lt;&quot;\n Enter the item: &quot;;
+    cin&gt;&gt;num;
+    temp = start;
+    while (temp != NULL) {
+        if (temp - &gt; data == num) {
+            if (temp == start) {
+                delbeg();
+                return;
+            } else if (temp == last) {
+                delend();
+                return;
+            } else {
+                cout&lt;&lt;temp - &gt; data;
+                t1 = temp - &gt; prev;
+                t2 = temp - &gt; next;
+                t1 - &gt; next = t2;
+                t2 - &gt; prev = t1;
+                delete temp;
+            }
+        } else {
+            temp = temp - &gt; next;
+        }
+    }
+}
+
+void main() {
+    int ch;
+    node ob;
+    start = last = NULL;
+    clrscr();
+    do {
+        cout&lt;&lt;&quot;\n\t...DOUBLY LINKED LIST...\n&quot;;
+        cout&lt;&lt;&quot;\n1.INSERT AT BEGINNING\n2.INSERT AT END\n3.INSERT AT A SPECIFIED
+        POSITION &quot;;
+        cout&lt;&lt;&quot;\n4.DELETION FROM BEGINNING\n5.DELETION FROM END\n6.DELETION
+        FROM A SPECIFIED POSITION &quot;;
+        cout&lt;&lt;&quot;\n7.DISPLAY\n8.EXIT\n&quot;;
+        cout&lt;&lt;&quot;\n Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+
+        switch (ch) {
+            case 1:
+                ob.insertbeg();
+                break;
+            case 2:
+                ob.insertend();
+                break;
+            case 3:
+                ob.insertsp();
+                break;
+            case 4:
+                ob.delbeg();
+                break;
+            case 5:
+                ob.delend();
+                break;
+            case 6:
+                ob.delsp();
+                break;
+            case 7:
+                ob.display();
+                break;
+            case 8:
+                cout&lt;&lt;&quot;\n\t ....THANKS....&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+}
+</code></pre>
+<h4 id="output-17">OUTPUT</h4>
+<pre><code>...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 1
+
+Enter the data: 45
+
+...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 1
+
+Enter the data: 25
+
+...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 2
+
+Enter the data: 96
+
+...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 3
+
+Enter the position: 3
+
+Enter the data: 56
+
+...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 7
+
+Data list: 25 45 56 96
+
+...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 4
+25
+
+...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 5
+96
+
+...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 6
+
+Enter the item: 56
+
+...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 7
+
+Data list: 45
+
+...DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 8
+
+....THANKS....
+</code></pre>
+<h3 id="write-a-c-program-to-implement-a-circular-doubly-linked-list">Write a C++ program to implement a circular doubly linked list</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+
+class node {
+    int data;
+    node * next;
+    node * prev;
+    public:
+    node() {}
+    void create();
+    void display();
+    void insertend();
+    void insertbeg();
+    void insertsp();
+    void delbeg();
+    void delend();
+    void delsp();
+};
+
+node * temp, * t, * curr, * t1, * t2;
+static node * head;
+
+void node::create() {
+    head = new node;
+    head - &gt; data = 0;
+    head - &gt; next = head;
+    head - &gt; prev = head;
+}
+
+void node::display() {
+    if (head - &gt; next == head)
+        cout&lt;&lt;&quot;\n DATA LIST EMPTY &quot;;
+    else {
+        temp = head;
+        cout&lt;&lt;&quot;\n Data list: &quot;;
+        while (temp - &gt; next != head) {
+            temp = temp - &gt; next;
+            cout&lt;&lt;temp - &gt; data &lt;&lt;&quot; &quot;;
+        }
+    }
+
+}
+
+void node::insertbeg() {
+    curr = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;curr - &gt; data;
+    if (head - &gt; next == head) {
+        head - &gt; next = curr;
+        curr - &gt; prev = head;
+        head - &gt; prev = curr;
+        curr - &gt; next = head;
+        return;
+    }
+    temp = head - &gt; next;
+    curr - &gt; prev = head;
+    head - &gt; next = curr;
+    curr - &gt; next = temp;
+    temp - &gt; prev = curr;
+
+}
+
+void node::insertend() {
+    curr = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;curr - &gt; data;
+    temp = head - &gt; prev;
+    curr - &gt; next = head;
+    head - &gt; prev = curr;
+    curr - &gt; prev = temp;
+    temp - &gt; next = curr;
+}
+
+void node::insertsp() {
+    int pos, k;
+    cout&lt;&lt;&quot;\n Enter the position: &quot;;
+    cin&gt;&gt;pos;
+    temp = head;
+    if (pos == 1)
+        insertbeg();
+    else {
+        for (k = 1; k &lt; pos; k++) {
+            temp = temp - &gt; next;
+        }
+        curr = new node;
+        cout&lt;&lt;&quot;\n Enter the data: &quot;;
+        cin&gt;&gt;curr - &gt; data;
+        t = temp - &gt; next;
+        temp - &gt; next = curr;
+        curr - &gt; prev = temp;
+        curr - &gt; next = t;
+        t - &gt; prev = curr;
+    }
+
+}
+
+void node::delbeg() {
+    if (head - &gt; next == head)
+        cout&lt;&lt;&quot;\n DELETION IMPOSSIBLE &quot;;
+
+    else {
+        temp = head - &gt; next;
+        cout&lt;&lt;temp - &gt; data;
+        t = head - &gt; next = temp - &gt; next;
+        t - &gt; prev = head;
+        delete temp;
+    }
+}
+
+void node::delend() {
+    if (head - &gt; prev == head)
+        cout&lt;&lt;&quot;\n DELETION IMPOSSIBLE &quot;;
+
+    else {
+        temp = head - &gt; prev;
+        cout&lt;&lt;temp - &gt; data;
+        t = head - &gt; prev = temp - &gt; prev;
+        t - &gt; next = head;
+        delete temp;
+    }
+}
+
+void node::delsp() {
+    if (head - &gt; next == head) {
+        cout&lt;&lt;&quot;\n DELETION IMPOSSIBLE &quot;;
+        return;
+    } else {
+        int item;
+        cout&lt;&lt;&quot;\n Enter the item: &quot;;
+        cin&gt;&gt;item;
+        temp = head;
+        do {
+            if (temp - &gt; data == item) {
+                if (temp - &gt; prev == head) {
+                    delbeg();
+                    return;
+                } else if (temp - &gt; next == head) {
+                    delend();
+                    return;
+                } else {
+                    t1 = temp - &gt; prev;
+                    t2 = temp - &gt; next;
+                    t1 - &gt; next = t2;
+                    t2 - &gt; prev = t1;
+                    delete temp;
+                    return;
+                }
+            } else {
+                temp = temp - &gt; next;
+            }
+        } while (temp != head);
+    }
+
+}
+
+void main() {
+    int ch;
+    node ob;
+    clrscr();
+    ob.create();
+    do {
+        cout&lt;&lt;&quot;\n\n\t...CIRCULAR DOUBLY LINKED LIST...\n&quot;;
+        cout&lt;&lt;&quot;\n1.INSERT AT BEGINNING\n2.INSERT AT END\n3.INSERT AT A SPECIFIED POSITION&quot;;
+        cout&lt;&lt;&quot;\n4.DELETION FROM BEGINNING\n5.DELETION FROM END\n6.DELETION FROM A SPECIFIED POSITION&quot;;
+        cout&lt;&lt;&quot;\n7.DISPLAY\n8.EXIT\n\n&quot;;
+        cout&lt;&lt;&quot;\n Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                ob.insertbeg();
+                break;
+            case 2:
+                ob.insertend();
+                break;
+            case 3:
+                ob.insertsp();
+                break;
+            case 4:
+                ob.delbeg();
+                break;
+            case 5:
+                ob.delend();
+                break;
+            case 6:
+                ob.delsp();
+                break;
+            case 7:
+                ob.display();
+                break;
+            case 8:
+                cout&lt;&lt;&quot;\n\t ....THANKS....&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+
+}
+</code></pre>
+<h4 id="output-18">OUTPUT</h4>
+<pre><code>...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 1
+
+Enter the data: 21
+
+
+...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 1
+
+Enter the data: 41
+
+
+...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 2
+
+Enter the data: 51
+
+
+...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 3
+
+Enter the position: 2
+
+Enter the data: 91
+
+
+...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 7
+
+Data list: 41 91 21 51
+
+
+
+...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 4
+41
+
+...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 5
+51
+
+...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+Enter your choice: 6
+
+Enter the item: 21
+21
+
+...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 7
+
+Data list: 91
+
+...CIRCULAR DOUBLY LINKED LIST...
+
+1. INSERT AT BEGINNING
+2. INSERT AT END
+3. INSERT AT A SPECIFIED POSITION
+4. DELETION FROM BEGINNING
+5. DELETION FROM END
+6. DELETION FROM A SPECIFIED POSITION
+7. DISPLAY
+8. Exit
+
+
+Enter your choice: 8
+
+....THANKS....
+</code></pre>
+<h3 id="write-a-c-program-to-implement-a-stack-using-linked-list">Write a C++ program to implement a stack using linked list</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+class node {
+    int data;
+    node * next;
+    public:
+    void display();
+    void push();
+    void pop();
+};
+node * head, * temp, * start, * t;
+
+void node::display() {
+    temp = start;
+    if (temp == NULL)
+        cout&lt;&lt;&quot;\n STACK EMPTY &quot;;
+    else
+        cout&lt;&lt;&quot;\n STACK: &quot;;
+    while (temp != NULL) {
+        cout&lt;&lt;temp - &gt; data &lt;&lt;&quot; &quot;;
+        temp = temp - &gt; next;
+    }
+}
+
+
+void node::push() {
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+    head - &gt; next = NULL;
+
+    if (start == NULL) {
+        start = head;
+    } else {
+        temp = start;
+        while (temp - &gt; next != NULL) {
+            temp = temp - &gt; next;
+        }
+        temp - &gt; next = head;
+    }
+}
+
+void node::pop() {
+    temp = start;
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n STACK EMPTY &quot;;
+
+    else if (temp - &gt; next == NULL) {
+        cout&lt;&lt;temp - &gt; data;
+        start = NULL;
+        delete temp;
+    } else {
+        while (temp - &gt; next != NULL) {
+            t = temp;
+            temp = temp - &gt; next;
+        }
+        cout&lt;&lt;temp - &gt; data;
+        t - &gt; next = NULL;
+        delete temp;
+    }
+}
+
+void main() {
+    int ch;
+    node ob;
+    start = NULL;
+    clrscr();
+    do {
+
+        cout&lt;&lt;&quot;\n\n\t...STACK USING LINKED LIST...\n&quot;;
+        cout&lt;&lt;&quot;\n1.PUSH\n2.POP\n3.DISPLAY\n4.EXIT\n\n&quot;;
+        cout&lt;&lt;&quot;\n Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                ob.push();
+                break;
+            case 2:
+                ob.pop();
+                break;
+            case 3:
+                ob.display();
+                break;
+            case 4:
+                cout&lt;&lt;&quot;\n\t ....THANKS....&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+}
+</code></pre>
+<h4 id="output-19">OUTPUT</h4>
+<pre><code>...STACK USING LINKED LIST...
+
+1. PUSH
+2. POP
+3. DISPLAY
+4. Exit
+
+Enter your choice: 1
+
+Enter the data: 23
+
+...STACK USING LINKED LIST...
+
+1. PUSH
+2. POP
+3. DISPLAY
+4. Exit
+
+Enter your choice: 1
+
+Enter the data: 45
+
+...STACK USING LINKED LIST...
+
+1. PUSH
+2. POP
+3. DISPLAY
+4. Exit
+
+Enter your choice: 3
+
+STACK: 23 45
+
+...STACK USING LINKED LIST...
+
+1. PUSH
+2. POP
+3. DISPLAY
+4. Exit
+
+Enter your choice: 2
+45
+
+...STACK USING LINKED LIST...
+
+1. PUSH
+2. POP
+3. DISPLAY
+4. Exit
+
+Enter your choice: 3
+
+STACK: 23
+
+...STACK USING LINKED LIST...
+
+1. PUSH
+2. POP
+3. DISPLAY
+4. Exit
+
+Enter your choice: 4
+
+....THANKS....
+</code></pre>
+<h3 id="write-a-c-program-to-implement-a-simple-queue-using-linked-list">Write a C++ program to implement a simple queue using linked list</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+class node {
+    int data;
+    node * next;
+    public:
+    void display();
+    void insert();
+    void del();
+};
+
+node * head, * temp, * start, * t;
+
+void node::display() {
+    temp = start;
+    if (temp == NULL)
+        cout&lt;&lt;&quot;\n QUEUE EMPTY &quot;;
+    else
+        cout&lt;&lt;&quot;\n QUEUE: &quot;;
+    while (temp != NULL) {
+        cout&lt;&lt;temp - &gt; data &lt;&lt;&quot; &quot;;
+        temp = temp - &gt; next;
+    }
+}
+
+void node::insert() {
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+    head - &gt; next = NULL;
+
+    if (start == NULL) {
+        start = head;
+    } else {
+        temp = start;
+        while (temp - &gt; next != NULL) {
+            temp = temp - &gt; next;
+        }
+        temp - &gt; next = head;
+    }
+}
+
+void node::del() {
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n QUEUE EMPTY &quot;;
+    else {
+        temp = start;
+        cout&lt;&lt;start - &gt; data;
+        start = start - &gt; next;
+        delete temp;
+    }
+}
+
+void main() {
+    int ch;
+    node ob;
+    start = NULL;
+    clrscr();
+    do {
+        cout&lt;&lt;&quot;\n\t...QUEUE USING LINKED LIST...\n&quot;;
+        cout&lt;&lt;&quot;\n1.INSERTION\n2.DELETION\n3.DISPLAY\n4.EXIT\n&quot;;
+        cout&lt;&lt;&quot;\n Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                ob.insert();
+                break;
+            case 2:
+                ob.del();
+                break;
+            case 3:
+                ob.display();
+                break;
+            case 4:
+                cout&lt;&lt;&quot;\n\t ....THANKS....&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+}
+</code></pre>
+<h4 id="output-20">OUTPUT</h4>
+<pre><code>...QUEUE USING LINKED LIST...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 1
+
+Enter the data: 25
+
+...QUEUE USING LINKED LIST...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 1
+
+Enter the data: 50
+
+...QUEUE USING LINKED LIST...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 3
+
+QUEUE: 25 50
+
+...QUEUE USING LINKED LIST...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 2
+25
+
+...QUEUE USING LINKED LIST...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 3
+
+QUEUE: 50
+
+...QUEUE USING LINKED LIST...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 4
+
+....THANKS....
+</code></pre>
+<h3 id="write-a-c-program-to-implement-a-circular-queue-using-linked-list">Write a C++ program to implement a circular queue using linked list</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+class node {
+    int data;
+    node * next;
+    public:
+    node() {}
+    void display();
+    void insert();
+    void del();
+};
+
+node * head, * temp, * start, * t, * last;
+
+void node::display() {
+    temp = start;
+    cout&lt;&lt;&quot;\n Data list: &quot;;
+    while (temp != last) {
+        cout&lt;&lt;temp - &gt; data &lt;&lt;&quot; &quot;;
+        temp = temp - &gt; next;
+    }
+    cout&lt;&lt;last - &gt; data;
+}
+
+void node::insert() {
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+
+    if (start == NULL) {
+        start = last = head;
+        last - &gt; next = head;
+    } else {
+        last - &gt; next = head;
+        head - &gt; next = start;
+        last = head;
+    }
+
+}
+
+void node::del() {
+
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+
+    else if (start - &gt; next == start) {
+        temp = start;
+        cout&lt;&lt;temp - &gt; data;
+        start = last = NULL;
+        delete temp;
+
+    } else {
+        temp = start;
+        cout&lt;&lt;start - &gt; data;
+        start = start - &gt; next;
+        last - &gt; next = start;
+        delete temp;
+    }
+}
+
+void main() {
+    int ch;
+    node ob;
+    start = last = NULL;
+
+    clrscr();
+    do {
+        cout&lt;&lt;&quot;\n\n\t...CIRCULAR QUEUE USING LL...\n&quot;;
+        cout&lt;&lt;&quot;\n1.INSERTION\n2.DELETION\n3.DISPLAY\n4.EXIT\n\n&quot;;
+        cout&lt;&lt;&quot;\n Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                ob.insert();
+                break;
+            case 2:
+                ob.del();
+                break;
+            case 3:
+                ob.display();
+                break;
+            case 4:
+                cout&lt;&lt;&quot;\n\t ....THANKS....&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+}
+</code></pre>
+<h4 id="output-21">OUTPUT</h4>
+<pre><code>...CIRCULAR QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 1
+
+Enter the data: 23
+
+...CIRCULAR QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 1
+
+Enter the data: 44
+
+
+...CIRCULAR QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 3
+
+Data list: 23 44
+
+...CIRCULAR QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 2
+23
+
+
+...CIRCULAR QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 3
+
+Data list: 44
+
+
+...CIRCULAR QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+Enter your choice: 4
+
+....THANKS....
+</code></pre>
+<h3 id="write-a-c-program-to-implement-a-priority-queue-using-linked-list">Write a C++ program to implement a priority queue using linked list</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+class node {
+    int data;
+    int prty;
+    node * next;
+    public:
+    void display();
+    void insert();
+    void del();
+    void delbeg();
+};
+
+node * head, * temp, * start, * t;
+
+void node::display() {
+
+    temp = start;
+    cout&lt;&lt;&quot;\n Data list: &quot;;
+
+    while (temp != NULL) {
+        printf(&quot;%3d &quot;, temp - &gt; data);
+        temp = temp - &gt; next;
+    }
+
+    temp = start;
+    cout&lt;&lt;&quot;\n Priority: &quot;;
+
+    while (temp != NULL) {
+        printf(&quot;%3d &quot;, temp - &gt; prty);
+        temp = temp - &gt; next;
+    }
+
+}
+
+
+void node::insert() {
+
+    head = new node;
+    cout&lt;&lt;&quot;\n Enter the data: &quot;;
+    cin&gt;&gt;head - &gt; data;
+    cout&lt;&lt;&quot;\n Enter the priority: &quot;;
+    cin&gt;&gt;head - &gt; prty;
+    head - &gt; next = NULL;
+
+    if (start == NULL) {
+        start = head;
+    } else {
+        temp = start;
+        while (temp - &gt; next != NULL) {
+            temp = temp - &gt; next;
+        }
+        temp - &gt; next = head;
+
+    }
+
+}
+
+void node::delbeg() {
+    if (start == NULL)
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+    else {
+        cout&lt;&lt;start - &gt; data;
+        start = start - &gt; next;
+        delete temp;
+    }
+}
+
+
+void node::del() {
+
+    if (start == NULL) {
+        cout&lt;&lt;&quot;\n LIST EMPTY &quot;;
+        return;
+    }
+
+    int lp;
+    temp = start;
+    lp = temp - &gt; prty;
+
+    while (temp != NULL) {
+        if (temp - &gt; prty &gt; lp) {
+            lp = temp - &gt; prty;
+        }
+        temp = temp - &gt; next;
+    }
+
+    temp = start;
+    while (temp != NULL) {
+        if (temp - &gt; prty == lp) {
+            if (temp == start) {
+                delbeg();
+                return;
+            } else {
+                cout&lt;&lt;temp - &gt; data;
+                t - &gt; next = temp - &gt; next;
+                delete temp;
+                return;
+            }
+        } else {
+            t = temp;
+            temp = temp - &gt; next;
+        }
+
+    }
+}
+
+void main() {
+    int ch;
+    node ob;
+    start = NULL;
+    clrscr();
+    do {
+        cout&lt;&lt;&quot;\n\n\t...PRIORITY QUEUE USING LL...\n&quot;;
+        cout&lt;&lt;&quot;\n1.INSERTION\n2.DELETION\n3.DISPLAY\n4.EXIT\n\n&quot;;
+        cout&lt;&lt;&quot;\n Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                ob.insert();
+                break;
+            case 2:
+                ob.del();
+                break;
+            case 3:
+                ob.display();
+                break;
+            case 4:
+                cout&lt;&lt;&quot;\n\t ....THANKS....&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t INVALID KEY-IN &quot;;
+        }
+    } while (1);
+}
+</code></pre>
+<h4 id="output-22">OUTPUT</h4>
+<pre><code>...PRIORITY QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+
+Enter your choice: 1
+
+Enter the data: 23
+
+Enter the priority: 5
+
+
+...PRIORITY QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+
+Enter your choice: 1
+
+Enter the data: 96
+
+Enter the priority: 6
+
+
+...PRIORITY QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+
+Enter your choice: 3
+
+Data list: 23 96
+Priority: 5 6
+
+
+...PRIORITY QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+
+Enter your choice: 2
+96
+
+
+...PRIORITY QUEUE USING LL...
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+
+Enter your choice: 3
+
+Data list: 23
+Priority: 5
+
+...PRIORITY QUEUE USING LL...
+
+
+1. INSERTION
+2. DELETION
+3. DISPLAY
+4. Exit
+
+
+Enter your choice: 4
+
+....THANKS....
+</code></pre>
+<h3 id="write-a-c-program-to-perform-polynomial-addition-using-linked-list">Write a C++ program to perform polynomial addition using linked list</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+
+struct node {
+    int co, exp;
+    node * next;
+};
+
+class poly {
+    node * start, * temp, * head;
+    public:
+    poly() {
+        start = NULL;
+    }
+    void create();
+    void display();
+    void add(poly, poly);
+};
+
+void poly::create() {
+    int n;
+    do {
+        head = new node;
+        cout&lt;&lt;&quot;\n Enter values for coefficient and exponent: &quot;;
+        cin&gt;&gt;head - &gt; co&gt;&gt;head - &gt; exp;
+        head - &gt; next = NULL;
+        if (head - &gt; co == 0)
+            goto PROCEED;
+        else if (start == NULL)
+            start = temp = head;
+        else {
+            temp - &gt; next = head;
+            temp = head;
+        }
+
+        PROCEED:
+        cout&lt;&lt;&quot;\n Continue? ,then press \&quot;1\&quot;:&quot;;
+        cin&gt;&gt;n;
+    } while (n == 1);
+}
+
+void poly::display() {
+    temp = start;
+    cout&lt;&lt;&quot;\n\n........................................\n\n\n\t&quot;;
+    while (temp - &gt; next != NULL) {
+        cout&lt;&lt;temp - &gt; co &lt;&lt;&quot;x^&quot; &lt;&lt;temp - &gt; exp &lt;&lt;&quot;+&quot;;
+        temp = temp - &gt; next;
+    }
+    cout&lt;&lt;temp - &gt; co &lt;&lt;&quot;x^&quot; &lt;&lt;temp - &gt; exp;
+    cout&lt;&lt;&quot;\n\n........................................\n&quot;;
+}
+
+void poly::add(poly r1, poly r2) {
+    r1.temp = r1.start;
+    r2.temp = r2.start;
+    while (r1.temp != NULL &amp;&amp; r2.temp != NULL) {
+        if (r1.temp - &gt; exp &gt; r2.temp - &gt; exp) {
+            head = new node;
+            head - &gt; co = r1.temp - &gt; co;
+            head - &gt; exp = r1.temp - &gt; exp;
+            head - &gt; next = NULL;
+            if (start == NULL)
+                start = temp = head;
+            else {
+                temp - &gt; next = head;
+                temp = head;
+            }
+            r1.temp = r1.temp - &gt; next;
+        } else if (r1.temp - &gt; expexp) {
+            head = new node;
+            head - &gt; co = r2.temp - &gt; co;
+            head - &gt; exp = r2.temp - &gt; exp;
+            head - &gt; next = NULL;
+            if (start == NULL)
+                start = temp = head;
+            else {
+                temp - &gt; next = head;
+                temp = head;
+            }
+            r2.temp = r2.temp - &gt; next;
+        } else {
+            head = new node;
+            head - &gt; co = r1.temp - &gt; co + r2.temp - &gt; co;
+            head - &gt; exp = r1.temp - &gt; exp;
+            head - &gt; next = NULL;
+            if (start == NULL)
+                start = temp = head;
+            else {
+                temp - &gt; next = head;
+                temp = head;
+            }
+            r1.temp = r1.temp - &gt; next;
+            r2.temp = r2.temp - &gt; next;
+        }
+    }
+
+    while (r1.temp != NULL) {
+        head = new node;
+        head - &gt; co = r1.temp - &gt; co;
+        head - &gt; exp = r1.temp - &gt; exp;
+        head - &gt; next = NULL;
+        if (start == NULL)
+            start = temp = head;
+        else {
+            temp - &gt; next = head;
+            temp = head;
+        }
+        r1.temp = r1.temp - &gt; next;
+    }
+
+    while (r2.temp != NULL) {
+        head = new node;
+        head - &gt; co = r2.temp - &gt; co;
+        head - &gt; exp = r2.temp - &gt; exp;
+        head - &gt; next = NULL;
+        if (start == NULL)
+            start = temp = head;
+        else {
+            temp - &gt; next = head;
+            temp = head;
+        }
+        r2.temp = r2.temp - &gt; next;
+    }
+
+}
+
+void main() {
+    poly p1, p2, p3;
+    clrscr();
+    cout&lt;&lt;&quot;\n First polynomial...&quot;;
+    p1.create();
+    cout&lt;&lt;&quot;\n Second polynomial...&quot;;
+    p2.create();
+    p3.add(p1, p2);
+    cout&lt;&lt;&quot;\n Result of addition: &quot;;
+    p3.display();
+    getch();
+}
+</code></pre>
+<h4 id="output-23">OUTPUT</h4>
+<pre><code>First polynomial...
+Enter values for coefficient and exponent: 4 3
+
+Continue ? , then press &quot;1&quot; : 1
+
+Enter values for coefficient and exponent: 5 2
+
+Continue ? , then press &quot;1&quot; : 1
+
+Enter values for coefficient and exponent: 3 1
+
+Continue ? , then press &quot;1&quot; : 1
+
+Enter values for coefficient and exponent: 6 0
+
+Continue ? , then press &quot;1&quot; : 0
+
+Second polynomial...
+Enter values for coefficient and exponent: 3 3
+
+Continue ? , then press &quot;1&quot; : 1
+
+Enter values for coefficient and exponent: 2 2
+
+Continue ? , then press &quot;1&quot; : 1
+
+Enter values for coefficient and exponent: 3 1
+
+Continue ? , then press &quot;1&quot; : 1
+
+Enter values for coefficient and exponent: 1 0
+
+Continue ? , then press &quot;1&quot; : 0
+
+Result of addition:
+
+.................
+
+
+7 x ^ 3 + 7 x ^ 2 + 6 x ^ 1 + 7 x ^ 0
+
+.................
+</code></pre>
+<h3 id="write-a-c-program-to-implement-a-binary-tree">Write a C++ program to implement a binary tree</h3>
+<pre><code>#include”iostream.h”
+#include”conio.h”
+#include”process.h”
+#include&quot;stdio.h&quot;
+
+struct node {
+    char data;
+    node * lchild, * rchild;
+};
+
+node * head;
+
+class tree {
+    node * root;
+    public:
+    tree() {
+        root = NULL;
+    }
+    node * read();
+    node * makenode(char);
+    void createtree(node * );
+    void inorder(node * );
+    void preorder(node * );
+    void postorder(node * );
+};
+
+node * tree::read() {
+    char item;
+    cout&lt;&lt;&quot;\n Enter data: &quot;;
+    cin&gt;&gt;item;
+    root = makenode(item);
+    createtree(root);
+    return root;
+}
+
+node * tree::makenode(char x) {
+    head = new node;
+    head - &gt; data = x;
+    head - &gt; lchild = head - &gt; rchild = NULL;
+    return head;
+}
+
+void tree::createtree(node * root) {
+    int ch;
+    char item;
+    if (root != NULL) {
+        cout&lt;&lt;&quot;\n Create left child for &quot; &lt;&lt;root - &gt; data &lt;&lt;&quot; (if so press \&quot;1\&quot;)&quot;;
+        cin&gt;&gt;ch;
+        if (ch == 1) {
+            cout&lt;&lt;&quot;\n Enter data: &quot;;
+            cin&gt;&gt;item;
+            root - &gt; lchild = makenode(item);
+            createtree(root - &gt; lchild);
+        }
+
+        cout&lt;&lt;&quot;\n Create right child for &quot; &lt;&lt;root - &gt; data &lt;&lt;&quot; (if so press \&quot;1\&quot;)&quot;;
+        cin&gt;&gt;ch;
+        if (ch == 1) {
+            cout&lt;&lt;&quot;\n Enter data: &quot;;
+            cin&gt;&gt;item;
+            root - &gt; rchild = makenode(item);
+            createtree(root - &gt; rchild);
+        }
+    }
+}
+
+void tree::inorder(node * root) {
+    if (root != NULL) {
+        inorder(root - &gt; lchild);
+        cout&lt;&lt;root - &gt; data &lt;&lt;&quot; &quot;;
+        inorder(root - &gt; rchild);
+    }
+}
+
+void tree::preorder(node * root) {
+    if (root != NULL) {
+        cout&lt;&lt;root - &gt; data &lt;&lt;&quot; &quot;;
+        preorder(root - &gt; lchild);
+        preorder(root - &gt; rchild);
+    }
+}
+
+void tree::postorder(node * root) {
+    if (root != NULL) {
+        postorder(root - &gt; lchild);
+        postorder(root - &gt; rchild);
+        cout&lt;&lt;root - &gt; data &lt;&lt;&quot; &quot;;
+    }
+}
+
+
+void main() {
+    tree ob;
+    node * root;
+    int ch;
+    clrscr();
+    do {
+        cout&lt;&lt;&quot;\n\n.... BINARY TREE ....\n\n&quot;;
+        cout&lt;&lt;&quot;\n1.Creation\n2.Inorder Traversal\n3.Preorder Traversal&quot;;
+        cout&lt;&lt;&quot;\n4.Postorder Traversal\n5.Exit&quot;;
+        cout&lt;&lt;&quot;\n\t Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+        switch (ch) {
+            case 1:
+                root = ob.read();
+                break;
+            case 2:
+                ob.inorder(root);
+                break;
+            case 3:
+                ob.preorder(root);
+                break;
+            case 4:
+                ob.postorder(root);
+                break;
+            case 5:
+                cout&lt;&lt;&quot;\n\n\t... Thanking You ...&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n Invalid key-in &quot;;
+        }
+
+    } while (1);
+
+}
+</code></pre>
+<h4 id="output-24">OUTPUT</h4>
+<pre><code>....BINARY TREE....
+
+
+1. Creation
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 1
+
+Enter data: A
+
+Create left child for A(if so press &quot;1&quot;) 1
+
+Enter data: B
+
+Create left child for B(if so press &quot;1&quot;) 1
+
+Enter data: C
+
+Create left child for C(if so press &quot;1&quot;) 0
+
+Create right child for C(if so press &quot;1&quot;) 0
+
+Create right child for B(if so press &quot;1&quot;) 1
+
+Enter data: D
+
+Create left child for D(if so press &quot;1&quot;) 0
+
+Create right child for D(if so press &quot;1&quot;) 0
+
+Create right child for A(if so press &quot;1&quot;) 1
+
+Enter data: E
+
+Create left child for E(if so press &quot;1&quot;) 0
+
+Create right child for E(if so press &quot;1&quot;) 0
+
+
+....BINARY TREE....
+
+
+1. Creation
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 2
+C B D A E
+
+....BINARY TREE....
+
+
+1. Creation
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 3
+A B C D E
+
+....BINARY TREE....
+
+
+1. Creation
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 4
+C D B E A
+
+
+....BINARY TREE....
+
+
+1. Creation
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 5
+
+
+...Thanking You...
+</code></pre>
+<h3 id="write-a-c-program-to-implement-binary-search-tree">Write a C++ program to implement Binary Search Tree</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;stdio.h&quot;
+
+struct node {
+    int data;
+    node * left;
+    node * right;
+};
+
+node * root;
+
+class bst {
+    public:
+    bst() {
+        root = NULL;
+    }
+    node * insert(node * , int);
+    void delet(node * , node * );
+    void search(node * , int);
+    node * find(node * , int);
+
+};
+
+node * bst::insert(node * root, int item) {
+    if (root == NULL) {
+        root = new node;
+        root - &gt; data = item;
+        root - &gt; left = root - &gt; right = NULL;
+    } else if (itemdata)
+        root - &gt; left = insert(root - &gt; left, item);
+    else
+        root - &gt; right = insert(root - &gt; right, item);
+
+    return root;
+
+}
+void bst::search(node * root, int item) {
+    if (root == NULL)
+        cout&lt;&lt;&quot;\n Number doesnot exist &quot;;
+    else if (root - &gt; data == item)
+        cout&lt;&lt;&quot;\n Number is present &quot;;
+    else if (itemdata)
+        search(root - &gt; left, item);
+    else
+        search(root - &gt; right, item);
+
+}
+
+node * bst::find(node * root, int item) {
+    node * temp;
+    temp = root;
+    node * parent;
+    while (root != NULL) {
+        if (itemdata) {
+            parent = root;
+            root = root - &gt; left;
+        } else if (item &gt; root - &gt; data) {
+            parent = root;
+            root = root - &gt; right;
+        } else {
+            delet(root, parent);
+            break;
+        }
+    }
+    if (root == NULL) {
+        cout&lt;&lt;&quot;\n Item doesnot exist &quot;;
+    }
+
+    return temp;
+
+}
+
+void bst::delet(node * root, node * parent) {
+
+    if (root - &gt; left == NULL &amp;&amp; root - &gt; right == NULL) //terminal node
+    {
+        if (parent - &gt; left == root)
+            parent - &gt; left = NULL;
+        else
+            parent - &gt; right = NULL;
+
+        return;
+    } else if (root - &gt; left != NULL &amp;&amp; root - &gt; right != NULL) //node with 2 childs
+    {
+        node * ptr, * temp;
+        parent = root;
+        temp = root - &gt; left;
+        ptr = root - &gt; right;
+        if (ptr - &gt; left == NULL) {
+            root - &gt; data = ptr - &gt; data;
+        }
+        while (ptr - &gt; left != NULL) {
+            parent = ptr;
+            ptr = ptr - &gt; left;
+            root - &gt; data = ptr - &gt; data;
+        }
+        root - &gt; left = temp;
+        delete ptr;
+
+        return;
+
+    } else //node with 1 child
+    {
+        if (parent - &gt; left == root) {
+            if (root - &gt; left == NULL)
+                parent - &gt; left = root - &gt; right;
+            else
+                parent - &gt; left = root - &gt; left;
+        } else if (parent - &gt; right == root) {
+            if (root - &gt; left == NULL)
+                parent - &gt; right = root - &gt; right;
+            else
+                parent - &gt; right = root - &gt; left;
+        }
+        return;
+    }
+
+}
+
+void main() {
+    clrscr();
+    bst ob;
+    int item, ch;
+    node * temp;
+    do {
+        cout&lt;&lt;&quot;\n\n ... BINARY SEARCH TREE ... &quot;;
+        cout&lt;&lt;&quot;\n\n1.Insertion\n2.Deletion\n3.Searching\n4.Exit&quot;;
+        cout&lt;&lt;&quot;\n\t Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+
+        switch (ch) {
+            case 1:
+                cout&lt;&lt;&quot;\n Enter an item: &quot;;
+                cin&gt;&gt;item;
+                root = ob.insert(root, item);
+                break;
+            case 2:
+                cout&lt;&lt;&quot;\n Enter the item: &quot;;
+                cin&gt;&gt;item;
+                root = ob.find(root, item);
+                break;
+            case 3:
+                cout&lt;&lt;&quot;\n Enter the item: &quot;;
+                cin&gt;&gt;item;
+                ob.search(root, item);
+                break;
+            case 4:
+                cout&lt;&lt;&quot;\n ... Thanking You ...&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n Invalid key-in &quot;;
+
+        }
+
+    } while (1);
+
+}
+</code></pre>
+<h4 id="output-25">OUTPUT</h4>
+<pre><code>...BINARY SEARCH TREE...
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 1
+
+Enter an item: 25
+
+
+...BINARY SEARCH TREE...
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 1
+
+Enter an item: 10
+
+
+...BINARY SEARCH TREE...
+
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 1
+
+Enter an item: 20
+
+...BINARY SEARCH TREE...
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 1
+
+Enter an item: 5
+
+...BINARY SEARCH TREE...
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 1
+
+Enter an item: 35
+
+
+...BINARY SEARCH TREE...
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 1
+
+Enter an item: 32
+
+...BINARY SEARCH TREE...
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 3
+
+Enter the item: 10
+
+Number is present
+
+
+...BINARY SEARCH TREE...
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 2
+
+Enter the item: 10
+
+
+...BINARY SEARCH TREE...
+
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 3
+
+Enter the item: 10
+
+Number doesnot exist
+
+
+...BINARY SEARCH TREE...
+
+
+1. Insertion
+2. Deletion
+3. Searching
+4. Exit
+
+Enter your choice: 4
+
+...Thanking You...
+</code></pre>
+<h3 id="write-a-c-program-to-create-and-evaluate-an-expression-tree">Write a C++ program to create and evaluate an Expression Tree</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+#include&quot;ctype.h&quot;
+#include &quot;stdio.h&quot;
+
+
+struct node {
+    char data;
+    node * lchild;
+    node * rchild;
+};
+
+node * head;
+char p[50];
+node * stack[50];
+int top = -1;
+float c;
+float v;
+node * q;
+
+class tree {
+    node * root;
+    public:
+    tree() {}
+    float evaluate(node * );
+    node * makenode(char);
+    void createtree();
+    void push(node * );
+    node * pop();
+    float result(float, float, char);
+};
+
+void tree::createtree() {
+    int i = 0;
+    while (p[i] != '\0') {
+        root = makenode(p[i]);
+        if (!isalpha(p[i])) {
+            root - &gt; rchild = pop();
+            root - &gt; lchild = pop();
+        }
+
+        push(root);
+        i++;
+    }
+
+}
+
+void tree::push(node * root) {
+    top++;
+    stack[top] = root;
+}
+
+node * tree::pop() {
+    q = stack[top];
+    top--;
+    return q;
+}
+
+node * tree::makenode(char x) {
+    head = new node;
+    head - &gt; data = x;
+    head - &gt; lchild = head - &gt; rchild = NULL;
+    return head;
+}
+
+float tree::evaluate(node * root) {
+    float a, b;
+    if (!isalpha(root - &gt; lchild - &gt; data))
+        a = evaluate(root - &gt; lchild);
+    else {
+        cout&lt;&lt;&quot;\n Enter the value for &quot; &lt;&lt;root - &gt; lchild - &gt; data &lt;&lt;&quot;: &quot;;
+        cin&gt;&gt;a;
+    }
+
+    if (!isalpha(root - &gt; rchild - &gt; data))
+        b = evaluate(root - &gt; rchild);
+    else {
+        cout&lt;&lt;&quot;\n Enter the value for &quot; &lt;&lt;root - &gt; rchild - &gt; data &lt;&lt;&quot;: &quot;;
+        cin&gt;&gt;b;
+    }
+
+
+    v = result(a, b, root - &gt; data);
+    return v;
+
+}
+
+float tree::result(float a, float b, char op) {
+    float c = 0;
+
+    switch (op) {
+        case '+':
+            c = a + b;
+            break;
+        case '-':
+            c = a - b;
+            break;
+        case '*':
+            c = a * b;
+            break;
+        case '/':
+            if (b != 0)
+                c = a / b;
+            else {
+                cout&lt;&lt;&quot;\n Error: &quot;;
+                getch();
+                exit(0);
+            }
+            break;
+    }
+
+    return c;
+}
+
+void main() {
+    clrscr();
+    float ans;
+    cout&lt;&lt;&quot;\n Enter a postfix expression: &quot;;
+    gets(p);
+    tree ob;
+    ob.createtree();
+    ans = ob.evaluate(stack[top]);
+    cout&lt;&lt;&quot;\n Value of the expression is: &quot; &lt;&lt;ans;
+    getch();
+
+}
+</code></pre>
+<h4 id="output-26">OUTPUT</h4>
+<pre><code>Enter a postfix expression: ab/cd/*
+
+Enter the value for a: 15
+
+Enter the value for b: 5
+
+Enter the value for c: 20
+
+Enter the value for d: 4
+
+Value of the expression is: 15
+</code></pre>
+<h3 id="write-a-c-program-to-implement-various-sorting-techniques">Write a C++ program to implement various Sorting techniques</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+
+int item;
+
+void display(int a[], int n) {
+    cout&lt;&lt;&quot;\n Sorted elements are: \n&quot;;
+
+    for (int i = 0; i &lt; n; i++)
+        cout&lt;&lt;a[i] &lt;&lt;&quot; &quot;;
+}
+
+void bubblesort(int a[], int n) {
+    int i, j, t;
+    for (i = 0; i &lt; n; i++) {
+        for (j = 0; j &lt; n - 1 - i; j++) {
+            if (a[j] &gt; a[j + 1]) {
+                t = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = t;
+            }
+        }
+    }
+
+}
+
+void seletionsort(int a[], int n) {
+    int i, j, t;
+    for (i = 0; i &lt; n; i++) {
+        for (j = i + 1; j &lt; n; j++) {
+            if (a[i] &gt; a[j]) {
+                t = a[i];
+                a[i] = a[j];
+                a[j] = t;
+            }
+        }
+    }
+
+}
+
+void insertionsort(int a[], int n) {
+    int k, j, t;
+    for (k = 1; k &lt; n; k++) {
+        t = a[k];
+        j = k - 1;
+        while (t &lt; a[j] &amp;&amp; j &gt;= 0) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = t;
+    }
+
+}
+
+void quicksort(int a[], int low, int high) {
+    int l, h, key, t;
+    l = low;
+    h = high;
+    key = a[(low + high) / 2];
+
+    do {
+        while (key &gt; a[low])
+            low++;
+        while (key &lt; a[high])
+            high--;
+        if (low &lt;= high) {
+            t = a[low];
+            a[low++] = a[high];
+            a[high--] = t;
+        }
+
+    } while (low &lt;= high);
+
+    if (l &lt; high)
+        quicksort(a, l, high);
+
+    if (low &lt; h)
+        quicksort(a, low, h);
+
+}
+
+void bucketsort(int a[], int n) {
+    int i, j, pass, k, l, div = 1, num = 0, large = a[0];
+    int buck[10], q[15][15];
+
+    for (i = 1; i &lt; n; i++) {
+        if (a[i] &gt; large)
+            large = a[i];
+    }
+
+    while (large &gt; 0) {
+        num++;
+        large = large / 10;
+    }
+
+    for (pass = 0; pass &lt; num; pass++) {
+        for (k = 0; k &lt; 10; k++)
+            buck[k] = 0;
+
+        for (i = 0; i &lt; n; i++) {
+            l = (a[i] / div) % 10;
+            q[l][buck[l]] = a[i];
+            buck[l]++;
+        }
+        i = 0;
+
+        for (k = 0; k &lt; 10; k++)
+            for (j = 0; j &lt; buck[k]; j++) {
+                a[i] = q[k][j];
+                i++;
+            }
+
+        div = div * 10;
+    }
+
+}
+
+void merge(int a[], int low, int mid, int high) {
+    int i, h, j, b[30], k;
+    i = low;
+    h = low;
+    j = mid + 1;
+
+    while (h &lt;= mid &amp;&amp; j &lt;= high) {
+        if (a[h] &lt; a[j]) {
+            b[i] = a[h];
+            h++;
+        } else {
+            b[i] = a[j];
+            j++;
+        }
+        i++;
+    }
+
+    if (h &gt; mid) {
+        for (k = j; k &lt;= high; k++) {
+            b[i] = a[k];
+            i++;
+        }
+    } else {
+        for (k = h; k &lt;= mid; k++) {
+            b[i] = a[k];
+            i++;
+        }
+    }
+
+    for (k = low; k &lt;= high; k++) {
+        a[k] = b[k];
+    }
+
+}
+
+void mergesort(int a[], int low, int high) {
+    int mid;
+    if (low &lt; high) {
+        mid = (low + high) / 2;
+        mergesort(a, low, mid);
+        mergesort(a, mid + 1, high);
+        merge(a, low, mid, high);
+    }
+
+}
+/* for tree sort */
+struct node {
+    int data;
+    node * left;
+    node * right;
+};
+
+node * root;
+
+class bst {
+    public:
+    bst() {
+        root = NULL;
+    }
+    node * insert(node * , int);
+
+};
+
+node * bst::insert(node * root, int item) {
+    if (root == NULL) {
+        root = new node;
+        root - &gt; data = item;
+        root - &gt; left = root - &gt; right = NULL;
+    } else if (itemdata)
+        root - &gt; left = insert(root - &gt; left, item);
+    else
+        root - &gt; right = insert(root - &gt; right, item);
+
+    return root;
+
+}
+
+void inorder(node * root) {
+    if (root != NULL) {
+        inorder(root - &gt; left);
+        cout&lt;&lt;root - &gt; data &lt;&lt;&quot; &quot;;
+        inorder(root - &gt; right);
+    }
+}
+
+void treesort(int a[], int n) {
+    node * root;
+    bst ob;
+    for (int i = 0; i &lt; n; i++) {
+        root = ob.insert(root, a[i]);
+    }
+    cout&lt;&lt;&quot;\n Sorted elements are: \n&quot;;
+    inorder(root);
+}
+
+/* end of tree sort */
+
+void heapsort(int a[], int n) {
+    int i, s, f, item, value;
+    for (i = 0; i &lt; n; i++) {
+        item = a[i];
+        s = i;
+        f = (s - 1) / 2;
+        while (s &gt; 0 &amp;&amp; a[f] &lt; item) {
+            a[s] = a[f];
+            s = f;
+            f = (s - 1) / 2;
+        }
+        a[s] = item;
+    }
+
+    for (i = n - 1; i &gt; 0; i--) {
+        value = a[i];
+        a[i] = a[0];
+        f = 0;
+        if (i == 1)
+            s = -1;
+        else
+            s = 1;
+        if (i &gt; 2 &amp;&amp; a[2] &gt; a[1])
+            s = 2;
+
+        while (s &gt;= 0 &amp;&amp; value &lt; a[s]) {
+            a[f] = a[s];
+            f = s;
+            s = 2 * f + 1;
+            if (s + 1 &lt;= i - 1 &amp;&amp; a[s] s = s + 1;
+                if (s &gt; i - 1)
+                    s = -1;
+        }
+
+            a[f] = value;
+    }
+
+}
+
+
+void main() {
+
+    int a[50], num[50], n, i, flag = 1, ch, low, high;
+    clrscr();
+    do {
+        cout&lt;&lt;&quot;\n..... SORTING ....\n\n&quot;;
+        cout&lt;&lt;&quot;\n1.BUBBLE SORT\n2.SELECTION SORT\n3.INSERTION SORT\n4.QUICK SORT&quot;;
+        cout&lt;&lt;&quot;\n5.RADIX SORT\n6.MERGE SORT\n7.TREE SORT\n8.HEAP SORT\n9.EXIT&quot;;
+        cout&lt;&lt;&quot;\n\t Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+
+        if (ch &gt;= 1 &amp;&amp; ch &lt;= 8 &amp;&amp; flag == 1) {
+            cout&lt;&lt;&quot;\n Enter the limit: &quot;;
+            cin&gt;&gt;n;
+            cout&lt;&lt;&quot;\n Enter the elements: &quot;;
+            for (i = 0; i &lt; n; i++) {
+                cin&gt;&gt;a[i];
+            }
+            flag = 0;
+        }
+
+        for (i = 0; i &lt; n; i++)
+            num[i] = a[i];
+
+        switch (ch) {
+            case 1:
+                bubblesort(num, n);
+                break;
+            case 2:
+                seletionsort(num, n);
+                break;
+            case 3:
+                insertionsort(num, n);
+                break;
+            case 4:
+                low = 0;
+                high = n - 1;
+                quicksort(num, low, high);
+                break;
+            case 5:
+                bucketsort(num, n);
+                break;
+            case 6:
+                low = 0;
+                high = n - 1;
+                mergesort(num, low, high);
+                break;
+            case 7:
+                flag = 0;
+                treesort(num, n);
+                break;
+            case 8:
+                heapsort(num, n);
+                break;
+            case 9:
+                cout&lt;&lt;&quot;\n\t .....Thanking You .....&quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t Invalid key-in &quot;;
+        }
+
+        if (ch &gt;= 1 &amp;&amp; ch &lt;= 8 &amp;&amp; ch != 7) {
+            display(num, n);
+        }
+
+    } while (1);
+
+}
+</code></pre>
+<h4 id="output-27">OUTPUT</h4>
+<pre><code>.....SORTING....
+
+
+1. BUBBLE SORT
+2. SELECTION SORT
+3. INSERTION SORT
+4. QUICK SORT
+5. RADIX SORT
+6. MERGE SORT
+7. TREE SORT
+8. HEAP SORT
+9. Exit
+Enter your choice: 1
+
+Enter the limit: 5
+
+Enter the elements: 99 12 56 3 4
+
+Sorted elements are:
+3 4 12 56 99
+
+
+.....SORTING....
+
+
+1. BUBBLE SORT
+2. SELECTION SORT
+3. INSERTION SORT
+4. QUICK SORT
+5. RADIX SORT
+6. MERGE SORT
+7. TREE SORT
+8. HEAP SORT
+9. Exit
+Enter your choice: 2
+
+Sorted elements are:
+3 4 12 56 99
+
+
+.....SORTING....
+
+
+1. BUBBLE SORT
+2. SELECTION SORT
+3. INSERTION SORT
+4. QUICK SORT
+5. RADIX SORT
+6. MERGE SORT
+7. TREE SORT
+8. HEAP SORT
+9. Exit
+Enter your choice: 3
+
+Sorted elements are:
+3 4 12 56 99
+
+
+.....SORTING....
+
+
+1. BUBBLE SORT
+2. SELECTION SORT
+3. INSERTION SORT
+4. QUICK SORT
+5. RADIX SORT
+6. MERGE SORT
+7. TREE SORT
+8. HEAP SORT
+9. Exit
+Enter your choice: 4
+
+Sorted elements are:
+3 4 12 56 99
+
+
+.....SORTING....
+
+
+1. BUBBLE SORT
+2. SELECTION SORT
+3. INSERTION SORT
+4. QUICK SORT
+5. RADIX SORT
+6. MERGE SORT
+7. TREE SORT
+8. HEAP SORT
+9. Exit
+Enter your choice: 5
+
+Sorted elements are:
+3 4 12 56 99
+
+
+.....SORTING....
+
+
+1. BUBBLE SORT
+2. SELECTION SORT
+3. INSERTION SORT
+4. QUICK SORT
+5. RADIX SORT
+6. MERGE SORT
+7. TREE SORT
+8. HEAP SORT
+9. Exit
+Enter your choice: 6
+
+Sorted elements are:
+3 4 12 56 99
+
+
+.....SORTING....
+
+
+1. BUBBLE SORT
+2. SELECTION SORT
+3. INSERTION SORT
+4. QUICK SORT
+5. RADIX SORT
+6. MERGE SORT
+7. TREE SORT
+8. HEAP SORT
+9. Exit
+Enter your choice: 7
+
+Sorted elements are:
+3 4 12 56 99
+
+
+.....SORTING....
+
+
+1. BUBBLE SORT
+2. SELECTION SORT
+3. INSERTION SORT
+4. QUICK SORT
+5. RADIX SORT
+6. MERGE SORT
+7. TREE SORT
+8. HEAP SORT
+9. Exit
+Enter your choice: 8
+
+Sorted elements are:
+3 4 12 56 99
+
+
+.....SORTING....
+
+
+1. BUBBLE SORT
+2. SELECTION SORT
+3. INSERTION SORT
+4. QUICK SORT
+5. RADIX SORT
+6. MERGE SORT
+7. TREE SORT
+8. HEAP SORT
+9. Exit
+Enter your choice: 9
+
+.....Thanking You.....
+</code></pre>
+<h3 id="write-a-c-program-to-implement-various-searching-techniques">Write a C++ program to implement various Searching techniques</h3>
+<pre><code>#include&quot;iostream.h&quot;
+#include&quot;conio.h&quot;
+#include&quot;process.h&quot;
+
+void sequential(int a[], int n, int item) {
+    int flag = 0, i;
+    for (i = 0; i &lt; n; i++) {
+        if (a[i] == item) {
+            cout&lt;&lt;&quot;\n Item is found at position &quot; &lt;&lt;i + 1;
+            flag = 1;
+            break;
+        }
+    }
+    if (flag == 0) cout&lt;&lt;&quot;\n Item not found &quot;;
+
+}
+
+void binary(int a[], int n, int item) {
+    int loc = -1, b = 0, e = n - 1, mid = -1;
+    while ((b &lt;= e) &amp;&amp; (a[mid] != item)) {
+        mid = (b + e) / 2;
+        if (item == a[mid]) {
+            cout&lt;&lt;&quot;\n Item is found at position &quot; &lt;&lt;mid + 1;
+            loc = mid;
+        } else if (item &lt; a[mid])
+            e = mid - 1;
+        else
+            b = mid + 1;
+    }
+    if (loc == -1) cout&lt;&lt;&quot;\n Item not found &quot;;
+
+}
+
+
+void main() {
+    int num[50], n, item, ch, flag = 1, i;
+    clrscr();
+    do {
+        cout&lt;&lt;&quot;\n\n\n .... SEARCHING .... \n\n\n&quot;;
+        cout&lt;&lt;&quot;\n1.Sequential Search\n2.Binary Search\n3.Enter another list\n4.Exit&quot;;
+        cout&lt;&lt;&quot;\n\t Enter your choice: &quot;;
+        cin&gt;&gt;ch;
+
+        if (ch == 3) flag = 1;
+
+        if (ch &gt;= 1 &amp;&amp; ch &lt;= 3 &amp;&amp; flag == 1) {
+            cout&lt;&lt;&quot;\n Enter the limit: &quot;;
+            cin&gt;&gt;n;
+            cout&lt;&lt;&quot;\n Enter the elements: &quot;;
+            for (i = 0; i &lt; n; i++)
+                cin&gt;&gt;num[i];
+        }
+        if (ch &gt;= 1 &amp;&amp; ch &lt;= 2) {
+            cout&lt;&lt;&quot;\n Enter the element to be searched: &quot;;
+            cin&gt;&gt;item;
+        }
+
+        switch (ch) {
+            case 1:
+                sequential(num, n, item);
+                break;
+            case 2:
+                binary(num, n, item);
+                break;
+            case 3:
+                break;
+            case 4:
+                cout&lt;&lt;&quot;\n\t.... Thanking You .... &quot;;
+                getch();
+                exit(0);
+            default:
+                cout&lt;&lt;&quot;\n\t Invalid key-in&quot;;
+        }
+        flag = 0;
+
+    } while (1);
+
+}
+</code></pre>
+<h4 id="output-28">OUTPUT</h4>
+<pre><code>....SEARCHING....
+
+1. Sequential Search
+2. Binary Search
+3. Enter another list
+4. Exit
+Enter your choice: 1
+
+Enter the limit: 5
+
+Enter the elements: 12 56 10 45 96
+
+Enter the element to be searched: 10
+
+Item is found at position 3
+
+
+....SEARCHING....
+
+
+1. Sequential Search
+2. Binary Search
+3. Enter another list
+4. Exit
+Enter your choice: 3
+
+Enter the limit: 5
+
+Enter the elements: 10 20 30 40 50
+
+
+....SEARCHING....
+
+1. Sequential Search
+2. Binary Search
+3. Enter another list
+4. Exit
+
+Enter your choice: 2
+
+Enter the element to be searched: 40
+
+Item is found at position 4
+
+
+....SEARCHING....
+
+1. Sequential Search
+2. Binary Search
+3. Enter another list
+4. Exit
+
+Enter your choice: 4</code></pre>
+
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/categories/c&#43;&#43;/">C&#43;&#43;</a></li>
+        
+      
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/c/cpp/">C/CPP</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/data-structures/">data structures</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+
+  <div class="pagination">
+  
+  
+    <a href="/blog/2009-04-30-c-scientific-calculator/" class="button"><div class="next"><div>C&#43;&#43; - Scientific Calculator</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2020-05-07-ros-in-docker-container/">ROS In Docker Container</a></h2>
+          <time class="published" datetime="">May 7, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/">Working With Python 3 In ROS Kinetic Or Melodic</a></h2>
+          <time class="published" datetime="">May 7, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-biped-walking-robot/">Biped Walking Robot</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-robotic-arm/">Robotic Arm</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/blog/2019-10-28-7-robots-in-6-days/">7 Robots in 6 Days</a></h2>
+          <time class="published" datetime="">October 28, 2019</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/blog/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/java/">java<span class="count">87</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/c/">c<span class="count">24</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/cryptography/">cryptography<span class="count">11</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/linux/">linux<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gcc/">gcc<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/python/">python<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/sql/">sql<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/etl/">etl<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/ruby/">ruby<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/software-design-patterns/">software-design-patterns<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/software-engineering/">software-engineering<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/talend/">talend<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/blowfish-algorithm/">blowfish-algorithm<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/swing/">swing<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aes-algorithm/">aes-algorithm<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/arduino/">arduino<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/c&#43;&#43;/">c&#43;&#43;<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/des-algorithm/">des-algorithm<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/projects/">projects<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/robotics/">robotics<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/good-read/">good-read<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gratitude/">gratitude<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/ros/">ros<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/technology/">technology<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/arts/">arts<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/docker/">docker<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/fun/">fun<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/iphone/">iphone<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/microsoft/">microsoft<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/mysql/">mysql<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/pencils/">pencils<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/phpmyadmin/">phpmyadmin<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/rest/">rest<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/string/">string<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/web-services/">web-services<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
+
+
+
+
+
+
+<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
+<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        The Insane Techie
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.f1fe36cdafc3b0a105307da3f10a932daa1a01bd9cfe6a5f4f06ecf06c64dfbc.js" integrity="sha256-8f42za/DsKEFMH2j8QqTLaoaAb2c/mpfTwbs8Gxk37w="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

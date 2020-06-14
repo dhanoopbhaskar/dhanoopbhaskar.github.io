@@ -35,5 +35,77 @@ NB:
       <description>/* * Control keys are: * f-&amp;gt; forward * b-&amp;gt; backward * 0-&amp;gt; brake * 1,2,3,4-&amp;gt; gears */ #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; #include&amp;lt;math.h&amp;gt; void main() { int gdriver = DETECT, gmode; int xc = 0, yc = 285, r = 15, a = 0, i, x1, y1, x2, y2, mode = 1, dtime = 75; int x3, x4, y3, y4; int kb = &#39;f&#39;; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:\\tc\\bgi&amp;quot;); cleardevice(); while (1) { if (kbhit()) { kb = getch(); if (kb == &#39;q&#39;) { cleardevice(); printf(&amp;quot;\n You are about to quit.</description>
     </item>
     
+    <item>
+      <title>Catching a fish in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-catching-a-fish-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:49:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-catching-a-fish-in-c/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; void fish(); void fishcatch(); int fishx = 0, fishy = 460, fishang = 0, tempx, tempy, fishx2 = 350, fishy2 = 400; void main() { int gdriver = DETECT, gmode, errorcode; int x, y, ch, yincr = 0; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } x = 350; y = 240; while (!</description>
+    </item>
+    
+    <item>
+      <title>Sinking of Titanic</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-sinking-of-titanic/</link>
+      <pubDate>Thu, 18 Nov 2010 18:47:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-sinking-of-titanic/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; void titanic(int, int); void titanics(int, int); void iceberg(); int poly[] = { 0, 300, 640, 300, 640, 480, 0, 480, 0, 300 }; int ix = 1, iy = 1; void main() { int gdriver = DETECT, gmode, errorcode; int maxx, maxy; int xincr = 1, yincr = 1, i; int tempx = 400, tempy = 300; int sink = 0; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode !</description>
+    </item>
+    
+    <item>
+      <title>Sunset in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunset-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:46:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunset-in-c/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; void main() { int gdriver = DETECT, gmode, errorcode; int midx, midy, radius = 40; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } midx = getmaxx() / 2; while (radius &amp;gt;= 10) { cleardevice(); line(0, 210, 160, 50); setcolor(WHITE); line(160, 50, 320, 210); line(320, 210, 480, 50); line(480, 50, 640, 210); line(0, 210, 640, 210); arc(midx, 210, 45, 135, radius); setfillstyle(SOLID_FILL, YELLOW); floodfill(midx, 200, 15); setcolor(BLUE); setfillstyle(SOLID_FILL, LIGHTBLUE); floodfill(2, 2, 15); setfillstyle(SOLID_FILL, BROWN); floodfill(150, 150, 15); floodfill(550, 150, 15); setcolor(15); line(0, 400, 640, 300); setfillstyle(SOLID_FILL, BLUE); floodfill(2, 350, 15); setfillstyle(SOLID_FILL, GREEN); floodfill(2, 410, 15); delay(100); radius -= 1; } if (radius &amp;lt;= 10) cleardevice(); getch(); } </description>
+    </item>
+    
+    <item>
+      <title>Rotation of Fan in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-rotation-of-fan-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:44:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-rotation-of-fan-in-c/</guid>
+      <description>#include&amp;lt;graphics.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;dos.h&amp;gt; #include&amp;lt;time.h&amp;gt; #include&amp;lt;process.h&amp;gt; #include&amp;lt;math.h&amp;gt; void user(); float s1 = 0.0, s2 = 120.0, s3 = 240.0; int midx, midy; void main() { int gdriver = DETECT, gmode, errorcode; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;C:/TC/BGI&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } midx = getmaxx() / 2; midy = getmaxy() / 2; loop: cleardevice(); circle(midx, midy, 5); setcolor(10); line(midx, midy, (midx + 100 * cos(s1 * 3.</description>
+    </item>
+    
+    <item>
+      <title>Sunrise in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunrise-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:44:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-sunrise-in-c/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; void main() { int gdriver = DETECT, gmode, errorcode; int midx, midy, radius = 10; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } midx = getmaxx() / 2; while (radius &amp;lt;= 40) { cleardevice(); line(0, 210, 160, 50); setcolor(WHITE); line(160, 50, 320, 210); line(320, 210, 480, 50); line(480, 50, 640, 210); line(0, 210, 640, 210); arc(midx, 210, 45, 133, radius); setfillstyle(SOLID_FILL, YELLOW); floodfill(midx, 200, 15); setcolor(BLUE); setfillstyle(SOLID_FILL, LIGHTBLUE); floodfill(2, 2, 15); setfillstyle(SOLID_FILL, BROWN); floodfill(150, 150, 15); floodfill(550, 150, 15); setcolor(15); line(0, 400, 640, 300); setfillstyle(SOLID_FILL, BLUE); floodfill(2, 350, 15); setfillstyle(SOLID_FILL, GREEN); floodfill(2, 410, 15); delay(100); radius += 1; } getch(); } </description>
+    </item>
+    
+    <item>
+      <title>Analog Clock in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-analog-clock-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:42:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-analog-clock-in-c/</guid>
+      <description>/*WAP to illustrate an analog clock*/ #include&amp;lt;graphics.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;dos.h&amp;gt; #include&amp;lt;time.h&amp;gt; #include&amp;lt;process.h&amp;gt; #include&amp;lt;math.h&amp;gt; void user(); float h, ma, hour, minute, sec, m, s; void main() { int gdriver = DETECT, gmode, errorcode; struct time t; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;C:/TC/BGI&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } loop: gettime( &amp;amp; t); hour = t.ti_hour; minute = t.</description>
+    </item>
+    
+    <item>
+      <title>Mid-point Ellipse Drawing Algorithm</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-mid-point-ellipse-drawing-algorithm/</link>
+      <pubDate>Thu, 18 Nov 2010 18:41:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-mid-point-ellipse-drawing-algorithm/</guid>
+      <description>#include&amp;lt;graphics.h&amp;gt; #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void ellipsemid(int xcenter, int ycenter, int rx, int ry); void point(int x, int xcenter, int ycenter, int y); int maxx, maxy, xcenter, ycenter, rx, ry, grok; void main() { int gdriver = DETECT, errorcode, gmode, a, b, c, d; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } clrscr(); maxx = getmaxx(); maxy = getmaxy(); xcenter = 200; ycenter = 200; rx = 50; ry = 50; setcolor(4); ellipsemid(xcenter, ycenter, rx, ry); getch(); //closegraph(); } void ellipsemid(int xcenter, int ycenter, int rx, int ry) { int p, px, py, x, y, ry2, rx2, tworx2, twory2; ry2 = ry * ry; rx2 = rx * rx; twory2 = 2 * ry2; tworx2 = 2 * rx2; x = 0; y = ry; point(x, xcenter, ycenter, y); p = abs(ry2 - ry2 * ry + (0.</description>
+    </item>
+    
+    <item>
+      <title>Line Clipping in C</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2010-11-18-line-clipping-in-c/</link>
+      <pubDate>Thu, 18 Nov 2010 18:39:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2010-11-18-line-clipping-in-c/</guid>
+      <description>#include&amp;lt;stdio.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;graphics.h&amp;gt; int xwmin, ywmin, xwmax, ywmax; void rcode(int, int, int[]); int check(int[], int[]); void main() { int gdriver = DETECT, gmode, errorcode; int x1, y1, x2, y2, code1[4], code2[4], x, y, m; int point[2][2], p = 0; initgraph( &amp;amp; gdriver, &amp;amp; gmode, &amp;quot;c:/tc/bgi&amp;quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&amp;quot;Graphics error: %s\n&amp;quot;, grapherrormsg(errorcode)); printf(&amp;quot;Press any key to halt:&amp;quot;); getch(); exit(1); } printf(&amp;quot;\n Enter the coordinates of window &amp;quot;); printf(&amp;quot;\n xwmin and ywmin: &amp;quot;); scanf(&amp;quot;%d%d&amp;quot;, &amp;amp; xwmin, &amp;amp; ywmin); printf(&amp;quot;\n xwmax and ywmax: &amp;quot;); scanf(&amp;quot;%d%d&amp;quot;, &amp;amp; xwmax, &amp;amp; ywmax); printf(&amp;quot;\n Enter the coordinates of line &amp;quot;); printf(&amp;quot;\n Enter the coordinate for the first end point of the line: &amp;quot;); scanf(&amp;quot;%d%d&amp;quot;, &amp;amp; x1, &amp;amp; y1); printf(&amp;quot;\n Enter the coordinate for the second end point of the line: &amp;quot;); scanf(&amp;quot;%d%d&amp;quot;, &amp;amp; x2, &amp;amp; y2); rcode(x1, y1, code1); rcode(x2, y2, code2); if (check(code1, code2) == 1) { rectangle(xwmin, ywmin, xwmax, ywmax); printf(&amp;quot;1&amp;quot;); } else { m = (y2 - y1) / (x2 - x1); rectangle(xwmin, ywmin, xwmax, ywmax); line(x1, y1, x2, y2); setcolor(4); if (x1 &amp;lt; xwmin) { y = y1 + m * (xwmin - x1); x = xwmin; x1 = x; y1 = y; } if (x2 &amp;gt; xwmax) { y = y2 + m * (xwmax - x2); x = xwmax; x2 = x; y2 = y; } if (y1 &amp;lt; ywmin) { x = x1 + (ywmin - y1) / m; y = ywmin; x1 = x; y1 = y; } if (y2 &amp;gt; ywmax) { x = x2 + (ywmax - y2) / m; y = ywmax; x2 = x; y2 = y; } line(x1, y1, x2, y2); } getch(); } int check(int code1[], int code2[]) { int flag = 0; if (code1[3] == 1 &amp;amp;&amp;amp; code2[3] == 1) flag = 1; if (code1[2] == 1 &amp;amp;&amp;amp; code2[2] == 1) flag = 1; if (code1[1] == 1 &amp;amp;&amp;amp; code2[1] == 1) flag = 1; if (code1[0] == 1 &amp;amp;&amp;amp; code2[0] == 1) flag = 1; return flag; } void rcode(int x, int y, int code[]) { if (y &amp;gt; ywmax) //bottom code[2] = 1; else code[2] = 0; if (y &amp;lt; ywmin) //top code[3] = 1; else code[3] = 0; if (x &amp;gt; xwmax) //right code[1] = 1; else code[1] = 0; if (x &amp;lt; xwmin) //left code[0] = 1; else code[0] = 0; } </description>
+    </item>
+    
   </channel>
 </rss>

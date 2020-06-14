@@ -38,5 +38,19 @@ I googled a lot in pursuit of Linux/Unix like utilities for my windows machine. 
 Successfully installed and executed some of them :) Came across blat - A Windows (32 &amp;amp; 64 bit) command line SMTP mailer. Installed in my system. Executed - but could not connect to smtp.</description>
     </item>
     
+    <item>
+      <title>Projects</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-projects/</link>
+      <pubDate>Mon, 27 Jun 2011 19:07:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2011-06-27-projects/</guid>
+      <description>Hi friends,
+Its glad to announce that our Mini Project and Main Project have been made open source and forged in SourceForge.net
+Our Mini Project was cybman - Cyber Cafe Management System
+Download cybman from here
+And our Main Project was XooDB - A cross platform object oriented database engine with multi client support using XML and Java.
+Download XooDB from here</description>
+    </item>
+    
   </channel>
 </rss>
