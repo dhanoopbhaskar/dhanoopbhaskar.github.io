@@ -4,3 +4,4 @@
   is an official part of the theme (ex. Pull Requests) should be included in main.js
   and follow the formatting and style given.
 */
+<script async src="https://cse.google.com/cse.js?cx=018107481977681640703:kmgittftqmk"></script>
