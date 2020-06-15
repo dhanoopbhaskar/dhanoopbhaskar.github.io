@@ -27,6 +27,19 @@
 <meta name="twitter:description" content="tcpserver.c
 #include&#34;stdio.h&#34; #include&#34;stdlib.h&#34; #include&#34;sys/types.h&#34; #include&#34;sys/socket.h&#34; #include&#34;string.h&#34; #include&#34;netinet/in.h&#34; #define PORT 4444  #define BUF_SIZE 20  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &lt; 0) { printf(&#34;Error creating socket!\n&#34;); exit(1); } printf(&#34;Socket created...\n&#34;); memset(&amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;addr, sizeof(addr)); if (ret &lt; 0) { printf(&#34;Error binding!"/>
 <meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
 <link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -791,6 +804,17 @@
       <script src="/js/highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.f1fe36cdafc3b0a105307da3f10a932daa1a01bd9cfe6a5f4f06ecf06c64dfbc.js" integrity="sha256-8f42za/DsKEFMH2j8QqTLaoaAb2c/mpfTwbs8Gxk37w="></script>
     <script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
     </div>
   </body>
 </html>
