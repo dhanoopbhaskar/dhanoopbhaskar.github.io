@@ -6,10 +6,22 @@
     <description>Recent content in regex on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Oct 2012 00:31:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2020 14:07:00 +0530</lastBuildDate>
     
 	<atom:link href="https://dhanoopbhaskar.github.io/tags/regex/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Regex - Cheatsheet</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2020-06-19-regex/</link>
+      <pubDate>Fri, 19 Jun 2020 14:07:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2020-06-19-regex/</guid>
+      <description>Character classes
+. any character except newline \w \d \s word, digit, whitespace \W \D \S not word, digit, whitespace [abc] any of a, b, or c [^abc] not a, b, or c [a-g] character between a &amp;amp; g  Anchors
+^abc$ start / end of the string \b \B word, not-word boundary  Escaped characters
+\. \* \\ escaped special characters \t \n \r tab, linefeed, carriage return  Groups &amp;amp; Lookaround</description>
+    </item>
     
     <item>
       <title>Java - removing leading zeroes from a string</title>

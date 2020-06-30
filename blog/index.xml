@@ -6,10 +6,22 @@
     <description>Recent content in Blog on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 07 May 2020 14:35:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2020 14:07:00 +0530</lastBuildDate>
     
 	<atom:link href="https://dhanoopbhaskar.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Regex - Cheatsheet</title>
+      <link>https://dhanoopbhaskar.github.io/blog/2020-06-19-regex/</link>
+      <pubDate>Fri, 19 Jun 2020 14:07:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/blog/2020-06-19-regex/</guid>
+      <description>Character classes
+. any character except newline \w \d \s word, digit, whitespace \W \D \S not word, digit, whitespace [abc] any of a, b, or c [^abc] not a, b, or c [a-g] character between a &amp;amp; g  Anchors
+^abc$ start / end of the string \b \B word, not-word boundary  Escaped characters
+\. \* \\ escaped special characters \t \n \r tab, linefeed, carriage return  Groups &amp;amp; Lookaround</description>
+    </item>
     
     <item>
       <title>ROS In Docker Container</title>
@@ -1625,15 +1637,6 @@ import java.io.*; import java.net.*; public class Server { ServerSocket ss; Sock
       
       <guid>https://dhanoopbhaskar.github.io/blog/2009-04-23-data-structure-programs-in-c/</guid>
       <description>Write a C++ program to find the sparse of a matrix #include&amp;lt;iostream.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void main() { int a[50][50], sp[50][50], i, j, k = 0, m, n; clrscr(); cout&amp;lt;&amp;lt;&amp;quot;\n Enter the order of matrix: &amp;quot;; cin&amp;gt;&amp;gt;m&amp;gt;&amp;gt;n; cout&amp;lt;&amp;lt;&amp;quot;\n Enter the elements: &amp;quot;; for (i = 0; i &amp;lt; m; i++) { for (j = 0; j &amp;lt; n; j++) { cin&amp;gt;&amp;gt;a[i][j]; if (a[i][j] != 0) { k++; sp[k][0] = i; sp[k][1] = j; sp[k][2] = a[i][j]; } } } sp[0][0] = m; sp[0][1] = n; sp[0][2] = k; cout&amp;lt;&amp;lt;&amp;quot;\n The sparse matrix is:\n&amp;quot;; for (i = 0; i &amp;lt;= k; i++) { for (j = 0; j &amp;lt; 3; j++) cout&amp;lt;&amp;lt;sp[i][j] &amp;lt;&amp;lt;&amp;quot; &amp;quot;; cout&amp;lt;&amp;lt;&amp;quot;\n&amp;quot;; } getch(); }  OUTPUT Enter the order of matrix: 3 3 Enter the elements: 0 1 0 2 0 0 0 0 3 The sparse matrix is: 3 3 3 0 1 1 1 0 2 2 2 3  Write a C++ program to find the transpose of a matrix using the given sparse matrix #include&amp;lt;iostream.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://dhanoopbhaskar.github.io/blog/2020-06-19-regex/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://dhanoopbhaskar.github.io/blog/2020-06-19-regex/</guid>
-      <description>Character classes .	any character except newline \w \d \s	word, digit, whitespace \W \D \S	not word, digit, whitespace [abc]	any of a, b, or c [^abc]	not a, b, or c [a-g]	character between a &amp;amp; g  Anchors ^abc$	start / end of the string \b \B	word, not-word boundary  Escaped characters \. \* \\	escaped special characters \t \n \r tab, linefeed, carriage return  Groups &amp;amp; Lookaround (abc)	capture group \1	backreference to group #1 (?</description>
     </item>
     
   </channel>
