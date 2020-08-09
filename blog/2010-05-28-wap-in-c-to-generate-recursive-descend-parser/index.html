@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="WAP in C to generate recursive descend parser">
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="WAP in C to generate recursive descend parser">
 <meta itemprop="description" content="#include&lt;stdio.h&gt; #include&lt;conio.h&gt; #include&lt;ctype.h&gt; int lptr = 0; //look ahead pointer char buff[100]; //buffer to store input string int success = 1; //to reflect success or failure void E(); void EDASH(); void T(); void TDASH(); void V(); void start() { E(); } int isvalid(char ch) { if (isalpha(ch)) return 1; else if (toascii(ch) &gt;= 47 &amp;&amp; toascii(ch) &lt;= 57) return 1; else return 0; } void advance() { lptr&#43;&#43;; } void E() { T(); EDASH(); } void EDASH() { if (buff[lptr] == &#39;&#43;&#39;) { advance(); T(); EDASH(); } } void T() { V(); TDASH(); } void TDASH() { if (buff[lptr] == &#39;*&#39;) { advance(); V(); TDASH(); } } void V() { if (isvalid(buff[lptr])) { advance(); } else if (buff[lptr] == &#39;(&#39;) { advance(); E(); if (buff[lptr] == &#39;)&#39;) { advance(); } else { printf(&quot;\n* Right parantheses missing &quot;); success = 0; } } else { printf(&quot;\n* Symbol(s) unidentified&quot;); success = 0; getch(); exit(0); } } void main() { int n; clrscr(); printf(&quot;\n\t----------------&quot;); printf(&quot;\n\t GRAMMAR&quot;); printf(&quot;\n\t----------------\n&quot;); printf(&quot;\n\t E ::= TE&#39;&quot;); printf(&quot;\n\t E&#39;::= &#43;TE&#39;|$&quot;); printf(&quot;\n\t T ::= VT&#39;&quot;); printf(&quot;\n\t T&#39;::= *VT&#39;|$&quot;); printf(&quot;\n\t V ::= &lt;id&gt;&quot;); printf(&quot;\n\t----------------\n\n&quot;); printf(&quot;\n Enter an expression: &quot;); gets(buff); n = strlen(buff); start(); if (success == 1 &amp;&amp; lptr &gt;= n) { printf(&quot;\n* Correct syntax of expression&quot;); } else { printf(&quot;\n* Incorrect syntax of expression&quot;); } getch(); } ">
 <meta itemprop="datePublished" content="2010-05-28T17:40:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-05-28T17:40:00&#43;05:30" />
@@ -782,7 +782,7 @@ void main() {
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="Talend Equivalent for MatchField Function in Datastage">
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="Talend Equivalent for MatchField Function in Datastage">
 <meta itemprop="description" content="package routines; import java.util.regex.*; public class UserString { public static String MatchField(String sourceStr, String patternStr, Integer fieldNo) { String matchedStr = &#34;&#34;; if (fieldNo == null) { throw new UnsupportedOperationException(&#34;fieldNo is supposed to be NOT NULL!!&#34;); } if (patternStr == null) { return &#34;&#34;; } if (sourceStr == null) { return &#34;&#34;; } patternStr = formatPatternDStoTld(patternStr); Pattern pattern = Pattern.compile(patternStr); Matcher matcher = pattern.matcher(sourceStr); if (matcher.find()) { matchedStr = matcher.group(fieldNo); } else { matchedStr = &#34;&#34;; } return matchedStr; } public static String formatPatternDStoTld(String input) { StringBuilder output = new StringBuilder(); String outputStr = &#34;&#34;; for (int i = 0; i &lt; input.">
 <meta itemprop="datePublished" content="2013-06-16T13:59:00&#43;05:30" />
 <meta itemprop="dateModified" content="2013-06-16T13:59:00&#43;05:30" />
@@ -758,7 +758,7 @@ if (!doNotTrack) {
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="Java - Bidirectional data transfer using UDP">
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="Java - Bidirectional data transfer using UDP">
 <meta itemprop="description" content="UDPServer.java
 import java.io.*; import java.net.*; public class UDPServer implements Runnable { DatagramSocket socket = null; DatagramPacket packetOut = null; DatagramPacket packetIn = null; BufferedReader readFromKeyBoard = null; byte[] dataIn; byte[] dataOut; public UDPServer() { try { readFromKeyBoard = new BufferedReader( new InputStreamReader(System.in)); dataIn = new byte[1024]; dataOut = new byte[1024]; socket = new DatagramSocket(997); new Thread(this).start(); InetAddress inetAddress = InetAddress.getLocalHost(); while (true) { String message = readFromKeyBoard.readLine(); dataIn = message.getBytes(); packetOut = new DatagramPacket(dataIn, message.">
 <meta itemprop="datePublished" content="2011-03-05T21:43:00&#43;05:30" />
@@ -785,7 +785,7 @@ if (!doNotTrack) {
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

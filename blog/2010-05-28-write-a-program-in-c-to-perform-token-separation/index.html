@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="Write a program in C to perform token separation">
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="Write a program in C to perform token separation">
 <meta itemprop="description" content="#include&lt;stdio.h&gt; #include&lt;conio.h&gt; void main() { FILE * fp; char words[50][25], str[25], ch; char key[50][25], op[50][10], id[50][25]; int i, j, k = 0, w = 0, p = 0, d = 0; int yes = 0; fp = fopen(&quot;ttoken.c&quot;, &quot;r&quot;); clrscr(); printf(&quot;\n File: ttoken.c\n\n&quot;); if (fp != NULL) { do { j = 0; ch = &#39;d&#39;; strcpy(str, &quot;&quot;); while (ch != &#39; &#39;) { ch = getc(fp); printf(&quot;%c&quot;, ch); if (ch == EOF) break; str[j&#43;&#43;] = ch; switch (ch) { case &#39;&#43;&#39;: strcpy(op[p&#43;&#43;], &quot;&#43;&quot;); break; case &#39;-&#39;: strcpy(op[p&#43;&#43;], &quot;-&quot;); break; case &#39;*&#39;: strcpy(op[p&#43;&#43;], &quot;*&quot;); break; case &#39;/&#39;: strcpy(op[p&#43;&#43;], &quot;/&quot;); break; case &#39;%&#39;: strcpy(op[p&#43;&#43;], &quot;%&quot;); break; case &#39;=&#39;: strcpy(op[p&#43;&#43;], &quot;=&quot;); break; } if (ch == &#39; &#39; || ch == &#39;\n&#39; || ch == &#39;=&#39;) { j--; break; } if (ch == &#39;;&#39; || ch == &#39;(&#39; || ch == &#39;)&#39; || ch == &#39;,&#39;) { j--; break; } } str[j] = &#39;\0&#39;; strcpy(words[w&#43;&#43;], str); if (ch == &#39;(&#39;) strcpy(words[w&#43;&#43;], &quot;(&quot;); if (ch == &#39;;&#39;) strcpy(words[w&#43;&#43;], &quot;;&quot;); if (ch == &#39;)&#39;) strcpy(words[w&#43;&#43;], &quot;)&quot;); if (ch == &#39;=&#39;) strcpy(words[w&#43;&#43;], &quot;=&quot;); if (ch == &#39;,&#39;) strcpy(words[w&#43;&#43;], &quot;,&quot;); j = 0; } while (ch !">
 <meta itemprop="datePublished" content="2010-05-28T17:14:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-05-28T17:14:00&#43;05:30" />
@@ -817,7 +817,7 @@ void main() {
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="Line Clipping in C">
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="Line Clipping in C">
 <meta itemprop="description" content="#include&lt;stdio.h&gt; #include&lt;conio.h&gt; #include&lt;graphics.h&gt; int xwmin, ywmin, xwmax, ywmax; void rcode(int, int, int[]); int check(int[], int[]); void main() { int gdriver = DETECT, gmode, errorcode; int x1, y1, x2, y2, code1[4], code2[4], x, y, m; int point[2][2], p = 0; initgraph( &amp; gdriver, &amp; gmode, &quot;c:/tc/bgi&quot;); errorcode = graphresult(); if (errorcode != grOk) { printf(&quot;Graphics error: %s\n&quot;, grapherrormsg(errorcode)); printf(&quot;Press any key to halt:&quot;); getch(); exit(1); } printf(&quot;\n Enter the coordinates of window &quot;); printf(&quot;\n xwmin and ywmin: &quot;); scanf(&quot;%d%d&quot;, &amp; xwmin, &amp; ywmin); printf(&quot;\n xwmax and ywmax: &quot;); scanf(&quot;%d%d&quot;, &amp; xwmax, &amp; ywmax); printf(&quot;\n Enter the coordinates of line &quot;); printf(&quot;\n Enter the coordinate for the first end point of the line: &quot;); scanf(&quot;%d%d&quot;, &amp; x1, &amp; y1); printf(&quot;\n Enter the coordinate for the second end point of the line: &quot;); scanf(&quot;%d%d&quot;, &amp; x2, &amp; y2); rcode(x1, y1, code1); rcode(x2, y2, code2); if (check(code1, code2) == 1) { rectangle(xwmin, ywmin, xwmax, ywmax); printf(&quot;1&quot;); } else { m = (y2 - y1) / (x2 - x1); rectangle(xwmin, ywmin, xwmax, ywmax); line(x1, y1, x2, y2); setcolor(4); if (x1 &lt; xwmin) { y = y1 &#43; m * (xwmin - x1); x = xwmin; x1 = x; y1 = y; } if (x2 &gt; xwmax) { y = y2 &#43; m * (xwmax - x2); x = xwmax; x2 = x; y2 = y; } if (y1 &lt; ywmin) { x = x1 &#43; (ywmin - y1) / m; y = ywmin; x1 = x; y1 = y; } if (y2 &gt; ywmax) { x = x2 &#43; (ywmax - y2) / m; y = ywmax; x2 = x; y2 = y; } line(x1, y1, x2, y2); } getch(); } int check(int code1[], int code2[]) { int flag = 0; if (code1[3] == 1 &amp;&amp; code2[3] == 1) flag = 1; if (code1[2] == 1 &amp;&amp; code2[2] == 1) flag = 1; if (code1[1] == 1 &amp;&amp; code2[1] == 1) flag = 1; if (code1[0] == 1 &amp;&amp; code2[0] == 1) flag = 1; return flag; } void rcode(int x, int y, int code[]) { if (y &gt; ywmax) //bottom code[2] = 1; else code[2] = 0; if (y &lt; ywmin) //top code[3] = 1; else code[3] = 0; if (x &gt; xwmax) //right code[1] = 1; else code[1] = 0; if (x &lt; xwmin) //left code[0] = 1; else code[0] = 0; } ">
 <meta itemprop="datePublished" content="2010-11-18T18:39:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-11-18T18:39:00&#43;05:30" />
@@ -785,7 +785,7 @@ void rcode(int x, int y, int code[]) {
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

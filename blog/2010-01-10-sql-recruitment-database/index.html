@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="SQL- RECRUITMENT DATABASE">
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="SQL- RECRUITMENT DATABASE">
 <meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table registration(regno number(6) primary key,name char(15),college char(15),date_of_reg date,degree char(10)); create table company_details(company_name char(15) primary key,salary number(8)); create table result(regno number(6) references registration(regno),marks number(5),selected char(3) default &#39;N&#39;); create table agency_income_details(company_name char(15),agency_profit number(10,2));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PROCEDURE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create or replace procedure insertreg (pname char,pcoll char,pdgr char) is cname char(15); no number(6); r number(6); cnt number(2); begin cname:=&#39;&amp;cname&#39;; select max(regno) into no from registration; if no is null then r:=1; else r:=no&#43;1; end if; insert into registration values(r,pname,pcoll,sysdate,pdgr); dbms_output.">
 <meta itemprop="datePublished" content="2010-01-10T00:27:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-01-10T00:27:00&#43;05:30" />
@@ -1055,7 +1055,7 @@ SQL&gt; select * from result;
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

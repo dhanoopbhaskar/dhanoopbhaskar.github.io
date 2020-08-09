@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="SQL- RAILWAY RESERVATION SYSTEM">
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="SQL- RAILWAY RESERVATION SYSTEM">
 <meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed.">
 <meta itemprop="datePublished" content="2010-01-10T00:25:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-01-10T00:25:00&#43;05:30" />
@@ -971,7 +971,7 @@ BB                    2                     2</code></pre>
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
