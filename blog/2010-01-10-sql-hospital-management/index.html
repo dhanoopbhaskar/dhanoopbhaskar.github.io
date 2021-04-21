@@ -6,20 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="SQL- HOSPITAL MANAGEMENT">
-<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in(&#39;ENT&#39;,&#39;GASTRO&#39;,&#39;CARDIO&#39;,&#39;OPTHAL&#39;, &#39;ORTHO&#39;, &#39;PSYCHO&#39;)),fees number(8,2)); create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in(&#39;M&#39;,&#39;F&#39;)),address char(20),date_reg date,category char(15) references doctors_details(specialization)); create table pat_doc_details(name char(15),doc_name char(15));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;DOCTORS_DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); SQL&gt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); Enter value for doc_id: 1 Enter value for name: Tintumon Enter value for specialization: ENT Enter value for fees: 100 old 1: insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees) new 1: insert into doctors_details values(1,&#39;Tintumon&#39;,&#39;ENT&#39;,100) 1 row created.">
-<meta itemprop="datePublished" content="2010-01-10T00:19:00&#43;05:30" />
+<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="SQL- HOSPITAL MANAGEMENT">
+<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in(&#39;ENT&#39;,&#39;GASTRO&#39;,&#39;CARDIO&#39;,&#39;OPTHAL&#39;, &#39;ORTHO&#39;, &#39;PSYCHO&#39;)),fees number(8,2)); create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in(&#39;M&#39;,&#39;F&#39;)),address char(20),date_reg date,category char(15) references doctors_details(specialization)); create table pat_doc_details(name char(15),doc_name char(15));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;DOCTORS_DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); SQL&gt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); Enter value for doc_id: 1 Enter value for name: Tintumon Enter value for specialization: ENT Enter value for fees: 100 old 1: insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees) new 1: insert into doctors_details values(1,&#39;Tintumon&#39;,&#39;ENT&#39;,100) 1 row created."><meta itemprop="datePublished" content="2010-01-10T00:19:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-01-10T00:19:00&#43;05:30" />
 <meta itemprop="wordCount" content="556">
-
-
-
 <meta itemprop="keywords" content="DBMS,SQL,PL/SQL," /><meta property="og:title" content="SQL- HOSPITAL MANAGEMENT" />
 <meta property="og:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in(&#39;ENT&#39;,&#39;GASTRO&#39;,&#39;CARDIO&#39;,&#39;OPTHAL&#39;, &#39;ORTHO&#39;, &#39;PSYCHO&#39;)),fees number(8,2)); create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in(&#39;M&#39;,&#39;F&#39;)),address char(20),date_reg date,category char(15) references doctors_details(specialization)); create table pat_doc_details(name char(15),doc_name char(15));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;DOCTORS_DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); SQL&gt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); Enter value for doc_id: 1 Enter value for name: Tintumon Enter value for specialization: ENT Enter value for fees: 100 old 1: insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees) new 1: insert into doctors_details values(1,&#39;Tintumon&#39;,&#39;ENT&#39;,100) 1 row created." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-hospital-management/" />
-<meta property="article:published_time" content="2010-01-10T00:19:00+05:30" />
-<meta property="article:modified_time" content="2010-01-10T00:19:00+05:30" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-hospital-management/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2010-01-10T00:19:00&#43;05:30" />
+<meta property="article:modified_time" content="2010-01-10T00:19:00&#43;05:30" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL- HOSPITAL MANAGEMENT"/>
 <meta name="twitter:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in(&#39;ENT&#39;,&#39;GASTRO&#39;,&#39;CARDIO&#39;,&#39;OPTHAL&#39;, &#39;ORTHO&#39;, &#39;PSYCHO&#39;)),fees number(8,2)); create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in(&#39;M&#39;,&#39;F&#39;)),address char(20),date_reg date,category char(15) references doctors_details(specialization)); create table pat_doc_details(name char(15),doc_name char(15));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;DOCTORS_DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); SQL&gt; insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees); Enter value for doc_id: 1 Enter value for name: Tintumon Enter value for specialization: ENT Enter value for fees: 100 old 1: insert into doctors_details values(&amp;doc_id,&#39;&amp;name&#39;,&#39;&amp;specialization&#39;,&amp;fees) new 1: insert into doctors_details values(1,&#39;Tintumon&#39;,&#39;ENT&#39;,100) 1 row created."/>
@@ -36,9 +33,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script>
-<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
-  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -360,18 +355,18 @@ DOC_ID        NAME               SPECIALIZATION       FEES
 <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PL/SQL BLOCK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 
 declare
-    reg number(5);
-    dname char(15);
-    pname char(15);
-    cat char(15);
+	reg number(5);
+	dname char(15);
+	pname char(15);
+	cat char(15);
 begin
-    reg:=&amp;reg;
-    insert into register values(reg,'&amp;name',&amp;age,'&amp;sex','&amp;address',sysdate,'&amp;category');
-    select name into pname from register where regno=reg;
-    select category into cat from register where regno=reg;
-    select name into dname from doctors_details where specialization=cat;
-    insert into pat_doc_details values(pname,dname);
-    dbms_output.put_line('Mr/Mrs/Miss'||pname||' has been refered to '||'Dr.'||dname);
+	reg:=&amp;reg;
+	insert into register values(reg,'&amp;name',&amp;age,'&amp;sex','&amp;address',sysdate,'&amp;category');
+	select name into pname from register where regno=reg;
+	select category into cat from register where regno=reg;
+	select name into dname from doctors_details where specialization=cat;
+	insert into pat_doc_details values(pname,dname);
+	dbms_output.put_line('Mr/Mrs/Miss'||pname||' has been refered to '||'Dr.'||dname);
 end;
 
 /
@@ -468,24 +463,24 @@ REGNO         NAME             AGE      SEX       ADDRESS                   DATE
 <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;QUERIES&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 
 declare
-    dname1 char(15);
-    dname2 char(15);
-    dname char(15);
-    cat char(15);
-    mx number(3);
-    cnt number(3);
-    earn number(8,2);
-    mxern number(8,2);
-    f number(8,2);
-    cursor cur is select distinct category from register;
+	dname1 char(15);
+	dname2 char(15);
+	dname char(15);
+	cat char(15);
+	mx number(3);
+	cnt number(3);
+	earn number(8,2);
+	mxern number(8,2);
+	f number(8,2);
+	cursor cur is select distinct category from register;
 begin
-    mx:=0;
-    mxern:=0;
-    dname1:='x';
-    dname2:='x';
-    open cur;
+	mx:=0;
+	mxern:=0;
+	dname1:='x';
+	dname2:='x';
+	open cur;
 
-    loop
+	loop
         fetch cur into cat;
         if cur%found then
             select COUNT(*) into cnt from register where category=cat;
@@ -508,14 +503,14 @@ begin
             exit;
         end if;
 
-    end loop;
+	end loop;
 
-    commit;
+	commit;
 
-    close cur;
+	close cur;
 
-    dbms_output.put_line('The doctor who has attended maximum number of patients is '||dname1);
-    dbms_output.put_line('The doctor who has earned the maximum is '||dname2);
+	dbms_output.put_line('The doctor who has attended maximum number of patients is '||dname1);
+	dbms_output.put_line('The doctor who has earned the maximum is '||dname2);
 
 end;
 
@@ -641,12 +636,6 @@ PL/SQL procedure successfully completed.</code></pre>
           <a href="/blog/" class="button">See more</a>
         </footer>
       
-    </section>
-  
-
-  
-    <section id="linkedin">
-      <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="dhanoopbhaskar"><a class="LI-simple-link" href='https://in.linkedin.com/in/dhanoopbhaskar?trk=profile-badge'>Dhanoop Bhaskar</a></div>
     </section>
   
 
@@ -851,13 +840,12 @@ PL/SQL procedure successfully completed.</code></pre>
     <section id="mini-bio">
       <header>
         <h1>About</h1>
-      </header>      
+      </header>
       <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
       <footer>
         <a href="/about" class="button">Learn More</a>
       </footer>
     </section>
-  
   
 </section>
 
@@ -917,13 +905,13 @@ PL/SQL procedure successfully completed.</code></pre>
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.f1fe36cdafc3b0a105307da3f10a932daa1a01bd9cfe6a5f4f06ecf06c64dfbc.js" integrity="sha256-8f42za/DsKEFMH2j8QqTLaoaAb2c/mpfTwbs8Gxk37w="></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.ccd746853874c38c8a1c0582169938d2237fed58ba8f18343dcffe2f4b4ad85a.js" integrity="sha256-zNdGhTh0w4yKHAWCFpk40iN/7Vi6jxg0Pc/&#43;L0tK2Fo="></script>
     <script src="/js/add-on.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="application/javascript">

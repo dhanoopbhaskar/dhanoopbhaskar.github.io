@@ -6,11 +6,7 @@
     <description>Recent content in java on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Aug 2016 20:13:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 22 Aug 2016 20:13:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RESTful Web Services in Java</title>
       <link>https://dhanoopbhaskar.github.io/blog/2016-08-22-restful-web-services-in-java/</link>

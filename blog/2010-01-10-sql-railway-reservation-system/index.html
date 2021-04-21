@@ -6,20 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="SQL- RAILWAY RESERVATION SYSTEM">
-<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed.">
-<meta itemprop="datePublished" content="2010-01-10T00:25:00&#43;05:30" />
+<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="SQL- RAILWAY RESERVATION SYSTEM">
+<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed."><meta itemprop="datePublished" content="2010-01-10T00:25:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-01-10T00:25:00&#43;05:30" />
 <meta itemprop="wordCount" content="608">
-
-
-
 <meta itemprop="keywords" content="DBMS,SQL,PL/SQL," /><meta property="og:title" content="SQL- RAILWAY RESERVATION SYSTEM" />
 <meta property="og:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/" />
-<meta property="article:published_time" content="2010-01-10T00:25:00+05:30" />
-<meta property="article:modified_time" content="2010-01-10T00:25:00+05:30" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2010-01-10T00:25:00&#43;05:30" />
+<meta property="article:modified_time" content="2010-01-10T00:25:00&#43;05:30" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL- RAILWAY RESERVATION SYSTEM"/>
 <meta name="twitter:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed."/>
@@ -36,9 +33,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script>
-<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
-  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -316,18 +311,18 @@ create table waiting_list(slno number(3),customer_name char(15) primary key,trai
 
 declare
 
-    tname char(15);
-    tot number(3);
-    resv number(3);
-    cursor cur is select * from train_details;
+	tname char(15);
+	tot number(3);
+	resv number(3);
+	cursor cur is select * from train_details;
 
 begin
 
-    insert into train_details values('&amp;train_name',&amp;total_seats,0);
+	insert into train_details values('&amp;train_name',&amp;total_seats,0);
 
-    open cur;
+	open cur;
 
-    loop
+	loop
         fetch cur into tname,tot,resv;
         if cur%found then
             for i in 1..tot
@@ -337,10 +332,10 @@ begin
         else
             exit;
         end if;
-    end loop;
+	end loop;
 
-    commit;
-    close cur;
+	commit;
+	close cur;
 end;
 
 /
@@ -396,24 +391,24 @@ BB                                2               n
 <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;RESERVE A SEAT&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 
 declare
-    cname char(15);
-    tname char(15);
-    tot number(3);
-    resv number(3);
-    sid number(3);
-    sno number(3);
-    sl number(3);
+	cname char(15);
+	tname char(15);
+	tot number(3);
+	resv number(3);
+	sid number(3);
+	sno number(3);
+	sl number(3);
 begin
-    cname:=&amp;cname;
-    tname:=&amp;tname;
-    select total_seats into tot from train_details where train_name=tname;
-    select reserved_seats into resv from train_details where train_name=tname;
-    if tot&gt;resv then
+	cname:=&amp;cname;
+	tname:=&amp;tname;
+	select total_seats into tot from train_details where train_name=tname;
+	select reserved_seats into resv from train_details where train_name=tname;
+	if tot&gt;resv then
         select MIN(seat_id) into sid from reservation_status where train_name=tname and reserved='n';
         update reservation_status set reserved='y' where train_name=tname and seat_id=sid;
         update reservation_status set customer_name=cname where train_name=tname and seat_id=sid;
         update train_details set reserved_seats=reserved_seats+1 where train_name=tname;
-    else
+	else
         select MAX(slno) into sno from waiting_list;
         if sno is null then
             sl:=1;
@@ -422,7 +417,7 @@ begin
         end if;
 
         insert into waiting_list values(sl,cname,tname);
-    end if;
+	end if;
 
 end;
 
@@ -526,25 +521,25 @@ SLNO         CUSTOMER_NAME               TRAIN_NAME
 <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CANCEL A RESERVATION&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 
 declare
-    cname char(15);
-    tname char(15);
-    sid number(3);
-    sno number(3);
-    sl number(3);
+	cname char(15);
+	tname char(15);
+	sid number(3);
+	sno number(3);
+	sl number(3);
 begin
-    cname:=&amp;cname;
-    tname:=&amp;tname;
-    select seat_id into sid from reservation_status where train_name=tname and customer_name=cname;
-    select MIN(slno) into sno from waiting_list where train_name=tname;
-    if sno is not null then
+	cname:=&amp;cname;
+	tname:=&amp;tname;
+	select seat_id into sid from reservation_status where train_name=tname and customer_name=cname;
+	select MIN(slno) into sno from waiting_list where train_name=tname;
+	if sno is not null then
         select customer_name into cname from waiting_list where train_name=tname and slno=sno;
         update reservation_status set customer_name=cname where train_name=tname and seat_id=sid;
         delete from waiting_list where train_name=tname and slno=sno;
-    else
+	else
         update reservation_status set reserved='n' where train_name=tname and seat_id=sid;
         update reservation_status set customer_name=null where train_name=tname and seat_id=sid;
         update train_details set reserved_seats=reserved_seats-1 where train_name=tname;
-    end if;
+	end if;
 end;
 
 /
@@ -703,12 +698,6 @@ BB                    2                     2</code></pre>
           <a href="/blog/" class="button">See more</a>
         </footer>
       
-    </section>
-  
-
-  
-    <section id="linkedin">
-      <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="dhanoopbhaskar"><a class="LI-simple-link" href='https://in.linkedin.com/in/dhanoopbhaskar?trk=profile-badge'>Dhanoop Bhaskar</a></div>
     </section>
   
 
@@ -913,13 +902,12 @@ BB                    2                     2</code></pre>
     <section id="mini-bio">
       <header>
         <h1>About</h1>
-      </header>      
+      </header>
       <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
       <footer>
         <a href="/about" class="button">Learn More</a>
       </footer>
     </section>
-  
   
 </section>
 
@@ -979,13 +967,13 @@ BB                    2                     2</code></pre>
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.f1fe36cdafc3b0a105307da3f10a932daa1a01bd9cfe6a5f4f06ecf06c64dfbc.js" integrity="sha256-8f42za/DsKEFMH2j8QqTLaoaAb2c/mpfTwbs8Gxk37w="></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.ccd746853874c38c8a1c0582169938d2237fed58ba8f18343dcffe2f4b4ad85a.js" integrity="sha256-zNdGhTh0w4yKHAWCFpk40iN/7Vi6jxg0Pc/&#43;L0tK2Fo="></script>
     <script src="/js/add-on.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="application/javascript">

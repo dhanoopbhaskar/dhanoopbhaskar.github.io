@@ -6,20 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="SQL- LIBRARY MANAGEMENT SYSTEM">
-<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5)); create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2)); create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5)); create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ADD A NEW BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare bknam char(15); auth char(15); tot number(5); id number(5); no number(5); i number(3); begin bknam:=&#39;&amp;bknam&#39;; auth:=&#39;&amp;auth&#39;; tot:=&amp;tot; insert into book_rec values(bknam,auth,tot,tot); for i in 1.">
-<meta itemprop="datePublished" content="2010-01-10T00:22:00&#43;05:30" />
+<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="SQL- LIBRARY MANAGEMENT SYSTEM">
+<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5)); create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2)); create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5)); create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ADD A NEW BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare bknam char(15); auth char(15); tot number(5); id number(5); no number(5); i number(3); begin bknam:=&#39;&amp;bknam&#39;; auth:=&#39;&amp;auth&#39;; tot:=&amp;tot; insert into book_rec values(bknam,auth,tot,tot); for i in 1."><meta itemprop="datePublished" content="2010-01-10T00:22:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-01-10T00:22:00&#43;05:30" />
 <meta itemprop="wordCount" content="732">
-
-
-
 <meta itemprop="keywords" content="DBMS,SQL,PL/SQL," /><meta property="og:title" content="SQL- LIBRARY MANAGEMENT SYSTEM" />
 <meta property="og:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5)); create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2)); create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5)); create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ADD A NEW BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare bknam char(15); auth char(15); tot number(5); id number(5); no number(5); i number(3); begin bknam:=&#39;&amp;bknam&#39;; auth:=&#39;&amp;auth&#39;; tot:=&amp;tot; insert into book_rec values(bknam,auth,tot,tot); for i in 1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-library-management-system/" />
-<meta property="article:published_time" content="2010-01-10T00:22:00+05:30" />
-<meta property="article:modified_time" content="2010-01-10T00:22:00+05:30" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-library-management-system/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2010-01-10T00:22:00&#43;05:30" />
+<meta property="article:modified_time" content="2010-01-10T00:22:00&#43;05:30" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL- LIBRARY MANAGEMENT SYSTEM"/>
 <meta name="twitter:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5)); create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2)); create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5)); create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ADD A NEW BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare bknam char(15); auth char(15); tot number(5); id number(5); no number(5); i number(3); begin bknam:=&#39;&amp;bknam&#39;; auth:=&#39;&amp;auth&#39;; tot:=&amp;tot; insert into book_rec values(bknam,auth,tot,tot); for i in 1."/>
@@ -36,9 +33,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script>
-<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
-  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -316,20 +311,20 @@ create table circulation_rec(book_id number(5) references book_details(book_id),
 <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ADD A NEW BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 
 declare
-    bknam char(15);
-    auth char(15);
-    tot number(5);
-    id number(5);
-    no number(5);
-    i number(3);
+	bknam char(15);
+	auth char(15);
+	tot number(5);
+	id number(5);
+	no number(5);
+	i number(3);
 begin
 
-    bknam:='&amp;bknam';
-    auth:='&amp;auth';
-    tot:=&amp;tot;
-    insert into book_rec values(bknam,auth,tot,tot);
-    for i in 1..tot
-    loop
+	bknam:='&amp;bknam';
+	auth:='&amp;auth';
+	tot:=&amp;tot;
+	insert into book_rec values(bknam,auth,tot,tot);
+	for i in 1..tot
+	loop
         select MAX(book_id) into no from book_details;
         if no is not null then
             id:=no+1;
@@ -337,7 +332,7 @@ begin
             id:=1;
         end if;
         insert into book_details values(id,bknam,null);
-    end loop;
+	end loop;
 end;
 
 /
@@ -412,21 +407,21 @@ BOOK_ID        BOOK_NAME                        MEM_ID
 <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE A NEW MEMBER&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 
 declare
-    nam char(15);
-    id number(5);
-    no number(5);
-    i number(3);
+	nam char(15);
+	id number(5);
+	no number(5);
+	i number(3);
 begin
-    nam:='&amp;nam';
-    select MAX(mem_id) into no from membership_rec;
-    if no is not null then
+	nam:='&amp;nam';
+	select MAX(mem_id) into no from membership_rec;
+	if no is not null then
         id:=no+1;
-    else
+	else
         id:=1;
-    end if;
+	end if;
 
-    insert into membership_rec values(id,nam,null);
-    dbms_output.put_line('Mr/Mrs/Miss. '||nam||', your membership id is '||id);
+	insert into membership_rec values(id,nam,null);
+	dbms_output.put_line('Mr/Mrs/Miss. '||nam||', your membership id is '||id);
 end;
 
 /
@@ -470,28 +465,28 @@ MEM_ID        MEM_NAME              NO_OF_BOOKS_TAKEN
 
 
 declare
-    bknam char(15);
-    mid number(5);
-    bid number(5);
-    dat date;
-    nam char(15);
-    n number(5);
+	bknam char(15);
+	mid number(5);
+	bid number(5);
+	dat date;
+	nam char(15);
+	n number(5);
 begin
-    bknam:='&amp;bknam';
-    select MIN(book_id) into bid from book_details where book_name=bknam and mem_id is null;
-    mid:=&amp;mid;
-    select mem_name into nam from membership_rec where mem_id=mid;
-    update book_details set mem_id=mid where book_id=bid;
-    select no_of_books_taken into n from membership_rec where mem_id=mid;
+	bknam:='&amp;bknam';
+	select MIN(book_id) into bid from book_details where book_name=bknam and mem_id is null;
+	mid:=&amp;mid;
+	select mem_name into nam from membership_rec where mem_id=mid;
+	update book_details set mem_id=mid where book_id=bid;
+	select no_of_books_taken into n from membership_rec where mem_id=mid;
 
-    if n is null then
+	if n is null then
         n:=0;
-    end if;
+	end if;
 
-    update membership_rec set no_of_books_taken=n+1 where mem_id=mid;
-    update book_rec set available_copies=available_copies-1 where book_name=bknam;
-    select ADD_months(sysdate,1) into dat from dual;
-    insert into circulation_rec values(bid,mid,sysdate,dat);
+	update membership_rec set no_of_books_taken=n+1 where mem_id=mid;
+	update book_rec set available_copies=available_copies-1 where book_name=bknam;
+	select ADD_months(sysdate,1) into dat from dual;
+	insert into circulation_rec values(bid,mid,sysdate,dat);
 end;
 
 /
@@ -587,24 +582,24 @@ BOOK_ID        MEM_ID           ISSUE_DAT       RETURN_DA
 <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;RETURN A BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 
 declare
-    bknam char(15);
-    id number(5);
-    bid number(5);
-    tim number(7,2);
-    dat date;
+	bknam char(15);
+	id number(5);
+	bid number(5);
+	tim number(7,2);
+	dat date;
 begin
-    bknam:='&amp;bknam';
-    id:=&amp;id;
-    select book_id into bid from book_details where book_name=bknam and mem_id=id;
-    update book_details set mem_id=null where book_id=bid;
-    update membership_rec set no_of_books_taken=no_of_books_taken-1 where mem_id=id;
-    update book_rec set available_copies=available_copies+1 where book_name=bknam;
-    select return_date into dat from circulation_rec where book_id=bid and mem_id=id;
-    select months_between(sysdate,dat) into tim from dual;
+	bknam:='&amp;bknam';
+	id:=&amp;id;
+	select book_id into bid from book_details where book_name=bknam and mem_id=id;
+	update book_details set mem_id=null where book_id=bid;
+	update membership_rec set no_of_books_taken=no_of_books_taken-1 where mem_id=id;
+	update book_rec set available_copies=available_copies+1 where book_name=bknam;
+	select return_date into dat from circulation_rec where book_id=bid and mem_id=id;
+	select months_between(sysdate,dat) into tim from dual;
 
-    if tim&gt;0 then
+	if tim&gt;0 then
         dbms_output.put_line('You have to pay fine');
-    end if;
+	end if;
 end;
 
 /
@@ -775,12 +770,6 @@ BOOK_ID     MEM_ID         ISSUE_DAT       RETURN_DA
           <a href="/blog/" class="button">See more</a>
         </footer>
       
-    </section>
-  
-
-  
-    <section id="linkedin">
-      <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="dhanoopbhaskar"><a class="LI-simple-link" href='https://in.linkedin.com/in/dhanoopbhaskar?trk=profile-badge'>Dhanoop Bhaskar</a></div>
     </section>
   
 
@@ -985,13 +974,12 @@ BOOK_ID     MEM_ID         ISSUE_DAT       RETURN_DA
     <section id="mini-bio">
       <header>
         <h1>About</h1>
-      </header>      
+      </header>
       <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
       <footer>
         <a href="/about" class="button">Learn More</a>
       </footer>
     </section>
-  
   
 </section>
 
@@ -1051,13 +1039,13 @@ BOOK_ID     MEM_ID         ISSUE_DAT       RETURN_DA
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.f1fe36cdafc3b0a105307da3f10a932daa1a01bd9cfe6a5f4f06ecf06c64dfbc.js" integrity="sha256-8f42za/DsKEFMH2j8QqTLaoaAb2c/mpfTwbs8Gxk37w="></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.ccd746853874c38c8a1c0582169938d2237fed58ba8f18343dcffe2f4b4ad85a.js" integrity="sha256-zNdGhTh0w4yKHAWCFpk40iN/7Vi6jxg0Pc/&#43;L0tK2Fo="></script>
     <script src="/js/add-on.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="application/javascript">

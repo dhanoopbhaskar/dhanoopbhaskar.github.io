@@ -6,11 +6,7 @@
     <description>Recent content in ETL on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 21 Jul 2013 20:48:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/tags/etl/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 21 Jul 2013 20:48:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/etl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Talend - Out of Memory Error and Java Heap Space Error</title>
       <link>https://dhanoopbhaskar.github.io/blog/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error/</link>

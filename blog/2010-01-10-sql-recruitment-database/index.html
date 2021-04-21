@@ -6,20 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.72.0" /><meta itemprop="name" content="SQL- RECRUITMENT DATABASE">
-<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table registration(regno number(6) primary key,name char(15),college char(15),date_of_reg date,degree char(10)); create table company_details(company_name char(15) primary key,salary number(8)); create table result(regno number(6) references registration(regno),marks number(5),selected char(3) default &#39;N&#39;); create table agency_income_details(company_name char(15),agency_profit number(10,2));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PROCEDURE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create or replace procedure insertreg (pname char,pcoll char,pdgr char) is cname char(15); no number(6); r number(6); cnt number(2); begin cname:=&#39;&amp;cname&#39;; select max(regno) into no from registration; if no is null then r:=1; else r:=no&#43;1; end if; insert into registration values(r,pname,pcoll,sysdate,pdgr); dbms_output.">
-<meta itemprop="datePublished" content="2010-01-10T00:27:00&#43;05:30" />
+<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="SQL- RECRUITMENT DATABASE">
+<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table registration(regno number(6) primary key,name char(15),college char(15),date_of_reg date,degree char(10)); create table company_details(company_name char(15) primary key,salary number(8)); create table result(regno number(6) references registration(regno),marks number(5),selected char(3) default &#39;N&#39;); create table agency_income_details(company_name char(15),agency_profit number(10,2));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PROCEDURE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create or replace procedure insertreg (pname char,pcoll char,pdgr char) is cname char(15); no number(6); r number(6); cnt number(2); begin cname:=&#39;&amp;cname&#39;; select max(regno) into no from registration; if no is null then r:=1; else r:=no&#43;1; end if; insert into registration values(r,pname,pcoll,sysdate,pdgr); dbms_output."><meta itemprop="datePublished" content="2010-01-10T00:27:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-01-10T00:27:00&#43;05:30" />
 <meta itemprop="wordCount" content="764">
-
-
-
 <meta itemprop="keywords" content="DBMS,SQL,PL/SQL," /><meta property="og:title" content="SQL- RECRUITMENT DATABASE" />
 <meta property="og:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table registration(regno number(6) primary key,name char(15),college char(15),date_of_reg date,degree char(10)); create table company_details(company_name char(15) primary key,salary number(8)); create table result(regno number(6) references registration(regno),marks number(5),selected char(3) default &#39;N&#39;); create table agency_income_details(company_name char(15),agency_profit number(10,2));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PROCEDURE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create or replace procedure insertreg (pname char,pcoll char,pdgr char) is cname char(15); no number(6); r number(6); cnt number(2); begin cname:=&#39;&amp;cname&#39;; select max(regno) into no from registration; if no is null then r:=1; else r:=no&#43;1; end if; insert into registration values(r,pname,pcoll,sysdate,pdgr); dbms_output." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-recruitment-database/" />
-<meta property="article:published_time" content="2010-01-10T00:27:00+05:30" />
-<meta property="article:modified_time" content="2010-01-10T00:27:00+05:30" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-recruitment-database/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2010-01-10T00:27:00&#43;05:30" />
+<meta property="article:modified_time" content="2010-01-10T00:27:00&#43;05:30" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL- RECRUITMENT DATABASE"/>
 <meta name="twitter:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table registration(regno number(6) primary key,name char(15),college char(15),date_of_reg date,degree char(10)); create table company_details(company_name char(15) primary key,salary number(8)); create table result(regno number(6) references registration(regno),marks number(5),selected char(3) default &#39;N&#39;); create table agency_income_details(company_name char(15),agency_profit number(10,2));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PROCEDURE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create or replace procedure insertreg (pname char,pcoll char,pdgr char) is cname char(15); no number(6); r number(6); cnt number(2); begin cname:=&#39;&amp;cname&#39;; select max(regno) into no from registration; if no is null then r:=1; else r:=no&#43;1; end if; insert into registration values(r,pname,pcoll,sysdate,pdgr); dbms_output."/>
@@ -36,9 +33,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script>
-<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
-  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -316,13 +311,13 @@ create table agency_income_details(company_name char(15),agency_profit number(10
 <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PROCEDURE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 
 create or replace procedure insertreg (pname char,pcoll char,pdgr char) is
-    cname char(15);
-    no number(6);
-    r number(6);
-    cnt number(2);
+	cname char(15);
+	no number(6);
+	r number(6);
+	cnt number(2);
 begin
-    cname:='&amp;cname';
-    select max(regno) into no from registration;
+	cname:='&amp;cname';
+	select max(regno) into no from registration;
 
     if no is null then
         r:=1;
@@ -365,15 +360,15 @@ Wipro                       25000
 create or replace trigger trig after update on company_details for each row
 
 declare
-    cnam char(15);
-    profit number(10,2);
-    intake number(4);
-    no_reg number(4);
-    no_appeared number(5);
-    sal number(10,2);
+	cnam char(15);
+	profit number(10,2);
+	intake number(4);
+	no_reg number(4);
+	no_appeared number(5);
+	sal number(10,2);
 begin
 
-    if updating then
+	if updating then
         cnam:=:old.company_name;
         sal:=:old.salary;
         select COUNT(*) into no_reg from registration;
@@ -381,7 +376,7 @@ begin
         select COUNT(*) into intake from result where selected='Y';
         profit:=((100*no_reg + 0.25*sal*intake + 6000*intake) - (50*no_appeared));
         insert into agency_income_details values(cnam,profit);
-    end if;
+	end if;
 
 end;
 
@@ -394,16 +389,16 @@ Trigger created.
 
 declare
 
-    pname char(15);
-    pcoll char(15);
-    pdgr char(10);
+	pname char(15);
+	pcoll char(15);
+	pdgr char(10);
 
 begin
 
-    pname:='&amp;pname';
-    pcoll:='&amp;pcoll';
-    pdgr:='&amp;pdgr';
-    insertreg(pname,pcoll,pdgr);
+	pname:='&amp;pname';
+	pcoll:='&amp;pcoll';
+	pdgr:='&amp;pdgr';
+	insertreg(pname,pcoll,pdgr);
 
 end;
 
@@ -547,29 +542,29 @@ SQL&gt; select * from result;
 
 declare
 
-    no_reg number(4);
-    cnam char(15);
-    intake number(4);
-    no_appeared number(5);
-    i number(3);
-    rno number(6);
-    mk number(5);
-    sel char(3);
-    mx number(5);
-    sal number(8);
-    nam char(15);
-    cursor cur is select * from result;
+	no_reg number(4);
+	cnam char(15);
+	intake number(4);
+	no_appeared number(5);
+	i number(3);
+	rno number(6);
+	mk number(5);
+	sel char(3);
+	mx number(5);
+	sal number(8);
+	nam char(15);
+	cursor cur is select * from result;
 
 begin
 
-    cnam:='&amp;cnam';
-    intake:=&amp;intake;
-    select COUNT(*) into no_appeared from result;
-    dbms_output.put_line(' Total no of appearence for the exam: '||no_appeared);
+	cnam:='&amp;cnam';
+	intake:=&amp;intake;
+	select COUNT(*) into no_appeared from result;
+	dbms_output.put_line(' Total no of appearence for the exam: '||no_appeared);
 
-    open cur;
+	open cur;
 
-    loop
+	loop
 
         fetch cur into rno,mk,sel;
         if cur%found then
@@ -585,17 +580,17 @@ begin
             exit;
         end if;
 
-    end loop;
+	end loop;
 
-    commit;
+	commit;
 
-    close cur;
+	close cur;
 
-    dbms_output.put_line('Selected Candidates');
+	dbms_output.put_line('Selected Candidates');
 
-    open cur;
+	open cur;
 
-    loop
+	loop
 
         fetch cur into rno,mk,sel;
 
@@ -608,12 +603,12 @@ begin
             exit;
         end if;
 
-    end loop;
-    commit;
-    close cur;
+	end loop;
+	commit;
+	close cur;
 
-    select salary into sal from company_details where company_name=cnam;
-    update company_details set salary=sal*1 where company_name=cnam;
+	select salary into sal from company_details where company_name=cnam;
+	update company_details set salary=sal*1 where company_name=cnam;
 
 end;
 
@@ -787,12 +782,6 @@ SQL&gt; select * from result;
           <a href="/blog/" class="button">See more</a>
         </footer>
       
-    </section>
-  
-
-  
-    <section id="linkedin">
-      <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="dhanoopbhaskar"><a class="LI-simple-link" href='https://in.linkedin.com/in/dhanoopbhaskar?trk=profile-badge'>Dhanoop Bhaskar</a></div>
     </section>
   
 
@@ -997,13 +986,12 @@ SQL&gt; select * from result;
     <section id="mini-bio">
       <header>
         <h1>About</h1>
-      </header>      
+      </header>
       <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
       <footer>
         <a href="/about" class="button">Learn More</a>
       </footer>
     </section>
-  
   
 </section>
 
@@ -1063,13 +1051,13 @@ SQL&gt; select * from result;
         The Insane Techie
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.72.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.f1fe36cdafc3b0a105307da3f10a932daa1a01bd9cfe6a5f4f06ecf06c64dfbc.js" integrity="sha256-8f42za/DsKEFMH2j8QqTLaoaAb2c/mpfTwbs8Gxk37w="></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.ccd746853874c38c8a1c0582169938d2237fed58ba8f18343dcffe2f4b4ad85a.js" integrity="sha256-zNdGhTh0w4yKHAWCFpk40iN/7Vi6jxg0Pc/&#43;L0tK2Fo="></script>
     <script src="/js/add-on.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="application/javascript">
