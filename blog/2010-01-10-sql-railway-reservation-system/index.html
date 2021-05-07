@@ -1,27 +1,508 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
   <head>
-  <meta charset="utf-8">
-<title>SQL- RAILWAY RESERVATION SYSTEM - The Insane Techie</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
 
+    
 
-<meta name="generator" content="Hugo 0.83.1" /><meta itemprop="name" content="SQL- RAILWAY RESERVATION SYSTEM">
-<meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed."><meta itemprop="datePublished" content="2010-01-10T00:25:00&#43;05:30" />
-<meta itemprop="dateModified" content="2010-01-10T00:25:00&#43;05:30" />
-<meta itemprop="wordCount" content="608">
-<meta itemprop="keywords" content="DBMS,SQL,PL/SQL," /><meta property="og:title" content="SQL- RAILWAY RESERVATION SYSTEM" />
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed.">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SQL- RAILWAY RESERVATION SYSTEM"/>
+<meta name="twitter:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="SQL- RAILWAY RESERVATION SYSTEM" />
 <meta property="og:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2010-01-10T00:25:00&#43;05:30" />
 <meta property="article:modified_time" content="2010-01-10T00:25:00&#43;05:30" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SQL- RAILWAY RESERVATION SYSTEM"/>
-<meta name="twitter:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;train_name&#39;,&amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
 
+
+    <title>
+  SQL- RAILWAY RESERVATION SYSTEM · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/blog/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/">
+              SQL- RAILWAY RESERVATION SYSTEM
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2010-01-10T00:25:00&#43;05:30'>
+                January 10, 2010
+              </time>
+            </span>            
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/sql/">SQL</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/dbms/">DBMS</a>
+      <span class="separator">•</span>
+    <a href="/tags/sql/">SQL</a>
+      <span class="separator">•</span>
+    <a href="/tags/pl/sql/">PL/SQL</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3));
+
+create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in('y','n')),customer_name char(15));	 
+
+create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ENTER TRAIN DETAILS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+
+declare
+
+	tname char(15);
+	tot number(3);
+	resv number(3);
+	cursor cur is select * from train_details;
+
+begin
+
+	insert into train_details values('&amp;train_name',&amp;total_seats,0);
+
+	open cur;
+
+	loop
+        fetch cur into tname,tot,resv;
+        if cur%found then
+            for i in 1..tot
+            loop
+                insert into reservation_status values(tname,i,'n',null);
+            end loop;
+        else
+            exit;
+        end if;
+	end loop;
+
+	commit;
+	close cur;
+end;
+
+/
+
+Enter value for train_name: AA
+
+Enter value for total_seats: 3
+
+old   7: insert into train_details values('&amp;train_name',&amp;total_seats,0);
+
+new   7: insert into train_details values('AA',3,0);
+
+PL/SQL procedure successfully completed.
+
+SQL&gt; /
+
+Enter value for train_name: BB
+
+Enter value for total_seats: 2
+
+old   7: insert into train_details values('&amp;train_name',&amp;total_seats,0);
+
+new   7: insert into train_details values('BB',2,0);
+
+ 
+
+PL/SQL procedure successfully completed.
+
+ 
+
+SQL&gt; select * from train_details;
+
+TRAIN_NAME                        TOTAL_SEATS           RESERVED_SEATS
+--------------------------------------------------------------------------------------
+AA                                3                     0
+BB                                2                     0
+
+ 
+
+SQL&gt; select * from  reservation_status;
+
+TRAIN_NAME                        SEAT_ID         RE       CUSTOMER_NAME
+--------------------------------------------------------------------------------------
+AA                                1               n
+AA                                2               n
+AA                                3               n
+BB                                1               n
+BB                                2               n
+
+5 rows selected.
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;RESERVE A SEAT&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+declare
+	cname char(15);
+	tname char(15);
+	tot number(3);
+	resv number(3);
+	sid number(3);
+	sno number(3);
+	sl number(3);
+begin
+	cname:=&amp;cname;
+	tname:=&amp;tname;
+	select total_seats into tot from train_details where train_name=tname;
+	select reserved_seats into resv from train_details where train_name=tname;
+	if tot&gt;resv then
+        select MIN(seat_id) into sid from reservation_status where train_name=tname and reserved='n';
+        update reservation_status set reserved='y' where train_name=tname and seat_id=sid;
+        update reservation_status set customer_name=cname where train_name=tname and seat_id=sid;
+        update train_details set reserved_seats=reserved_seats+1 where train_name=tname;
+	else
+        select MAX(slno) into sno from waiting_list;
+        if sno is null then
+            sl:=1;
+        else
+            sl:=sno+1;
+        end if;
+
+        insert into waiting_list values(sl,cname,tname);
+	end if;
+
+end;
+
+SQL&gt; /
+
+Enter value for cname: 'Tintumon'
+
+old  10: cname:=&amp;cname;
+
+new  10: cname:='Tintumon';
+
+Enter value for tname: 'AA'
+
+old  11: tname:=&amp;tname;
+
+new  11: tname:='AA';
+
+PL/SQL procedure successfully completed.
+
+SQL&gt; /
+
+Enter value for cname: 'Kuttoos'
+
+old  10: cname:=&amp;cname;
+
+new  10: cname:='Kuttoos';
+
+Enter value for tname: 'BB'
+
+old  11: tname:=&amp;tname;
+
+new  11: tname:='BB';
+
+ 
+
+PL/SQL procedure successfully completed.
+
+ 
+
+SQL&gt; /
+
+Enter value for cname: 'Appu'
+
+old  10: cname:=&amp;cname;
+
+new  10: cname:='Appu';
+
+Enter value for tname: 'BB'
+
+old  11: tname:=&amp;tname;
+
+new  11: tname:='BB';
+
+ 
+
+PL/SQL procedure successfully completed.
+
+ 
+
+SQL&gt; /
+
+Enter value for cname: 'Tuttu'
+
+old  10: cname:=&amp;cname;
+
+new  10: cname:='Tuttu';
+
+Enter value for tname: 'BB'
+
+old  11: tname:=&amp;tname;
+
+new  11: tname:='BB';
+
+ 
+
+PL/SQL procedure successfully completed.
+
+ 
+
+SQL&gt; select * from reservation_status;
+
+ 
+
+TRAIN_NAME                        SEAT_ID         RE         CUSTOMER_NAME
+---------------------------------------------------------------------------------------
+AA                                1               y          Tintumon
+AA                                2               n
+AA                                3               n
+BB                                1               y          Kuttoos
+BB                                2               y          Appu
+
+5 rows selected.
+
+SQL&gt; select * from waiting_list;
+
+SLNO         CUSTOMER_NAME               TRAIN_NAME
+--------------------------------------------------------------------------------
+1            Tuttu                       BB
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CANCEL A RESERVATION&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+declare
+	cname char(15);
+	tname char(15);
+	sid number(3);
+	sno number(3);
+	sl number(3);
+begin
+	cname:=&amp;cname;
+	tname:=&amp;tname;
+	select seat_id into sid from reservation_status where train_name=tname and customer_name=cname;
+	select MIN(slno) into sno from waiting_list where train_name=tname;
+	if sno is not null then
+        select customer_name into cname from waiting_list where train_name=tname and slno=sno;
+        update reservation_status set customer_name=cname where train_name=tname and seat_id=sid;
+        delete from waiting_list where train_name=tname and slno=sno;
+	else
+        update reservation_status set reserved='n' where train_name=tname and seat_id=sid;
+        update reservation_status set customer_name=null where train_name=tname and seat_id=sid;
+        update train_details set reserved_seats=reserved_seats-1 where train_name=tname;
+	end if;
+end;
+
+/
+
+Enter value for cname: 'Appu'
+
+old   8: cname:=&amp;cname;
+
+new   8: cname:='Appu';
+
+Enter value for tname: 'BB'
+
+old   9: tname:=&amp;tname;
+
+new   9: tname:='BB';
+
+PL/SQL procedure successfully completed.
+
+SQL&gt; select * from reservation_status;
+
+
+TRAIN_NAME                        SEAT_ID         RE         CUSTOMER_NAME
+------------------------------------------------------------------------------------------------
+AA                                1               y          Tintumon
+AA                                2               n
+AA                                3               n
+BB                                1               y          Kuttoos
+BB                                2               y          Tuttu
+
+5 rows selected.	 
+
+SQL&gt; select * from waiting_list;
+
+SLNO         CUSTOMER_NAME                           TRAIN_NAME
+----------------------------------------------------------------------------------
+
+
+
+SQL&gt; select * from train_details;
+
+TRAIN_NAME            TOTAL_SEATS           RESERVED_SEATS
+------------------------------------------------------------------
+AA                    3                     1
+BB                    2                     2</code></pre>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+    
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -33,548 +514,19 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><link rel="stylesheet" href="/css/bundle.min.24cd241a3b1538110f42c70192f2431797c8be3ab5810885cf7a21431686fcbf.css" integrity="sha256-JM0kGjsVOBEPQscBkvJDF5fIvjq1gQiFz3ohQxaG/L8="><link rel="stylesheet" href="/css/add-on.css">
-</head>
-
-  <body>
-    
-
-<header id="site-header">
-  <nav id="site-nav">
-    <h1 class="nav-title">
-      <a href="/" class="nav">
-        
-          
-            Blog
-          
-        
-      </a>
-    </h1>
-    <menu id="site-nav-menu" class="flyout-menu menu">
-      
-        
-          
-          
-            <a href="/about/" class="nav link"><i class='far fa-newspaper'></i> About</a>
-          
-        
-      
-        
-          
-          
-            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
-          
-        
-      
-        
-          
-          
-            <a href="/projects/" class="nav link"><i class='far fa-newspaper'></i> Projects</a>
-          
-        
-      
-        
-          
-          
-            <a href="/pencils/" class="nav link"><i class='far fa-newspaper'></i> Pencils</a>
-          
-        
-      
-        
-          
-          
-            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
-        
-      
-      <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
-      
-    </menu>
-    
-    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
-    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
-    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
-  </nav>
-  
-  <menu id="lang-menu" class="flyout-menu menu">
-  <a href="#" lang="en" class="nav link active">English (en)</a>
-  
-    
-      
-    
-  
-</menu>
-
-  
-    <menu id="share-menu" class="flyout-menu menu">
-      <h1>Share Post</h1>
-      
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=SQL-%20RAILWAY%20RESERVATION%20SYSTEM&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-railway-reservation-system%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-railway-reservation-system%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-railway-reservation-system%2f&amp;title=SQL-%20RAILWAY%20RESERVATION%20SYSTEM" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-railway-reservation-system%2f&amp;title=SQL-%20RAILWAY%20RESERVATION%20SYSTEM" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-railway-reservation-system%2f&amp;description=SQL-%20RAILWAY%20RESERVATION%20SYSTEM" target="_blank" rel="noopener" class="nav share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-railway-reservation-system%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
-
-    </menu>
-  
-</header>
-
-    <div id="wrapper">
-      <section id="site-intro" >
-  <a href="/"><img src="https://dhanoopbhaskar.github.io/img/main/logo.jpeg" class="circle" width="" alt="Dhanoop Bhaskar" /></a>
-  <header>
-    <h1>The Insane Techie</h1>
-  </header>
-  <main>
-    <p>let's talk with the computers!</p>
-  </main>
-  
-    <footer>
-      <ul class="socnet-icons">
-        
-
-        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
-
-
-<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
-
-
-
-
-
-
-<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
-
-<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
-
-
-
-
-<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
-
-<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
-<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
-
-
-
-
-
-<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
-
-<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
-
-<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
-
-
-
-
-
-
-
-
-
-<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
-
-      </ul>
-    </footer>
-  
-</section>
-
-      <main id="site-main">
-        
-      </main>
-      <section id="site-sidebar">
-  
-    <section id="recent-posts">
-      <header>
-        <h1>Recent posts</h1>
-      </header>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2020-06-19-regex/">Regex - Cheatsheet</a></h2>
-          <time class="published" datetime="">June 19, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2020-05-07-ros-in-docker-container/">ROS In Docker Container</a></h2>
-          <time class="published" datetime="">May 7, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/">Working With Python 3 In ROS Kinetic Or Melodic</a></h2>
-          <time class="published" datetime="">May 7, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2019-10-28-biped-walking-robot/">Biped Walking Robot</a></h2>
-          <time class="published" datetime="">October 28, 2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2019-10-28-robotic-arm/">Robotic Arm</a></h2>
-          <time class="published" datetime="">October 28, 2019</time>
-        </header>
-      </article>
-      
-      
-        <footer>
-          <a href="/blog/" class="button">See more</a>
-        </footer>
-      
-    </section>
-  
-
-  
-    
-      <section id="categories">
-        <header>
-          <h1><a href="/categories">Categories</a></h1>
-        </header>
-        <ul>
-          
-            
-          
-          
-          <li>
-            
-              <a href="/categories/java/">java<span class="count">87</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/c/">c<span class="count">24</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/cryptography/">cryptography<span class="count">11</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/linux/">linux<span class="count">10</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/gcc/">gcc<span class="count">7</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/python/">python<span class="count">7</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/sql/">sql<span class="count">7</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/etl/">etl<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/ruby/">ruby<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/software-design-patterns/">software-design-patterns<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/software-engineering/">software-engineering<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/talend/">talend<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/blowfish-algorithm/">blowfish-algorithm<span class="count">4</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/swing/">swing<span class="count">4</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/aes-algorithm/">aes-algorithm<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/arduino/">arduino<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/c&#43;&#43;/">c&#43;&#43;<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/des-algorithm/">des-algorithm<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/projects/">projects<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/robotics/">robotics<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/good-read/">good-read<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/gratitude/">gratitude<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/ros/">ros<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/technology/">technology<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/arts/">arts<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/docker/">docker<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/fun/">fun<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/iphone/">iphone<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/microsoft/">microsoft<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/mysql/">mysql<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/pencils/">pencils<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/phpmyadmin/">phpmyadmin<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/regex/">regex<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/rest/">rest<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/string/">string<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/web-services/">web-services<span class="count">1</span></a>
-            
-          
-          </li>
-        </ul>
-      </section>
-    
-  
-
-  
-    <section id="mini-bio">
-      <header>
-        <h1>About</h1>
-      </header>
-      <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
-      <footer>
-        <a href="/about" class="button">Learn More</a>
-      </footer>
-    </section>
-  
-</section>
-
-      <footer id="site-footer">
-  
-      <ul class="socnet-icons">
-        
-
-        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
-
-
-<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
-
-
-
-
-
-
-<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
-
-<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
-
-
-
-
-<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
-
-<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
-<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
-
-
-
-
-
-<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
-
-<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
-
-<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
-
-
-
-
-
-
-
-
-
-<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
-
-      </ul>
-  
-  <p class="copyright">
-    
-      &copy; 2020
-      
-        Dhanoop Bhaskar
-      
-    . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.1' target='_blank' rel='noopener'>Hugo</a>
-  </p>
-</footer>
-<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
-
-      <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.ccd746853874c38c8a1c0582169938d2237fed58ba8f18343dcffe2f4b4ad85a.js" integrity="sha256-zNdGhTh0w4yKHAWCFpk40iN/7Vi6jxg0Pc/&#43;L0tK2Fo="></script>
-    <script src="/js/add-on.js"></script>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
   </body>
+
 </html>

@@ -84,7 +84,7 @@ httpserver.c</description>
       <pubDate>Sun, 12 Dec 2010 13:36:00 +0530</pubDate>
       
       <guid>https://dhanoopbhaskar.github.io/blog/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</guid>
-      <description>DOSBox Use dosbox to mount and run TC.EXE
+      <description>DOSBox    Use dosbox to mount and run TC.EXE
 Download DOSBox here&amp;hellip;
 Mounting
 Z:\&amp;gt;MOUNT C &amp;quot;PATH OF BIN&amp;quot; Z:\&amp;gt;C: C:\&amp;gt;TC  [TURBO C++ IDE opens]

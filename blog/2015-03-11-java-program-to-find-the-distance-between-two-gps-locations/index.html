@@ -1,17 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
   <head>
-  <meta charset="utf-8">
-<title>Java program to find the distance between two GPS locations. - The Insane Techie</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
 
+    
 
-<meta name="generator" content="Hugo 0.83.1" /><meta itemprop="name" content="Java program to find the distance between two GPS locations.">
-<meta itemprop="description" content="Location.java
-package com.cables.gps; public class Location { private int latDegree; private int latMinutes; private int latSeconds; private char latDirection; private int longDegree; private int longMinutes; private int longSeconds; private char longDirection; private float latitude; private float longitude; private void init() throws Exception { latitude = latDegree &#43; (latMinutes / 60.0f) &#43; (latSeconds / 3600.0f); if (latDirection == &#39;N&#39;) { latitude *= 1f; } else if (latDirection == &#39;S&#39;) { latitude *= -1f; } else { throw new Exception(&#34;Invalid Latitude Direction: &#34; &#43; latDirection); } longitude = longDegree &#43; (longMinutes / 60."><meta itemprop="datePublished" content="2015-03-11T11:04:00&#43;05:30" />
-<meta itemprop="dateModified" content="2015-03-11T11:04:00&#43;05:30" />
-<meta itemprop="wordCount" content="689">
-<meta itemprop="keywords" content="location,gps,distance,java," /><meta property="og:title" content="Java program to find the distance between two GPS locations." />
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="Location.java
+package com.cables.gps; public class Location { private int latDegree; private int latMinutes; private int latSeconds; private char latDirection; private int longDegree; private int longMinutes; private int longSeconds; private char longDirection; private float latitude; private float longitude; private void init() throws Exception { latitude = latDegree &#43; (latMinutes / 60.0f) &#43; (latSeconds / 3600.0f); if (latDirection == &#39;N&#39;) { latitude *= 1f; } else if (latDirection == &#39;S&#39;) { latitude *= -1f; } else { throw new Exception(&#34;Invalid Latitude Direction: &#34; &#43; latDirection); } longitude = longDegree &#43; (longMinutes / 60.">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java program to find the distance between two GPS locations."/>
+<meta name="twitter:description" content="Location.java
+package com.cables.gps; public class Location { private int latDegree; private int latMinutes; private int latSeconds; private char latDirection; private int longDegree; private int longMinutes; private int longSeconds; private char longDirection; private float latitude; private float longitude; private void init() throws Exception { latitude = latDegree &#43; (latMinutes / 60.0f) &#43; (latSeconds / 3600.0f); if (latDirection == &#39;N&#39;) { latitude *= 1f; } else if (latDirection == &#39;S&#39;) { latitude *= -1f; } else { throw new Exception(&#34;Invalid Latitude Direction: &#34; &#43; latDirection); } longitude = longDegree &#43; (longMinutes / 60."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="Java program to find the distance between two GPS locations." />
 <meta property="og:description" content="Location.java
 package com.cables.gps; public class Location { private int latDegree; private int latMinutes; private int latSeconds; private char latDirection; private int longDegree; private int longMinutes; private int longSeconds; private char longDirection; private float latitude; private float longitude; private void init() throws Exception { latitude = latDegree &#43; (latMinutes / 60.0f) &#43; (latSeconds / 3600.0f); if (latDirection == &#39;N&#39;) { latitude *= 1f; } else if (latDirection == &#39;S&#39;) { latitude *= -1f; } else { throw new Exception(&#34;Invalid Latitude Direction: &#34; &#43; latDirection); } longitude = longDegree &#43; (longMinutes / 60." />
 <meta property="og:type" content="article" />
@@ -19,12 +28,434 @@ package com.cables.gps; public class Location { private int latDegree; private i
 <meta property="article:published_time" content="2015-03-11T11:04:00&#43;05:30" />
 <meta property="article:modified_time" content="2015-03-11T11:04:00&#43;05:30" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java program to find the distance between two GPS locations."/>
-<meta name="twitter:description" content="Location.java
-package com.cables.gps; public class Location { private int latDegree; private int latMinutes; private int latSeconds; private char latDirection; private int longDegree; private int longMinutes; private int longSeconds; private char longDirection; private float latitude; private float longitude; private void init() throws Exception { latitude = latDegree &#43; (latMinutes / 60.0f) &#43; (latSeconds / 3600.0f); if (latDirection == &#39;N&#39;) { latitude *= 1f; } else if (latDirection == &#39;S&#39;) { latitude *= -1f; } else { throw new Exception(&#34;Invalid Latitude Direction: &#34; &#43; latDirection); } longitude = longDegree &#43; (longMinutes / 60."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
 
+
+    <title>
+  Java program to find the distance between two GPS locations. · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/blog/2015-03-11-java-program-to-find-the-distance-between-two-gps-locations/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/blog/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/blog/2015-03-11-java-program-to-find-the-distance-between-two-gps-locations/">
+              Java program to find the distance between two GPS locations.
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2015-03-11T11:04:00&#43;05:30'>
+                March 11, 2015
+              </time>
+            </span>            
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/java/">java</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/location/">location</a>
+      <span class="separator">•</span>
+    <a href="/tags/gps/">gps</a>
+      <span class="separator">•</span>
+    <a href="/tags/distance/">distance</a>
+      <span class="separator">•</span>
+    <a href="/tags/java/">java</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p><strong>Location.java</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.cables.gps<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Location</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> latDegree<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> latMinutes<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> latSeconds<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">char</span> latDirection<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> longDegree<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> longMinutes<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> longSeconds<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">char</span> longDirection<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">float</span> latitude<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">float</span> longitude<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">init</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        latitude <span style="color:#f92672">=</span> latDegree <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>latMinutes <span style="color:#f92672">/</span> 60<span style="color:#f92672">.</span><span style="color:#a6e22e">0f</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>latSeconds <span style="color:#f92672">/</span> 3600<span style="color:#f92672">.</span><span style="color:#a6e22e">0f</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>latDirection <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;N&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            latitude <span style="color:#f92672">*=</span> 1f<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>latDirection <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;S&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            latitude <span style="color:#f92672">*=</span> <span style="color:#f92672">-</span>1f<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Invalid Latitude Direction: &#34;</span> <span style="color:#f92672">+</span> latDirection<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        longitude <span style="color:#f92672">=</span> longDegree <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>longMinutes <span style="color:#f92672">/</span> 60<span style="color:#f92672">.</span><span style="color:#a6e22e">0f</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>longSeconds <span style="color:#f92672">/</span> 3600<span style="color:#f92672">.</span><span style="color:#a6e22e">0f</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>longDirection <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;E&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            longitude <span style="color:#f92672">*=</span> 1f<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>longDirection <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;W&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            longitude <span style="color:#f92672">*=</span> <span style="color:#f92672">-</span>1f<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Invalid Longitude Direction: &#34;</span> <span style="color:#f92672">+</span> longDirection<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        String returnString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            init<span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        returnString <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;(&#34;</span> <span style="color:#f92672">+</span> latitude <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">+</span> longitude <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;)&#34;</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> returnString<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLatitude</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> deg<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> min<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> sec<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span> dir<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        latDegree <span style="color:#f92672">=</span> deg<span style="color:#f92672">;</span>
+        latMinutes <span style="color:#f92672">=</span> min<span style="color:#f92672">;</span>
+        latSeconds <span style="color:#f92672">=</span> sec<span style="color:#f92672">;</span>
+        latDirection <span style="color:#f92672">=</span> dir<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLongitude</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> deg<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> min<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> sec<span style="color:#f92672">,</span> <span style="color:#66d9ef">char</span> dir<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        longDegree <span style="color:#f92672">=</span> deg<span style="color:#f92672">;</span>
+        longMinutes <span style="color:#f92672">=</span> min<span style="color:#f92672">;</span>
+        longSeconds <span style="color:#f92672">=</span> sec<span style="color:#f92672">;</span>
+        longDirection <span style="color:#f92672">=</span> dir<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getLatDegree</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> latDegree<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLatDegree</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> latDegree<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">latDegree</span> <span style="color:#f92672">=</span> latDegree<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getLatMinutes</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> latMinutes<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLatMinutes</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> latMinutes<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">latMinutes</span> <span style="color:#f92672">=</span> latMinutes<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getLatSeconds</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> latSeconds<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLatSeconds</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> latSeconds<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">latSeconds</span> <span style="color:#f92672">=</span> latSeconds<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">char</span> <span style="color:#a6e22e">getLatDirection</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> latDirection<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLatDirection</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span> latDirection<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>latDirection <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;N&#39;</span> <span style="color:#f92672">&amp;&amp;</span> latDirection <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;S&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Invalid Latitude Direction: &#34;</span> <span style="color:#f92672">+</span> latDirection<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">latDirection</span> <span style="color:#f92672">=</span> latDirection<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getLongDegree</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> longDegree<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLongDegree</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> longDegree<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">longDegree</span> <span style="color:#f92672">=</span> longDegree<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getLongMinutes</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> longMinutes<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLongMinutes</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> longMinutes<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">longMinutes</span> <span style="color:#f92672">=</span> longMinutes<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getLongSeconds</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> longSeconds<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLongSeconds</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> longSeconds<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">longSeconds</span> <span style="color:#f92672">=</span> longSeconds<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">char</span> <span style="color:#a6e22e">getLongDirection</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> longDirection<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLongDirection</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span> longDirection<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>longDirection <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#f92672">&amp;&amp;</span> longDirection <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;W&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Invalid Longitude Direction: &#34;</span> <span style="color:#f92672">+</span> longDirection<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">longDirection</span> <span style="color:#f92672">=</span> longDirection<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        init<span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">return</span> latitude<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLatitude</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> latitude<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">latitude</span> <span style="color:#f92672">=</span> latitude<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        init<span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">return</span> longitude<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLongitude</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> longitude<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">longitude</span> <span style="color:#f92672">=</span> longitude<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLatString</span><span style="color:#f92672">(</span>String latStr<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        latStr <span style="color:#f92672">=</span> latStr<span style="color:#f92672">.</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">();</span>
+        String<span style="color:#f92672">[]</span> values <span style="color:#f92672">=</span> latStr<span style="color:#f92672">.</span><span style="color:#a6e22e">split</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">);</span>
+        latDegree <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>values<span style="color:#f92672">[</span>0<span style="color:#f92672">].</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">());</span>
+        latMinutes <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>values<span style="color:#f92672">[</span>1<span style="color:#f92672">].</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">());</span>
+        latSeconds <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>values<span style="color:#f92672">[</span>2<span style="color:#f92672">].</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">());</span>
+        latDirection <span style="color:#f92672">=</span> values<span style="color:#f92672">[</span>3<span style="color:#f92672">].</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">().</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>latDirection <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;N&#39;</span> <span style="color:#f92672">&amp;&amp;</span> latDirection <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;S&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Invalid Latitude Direction: &#34;</span> <span style="color:#f92672">+</span> latDirection<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLongString</span><span style="color:#f92672">(</span>String longStr<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        longStr <span style="color:#f92672">=</span> longStr<span style="color:#f92672">.</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">();</span>
+        String<span style="color:#f92672">[]</span> values <span style="color:#f92672">=</span> longStr<span style="color:#f92672">.</span><span style="color:#a6e22e">split</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">);</span>
+        longDegree <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>values<span style="color:#f92672">[</span>0<span style="color:#f92672">].</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">());</span>
+        longMinutes <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>values<span style="color:#f92672">[</span>1<span style="color:#f92672">].</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">());</span>
+        longSeconds <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>values<span style="color:#f92672">[</span>2<span style="color:#f92672">].</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">());</span>
+        longDirection <span style="color:#f92672">=</span> values<span style="color:#f92672">[</span>3<span style="color:#f92672">].</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">().</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>longDirection <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;E&#39;</span> <span style="color:#f92672">&amp;&amp;</span> longDirection <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;W&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Invalid Longitude Direction: &#34;</span> <span style="color:#f92672">+</span> longDirection<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p><strong>LocationOps.java</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">     
+<span style="color:#f92672">package</span> com.cables.gps<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LocationOps</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> Location location1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Location location2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> radius <span style="color:#f92672">=</span> 6371<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">LocationOps</span><span style="color:#f92672">(</span>Location location1<span style="color:#f92672">,</span> Location location2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">location1</span> <span style="color:#f92672">=</span> location1<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">location2</span> <span style="color:#f92672">=</span> location2<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calculateDistance</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">double</span> distance <span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">double</span> lat1 <span style="color:#f92672">=</span> degreesToRadians<span style="color:#f92672">(</span>location1<span style="color:#f92672">.</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">());</span>
+        <span style="color:#66d9ef">double</span> lat2 <span style="color:#f92672">=</span> degreesToRadians<span style="color:#f92672">(</span>location2<span style="color:#f92672">.</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">());</span>
+        <span style="color:#66d9ef">double</span> dLat <span style="color:#f92672">=</span> degreesToRadians<span style="color:#f92672">(</span>location2<span style="color:#f92672">.</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">()</span> <span style="color:#f92672">-</span> location1<span style="color:#f92672">.</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">());</span>
+        <span style="color:#66d9ef">double</span> dLong <span style="color:#f92672">=</span> degreesToRadians<span style="color:#f92672">(</span>location2<span style="color:#f92672">.</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">()</span> <span style="color:#f92672">-</span> location1<span style="color:#f92672">.</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">());</span>
+        <span style="color:#66d9ef">double</span> a <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">sin</span><span style="color:#f92672">(</span>dLat <span style="color:#f92672">/</span> 2<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">sin</span><span style="color:#f92672">(</span>dLat <span style="color:#f92672">/</span> 2<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">)</span>
+                <span style="color:#f92672">+</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">cos</span><span style="color:#f92672">(</span>lat1<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">cos</span><span style="color:#f92672">(</span>lat2<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">sin</span><span style="color:#f92672">(</span>dLong <span style="color:#f92672">/</span> 2<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">sin</span><span style="color:#f92672">(</span>dLong <span style="color:#f92672">/</span> 2<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">double</span> c <span style="color:#f92672">=</span> 2 <span style="color:#f92672">*</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">atan2</span><span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">sqrt</span><span style="color:#f92672">(</span>a<span style="color:#f92672">),</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">sqrt</span><span style="color:#f92672">(</span>1 <span style="color:#f92672">-</span> a<span style="color:#f92672">));</span>
+        distance <span style="color:#f92672">=</span> radius <span style="color:#f92672">*</span> c<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> distance<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">degreesToRadians</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> degrees<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">double</span> radians <span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        radians <span style="color:#f92672">=</span> degrees <span style="color:#f92672">*</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">PI</span> <span style="color:#f92672">/</span> 180<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> radians<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        Location loc1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Location<span style="color:#f92672">();</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatDegree</span><span style="color:#f92672">(</span>50<span style="color:#f92672">);</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatMinutes</span><span style="color:#f92672">(</span>03<span style="color:#f92672">);</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatSeconds</span><span style="color:#f92672">(</span>59<span style="color:#f92672">);</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatDirection</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;N&#39;</span><span style="color:#f92672">);</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongDegree</span><span style="color:#f92672">(</span>005<span style="color:#f92672">);</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongMinutes</span><span style="color:#f92672">(</span>42<span style="color:#f92672">);</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongSeconds</span><span style="color:#f92672">(</span>53<span style="color:#f92672">);</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongDirection</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;W&#39;</span><span style="color:#f92672">);</span>
+        Location loc2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Location<span style="color:#f92672">();</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatDegree</span><span style="color:#f92672">(</span>58<span style="color:#f92672">);</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatMinutes</span><span style="color:#f92672">(</span>38<span style="color:#f92672">);</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatSeconds</span><span style="color:#f92672">(</span>38<span style="color:#f92672">);</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatDirection</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;N&#39;</span><span style="color:#f92672">);</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongDegree</span><span style="color:#f92672">(</span>003<span style="color:#f92672">);</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongMinutes</span><span style="color:#f92672">(</span>04<span style="color:#f92672">);</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongSeconds</span><span style="color:#f92672">(</span>12<span style="color:#f92672">);</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongDirection</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;W&#39;</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> LocationOps<span style="color:#f92672">(</span>loc1<span style="color:#f92672">,</span> loc2<span style="color:#f92672">).</span><span style="color:#a6e22e">calculateDistance</span><span style="color:#f92672">());</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;50 03 59 N&#34;</span><span style="color:#f92672">);</span>
+        loc1<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;005 42 53 W&#34;</span><span style="color:#f92672">);</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLatString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;58 38 38 N&#34;</span><span style="color:#f92672">);</span>
+        loc2<span style="color:#f92672">.</span><span style="color:#a6e22e">setLongString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;003 04 12 W&#34;</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> LocationOps<span style="color:#f92672">(</span>loc1<span style="color:#f92672">,</span> loc2<span style="color:#f92672">).</span><span style="color:#a6e22e">calculateDistance</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span></code></pre></div>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+    
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -36,548 +467,19 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><link rel="stylesheet" href="/css/bundle.min.24cd241a3b1538110f42c70192f2431797c8be3ab5810885cf7a21431686fcbf.css" integrity="sha256-JM0kGjsVOBEPQscBkvJDF5fIvjq1gQiFz3ohQxaG/L8="><link rel="stylesheet" href="/css/add-on.css">
-</head>
-
-  <body>
-    
-
-<header id="site-header">
-  <nav id="site-nav">
-    <h1 class="nav-title">
-      <a href="/" class="nav">
-        
-          
-            Blog
-          
-        
-      </a>
-    </h1>
-    <menu id="site-nav-menu" class="flyout-menu menu">
-      
-        
-          
-          
-            <a href="/about/" class="nav link"><i class='far fa-newspaper'></i> About</a>
-          
-        
-      
-        
-          
-          
-            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
-          
-        
-      
-        
-          
-          
-            <a href="/projects/" class="nav link"><i class='far fa-newspaper'></i> Projects</a>
-          
-        
-      
-        
-          
-          
-            <a href="/pencils/" class="nav link"><i class='far fa-newspaper'></i> Pencils</a>
-          
-        
-      
-        
-          
-          
-            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
-        
-      
-      <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
-      
-    </menu>
-    
-    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
-    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
-    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
-  </nav>
-  
-  <menu id="lang-menu" class="flyout-menu menu">
-  <a href="#" lang="en" class="nav link active">English (en)</a>
-  
-    
-      
-    
-  
-</menu>
-
-  
-    <menu id="share-menu" class="flyout-menu menu">
-      <h1>Share Post</h1>
-      
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=Java%20program%20to%20find%20the%20distance%20between%20two%20GPS%20locations.&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2015-03-11-java-program-to-find-the-distance-between-two-gps-locations%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2015-03-11-java-program-to-find-the-distance-between-two-gps-locations%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2015-03-11-java-program-to-find-the-distance-between-two-gps-locations%2f&amp;title=Java%20program%20to%20find%20the%20distance%20between%20two%20GPS%20locations." target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2015-03-11-java-program-to-find-the-distance-between-two-gps-locations%2f&amp;title=Java%20program%20to%20find%20the%20distance%20between%20two%20GPS%20locations." target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2015-03-11-java-program-to-find-the-distance-between-two-gps-locations%2f&amp;description=Java%20program%20to%20find%20the%20distance%20between%20two%20GPS%20locations." target="_blank" rel="noopener" class="nav share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2015-03-11-java-program-to-find-the-distance-between-two-gps-locations%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
-
-    </menu>
-  
-</header>
-
-    <div id="wrapper">
-      <section id="site-intro" >
-  <a href="/"><img src="https://dhanoopbhaskar.github.io/img/main/logo.jpeg" class="circle" width="" alt="Dhanoop Bhaskar" /></a>
-  <header>
-    <h1>The Insane Techie</h1>
-  </header>
-  <main>
-    <p>let's talk with the computers!</p>
-  </main>
-  
-    <footer>
-      <ul class="socnet-icons">
-        
-
-        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
-
-
-<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
-
-
-
-
-
-
-<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
-
-<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
-
-
-
-
-<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
-
-<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
-<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
-
-
-
-
-
-<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
-
-<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
-
-<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
-
-
-
-
-
-
-
-
-
-<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
-
-      </ul>
-    </footer>
-  
-</section>
-
-      <main id="site-main">
-        
-      </main>
-      <section id="site-sidebar">
-  
-    <section id="recent-posts">
-      <header>
-        <h1>Recent posts</h1>
-      </header>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2020-06-19-regex/">Regex - Cheatsheet</a></h2>
-          <time class="published" datetime="">June 19, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2020-05-07-ros-in-docker-container/">ROS In Docker Container</a></h2>
-          <time class="published" datetime="">May 7, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/">Working With Python 3 In ROS Kinetic Or Melodic</a></h2>
-          <time class="published" datetime="">May 7, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2019-10-28-biped-walking-robot/">Biped Walking Robot</a></h2>
-          <time class="published" datetime="">October 28, 2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/blog/2019-10-28-robotic-arm/">Robotic Arm</a></h2>
-          <time class="published" datetime="">October 28, 2019</time>
-        </header>
-      </article>
-      
-      
-        <footer>
-          <a href="/blog/" class="button">See more</a>
-        </footer>
-      
-    </section>
-  
-
-  
-    
-      <section id="categories">
-        <header>
-          <h1><a href="/categories">Categories</a></h1>
-        </header>
-        <ul>
-          
-            
-          
-          
-          <li>
-            
-              <a href="/categories/java/">java<span class="count">87</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/c/">c<span class="count">24</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/cryptography/">cryptography<span class="count">11</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/linux/">linux<span class="count">10</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/gcc/">gcc<span class="count">7</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/python/">python<span class="count">7</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/sql/">sql<span class="count">7</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/etl/">etl<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/ruby/">ruby<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/software-design-patterns/">software-design-patterns<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/software-engineering/">software-engineering<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/talend/">talend<span class="count">5</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/blowfish-algorithm/">blowfish-algorithm<span class="count">4</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/swing/">swing<span class="count">4</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/aes-algorithm/">aes-algorithm<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/arduino/">arduino<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/c&#43;&#43;/">c&#43;&#43;<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/des-algorithm/">des-algorithm<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/projects/">projects<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/robotics/">robotics<span class="count">3</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/good-read/">good-read<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/gratitude/">gratitude<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/ros/">ros<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/technology/">technology<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/arts/">arts<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/docker/">docker<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/fun/">fun<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/iphone/">iphone<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/microsoft/">microsoft<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/mysql/">mysql<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/pencils/">pencils<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/phpmyadmin/">phpmyadmin<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/regex/">regex<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/rest/">rest<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/string/">string<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/web-services/">web-services<span class="count">1</span></a>
-            
-          
-          </li>
-        </ul>
-      </section>
-    
-  
-
-  
-    <section id="mini-bio">
-      <header>
-        <h1>About</h1>
-      </header>
-      <p>A technical blog which covers mainly Java technologies. Other programming languages are also covered.</p>
-      <footer>
-        <a href="/about" class="button">Learn More</a>
-      </footer>
-    </section>
-  
-</section>
-
-      <footer id="site-footer">
-  
-      <ul class="socnet-icons">
-        
-
-        <li><a href="//github.com/dhanoopbhaskar" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
-
-
-<li><a href="//bitbucket.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Bitbucket" class="fab fa-bitbucket"></a></li>
-
-
-
-
-
-
-<li><a href="//theinsanetechie.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
-
-<li><a href="//linkedin.com/in/dhanoopbhaskar" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
-
-
-
-
-<li><a href="//facebook.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
-
-<li><a href="//quora.com/profile/dhanoopbhaskar" target="_blank" rel="noopener" title="Quora" class="fab fa-quora"></a></li>
-<li><a href="//youtube.com/dhanoopbhaskar" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
-
-
-
-
-
-<li><a href="//instagram.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
-
-<li><a href="//twitter.com/dhanoopbhaskar" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
-
-<li><a href="skype:dhanoopbhaskar?userinfo" target="_blank" rel="noopener" title="Skype" class="fab fa-skype"></a></li>
-
-
-
-
-
-
-
-
-
-<li><a href="mailto:dhanoopbhaskar@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
-
-      </ul>
-  
-  <p class="copyright">
-    
-      &copy; 2020
-      
-        Dhanoop Bhaskar
-      
-    . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.1' target='_blank' rel='noopener'>Hugo</a>
-  </p>
-</footer>
-<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
-
-      <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.ccd746853874c38c8a1c0582169938d2237fed58ba8f18343dcffe2f4b4ad85a.js" integrity="sha256-zNdGhTh0w4yKHAWCFpk40iN/7Vi6jxg0Pc/&#43;L0tK2Fo="></script>
-    <script src="/js/add-on.js"></script>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
   </body>
+
 </html>
