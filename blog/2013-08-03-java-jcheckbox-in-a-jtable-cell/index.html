@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="Java - JCheckBox in a JTable cell">
+<meta name="generator" content="Hugo 0.83.1" /><meta itemprop="name" content="Java - JCheckBox in a JTable cell">
 <meta itemprop="description" content="Now we shall discuss how to include a JCheckBox in a table cell.
 CheckBoxJFrame.java
 /** * CheckBoxJFrame.java * * Created on Aug 2, 2013, 11:57:36 PM */ package me.dhanoop.forblog; import java.awt.Component; import java.awt.event.ItemEvent; import java.awt.event.ItemListener; import javax.swing.DefaultCellEditor; import javax.swing.JCheckBox; import javax.swing.JFrame; import javax.swing.JOptionPane; import javax.swing.JTable; import javax.swing.table.DefaultTableModel; import javax.swing.table.TableCellRenderer; /** * * @author dhanoopbhaskar */ public class CheckBoxJFrame extends javax.swing.JFrame { private JCheckBox tableData = null; /** Creates new form CheckBoxJFrame */ public CheckBoxJFrame() { initComponents(); customizeTable(); } /** This method is called from within the constructor to * initialize the form."><meta itemprop="datePublished" content="2013-08-03T14:56:00&#43;05:30" />
@@ -39,7 +39,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
+</script><link rel="stylesheet" href="/css/bundle.min.24cd241a3b1538110f42c70192f2431797c8be3ab5810885cf7a21431686fcbf.css" integrity="sha256-JM0kGjsVOBEPQscBkvJDF5fIvjq1gQiFz3ohQxaG/L8="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -61,14 +61,7 @@ if (!doNotTrack) {
         
           
           
-            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
-          
-        
-      
-        
-          
-          
-            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+            <a href="/about/" class="nav link"><i class='far fa-newspaper'></i> About</a>
           
         
       
@@ -76,6 +69,13 @@ if (!doNotTrack) {
           
           
             <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/projects/" class="nav link"><i class='far fa-newspaper'></i> Projects</a>
           
         
       
@@ -90,20 +90,6 @@ if (!doNotTrack) {
           
           
             <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
-        
-      
-        
-          
-          
-            <a href="/archives/" class="nav link"><i class='fas fa-sitemap'></i> Archives</a>
-          
-        
-      
-        
-          
-          
-            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
           
         
       
@@ -238,313 +224,6 @@ if (!doNotTrack) {
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
-  <div class="title">
-    
-      <h2><a href="/blog/2013-08-03-java-jcheckbox-in-a-jtable-cell/">Java - JCheckBox in a JTable cell</a></h2>
-    
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2013-08-03 14:56:00 &#43;0530 IST">
-      August 3, 2013
-    </time>
-    <span class="author">Dhanoop Bhaskar</span>
-    
-  </div>
-</header>
-
-    <section id="socnet-share">
-      
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=Java%20-%20JCheckBox%20in%20a%20JTable%20cell&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2013-08-03-java-jcheckbox-in-a-jtable-cell%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2013-08-03-java-jcheckbox-in-a-jtable-cell%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2013-08-03-java-jcheckbox-in-a-jtable-cell%2f&amp;title=Java%20-%20JCheckBox%20in%20a%20JTable%20cell" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2013-08-03-java-jcheckbox-in-a-jtable-cell%2f&amp;title=Java%20-%20JCheckBox%20in%20a%20JTable%20cell" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2013-08-03-java-jcheckbox-in-a-jtable-cell%2f&amp;description=Java%20-%20JCheckBox%20in%20a%20JTable%20cell" target="_blank" rel="noopener" class="nav share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2013-08-03-java-jcheckbox-in-a-jtable-cell%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
-
-    </section>
-    
-
-    <div class="content">
-      <p>Now we shall discuss how to include a JCheckBox in a table cell.</p>
-<p><strong>CheckBoxJFrame.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">     
-    <span style="color:#75715e">/**
-</span><span style="color:#75715e">     * CheckBoxJFrame.java
-</span><span style="color:#75715e">     *
-</span><span style="color:#75715e">     * Created on Aug 2, 2013, 11:57:36 PM
-</span><span style="color:#75715e">     */</span>
-
-    <span style="color:#f92672">package</span> me.dhanoop.forblog<span style="color:#f92672">;</span>
-
-    <span style="color:#f92672">import</span> java.awt.Component<span style="color:#f92672">;</span>
-    <span style="color:#f92672">import</span> java.awt.event.ItemEvent<span style="color:#f92672">;</span>
-    <span style="color:#f92672">import</span> java.awt.event.ItemListener<span style="color:#f92672">;</span>
-    <span style="color:#f92672">import</span> javax.swing.DefaultCellEditor<span style="color:#f92672">;</span>
-    <span style="color:#f92672">import</span> javax.swing.JCheckBox<span style="color:#f92672">;</span>
-    <span style="color:#f92672">import</span> javax.swing.JFrame<span style="color:#f92672">;</span>
-    <span style="color:#f92672">import</span> javax.swing.JOptionPane<span style="color:#f92672">;</span>
-    <span style="color:#f92672">import</span> javax.swing.JTable<span style="color:#f92672">;</span>
-    <span style="color:#f92672">import</span> javax.swing.table.DefaultTableModel<span style="color:#f92672">;</span>
-    <span style="color:#f92672">import</span> javax.swing.table.TableCellRenderer<span style="color:#f92672">;</span>
-
-    <span style="color:#75715e">/**
-</span><span style="color:#75715e">     *
-</span><span style="color:#75715e">     * @author dhanoopbhaskar
-</span><span style="color:#75715e">     */</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CheckBoxJFrame</span> <span style="color:#66d9ef">extends</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JFrame</span> <span style="color:#f92672">{</span>
-
-        <span style="color:#66d9ef">private</span> JCheckBox tableData <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-        <span style="color:#75715e">/** Creates new form CheckBoxJFrame */</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">CheckBoxJFrame</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-            initComponents<span style="color:#f92672">();</span>
-            customizeTable<span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#75715e">/** This method is called from within the constructor to
-</span><span style="color:#75715e">         * initialize the form.
-</span><span style="color:#75715e">         * WARNING: Do NOT modify this code. The content of this method is
-</span><span style="color:#75715e">         * always regenerated by the Form Editor.
-</span><span style="color:#75715e">         */</span>
-        <span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;unchecked&#34;</span><span style="color:#f92672">)</span>
-        <span style="color:#75715e">// 
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initComponents</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-
-            dbScrollPane <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JScrollPane</span><span style="color:#f92672">();</span>
-            dbTable <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JTable</span><span style="color:#f92672">();</span>
-
-            setDefaultCloseOperation<span style="color:#f92672">(</span>javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">WindowConstants</span><span style="color:#f92672">.</span><span style="color:#a6e22e">EXIT_ON_CLOSE</span><span style="color:#f92672">);</span>
-
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">setModel</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">table</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DefaultTableModel</span><span style="color:#f92672">(</span>
-                <span style="color:#66d9ef">new</span> Object <span style="color:#f92672">[][]</span> <span style="color:#f92672">{</span>
-
-                <span style="color:#f92672">},</span>
-                <span style="color:#66d9ef">new</span> String <span style="color:#f92672">[]</span> <span style="color:#f92672">{</span>
-                    <span style="color:#e6db74">&#34;Title 1&#34;</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">));</span>
-            dbScrollPane<span style="color:#f92672">.</span><span style="color:#a6e22e">setViewportView</span><span style="color:#f92672">(</span>dbTable<span style="color:#f92672">);</span>
-
-            javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">GroupLayout</span> layout <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">GroupLayout</span><span style="color:#f92672">(</span>getContentPane<span style="color:#f92672">());</span>
-            getContentPane<span style="color:#f92672">().</span><span style="color:#a6e22e">setLayout</span><span style="color:#f92672">(</span>layout<span style="color:#f92672">);</span>
-            layout<span style="color:#f92672">.</span><span style="color:#a6e22e">setHorizontalGroup</span><span style="color:#f92672">(</span>
-                layout<span style="color:#f92672">.</span><span style="color:#a6e22e">createParallelGroup</span><span style="color:#f92672">(</span>javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">GroupLayout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Alignment</span><span style="color:#f92672">.</span><span style="color:#a6e22e">LEADING</span><span style="color:#f92672">)</span>
-                <span style="color:#f92672">.</span><span style="color:#a6e22e">addComponent</span><span style="color:#f92672">(</span>dbScrollPane<span style="color:#f92672">,</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">GroupLayout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">PREFERRED_SIZE</span><span style="color:#f92672">,</span> 226<span style="color:#f92672">,</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">GroupLayout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">PREFERRED_SIZE</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">);</span>
-            layout<span style="color:#f92672">.</span><span style="color:#a6e22e">setVerticalGroup</span><span style="color:#f92672">(</span>
-                layout<span style="color:#f92672">.</span><span style="color:#a6e22e">createParallelGroup</span><span style="color:#f92672">(</span>javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">GroupLayout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Alignment</span><span style="color:#f92672">.</span><span style="color:#a6e22e">LEADING</span><span style="color:#f92672">)</span>
-                <span style="color:#f92672">.</span><span style="color:#a6e22e">addComponent</span><span style="color:#f92672">(</span>dbScrollPane<span style="color:#f92672">,</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">GroupLayout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">PREFERRED_SIZE</span><span style="color:#f92672">,</span> 81<span style="color:#f92672">,</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">GroupLayout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">PREFERRED_SIZE</span><span style="color:#f92672">)</span>
-            <span style="color:#f92672">);</span>
-
-            pack<span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span><span style="color:#75715e">// 
-</span><span style="color:#75715e"></span>
-        <span style="color:#75715e">/**
-</span><span style="color:#75715e">        * @param args the command line arguments
-</span><span style="color:#75715e">        */</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-            java<span style="color:#f92672">.</span><span style="color:#a6e22e">awt</span><span style="color:#f92672">.</span><span style="color:#a6e22e">EventQueue</span><span style="color:#f92672">.</span><span style="color:#a6e22e">invokeLater</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Runnable<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-                    <span style="color:#66d9ef">new</span> CheckBoxJFrame<span style="color:#f92672">().</span><span style="color:#a6e22e">setVisible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">});</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#75715e">// Variables declaration - do not modify
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JScrollPane</span> dbScrollPane<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">private</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JTable</span> dbTable<span style="color:#f92672">;</span>
-        <span style="color:#75715e">// End of variables declaration
-</span><span style="color:#75715e"></span>
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">customizeTable</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-            Object<span style="color:#f92672">[]</span> columnNames <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
-            columnNames<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CheckBox&#34;</span><span style="color:#f92672">;</span>
-            String checkString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Gate Qualified?&#34;</span><span style="color:#f92672">;</span>
-            Object<span style="color:#f92672">[][]</span> rowData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>1<span style="color:#f92672">][</span>1<span style="color:#f92672">];</span>
-            rowData<span style="color:#f92672">[</span>0<span style="color:#f92672">][</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> checkString<span style="color:#f92672">;</span>
-            DefaultTableModel tableModel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DBTableModel<span style="color:#f92672">(</span>rowData<span style="color:#f92672">,</span> columnNames<span style="color:#f92672">);</span>
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">setModel</span><span style="color:#f92672">(</span>tableModel<span style="color:#f92672">);</span>        
-            tableData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JCheckBox<span style="color:#f92672">(</span>checkString<span style="color:#f92672">);</span>
-            tableData<span style="color:#f92672">.</span><span style="color:#a6e22e">setSelected</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
-            tableData<span style="color:#f92672">.</span><span style="color:#a6e22e">addItemListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> ItemListener<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-
-                <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">itemStateChanged</span><span style="color:#f92672">(</span>ItemEvent e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    String result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
-                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>tableData<span style="color:#f92672">.</span><span style="color:#a6e22e">isSelected</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-                        result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;YES&#34;</span><span style="color:#f92672">;</span>
-                    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                        result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;NO&#34;</span><span style="color:#f92672">;</span>
-                    <span style="color:#f92672">}</span>
-                    JOptionPane<span style="color:#f92672">.</span><span style="color:#a6e22e">showMessageDialog</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> JFrame<span style="color:#f92672">(),</span> result<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Gate Qualified?&#34;</span><span style="color:#f92672">,</span> JOptionPane<span style="color:#f92672">.</span><span style="color:#a6e22e">INFORMATION_MESSAGE</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">});</span>
-            
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">getColumnModel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getColumn</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">setCellEditor</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DefaultCellEditor<span style="color:#f92672">(</span>tableData<span style="color:#f92672">));</span>
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">getColumnModel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getColumn</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">setCellRenderer</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> TableCellRenderer<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-
-                <span style="color:#66d9ef">public</span> Component <span style="color:#a6e22e">getTableCellRendererComponent</span><span style="color:#f92672">(</span>JTable table<span style="color:#f92672">,</span> Object value<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> isSelected<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> hasFocus<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> row<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> column<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    <span style="color:#66d9ef">return</span> tableData<span style="color:#f92672">;</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">});</span>
-            
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">updateUI</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-
-    <span style="color:#f92672">}</span></code></pre></div>
-<p><strong>DBTableModel.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#f92672">package</span> me.dhanoop.forblog<span style="color:#f92672">;</span>
-
-    <span style="color:#f92672">import</span> javax.swing.table.DefaultTableModel<span style="color:#f92672">;</span>
-
-    <span style="color:#75715e">/**
-</span><span style="color:#75715e">     *
-</span><span style="color:#75715e">     * @author dhanoopbhaskar
-</span><span style="color:#75715e">     */</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DBTableModel</span> <span style="color:#66d9ef">extends</span> DefaultTableModel <span style="color:#f92672">{</span>
-
-        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DBTableModel</span><span style="color:#f92672">(</span>Object<span style="color:#f92672">[]</span> columns<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>columns<span style="color:#f92672">,</span> 0<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DBTableModel</span><span style="color:#f92672">(</span>Object<span style="color:#f92672">[][]</span> data<span style="color:#f92672">,</span> Object<span style="color:#f92672">[]</span> columns<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>data<span style="color:#f92672">,</span> columns<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#a6e22e">@Override</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isCellEditable</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> row<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> column<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
-<p>The following is the key snippet in the program. Here we do mainly two things:</p>
-<ol>
-<li>
-<p>Changing the <code>CellEditor</code> of the ColumnModel of the column at position 0 (zero) of the table</p>
-</li>
-<li>
-<p>Changing the <code>CellRenderer</code> of the ColumnModel of the column at position 0 (zero) of the table.</p>
-</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">     
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">customizeTable</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-            Object<span style="color:#f92672">[]</span> columnNames <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
-            columnNames<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CheckBox&#34;</span><span style="color:#f92672">;</span>
-            String checkString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Gate Qualified?&#34;</span><span style="color:#f92672">;</span>
-            Object<span style="color:#f92672">[][]</span> rowData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>1<span style="color:#f92672">][</span>1<span style="color:#f92672">];</span>
-            rowData<span style="color:#f92672">[</span>0<span style="color:#f92672">][</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> checkString<span style="color:#f92672">;</span>
-            DefaultTableModel tableModel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DBTableModel<span style="color:#f92672">(</span>rowData<span style="color:#f92672">,</span> columnNames<span style="color:#f92672">);</span>
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">setModel</span><span style="color:#f92672">(</span>tableModel<span style="color:#f92672">);</span>        
-            tableData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JCheckBox<span style="color:#f92672">(</span>checkString<span style="color:#f92672">);</span>
-            tableData<span style="color:#f92672">.</span><span style="color:#a6e22e">setSelected</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
-            tableData<span style="color:#f92672">.</span><span style="color:#a6e22e">addItemListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> ItemListener<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-
-                <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">itemStateChanged</span><span style="color:#f92672">(</span>ItemEvent e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    String result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
-                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>tableData<span style="color:#f92672">.</span><span style="color:#a6e22e">isSelected</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-                        result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;YES&#34;</span><span style="color:#f92672">;</span>
-                    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                        result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;NO&#34;</span><span style="color:#f92672">;</span>
-                    <span style="color:#f92672">}</span>
-                    JOptionPane<span style="color:#f92672">.</span><span style="color:#a6e22e">showMessageDialog</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> JFrame<span style="color:#f92672">(),</span> result<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Gate Qualified?&#34;</span><span style="color:#f92672">,</span> JOptionPane<span style="color:#f92672">.</span><span style="color:#a6e22e">INFORMATION_MESSAGE</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">});</span>
-            
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">getColumnModel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getColumn</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">setCellEditor</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DefaultCellEditor<span style="color:#f92672">(</span>tableData<span style="color:#f92672">));</span>
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">getColumnModel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getColumn</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">setCellRenderer</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> TableCellRenderer<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-
-                <span style="color:#66d9ef">public</span> Component <span style="color:#a6e22e">getTableCellRendererComponent</span><span style="color:#f92672">(</span>JTable table<span style="color:#f92672">,</span> Object value<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> isSelected<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> hasFocus<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> row<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> column<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    <span style="color:#66d9ef">return</span> tableData<span style="color:#f92672">;</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">});</span>
-            
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">updateUI</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-
-  </code></pre></div>
-<p><a href="/img/2013-08-03-java-jcheckbox-in-a-jtable-cell-9428468914_45b3937061_o_d.png"><img src="/img/thumbnails/2013-08-03-java-jcheckbox-in-a-jtable-cell-9428468914_45b3937061_o_d.png" alt=""></a></p>
-<p><a href="/img/2013-08-03-java-jcheckbox-in-a-jtable-cell-9425700341_8d572f6d8f_o_d.png"><img src="/img/thumbnails/2013-08-03-java-jcheckbox-in-a-jtable-cell-9425700341_8d572f6d8f_o_d.png" alt=""></a></p>
-<p><a href="/img/2013-08-03-java-jcheckbox-in-a-jtable-cell-9425700393_e8c6fb0a60_o_d.png"><img src="/img/thumbnails/2013-08-03-java-jcheckbox-in-a-jtable-cell-9425700393_e8c6fb0a60_o_d.png" alt=""></a></p>
-
-    </div>
-    <footer>
-      <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/java/">java</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/swing/">swing</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/java/">java</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/swing/">swing</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-    </footer>
-  </article>
-  
-
-  <div class="pagination">
-  
-    <a href="/blog/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/" class="button"><div class="previous"><div>Java - JComboBox in a JTable cell (with event handling)</div></div></a>
-  
-  
-    <a href="/blog/2013-08-03-java-jbutton-in-a-jtable-cell/" class="button"><div class="next"><div>Java - JButton in a JTable cell</div></div></a>
-  
-</div>
-
-
       </main>
       <section id="site-sidebar">
   
@@ -879,10 +558,10 @@ if (!doNotTrack) {
     
       &copy; 2020
       
-        The Insane Techie
+        Dhanoop Bhaskar
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

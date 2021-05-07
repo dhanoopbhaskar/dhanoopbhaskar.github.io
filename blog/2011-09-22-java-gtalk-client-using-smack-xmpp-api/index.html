@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="Java - GTalk Client using SMACK XMPP API">
+<meta name="generator" content="Hugo 0.83.1" /><meta itemprop="name" content="Java - GTalk Client using SMACK XMPP API">
 <meta itemprop="description" content="GtalkClient.java
 import java.io.BufferedReader; import java.io.IOException; import java.io.InputStreamReader; import java.util.Collection; import java.util.Iterator; import org.jivesoftware.smack.Chat; import org.jivesoftware.smack.ConnectionConfiguration; import org.jivesoftware.smack.MessageListener; import org.jivesoftware.smack.Roster; import org.jivesoftware.smack.RosterEntry; import org.jivesoftware.smack.XMPPConnection; import org.jivesoftware.smack.XMPPException; import org.jivesoftware.smack.packet.Message; /** * * @author dhanoopbhaskar */ public class GtalkClient implements Runnable, MessageListener { ConnectionConfiguration connConfig = null; XMPPConnection xMPPConnection = null; BufferedReader readFromKeyboard = null; String toAddresss = null; String[] buddies = null; int buddySize = 0; public GtalkClient() { /** * Set the &#39;ConnectionConfiguration&#39; with * -host name * -port number * -service name */ connConfig = new ConnectionConfiguration(&#34;talk."><meta itemprop="datePublished" content="2011-09-22T14:17:00&#43;05:30" />
 <meta itemprop="dateModified" content="2011-09-22T14:17:00&#43;05:30" />
@@ -36,7 +36,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
+</script><link rel="stylesheet" href="/css/bundle.min.24cd241a3b1538110f42c70192f2431797c8be3ab5810885cf7a21431686fcbf.css" integrity="sha256-JM0kGjsVOBEPQscBkvJDF5fIvjq1gQiFz3ohQxaG/L8="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -58,14 +58,7 @@ if (!doNotTrack) {
         
           
           
-            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
-          
-        
-      
-        
-          
-          
-            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+            <a href="/about/" class="nav link"><i class='far fa-newspaper'></i> About</a>
           
         
       
@@ -73,6 +66,13 @@ if (!doNotTrack) {
           
           
             <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/projects/" class="nav link"><i class='far fa-newspaper'></i> Projects</a>
           
         
       
@@ -87,20 +87,6 @@ if (!doNotTrack) {
           
           
             <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
-        
-      
-        
-          
-          
-            <a href="/archives/" class="nav link"><i class='fas fa-sitemap'></i> Archives</a>
-          
-        
-      
-        
-          
-          
-            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
           
         
       
@@ -235,323 +221,6 @@ if (!doNotTrack) {
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
-  <div class="title">
-    
-      <h2><a href="/blog/2011-09-22-java-gtalk-client-using-smack-xmpp-api/">Java - GTalk Client using SMACK XMPP API</a></h2>
-    
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2011-09-22 14:17:00.005 &#43;0530 IST">
-      September 22, 2011
-    </time>
-    <span class="author">Dhanoop Bhaskar</span>
-    
-  </div>
-</header>
-
-    <section id="socnet-share">
-      
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=Java%20-%20GTalk%20Client%20using%20SMACK%20XMPP%20API&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2011-09-22-java-gtalk-client-using-smack-xmpp-api%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2011-09-22-java-gtalk-client-using-smack-xmpp-api%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2011-09-22-java-gtalk-client-using-smack-xmpp-api%2f&amp;title=Java%20-%20GTalk%20Client%20using%20SMACK%20XMPP%20API" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2011-09-22-java-gtalk-client-using-smack-xmpp-api%2f&amp;title=Java%20-%20GTalk%20Client%20using%20SMACK%20XMPP%20API" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2011-09-22-java-gtalk-client-using-smack-xmpp-api%2f&amp;description=Java%20-%20GTalk%20Client%20using%20SMACK%20XMPP%20API" target="_blank" rel="noopener" class="nav share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2011-09-22-java-gtalk-client-using-smack-xmpp-api%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
-
-    </section>
-    
-
-    <div class="content">
-      <p><strong>GtalkClient.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#f92672">import</span> java.io.BufferedReader<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> java.io.InputStreamReader<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> java.util.Collection<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> java.util.Iterator<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> org.jivesoftware.smack.Chat<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> org.jivesoftware.smack.ConnectionConfiguration<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> org.jivesoftware.smack.MessageListener<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> org.jivesoftware.smack.Roster<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> org.jivesoftware.smack.RosterEntry<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> org.jivesoftware.smack.XMPPConnection<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> org.jivesoftware.smack.XMPPException<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> org.jivesoftware.smack.packet.Message<span style="color:#f92672">;</span>
-
-
-	<span style="color:#75715e">/**
-</span><span style="color:#75715e">	 *
-</span><span style="color:#75715e">	 * @author dhanoopbhaskar
-</span><span style="color:#75715e">	 */</span>
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GtalkClient</span> <span style="color:#66d9ef">implements</span> Runnable<span style="color:#f92672">,</span> MessageListener <span style="color:#f92672">{</span>
-	   
-	    ConnectionConfiguration connConfig <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	    XMPPConnection xMPPConnection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	    BufferedReader readFromKeyboard <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	    String toAddresss <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	    String<span style="color:#f92672">[]</span> buddies <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	    <span style="color:#66d9ef">int</span> buddySize <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-
-
-	    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">GtalkClient</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-	        <span style="color:#75715e">/**
-</span><span style="color:#75715e">	         * Set the &#39;ConnectionConfiguration&#39; with
-</span><span style="color:#75715e">	         * -host name
-</span><span style="color:#75715e">	         * -port number
-</span><span style="color:#75715e">	         * -service name
-</span><span style="color:#75715e">	         */</span>
-	        connConfig <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConnectionConfiguration<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;talk.google.com&#34;</span><span style="color:#f92672">,</span> 5222<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;gmail.com&#34;</span><span style="color:#f92672">);</span>
-	        <span style="color:#75715e">/**
-</span><span style="color:#75715e">	         * Create an instance of &#39;XMPPConnection&#39; with the already created
-</span><span style="color:#75715e">	         * instance of &#39;ConnectionConfiguration&#39;
-</span><span style="color:#75715e">	         */</span>
-	        xMPPConnection <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> XMPPConnection<span style="color:#f92672">(</span>connConfig<span style="color:#f92672">);</span>      
-	        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Connecting to the service
-</span><span style="color:#75715e">	             */</span>
-	            xMPPConnection<span style="color:#f92672">.</span><span style="color:#a6e22e">connect</span><span style="color:#f92672">();</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Login to the GMail account from which you want to chat
-</span><span style="color:#75715e">	             * Provide
-</span><span style="color:#75715e">	             * -email id
-</span><span style="color:#75715e">	             * -password
-</span><span style="color:#75715e">	             */</span>
-	            xMPPConnection<span style="color:#f92672">.</span><span style="color:#a6e22e">login</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user-name@gmail.com&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;password&#34;</span><span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>XMPPException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Error: &#34;</span> <span style="color:#f92672">+</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
-	        <span style="color:#f92672">}</span>
-	        <span style="color:#75715e">/**
-</span><span style="color:#75715e">	         * BufferedReader to read from the keyboard
-</span><span style="color:#75715e">	         */</span>
-	        readFromKeyboard <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> InputStreamReader<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">));</span>
-	       
-	        displayBuddyList<span style="color:#f92672">();</span>
-	       
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\n\nEnter the recipient&#39;s Email Id! or &#34;</span>
-	                <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;buddy id in the list&#34;</span><span style="color:#f92672">);</span>
-	        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-	            String temp <span style="color:#f92672">=</span> readFromKeyboard<span style="color:#f92672">.</span><span style="color:#a6e22e">readLine</span><span style="color:#f92672">();</span>
-	            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-	                <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">);</span>
-	                toAddresss <span style="color:#f92672">=</span> getBuddy<span style="color:#f92672">(</span>j<span style="color:#f92672">);</span>
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Buddy &lt;&#34;</span> <span style="color:#f92672">+</span> toAddresss <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&gt; selected!&#34;</span><span style="color:#f92672">);</span>
-	            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>NumberFormatException exp<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	                toAddresss <span style="color:#f92672">=</span> temp<span style="color:#f92672">;</span>
-	            <span style="color:#f92672">}</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Error: &#34;</span> <span style="color:#f92672">+</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
-	        <span style="color:#f92672">}</span>
-	       
-	       
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Enter your chat messages one by one!&#34;</span><span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;[Enter \&#34;quit\&#34; to end the chat!]&#34;</span><span style="color:#f92672">);</span>
-	       
-	        String msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
-	        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-	                msg <span style="color:#f92672">=</span> readFromKeyboard<span style="color:#f92672">.</span><span style="color:#a6e22e">readLine</span><span style="color:#f92672">();</span>
-	            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Error: &#34;</span> <span style="color:#f92672">+</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
-	            <span style="color:#f92672">}</span>
-	           
-	            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;quit&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;--Chat Ended--&#34;</span><span style="color:#f92672">);</span>
-	                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-	            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-	                sendMessage<span style="color:#f92672">(</span>toAddresss<span style="color:#f92672">,</span> msg<span style="color:#f92672">);</span>
-	            <span style="color:#f92672">}</span>
-	        <span style="color:#f92672">}</span>
-	    <span style="color:#f92672">}</span>
-
-
-	    <span style="color:#75715e">/**
-</span><span style="color:#75715e">	     *
-</span><span style="color:#75715e">	     * @param recipient
-</span><span style="color:#75715e">	     * @param message
-</span><span style="color:#75715e">	     */</span>
-	    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sendMessage</span><span style="color:#f92672">(</span>String recipient<span style="color:#f92672">,</span> String message<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	        <span style="color:#75715e">/**
-</span><span style="color:#75715e">	         * Create an instance of &#39;Chat&#39; providing the recipient&#39;s email-id
-</span><span style="color:#75715e">	         * and an instance of MessageListener interface(The predefined
-</span><span style="color:#75715e">	         * reference &#39;this&#39; will do, since the class
-</span><span style="color:#75715e">	         * implements the MessageListener interface.        
-</span><span style="color:#75715e">	         */</span>
-	        Chat chat <span style="color:#f92672">=</span> xMPPConnection<span style="color:#f92672">.</span><span style="color:#a6e22e">getChatManager</span><span style="color:#f92672">().</span><span style="color:#a6e22e">createChat</span><span style="color:#f92672">(</span>recipient<span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">);</span>
-	        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Sending the chat message
-</span><span style="color:#75715e">	             */</span>
-	            chat<span style="color:#f92672">.</span><span style="color:#a6e22e">sendMessage</span><span style="color:#f92672">(</span>message<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>XMPPException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Error: &#34;</span> <span style="color:#f92672">+</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
-	        <span style="color:#f92672">}</span>
-	    <span style="color:#f92672">}</span>
-	    
-
-	      <span style="color:#75715e">/**
-</span><span style="color:#75715e">	       * This method belongs to MessageListener interface.
-</span><span style="color:#75715e">	       * It listens for the incoming chat messages.
-</span><span style="color:#75715e">	       */</span>
-	    <span style="color:#a6e22e">@Override</span>
-
-	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">processMessage</span><span style="color:#f92672">(</span>Chat chat<span style="color:#f92672">,</span> Message msg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>       
-	        String msgStr <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">getBody</span><span style="color:#f92672">();</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&lt;&#34;</span> <span style="color:#f92672">+</span> chat<span style="color:#f92672">.</span><span style="color:#a6e22e">getParticipant</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&gt;  says &#34;</span> <span style="color:#f92672">+</span> msgStr<span style="color:#f92672">);</span>
-	    <span style="color:#f92672">}</span>
-	   
-	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	        GtalkClient gtalkClient <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GtalkClient<span style="color:#f92672">();</span>      
-	    <span style="color:#f92672">}</span>
-
-
-	    <span style="color:#a6e22e">@Override</span>
-	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>      
-	    <span style="color:#f92672">}</span>
-	   
-	    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">displayBuddyList</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-	        Roster roster <span style="color:#f92672">=</span> xMPPConnection<span style="color:#f92672">.</span><span style="color:#a6e22e">getRoster</span><span style="color:#f92672">();</span>
-	        Collection entries <span style="color:#f92672">=</span> roster<span style="color:#f92672">.</span><span style="color:#a6e22e">getEntries</span><span style="color:#f92672">();</span>
-
-
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\n\n------------Your Buddies!!------------&#34;</span><span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>entries<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; buddy(ies):\n&#34;</span><span style="color:#f92672">);</span>
-	        Iterator iter <span style="color:#f92672">=</span> entries<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
-	        buddySize <span style="color:#f92672">=</span> entries<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>  
-	        buddies <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">[</span>buddySize<span style="color:#f92672">];</span>
-	        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-	        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iter<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-	            RosterEntry rosterEntry <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>RosterEntry<span style="color:#f92672">)</span> iter<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
-	            buddies<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> rosterEntry<span style="color:#f92672">.</span><span style="color:#a6e22e">getUser</span><span style="color:#f92672">();</span>
-	            i<span style="color:#f92672">++;</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>i <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;. &#34;</span> <span style="color:#f92672">+</span> rosterEntry<span style="color:#f92672">.</span><span style="color:#a6e22e">getUser</span><span style="color:#f92672">());</span>          
-	        <span style="color:#f92672">}</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;--------------------------------------&#34;</span><span style="color:#f92672">);</span>
-	    <span style="color:#f92672">}</span>
-	   
-	    <span style="color:#66d9ef">private</span> String <span style="color:#a6e22e">getBuddy</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	        String buddy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
-	        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>i <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> i <span style="color:#f92672">&lt;=</span> buddySize<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            buddy <span style="color:#f92672">=</span> buddies<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span>1<span style="color:#f92672">];</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Invalid Buddy Id!! Selected default one!!&#34;</span><span style="color:#f92672">);</span>
-	            buddy <span style="color:#f92672">=</span> buddies<span style="color:#f92672">[</span>0<span style="color:#f92672">];</span>
-	        <span style="color:#f92672">}</span>
-	        <span style="color:#66d9ef">return</span> buddy<span style="color:#f92672">;</span>
-	    <span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span></code></pre></div>
-<p><strong>&mdash;&mdash;Sample Output&mdash;&mdash;</strong></p>
-<pre><code>------------Your Buddies!!------------
-
-3 buddy(ies):
-
-1. dhanoopbhaskar@gmail.com
-2. dhanoopbhaskar4@gmail.com
-3. dhanoopbhaskar3@gmail.com
-
---------------------------------------
-
-
-Enter the recipient's Email Id! or buddy id in the list
-1
-Buddy &lt;dhanoopbhaskar@gmail.com&gt; selected!
-Enter your chat messages one by one!
-[Enter &quot;quit&quot; to end the chat!]
-hi
-&lt;dhanoopbhaskar@gmail.com&gt; says hello
-quit
---Chat Ended--
-</code></pre>
-<p><strong>NB: To run and test the above program you need to download Smack XMPP API from <a href="http://www.igniterealtime.org/downloads/index.jsp#smack">here&hellip;</a></strong></p>
-
-    </div>
-    <footer>
-      <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/java/">java</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/chat-client/">chat client</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/gtalk/">gtalk</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/smack/">smack</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/im/">IM</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/xmpp/">xmpp</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/java/">java</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-    </footer>
-  </article>
-  
-
-  <div class="pagination">
-  
-    <a href="/blog/2011-09-20-python-first-step-towards-programming/" class="button"><div class="previous"><div>Python - First Step Towards Programming</div></div></a>
-  
-  
-    <a href="/blog/2011-10-04-http-post-in-java-using-urlconnection/" class="button"><div class="next"><div>HTTP POST in Java using URLConnection</div></div></a>
-  
-</div>
-
-
       </main>
       <section id="site-sidebar">
   
@@ -886,10 +555,10 @@ quit
     
       &copy; 2020
       
-        The Insane Techie
+        Dhanoop Bhaskar
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

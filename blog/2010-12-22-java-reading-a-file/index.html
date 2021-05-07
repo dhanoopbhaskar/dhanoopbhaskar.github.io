@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="Java-Reading a file">
+<meta name="generator" content="Hugo 0.83.1" /><meta itemprop="name" content="Java-Reading a file">
 <meta itemprop="description" content="import java.io.*; public class ShowFile { public static void main(String args[]) throws IOException { if (args.length != 0) { File file = new File(args[0]); if (file.exists() &amp;&amp; file.isFile()) { FileInputStream input_file = new FileInputStream(file); /*FileInputStream input_file = new FileInputStream(args[0]);*/ int file_size = input_file.available(); byte[] data = new byte[file_size]; input_file.read(data); System.out.println(new String(data)); input_file.close(); } else { System.out.println(&#34;\&#34;&#34; &#43; args[0] &#43; &#34;\&#34; not found !!!&#34;); } } else { System.out.println(&#34;Error in usage:&#34;); System."><meta itemprop="datePublished" content="2010-12-22T23:52:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-12-22T23:52:00&#43;05:30" />
 <meta itemprop="wordCount" content="80">
@@ -33,7 +33,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
+</script><link rel="stylesheet" href="/css/bundle.min.24cd241a3b1538110f42c70192f2431797c8be3ab5810885cf7a21431686fcbf.css" integrity="sha256-JM0kGjsVOBEPQscBkvJDF5fIvjq1gQiFz3ohQxaG/L8="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -55,14 +55,7 @@ if (!doNotTrack) {
         
           
           
-            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
-          
-        
-      
-        
-          
-          
-            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+            <a href="/about/" class="nav link"><i class='far fa-newspaper'></i> About</a>
           
         
       
@@ -70,6 +63,13 @@ if (!doNotTrack) {
           
           
             <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/projects/" class="nav link"><i class='far fa-newspaper'></i> Projects</a>
           
         
       
@@ -84,20 +84,6 @@ if (!doNotTrack) {
           
           
             <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
-        
-      
-        
-          
-          
-            <a href="/archives/" class="nav link"><i class='fas fa-sitemap'></i> Archives</a>
-          
-        
-      
-        
-          
-          
-            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
           
         
       
@@ -232,140 +218,6 @@ if (!doNotTrack) {
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
-  <div class="title">
-    
-      <h2><a href="/blog/2010-12-22-java-reading-a-file/">Java-Reading a file</a></h2>
-    
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2010-12-22 23:52:00 &#43;0530 IST">
-      December 22, 2010
-    </time>
-    <span class="author">Dhanoop Bhaskar</span>
-    
-  </div>
-</header>
-
-    <section id="socnet-share">
-      
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=Java-Reading%20a%20file&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-12-22-java-reading-a-file%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-12-22-java-reading-a-file%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-12-22-java-reading-a-file%2f&amp;title=Java-Reading%20a%20file" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-12-22-java-reading-a-file%2f&amp;title=Java-Reading%20a%20file" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-12-22-java-reading-a-file%2f&amp;description=Java-Reading%20a%20file" target="_blank" rel="noopener" class="nav share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-12-22-java-reading-a-file%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
-
-    </section>
-    
-
-    <div class="content">
-      <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span>
-
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShowFile</span> <span style="color:#f92672">{</span>
-	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
-	        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">!=</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span>
-	            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>file<span style="color:#f92672">.</span><span style="color:#a6e22e">exists</span><span style="color:#f92672">()</span> <span style="color:#f92672">&amp;&amp;</span> file<span style="color:#f92672">.</span><span style="color:#a6e22e">isFile</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-	                FileInputStream input_file <span style="color:#f92672">=</span>
-	                    <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>file<span style="color:#f92672">);</span>
-	                <span style="color:#75715e">/*FileInputStream input_file =
-</span><span style="color:#75715e">	                             new FileInputStream(args[0]);*/</span>
-	                <span style="color:#66d9ef">int</span> file_size <span style="color:#f92672">=</span> input_file<span style="color:#f92672">.</span><span style="color:#a6e22e">available</span><span style="color:#f92672">();</span>
-	                <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> data <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>file_size<span style="color:#f92672">];</span>
-	                input_file<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>data<span style="color:#f92672">);</span>
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>data<span style="color:#f92672">));</span>
-	                input_file<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
-	            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\&#34;&#34;</span> <span style="color:#f92672">+</span> args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span>
-	                    <span style="color:#e6db74">&#34;\&#34; not found !!!&#34;</span><span style="color:#f92672">);</span>
-	            <span style="color:#f92672">}</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Error in usage:&#34;</span><span style="color:#f92672">);</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-	                <span style="color:#e6db74">&#34;  Usage - java ShowFile &#34;</span><span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span>
-	    <span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span></code></pre></div>
-
-    </div>
-    <footer>
-      <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/java/">java</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/java/">java</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-    </footer>
-  </article>
-  
-
-  <div class="pagination">
-  
-    <a href="/blog/2010-12-22-java-streams/" class="button"><div class="previous"><div>Java-Streams</div></div></a>
-  
-  
-    <a href="/blog/2010-12-22-java-writing-to-a-file/" class="button"><div class="next"><div>Java-Writing to a file</div></div></a>
-  
-</div>
-
-
       </main>
       <section id="site-sidebar">
   
@@ -700,10 +552,10 @@ if (!doNotTrack) {
     
       &copy; 2020
       
-        The Insane Techie
+        Dhanoop Bhaskar
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

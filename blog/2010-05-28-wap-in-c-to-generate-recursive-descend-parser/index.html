@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="WAP in C to generate recursive descend parser">
+<meta name="generator" content="Hugo 0.83.1" /><meta itemprop="name" content="WAP in C to generate recursive descend parser">
 <meta itemprop="description" content="#include&lt;stdio.h&gt; #include&lt;conio.h&gt; #include&lt;ctype.h&gt; int lptr = 0; //look ahead pointer char buff[100]; //buffer to store input string int success = 1; //to reflect success or failure void E(); void EDASH(); void T(); void TDASH(); void V(); void start() { E(); } int isvalid(char ch) { if (isalpha(ch)) return 1; else if (toascii(ch) &gt;= 47 &amp;&amp; toascii(ch) &lt;= 57) return 1; else return 0; } void advance() { lptr&#43;&#43;; } void E() { T(); EDASH(); } void EDASH() { if (buff[lptr] == &#39;&#43;&#39;) { advance(); T(); EDASH(); } } void T() { V(); TDASH(); } void TDASH() { if (buff[lptr] == &#39;*&#39;) { advance(); V(); TDASH(); } } void V() { if (isvalid(buff[lptr])) { advance(); } else if (buff[lptr] == &#39;(&#39;) { advance(); E(); if (buff[lptr] == &#39;)&#39;) { advance(); } else { printf(&quot;\n* Right parantheses missing &quot;); success = 0; } } else { printf(&quot;\n* Symbol(s) unidentified&quot;); success = 0; getch(); exit(0); } } void main() { int n; clrscr(); printf(&quot;\n\t----------------&quot;); printf(&quot;\n\t GRAMMAR&quot;); printf(&quot;\n\t----------------\n&quot;); printf(&quot;\n\t E ::= TE&#39;&quot;); printf(&quot;\n\t E&#39;::= &#43;TE&#39;|$&quot;); printf(&quot;\n\t T ::= VT&#39;&quot;); printf(&quot;\n\t T&#39;::= *VT&#39;|$&quot;); printf(&quot;\n\t V ::= &lt;id&gt;&quot;); printf(&quot;\n\t----------------\n\n&quot;); printf(&quot;\n Enter an expression: &quot;); gets(buff); n = strlen(buff); start(); if (success == 1 &amp;&amp; lptr &gt;= n) { printf(&quot;\n* Correct syntax of expression&quot;); } else { printf(&quot;\n* Incorrect syntax of expression&quot;); } getch(); } "><meta itemprop="datePublished" content="2010-05-28T17:40:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-05-28T17:40:00&#43;05:30" />
 <meta itemprop="wordCount" content="218">
@@ -33,7 +33,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
+</script><link rel="stylesheet" href="/css/bundle.min.24cd241a3b1538110f42c70192f2431797c8be3ab5810885cf7a21431686fcbf.css" integrity="sha256-JM0kGjsVOBEPQscBkvJDF5fIvjq1gQiFz3ohQxaG/L8="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -55,14 +55,7 @@ if (!doNotTrack) {
         
           
           
-            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
-          
-        
-      
-        
-          
-          
-            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+            <a href="/about/" class="nav link"><i class='far fa-newspaper'></i> About</a>
           
         
       
@@ -70,6 +63,13 @@ if (!doNotTrack) {
           
           
             <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/projects/" class="nav link"><i class='far fa-newspaper'></i> Projects</a>
           
         
       
@@ -84,20 +84,6 @@ if (!doNotTrack) {
           
           
             <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
-        
-      
-        
-          
-          
-            <a href="/archives/" class="nav link"><i class='fas fa-sitemap'></i> Archives</a>
-          
-        
-      
-        
-          
-          
-            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
           
         
       
@@ -232,215 +218,6 @@ if (!doNotTrack) {
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
-  <div class="title">
-    
-      <h2><a href="/blog/2010-05-28-wap-in-c-to-generate-recursive-descend-parser/">WAP in C to generate recursive descend parser</a></h2>
-    
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2010-05-28 17:40:00 &#43;0530 IST">
-      May 28, 2010
-    </time>
-    <span class="author">Dhanoop Bhaskar</span>
-    
-  </div>
-</header>
-
-    <section id="socnet-share">
-      
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=WAP%20in%20C%20to%20generate%20recursive%20descend%20parser&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-05-28-wap-in-c-to-generate-recursive-descend-parser%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-05-28-wap-in-c-to-generate-recursive-descend-parser%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-05-28-wap-in-c-to-generate-recursive-descend-parser%2f&amp;title=WAP%20in%20C%20to%20generate%20recursive%20descend%20parser" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-05-28-wap-in-c-to-generate-recursive-descend-parser%2f&amp;title=WAP%20in%20C%20to%20generate%20recursive%20descend%20parser" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-05-28-wap-in-c-to-generate-recursive-descend-parser%2f&amp;description=WAP%20in%20C%20to%20generate%20recursive%20descend%20parser" target="_blank" rel="noopener" class="nav share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-05-28-wap-in-c-to-generate-recursive-descend-parser%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
-
-    </section>
-    
-
-    <div class="content">
-      <pre><code>#include&lt;stdio.h&gt;
-#include&lt;conio.h&gt;
-#include&lt;ctype.h&gt;
-int lptr = 0; //look ahead pointer
-char buff[100]; //buffer to store input string
-int success = 1; //to reflect success or failure
-
-void E();
-void EDASH();
-void T();
-void TDASH();
-void V();
-
-void start() {
-    E();
-}
-
-int isvalid(char ch) {
-    if (isalpha(ch))
-        return 1;
-    else if (toascii(ch) &gt;= 47 &amp;&amp; toascii(ch) &lt;= 57)
-        return 1;
-    else
-        return 0;
-}
-
-void advance() {
-    lptr++;
-}
-
-void E() {
-    T();
-    EDASH();
-}
-
-void EDASH() {
-    if (buff[lptr] == '+') {
-        advance();
-        T();
-        EDASH();
-    }
-}
-
-void T() {
-    V();
-    TDASH();
-}
-
-void TDASH() {
-    if (buff[lptr] == '*') {
-        advance();
-        V();
-        TDASH();
-    }
-}
-
-void V() {
-    if (isvalid(buff[lptr])) {
-        advance();
-    } else if (buff[lptr] == '(') {
-        advance();
-        E();
-        if (buff[lptr] == ')') {
-            advance();
-        } else {
-            printf(&quot;\n* Right parantheses missing &quot;);
-            success = 0;
-        }
-    } else {
-        printf(&quot;\n* Symbol(s) unidentified&quot;);
-        success = 0;
-        getch();
-        exit(0);
-    }
-}
-
-
-void main() {
-    int n;
-    clrscr();
-    printf(&quot;\n\t----------------&quot;);
-    printf(&quot;\n\t    GRAMMAR&quot;);
-    printf(&quot;\n\t----------------\n&quot;);
-    printf(&quot;\n\t E ::= TE'&quot;);
-    printf(&quot;\n\t E'::= +TE'|$&quot;);
-    printf(&quot;\n\t T ::= VT'&quot;);
-    printf(&quot;\n\t T'::= *VT'|$&quot;);
-    printf(&quot;\n\t V ::= &lt;id&gt;&quot;);
-    printf(&quot;\n\t----------------\n\n&quot;);
-    printf(&quot;\n Enter an expression: &quot;);
-    gets(buff);
-    n = strlen(buff);
-    start();
-
-    if (success == 1 &amp;&amp; lptr &gt;= n) {
-        printf(&quot;\n* Correct syntax of expression&quot;);
-    } else {
-        printf(&quot;\n* Incorrect syntax of expression&quot;);
-    }
-
-    getch();
-}</code></pre>
-
-    </div>
-    <footer>
-      <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/c/">C</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/c/cpp/">C/CPP</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-    </footer>
-  </article>
-  
-
-  <div class="pagination">
-  
-    <a href="/blog/2010-05-28-wap-to-generate-symbol-table/" class="button"><div class="previous"><div>WAP to generate symbol table</div></div></a>
-  
-  
-    <a href="/blog/2010-11-18-line-clipping-in-c/" class="button"><div class="next"><div>Line Clipping in C</div></div></a>
-  
-</div>
-
-
       </main>
       <section id="site-sidebar">
   
@@ -775,10 +552,10 @@ void main() {
     
       &copy; 2020
       
-        The Insane Techie
+        Dhanoop Bhaskar
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="Socket Programming in C, TCP over a network (2 systems)">
+<meta name="generator" content="Hugo 0.83.1" /><meta itemprop="name" content="Socket Programming in C, TCP over a network (2 systems)">
 <meta itemprop="description" content="tcpserver.c
 #include&#34;stdio.h&#34; #include&#34;stdlib.h&#34; #include&#34;sys/types.h&#34; #include&#34;sys/socket.h&#34; #include&#34;string.h&#34; #include&#34;netinet/in.h&#34; #define PORT 4444  #define BUF_SIZE 2000  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &lt; 0) { printf(&#34;Error creating socket!\n&#34;); exit(1); } printf(&#34;Socket created...\n&#34;); memset(&amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;addr, sizeof(addr)); if (ret &lt; 0) { printf(&#34;Error binding!"><meta itemprop="datePublished" content="2014-01-16T20:53:00&#43;05:30" />
 <meta itemprop="dateModified" content="2014-01-16T20:53:00&#43;05:30" />
@@ -36,7 +36,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
+</script><link rel="stylesheet" href="/css/bundle.min.24cd241a3b1538110f42c70192f2431797c8be3ab5810885cf7a21431686fcbf.css" integrity="sha256-JM0kGjsVOBEPQscBkvJDF5fIvjq1gQiFz3ohQxaG/L8="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -58,14 +58,7 @@ if (!doNotTrack) {
         
           
           
-            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
-          
-        
-      
-        
-          
-          
-            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+            <a href="/about/" class="nav link"><i class='far fa-newspaper'></i> About</a>
           
         
       
@@ -73,6 +66,13 @@ if (!doNotTrack) {
           
           
             <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/projects/" class="nav link"><i class='far fa-newspaper'></i> Projects</a>
           
         
       
@@ -87,20 +87,6 @@ if (!doNotTrack) {
           
           
             <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
-        
-      
-        
-          
-          
-            <a href="/archives/" class="nav link"><i class='fas fa-sitemap'></i> Archives</a>
-          
-        
-      
-        
-          
-          
-            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
           
         
       
@@ -235,290 +221,6 @@ if (!doNotTrack) {
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
-  <div class="title">
-    
-      <h2><a href="/blog/2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems/">Socket Programming in C, TCP over a network (2 systems)</a></h2>
-    
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2014-01-16 20:53:00 &#43;0530 IST">
-      January 16, 2014
-    </time>
-    <span class="author">Dhanoop Bhaskar</span>
-    
-  </div>
-</header>
-
-    <section id="socnet-share">
-      
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=Socket%20Programming%20in%20C%2c%20TCP%20over%20a%20network%20%282%20systems%29&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems%2f&amp;title=Socket%20Programming%20in%20C%2c%20TCP%20over%20a%20network%20%282%20systems%29" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems%2f&amp;title=Socket%20Programming%20in%20C%2c%20TCP%20over%20a%20network%20%282%20systems%29" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems%2f&amp;description=Socket%20Programming%20in%20C%2c%20TCP%20over%20a%20network%20%282%20systems%29" target="_blank" rel="noopener" class="nav share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
-
-    </section>
-    
-
-    <div class="content">
-      <p><strong>tcpserver.c</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdio.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdlib.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/types.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/socket.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;string.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netinet/in.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-    <span style="color:#75715e">#define PORT 4444
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define BUF_SIZE 2000
-</span><span style="color:#75715e"></span>
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
-     <span style="color:#66d9ef">struct</span> sockaddr_in addr, cl_addr;
-     <span style="color:#66d9ef">int</span> sockfd, len, ret, newsockfd;
-     <span style="color:#66d9ef">char</span> buffer[BUF_SIZE];
-     
-     sockfd <span style="color:#f92672">=</span> socket(AF_INET, SOCK_STREAM, <span style="color:#ae81ff">0</span>);
-     <span style="color:#66d9ef">if</span> (sockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-      printf(<span style="color:#e6db74">&#34;Error creating socket!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      exit(<span style="color:#ae81ff">1</span>);
-     }
-     printf(<span style="color:#e6db74">&#34;Socket created...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-     
-     memset(<span style="color:#f92672">&amp;</span>addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(addr));
-     addr.sin_family <span style="color:#f92672">=</span> AF_INET;
-     addr.sin_addr.s_addr <span style="color:#f92672">=</span> INADDR_ANY;
-     addr.sin_port <span style="color:#f92672">=</span> PORT;
-     
-     ret <span style="color:#f92672">=</span> bind(sockfd, (<span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span>) <span style="color:#f92672">&amp;</span>addr, <span style="color:#66d9ef">sizeof</span>(addr));
-     <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-      printf(<span style="color:#e6db74">&#34;Error binding!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      exit(<span style="color:#ae81ff">1</span>);
-     }
-     printf(<span style="color:#e6db74">&#34;Binding done...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-
-     printf(<span style="color:#e6db74">&#34;Waiting for a connection...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-     listen(sockfd, <span style="color:#ae81ff">5</span>);
-
-     len <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(cl_addr);
-     newsockfd <span style="color:#f92672">=</span> accept(sockfd, (<span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span>) <span style="color:#f92672">&amp;</span>cl_addr, <span style="color:#f92672">&amp;</span>len);
-     <span style="color:#66d9ef">if</span> (newsockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-      printf(<span style="color:#e6db74">&#34;Error accepting connection!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      exit(<span style="color:#ae81ff">1</span>);
-     }
-     printf(<span style="color:#e6db74">&#34;Connection accepted...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
-
-     memset(buffer, <span style="color:#ae81ff">0</span>, BUF_SIZE);
-     ret <span style="color:#f92672">=</span> recv(newsockfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);
-     <span style="color:#66d9ef">if</span>(ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-      printf(<span style="color:#e6db74">&#34;Error receiving data!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-      exit(<span style="color:#ae81ff">1</span>);
-     }
-     printf(<span style="color:#e6db74">&#34;Received data: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer); 
-
-     ret <span style="color:#f92672">=</span> send(newsockfd, buffer, strlen(buffer), <span style="color:#ae81ff">0</span>);  
-     <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-      printf(<span style="color:#e6db74">&#34;Error sending data!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-      exit(<span style="color:#ae81ff">1</span>);  
-     }  
-     printf(<span style="color:#e6db74">&#34;Sent data: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);
-     close(sockfd);
-     close(newsockfd);
-    }</code></pre></div>
-<p><strong>tcpclient.c</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">     
-    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdio.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdlib.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/types.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/socket.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;string.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netinet/in.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netdb.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>      
-    <span style="color:#75715e">#define PORT 4444 
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define BUF_SIZE 2000 
-</span><span style="color:#75715e"></span>      
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">**</span>argv) {
-     <span style="color:#66d9ef">struct</span> sockaddr_in addr, cl_addr;  
-     <span style="color:#66d9ef">int</span> sockfd, ret;  
-     <span style="color:#66d9ef">char</span> buffer[BUF_SIZE];  
-     <span style="color:#66d9ef">struct</span> hostent <span style="color:#f92672">*</span> server;
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> serverAddr;
-
-     <span style="color:#66d9ef">if</span> (argc <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>) {
-      printf(<span style="color:#e6db74">&#34;usage: client &lt; ip address &gt;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      exit(<span style="color:#ae81ff">1</span>);  
-     }
-
-     serverAddr <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">1</span>];
-
-     sockfd <span style="color:#f92672">=</span> socket(AF_INET, SOCK_STREAM, <span style="color:#ae81ff">0</span>);  
-     <span style="color:#66d9ef">if</span> (sockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-      printf(<span style="color:#e6db74">&#34;Error creating socket!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-      exit(<span style="color:#ae81ff">1</span>);  
-     }  
-     printf(<span style="color:#e6db74">&#34;Socket created...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);   
-
-     memset(<span style="color:#f92672">&amp;</span>addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(addr));  
-     addr.sin_family <span style="color:#f92672">=</span> AF_INET;  
-     addr.sin_addr.s_addr <span style="color:#f92672">=</span> inet_addr(serverAddr);
-     addr.sin_port <span style="color:#f92672">=</span> PORT;     
-
-     ret <span style="color:#f92672">=</span> connect(sockfd, (<span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span>) <span style="color:#f92672">&amp;</span>addr, <span style="color:#66d9ef">sizeof</span>(addr));  
-     <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-      printf(<span style="color:#e6db74">&#34;Error connecting to the server!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-      exit(<span style="color:#ae81ff">1</span>);  
-     }  
-     printf(<span style="color:#e6db74">&#34;Connected to the server...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-
-     memset(buffer, <span style="color:#ae81ff">0</span>, BUF_SIZE);
-     printf(<span style="color:#e6db74">&#34;Enter your message: &#34;</span>);
-     scanf(<span style="color:#e6db74">&#34;%s&#34;</span>, buffer);
-     ret <span style="color:#f92672">=</span> send(sockfd, buffer, strlen(buffer), <span style="color:#ae81ff">0</span>);  
-     <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-      printf(<span style="color:#e6db74">&#34;Error sending data!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-      exit(<span style="color:#ae81ff">1</span>);  
-     }  
-     printf(<span style="color:#e6db74">&#34;Sent data: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);  
-
-     memset(buffer, <span style="color:#ae81ff">0</span>, BUF_SIZE);  
-     ret <span style="color:#f92672">=</span> recv(sockfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);  
-     <span style="color:#66d9ef">if</span>(ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-      printf(<span style="color:#e6db74">&#34;Error receiving data!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);    
-      exit(<span style="color:#ae81ff">1</span>);  
-     }  
-     printf(<span style="color:#e6db74">&#34;Received data: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer); 
-
-     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    }  </code></pre></div>
-<p><strong>Output:</strong></p>
-<p><em>terminal 1</em></p>
-<pre><code>dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$ gcc tcpserver.c -o server
-dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$ gcc tcpclient.c -o client
-
-dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$ ./server
-Socket created...
-Binding done...
-Waiting for a connection...
-Connection accepted...
-Received data: hi
-Sent data: hi
-dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$ p-laptop:~/coding/tcp_2sys$ gcc tcpclient.c -o client
-dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$ ./server
-Socket created...
-Binding done...
-Waiting for a connection...
-Connection accepted...
-Received data: hi
-Sent data: hi
-
-dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$ 
-</code></pre>
-<p><em>terminal 2</em></p>
-<pre><code>dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$ ./client 
-usage: client
-dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$ ./client 192.168.0.4
-Socket created...
-Connected to the server...
-Enter your message: hi
-Sent data: hi
-Received data: hi
-
-dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$
-</code></pre>
-<p><em>NB: Here <code>192.168.0.4</code> is the IP address of the system where tcpserver code is running</em></p>
-
-    </div>
-    <footer>
-      <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/gcc/">gcc</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/c/">C</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/gcc/">gcc</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/linux/">linux</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/c/cpp/">C/CPP</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/socket/">socket</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/tcp/">tcp</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/network/">network</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-    </footer>
-  </article>
-  
-
-  <div class="pagination">
-  
-    <a href="/blog/2014-01-05-socket-programming-in-c-tcp/" class="button"><div class="previous"><div>Socket Programming In C (TCP)</div></div></a>
-  
-  
-    <a href="/blog/2014-01-16-tcp-in-c-one-server-and-multiple-clients/" class="button"><div class="next"><div>TCP in C (one server and multiple clients) </div></div></a>
-  
-</div>
-
-
       </main>
       <section id="site-sidebar">
   
@@ -853,10 +555,10 @@ dhanoopbhaskar@dhanoop-laptop:~/coding/tcp_2sys$
     
       &copy; 2020
       
-        The Insane Techie
+        Dhanoop Bhaskar
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

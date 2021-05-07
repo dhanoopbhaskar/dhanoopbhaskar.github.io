@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.82.1" /><meta itemprop="name" content="SQL- RECRUITMENT DATABASE">
+<meta name="generator" content="Hugo 0.83.1" /><meta itemprop="name" content="SQL- RECRUITMENT DATABASE">
 <meta itemprop="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table registration(regno number(6) primary key,name char(15),college char(15),date_of_reg date,degree char(10)); create table company_details(company_name char(15) primary key,salary number(8)); create table result(regno number(6) references registration(regno),marks number(5),selected char(3) default &#39;N&#39;); create table agency_income_details(company_name char(15),agency_profit number(10,2));   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PROCEDURE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create or replace procedure insertreg (pname char,pcoll char,pdgr char) is cname char(15); no number(6); r number(6); cnt number(2); begin cname:=&#39;&amp;cname&#39;; select max(regno) into no from registration; if no is null then r:=1; else r:=no&#43;1; end if; insert into registration values(r,pname,pcoll,sysdate,pdgr); dbms_output."><meta itemprop="datePublished" content="2010-01-10T00:27:00&#43;05:30" />
 <meta itemprop="dateModified" content="2010-01-10T00:27:00&#43;05:30" />
 <meta itemprop="wordCount" content="764">
@@ -33,7 +33,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><link rel="stylesheet" href="/css/bundle.min.a1c1099dbf5505fd5a181982fc757a0ee5b60c1ef4a779c2d74ab646612c8e89.css" integrity="sha256-ocEJnb9VBf1aGBmC/HV6DuW2DB70p3nC10q2RmEsjok="><link rel="stylesheet" href="/css/add-on.css">
+</script><link rel="stylesheet" href="/css/bundle.min.24cd241a3b1538110f42c70192f2431797c8be3ab5810885cf7a21431686fcbf.css" integrity="sha256-JM0kGjsVOBEPQscBkvJDF5fIvjq1gQiFz3ohQxaG/L8="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -55,14 +55,7 @@ if (!doNotTrack) {
         
           
           
-            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
-          
-        
-      
-        
-          
-          
-            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+            <a href="/about/" class="nav link"><i class='far fa-newspaper'></i> About</a>
           
         
       
@@ -70,6 +63,13 @@ if (!doNotTrack) {
           
           
             <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/projects/" class="nav link"><i class='far fa-newspaper'></i> Projects</a>
           
         
       
@@ -84,20 +84,6 @@ if (!doNotTrack) {
           
           
             <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
-        
-      
-        
-          
-          
-            <a href="/archives/" class="nav link"><i class='fas fa-sitemap'></i> Archives</a>
-          
-        
-      
-        
-          
-          
-            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
           
         
       
@@ -232,488 +218,6 @@ if (!doNotTrack) {
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
-  <div class="title">
-    
-      <h2><a href="/blog/2010-01-10-sql-recruitment-database/">SQL- RECRUITMENT DATABASE</a></h2>
-    
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2010-01-10 00:27:00 &#43;0530 IST">
-      January 10, 2010
-    </time>
-    <span class="author">Dhanoop Bhaskar</span>
-    
-  </div>
-</header>
-
-    <section id="socnet-share">
-      
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=SQL-%20RECRUITMENT%20DATABASE&amp;url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-recruitment-database%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
-      </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-recruitment-database%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
-        </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-recruitment-database%2f&amp;title=SQL-%20RECRUITMENT%20DATABASE" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-recruitment-database%2f&amp;title=SQL-%20RECRUITMENT%20DATABASE" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
-          </a>
-  
-
-  
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-recruitment-database%2f&amp;description=SQL-%20RECRUITMENT%20DATABASE" target="_blank" rel="noopener" class="nav share-btn pinterest">
-          <i class="fab fa-pinterest-p"></i><p>&nbsp;Pinterest</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Dhanoop%20Bhaskar&amp;body=https%3a%2f%2fdhanoopbhaskar.github.io%2fblog%2f2010-01-10-sql-recruitment-database%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
-        </a>
-  
-
-
-    </section>
-    
-
-    <div class="content">
-      <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-
-create table registration(regno number(6) primary key,name char(15),college char(15),date_of_reg date,degree char(10));
-
-create table company_details(company_name char(15) primary key,salary number(8));
-
-create table result(regno number(6) references registration(regno),marks number(5),selected char(3) default 'N');
-
-create table agency_income_details(company_name char(15),agency_profit number(10,2));
-</code></pre>
-<p> </p>
-<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PROCEDURE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-
-create or replace procedure insertreg (pname char,pcoll char,pdgr char) is
-	cname char(15);
-	no number(6);
-	r number(6);
-	cnt number(2);
-begin
-	cname:='&amp;cname';
-	select max(regno) into no from registration;
-
-    if no is null then
-        r:=1;
-    else
-        r:=no+1;
-    end if;
-
-    insert into registration values(r,pname,pcoll,sysdate,pdgr);
-    dbms_output.put_line(' Registration success, your registration number is '||r);
-    select COUNT(company_name) into cnt from company_details where company_name=cname;
-
-    if cnt=0 then
-        insert into company_details values(cname,&amp;salary);
-    end if;
-end;
-
-/
-
-Enter value for cname: Wipro
-
-old   7: cname:='&amp;cname';
-
-new   7: cname:='Wipro';
-
-Enter value for salary: 25000
-
-old  18:  insert into company_details values(cname,&amp;salary);
-
-new  18:  insert into company_details values(cname,25000);
-
-Procedure created.
-
-COMPANY_NAME                SALARY
-----------------------------------------------------
-Wipro                       25000
-</code></pre>
-<p> </p>
-<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;TRIGGER&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-
-create or replace trigger trig after update on company_details for each row
-
-declare
-	cnam char(15);
-	profit number(10,2);
-	intake number(4);
-	no_reg number(4);
-	no_appeared number(5);
-	sal number(10,2);
-begin
-
-	if updating then
-        cnam:=:old.company_name;
-        sal:=:old.salary;
-        select COUNT(*) into no_reg from registration;
-        select COUNT(*) into no_appeared from result;
-        select COUNT(*) into intake from result where selected='Y';
-        profit:=((100*no_reg + 0.25*sal*intake + 6000*intake) - (50*no_appeared));
-        insert into agency_income_details values(cnam,profit);
-	end if;
-
-end;
-
- /
-
-Trigger created.
-</code></pre>
-<p> </p>
-<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;REGISTER&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-
-declare
-
-	pname char(15);
-	pcoll char(15);
-	pdgr char(10);
-
-begin
-
-	pname:='&amp;pname';
-	pcoll:='&amp;pcoll';
-	pdgr:='&amp;pdgr';
-	insertreg(pname,pcoll,pdgr);
-
-end;
-
-/
-
-Enter value for pname: Tintumon
-
-old   6: pname:='&amp;pname';
-
-new   6: pname:='Tintumon';
-
-Enter value for pcoll: UCE
-
-old   7: pcoll:='&amp;pcoll';
-
-new   7: pcoll:='UCE';
-
-Enter value for pdgr: B tech
-
-old   8: pdgr:='&amp;pdgr';
-
-new   8: pdgr:='B tech';
-
-Registration success, your registration number is 1
-
-PL/SQL procedure successfully completed.	 
-
-SQL&gt; /
-
-Enter value for pname: Kuttoos
-
-old   6: pname:='&amp;pname';
-
-new   6: pname:='Kuttoos';
-
-Enter value for pcoll: VJC
-
-old   7: pcoll:='&amp;pcoll';
-
-new   7: pcoll:='VJC';
-
-Enter value for pdgr: B tech
-
-old   8: pdgr:='&amp;pdgr';
-
-new   8: pdgr:='B tech';
-
-Registration success, your registration number is 2
-
-PL/SQL procedure successfully completed.
-
-SQL&gt; /
-
-Enter value for pname: Tuttu
-
-old   6: pname:='&amp;pname';
-
-new   6: pname:='Tuttu';
-
-Enter value for pcoll: UCE
-
-old   7: pcoll:='&amp;pcoll';
-
-new   7: pcoll:='UCE';
-
-Enter value for pdgr: B tech
-
-old   8: pdgr:='&amp;pdgr';
-
-new   8: pdgr:='B tech';
-
-Registration success, your registration number is 3
-
-PL/SQL procedure successfully completed.
-
-SQL&gt; select * from registration;
-
-    REGNO         NAME             COLLEGE       DATE_OF_R             DEGREE
--------------------------------------------------------------------------------------------
-    1             Tintumon         UCE           08-JAN-10             B tech
-    2             Kuttoos          VJC           08-JAN-10             B tech
-    3             Tuttu            UCE           08-JAN-10             B tech
-</code></pre>
-<p> </p>
-<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;RESULT&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;	 
-
-insert into result values(&amp;regno,&amp;marks,'&amp;selected');
-
-SQL&gt; insert into result values(&amp;regno,&amp;marks,'&amp;selected');
-
-Enter value for regno: 1
-
-Enter value for marks: 98
-
-Enter value for selected:
-
-old   1: insert into result values(&amp;regno,&amp;marks,'&amp;selected')
-
-new   1: insert into result values(1,98,'')
-
-1 row created.
-
-SQL&gt; /
-
-Enter value for regno: 2
-
-Enter value for marks: 99
-
-Enter value for selected:
-
-old   1: insert into result values(&amp;regno,&amp;marks,'&amp;selected')
-
-new   1: insert into result values(2,99,'')
-
-1 row created.
-
-SQL&gt; /
-
-Enter value for regno: 3
-
-Enter value for marks: 100
-
-Enter value for selected:
-
-old   1: insert into result values(&amp;regno,&amp;marks,'&amp;selected')
-
-new   1: insert into result values(3,100,'')
-
-1 row created.
-
-SQL&gt; select * from result;
-
-    REGNO       MARKS           SEL
-----------------------------------------------
-    1           98
-    2           99
-    3           100	
-</code></pre>
-<p> </p>
-<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;PL/SQL BLOCK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-
-declare
-
-	no_reg number(4);
-	cnam char(15);
-	intake number(4);
-	no_appeared number(5);
-	i number(3);
-	rno number(6);
-	mk number(5);
-	sel char(3);
-	mx number(5);
-	sal number(8);
-	nam char(15);
-	cursor cur is select * from result;
-
-begin
-
-	cnam:='&amp;cnam';
-	intake:=&amp;intake;
-	select COUNT(*) into no_appeared from result;
-	dbms_output.put_line(' Total no of appearence for the exam: '||no_appeared);
-
-	open cur;
-
-	loop
-
-        fetch cur into rno,mk,sel;
-        if cur%found then
-            select COUNT(*) into i from result where selected='Y';
-            if i=intake then
-                exit;
-            end if;
-
-            select MAX(marks) into mx from result where selected='N' or selected is null;
-            update result set selected='Y' where marks=mx;
-
-        else
-            exit;
-        end if;
-
-	end loop;
-
-	commit;
-
-	close cur;
-
-	dbms_output.put_line('Selected Candidates');
-
-	open cur;
-
-	loop
-
-        fetch cur into rno,mk,sel;
-
-        if cur%found then
-            if sel='Y' then
-                select name into nam from registration where regno=rno;
-                dbms_output.put_line(nam);
-            end if;
-        else
-            exit;
-        end if;
-
-	end loop;
-	commit;
-	close cur;
-
-	select salary into sal from company_details where company_name=cnam;
-	update company_details set salary=sal*1 where company_name=cnam;
-
-end;
-
-/
-
-Enter value for cnam: Wipro
-
-old  15: cnam:='&amp;cnam';
-
-new  15: cnam:='Wipro';
-
-Enter value for intake: 2
-
-old  16: intake:=&amp;intake;
-
-new  16: intake:=2;
-
-Total no of appearence for the exam: 3
-
-Selected Candidates
-
-Kuttoos
-
-Tuttu
-
-PL/SQL procedure successfully completed.
-
-SQL&gt; select * from agency_income_details;
-
-COMPANY_NAME    AGENCY_PROFIT
----------------------------------------
-Wipro           24650
-
-
-SQL&gt; select * from company_details;
-
-COMPANY_NAME                SALARY
----------------------------------------------------
-Wipro                       25000
-
-SQL&gt; select * from registration;
-
-    REGNO       NAME             COLLEGE       DATE_OF_R               DEGREE
------------------------------------------------------------------------------------------
-    1           Tintumon         UCE           08-JAN-10               B tech
-    2           Kuttoos          VJC           08-JAN-10               B tech
-    3           Tuttu            UCE           08-JAN-10               B tech
-
-
-SQL&gt; select * from result;
-
-    REGNO       MARKS           SEL
------------------------------------------------
-
-    1           98
-
-    2           99               Y
-
-    3           100              Y</code></pre>
-
-    </div>
-    <footer>
-      <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/sql/">SQL</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/dbms/">DBMS</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/sql/">SQL</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/pl/sql/">PL/SQL</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-    </footer>
-  </article>
-  
-
-  <div class="pagination">
-  
-    <a href="/blog/2010-01-10-sql-railway-reservation-system/" class="button"><div class="previous"><div>SQL- RAILWAY RESERVATION SYSTEM</div></div></a>
-  
-  
-    <a href="/blog/2010-01-10-sql-university-exam-registration-system/" class="button"><div class="next"><div>SQL- UNIVERSITY EXAM REGISTRATION SYSTEM</div></div></a>
-  
-</div>
-
-
       </main>
       <section id="site-sidebar">
   
@@ -1048,10 +552,10 @@ SQL&gt; select * from result;
     
       &copy; 2020
       
-        The Insane Techie
+        Dhanoop Bhaskar
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.82.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
