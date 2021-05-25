@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 07 May 2020 14:35:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ROS In Docker Container</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2020-05-07-ros-in-docker-container/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2020-05-07-ros-in-docker-container/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2020-05-07-ros-in-docker-container/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2020-05-07-ros-in-docker-container/</guid>
       <description>ROS (Robot Operating System) - Documentation - http://wiki.ros.org/
 In this example I use docker image of ROS Melodic and a Dockerfile for creating the required docker container. Python3 (python3.7) is also installed in this example.
 Please refer https://docs.docker.com/get-started/ for more information on Dockers.
@@ -22,20 +22,20 @@ Please refer https://docs.docker.com/get-started/ for more information on Docker
     
     <item>
       <title>Working With Python 3 In ROS Kinetic Or Melodic</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</link>
       <pubDate>Thu, 07 May 2020 14:07:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</guid>
       <description>ROS (Robot Operating System) - Documentation - http://wiki.ros.org/
  The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms. — https://www.ros.org/ 1 ROS (upto Melodic) officially supports only python2 and NOT python3. However some libraries we use in our projects (eg.</description>
     </item>
     
     <item>
       <title>Python - First Step Towards Programming</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-09-20-python-first-step-towards-programming/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-09-20-python-first-step-towards-programming/</link>
       <pubDate>Tue, 20 Sep 2011 18:47:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-20-python-first-step-towards-programming/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-09-20-python-first-step-towards-programming/</guid>
       <description>Let&amp;rsquo;s start with an example program to find Fibonacci series
 &amp;gt;&amp;gt;&amp;gt; # Fibonacci series: ... # the sum of two elements defines the next ... a, b = 0, 1 &amp;gt;&amp;gt;&amp;gt; while b &amp;lt; 10: ... print(b) ... a, b = b, a+b ... 1 1 2 3 5 8  This example introduces several new features.
   The first line contains a multiple assignment: the variables a and b simultaneously get the new values 0 and 1.</description>
@@ -43,30 +43,30 @@ Please refer https://docs.docker.com/get-started/ for more information on Docker
     
     <item>
       <title>Python - Strings</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-09-20-python-strings/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-09-20-python-strings/</link>
       <pubDate>Tue, 20 Sep 2011 17:53:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-20-python-strings/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-09-20-python-strings/</guid>
       <description>Besides numbers, Python can also manipulate strings, which can be expressed in several ways. They can be enclosed in single quotes or double quotes:
 &amp;gt;&amp;gt;&amp;gt; &amp;#39;spam eggs&amp;#39; &amp;#39;spam eggs&amp;#39; &amp;gt;&amp;gt;&amp;gt; &amp;#39;doesn\&amp;#39;t&amp;#39; &amp;#34;doesn&amp;#39;t&amp;#34; &amp;gt;&amp;gt;&amp;gt; &amp;#34;doesn&amp;#39;t&amp;#34; &amp;#34;doesn&amp;#39;t&amp;#34; &amp;gt;&amp;gt;&amp;gt; &amp;#39;&amp;#34;Yes,&amp;#34; he said.&amp;#39; &amp;#39;&amp;#34;Yes,&amp;#34; he said.&amp;#39; &amp;gt;&amp;gt;&amp;gt; &amp;#34;\&amp;#34;Yes,\&amp;#34;he said.&amp;#34; &amp;#39;&amp;#34;Yes,&amp;#34; he said.&amp;#39; &amp;gt;&amp;gt;&amp;gt; &amp;#39;&amp;#34;Isn\&amp;#39;t,&amp;#34; she said.&amp;#39; &amp;#39;&amp;#34;Isn\&amp;#39;t,&amp;#34; she said.&amp;#39; The interpreter prints the result of string operations in the same way as they are typed for input: inside quotes, and with quotes and other funny characters escaped by backslashes, to show the precise value.</description>
     </item>
     
     <item>
       <title>Python - An Introduction</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-09-19-python-an-introduction/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-09-19-python-an-introduction/</link>
       <pubDate>Mon, 19 Sep 2011 16:31:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-19-python-an-introduction/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-09-19-python-an-introduction/</guid>
       <description>In Python, input and output are distinguished by the presence or absence of prompts (&amp;gt;&amp;gt;&amp;gt; and ...). You must type everything after the prompt, when the prompt appears; lines that do not begin with a prompt are output from the interpreter. The comments in Python starts with an hash(#) character and ends when the physical line ends.
 # this is the first comment SPAM = 1 # and this is the second comment # .</description>
     </item>
     
     <item>
       <title>Using the Python Interpreter</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-09-19-using-the-python-interpreter/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-09-19-using-the-python-interpreter/</link>
       <pubDate>Mon, 19 Sep 2011 15:57:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-19-using-the-python-interpreter/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-09-19-using-the-python-interpreter/</guid>
       <description>Invoking the Interpreter
 The Python interpreter is usually installed as /usr/local/bin/python3.2 on those machines where it is available; putting /usr/local/bin in your Unix shell’s search path makes it possible to start it by typing the command
 python3.2  to the shell. Since the choice of the directory where the interpreter lives is an installation option, other places are possible; check with your local Python guru or system administrator. (E.g., /usr/local/python is a popular alternative location.</description>
@@ -74,10 +74,10 @@ python3.2  to the shell. Since the choice of the directory where the interpreter
     
     <item>
       <title>Python Programming Language</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-09-19-python-programming-language/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-09-19-python-programming-language/</link>
       <pubDate>Mon, 19 Sep 2011 15:48:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-19-python-programming-language/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-09-19-python-programming-language/</guid>
       <description>Python is a programming language that lets you work more quickly and integrate your systems more effectively.
  Python runs on Windows, Linux/Unix, Mac OS X, and has been ported to the Java and .NET virtual machines. Python is free to use, even for commercial products, because of its OSI-approved open source license.  Download Python from here &amp;hellip;</description>
     </item>

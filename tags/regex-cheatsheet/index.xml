@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 19 Jun 2020 14:07:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/regex-cheatsheet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Regex - Cheatsheet</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2020-06-19-regex/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2020-06-19-regex/</link>
       <pubDate>Fri, 19 Jun 2020 14:07:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2020-06-19-regex/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2020-06-19-regex/</guid>
       <description>Character classes
 . any character except newline \w \d \s word, digit, whitespace \W \D \S not word, digit, whitespace [abc] any of a, b, or c [^abc] not a, b, or c [a-g] character between a &amp;amp; g  Anchors
 ^abc$ start / end of the string \b \B word, not-word boundary  Escaped characters

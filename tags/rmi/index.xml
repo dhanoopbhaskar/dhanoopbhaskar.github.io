@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 26 Mar 2011 23:07:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/rmi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java - Sum and Average using RMI</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-03-26-java-sum-and-average-using-rmi/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-03-26-java-sum-and-average-using-rmi/</link>
       <pubDate>Sat, 26 Mar 2011 23:07:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-26-java-sum-and-average-using-rmi/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-03-26-java-sum-and-average-using-rmi/</guid>
       <description>ServerIntf.java
 import java.rmi.*; import java.rmi.server.*; public interface ServerIntf extends Remote { public double sum(double... numbers) throws RemoteException; public double average(double... numbers) throws RemoteException; } ServerImpl.java
 import java.rmi.*; import java.rmi.server.*; public class ServerImpl extends UnicastRemoteObject implements ServerIntf { public ServerImpl() throws RemoteException { } public double sum(double... numbers) throws RemoteException { double result = 0; for(double num : numbers) { result += num; } return result; } public double average(double... numbers) throws RemoteException { double result = 0; int n = numbers.</description>
@@ -20,10 +20,10 @@ import java.rmi.*; import java.rmi.server.*; public class ServerImpl extends Uni
     
     <item>
       <title>Java - System time using RMI</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-system-time-using-rmi/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-03-22-java-system-time-using-rmi/</link>
       <pubDate>Tue, 22 Mar 2011 18:38:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-system-time-using-rmi/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-03-22-java-system-time-using-rmi/</guid>
       <description>DateServerIntf.java
 import java.rmi.*; import java.rmi.server.*; public interface DateServerIntf extends Remote { public String getSystemDate() throws RemoteException; } DateServerImpl.java
 import java.rmi.*; import java.rmi.server.*; import java.util.*; import java.text.*; public class DateServerImpl extends UnicastRemoteObject implements DateServerIntf { public DateServerImpl() throws RemoteException { } public String getSystemDate() throws RemoteException { SimpleDateFormat dateFormat = new SimpleDateFormat(&amp;#34;yyyy-MM-dd hh:mm:ss&amp;#34;); Date date = new Date(); return dateFormat.format(date); } } DateServer.java
@@ -32,10 +32,10 @@ import java.rmi.*; import java.rmi.server.*; public class DateServer { public st
     
     <item>
       <title>Java - Mathematical Operations using RMI</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-mathematical-operations-using-rmi/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-03-22-java-mathematical-operations-using-rmi/</link>
       <pubDate>Tue, 22 Mar 2011 18:31:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-03-22-java-mathematical-operations-using-rmi/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-03-22-java-mathematical-operations-using-rmi/</guid>
       <description>MathServerIntf.java
 import java.rmi.*; import java.rmi.server.*; public interface MathServerIntf extends Remote { public int add(int a, int b) throws RemoteException; public int subtract(int a, int b) throws RemoteException; public int multiply(int a, int b) throws RemoteException; public int divide(int a, int b) throws RemoteException; } MathServerImpl.java
 import java.rmi.*; import java.rmi.server.*; public class MathServerImpl extends UnicastRemoteObject implements MathServerIntf { public MathServerImpl() throws RemoteException { } public int add(int a, int b) throws RemoteException { return a+b; } public int subtract(int a, int b) throws RemoteException { return a-b; } public int multiply(int a, int b) throws RemoteException { return a*b; } public int divide(int a, int b) throws RemoteException { if(b==0) { return -1; } else { return a/b; } } } MathServer.</description>

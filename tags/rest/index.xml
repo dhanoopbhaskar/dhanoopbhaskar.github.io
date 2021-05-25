@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 22 Aug 2016 20:13:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/rest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RESTful Web Services in Java</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2016-08-22-restful-web-services-in-java/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2016-08-22-restful-web-services-in-java/</link>
       <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2016-08-22-restful-web-services-in-java/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2016-08-22-restful-web-services-in-java/</guid>
       <description>Read about REST here&amp;hellip;
 In the example program REST is implemented using Jersey Framework.
 Download Jersey framework from here&amp;hellip;

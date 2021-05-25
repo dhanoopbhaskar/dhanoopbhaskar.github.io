@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 20 Sep 2011 16:13:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/rsa-algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java - RSA Algorithm</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-rsa-algorithm/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-09-20-java-rsa-algorithm/</link>
       <pubDate>Tue, 20 Sep 2011 16:13:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-20-java-rsa-algorithm/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-09-20-java-rsa-algorithm/</guid>
       <description>RSA stands for Rivest, Shamir and Adleman who first publicly described it.
  RSAAlgorithm.java
 import java.security.InvalidKeyException; import java.security.KeyPair; import java.security.KeyPairGenerator; import java.security.NoSuchAlgorithmException; import java.security.PrivateKey; import java.security.PublicKey; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; /** * * @author dhanoopbhaskar */ public class RSAAlgorithm { private KeyPairGenerator keyPairGenerator = null; private PrivateKey privateKey = null; private PublicKey publicKey = null; Cipher cipher = null; public RSAAlgorithm() { try { /** * Create RSA key pairs * - private key * - public key */ keyPairGenerator = KeyPairGenerator.</description>

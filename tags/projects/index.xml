@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 26 Feb 2013 01:14:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Exporting Google Contacts to a Nokia Phone</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2013-02-26-exporting-google-contacts-to-a-nokia-phone/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2013-02-26-exporting-google-contacts-to-a-nokia-phone/</link>
       <pubDate>Tue, 26 Feb 2013 01:14:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2013-02-26-exporting-google-contacts-to-a-nokia-phone/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2013-02-26-exporting-google-contacts-to-a-nokia-phone/</guid>
       <description>You can export the Google Contacts to a Nokia phone very easily now!!
 Download the low sized application (only 5.7KB) dbVcfSplitter.jar from the sourceforge&amp;hellip;
 Follow the below instructions-
@@ -25,10 +25,10 @@ Follow the below instructions-
     
     <item>
       <title>A command line SMTP GMailing tool in Java.</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2013-01-12-a-command-line-smtp-gmailing-tool-in-java/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2013-01-12-a-command-line-smtp-gmailing-tool-in-java/</link>
       <pubDate>Sat, 12 Jan 2013 01:51:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2013-01-12-a-command-line-smtp-gmailing-tool-in-java/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2013-01-12-a-command-line-smtp-gmailing-tool-in-java/</guid>
       <description>Launched my new project in sourceforge. It is simply a command line SMTP GMailing tool.
 I googled a lot in pursuit of Linux/Unix like utilities for my windows machine. Could find some of them (Shared them in my previous post).
 Successfully installed and executed some of them :) Came across blat - A Windows (32 &amp;amp; 64 bit) command line SMTP mailer. Installed in my system. Executed - but could not connect to smtp.</description>
@@ -36,10 +36,10 @@ Successfully installed and executed some of them :) Came across blat - A Windows
     
     <item>
       <title>Projects</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-projects/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-06-27-projects/</link>
       <pubDate>Mon, 27 Jun 2011 19:07:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-06-27-projects/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-06-27-projects/</guid>
       <description>Hi friends,
 Its glad to announce that our Mini Project and Main Project have been made open source and forged in SourceForge.net
 Our Mini Project was cybman - Cyber Cafe Management System

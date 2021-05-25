@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 11 Mar 2015 11:04:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/distance/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java program to find the distance between two GPS locations.</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2015-03-11-java-program-to-find-the-distance-between-two-gps-locations/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2015-03-11-java-program-to-find-the-distance-between-two-gps-locations/</link>
       <pubDate>Wed, 11 Mar 2015 11:04:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2015-03-11-java-program-to-find-the-distance-between-two-gps-locations/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2015-03-11-java-program-to-find-the-distance-between-two-gps-locations/</guid>
       <description>Location.java
 package com.cables.gps; public class Location { private int latDegree; private int latMinutes; private int latSeconds; private char latDirection; private int longDegree; private int longMinutes; private int longSeconds; private char longDirection; private float latitude; private float longitude; private void init() throws Exception { latitude = latDegree + (latMinutes / 60.0f) + (latSeconds / 3600.0f); if (latDirection == &amp;#39;N&amp;#39;) { latitude *= 1f; } else if (latDirection == &amp;#39;S&amp;#39;) { latitude *= -1f; } else { throw new Exception(&amp;#34;Invalid Latitude Direction: &amp;#34; + latDirection); } longitude = longDegree + (longMinutes / 60.</description>
     </item>

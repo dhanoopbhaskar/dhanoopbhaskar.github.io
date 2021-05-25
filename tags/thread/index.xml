@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 22 Jan 2014 20:26:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/thread/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A simple chat program in C (TCP)</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2014-01-22-a-simple-chat-program-in-c-tcp/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2014-01-22-a-simple-chat-program-in-c-tcp/</link>
       <pubDate>Wed, 22 Jan 2014 20:26:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2014-01-22-a-simple-chat-program-in-c-tcp/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2014-01-22-a-simple-chat-program-in-c-tcp/</guid>
       <description>tcpserver.c
 #include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #include&amp;#34;pthread.h&amp;#34; #define PORT 4444  #define BUF_SIZE 2000  #define CLADDR_LEN 100  void * receiveMessage(void * socket) { int sockfd, ret; char buffer[BUF_SIZE]; sockfd = (int) socket; memset(buffer, 0, BUF_SIZE); for (;;) { ret = recvfrom(sockfd, buffer, BUF_SIZE, 0, NULL, NULL); if (ret &amp;lt; 0) { printf(&amp;#34;Error receiving data!\n&amp;#34;); } else { printf(&amp;#34;client: &amp;#34;); fputs(buffer, stdout); //printf(&amp;#34;\n&amp;#34;);  } } } void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; pid_t childpid; char clientAddr[CLADDR_LEN]; pthread_t rThread; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!</description>
     </item>

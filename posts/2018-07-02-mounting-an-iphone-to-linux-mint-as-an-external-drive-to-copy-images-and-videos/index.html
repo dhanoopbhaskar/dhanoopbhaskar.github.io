@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="Phone: iPhone SE
+Operating System: Linux Mint 18.1(should work in Ubuntu as well)
+It is done by compiling most of the sources yourself.
+Only one library - usbmuxd - must be installed as root
+All others are installed in the home account.
+Install necessary software for building the source packages.
+To check-out and compile the needed packages from source, you have to install git first.
+Open a terminal and do the following:">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mounting an iPhone to Linux Mint as an external drive to copy images and videos"/>
+<meta name="twitter:description" content="Phone: iPhone SE
+Operating System: Linux Mint 18.1(should work in Ubuntu as well)
+It is done by compiling most of the sources yourself.
+Only one library - usbmuxd - must be installed as root
+All others are installed in the home account.
+Install necessary software for building the source packages.
+To check-out and compile the needed packages from source, you have to install git first.
+Open a terminal and do the following:"/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="Mounting an iPhone to Linux Mint as an external drive to copy images and videos" />
+<meta property="og:description" content="Phone: iPhone SE
+Operating System: Linux Mint 18.1(should work in Ubuntu as well)
+It is done by compiling most of the sources yourself.
+Only one library - usbmuxd - must be installed as root
+All others are installed in the home account.
+Install necessary software for building the source packages.
+To check-out and compile the needed packages from source, you have to install git first.
+Open a terminal and do the following:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-07-02T20:01:00&#43;05:30" />
+<meta property="article:modified_time" content="2018-07-02T20:01:00&#43;05:30" />
+
+
+
+    <title>
+  Mounting an iPhone to Linux Mint as an external drive to copy images and videos · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/">
+              Mounting an iPhone to Linux Mint as an external drive to copy images and videos
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2018-07-02T20:01:00&#43;05:30'>
+                July 2, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/linux/">linux</a>
+      <span class="separator">•</span>
+    <a href="/categories/iphone/">iphone</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/linux/">linux</a>
+      <span class="separator">•</span>
+    <a href="/tags/iphone/">iphone</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p><strong>Phone: iPhone SE</strong><br>
+<strong>Operating System: Linux Mint 18.1</strong>(should work in Ubuntu as well)</p>
+<p>It is done by compiling most of the sources yourself.<br>
+Only one library - <code>usbmuxd</code> - must be installed as <strong>root</strong><br>
+All others are installed in the home account.</p>
+<p>Install necessary software for building the source packages.</p>
+<p>To check-out and compile the needed packages from source, you have to
+install <strong>git</strong> first.</p>
+<p>Open a terminal and do the following:</p>
+<pre><code>:~$ sudo apt-get install -y git
+
+:~$ sudo apt-get install -y build-essential
+
+:~$ sudo apt-get install -y libtool m4 automake
+
+:~$ sudo apt-get install -y libfuse-dev
+</code></pre>
+<p>All new commands to mount and unmount the file-system of your iPhone,
+will be installed in the sub-directory <code>${HOME}/usr/bin/</code>.</p>
+<p>Create the sub-directory to store the source files of the packages to be
+compiled:</p>
+<pre><code>:~$ mkdir -p &quot;$HOME/usr/src&quot;
+</code></pre>
+<p>Set all required environment variables to ensure to build the packages
+from source as desired:</p>
+<pre><code>:~$ export PKG_CONFIG_PATH=&quot;${HOME}/usr/lib/pkgconfig:${PKG_CONFIG_PATH}&quot;
+:~$ export CPATH=&quot;${HOME}/usr/include:${CPATH}&quot;
+:~$ export MANPATH=&quot;${HOME}/usr/share/man:${MANPATH}&quot;
+:~$ export PATH=&quot;${HOME}/usr/bin:${PATH}&quot;
+:~$ export LD_LIBRARY_PATH=&quot;${HOME}/usr/lib:${LD_LIBRARY_PATH}&quot;
+</code></pre>
+<p>Now put the last two export statements into your .bashrc, to be loaded
+every time you open a new terminal, otherwise you must type:</p>
+<pre><code>:~$ export PATH=&quot;${HOME}/usr/bin:${PATH}&quot;
+:~$ export LD_LIBRARY_PATH=&quot;${HOME}/usr/lib:${LD_LIBRARY_PATH}&quot;
+</code></pre>
+<p>whenever you open a new terminal.</p>
+<p>Clone all needed repositories from Github.</p>
+<pre><code>:~$ cd ~/usr/src
+:~$ for x in libplist libusbmuxd usbmuxd libimobiledevice ifuse; do git clone https://github.com/libimobiledevice/${x}.git;done
+</code></pre>
+<p>Build and install the packages in the following order.</p>
+<p>Build <strong>libplist</strong></p>
+<pre><code>:~$ cd ~/usr/src/libplist
+:~$ ./autogen.sh --prefix=&quot;$HOME/usr&quot;
+:~$ make &amp;&amp; make install
+</code></pre>
+<p>Build <strong>libusbmuxd</strong></p>
+<pre><code>:~$ cd ~/usr/src/libusbmuxd
+:~$ ./autogen.sh --prefix=&quot;$HOME/usr&quot;
+:~$ make &amp;&amp; make install
+</code></pre>
+<p>Build <strong>libimobiledevice</strong></p>
+<pre><code>:~$ cd ~/usr/src/libimobiledevice
+:~$ ./autogen.sh --prefix=&quot;$HOME/usr&quot;
+:~$ make &amp;&amp; make install
+</code></pre>
+<p>Build <strong>usbmuxd</strong><br>
+<em>(The package usbmuxd must be installed with administrative rights, because it needs write access to <code>/lib/udev/rules.d</code> and <code>/lib/systemd/system</code>)</em></p>
+<pre><code>:~$ cd ~/usr/src/usbmuxd
+:~$ ./autogen.sh --prefix=&quot;$HOME/usr&quot;
+:~$ make &amp;&amp; sudo make install
+</code></pre>
+<p>Build <strong>ifuse</strong></p>
+<pre><code>:~$ cd ~/usr/src/ifuse
+:~$ ./autogen.sh --prefix=&quot;$HOME/usr&quot;
+:~$ make &amp;&amp; make install
+</code></pre>
+<p><strong>TESTING</strong></p>
+<p>It&rsquo;s assumed that you put the two exports into your <code>~/.bashrc</code> as mentioned above.<br>
+Open a new terminal.
+Connect your iPhone.
+Create a mount point, where you want the content of your iPhone to appear.</p>
+<pre><code>:~$ mkdir -p ~/usr/mnt
+</code></pre>
+<p>Connect your iPhone to the computer and try to pair the iPhone with your
+computer.</p>
+<pre><code>:~$ idevicepair pair
+</code></pre>
+<p>If error occurs during validation, please enter the passcode on the
+device and retry. A trust dialog will be appeared on your device. You
+have to accept it as well</p>
+<pre><code>:~$ idevicepair pair
+</code></pre>
+<p>After successfully pairing the device, mount the file-system of your
+iPhone and check the content</p>
+<pre><code>:~$ ifuse ~/usr/mnt/
+:~$ ls ~/usr/mnt/
+</code></pre>
+<p>To safely disconnect your iPhone, you have to unmount the file-system in <code>~/usr/mnt</code> first with fusermount.</p>
+<pre><code>:~$ fusermount -u ~/usr/mnt
+</code></pre>
+<p>Now, you can plug-off your iPhone again.</p>
+<p><strong>ERRORS AND SOLUTIONS</strong></p>
+<p>(1) configure: error: OpenSSL support explicitly requested but OpenSSL could not be found</p>
+<pre><code>:~$ sudo apt-get install libssl-dev
+</code></pre>
+<p>(2) configure: error: Could not link test program to Python. Maybe the main Python library has been installed in some non-standard library path. If so, pass it to configure, via the LDFLAGS environment variable.</p>
+<p>Example: ./configure LDFLAGS=&quot;-L/usr/non-standard-path/python/lib&quot;</p>
+<p><em>(You probably have to install the development version of the Python
+package for your distribution.  The exact name of this package varies
+among them.)</em></p>
+<pre><code>:~$ sudo apt-get install python-dev
+</code></pre>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

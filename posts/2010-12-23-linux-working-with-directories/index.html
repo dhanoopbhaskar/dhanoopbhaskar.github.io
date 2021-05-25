@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="To print working directory
+pwd  To change directory
+To return to home directory
+cd  To change into specified directory name
+cd &lt;directory name&gt;  To change to home or other path relative to home
+// ~ is an alias for your home directory cd ~  To move up one directory
+cd ..  To return to previous directory
+cd -  To list all files in the current directory">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux-Working with directories"/>
+<meta name="twitter:description" content="To print working directory
+pwd  To change directory
+To return to home directory
+cd  To change into specified directory name
+cd &lt;directory name&gt;  To change to home or other path relative to home
+// ~ is an alias for your home directory cd ~  To move up one directory
+cd ..  To return to previous directory
+cd -  To list all files in the current directory"/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="Linux-Working with directories" />
+<meta property="og:description" content="To print working directory
+pwd  To change directory
+To return to home directory
+cd  To change into specified directory name
+cd &lt;directory name&gt;  To change to home or other path relative to home
+// ~ is an alias for your home directory cd ~  To move up one directory
+cd ..  To return to previous directory
+cd -  To list all files in the current directory" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-directories/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2010-12-23T22:02:00&#43;05:30" />
+<meta property="article:modified_time" content="2010-12-23T22:02:00&#43;05:30" />
+
+
+
+    <title>
+  Linux-Working with directories · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-directories/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-directories/">
+              Linux-Working with directories
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2010-12-23T22:02:00&#43;05:30'>
+                December 23, 2010
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/linux/">linux</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/linux/">linux</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p><strong>To print working directory</strong></p>
+<pre><code>pwd
+</code></pre>
+<p><strong>To change directory</strong></p>
+<p><em>To return to home directory</em></p>
+<pre><code>cd
+</code></pre>
+<p><em>To change into specified directory name</em></p>
+<pre><code>cd &lt;directory name&gt;
+</code></pre>
+<p><em>To change to home or other path relative to home</em></p>
+<pre><code>// ~ is an alias for your home directory
+cd ~
+</code></pre>
+<p><em>To move up one directory</em></p>
+<pre><code>cd ..
+</code></pre>
+<p><em>To return to previous directory</em></p>
+<pre><code>cd -
+</code></pre>
+<p><strong>To list all files in the current directory</strong></p>
+<p><em>To list all files in the current directory, in column format</em></p>
+<pre><code>ls
+</code></pre>
+<p><em>To list the files in the specified directory</em></p>
+<pre><code>ls &lt;directory name&gt;
+</code></pre>
+<p><em>To list files in “long” format, 1 file per line with additional information</em></p>
+<pre><code>ls -l
+</code></pre>
+<p><em>To list all files, including “hidden” files</em></p>
+<pre><code>ls -a
+</code></pre>
+<p><em>To show the directory&rsquo;s detailed information</em></p>
+<pre><code>ls -ld &lt;directory name&gt;
+</code></pre>
+<p><em>To list all files whose names begin with the letter “d” in the /usr/bin directory</em></p>
+<pre><code>ls /usr/bin/d*
+</code></pre>
+<p><em>To list files based on their size</em></p>
+<pre><code>ls -sh
+</code></pre>
+<p><em>To create a directory</em></p>
+<pre><code>mkdir &lt;directory name&gt;
+	eg: mkdir dhan
+mkdir -p &lt;directory path&gt;
+	eg: mkdir -p /home/sng/dhan
+</code></pre>
+<p><em>To create directories in multiple paths</em></p>
+<pre><code>mkdir -p parent/{child1,child2,child3}
+	eg: mkdir -p work/{in,out,pending}/{a,b,c}
+</code></pre>
+<p><em>To delete a directory</em></p>
+<pre><code>rmdir &lt;directory name&gt;
+	eg: rmdir /tmp/myfiles/</code></pre>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

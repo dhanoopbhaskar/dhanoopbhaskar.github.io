@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="The Out of Memory Error and Java Heap Space Error are two of the common errors which occur in the Talend jobs handling a large volume of data. These errors can be avoided to an extent by following some design guidelines.
+ Keep in mind that tMap is a heavy component. Minimize its use in your jobs.   Avoid tMap if you need just simple transformations like trimming the string values, replacing null numbers by zeroes, etc.">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Talend - Out of Memory Error and Java Heap Space Error"/>
+<meta name="twitter:description" content="The Out of Memory Error and Java Heap Space Error are two of the common errors which occur in the Talend jobs handling a large volume of data. These errors can be avoided to an extent by following some design guidelines.
+ Keep in mind that tMap is a heavy component. Minimize its use in your jobs.   Avoid tMap if you need just simple transformations like trimming the string values, replacing null numbers by zeroes, etc."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="Talend - Out of Memory Error and Java Heap Space Error" />
+<meta property="og:description" content="The Out of Memory Error and Java Heap Space Error are two of the common errors which occur in the Talend jobs handling a large volume of data. These errors can be avoided to an extent by following some design guidelines.
+ Keep in mind that tMap is a heavy component. Minimize its use in your jobs.   Avoid tMap if you need just simple transformations like trimming the string values, replacing null numbers by zeroes, etc." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2013-07-21T20:48:00&#43;05:30" />
+<meta property="article:modified_time" content="2013-07-21T20:48:00&#43;05:30" />
+
+
+
+    <title>
+  Talend - Out of Memory Error and Java Heap Space Error · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error/">
+              Talend - Out of Memory Error and Java Heap Space Error
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2013-07-21T20:48:00&#43;05:30'>
+                July 21, 2013
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/talend/">Talend</a>
+      <span class="separator">•</span>
+    <a href="/categories/java/">java</a>
+      <span class="separator">•</span>
+    <a href="/categories/etl/">ETL</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/talend/">Talend</a>
+      <span class="separator">•</span>
+    <a href="/tags/java/">java</a>
+      <span class="separator">•</span>
+    <a href="/tags/etl/">ETL</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>The <code>Out of Memory Error</code> and <code>Java Heap Space Error</code> are two of the common errors which occur in the Talend jobs <em>handling a large volume of data</em>. These errors can be avoided to an extent by following some design guidelines.</p>
+<ol>
+<li>Keep in mind that <em>tMap is a heavy component</em>. Minimize its use in your jobs.</li>
+</ol>
+<ul>
+<li><strong>Avoid tMap</strong> if you need just simple transformations like trimming the string values, replacing null numbers by zeroes, etc. In its place you can use <strong>tJavaRow</strong> component.</li>
+</ul>
+<p><img src="/img/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9335834042_38248a55b5_o.png" alt=""></p>
+<p><img src="/img/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9333044395_be21f24435_o.png" alt=""></p>
+<ul>
+<li>If you want to get only a small set of columns from a huge collection avoid using a tMap. For that you can use a lighter component- <strong>tFilterColumns</strong></li>
+</ul>
+<p><a href="/img/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9335940088_172c650b19_o.png"><img src="/img/thumbnails/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9335940088_172c650b19_o.png" alt=""></a></p>
+<p><img src="/img/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9333150861_272965323c_o.png" alt=""></p>
+<ul>
+<li>Similarly, to filter rows you can use <strong>tFilterRow</strong> instead of a tMap</li>
+</ul>
+<ol start="2">
+<li>Use <strong>store on disk</strong> option whenever necessary.</li>
+</ol>
+<p>This option is available in tMap, tUniqRow, tSortRow, etc.</p>
+<ul>
+<li>tMap</li>
+</ul>
+<p>While using store on disk option in tMap the directory to store temporary data will be created automatically. This data will not be deleted or replaced on subsequent run(s) of the job. So it is advised to delete the temporary directory created using tFileDelete component from within the job. You can give that in <code>On Subjob Ok</code> of tPostJob component.</p>
+<p><a href="/img/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9336039822_e36316a73d_o.png"><img src="/img/thumbnails/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9336039822_e36316a73d_o.png" alt=""></a></p>
+<p><img src="/img/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9333249685_d6bbeef6a4_o.png" alt=""></p>
+<ul>
+<li>tUniqRow</li>
+</ul>
+<p>In the case of tUniqRow the temporary directory should be <strong>created manually</strong> before the job run/or can be handled within the job. If the temporary directory is not available, the component tUniqRow will give out FileNotFoundException!</p>
+<p><img src="/img/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9336110434_49af38209f_o.png" alt=""></p>
+<ul>
+<li>tSortRow</li>
+</ul>
+<p>In the case of tSortRow the temporary directory will be <strong>created automatically</strong> (see the image below- a check box can be seen)</p>
+<p><a href="/img/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9333321527_35f7239138_o.png"><img src="/img/thumbnails/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9333321527_35f7239138_o.png" alt=""></a></p>
+<ol start="3">
+<li>The JVM arguments can be modified as and when needed.</li>
+</ol>
+<p><code>-Xms256M  - initial memory size available to JVM is 256 MB</code></p>
+<p><code>-Xmx1024M - maximum memory size available to JVM is 1024 MB</code></p>
+<p><a href="/img/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9333374447_e881a04c7a_o.png"><img src="/img/thumbnails/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error-9333374447_e881a04c7a_o.png" alt=""></a></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

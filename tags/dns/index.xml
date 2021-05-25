@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 14 Feb 2016 01:23:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/dns/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DNS Lookup - Implementation in C</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2016-02-14-dns-lookup-implementation-in-c/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2016-02-14-dns-lookup-implementation-in-c/</link>
       <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2016-02-14-dns-lookup-implementation-in-c/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2016-02-14-dns-lookup-implementation-in-c/</guid>
       <description>Read about DNS here&amp;hellip;
 DNS Lookup - Implementation in C
 /**dnsclient.c**/ #include&amp;#34;stdio.h&amp;#34;  #include&amp;#34;stdlib.h&amp;#34;  #include&amp;#34;sys/types.h&amp;#34;  #include&amp;#34;sys/socket.h&amp;#34;  #include&amp;#34;string.h&amp;#34;  #include&amp;#34;netinet/in.h&amp;#34;  #include&amp;#34;netdb.h&amp;#34; #include&amp;#34;arpa/inet.h&amp;#34; #define BUF_SIZE 512  #define SERVER &amp;#34;8.8.8.8&amp;#34;  #define PORT 53  #define WIDTH 16  int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { .</description>

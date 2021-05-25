@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 02 Jul 2018 20:01:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/categories/iphone/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mounting an iPhone to Linux Mint as an external drive to copy images and videos</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</link>
       <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</guid>
       <description>Phone: iPhone SE
 Operating System: Linux Mint 18.1(should work in Ubuntu as well)
 It is done by compiling most of the sources yourself.

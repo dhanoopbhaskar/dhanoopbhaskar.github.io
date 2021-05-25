@@ -9,20 +9,20 @@
     <lastBuildDate>Thu, 07 May 2020 14:07:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/robotics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Working With Python 3 In ROS Kinetic Or Melodic</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</link>
       <pubDate>Thu, 07 May 2020 14:07:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</guid>
       <description>ROS (Robot Operating System) - Documentation - http://wiki.ros.org/
  The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms. — https://www.ros.org/ 1 ROS (upto Melodic) officially supports only python2 and NOT python3. However some libraries we use in our projects (eg.</description>
     </item>
     
     <item>
       <title>Biped Walking Robot</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2019-10-28-biped-walking-robot/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2019-10-28-biped-walking-robot/</link>
       <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2019-10-28-biped-walking-robot/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2019-10-28-biped-walking-robot/</guid>
       <description>We, a team of 3, attended a course titled &amp;ldquo;2 Mechatronics Project&amp;rdquo; conducted by Skyfi Labs in the month of October 2019. Thought of sharing the assignments done as a part of the course.
 Biped Walking Robot
   </description>
@@ -30,10 +30,10 @@ Biped Walking Robot
     
     <item>
       <title>Robotic Arm</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2019-10-28-robotic-arm/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2019-10-28-robotic-arm/</link>
       <pubDate>Mon, 28 Oct 2019 12:05:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2019-10-28-robotic-arm/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2019-10-28-robotic-arm/</guid>
       <description>We, a team of 3, attended a course titled &amp;ldquo;2 Mechatronics Project&amp;rdquo; conducted by Skyfi Labs in the month of October 2019. Thought of sharing the assignments done as a part of the course.
 Robotic Arm
   </description>
@@ -41,10 +41,10 @@ Robotic Arm
     
     <item>
       <title>7 Robots in 6 Days</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2019-10-28-7-robots-in-6-days/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2019-10-28-7-robots-in-6-days/</link>
       <pubDate>Mon, 28 Oct 2019 12:00:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2019-10-28-7-robots-in-6-days/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2019-10-28-7-robots-in-6-days/</guid>
       <description>7 Robots in 6 Days
 We, a team of 3, attended a course titled &amp;ldquo;7 Robots in 6 Days&amp;rdquo; conducted by Skyfi Labs in the month of June 2019. Thought of sharing the assignments done as a part of the course.
 1. Line Follower Robot using Arduino

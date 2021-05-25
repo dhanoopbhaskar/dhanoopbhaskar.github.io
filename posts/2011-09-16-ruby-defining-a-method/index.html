@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="Let&rsquo;s start with an example
+irb(main):001:0&gt; def h irb(main):002:1&gt; puts &quot;Ruby Language&quot; irb(main):003:1&gt; end =&gt; nil  The definition of the method starts with keyword def and an identifier to the method (i.e., h). Next comes the actual body of the method and the keyword end as the delimiter.
+Running a method
+irb(main):004:0&gt; h Ruby Language =&gt; nil irb(main):005:0&gt; h() Ruby Language =&gt; nil  Calling a method in Ruby is as easy as just mentioning its name to Ruby.">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ruby- Defining a method"/>
+<meta name="twitter:description" content="Let&rsquo;s start with an example
+irb(main):001:0&gt; def h irb(main):002:1&gt; puts &quot;Ruby Language&quot; irb(main):003:1&gt; end =&gt; nil  The definition of the method starts with keyword def and an identifier to the method (i.e., h). Next comes the actual body of the method and the keyword end as the delimiter.
+Running a method
+irb(main):004:0&gt; h Ruby Language =&gt; nil irb(main):005:0&gt; h() Ruby Language =&gt; nil  Calling a method in Ruby is as easy as just mentioning its name to Ruby."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="Ruby- Defining a method" />
+<meta property="og:description" content="Let&rsquo;s start with an example
+irb(main):001:0&gt; def h irb(main):002:1&gt; puts &quot;Ruby Language&quot; irb(main):003:1&gt; end =&gt; nil  The definition of the method starts with keyword def and an identifier to the method (i.e., h). Next comes the actual body of the method and the keyword end as the delimiter.
+Running a method
+irb(main):004:0&gt; h Ruby Language =&gt; nil irb(main):005:0&gt; h() Ruby Language =&gt; nil  Calling a method in Ruby is as easy as just mentioning its name to Ruby." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-09-16-ruby-defining-a-method/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-09-16T18:44:00&#43;05:30" />
+<meta property="article:modified_time" content="2011-09-16T18:44:00&#43;05:30" />
+
+
+
+    <title>
+  Ruby- Defining a method · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2011-09-16-ruby-defining-a-method/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2011-09-16-ruby-defining-a-method/">
+              Ruby- Defining a method
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2011-09-16T18:44:00&#43;05:30'>
+                September 16, 2011
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/ruby/">ruby</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ruby/">ruby</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Let&rsquo;s start with an example</p>
+<pre><code>irb(main):001:0&gt; def h
+irb(main):002:1&gt; puts &quot;Ruby Language&quot;
+irb(main):003:1&gt; end
+=&gt; nil
+</code></pre>
+<p>The definition of the method starts with keyword <code>def</code> and an identifier to the method (i.e., <code>h</code>). Next comes the actual body of the method and the keyword <code>end</code> as the delimiter.</p>
+<p><strong>Running a method</strong></p>
+<pre><code>irb(main):004:0&gt; h
+Ruby Language
+=&gt; nil
+irb(main):005:0&gt; h()
+Ruby Language
+=&gt; nil
+</code></pre>
+<p>Calling a method in Ruby is as easy as just mentioning its name to Ruby. If the method does not take parameters that’s all you need. You can add empty parentheses if you would like, but they are not needed.</p>
+<p><strong>Parameterised method</strong></p>
+<p>Ruby provides facility to define methods that take arguments/parameters.</p>
+<pre><code>irb(main):006:0&gt; def g(name)
+irb(main):007:1&gt; puts &quot;Hello #{name}!&quot;
+irb(main):008:1&gt; end
+=&gt; nil 
+irb(main):009:0&gt; g(&quot;Friend&quot;)
+Hello Friend!
+=&gt; nil
+</code></pre>
+<p><strong>Using default parameter</strong></p>
+<p>We can provide the default parameter, that should be used when the method is invoked without passing arguments, by equating the value to the parameter while defining the method.</p>
+<pre><code>irb(main):010:0&gt; def g(name = &quot;World&quot;)
+irb(main):011:1&gt; puts &quot;Hello #{name.capitalize}!&quot;
+irb(main):012:1&gt; end
+=&gt; nil 
+irb(main):013:0&gt; g(&quot;dhanoop&quot;)
+Hello Dhanoop!
+=&gt; nil
+irb(main):014:0&gt; g
+Hello World!
+=&gt; nil</code></pre>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 22 Sep 2011 14:17:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/gtalk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java - GTalk Client using SMACK XMPP API</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-09-22-java-gtalk-client-using-smack-xmpp-api/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-09-22-java-gtalk-client-using-smack-xmpp-api/</link>
       <pubDate>Thu, 22 Sep 2011 14:17:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-09-22-java-gtalk-client-using-smack-xmpp-api/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-09-22-java-gtalk-client-using-smack-xmpp-api/</guid>
       <description>GtalkClient.java
 import java.io.BufferedReader; import java.io.IOException; import java.io.InputStreamReader; import java.util.Collection; import java.util.Iterator; import org.jivesoftware.smack.Chat; import org.jivesoftware.smack.ConnectionConfiguration; import org.jivesoftware.smack.MessageListener; import org.jivesoftware.smack.Roster; import org.jivesoftware.smack.RosterEntry; import org.jivesoftware.smack.XMPPConnection; import org.jivesoftware.smack.XMPPException; import org.jivesoftware.smack.packet.Message; /** * * @author dhanoopbhaskar */ public class GtalkClient implements Runnable, MessageListener { ConnectionConfiguration connConfig = null; XMPPConnection xMPPConnection = null; BufferedReader readFromKeyboard = null; String toAddresss = null; String[] buddies = null; int buddySize = 0; public GtalkClient() { /** * Set the &amp;#39;ConnectionConfiguration&amp;#39; with * -host name * -port number * -service name */ connConfig = new ConnectionConfiguration(&amp;#34;talk.</description>
     </item>

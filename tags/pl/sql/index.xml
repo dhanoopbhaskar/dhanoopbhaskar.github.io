@@ -8,64 +8,64 @@
     <language>en</language><atom:link href="https://dhanoopbhaskar.github.io/tags/pl/sql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SQL- UNIVERSITY EXAM REGISTRATION SYSTEM</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-university-exam-registration-system/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-university-exam-registration-system/</link>
       <pubDate>Sun, 10 Jan 2010 00:29:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-university-exam-registration-system/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-university-exam-registration-system/</guid>
       <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table application(slno number(5) primary key,student_name char(15),branch char(7),college char(15),date_apply date); create table university(student_name char(15),branch char(7) check( branch in(&#39;CS&#39;,&#39;IT&#39;,&#39;EC&#39;)),college char(15)); create table register_nos(regno number(5),student_name char(15),branch char(7),college char(15));   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;UNIVERSITY DATABASE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; insert into university values(&#39;&amp;amp;student_name&#39;,&#39;&amp;amp;branch&#39;,&#39;&amp;amp;college&#39;); SQL&amp;gt; insert into university values(&#39;&amp;amp;student_name&#39;,&#39;&amp;amp;branch&#39;,&#39;&amp;amp;college&#39;); Enter value for student_name: Kuttoos Enter value for branch: IT Enter value for college: UCE old 1: insert into university values(&#39;&amp;amp;student_name&#39;,&#39;&amp;amp;branch&#39;,&#39;&amp;amp;college&#39;) new 1: insert into university values(&#39;Kuttoos&#39;,&#39;IT&#39;,&#39;UCE&#39;) 1 row created.</description>
     </item>
     
     <item>
       <title>SQL- RECRUITMENT DATABASE</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-recruitment-database/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-recruitment-database/</link>
       <pubDate>Sun, 10 Jan 2010 00:27:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-recruitment-database/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-recruitment-database/</guid>
       <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table registration(regno number(6) primary key,name char(15),college char(15),date_of_reg date,degree char(10)); create table company_details(company_name char(15) primary key,salary number(8)); create table result(regno number(6) references registration(regno),marks number(5),selected char(3) default &#39;N&#39;); create table agency_income_details(company_name char(15),agency_profit number(10,2));   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;PROCEDURE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create or replace procedure insertreg (pname char,pcoll char,pdgr char) is cname char(15); no number(6); r number(6); cnt number(2); begin cname:=&#39;&amp;amp;cname&#39;; select max(regno) into no from registration; if no is null then r:=1; else r:=no+1; end if; insert into registration values(r,pname,pcoll,sysdate,pdgr); dbms_output.</description>
     </item>
     
     <item>
       <title>SQL- RAILWAY RESERVATION SYSTEM</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-railway-reservation-system/</link>
       <pubDate>Sun, 10 Jan 2010 00:25:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-railway-reservation-system/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-railway-reservation-system/</guid>
       <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table train_details(train_name char(15) primary key,total_seats number(3),reserved_seats number(3)); create table reservation_status(train_name char(15) references train_details(train_name),seat_id number(3),reserved char(2) check (reserved in(&#39;y&#39;,&#39;n&#39;)),customer_name char(15));	create table waiting_list(slno number(3),customer_name char(15) primary key,train_name char(15) references train_details(train_name));   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;ENTER TRAIN DETAILS&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; declare tname char(15); tot number(3); resv number(3); cursor cur is select * from train_details; begin insert into train_details values(&#39;&amp;amp;train_name&#39;,&amp;amp;total_seats,0); open cur; loop fetch cur into tname,tot,resv; if cur%found then for i in 1..tot loop insert into reservation_status values(tname,i,&#39;n&#39;,null); end loop; else exit; end if; end loop; commit; close cur; end; / Enter value for train_name: AA Enter value for total_seats: 3 old 7: insert into train_details values(&#39;&amp;amp;train_name&#39;,&amp;amp;total_seats,0); new 7: insert into train_details values(&#39;AA&#39;,3,0); PL/SQL procedure successfully completed.</description>
     </item>
     
     <item>
       <title>SQL- LIBRARY MANAGEMENT SYSTEM</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-library-management-system/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-library-management-system/</link>
       <pubDate>Sun, 10 Jan 2010 00:22:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-library-management-system/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-library-management-system/</guid>
       <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5)); create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2)); create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5)); create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;ADD A NEW BOOK&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; declare bknam char(15); auth char(15); tot number(5); id number(5); no number(5); i number(3); begin bknam:=&#39;&amp;amp;bknam&#39;; auth:=&#39;&amp;amp;auth&#39;; tot:=&amp;amp;tot; insert into book_rec values(bknam,auth,tot,tot); for i in 1.</description>
     </item>
     
     <item>
       <title>SQL- HOSPITAL MANAGEMENT</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-hospital-management/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-hospital-management/</link>
       <pubDate>Sun, 10 Jan 2010 00:19:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-hospital-management/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-hospital-management/</guid>
       <description>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CREATE TABLE&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; create table doctors_details(doc_id number(3),name char(15),specialization char(15) primary key check(specialization in(&#39;ENT&#39;,&#39;GASTRO&#39;,&#39;CARDIO&#39;,&#39;OPTHAL&#39;, &#39;ORTHO&#39;, &#39;PSYCHO&#39;)),fees number(8,2)); create table register(regno number(5) primary key,name char(15),age number(3),sex char(3) check(sex in(&#39;M&#39;,&#39;F&#39;)),address char(20),date_reg date,category char(15) references doctors_details(specialization)); create table pat_doc_details(name char(15),doc_name char(15));   &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;DOCTORS_DETAILS&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; insert into doctors_details values(&amp;amp;doc_id,&#39;&amp;amp;name&#39;,&#39;&amp;amp;specialization&#39;,&amp;amp;fees); SQL&amp;gt; insert into doctors_details values(&amp;amp;doc_id,&#39;&amp;amp;name&#39;,&#39;&amp;amp;specialization&#39;,&amp;amp;fees); Enter value for doc_id: 1 Enter value for name: Tintumon Enter value for specialization: ENT Enter value for fees: 100 old 1: insert into doctors_details values(&amp;amp;doc_id,&#39;&amp;amp;name&#39;,&#39;&amp;amp;specialization&#39;,&amp;amp;fees) new 1: insert into doctors_details values(1,&#39;Tintumon&#39;,&#39;ENT&#39;,100) 1 row created.</description>
     </item>
     
     <item>
       <title>SQL- bank account</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-bank-account/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-bank-account/</link>
       <pubDate>Sun, 10 Jan 2010 00:17:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-bank-account/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-bank-account/</guid>
       <description>SQL&amp;gt; create table ACCTMASTER(accno INT primary key,name char(25),balance number(10)); SQL&amp;gt; create table ACCTTRAN(accno INT references ACCTMASTER(accno),tran_date date default sysdate,deb_cred char(7),flag char(2) default &#39;N&#39;,amount number(10));   SQL&amp;gt; insert into ACCTMASTER values(&amp;amp;accno,&#39;&amp;amp;name&#39;,&amp;amp;balance); Enter value for accno: 101 Enter value for name: Tuttu Enter value for balance: 10000 old 1: insert into ACCTMASTER values(&amp;amp;accno,&#39;&amp;amp;name&#39;,&amp;amp;balance) new 1: insert into ACCTMASTER values(101,&#39;Tuttu&#39;,10000) 1 row created. SQL&amp;gt; / Enter value for accno: 102 Enter value for name: Tintumon Enter value for balance: 19000 old 1: insert into ACCTMASTER values(&amp;amp;accno,&#39;&amp;amp;name&#39;,&amp;amp;balance) new 1: insert into ACCTMASTER values(102,&#39;Tintumon&#39;,19000) 1 row created.</description>
     </item>
     
     <item>
       <title>SQL- student database</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-student-database/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-student-database/</link>
       <pubDate>Sun, 10 Jan 2010 00:13:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-01-10-sql-student-database/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-student-database/</guid>
       <description>create a student database (rollno,name,tot_marks,trade). Write a PL/SQL program to create student details for each trade adding an extra field &#39;rank&#39; which includes the ranking details of each student. Also print top 3 rankers. create table student(rollno INT,name char(25),tot_marks number(10),trade char(25)); create table IT(rollno INT,name char(25),tot_marks number(10),trade char(25),rank number(3)); create table CS(rollno INT,name char(25),tot_marks number(10),trade char(25),rank number(3));   declare rno INT; nam char(25); tot number(10); trd char(25); rnk number(3); mx number(10); cursor curr is select * from student; cursor cit is select * from IT; cursor ccs is select * from CS; i number(4); begin delete from IT; delete from CS; open curr; loop fetch curr into rno,nam,tot,trd; if(curr%found) then if trd=&#39;IT&#39; then insert into IT values(rno,nam,tot,trd,rnk); elsif trd=&#39;CS&#39; then insert into CS values(rno,nam,tot,trd,rnk); end if; else exit; end if; end loop; commit; close curr; i:=1; update CS set rank=null; open ccs; loop fetch ccs into rno,nam,tot,trd,rnk; if(ccs%found) then select max(tot_marks) into mx from CS where rank is null; update CS set rank=i where tot_marks=mx; i:=i+1; else exit; end if; end loop; commit; close ccs; i:=1; update IT set rank=null; open cit; loop fetch cit into rno,nam,tot,trd,rnk; if(cit%found) then select max(tot_marks) into mx from IT where rank is null; update IT set rank=i where tot_marks=mx; i:=i+1; else exit; end if; end loop; commit; close cit; end; select * from IT order by rank; select * from CS order by rank; SQL&amp;gt; select * from student; ROLLNO NAME TOT_MARKS TRADE ---------------------------------------------------------------------------- 1 Ammu 555 IT 2 Appu 556 IT 1 Tinto 585 CS 2 Tintumon 598 CS 3 Kuttoos 542 IT 3 Tuttu 562 CS 6 rows selected.</description>
     </item>
     

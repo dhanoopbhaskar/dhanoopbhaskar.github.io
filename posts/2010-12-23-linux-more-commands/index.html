@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="To show the full path of shell commands found in your path
+which &lt;command name&gt; eg: which grep //output like: /bin/grep  To locate the program, source code, and manual page for a command
+whereis &lt;command name&gt;  To search for files anywhere on the file system
+locate &lt;keyword to search&gt; //find all files and directories that contain the keyword  To search for files matching certain patterns
+find &lt;directory name&gt; &lt;pattern to search&gt; eg: find .">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux-More commands"/>
+<meta name="twitter:description" content="To show the full path of shell commands found in your path
+which &lt;command name&gt; eg: which grep //output like: /bin/grep  To locate the program, source code, and manual page for a command
+whereis &lt;command name&gt;  To search for files anywhere on the file system
+locate &lt;keyword to search&gt; //find all files and directories that contain the keyword  To search for files matching certain patterns
+find &lt;directory name&gt; &lt;pattern to search&gt; eg: find ."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="Linux-More commands" />
+<meta property="og:description" content="To show the full path of shell commands found in your path
+which &lt;command name&gt; eg: which grep //output like: /bin/grep  To locate the program, source code, and manual page for a command
+whereis &lt;command name&gt;  To search for files anywhere on the file system
+locate &lt;keyword to search&gt; //find all files and directories that contain the keyword  To search for files matching certain patterns
+find &lt;directory name&gt; &lt;pattern to search&gt; eg: find ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-more-commands/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2010-12-23T22:37:00&#43;05:30" />
+<meta property="article:modified_time" content="2010-12-23T22:37:00&#43;05:30" />
+
+
+
+    <title>
+  Linux-More commands · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-more-commands/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-more-commands/">
+              Linux-More commands
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2010-12-23T22:37:00&#43;05:30'>
+                December 23, 2010
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/linux/">linux</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/linux/">linux</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p><strong>To show the full path of shell commands found in your path</strong></p>
+<pre><code>which &lt;command name&gt;
+eg: which grep  
+//output like: /bin/grep  
+</code></pre>
+<p><strong>To locate the program, source code, and manual page for a command</strong></p>
+<pre><code>whereis &lt;command name&gt;
+</code></pre>
+<p><strong>To search for files anywhere on the file system</strong></p>
+<pre><code>locate &lt;keyword to search&gt;
+	//find all files and directories that contain the keyword
+</code></pre>
+<p><strong>To search for files matching certain patterns</strong></p>
+<pre><code>find &lt;directory name&gt; &lt;pattern to search&gt;
+           eg: find . -name \*mp3
+           // starts searching in the current directory “.” and all subdirectories, 
+           // looking for files with “mp3” at the end of their names
+</code></pre>
+<p><strong>To list currently running process</strong></p>
+<pre><code>ps
+</code></pre>
+<p><strong>To list all process in the system</strong></p>
+<pre><code>ps -aux  
+</code></pre>
+<p><strong>To show who is logged on and what they are doing</strong></p>
+<pre><code>w
+who
+</code></pre>
+<p><strong>To view the name of current user</strong></p>
+<pre><code>whoami  
+</code></pre>
+<p><strong>To view the user details</strong></p>
+<pre><code>finger  
+</code></pre>
+<p><strong>To view host name</strong></p>
+<pre><code>hostname  
+</code></pre>
+<p><strong>To set host name</strong></p>
+<pre><code>hostname -a &lt;new host name&gt;
+</code></pre>
+<p><strong>To print your user-id and group id&rsquo;s</strong></p>
+<pre><code>id  
+</code></pre>
+<p><strong>To get report on file system disk space usage</strong></p>
+<pre><code>df  
+</code></pre>
+<p>(In MB)</p>
+<pre><code>df -h  
+</code></pre>
+<p><strong>To view disk usage in a particular directory</strong></p>
+<pre><code>du
+</code></pre>
+<p><strong>To view summary</strong></p>
+<pre><code>du -s  
+</code></pre>
+<p>(In MB)</p>
+<pre><code>du -h  
+</code></pre>
+<p>                              <br>
+<strong>To display CPU processes in a full-screen GUI</strong></p>
+<pre><code>top  
+// type “Q” to quit  
+</code></pre>
+<p><strong>To display amount of free and used memory in the system</strong></p>
+<pre><code>free  
+</code></pre>
+<p><strong>To display information about your CPU</strong></p>
+<pre><code>cat /proc/cpuinfo  
+</code></pre>
+<p><strong>To display lots of information about current memory usage</strong></p>
+<pre><code>cat /proc/meminfo  
+</code></pre>
+<p><strong>To print system information to the screen</strong></p>
+<pre><code>uname -a  
+</code></pre>
+<p><strong>To print kernel version</strong></p>
+<pre><code>uname -r  
+</code></pre>
+<p><strong>To display the size of a file</strong></p>
+<pre><code>wc -l  
+</code></pre>
+<p>(In bytes)</p>
+<pre><code>wc -m  
+</code></pre>
+<p>(In char)</p>
+<pre><code>wc -c  
+</code></pre>
+<p>(In word count)</p>
+<pre><code>wc -w  
+</code></pre>
+<p><strong>To change permission to a file/directory</strong></p>
+<pre><code> chmod [-R] &lt;permissions&gt; &lt;file name/directory name&gt;
+       eg: chmod 754 one.txt
+       eg: chmod -R 777 /home/songs/
+{
+     read r=4; write w=2; execute x=1
+     Owner      Group     Others
+     rwx        r-x       r--
+     7          5         4
+}
+</code></pre>
+<p><strong>To change ownership of a file/directory</strong></p>
+<pre><code>chown [-R] &lt;user name&gt; &lt;file name/directory name&gt;
+       eg: chown dhanoop one.txt
+       eg: chown -R dhanoop /home/songs/
+</code></pre>
+<p><strong>To search a file for a particular pattern</strong></p>
+<pre><code>grep [-R] &lt;word to search&gt; &lt;file name/directory name&gt;
+           eg: grep science science.txt
+                //case-sensitive search
+           eg: grep -i science science.txt
+                //case-insensitive search
+           eg: grep -i ‘spinning top’ science.txt
+                //multiword search
+           eg: grep -R passwd /etc/
+                //search in directory
+</code></pre>
+<p><strong>To clear the screen</strong></p>
+<pre><code>clear  
+</code></pre>
+<p><strong>To display text on screen</strong></p>
+<pre><code>echo “&lt;text to display&gt;”
+       eg: echo “Hello”
+</code></pre>
+<p><strong>To print a file or program output</strong></p>
+<pre><code>lpr &lt;file name&gt;
+       eg: lpr mp3files.txt
+&lt;command&gt; | lpr
+       eg: ls -la | lpr
+</code></pre>
+<p><strong>To sort a file or program output</strong></p>
+<pre><code>sort  
+	eg: sort mp3files.txt  
+</code></pre>
+<p><strong>To switch user</strong></p>
+<pre><code>su &lt;user name&gt;
+   //to switch to a particular user account
+su
+   //to switch to root account
+su -
+   //to switch to root, and log in with root's environment
+</code></pre>
+<p><strong>To give an alias name to a command for ease of use</strong></p>
+<pre><code>alias &lt;name&gt;=”&lt;command&gt;”
+	eg: alias list=”ls -l”
+</code></pre>
+<p><strong>To display last logins of user</strong></p>
+<pre><code>last  
+</code></pre>
+<p><strong>To display the name of currently working terminal</strong></p>
+<pre><code>tty  
+</code></pre>
+<p><strong>To block a user</strong></p>
+<pre><code>passwd -l &lt;user name&gt;
+</code></pre>
+<p><strong>To unblock a user</strong></p>
+<pre><code>passwd -u &lt;user name&gt;
+</code></pre>
+<p><strong>To add a user account</strong></p>
+<pre><code>useradd [options] &lt;username&gt;
+</code></pre>
+<p><strong>With specified home directory</strong></p>
+<pre><code>useradd -d &lt;home directory&gt; &lt;user name&gt;
+</code></pre>
+<p><strong>With specified shell</strong></p>
+<pre><code>useradd -s &lt;shell&gt; &lt;user name&gt;
+</code></pre>
+<p><strong>With specified initial group</strong></p>
+<pre><code>useradd -g &lt;initial group&gt; &lt;user name&gt;
+</code></pre>
+<p><strong>With specified expiry date</strong></p>
+<pre><code>useradd -e &lt;YYYY-MM-DD&gt; &lt;user name&gt;
+</code></pre>
+<p><strong>To lock/unlock a user account</strong></p>
+<pre><code>usermod [-L or -U] &lt;user name&gt;
+</code></pre>
+<p><strong>To delete a user account</strong></p>
+<pre><code>userdel [-r] &lt;user name&gt;
+</code></pre>
+<p><strong>To restart the system</strong></p>
+<pre><code>shutdown -r now
+            //without delay
+</code></pre>
+<p><strong>To turn off the system</strong></p>
+<pre><code>poweroff  
+</code></pre>
+<p><strong>To reboot the system</strong></p>
+<pre><code>reboot  
+</code></pre>
+<p><strong>To halt the system</strong></p>
+<pre><code>halt  
+</code></pre>
+<p><strong>To mount a file system or media</strong></p>
+<pre><code>mount &lt;source&gt; &lt;destination&gt;
+      eg: mount /dev/sda1 /mnt
+            //mounting first partition of first SATA hard disk
+         
+      eg: mount /dev/hdb3 /mnt
+            //mounting third partition of second hard disk
+</code></pre>
+<p><strong>To umount a file system or media</strong></p>
+<pre><code>umount &lt;file system/media&gt;
+      eg: umount /mnt
+</code></pre>
+<p><strong>To view IP address</strong></p>
+<pre><code>ifconfig  
+</code></pre>
+<p><strong>To edit IP address temporarily</strong></p>
+<pre><code>ifconfig -a etho &lt;ipaddress&gt;
+</code></pre>
+<p><strong>To view partitions and file systems</strong></p>
+<pre><code>fdisk -l  
+	//view line by line  
+</code></pre>
+<p><strong>To print selected columns in a file</strong></p>
+<pre><code>cut -c &lt;column range&gt; &lt;file name&gt;
+      eg: cut -c 3-5 sem.txt
+</code></pre>
+<p><strong>To print particular fields</strong></p>
+<pre><code>awk '{ print $&lt;field number&gt; }' &lt;file name&gt;
+      eg: awk '{ print $2 }' sem.txt
+            //prints second field
+      eg: awk '{ print $1 $3 }' sem.txt
+            //prints first and third fields
+</code></pre>
+<p><strong>To know the shell</strong></p>
+<pre><code>echo $SHELL
+      //the symbol “$” precedes every user or system variable.
+      //All system variables are BLOCK lettered.
+</code></pre>
+<p><strong>To know the home directory</strong></p>
+<pre><code>echo $HOME  
+</code></pre>
+<p><strong>To print the calendar</strong></p>
+<pre><code>cal
+      //prints calendar of current month
+cal &lt;YYYY&gt;
+      eg: cal 2010
+      //prints calendar of specified year
+</code></pre>
+<p><strong>To print the date</strong></p>
+<pre><code>date  
+</code></pre>
+<p><strong>To temporarily switch to root to execute a single command</strong></p>
+<pre><code>sudo &lt;command&gt;
+	eg: sudo ifconfig -a eth0 192.168.1.101
+</code></pre>
+<p><strong>To run an executable file</strong></p>
+<pre><code>sh &lt;file name&gt;
+      eg: sh new\ file
+            // '\ ' denotes white space
+./&lt;file name&gt;
+      eg: ./new\ file
+</code></pre>
+<p><strong>To view command history</strong></p>
+<pre><code>history  
+</code></pre>
+<p><strong>To re execute last command</strong></p>
+<pre><code>!!
+</code></pre>
+<p><strong>To execute nth command in history</strong></p>
+<pre><code>!n
+	eg: !44
+	// executes 44th command in the history  
+</code></pre>
+<p><strong>To re execute last command that starts with specified character</strong></p>
+<pre><code>!&lt;char&gt;
+	eg: !s
+    // executes the last command that starts with letter “s”
+</code></pre>
+<p><strong>To repeat the last command changing old character to new character</strong></p>
+<pre><code>^old^new
+    eg: ^l^m
+        // let 'wc -l' be the last command
+        // so now 'wc -m' will be executed
+</code></pre>
+<p><strong>Signals to a process</strong></p>
+<p>To list all signals</p>
+<pre><code>kill -l  
+</code></pre>
+<p>To kill a process</p>
+<pre><code>kill &lt;process id&gt;
+</code></pre>
+<p>To terminate a process</p>
+<pre><code>kill -9 &lt;process id&gt;
+</code></pre>
+<p>To normally exit a process</p>
+<pre><code>kill -15 &lt;process id&gt;
+</code></pre>
+<p><strong>To login remotely to a system</strong></p>
+<pre><code>ssh [&lt;user name&gt;@]&lt;ip address&gt;
+      eg: ssh dhanoopbhaskar@192.168.1.101
+</code></pre>
+<p><strong>To execute a command on remote system through remote login</strong></p>
+<pre><code>ssh [&lt;user name&gt;@]&lt;ip address&gt; &lt;command&gt;
+	eg: ssh dhanoopbhaskar@192.168.1.101 df -h
+	//executing 'df -h' remotely
+</code></pre>
+<p><strong>To copy file from a remote system</strong></p>
+<pre><code>scp [-r] &lt;source&gt; &lt;destination&gt;
+	eg: scp /home/a.c dhanoopbhaskar@192.168.1.101:/home/</code></pre>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

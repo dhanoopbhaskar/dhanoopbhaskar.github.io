@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5)); create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2)); create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5)); create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ADD A NEW BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare bknam char(15); auth char(15); tot number(5); id number(5); no number(5); i number(3); begin bknam:=&#39;&amp;bknam&#39;; auth:=&#39;&amp;auth&#39;; tot:=&amp;tot; insert into book_rec values(bknam,auth,tot,tot); for i in 1.">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SQL- LIBRARY MANAGEMENT SYSTEM"/>
+<meta name="twitter:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5)); create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2)); create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5)); create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ADD A NEW BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare bknam char(15); auth char(15); tot number(5); id number(5); no number(5); i number(3); begin bknam:=&#39;&amp;bknam&#39;; auth:=&#39;&amp;auth&#39;; tot:=&amp;tot; insert into book_rec values(bknam,auth,tot,tot); for i in 1."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="SQL- LIBRARY MANAGEMENT SYSTEM" />
+<meta property="og:description" content="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5)); create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2)); create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5)); create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);   &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ADD A NEW BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; declare bknam char(15); auth char(15); tot number(5); id number(5); no number(5); i number(3); begin bknam:=&#39;&amp;bknam&#39;; auth:=&#39;&amp;auth&#39;; tot:=&amp;tot; insert into book_rec values(bknam,auth,tot,tot); for i in 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-library-management-system/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2010-01-10T00:22:00&#43;05:30" />
+<meta property="article:modified_time" content="2010-01-10T00:22:00&#43;05:30" />
+
+
+
+    <title>
+  SQL- LIBRARY MANAGEMENT SYSTEM · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-library-management-system/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-library-management-system/">
+              SQL- LIBRARY MANAGEMENT SYSTEM
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2010-01-10T00:22:00&#43;05:30'>
+                January 10, 2010
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/sql/">SQL</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/dbms/">DBMS</a>
+      <span class="separator">•</span>
+    <a href="/tags/sql/">SQL</a>
+      <span class="separator">•</span>
+    <a href="/tags/pl/sql/">PL/SQL</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE TABLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+create table book_rec(book_name char(15) primary key,author char(15),total_copies number(5),available_copies number(5));
+
+create table membership_rec(mem_id number(5) primary key,mem_name char(15),no_of_books_taken number(2));
+
+create table book_details(book_id number(5) primary key,book_name char(15) references book_rec(book_name),mem_id number(5));
+
+create table circulation_rec(book_id number(5) references book_details(book_id),mem_id number(5) references membership_rec(mem_id),issue_date date,return_date date);
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ADD A NEW BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+declare
+	bknam char(15);
+	auth char(15);
+	tot number(5);
+	id number(5);
+	no number(5);
+	i number(3);
+begin
+
+	bknam:='&amp;bknam';
+	auth:='&amp;auth';
+	tot:=&amp;tot;
+	insert into book_rec values(bknam,auth,tot,tot);
+	for i in 1..tot
+	loop
+        select MAX(book_id) into no from book_details;
+        if no is not null then
+            id:=no+1;
+        else
+            id:=1;
+        end if;
+        insert into book_details values(id,bknam,null);
+	end loop;
+end;
+
+/
+
+Enter value for bknam: DCD
+
+old   9: bknam:='&amp;bknam';
+
+new   9: bknam:='DCD';
+
+Enter value for auth: Mano
+
+old  10: auth:='&amp;auth';
+
+new  10: auth:='Mano';
+
+Enter value for tot: 3
+
+old  11: tot:=&amp;tot;
+
+new  11: tot:=3;
+
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; /
+
+Enter value for bknam: OS
+
+old   9: bknam:='&amp;bknam';
+
+new   9: bknam:='OS';
+
+Enter value for auth: Silber
+
+old  10: auth:='&amp;auth';
+
+new  10: auth:='Silber';
+
+Enter value for tot: 2
+
+old  11: tot:=&amp;tot;
+
+new  11: tot:=2;
+
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; select * from book_rec;
+
+
+BOOK_NAME                        AUTHOR                  TOTAL_COPIES         AVAILABLE_COPIES
+--------------------------------------------------------------------------------------------------------------
+DCD                              Mano                    3                    3
+OS                               Silber                  2                    2
+
+
+SQL&gt; select * from book_details;
+
+BOOK_ID        BOOK_NAME                        MEM_ID
+
+--------------------------------------------------------------
+1               DCD
+2               DCD
+3               DCD
+4               OS
+5               OS
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;CREATE A NEW MEMBER&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+declare
+	nam char(15);
+	id number(5);
+	no number(5);
+	i number(3);
+begin
+	nam:='&amp;nam';
+	select MAX(mem_id) into no from membership_rec;
+	if no is not null then
+        id:=no+1;
+	else
+        id:=1;
+	end if;
+
+	insert into membership_rec values(id,nam,null);
+	dbms_output.put_line('Mr/Mrs/Miss. '||nam||', your membership id is '||id);
+end;
+
+/
+
+Enter value for nam: Tintumon
+
+old   7: nam:='&amp;nam';
+
+new   7: nam:='Tintumon';
+
+Mr/Mrs/Miss. Tintumon       , your membership id is 1
+
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; /
+
+Enter value for nam: Kuttoos
+
+old   7: nam:='&amp;nam';
+
+new   7: nam:='Kuttoos';
+
+Mr/Mrs/Miss. Kuttoos        , your membership id is 2
+
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; select * from membership_rec;
+
+MEM_ID        MEM_NAME              NO_OF_BOOKS_TAKEN
+
+--------------------------------------------------------------------------------------
+1             Tintumon
+2             Kuttoos
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;ISSUE A BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+
+declare
+	bknam char(15);
+	mid number(5);
+	bid number(5);
+	dat date;
+	nam char(15);
+	n number(5);
+begin
+	bknam:='&amp;bknam';
+	select MIN(book_id) into bid from book_details where book_name=bknam and mem_id is null;
+	mid:=&amp;mid;
+	select mem_name into nam from membership_rec where mem_id=mid;
+	update book_details set mem_id=mid where book_id=bid;
+	select no_of_books_taken into n from membership_rec where mem_id=mid;
+
+	if n is null then
+        n:=0;
+	end if;
+
+	update membership_rec set no_of_books_taken=n+1 where mem_id=mid;
+	update book_rec set available_copies=available_copies-1 where book_name=bknam;
+	select ADD_months(sysdate,1) into dat from dual;
+	insert into circulation_rec values(bid,mid,sysdate,dat);
+end;
+
+/
+
+Enter value for bknam: DCD
+
+old   8: bknam:='&amp;bknam';
+
+new   8: bknam:='DCD';
+
+Enter value for mid: 2
+
+old  10: mid:=&amp;mid;
+
+new  10: mid:=2;
+
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; /
+
+Enter value for bknam: OS
+
+old   8: bknam:='&amp;bknam';
+
+new   8: bknam:='OS';
+
+Enter value for mid: 1
+
+old  10: mid:=&amp;mid;
+
+new  10: mid:=1;
+
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt;/
+
+Enter value for bknam: DCD
+
+old   9: bknam:='&amp;bknam';
+
+new   9: bknam:='DCD';
+
+Enter value for mid: 1
+
+old  11: mid:=&amp;mid;
+
+new  11: mid:=1;
+
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; select * from book_details;
+
+BOOK_ID       BOOK_NAME          MEM_ID
+------------------------------------------------------------
+1             DCD                2
+2             DCD                1
+3             DCD
+4             OS                 1
+5             OS
+
+
+SQL&gt; select * from book_rec;
+
+BOOK_NAME                        AUTHOR                 TOTAL_COPIES         AVAILABLE_COPIES
+-------------------------------------------------------------------------------------------------------------
+DCD                              Mano                   3                    1
+OS                               Silber                 2                    1
+
+
+SQL&gt; select * from membership_rec;
+
+MEM_ID        MEM_NAME                          NO_OF_BOOKS_TAKEN
+------------------------------------------------------------------------------------
+1             Tintumon                          2
+2             Kuttoos                           1
+
+
+SQL&gt; select * from circulation_rec;
+
+BOOK_ID        MEM_ID           ISSUE_DAT       RETURN_DA
+------------------------------------------------------------------------------
+1              2                08-JAN-10       08-FEB-10
+4              1                08-JAN-10       08-FEB-10
+2              1                08-JAN-10       08-FEB-10
+</code></pre>
+<p> </p>
+<pre><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;RETURN A BOOK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+declare
+	bknam char(15);
+	id number(5);
+	bid number(5);
+	tim number(7,2);
+	dat date;
+begin
+	bknam:='&amp;bknam';
+	id:=&amp;id;
+	select book_id into bid from book_details where book_name=bknam and mem_id=id;
+	update book_details set mem_id=null where book_id=bid;
+	update membership_rec set no_of_books_taken=no_of_books_taken-1 where mem_id=id;
+	update book_rec set available_copies=available_copies+1 where book_name=bknam;
+	select return_date into dat from circulation_rec where book_id=bid and mem_id=id;
+	select months_between(sysdate,dat) into tim from dual;
+
+	if tim&gt;0 then
+        dbms_output.put_line('You have to pay fine');
+	end if;
+end;
+
+/
+
+
+Enter value for bknam: DCD
+
+old   8: bknam:='&amp;bknam';
+
+new   8: bknam:='DCD';
+
+Enter value for id: 1
+
+old   9: id:=&amp;id;
+
+new   9: id:=1;
+
+
+PL/SQL procedure successfully completed.
+
+
+SQL&gt; select * from book_rec;
+
+
+BOOK_NAME                        AUTHOR               TOTAL_COPIES         AVAILABLE_COPIES
+-------------------------------------------------------------------------------------------------------------
+DCD                              Mano                 3                    2
+OS                               Silber               2                    1
+
+
+SQL&gt; select * from membership_rec;
+
+MEM_ID        MEM_NAME              NO_OF_BOOKS_TAKEN
+-----------------------------------------------------------------------------------
+1             Tintumon              1
+2             Kuttoos               1
+
+
+SQL&gt; select * from book_details;
+
+BOOK_ID       BOOK_NAME                        MEM_ID
+--------------------------------------------------------------
+1             DCD                              2
+2             DCD
+3             DCD
+4             OS                               1
+5             OS
+
+
+SQL&gt; select * from circulation_rec;
+
+BOOK_ID     MEM_ID         ISSUE_DAT       RETURN_DA
+------------------------------------------------------------------------------
+1           2              08-JAN-10       08-FEB-10
+4           1              08-JAN-10       08-FEB-10
+2           1              08-JAN-10       08-FEB-10</code></pre>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

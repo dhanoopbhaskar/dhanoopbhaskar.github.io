@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 09 Mar 2016 21:57:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Installing and Configuring phpMyAdmin in Ubuntu/Linux Mint</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</guid>
       <description>Install phpmyadmin
 sudo apt-get install phpmyadmin  Configure phpmyadmin
 sudo dpkg-reconfigure -plow phpmyadmin  Then select Apache 2 for the webserver you wish to configure.

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="In Python, input and output are distinguished by the presence or absence of prompts (&gt;&gt;&gt; and ...). You must type everything after the prompt, when the prompt appears; lines that do not begin with a prompt are output from the interpreter. The comments in Python starts with an hash(#) character and ends when the physical line ends.
+# this is the first comment SPAM = 1 # and this is the second comment # .">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python - An Introduction"/>
+<meta name="twitter:description" content="In Python, input and output are distinguished by the presence or absence of prompts (&gt;&gt;&gt; and ...). You must type everything after the prompt, when the prompt appears; lines that do not begin with a prompt are output from the interpreter. The comments in Python starts with an hash(#) character and ends when the physical line ends.
+# this is the first comment SPAM = 1 # and this is the second comment # ."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="Python - An Introduction" />
+<meta property="og:description" content="In Python, input and output are distinguished by the presence or absence of prompts (&gt;&gt;&gt; and ...). You must type everything after the prompt, when the prompt appears; lines that do not begin with a prompt are output from the interpreter. The comments in Python starts with an hash(#) character and ends when the physical line ends.
+# this is the first comment SPAM = 1 # and this is the second comment # ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-09-19-python-an-introduction/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2011-09-19T16:31:00&#43;05:30" />
+<meta property="article:modified_time" content="2011-09-19T16:31:00&#43;05:30" />
+
+
+
+    <title>
+  Python - An Introduction · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2011-09-19-python-an-introduction/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2011-09-19-python-an-introduction/">
+              Python - An Introduction
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2011-09-19T16:31:00&#43;05:30'>
+                September 19, 2011
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/python/">python</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/python/">python</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>In Python, input and output are distinguished by the presence or absence of prompts (<code>&gt;&gt;&gt;</code> and <code>...</code>). You must type everything after the prompt, when the prompt appears; lines that do not begin with a prompt are output from the interpreter. The comments in Python starts with an hash(<code>#</code>) character and ends when the physical line ends.</p>
+<pre><code># this is the first comment
+SPAM = 1                 # and this is the second comment
+                         # ... and now a third!
+STRING = &quot;# This is not a comment.&quot;
+</code></pre>
+<p><strong>Using Python as calculator</strong></p>
+<p>Just like Ruby language (<a href="/tags/ruby/">introduced previously</a>)
+python can also be used as a calculator.</p>
+<p>The interpreter acts as a simple calculator: you can type an expression
+at it and it will write the value. Expression syntax is straightforward:
+the operators <code>+</code>, <code>-</code>, <code>*</code> and <code>/</code> work just like in most other
+languages (for example, Pascal or C); parentheses can be used for
+grouping. For example:</p>
+<pre><code>&gt;&gt;&gt; 2+2
+4
+&gt;&gt;&gt; # This is a comment
+... 2+2
+4
+&gt;&gt;&gt; 2+2  # and a comment on the same line as code
+4
+&gt;&gt;&gt; (50-5*6)/4
+5.0
+&gt;&gt;&gt; 8/5 # Fractions aren't lost when dividing integers
+1.6
+</code></pre>
+<p>To do integer division and get an integer result, discarding any fractional result, there is another operator,<code>//</code>:</p>
+<pre><code>&gt;&gt;&gt; # Integer division returns the floor:
+... 7//3
+2
+&gt;&gt;&gt; 7//-3
+-3
+</code></pre>
+<p>The equal sign (<code>=</code>) is used to assign a value to a variable.
+Afterwards, no result is displayed before the next interactive prompt:</p>
+<pre><code>&gt;&gt;&gt; width = 20
+&gt;&gt;&gt; height = 5*9
+&gt;&gt;&gt; width * height
+900
+</code></pre>
+<p>A value can be assigned to several variables simultaneously:</p>
+<pre><code>&gt;&gt;&gt; x = y = z = 0  # Zero x, y and z
+&gt;&gt;&gt; x
+0
+&gt;&gt;&gt; y
+0
+&gt;&gt;&gt; z
+0
+</code></pre>
+<p>Variables must be “defined” (assigned a value) before they can be used, or an error will occur:</p>
+<pre><code>&gt;&gt;&gt; # try to access an undefined variable
+... n
+Traceback (most recent call last):
+  File &quot;&quot;, line 1, in
+NameError: name 'n' is not defined
+</code></pre>
+<p>There is full support for floating point; operators with mixed type
+operands convert the integer operand to floating point:</p>
+<pre><code>&gt;&gt;&gt; 3 * 3.75 / 1.5
+7.5
+&gt;&gt;&gt; 7.0 / 2
+3.5
+</code></pre>
+<p>Complex numbers are also supported; imaginary numbers are written with a
+suffix of j or J.  Complex numbers with a nonzero real component are
+written as <code>(real+imagj)</code>, or can be created with the <code>complex(real, imag)</code>
+function.</p>
+<pre><code>&gt;&gt;&gt; 1j * 1J
+(-1+0j)
+&gt;&gt;&gt; 1j * complex(0, 1)
+(-1+0j)
+&gt;&gt;&gt; 3+1j*3
+(3+3j)
+&gt;&gt;&gt; (3+1j)*3
+(9+3j)
+&gt;&gt;&gt; (1+2j)/(1+1j)
+(1.5+0.5j)
+</code></pre>
+<p>Complex numbers are always represented as two floating point numbers,
+the real and imaginary part.  To extract these parts from a complex
+number z, use z.real and z.imag.</p>
+<pre><code>&gt;&gt;&gt; a=1.5+0.5j
+&gt;&gt;&gt; a.real
+1.5
+&gt;&gt;&gt; a.imag
+0.5
+</code></pre>
+<p>The conversion functions to floating point and integer (float(), int())
+don’t work for complex numbers — there is not one correct way to convert
+a complex number to a real number. Use abs(z) to get its magnitude (as a
+float) or z.real to get its real part:</p>
+<pre><code>&gt;&gt;&gt; a=3.0+4.0j
+&gt;&gt;&gt; float(a)
+Traceback (most recent call last):
+  File &quot;&quot;, line 1, in ?
+TypeError: can't convert complex to float; use abs(z)
+&gt;&gt;&gt; a.real
+3.0
+&gt;&gt;&gt; a.imag
+4.0
+&gt;&gt;&gt; abs(a)  # sqrt(a.real**2 + a.imag**2)
+5.0
+</code></pre>
+<p>In interactive mode, the last printed expression is assigned to the
+variable _. This means that when you are using Python as a desk
+calculator, it is somewhat easier to continue calculations, for
+example:</p>
+<pre><code>&gt;&gt;&gt; tax = 12.5 / 100
+&gt;&gt;&gt; price = 100.50
+&gt;&gt;&gt; price * tax
+12.5625
+&gt;&gt;&gt; price + _
+113.0625
+&gt;&gt;&gt; round(_, 2)
+113.06
+</code></pre>
+<p>This variable should be treated as read-only by the user. Don’t
+explicitly assign a value to it — you would create an independent local
+variable with the same name masking the built-in variable with its magic
+behavior.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

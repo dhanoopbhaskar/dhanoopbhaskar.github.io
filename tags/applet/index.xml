@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 27 Jun 2011 18:52:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/applet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java -  A simple dictionary using applet</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-a-simple-dictionary-using-applet/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2011-06-27-java-a-simple-dictionary-using-applet/</link>
       <pubDate>Mon, 27 Jun 2011 18:52:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2011-06-27-java-a-simple-dictionary-using-applet/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2011-06-27-java-a-simple-dictionary-using-applet/</guid>
       <description>This is a simple dictionary in which you can add words and their meanings and thereafter search for the same.
 import java.awt.event.ActionEvent; import javax.swing.JButton; import javax.swing.JTextArea; import javax.swing.JTextField; /* * * @author dhanoopbhaskar */ public class Main extends javax.swing.JApplet implements java.awt.event.ActionListener { JTextField textField = null; JTextArea textArea = null; JButton addButton = null; JButton showButton = null; String[] words = null; String[] meanings = null; int ptr = -1; public Main() { initComponents(); setLayout(null); add(textArea); add(textField); add(addButton); add(showButton); } public void actionPerformed(ActionEvent e) { if(e.</description>
     </item>

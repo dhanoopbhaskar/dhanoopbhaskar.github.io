@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="Here an image file is encrypted and decrypted using another image file as the password
+/* EncryptFile.java */ import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { SecretKey secretKey = null; Cipher cipher = null; String filePath = null; public EncryptFile(String filePath) { this.">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java - Encryption and Decryption of an Image Using Another Image (Blowfish Algorithm)"/>
+<meta name="twitter:description" content="Here an image file is encrypted and decrypted using another image file as the password
+/* EncryptFile.java */ import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { SecretKey secretKey = null; Cipher cipher = null; String filePath = null; public EncryptFile(String filePath) { this."/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="Java - Encryption and Decryption of an Image Using Another Image (Blowfish Algorithm)" />
+<meta property="og:description" content="Here an image file is encrypted and decrypted using another image file as the password
+/* EncryptFile.java */ import java.io.File; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; import javax.crypto.spec.SecretKeySpec; /** * * @author dhanoopbhaskar */ public class EncryptFile { SecretKey secretKey = null; Cipher cipher = null; String filePath = null; public EncryptFile(String filePath) { this." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2014-04-09T20:00:00&#43;05:30" />
+<meta property="article:modified_time" content="2014-04-09T20:00:00&#43;05:30" />
+
+
+
+    <title>
+  Java - Encryption and Decryption of an Image Using Another Image (Blowfish Algorithm) · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/">
+              Java - Encryption and Decryption of an Image Using Another Image (Blowfish Algorithm)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2014-04-09T20:00:00&#43;05:30'>
+                April 9, 2014
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/blowfish-algorithm/">blowfish algorithm</a>
+      <span class="separator">•</span>
+    <a href="/categories/cryptography/">cryptography</a>
+      <span class="separator">•</span>
+    <a href="/categories/java/">java</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/blowfish-algorithm/">blowfish algorithm</a>
+      <span class="separator">•</span>
+    <a href="/tags/encryption/">encryption</a>
+      <span class="separator">•</span>
+    <a href="/tags/crypto/">crypto</a>
+      <span class="separator">•</span>
+    <a href="/tags/decryption/">decryption</a>
+      <span class="separator">•</span>
+    <a href="/tags/cryptography/">cryptography</a>
+      <span class="separator">•</span>
+    <a href="/tags/java/">java</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Here an image file is encrypted and decrypted using another <code>image file as the password</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">/* EncryptFile.java */</span>
+        <span style="color:#f92672">import</span> java.io.File<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.FileInputStream<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.FileNotFoundException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.FileOutputStream<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.InputStream<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.io.OutputStream<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.security.InvalidKeyException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> java.security.NoSuchAlgorithmException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.BadPaddingException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.Cipher<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.IllegalBlockSizeException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.NoSuchPaddingException<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.SecretKey<span style="color:#f92672">;</span>
+        <span style="color:#f92672">import</span> javax.crypto.spec.SecretKeySpec<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">/**
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * @author dhanoopbhaskar
+</span><span style="color:#75715e">         */</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EncryptFile</span> <span style="color:#f92672">{</span>
+
+            SecretKey secretKey <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            Cipher cipher <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            String filePath <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+            <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">EncryptFile</span><span style="color:#f92672">(</span>String filePath<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">filePath</span> <span style="color:#f92672">=</span> filePath<span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Create a Blowfish key
+</span><span style="color:#75715e">                     */</span>            
+                    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> password <span style="color:#f92672">=</span> getPasswordFromFile<span style="color:#f92672">(</span>filePath<span style="color:#f92672">);</span>
+                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>password <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Unable to read the password file!&#34;</span><span style="color:#f92672">);</span>
+                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+                    <span style="color:#f92672">}</span>
+                    secretKey <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SecretKeySpec<span style="color:#f92672">(</span>password<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Blowfish&#34;</span><span style="color:#f92672">);</span>
+
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Create an instance of cipher mentioning the name of algorithm
+</span><span style="color:#75715e">                     *     - Blowfish
+</span><span style="color:#75715e">                     */</span>
+                    cipher <span style="color:#f92672">=</span> Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Blowfish&#34;</span><span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchPaddingException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchAlgorithmException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#75715e">/**
+</span><span style="color:#75715e">             * 
+</span><span style="color:#75715e">             * @param filePath
+</span><span style="color:#75715e">             * @return password
+</span><span style="color:#75715e">             *
+</span><span style="color:#75715e">             * Encrypts the file in srcPath and creates a file in destPath
+</span><span style="color:#75715e">             */</span>
+            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">getPasswordFromFile</span><span style="color:#f92672">(</span>String filePath<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>filePath<span style="color:#f92672">);</span>
+                InputStream inStream<span style="color:#f92672">;</span>
+                <span style="color:#75715e">/**
+</span><span style="color:#75715e">                 * maximum allowable key size for blowfish is 56 bytes, 
+</span><span style="color:#75715e">                 * but java supports only upto 16 bytes. 
+</span><span style="color:#75715e">                 */</span>
+                <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>16<span style="color:#f92672">];</span> 
+                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                    inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>file<span style="color:#f92672">);</span>
+                    <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> inStream<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">);</span>
+                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>len <span style="color:#f92672">&lt;=</span> 0<span style="color:#f92672">)</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+                <span style="color:#66d9ef">return</span> buffer<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                String fileToEncrypt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fileToEncrypt.jpg&#34;</span><span style="color:#f92672">;</span>
+                String encryptedFile <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;encryptedFile.jpg&#34;</span><span style="color:#f92672">;</span>
+                String decryptedFile <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;decryptedFile.jpg&#34;</span><span style="color:#f92672">;</span>
+                String directoryPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/home/dhanoopbhaskar/Desktop/blowfish/&#34;</span><span style="color:#f92672">;</span>
+                String passwordFile <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;password.jpg&#34;</span><span style="color:#f92672">;</span>
+                EncryptFile encryptFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EncryptFile<span style="color:#f92672">(</span>directoryPath <span style="color:#f92672">+</span> passwordFile<span style="color:#f92672">);</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Starting Encryption...&#34;</span><span style="color:#f92672">);</span>
+                encryptFile<span style="color:#f92672">.</span><span style="color:#a6e22e">encrypt</span><span style="color:#f92672">(</span>directoryPath <span style="color:#f92672">+</span> fileToEncrypt<span style="color:#f92672">,</span>
+                        directoryPath <span style="color:#f92672">+</span> encryptedFile<span style="color:#f92672">);</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Encryption completed...&#34;</span><span style="color:#f92672">);</span>
+         encryptFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EncryptFile<span style="color:#f92672">(</span>directoryPath <span style="color:#f92672">+</span> passwordFile<span style="color:#f92672">);</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Starting Decryption...&#34;</span><span style="color:#f92672">);</span>
+                encryptFile<span style="color:#f92672">.</span><span style="color:#a6e22e">decrypt</span><span style="color:#f92672">(</span>directoryPath <span style="color:#f92672">+</span> encryptedFile<span style="color:#f92672">,</span>
+                        directoryPath <span style="color:#f92672">+</span> decryptedFile<span style="color:#f92672">);</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Decryption completed...&#34;</span><span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#75715e">/**
+</span><span style="color:#75715e">             * 
+</span><span style="color:#75715e">             * @param srcPath
+</span><span style="color:#75715e">             * @param destPath
+</span><span style="color:#75715e">             *
+</span><span style="color:#75715e">             * Encrypts the file in srcPath and creates a file in destPath
+</span><span style="color:#75715e">             */</span>
+            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">encrypt</span><span style="color:#f92672">(</span>String srcPath<span style="color:#f92672">,</span> String destPath<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                File rawFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>srcPath<span style="color:#f92672">);</span>
+                File encryptedFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>destPath<span style="color:#f92672">);</span>
+                InputStream inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+                OutputStream outStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Initialize the cipher for encryption
+</span><span style="color:#75715e">                     */</span>
+                    cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">ENCRYPT_MODE</span><span style="color:#f92672">,</span> secretKey<span style="color:#f92672">);</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Initialize input and output streams
+</span><span style="color:#75715e">                     */</span>
+                    inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>rawFile<span style="color:#f92672">);</span>
+                    outStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>encryptedFile<span style="color:#f92672">);</span>
+                    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">];</span>
+                    <span style="color:#66d9ef">int</span> len<span style="color:#f92672">;</span>
+                    <span style="color:#66d9ef">while</span> <span style="color:#f92672">((</span>len <span style="color:#f92672">=</span> inStream<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">))</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> len<span style="color:#f92672">));</span>
+                        outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">flush</span><span style="color:#f92672">();</span>
+                    <span style="color:#f92672">}</span>
+                    outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">());</span>
+                    inStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+                    outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalBlockSizeException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>BadPaddingException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InvalidKeyException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#75715e">/**
+</span><span style="color:#75715e">             * 
+</span><span style="color:#75715e">             * @param srcPath
+</span><span style="color:#75715e">             * @param destPath
+</span><span style="color:#75715e">             *
+</span><span style="color:#75715e">             * Decrypts the file in srcPath and creates a file in destPath
+</span><span style="color:#75715e">             */</span>
+            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">decrypt</span><span style="color:#f92672">(</span>String srcPath<span style="color:#f92672">,</span> String destPath<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                File encryptedFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>srcPath<span style="color:#f92672">);</span>
+                File decryptedFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>destPath<span style="color:#f92672">);</span>
+                InputStream inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+                OutputStream outStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Initialize the cipher for decryption
+</span><span style="color:#75715e">                     */</span>
+                    cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">DECRYPT_MODE</span><span style="color:#f92672">,</span> secretKey<span style="color:#f92672">);</span>
+                    <span style="color:#75715e">/**
+</span><span style="color:#75715e">                     * Initialize input and output streams
+</span><span style="color:#75715e">                     */</span>
+                    inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>encryptedFile<span style="color:#f92672">);</span>
+                    outStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>decryptedFile<span style="color:#f92672">);</span>
+                    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">];</span>
+                    <span style="color:#66d9ef">int</span> len<span style="color:#f92672">;</span>
+                    <span style="color:#66d9ef">while</span> <span style="color:#f92672">((</span>len <span style="color:#f92672">=</span> inStream<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">))</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> len<span style="color:#f92672">));</span>
+                        outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">flush</span><span style="color:#f92672">();</span>
+                    <span style="color:#f92672">}</span>
+                    outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">());</span>
+                    inStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+                    outStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalBlockSizeException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>BadPaddingException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InvalidKeyException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span></code></pre></div>
+<p><a href="/img/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm-Screenshot-2.png"><img src="/img/thumbnails/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm-Screenshot-2.png" alt=""></a></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Dhanoop Bhaskar">
+    <meta name="description" content="Write a program to print details of currently logged in users,
+print date and calendar?
+ #/bin/bash echo &quot;Current login users: `who`&quot; echo &quot;Date: `date`&quot; echo &quot;Calendar: `cal`&quot;    Write a program to define user defined variables &lsquo;x&rsquo; with value
+&lsquo;10&rsquo; and &lsquo;y&rsquo; &lsquo;20&rsquo; and print it on screen?
+ #/bin/bash a=10 b=20 echo &quot;a = $a , b = $b&quot;    Write a program to print current shell, present working directory,">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux-Shell Programming"/>
+<meta name="twitter:description" content="Write a program to print details of currently logged in users,
+print date and calendar?
+ #/bin/bash echo &quot;Current login users: `who`&quot; echo &quot;Date: `date`&quot; echo &quot;Calendar: `cal`&quot;    Write a program to define user defined variables &lsquo;x&rsquo; with value
+&lsquo;10&rsquo; and &lsquo;y&rsquo; &lsquo;20&rsquo; and print it on screen?
+ #/bin/bash a=10 b=20 echo &quot;a = $a , b = $b&quot;    Write a program to print current shell, present working directory,"/>
+<meta name="twitter:site" content="@dhanoopbhaskar"/>
+
+    <meta property="og:title" content="Linux-Shell Programming" />
+<meta property="og:description" content="Write a program to print details of currently logged in users,
+print date and calendar?
+ #/bin/bash echo &quot;Current login users: `who`&quot; echo &quot;Date: `date`&quot; echo &quot;Calendar: `cal`&quot;    Write a program to define user defined variables &lsquo;x&rsquo; with value
+&lsquo;10&rsquo; and &lsquo;y&rsquo; &lsquo;20&rsquo; and print it on screen?
+ #/bin/bash a=10 b=20 echo &quot;a = $a , b = $b&quot;    Write a program to print current shell, present working directory," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-shell-programming/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2010-12-23T22:43:00&#43;05:30" />
+<meta property="article:modified_time" content="2010-12-23T22:43:00&#43;05:30" />
+
+
+
+    <title>
+  Linux-Shell Programming · The Insane Techie
+</title>
+
+    
+      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-shell-programming/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      The Insane Techie
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-shell-programming/">
+              Linux-Shell Programming
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2010-12-23T22:43:00&#43;05:30'>
+                December 23, 2010
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/linux/">linux</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/linux/">linux</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <ol>
+<li>
+<p>Write a program to print details of currently logged in users,<br>
+print date and calendar?</p>
+<pre><code> #/bin/bash
+ echo &quot;Current login users: `who`&quot;
+ echo &quot;Date: `date`&quot;
+ echo &quot;Calendar: `cal`&quot;
+</code></pre>
+</li>
+<li>
+<p>Write a program to define user defined variables &lsquo;x&rsquo; with value<br>
+&lsquo;10&rsquo; and &lsquo;y&rsquo; &lsquo;20&rsquo; and print it on screen?</p>
+<pre><code> #/bin/bash
+ a=10
+ b=20
+ echo &quot;a = $a , b = $b&quot;
+</code></pre>
+</li>
+<li>
+<p>Write a program to print current shell, present working directory,<br>
+and username, using system variable?</p>
+<pre><code> #/bin/bash
+ echo &quot;Shell: $SHELL&quot;
+ echo &quot;Current Directory: `pwd`&quot;
+ echo &quot;User name: `whoami`&quot;
+</code></pre>
+</li>
+<li>
+<p>Write a program to print the sum of two numbers a=10, b=20?</p>
+<pre><code> #/bin/bash
+ a=10
+ b=20
+ echo &quot;Sum: `expr $a + $b`&quot;
+</code></pre>
+</li>
+<li>
+<p>Write a program to read two numbers from the keyboard and to print<br>
+the sum, product and quotient of the numbers?</p>
+<pre><code> #/bin/bash
+ echo &quot;Enter the first number: &quot;
+ read a
+ echo &quot;Enter the second number: &quot;
+ read b
+ sum=`expr $a + $b`
+ echo &quot;Sum is: $sum&quot;
+ pro=`expr $a \* $b`
+ echo &quot;Product is: $pro&quot;
+ quo=`expr $a / $b`
+ echo &quot;Quotient is: $quo&quot;
+</code></pre>
+</li>
+<li>
+<p>Write a program to obtain and print the status of any one command?</p>
+<pre><code> #/bin/bash
+ echo &quot;hi&quot;
+ a=$?
+ if [ $a -eq 0 ]
+ then
+ echo &quot;Execution successfully completed&quot;
+ else
+ echo &quot;Execution failed&quot;
+ fi
+</code></pre>
+</li>
+<li>
+<p>Write a program to check the following condition:<br>
+Read a number from the keyboard; if that number is greater than &lsquo;0&rsquo;<br>
+then print as &ldquo;Positive&rdquo;, else print as &ldquo;Negative”?</p>
+<pre><code> #/bin/bash
+ echo &quot;Enter a number: &quot;
+ read a
+ if [ $a -gt 0 ]
+ then
+ echo &quot;Number is positive&quot;
+ else
+ echo &quot;Number is negative&quot;
+ fi
+</code></pre>
+</li>
+<li>
+<p>Write a program to implement choices:<br>
+                         1. Windows<br>
+                         2. Linux<br>
+                         Select your choice [1 or 2]<br>
+Read the choice from keyboard. If that is &lsquo;1&rsquo; the print &ldquo;Windows&rdquo;, if<br>
+that is &lsquo;2&rsquo; then print &ldquo;Linux&rdquo; else print &ldquo;You don’t like Windows or<br>
+Linux&rdquo;?</p>
+<pre><code> #/bin/bash
+ echo &quot;1. Windows&quot;
+ echo &quot;2. Linux&quot;
+ echo &quot;    Select [1 or 2]&quot;
+ read ch
+ if [ $ch -eq 1 ]
+ then
+ echo &quot;Windows&quot;
+ else if [ $ch -eq 2 ]
+ then
+ echo &quot;Linux&quot;
+ else
+ echo &quot;You dont like Windows or Linux&quot;
+ fi
+ fi
+</code></pre>
+</li>
+<li>
+<p>Write a program to prepare students record consisting of name,<br>
+roll no, and marks of three subjects. Take sum of the three marks and<br>
+print all details of student with total mark?</p>
+<pre><code> #/bin/bash
+ echo &quot;Enter Student Details&quot;
+ echo &quot;Name: &quot;
+ read name
+ echo &quot;Roll No: &quot;
+ read roll
+ echo &quot;Mark1: &quot;
+ read m1
+ echo &quot;Mark2: &quot;
+ read m2
+ echo &quot;Mark3: &quot;
+ read m3
+ tot=`expr $m1 + $m2 + $m3`
+ echo &quot;Student Record&quot;
+ echo &quot;Name: $name&quot;
+ echo &quot;Roll No: $roll&quot;
+ echo &quot;Total marks: $tot&quot;
+</code></pre>
+</li>
+<li>
+<p>Write a program to print cut 5 to 8 columns from any textile?</p>
+<pre><code>#/bin/bash
+cut -c 5-8 textile
+</code></pre>
+</li>
+<li>
+<p>Write a simple program using awk?</p>
+<pre><code>#/bin/bash
+awk '{ print $1 }' textile
+</code></pre>
+</li>
+<li>
+<p>Write a program to search a specific word from a file, first read<br>
+word from keyboard then using grep command search that word, and take<br>
+status of that command, if status is success the print &ldquo;Word Found&rdquo;<br>
+else print &ldquo;Word not Found&rdquo;?</p>
+<pre><code>#/bin/bash
+echo &quot;Enter a pattern to search&quot;
+read pat
+grep $pat textile
+if [ $? -eq 0 ]
+then
+echo &quot;Word Found&quot;
+else
+echo &quot;Not found&quot;
+fi
+</code></pre>
+</li>
+</ol>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hey, let's talk with the computers!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Dhanoop Bhaskar 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-169392426-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

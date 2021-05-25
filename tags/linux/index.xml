@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 02 Jul 2018 20:01:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mounting an iPhone to Linux Mint as an external drive to copy images and videos</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</link>
       <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</guid>
       <description>Phone: iPhone SE
 Operating System: Linux Mint 18.1(should work in Ubuntu as well)
 It is done by compiling most of the sources yourself.
@@ -25,10 +25,10 @@ Open a terminal and do the following:</description>
     
     <item>
       <title>Installing and Configuring phpMyAdmin in Ubuntu/Linux Mint</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</guid>
       <description>Install phpmyadmin
 sudo apt-get install phpmyadmin  Configure phpmyadmin
 sudo dpkg-reconfigure -plow phpmyadmin  Then select Apache 2 for the webserver you wish to configure.
@@ -39,70 +39,70 @@ sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf.d/phpmyadmin.conf sudo 
     
     <item>
       <title>Sum of Prime Numbers Between 1000000 and 1000100 Using Sieve of Eratosthenes</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2014-12-30-sum-of-prime-numbers-between-1000000-and-1000100-using-sieve-of-eratosthenes/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2014-12-30-sum-of-prime-numbers-between-1000000-and-1000100-using-sieve-of-eratosthenes/</link>
       <pubDate>Tue, 30 Dec 2014 09:36:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2014-12-30-sum-of-prime-numbers-between-1000000-and-1000100-using-sieve-of-eratosthenes/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2014-12-30-sum-of-prime-numbers-between-1000000-and-1000100-using-sieve-of-eratosthenes/</guid>
       <description>For more information on Sieve of Eratosthenes please refer wikipedia page
 #include &amp;#34;stdio.h&amp;#34; #include &amp;#34;string.h&amp;#34; #include &amp;#34;stdlib.h&amp;#34; #include &amp;#34;assert.h&amp;#34; typedef unsigned long long biggerint; void findPrimeNumbers(biggerint start, biggerint end) { char * primeList = malloc(sizeof(unsigned char) * (end + 1)); int i; biggerint sum = 0; assert(primeList != NULL); /* set prime status */ for (i = 0; i &amp;lt;= end + 1 ; i++) { *(primeList + i) = 1; } primeList[0] = 0; primeList[1] = 0; /* mark all the non-prime numbers */ biggerint currentFactor = 2; biggerint lastSquare = 0; biggerint currentSquare = 0; while (currentFactor * currentFactor &amp;lt;= end) { /* mark all the multiples of the current factor */ biggerint mark = currentFactor + currentFactor; while (mark &amp;lt;= end) { *(primeList + mark) = 0; mark += currentFactor; } /* set currentFactor to next prime number */ currentFactor++; while (*(primeList+currentFactor) == 0) currentFactor++; assert(currentFactor &amp;lt;= end); } for(i = start; i &amp;lt;= end ; i++) { if(*(primeList + i)) sum += i; } free(primeList); printf(&amp;#34;%llu\n&amp;#34;, sum); } int main(int argc, char *argv[]) { biggerint start = 1000000; biggerint end = 1000100; findPrimeNumbers(start, end); return 0; } </description>
     </item>
     
     <item>
       <title>A simple HTTP client and a server in C</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2014-02-13-a-simple-http-client-and-a-server-in-c/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2014-02-13-a-simple-http-client-and-a-server-in-c/</link>
       <pubDate>Thu, 13 Feb 2014 23:06:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2014-02-13-a-simple-http-client-and-a-server-in-c/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2014-02-13-a-simple-http-client-and-a-server-in-c/</guid>
       <description>The HTTP server sends the files requested by the client, if it is available at the server. The HTTP client uses GET method for requesting files from the server. Only .html, .txt and .pdf files are implemented. On receiving the file, the client program opens it using firefox or gedit or acrobat reader, as per the file type. Note that the given programs were done in Linux (Debian) environment.
 httpserver.c</description>
     </item>
     
     <item>
       <title>A simple chat program in C (TCP)</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2014-01-22-a-simple-chat-program-in-c-tcp/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2014-01-22-a-simple-chat-program-in-c-tcp/</link>
       <pubDate>Wed, 22 Jan 2014 20:26:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2014-01-22-a-simple-chat-program-in-c-tcp/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2014-01-22-a-simple-chat-program-in-c-tcp/</guid>
       <description>tcpserver.c
 #include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #include&amp;#34;pthread.h&amp;#34; #define PORT 4444  #define BUF_SIZE 2000  #define CLADDR_LEN 100  void * receiveMessage(void * socket) { int sockfd, ret; char buffer[BUF_SIZE]; sockfd = (int) socket; memset(buffer, 0, BUF_SIZE); for (;;) { ret = recvfrom(sockfd, buffer, BUF_SIZE, 0, NULL, NULL); if (ret &amp;lt; 0) { printf(&amp;#34;Error receiving data!\n&amp;#34;); } else { printf(&amp;#34;client: &amp;#34;); fputs(buffer, stdout); //printf(&amp;#34;\n&amp;#34;);  } } } void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; pid_t childpid; char clientAddr[CLADDR_LEN]; pthread_t rThread; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!</description>
     </item>
     
     <item>
       <title>TCP in C (one server and multiple clients) </title>
-      <link>https://dhanoopbhaskar.github.io/blog/2014-01-16-tcp-in-c-one-server-and-multiple-clients/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2014-01-16-tcp-in-c-one-server-and-multiple-clients/</link>
       <pubDate>Thu, 16 Jan 2014 21:12:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2014-01-16-tcp-in-c-one-server-and-multiple-clients/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2014-01-16-tcp-in-c-one-server-and-multiple-clients/</guid>
       <description>tcpserver.c
 #include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #define PORT 4444  #define BUF_SIZE 2000  #define CLADDR_LEN 100  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; pid_t childpid; char clientAddr[CLADDR_LEN]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!\n&amp;#34;); exit(1); } printf(&amp;#34;Socket created...\n&amp;#34;); memset(&amp;amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;amp;addr, sizeof(addr)); if (ret &amp;lt; 0) { printf(&amp;#34;Error binding!</description>
     </item>
     
     <item>
       <title>Socket Programming in C, TCP over a network (2 systems)</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems/</link>
       <pubDate>Thu, 16 Jan 2014 20:53:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems/</guid>
       <description>tcpserver.c
 #include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #define PORT 4444  #define BUF_SIZE 2000  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!\n&amp;#34;); exit(1); } printf(&amp;#34;Socket created...\n&amp;#34;); memset(&amp;amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;amp;addr, sizeof(addr)); if (ret &amp;lt; 0) { printf(&amp;#34;Error binding!</description>
     </item>
     
     <item>
       <title>Socket Programming In C (TCP)</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2014-01-05-socket-programming-in-c-tcp/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2014-01-05-socket-programming-in-c-tcp/</link>
       <pubDate>Sun, 05 Jan 2014 01:03:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2014-01-05-socket-programming-in-c-tcp/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2014-01-05-socket-programming-in-c-tcp/</guid>
       <description>tcpserver.c
 #include&amp;#34;stdio.h&amp;#34; #include&amp;#34;stdlib.h&amp;#34; #include&amp;#34;sys/types.h&amp;#34; #include&amp;#34;sys/socket.h&amp;#34; #include&amp;#34;string.h&amp;#34; #include&amp;#34;netinet/in.h&amp;#34; #define PORT 4444  #define BUF_SIZE 20  void main() { struct sockaddr_in addr, cl_addr; int sockfd, len, ret, newsockfd; char buffer[BUF_SIZE]; sockfd = socket(AF_INET, SOCK_STREAM, 0); if (sockfd &amp;lt; 0) { printf(&amp;#34;Error creating socket!\n&amp;#34;); exit(1); } printf(&amp;#34;Socket created...\n&amp;#34;); memset(&amp;amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = INADDR_ANY; addr.sin_port = PORT; ret = bind(sockfd, (struct sockaddr *) &amp;amp;addr, sizeof(addr)); if (ret &amp;lt; 0) { printf(&amp;#34;Error binding!</description>
     </item>
     
     <item>
       <title>Using Linux Utilities Under Windows</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2013-01-05-using-linux-utilities-under-windows/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2013-01-05-using-linux-utilities-under-windows/</link>
       <pubDate>Sat, 05 Jan 2013 16:27:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2013-01-05-using-linux-utilities-under-windows/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2013-01-05-using-linux-utilities-under-windows/</guid>
       <description>There are many utilities in Linux/Unix which are very useful in our life say for example sed, awk, grep, etc. Some of us might have wished Windows/DOS environment to have similar kind of utilities. Anyway I did. Today I came across some of the open source projects, while googling, which provide some of the utilities in Windows too and thought of sharing :)
 The projects are GnuWin and UnxUtils.
 Please find below the links to their sourceforge pages GnuWin UnxUtils  </description>
@@ -110,10 +110,10 @@ Please find below the links to their sourceforge pages GnuWin UnxUtils  </descri
     
     <item>
       <title>Linux-Shell Programming</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-shell-programming/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-shell-programming/</link>
       <pubDate>Thu, 23 Dec 2010 22:43:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-shell-programming/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-shell-programming/</guid>
       <description>Write a program to print details of currently logged in users,
 print date and calendar?
  #/bin/bash echo &amp;quot;Current login users: `who`&amp;quot; echo &amp;quot;Date: `date`&amp;quot; echo &amp;quot;Calendar: `cal`&amp;quot;    Write a program to define user defined variables &amp;lsquo;x&amp;rsquo; with value
@@ -123,10 +123,10 @@ print date and calendar?
     
     <item>
       <title>Linux-More commands</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-more-commands/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-more-commands/</link>
       <pubDate>Thu, 23 Dec 2010 22:37:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-more-commands/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-more-commands/</guid>
       <description>To show the full path of shell commands found in your path
 which &amp;lt;command name&amp;gt; eg: which grep //output like: /bin/grep  To locate the program, source code, and manual page for a command
 whereis &amp;lt;command name&amp;gt;  To search for files anywhere on the file system
@@ -136,10 +136,10 @@ find &amp;lt;directory name&amp;gt; &amp;lt;pattern to search&amp;gt; eg: find .
     
     <item>
       <title>Linux-Working with files</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-working-with-files/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-files/</link>
       <pubDate>Thu, 23 Dec 2010 22:10:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-working-with-files/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-files/</guid>
       <description>To find the type of a file
 file &amp;lt;file name&amp;gt;  To create a file
 cat &amp;gt; filename.txt //type the contents and press Ctrl+D to exit  To display the contents of a text file
@@ -149,10 +149,10 @@ more &amp;lt;file name&amp;gt; //traversal only in forward direction less &amp;l
     
     <item>
       <title>Linux-Working with directories</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-working-with-directories/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-directories/</link>
       <pubDate>Thu, 23 Dec 2010 22:02:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-working-with-directories/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-directories/</guid>
       <description>To print working directory
 pwd  To change directory
 To return to home directory
@@ -165,10 +165,10 @@ cd -  To list all files in the current directory</description>
     
     <item>
       <title>Linux-help commands</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-help-commands/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-help-commands/</link>
       <pubDate>Thu, 23 Dec 2010 21:44:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-help-commands/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-help-commands/</guid>
       <description>To get help on commands
 help &amp;lt;command name&amp;gt; eg: help cat &amp;lt;command name&amp;gt; --help eg: grep --help &amp;lt;command name&amp;gt; -h eg: chmod -h whatis &amp;lt;command name&amp;gt; eg: whatis grep  To get man pages
 man &amp;lt;command name&amp;gt; eg: man ls  To search for a particular word within a man page type /word
@@ -178,19 +178,19 @@ If you don’t remember the actual command:</description>
     
     <item>
       <title>Linux-Directory Layout</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-directory-layout/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-directory-layout/</link>
       <pubDate>Thu, 23 Dec 2010 21:42:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-directory-layout/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-directory-layout/</guid>
       <description>Directory Description       The nameless base of the file system. All other directories, files, drives, and devices are attached to this root. Commonly (but incorrectly) referred to as the “slash” or “/” directory. The “/” is just a directory separator, not a directory itself.   /bin Essential command binaries (programs) are stored here (bash, ls, mount, tar, etc.)   /boot Static files of the boot loader.</description>
     </item>
     
     <item>
       <title>Linux-basics</title>
-      <link>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-basics/</link>
+      <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-basics/</link>
       <pubDate>Thu, 23 Dec 2010 21:40:00 +0530</pubDate>
       
-      <guid>https://dhanoopbhaskar.github.io/blog/2010-12-23-linux-basics/</guid>
+      <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-basics/</guid>
       <description>Character Description     \ Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: touch /tmp/filename\*   / Directory separator, used to separate a string of directory names. Example: /usr/src/linux   . dot denotes current directory. Can also “hide” files when it is the first character in a filename.   .. 2 dots denote parent directory   ~ User&amp;rsquo;s home directory   * Represents 0 or more characters in a filename, or by itself, all files in a directory.</description>
     </item>
     
