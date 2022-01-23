@@ -6,7 +6,11 @@
     <description>Recent content in OOPS on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 30 Apr 2009 18:54:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/oops/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Apr 2009 18:54:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/oops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>C&#43;&#43; - Scientific Calculator</title>
       <link>https://dhanoopbhaskar.github.io/posts/2009-04-30-c-scientific-calculator/</link>

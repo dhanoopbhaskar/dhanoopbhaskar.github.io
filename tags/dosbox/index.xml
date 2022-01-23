@@ -6,14 +6,18 @@
     <description>Recent content in DosBox on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 12 Dec 2010 13:36:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/dosbox/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Dec 2010 13:36:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/dosbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Using Turbo C&#43;&#43; in Windows 7 along with graphics support</title>
       <link>https://dhanoopbhaskar.github.io/posts/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</link>
       <pubDate>Sun, 12 Dec 2010 13:36:00 +0530</pubDate>
       
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</guid>
-      <description>DOSBox    Use dosbox to mount and run TC.EXE
+      <description>DOSBox Use dosbox to mount and run TC.EXE
 Download DOSBox here&amp;hellip;
 Mounting
 Z:\&amp;gt;MOUNT C &amp;quot;PATH OF BIN&amp;quot; Z:\&amp;gt;C: C:\&amp;gt;TC  [TURBO C++ IDE opens]

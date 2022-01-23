@@ -6,7 +6,11 @@
     <description>Recent content in microsoft on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 18 Oct 2011 17:33:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/microsoft/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Oct 2011 17:33:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/microsoft/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Microsoft Magic</title>
       <link>https://dhanoopbhaskar.github.io/posts/2011-10-18-microsoft-magic/</link>

@@ -6,7 +6,11 @@
     <description>Recent content in design pattern on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 31 Aug 2013 19:19:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Aug 2013 19:19:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Initialization-on-demand holder idiom</title>
       <link>https://dhanoopbhaskar.github.io/posts/2013-08-31-initialization-on-demand-holder-idiom/</link>

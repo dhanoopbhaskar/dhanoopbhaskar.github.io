@@ -6,7 +6,11 @@
     <description>Recent content in smack on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 22 Sep 2011 14:17:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/smack/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Sep 2011 14:17:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/smack/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Java - GTalk Client using SMACK XMPP API</title>
       <link>https://dhanoopbhaskar.github.io/posts/2011-09-22-java-gtalk-client-using-smack-xmpp-api/</link>

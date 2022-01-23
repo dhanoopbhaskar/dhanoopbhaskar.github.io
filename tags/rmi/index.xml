@@ -6,7 +6,11 @@
     <description>Recent content in rmi on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 26 Mar 2011 23:07:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/rmi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Mar 2011 23:07:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/rmi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Java - Sum and Average using RMI</title>
       <link>https://dhanoopbhaskar.github.io/posts/2011-03-26-java-sum-and-average-using-rmi/</link>

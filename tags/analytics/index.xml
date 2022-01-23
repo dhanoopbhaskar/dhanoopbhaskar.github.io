@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>analytics on The Insane Techie</title>
+    <link>https://dhanoopbhaskar.github.io/tags/analytics/</link>
+    <description>Recent content in analytics on The Insane Techie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Jan 2022 19:38:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/analytics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pandas - Using pandas.melt</title>
+      <link>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-melt/</link>
+      <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-melt/</guid>
+      <description>The pandas.melt(frame, id_vars=None, value_vars=None, var_name=None, value_name=&#39;value&#39;, col_level=None, ignore_index=True) function unpivots a DataFrame from wide to long format, optionally leaving identifiers set.
+Click here for the documentation.
+import pandas as pd import numpy as np df_to_melt = pd.read_csv(&amp;#39;to_melt.csv&amp;#39;, header=0) df_to_melt.head() 
+## The columns to unpivot will form the entries in the &amp;#39;variable&amp;#39; column. ## So better to rename them before doing melt df_to_melt.rename(columns={&amp;#39;BASIC_AMOUNT&amp;#39;:&amp;#39;BASIC&amp;#39;, &amp;#39;DA_AMOUNT&amp;#39;:&amp;#39;DA&amp;#39;, &amp;#39;HRA_AMOUNT&amp;#39;:&amp;#39;HRA&amp;#39;, &amp;#39;SPECIAL_AMOUNT&amp;#39;:&amp;#39;SPECIAL&amp;#39; }, inplace=True) df_to_melt.columns Index([&#39;EMP_NO&#39;, &#39;BASIC&#39;, &#39;DA&#39;, &#39;HRA&#39;, &#39;SPECIAL&#39;], dtype=&#39;object&#39;)  value_cols = df_to_melt.</description>
+    </item>
+    
+    <item>
+      <title>Pandas - Using pandas.pivot</title>
+      <link>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-pivot/</link>
+      <pubDate>Sun, 23 Jan 2022 19:10:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-pivot/</guid>
+      <description>The pandas.pivot(data, index=None, columns=None, values=None) function returns reshaped DataFrame organized by given index / column values.
+Click here for the documentation.
+import pandas as pd import numpy as np df_to_pivot = pd.read_csv(&amp;#39;to_pivot.csv&amp;#39;, header=0) df_to_pivot.head() 
+df_to_pivot[&amp;#39;HEAD&amp;#39;].unique() array([&#39;BASIC&#39;, &#39;DA&#39;, &#39;HRA&#39;, &#39;SPECIAL&#39;], dtype=object)  df_to_pivot = pd.pivot(df_to_pivot, index=[&amp;#39;EMP_NO&amp;#39;], columns=[&amp;#39;HEAD&amp;#39;], values=[&amp;#39;AMOUNT&amp;#39;]) df_to_pivot.head() 
+df_to_pivot.columns = [str(j) + &amp;#39;_&amp;#39; + str(i) for i, j in df_to_pivot.columns] df_to_pivot.head() 
+df_to_pivot.reset_index(inplace=True) df_to_pivot</description>
+    </item>
+    
+    <item>
+      <title>Pandas - Place Amount into Buckets</title>
+      <link>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-amount-into-buckets/</link>
+      <pubDate>Sun, 23 Jan 2022 17:44:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-amount-into-buckets/</guid>
+      <description>import pandas as pd import numpy as np df_salary = pd.read_csv(&amp;#39;bucketing.csv&amp;#39;, header=0) df_salary.head() 
+df_salary.shape (109516, 2)  BUCKET_SIZE = 10000 # the difference between lower and upper ranges in each bucket BUCKET_LOWER_LIMIT = 10000 # the bucket starts here BUCKET_UPPER_LIMIT = 250000 # the bucket ends here BUCKET_UNITS = 1000 # the bucket range will be in 1000s BUCKET_STRING_LENGTH = 3 # prepend zeroes to make the label of length 3 col = &amp;#39;SALARY&amp;#39; conditions = [] choices = [] conditions.</description>
+    </item>
+    
+  </channel>
+</rss>

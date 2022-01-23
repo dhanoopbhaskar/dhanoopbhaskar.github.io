@@ -6,7 +6,11 @@
     <description>Recent content in excel on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Aug 2011 20:57:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/tags/excel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Aug 2011 20:57:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/tags/excel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Java - Creating an MS Excel File using Jakarta POI api</title>
       <link>https://dhanoopbhaskar.github.io/posts/2011-08-11-java-creating-an-ms-excel-file-using-jakarta-poi-api/</link>

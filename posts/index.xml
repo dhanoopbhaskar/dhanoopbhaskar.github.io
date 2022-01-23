@@ -6,7 +6,47 @@
     <description>Recent content in Posts on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 19 Jun 2020 14:07:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Jan 2022 19:38:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pandas - Using pandas.melt</title>
+      <link>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-melt/</link>
+      <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-melt/</guid>
+      <description>The pandas.melt(frame, id_vars=None, value_vars=None, var_name=None, value_name=&#39;value&#39;, col_level=None, ignore_index=True) function unpivots a DataFrame from wide to long format, optionally leaving identifiers set.
+Click here for the documentation.
+import pandas as pd import numpy as np df_to_melt = pd.read_csv(&amp;#39;to_melt.csv&amp;#39;, header=0) df_to_melt.head() 
+## The columns to unpivot will form the entries in the &amp;#39;variable&amp;#39; column. ## So better to rename them before doing melt df_to_melt.rename(columns={&amp;#39;BASIC_AMOUNT&amp;#39;:&amp;#39;BASIC&amp;#39;, &amp;#39;DA_AMOUNT&amp;#39;:&amp;#39;DA&amp;#39;, &amp;#39;HRA_AMOUNT&amp;#39;:&amp;#39;HRA&amp;#39;, &amp;#39;SPECIAL_AMOUNT&amp;#39;:&amp;#39;SPECIAL&amp;#39; }, inplace=True) df_to_melt.columns Index([&#39;EMP_NO&#39;, &#39;BASIC&#39;, &#39;DA&#39;, &#39;HRA&#39;, &#39;SPECIAL&#39;], dtype=&#39;object&#39;)  value_cols = df_to_melt.</description>
+    </item>
+    
+    <item>
+      <title>Pandas - Using pandas.pivot</title>
+      <link>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-pivot/</link>
+      <pubDate>Sun, 23 Jan 2022 19:10:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-pivot/</guid>
+      <description>The pandas.pivot(data, index=None, columns=None, values=None) function returns reshaped DataFrame organized by given index / column values.
+Click here for the documentation.
+import pandas as pd import numpy as np df_to_pivot = pd.read_csv(&amp;#39;to_pivot.csv&amp;#39;, header=0) df_to_pivot.head() 
+df_to_pivot[&amp;#39;HEAD&amp;#39;].unique() array([&#39;BASIC&#39;, &#39;DA&#39;, &#39;HRA&#39;, &#39;SPECIAL&#39;], dtype=object)  df_to_pivot = pd.pivot(df_to_pivot, index=[&amp;#39;EMP_NO&amp;#39;], columns=[&amp;#39;HEAD&amp;#39;], values=[&amp;#39;AMOUNT&amp;#39;]) df_to_pivot.head() 
+df_to_pivot.columns = [str(j) + &amp;#39;_&amp;#39; + str(i) for i, j in df_to_pivot.columns] df_to_pivot.head() 
+df_to_pivot.reset_index(inplace=True) df_to_pivot</description>
+    </item>
+    
+    <item>
+      <title>Pandas - Place Amount into Buckets</title>
+      <link>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-amount-into-buckets/</link>
+      <pubDate>Sun, 23 Jan 2022 17:44:00 +0530</pubDate>
+      
+      <guid>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-amount-into-buckets/</guid>
+      <description>import pandas as pd import numpy as np df_salary = pd.read_csv(&amp;#39;bucketing.csv&amp;#39;, header=0) df_salary.head() 
+df_salary.shape (109516, 2)  BUCKET_SIZE = 10000 # the difference between lower and upper ranges in each bucket BUCKET_LOWER_LIMIT = 10000 # the bucket starts here BUCKET_UPPER_LIMIT = 250000 # the bucket ends here BUCKET_UNITS = 1000 # the bucket range will be in 1000s BUCKET_STRING_LENGTH = 3 # prepend zeroes to make the label of length 3 col = &amp;#39;SALARY&amp;#39; conditions = [] choices = [] conditions.</description>
+    </item>
+    
     <item>
       <title>Regex - Cheatsheet</title>
       <link>https://dhanoopbhaskar.github.io/posts/2020-06-19-regex/</link>
@@ -792,7 +832,7 @@ irb(main):001:0&amp;gt; &amp;quot;Ruby Language&amp;quot; =&amp;gt; &amp;quot;Ru
       
       <guid>https://dhanoopbhaskar.github.io/posts/2011-09-16-about-ruby-programming-language/</guid>
       <description>Wondering why Ruby is so popular? Its fans call it a beautiful, artful language. And yet, they say it’s handy and practical. What gives?
-The Ideals of Ruby’s Creator    Ruby is a language of careful balance. Its creator, Yukihiro “matz” Matsumoto, blended parts of his favorite languages (Perl, Smalltalk, Eiffel, Ada, and Lisp) to form a new language that balanced functional programming with imperative programming.
+The Ideals of Ruby’s Creator Ruby is a language of careful balance. Its creator, Yukihiro “matz” Matsumoto, blended parts of his favorite languages (Perl, Smalltalk, Eiffel, Ada, and Lisp) to form a new language that balanced functional programming with imperative programming.
 He has often said that he is trying to make Ruby natural, not simple, in a way that mirrors life.</description>
     </item>
     
@@ -1382,7 +1422,7 @@ class ReadCmdLineArgs { public static void main(String[] args) { System.</descri
       <pubDate>Sun, 12 Dec 2010 13:36:00 +0530</pubDate>
       
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</guid>
-      <description>DOSBox    Use dosbox to mount and run TC.EXE
+      <description>DOSBox Use dosbox to mount and run TC.EXE
 Download DOSBox here&amp;hellip;
 Mounting
 Z:\&amp;gt;MOUNT C &amp;quot;PATH OF BIN&amp;quot; Z:\&amp;gt;C: C:\&amp;gt;TC  [TURBO C++ IDE opens]
@@ -1614,7 +1654,7 @@ import java.io.*; import java.net.*; public class Server { ServerSocket ss; Sock
       <pubDate>Sun, 28 Jun 2009 19:17:00 +0530</pubDate>
       
       <guid>https://dhanoopbhaskar.github.io/posts/2009-06-28-some-data-structure-programs/</guid>
-      <description>1. WAP to implement searching in a linked list    #include&amp;lt;iostream.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;process.h&amp;gt; class node { int data; node * next; public: void insert(); void search(int); void display(); }; node *start, *head, *temp; void node::insert() { head = new node; cout&amp;lt;&amp;lt;&amp;quot;\n Enter the data item: &amp;quot;; cin&amp;gt;&amp;gt;head-&amp;gt;data; head-&amp;gt;next = NULL; if (start == NULL) { start = head; } else { temp = start; while (temp-&amp;gt;next != NULL) { temp = temp-&amp;gt;next; } temp-&amp;gt;next = head; } } void node::display() { temp = start; if (start == NULL) cout&amp;lt;&amp;lt;&amp;quot;\n Data list is empty &amp;quot;; else { cout&amp;lt;&amp;lt;&amp;quot;\n DATA LIST: &amp;quot;; while (temp !</description>
+      <description>1. WAP to implement searching in a linked list #include&amp;lt;iostream.h&amp;gt; #include&amp;lt;conio.h&amp;gt; #include&amp;lt;process.h&amp;gt; class node { int data; node * next; public: void insert(); void search(int); void display(); }; node *start, *head, *temp; void node::insert() { head = new node; cout&amp;lt;&amp;lt;&amp;quot;\n Enter the data item: &amp;quot;; cin&amp;gt;&amp;gt;head-&amp;gt;data; head-&amp;gt;next = NULL; if (start == NULL) { start = head; } else { temp = start; while (temp-&amp;gt;next != NULL) { temp = temp-&amp;gt;next; } temp-&amp;gt;next = head; } } void node::display() { temp = start; if (start == NULL) cout&amp;lt;&amp;lt;&amp;quot;\n Data list is empty &amp;quot;; else { cout&amp;lt;&amp;lt;&amp;quot;\n DATA LIST: &amp;quot;; while (temp !</description>
     </item>
     
     <item>
@@ -1632,7 +1672,7 @@ import java.io.*; import java.net.*; public class Server { ServerSocket ss; Sock
       <pubDate>Thu, 23 Apr 2009 19:10:00 +0530</pubDate>
       
       <guid>https://dhanoopbhaskar.github.io/posts/2009-04-23-data-structure-programs-in-c/</guid>
-      <description>Write a C++ program to find the sparse of a matrix    #include&amp;lt;iostream.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void main() { int a[50][50], sp[50][50], i, j, k = 0, m, n; clrscr(); cout&amp;lt;&amp;lt;&amp;quot;\n Enter the order of matrix: &amp;quot;; cin&amp;gt;&amp;gt;m&amp;gt;&amp;gt;n; cout&amp;lt;&amp;lt;&amp;quot;\n Enter the elements: &amp;quot;; for (i = 0; i &amp;lt; m; i++) { for (j = 0; j &amp;lt; n; j++) { cin&amp;gt;&amp;gt;a[i][j]; if (a[i][j] != 0) { k++; sp[k][0] = i; sp[k][1] = j; sp[k][2] = a[i][j]; } } } sp[0][0] = m; sp[0][1] = n; sp[0][2] = k; cout&amp;lt;&amp;lt;&amp;quot;\n The sparse matrix is:\n&amp;quot;; for (i = 0; i &amp;lt;= k; i++) { for (j = 0; j &amp;lt; 3; j++) cout&amp;lt;&amp;lt;sp[i][j] &amp;lt;&amp;lt;&amp;quot; &amp;quot;; cout&amp;lt;&amp;lt;&amp;quot;\n&amp;quot;; } getch(); }  OUTPUT    Enter the order of matrix: 3 3 Enter the elements: 0 1 0 2 0 0 0 0 3 The sparse matrix is: 3 3 3 0 1 1 1 0 2 2 2 3  Write a C++ program to find the transpose of a matrix using the given sparse matrix    #include&amp;lt;iostream.</description>
+      <description>Write a C++ program to find the sparse of a matrix #include&amp;lt;iostream.h&amp;gt; #include&amp;lt;conio.h&amp;gt; void main() { int a[50][50], sp[50][50], i, j, k = 0, m, n; clrscr(); cout&amp;lt;&amp;lt;&amp;quot;\n Enter the order of matrix: &amp;quot;; cin&amp;gt;&amp;gt;m&amp;gt;&amp;gt;n; cout&amp;lt;&amp;lt;&amp;quot;\n Enter the elements: &amp;quot;; for (i = 0; i &amp;lt; m; i++) { for (j = 0; j &amp;lt; n; j++) { cin&amp;gt;&amp;gt;a[i][j]; if (a[i][j] != 0) { k++; sp[k][0] = i; sp[k][1] = j; sp[k][2] = a[i][j]; } } } sp[0][0] = m; sp[0][1] = n; sp[0][2] = k; cout&amp;lt;&amp;lt;&amp;quot;\n The sparse matrix is:\n&amp;quot;; for (i = 0; i &amp;lt;= k; i++) { for (j = 0; j &amp;lt; 3; j++) cout&amp;lt;&amp;lt;sp[i][j] &amp;lt;&amp;lt;&amp;quot; &amp;quot;; cout&amp;lt;&amp;lt;&amp;quot;\n&amp;quot;; } getch(); }  OUTPUT Enter the order of matrix: 3 3 Enter the elements: 0 1 0 2 0 0 0 0 3 The sparse matrix is: 3 3 3 0 1 1 1 0 2 2 2 3  Write a C++ program to find the transpose of a matrix using the given sparse matrix #include&amp;lt;iostream.</description>
     </item>
     
   </channel>

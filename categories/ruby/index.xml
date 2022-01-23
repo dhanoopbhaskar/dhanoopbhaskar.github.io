@@ -6,7 +6,11 @@
     <description>Recent content in ruby on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 16 Sep 2011 19:28:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Sep 2011 19:28:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Ruby - Objects</title>
       <link>https://dhanoopbhaskar.github.io/posts/2011-09-16-ruby-objects/</link>
@@ -63,7 +67,7 @@ irb(main):001:0&amp;gt; &amp;quot;Ruby Language&amp;quot; =&amp;gt; &amp;quot;Ru
       
       <guid>https://dhanoopbhaskar.github.io/posts/2011-09-16-about-ruby-programming-language/</guid>
       <description>Wondering why Ruby is so popular? Its fans call it a beautiful, artful language. And yet, they say it’s handy and practical. What gives?
-The Ideals of Ruby’s Creator    Ruby is a language of careful balance. Its creator, Yukihiro “matz” Matsumoto, blended parts of his favorite languages (Perl, Smalltalk, Eiffel, Ada, and Lisp) to form a new language that balanced functional programming with imperative programming.
+The Ideals of Ruby’s Creator Ruby is a language of careful balance. Its creator, Yukihiro “matz” Matsumoto, blended parts of his favorite languages (Perl, Smalltalk, Eiffel, Ada, and Lisp) to form a new language that balanced functional programming with imperative programming.
 He has often said that he is trying to make Ruby natural, not simple, in a way that mirrors life.</description>
     </item>
     

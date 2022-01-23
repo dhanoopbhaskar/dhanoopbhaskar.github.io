@@ -6,7 +6,11 @@
     <description>Recent content in robotics on The Insane Techie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 28 Oct 2019 12:10:00 +0530</lastBuildDate><atom:link href="https://dhanoopbhaskar.github.io/categories/robotics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Oct 2019 12:10:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://dhanoopbhaskar.github.io/categories/robotics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Biped Walking Robot</title>
       <link>https://dhanoopbhaskar.github.io/posts/2019-10-28-biped-walking-robot/</link>

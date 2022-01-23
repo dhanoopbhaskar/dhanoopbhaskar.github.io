@@ -27,10 +27,9 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
 The function customizeTable() has been modified in order to include event handling functionality in the combo box.
 private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &#34;ComboBox&#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &#34;select gender&#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&#34;Male&#34;, &#34;Female&#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2013-08-03T14:04:00&#43;05:30" />
-<meta property="article:modified_time" content="2013-08-03T14:04:00&#43;05:30" />
-
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/" />
+<meta property="article:published_time" content="2013-08-03T14:04:00+05:30" />
+<meta property="article:modified_time" content="2013-08-03T14:04:00+05:30" />
 
 
     <title>
@@ -46,7 +45,7 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
     
       
       
-      <link rel="stylesheet" href="/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -71,7 +70,7 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
 
     
 
-    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="generator" content="Hugo 0.68.3" />
   </head>
 
   
@@ -198,7 +197,7 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
         <span style="color:#f92672">}</span>
 
   </code></pre></div>
-<p>For the JComboBox tableData to be accessible in the inner class' method <code>actionPerformed()</code>, it should be declared in class level as below. (In the previous post, it&rsquo;s declared locally).</p>
+<p>For the JComboBox tableData to be accessible in the inner class&rsquo; method <code>actionPerformed()</code>, it should be declared in class level as below. (In the previous post, it&rsquo;s declared locally).</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">     
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainJFrame</span> <span style="color:#66d9ef">extends</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JFrame</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">private</span> JComboBox tableData <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
@@ -239,7 +238,7 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
         
           2019 -
         
-        2021
+        2022
          Dhanoop Bhaskar 
       
       
@@ -255,7 +254,7 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
 
     
       
-      <script src="/js/coder.min.235666b114443867d43eeb5799d51f6252965e5163f338285e113fa381d3d27e.js" integrity="sha256-I1ZmsRREOGfUPutXmdUfYlKWXlFj8zgoXhE/o4HT0n4="></script>
+      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
     
 
     
@@ -273,6 +272,7 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
+
 
     
 
