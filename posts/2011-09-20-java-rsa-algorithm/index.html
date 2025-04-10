@@ -1,125 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="RSA stands for Rivest, Shamir and Adleman who first publicly described it.
- RSAAlgorithm.java
-import java.security.InvalidKeyException; import java.security.KeyPair; import java.security.KeyPairGenerator; import java.security.NoSuchAlgorithmException; import java.security.PrivateKey; import java.security.PublicKey; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; /** * * @author dhanoopbhaskar */ public class RSAAlgorithm { private KeyPairGenerator keyPairGenerator = null; private PrivateKey privateKey = null; private PublicKey publicKey = null; Cipher cipher = null; public RSAAlgorithm() { try { /** * Create RSA key pairs * - private key * - public key */ keyPairGenerator = KeyPairGenerator.">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java - RSA Algorithm"/>
-<meta name="twitter:description" content="RSA stands for Rivest, Shamir and Adleman who first publicly described it.
- RSAAlgorithm.java
-import java.security.InvalidKeyException; import java.security.KeyPair; import java.security.KeyPairGenerator; import java.security.NoSuchAlgorithmException; import java.security.PrivateKey; import java.security.PublicKey; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; /** * * @author dhanoopbhaskar */ public class RSAAlgorithm { private KeyPairGenerator keyPairGenerator = null; private PrivateKey privateKey = null; private PublicKey publicKey = null; Cipher cipher = null; public RSAAlgorithm() { try { /** * Create RSA key pairs * - private key * - public key */ keyPairGenerator = KeyPairGenerator."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="Java - RSA Algorithm" />
-<meta property="og:description" content="RSA stands for Rivest, Shamir and Adleman who first publicly described it.
- RSAAlgorithm.java
-import java.security.InvalidKeyException; import java.security.KeyPair; import java.security.KeyPairGenerator; import java.security.NoSuchAlgorithmException; import java.security.PrivateKey; import java.security.PublicKey; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; /** * * @author dhanoopbhaskar */ public class RSAAlgorithm { private KeyPairGenerator keyPairGenerator = null; private PrivateKey privateKey = null; private PublicKey publicKey = null; Cipher cipher = null; public RSAAlgorithm() { try { /** * Create RSA key pairs * - private key * - public key */ keyPairGenerator = KeyPairGenerator." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-09-20-java-rsa-algorithm/" />
-<meta property="article:published_time" content="2011-09-20T16:13:00+05:30" />
-<meta property="article:modified_time" content="2011-09-20T16:13:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   Java - RSA Algorithm · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2011-09-20-java-rsa-algorithm/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
-      
-      
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
 
-    
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+RSA stands for Rivest, Shamir and Adleman who first publicly described it.
+RSAAlgorithm.java
+	import java.security.InvalidKeyException;
+	import java.security.KeyPair;
+	import java.security.KeyPairGenerator;
+	import java.security.NoSuchAlgorithmException;
+	import java.security.PrivateKey;
+	import java.security.PublicKey;
+	import javax.crypto.BadPaddingException;
+	import javax.crypto.Cipher;
+	import javax.crypto.IllegalBlockSizeException;
+	import javax.crypto.NoSuchPaddingException;
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
+	/**
+	 *
+	 * @author dhanoopbhaskar
+	 */
+	public class RSAAlgorithm {
+	   
+	    private KeyPairGenerator keyPairGenerator = null;
+	    private PrivateKey privateKey = null;
+	    private PublicKey publicKey = null;
+	    Cipher cipher = null;
+	   
+	    public RSAAlgorithm() {
+	        try {
+	            /**
+	             * Create RSA key pairs
+	             * - private key
+	             * - public key
+	             */
+	            keyPairGenerator = KeyPairGenerator.getInstance(&#34;RSA&#34;);
+	            keyPairGenerator.initialize(512); //512 is the key size
+	            KeyPair keyPair = keyPairGenerator.generateKeyPair();
+	            privateKey = keyPair.getPrivate();
+	            publicKey = keyPair.getPublic();
+	            /**
+	             * Create an instance of cipher
+	             */
+	            cipher = Cipher.getInstance(&#34;RSA&#34;);
+	        } catch (NoSuchPaddingException ex) {
+	            System.out.println(ex);
+	        } catch (NoSuchAlgorithmException ex) {
+	            System.out.println(ex);
+	        }
+	    }
+	   
+	    /**
+	     *
+	     * @param plainText
+	     * @return cipherText
+	     */
+	    public byte[] encryptText(String plainText) {
+	        byte[] cipherText = null;
+	        try {
+	            /**
+	             * Initialize the cipher for encryption
+	             */
+	            cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+	            /**
+	             * Convert the text string to byte format
+	             */
+	            byte[] plainBytes = plainText.getBytes();
+	            /**
+	             * Perform encryption with method doFinal()
+	             */
+	            cipherText = cipher.doFinal(plainBytes);           
+	        } catch (IllegalBlockSizeException ex) {
+	            System.out.println(ex);
+	        } catch (BadPaddingException ex) {
+	            System.out.println(ex);
+	        } catch (InvalidKeyException ex) {
+	            System.out.println(ex);
+	        }
+	       
+	        return cipherText;
+	    }
+	   
+	    /**
+	     *
+	     * @param cipherText
+	     * @return plainText
+	     */
+	    public String decryptText(byte[] cipherText) {
+	        String plainText = null;
+	        try {
+	            /**
+	             * Initialize the cipher for decryption
+	             */
+	            cipher.init(Cipher.DECRYPT_MODE, privateKey);           
+	            /**
+	             * Perform decryption with method doFinal()
+	             */
+	            byte[] plainBytes = cipher.doFinal(cipherText);
+	            /**
+	             * Convert encrypted text to string format
+	             */
+	            plainText = new String(plainBytes);
+	        } catch (IllegalBlockSizeException ex) {
+	            System.out.println(ex);
+	        } catch (BadPaddingException ex) {
+	            System.out.println(ex);
+	        } catch (InvalidKeyException ex) {
+	            System.out.println(ex);
+	        }
+	       
+	        return plainText;
+	    }
+	   
+	    public static void main(String[] args) {
+	        RSAAlgorithm rsaAlgorithm = new RSAAlgorithm();
+	        String textToEncrypt = &#34;RSA Algorithm&#34;;
+	        System.out.println(&#34;Text before Encryption: &#34; &#43; textToEncrypt);
+	        byte[] cipherText = rsaAlgorithm.encryptText(textToEncrypt);
+	        System.out.println(&#34;Cipher Text [bytes]: &#34; &#43; cipherText);       
+	        String textDecrypted = rsaAlgorithm.decryptText(cipherText);
+	        System.out.println(&#34;Text after Decryption: &#34; &#43; textDecrypted);
+	    }
+	}">
+<meta name="keywords" content="">
 
-    
 
-    
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java - RSA Algorithm">
+  <meta name="twitter:description" content="RSA stands for Rivest, Shamir and Adleman who first publicly described it.
+RSAAlgorithm.java
+import java.security.InvalidKeyException; import java.security.KeyPair; import java.security.KeyPairGenerator; import java.security.NoSuchAlgorithmException; import java.security.PrivateKey; import java.security.PublicKey; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; /** * * @author dhanoopbhaskar */ public class RSAAlgorithm { private KeyPairGenerator keyPairGenerator = null; private PrivateKey privateKey = null; private PublicKey publicKey = null; Cipher cipher = null; public RSAAlgorithm() { try { /** * Create RSA key pairs * - private key * - public key */ keyPairGenerator = KeyPairGenerator.getInstance(&#34;RSA&#34;); keyPairGenerator.initialize(512); //512 is the key size KeyPair keyPair = keyPairGenerator.generateKeyPair(); privateKey = keyPair.getPrivate(); publicKey = keyPair.getPublic(); /** * Create an instance of cipher */ cipher = Cipher.getInstance(&#34;RSA&#34;); } catch (NoSuchPaddingException ex) { System.out.println(ex); } catch (NoSuchAlgorithmException ex) { System.out.println(ex); } } /** * * @param plainText * @return cipherText */ public byte[] encryptText(String plainText) { byte[] cipherText = null; try { /** * Initialize the cipher for encryption */ cipher.init(Cipher.ENCRYPT_MODE, publicKey); /** * Convert the text string to byte format */ byte[] plainBytes = plainText.getBytes(); /** * Perform encryption with method doFinal() */ cipherText = cipher.doFinal(plainBytes); } catch (IllegalBlockSizeException ex) { System.out.println(ex); } catch (BadPaddingException ex) { System.out.println(ex); } catch (InvalidKeyException ex) { System.out.println(ex); } return cipherText; } /** * * @param cipherText * @return plainText */ public String decryptText(byte[] cipherText) { String plainText = null; try { /** * Initialize the cipher for decryption */ cipher.init(Cipher.DECRYPT_MODE, privateKey); /** * Perform decryption with method doFinal() */ byte[] plainBytes = cipher.doFinal(cipherText); /** * Convert encrypted text to string format */ plainText = new String(plainBytes); } catch (IllegalBlockSizeException ex) { System.out.println(ex); } catch (BadPaddingException ex) { System.out.println(ex); } catch (InvalidKeyException ex) { System.out.println(ex); } return plainText; } public static void main(String[] args) { RSAAlgorithm rsaAlgorithm = new RSAAlgorithm(); String textToEncrypt = &#34;RSA Algorithm&#34;; System.out.println(&#34;Text before Encryption: &#34; &#43; textToEncrypt); byte[] cipherText = rsaAlgorithm.encryptText(textToEncrypt); System.out.println(&#34;Cipher Text [bytes]: &#34; &#43; cipherText); String textDecrypted = rsaAlgorithm.decryptText(cipherText); System.out.println(&#34;Text after Decryption: &#34; &#43; textDecrypted); } }">
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-09-20-java-rsa-algorithm/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Java - RSA Algorithm">
+  <meta property="og:description" content="RSA stands for Rivest, Shamir and Adleman who first publicly described it.
+RSAAlgorithm.java
+import java.security.InvalidKeyException; import java.security.KeyPair; import java.security.KeyPairGenerator; import java.security.NoSuchAlgorithmException; import java.security.PrivateKey; import java.security.PublicKey; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.NoSuchPaddingException; /** * * @author dhanoopbhaskar */ public class RSAAlgorithm { private KeyPairGenerator keyPairGenerator = null; private PrivateKey privateKey = null; private PublicKey publicKey = null; Cipher cipher = null; public RSAAlgorithm() { try { /** * Create RSA key pairs * - private key * - public key */ keyPairGenerator = KeyPairGenerator.getInstance(&#34;RSA&#34;); keyPairGenerator.initialize(512); //512 is the key size KeyPair keyPair = keyPairGenerator.generateKeyPair(); privateKey = keyPair.getPrivate(); publicKey = keyPair.getPublic(); /** * Create an instance of cipher */ cipher = Cipher.getInstance(&#34;RSA&#34;); } catch (NoSuchPaddingException ex) { System.out.println(ex); } catch (NoSuchAlgorithmException ex) { System.out.println(ex); } } /** * * @param plainText * @return cipherText */ public byte[] encryptText(String plainText) { byte[] cipherText = null; try { /** * Initialize the cipher for encryption */ cipher.init(Cipher.ENCRYPT_MODE, publicKey); /** * Convert the text string to byte format */ byte[] plainBytes = plainText.getBytes(); /** * Perform encryption with method doFinal() */ cipherText = cipher.doFinal(plainBytes); } catch (IllegalBlockSizeException ex) { System.out.println(ex); } catch (BadPaddingException ex) { System.out.println(ex); } catch (InvalidKeyException ex) { System.out.println(ex); } return cipherText; } /** * * @param cipherText * @return plainText */ public String decryptText(byte[] cipherText) { String plainText = null; try { /** * Initialize the cipher for decryption */ cipher.init(Cipher.DECRYPT_MODE, privateKey); /** * Perform decryption with method doFinal() */ byte[] plainBytes = cipher.doFinal(cipherText); /** * Convert encrypted text to string format */ plainText = new String(plainBytes); } catch (IllegalBlockSizeException ex) { System.out.println(ex); } catch (BadPaddingException ex) { System.out.println(ex); } catch (InvalidKeyException ex) { System.out.println(ex); } return plainText; } public static void main(String[] args) { RSAAlgorithm rsaAlgorithm = new RSAAlgorithm(); String textToEncrypt = &#34;RSA Algorithm&#34;; System.out.println(&#34;Text before Encryption: &#34; &#43; textToEncrypt); byte[] cipherText = rsaAlgorithm.encryptText(textToEncrypt); System.out.println(&#34;Cipher Text [bytes]: &#34; &#43; cipherText); String textDecrypted = rsaAlgorithm.decryptText(cipherText); System.out.println(&#34;Text after Decryption: &#34; &#43; textDecrypted); } }">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2011-09-20T16:13:00+05:30">
+    <meta property="article:modified_time" content="2011-09-20T16:13:00+05:30">
+    <meta property="article:tag" content="Encryption">
+    <meta property="article:tag" content="Rsa Algorithm">
+    <meta property="article:tag" content="Crypto">
+    <meta property="article:tag" content="Decryption">
+    <meta property="article:tag" content="Cryptography">
+    <meta property="article:tag" content="Java">
 
-    
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2011-09-20-java-rsa-algorithm/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -130,8 +272,8 @@ import java.security.InvalidKeyException; import java.security.KeyPair; import j
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -145,163 +287,174 @@ import java.security.InvalidKeyException; import java.security.KeyPair; import j
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2011-09-20T16:13:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2011-09-20T16:13:00&#43;05:30">
                 September 20, 2011
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               2-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="/categories/cryptography/">cryptography</a>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/cryptography/">Cryptography</a>
       <span class="separator">•</span>
-    <a href="/categories/java/">java</a></div>
+    <a href="/categories/java/">Java</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/encryption/">encryption</a>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/encryption/">Encryption</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/rsa-algorithm/">rsa algorithm</a>
+    <span class="tag">
+      <a href="/tags/rsa-algorithm/">Rsa Algorithm</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/crypto/">crypto</a>
+    <span class="tag">
+      <a href="/tags/crypto/">Crypto</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/decryption/">decryption</a>
+    <span class="tag">
+      <a href="/tags/decryption/">Decryption</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/cryptography/">cryptography</a>
+    <span class="tag">
+      <a href="/tags/cryptography/">Cryptography</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/java/">java</a></div>
+    <span class="tag">
+      <a href="/tags/java/">Java</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
         <blockquote>
-<p>RSA stands for Rivest, Shamir and Adleman who first publicly described it.</p>
-</blockquote>
+<p>RSA stands for Rivest, Shamir and Adleman who first publicly described it.</p></blockquote>
 <p><strong>RSAAlgorithm.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#f92672">import</span> java.security.InvalidKeyException<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> java.security.KeyPair<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> java.security.KeyPairGenerator<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> java.security.NoSuchAlgorithmException<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> java.security.PrivateKey<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> java.security.PublicKey<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> javax.crypto.BadPaddingException<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> javax.crypto.Cipher<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> javax.crypto.IllegalBlockSizeException<span style="color:#f92672">;</span>
-	<span style="color:#f92672">import</span> javax.crypto.NoSuchPaddingException<span style="color:#f92672">;</span>
-
-	<span style="color:#75715e">/**
-</span><span style="color:#75715e">	 *
-</span><span style="color:#75715e">	 * @author dhanoopbhaskar
-</span><span style="color:#75715e">	 */</span>
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RSAAlgorithm</span> <span style="color:#f92672">{</span>
-	   
-	    <span style="color:#66d9ef">private</span> KeyPairGenerator keyPairGenerator <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	    <span style="color:#66d9ef">private</span> PrivateKey privateKey <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	    <span style="color:#66d9ef">private</span> PublicKey publicKey <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	    Cipher cipher <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	   
-	    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">RSAAlgorithm</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-	        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Create RSA key pairs
-</span><span style="color:#75715e">	             * - private key
-</span><span style="color:#75715e">	             * - public key
-</span><span style="color:#75715e">	             */</span>
-	            keyPairGenerator <span style="color:#f92672">=</span> KeyPairGenerator<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;RSA&#34;</span><span style="color:#f92672">);</span>
-	            keyPairGenerator<span style="color:#f92672">.</span><span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span>512<span style="color:#f92672">);</span> <span style="color:#75715e">//512 is the key size
-</span><span style="color:#75715e"></span>	            KeyPair keyPair <span style="color:#f92672">=</span> keyPairGenerator<span style="color:#f92672">.</span><span style="color:#a6e22e">generateKeyPair</span><span style="color:#f92672">();</span>
-	            privateKey <span style="color:#f92672">=</span> keyPair<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrivate</span><span style="color:#f92672">();</span>
-	            publicKey <span style="color:#f92672">=</span> keyPair<span style="color:#f92672">.</span><span style="color:#a6e22e">getPublic</span><span style="color:#f92672">();</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Create an instance of cipher
-</span><span style="color:#75715e">	             */</span>
-	            cipher <span style="color:#f92672">=</span> Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;RSA&#34;</span><span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchPaddingException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchAlgorithmException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span>
-	    <span style="color:#f92672">}</span>
-	   
-	    <span style="color:#75715e">/**
-</span><span style="color:#75715e">	     *
-</span><span style="color:#75715e">	     * @param plainText
-</span><span style="color:#75715e">	     * @return cipherText
-</span><span style="color:#75715e">	     */</span>
-	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">encryptText</span><span style="color:#f92672">(</span>String plainText<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> cipherText <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Initialize the cipher for encryption
-</span><span style="color:#75715e">	             */</span>
-	            cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">ENCRYPT_MODE</span><span style="color:#f92672">,</span> publicKey<span style="color:#f92672">);</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Convert the text string to byte format
-</span><span style="color:#75715e">	             */</span>
-	            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> plainBytes <span style="color:#f92672">=</span> plainText<span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">();</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Perform encryption with method doFinal()
-</span><span style="color:#75715e">	             */</span>
-	            cipherText <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">(</span>plainBytes<span style="color:#f92672">);</span>           
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalBlockSizeException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>BadPaddingException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InvalidKeyException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span>
-	       
-	        <span style="color:#66d9ef">return</span> cipherText<span style="color:#f92672">;</span>
-	    <span style="color:#f92672">}</span>
-	   
-	    <span style="color:#75715e">/**
-</span><span style="color:#75715e">	     *
-</span><span style="color:#75715e">	     * @param cipherText
-</span><span style="color:#75715e">	     * @return plainText
-</span><span style="color:#75715e">	     */</span>
-	    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">decryptText</span><span style="color:#f92672">(</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> cipherText<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	        String plainText <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-	        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Initialize the cipher for decryption
-</span><span style="color:#75715e">	             */</span>
-	            cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>Cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">DECRYPT_MODE</span><span style="color:#f92672">,</span> privateKey<span style="color:#f92672">);</span>           
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Perform decryption with method doFinal()
-</span><span style="color:#75715e">	             */</span>
-	            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> plainBytes <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">(</span>cipherText<span style="color:#f92672">);</span>
-	            <span style="color:#75715e">/**
-</span><span style="color:#75715e">	             * Convert encrypted text to string format
-</span><span style="color:#75715e">	             */</span>
-	            plainText <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>plainBytes<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalBlockSizeException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>BadPaddingException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InvalidKeyException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
-	        <span style="color:#f92672">}</span>
-	       
-	        <span style="color:#66d9ef">return</span> plainText<span style="color:#f92672">;</span>
-	    <span style="color:#f92672">}</span>
-	   
-	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	        RSAAlgorithm rsaAlgorithm <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RSAAlgorithm<span style="color:#f92672">();</span>
-	        String textToEncrypt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;RSA Algorithm&#34;</span><span style="color:#f92672">;</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Text before Encryption: &#34;</span> <span style="color:#f92672">+</span> textToEncrypt<span style="color:#f92672">);</span>
-	        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> cipherText <span style="color:#f92672">=</span> rsaAlgorithm<span style="color:#f92672">.</span><span style="color:#a6e22e">encryptText</span><span style="color:#f92672">(</span>textToEncrypt<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cipher Text [bytes]: &#34;</span> <span style="color:#f92672">+</span> cipherText<span style="color:#f92672">);</span>       
-	        String textDecrypted <span style="color:#f92672">=</span> rsaAlgorithm<span style="color:#f92672">.</span><span style="color:#a6e22e">decryptText</span><span style="color:#f92672">(</span>cipherText<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Text after Decryption: &#34;</span> <span style="color:#f92672">+</span> textDecrypted<span style="color:#f92672">);</span>
-	    <span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.security.InvalidKeyException;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.security.KeyPair;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.security.KeyPairGenerator;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.security.NoSuchAlgorithmException;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.security.PrivateKey;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.security.PublicKey;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> javax.crypto.BadPaddingException;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> javax.crypto.Cipher;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> javax.crypto.IllegalBlockSizeException;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> javax.crypto.NoSuchPaddingException;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * @author dhanoopbhaskar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RSAAlgorithm</span> {
+</span></span><span style="display:flex;"><span>	   
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">private</span> KeyPairGenerator keyPairGenerator <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">private</span> PrivateKey privateKey <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">private</span> PublicKey publicKey <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>	    Cipher cipher <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>	   
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">RSAAlgorithm</span>() {
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>	            <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * Create RSA key pairs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * - private key
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * - public key
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             */</span>
+</span></span><span style="display:flex;"><span>	            keyPairGenerator <span style="color:#f92672">=</span> KeyPairGenerator.<span style="color:#a6e22e">getInstance</span>(<span style="color:#e6db74">&#34;RSA&#34;</span>);
+</span></span><span style="display:flex;"><span>	            keyPairGenerator.<span style="color:#a6e22e">initialize</span>(512); <span style="color:#75715e">//512 is the key size</span>
+</span></span><span style="display:flex;"><span>	            KeyPair keyPair <span style="color:#f92672">=</span> keyPairGenerator.<span style="color:#a6e22e">generateKeyPair</span>();
+</span></span><span style="display:flex;"><span>	            privateKey <span style="color:#f92672">=</span> keyPair.<span style="color:#a6e22e">getPrivate</span>();
+</span></span><span style="display:flex;"><span>	            publicKey <span style="color:#f92672">=</span> keyPair.<span style="color:#a6e22e">getPublic</span>();
+</span></span><span style="display:flex;"><span>	            <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * Create an instance of cipher
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             */</span>
+</span></span><span style="display:flex;"><span>	            cipher <span style="color:#f92672">=</span> Cipher.<span style="color:#a6e22e">getInstance</span>(<span style="color:#e6db74">&#34;RSA&#34;</span>);
+</span></span><span style="display:flex;"><span>	        } <span style="color:#66d9ef">catch</span> (NoSuchPaddingException ex) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(ex);
+</span></span><span style="display:flex;"><span>	        } <span style="color:#66d9ef">catch</span> (NoSuchAlgorithmException ex) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(ex);
+</span></span><span style="display:flex;"><span>	        }
+</span></span><span style="display:flex;"><span>	    }
+</span></span><span style="display:flex;"><span>	   
+</span></span><span style="display:flex;"><span>	    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	     *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	     * @param plainText
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	     * @return cipherText
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	     */</span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">encryptText</span>(String plainText) {
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> cipherText <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>	            <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * Initialize the cipher for encryption
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             */</span>
+</span></span><span style="display:flex;"><span>	            cipher.<span style="color:#a6e22e">init</span>(Cipher.<span style="color:#a6e22e">ENCRYPT_MODE</span>, publicKey);
+</span></span><span style="display:flex;"><span>	            <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * Convert the text string to byte format
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             */</span>
+</span></span><span style="display:flex;"><span>	            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> plainBytes <span style="color:#f92672">=</span> plainText.<span style="color:#a6e22e">getBytes</span>();
+</span></span><span style="display:flex;"><span>	            <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * Perform encryption with method doFinal()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             */</span>
+</span></span><span style="display:flex;"><span>	            cipherText <span style="color:#f92672">=</span> cipher.<span style="color:#a6e22e">doFinal</span>(plainBytes);           
+</span></span><span style="display:flex;"><span>	        } <span style="color:#66d9ef">catch</span> (IllegalBlockSizeException ex) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(ex);
+</span></span><span style="display:flex;"><span>	        } <span style="color:#66d9ef">catch</span> (BadPaddingException ex) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(ex);
+</span></span><span style="display:flex;"><span>	        } <span style="color:#66d9ef">catch</span> (InvalidKeyException ex) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(ex);
+</span></span><span style="display:flex;"><span>	        }
+</span></span><span style="display:flex;"><span>	       
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">return</span> cipherText;
+</span></span><span style="display:flex;"><span>	    }
+</span></span><span style="display:flex;"><span>	   
+</span></span><span style="display:flex;"><span>	    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	     *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	     * @param cipherText
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	     * @return plainText
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	     */</span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">decryptText</span>(<span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> cipherText) {
+</span></span><span style="display:flex;"><span>	        String plainText <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>	            <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * Initialize the cipher for decryption
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             */</span>
+</span></span><span style="display:flex;"><span>	            cipher.<span style="color:#a6e22e">init</span>(Cipher.<span style="color:#a6e22e">DECRYPT_MODE</span>, privateKey);           
+</span></span><span style="display:flex;"><span>	            <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * Perform decryption with method doFinal()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             */</span>
+</span></span><span style="display:flex;"><span>	            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> plainBytes <span style="color:#f92672">=</span> cipher.<span style="color:#a6e22e">doFinal</span>(cipherText);
+</span></span><span style="display:flex;"><span>	            <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             * Convert encrypted text to string format
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	             */</span>
+</span></span><span style="display:flex;"><span>	            plainText <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(plainBytes);
+</span></span><span style="display:flex;"><span>	        } <span style="color:#66d9ef">catch</span> (IllegalBlockSizeException ex) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(ex);
+</span></span><span style="display:flex;"><span>	        } <span style="color:#66d9ef">catch</span> (BadPaddingException ex) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(ex);
+</span></span><span style="display:flex;"><span>	        } <span style="color:#66d9ef">catch</span> (InvalidKeyException ex) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(ex);
+</span></span><span style="display:flex;"><span>	        }
+</span></span><span style="display:flex;"><span>	       
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">return</span> plainText;
+</span></span><span style="display:flex;"><span>	    }
+</span></span><span style="display:flex;"><span>	   
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>	        RSAAlgorithm rsaAlgorithm <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RSAAlgorithm();
+</span></span><span style="display:flex;"><span>	        String textToEncrypt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;RSA Algorithm&#34;</span>;
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Text before Encryption: &#34;</span> <span style="color:#f92672">+</span> textToEncrypt);
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> cipherText <span style="color:#f92672">=</span> rsaAlgorithm.<span style="color:#a6e22e">encryptText</span>(textToEncrypt);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Cipher Text [bytes]: &#34;</span> <span style="color:#f92672">+</span> cipherText);       
+</span></span><span style="display:flex;"><span>	        String textDecrypted <span style="color:#f92672">=</span> rsaAlgorithm.<span style="color:#a6e22e">decryptText</span>(cipherText);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Text after Decryption: &#34;</span> <span style="color:#f92672">+</span> textDecrypted);
+</span></span><span style="display:flex;"><span>	    }
+</span></span><span style="display:flex;"><span>	}</span></span></code></pre></div>
 
       </div>
 
@@ -313,72 +466,67 @@ import java.security.InvalidKeyException; import java.security.KeyPair; import j
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -388,6 +536,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

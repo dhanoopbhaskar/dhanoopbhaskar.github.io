@@ -4,25 +4,16 @@
     <title>Dockerfile on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/tags/dockerfile/</link>
     <description>Recent content in Dockerfile on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 07 May 2020 14:35:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/tags/dockerfile/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/tags/dockerfile/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ROS In Docker Container</title>
       <link>https://dhanoopbhaskar.github.io/posts/2020-05-07-ros-in-docker-container/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2020-05-07-ros-in-docker-container/</guid>
-      <description>ROS (Robot Operating System) - Documentation - http://wiki.ros.org/
-In this example I use docker image of ROS Melodic and a Dockerfile for creating the required docker container. Python3 (python3.7) is also installed in this example.
-Please refer https://docs.docker.com/get-started/ for more information on Dockers.
-  Pull the docker image for ROS Melodic
- docker pull ros:melodic    Creating the Dockerfile FROM ros:melodic MAINTAINER dhanoopbhaskar@gmail.com RUN apt-get update &amp;amp;&amp;amp; apt-get upgrade -y \ &amp;amp;&amp;amp; apt-get install -y software-properties-common \ &amp;amp;&amp;amp; add-apt-repository ppa:deadsnakes/ppa \ &amp;amp;&amp;amp; apt-get install -y python3.</description>
+      <description>&lt;p&gt;ROS (Robot Operating System) - Documentation - &lt;a href=&#34;http://wiki.ros.org/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://wiki.ros.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;In this example I use docker image of ROS Melodic and a Dockerfile for creating the required docker container. Python3 (python3.7) is also installed in this example.&lt;/p&gt;&#xA;&lt;p&gt;Please refer &lt;a href=&#34;https://docs.docker.com/get-started/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.docker.com/get-started/&lt;/a&gt; for more information on Dockers.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Pull the docker image for ROS Melodic&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt; docker pull ros:melodic&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Creating the Dockerfile&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt; FROM ros:melodic&#xA; MAINTAINER dhanoopbhaskar@gmail.com&#xA; RUN apt-get update &amp;amp;&amp;amp; apt-get upgrade -y \&#xA;     &amp;amp;&amp;amp; apt-get install -y software-properties-common \&#xA;     &amp;amp;&amp;amp; add-apt-repository ppa:deadsnakes/ppa \&#xA;     &amp;amp;&amp;amp; apt-get install -y python3.7&#xA;&#xA; RUN apt-get update &amp;amp;&amp;amp; apt-get install -y \&#xA;     python-pip \&#xA;     python3-pip \&#xA;     python3-all-dev&#xA;&#xA; RUN apt-get install -y \&#xA;     python3-rospkg*&#xA;&#xA; RUN apt-get update --fix-missing&#xA; RUN dpkg --configure -a&#xA; RUN apt-get install -f&#xA; RUN apt-get install -y \&#xA;     ros-melodic-desktop-full --fix-missing&#xA; RUN apt-get install -y python-catkin-tools&#xA;&#xA; RUN apt-get install --no-install-recommends --no-install-suggests -y \&#xA;     build-essential \&#xA;     cmake \    &#xA;     python3.7-dev \&#xA;     &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/*&#xA;&#xA; RUN python -m pip install --upgrade pip&#xA; RUN python2 -m pip install --upgrade pip&#xA; RUN python3 -m pip install --upgrade pip&#xA; RUN pip3 install --upgrade pip&#xA; RUN pip3 install --upgrade setuptools&#xA; RUN python3.7 -m pip install --upgrade pip&#xA; RUN python3.7 -m pip install --upgrade setuptools&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Now create the docker using this Dockerfile and run 😊 (Refer documentation for more information).&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

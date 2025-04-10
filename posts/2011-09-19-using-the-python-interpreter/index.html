@@ -1,125 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="Invoking the Interpreter
-The Python interpreter is usually installed as /usr/local/bin/python3.2 on those machines where it is available; putting /usr/local/bin in your Unix shell’s search path makes it possible to start it by typing the command
-python3.2  to the shell. Since the choice of the directory where the interpreter lives is an installation option, other places are possible; check with your local Python guru or system administrator. (E.g., /usr/local/python is a popular alternative location.">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Using the Python Interpreter"/>
-<meta name="twitter:description" content="Invoking the Interpreter
-The Python interpreter is usually installed as /usr/local/bin/python3.2 on those machines where it is available; putting /usr/local/bin in your Unix shell’s search path makes it possible to start it by typing the command
-python3.2  to the shell. Since the choice of the directory where the interpreter lives is an installation option, other places are possible; check with your local Python guru or system administrator. (E.g., /usr/local/python is a popular alternative location."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="Using the Python Interpreter" />
-<meta property="og:description" content="Invoking the Interpreter
-The Python interpreter is usually installed as /usr/local/bin/python3.2 on those machines where it is available; putting /usr/local/bin in your Unix shell’s search path makes it possible to start it by typing the command
-python3.2  to the shell. Since the choice of the directory where the interpreter lives is an installation option, other places are possible; check with your local Python guru or system administrator. (E.g., /usr/local/python is a popular alternative location." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-09-19-using-the-python-interpreter/" />
-<meta property="article:published_time" content="2011-09-19T15:57:00+05:30" />
-<meta property="article:modified_time" content="2011-09-19T15:57:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   Using the Python Interpreter · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2011-09-19-using-the-python-interpreter/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
-      
-      
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
 
-    
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="Invoking the Interpreter
+The Python interpreter is usually installed as /usr/local/bin/python3.2 on those machines where it is available; putting /usr/local/bin in your Unix shell’s search path makes it possible to start it by typing the command
+python3.2
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
+to the shell. Since the choice of the directory where the interpreter lives is an installation option, other places are possible; check with your local Python guru or system administrator. (E.g., /usr/local/python is a popular alternative location.)
+On Windows machines, the Python installation is usually placed in C:\Python32, though you can change this when you’re running the installer. To add this directory to your path, you can type the following command into the command prompt in a DOS box:">
+<meta name="keywords" content="">
 
-    
 
-    
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Using the Python Interpreter">
+  <meta name="twitter:description" content="Invoking the Interpreter
+The Python interpreter is usually installed as /usr/local/bin/python3.2 on those machines where it is available; putting /usr/local/bin in your Unix shell’s search path makes it possible to start it by typing the command
+python3.2 to the shell. Since the choice of the directory where the interpreter lives is an installation option, other places are possible; check with your local Python guru or system administrator. (E.g., /usr/local/python is a popular alternative location.) On Windows machines, the Python installation is usually placed in C:\Python32, though you can change this when you’re running the installer. To add this directory to your path, you can type the following command into the command prompt in a DOS box:">
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-09-19-using-the-python-interpreter/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Using the Python Interpreter">
+  <meta property="og:description" content="Invoking the Interpreter
+The Python interpreter is usually installed as /usr/local/bin/python3.2 on those machines where it is available; putting /usr/local/bin in your Unix shell’s search path makes it possible to start it by typing the command
+python3.2 to the shell. Since the choice of the directory where the interpreter lives is an installation option, other places are possible; check with your local Python guru or system administrator. (E.g., /usr/local/python is a popular alternative location.) On Windows machines, the Python installation is usually placed in C:\Python32, though you can change this when you’re running the installer. To add this directory to your path, you can type the following command into the command prompt in a DOS box:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2011-09-19T15:57:00+05:30">
+    <meta property="article:modified_time" content="2011-09-19T15:57:00+05:30">
+    <meta property="article:tag" content="Python">
 
-    
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2011-09-19-using-the-python-interpreter/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -130,8 +153,8 @@ python3.2  to the shell. Since the choice of the directory where the interpreter
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -145,29 +168,31 @@ python3.2  to the shell. Since the choice of the directory where the interpreter
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2011-09-19T15:57:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2011-09-19T15:57:00&#43;05:30">
                 September 19, 2011
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               8-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="/categories/python/">python</a></div>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/python/">Python</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/python/">python</a></div>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/python/">Python</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
         <p><strong>Invoking the Interpreter</strong></p>
 <p>The Python interpreter is usually installed as <code>/usr/local/bin/python3.2</code> on those machines where it is available; putting <code>/usr/local/bin</code> in your Unix shell’s search path makes it possible to start it by typing the command</p>
@@ -178,14 +203,26 @@ On Windows machines, the Python installation is usually placed in <code>C:\Pytho
 <pre><code>set path=%path%;C:\python32
 </code></pre>
 <p>Typing an end-of-file character (Control-D on Unix, Control-Z on Windows) at the primary prompt causes the interpreter to exit with a zero exit status. If that doesn’t work, you can exit the interpreter by typing the following command: quit().
-The interpreter’s line-editing features usually aren’t very sophisticated. On Unix, whoever installed the interpreter may have enabled support for the GNU readline library, which adds more elaborate interactive editing and history features. Perhaps the quickest check to see whether command line editing is supported is typing Control-P to the first Python prompt you get. If it beeps, you have command line editing; see Appendix <a href="http://docs.python.org/py3k/tutorial/interactive.html#tut-interacting">Interactive Input Editing and History Substitution</a> for an introduction to the keys. If nothing appears to happen, or if <code>^P</code> is echoed, command line editing isn’t available; you’ll only be able to use backspace to remove characters from the current line.</p>
+The interpreter’s line-editing features usually aren’t very sophisticated. On Unix, whoever installed the interpreter may have enabled support for the GNU readline library, which adds more elaborate interactive editing and history features. Perhaps the quickest check to see whether command line editing is supported is typing Control-P to the first Python prompt you get. If it beeps, you have command line editing; see Appendix <a href="http://docs.python.org/py3k/tutorial/interactive.html#tut-interacting"  class="external-link" target="_blank" rel="noopener">Interactive Input Editing and History Substitution</a> for an introduction to the keys. If nothing appears to happen, or if <code>^P</code> is echoed, command line editing isn’t available; you’ll only be able to use backspace to remove characters from the current line.</p>
 <p>The interpreter operates somewhat like the Unix shell: when called with standard input connected to a tty device, it reads and executes commands interactively; when called with a file name argument or with a file as standard input, it reads and executes a script from that file.</p>
-<p>A second way of starting the interpreter is python -c command [arg] &hellip;, which executes the statement(s) in command, analogous to the shell’s <a href="http://docs.python.org/py3k/using/cmdline.html#cmdoption-c">-c</a> option. Since Python statements often contain spaces or other characters that are special to the shell, it is usually advised to quote command in its entirety with single quotes.
+<p>A second way of starting the interpreter is python -c command [arg] &hellip;, which executes the statement(s) in command, analogous to the shell’s <a href="http://docs.python.org/py3k/using/cmdline.html#cmdoption-c"  class="external-link" target="_blank" rel="noopener">-c</a> option. Since Python statements often contain spaces or other characters that are special to the shell, it is usually advised to quote command in its entirety with single quotes.
 Some Python modules are also useful as scripts. These can be invoked using python -m module [arg] &hellip;, which executes the source file for module as if you had spelled out its full name on the command line.
-When a script file is used, it is sometimes useful to be able to run the script and enter interactive mode afterwards. This can be done by passing <a href="http://docs.python.org/py3k/using/cmdline.html#cmdoption-i">-i</a> before the script. (This does not work if the script is read from standard input, for the same reason as explained in the previous paragraph.)</p>
-<h3 id="argument-passing">Argument Passing</h3>
-<p>When known to the interpreter, the script name and additional arguments thereafter are turned into a list of strings and assigned to the argv variable in the sys module. You can access this list by executing import sys. The length of the list is at least one; when no script and no arguments are given, sys.argv[0] is an empty string. When the script name is given as &lsquo;-&rsquo; (meaning standard input), sys.argv[0] is set to &lsquo;-'. When -c command is used, sys.argv[0] is set to &lsquo;-c&rsquo;. When <a href="http://docs.python.org/py3k/using/cmdline.html#cmdoption-m">-m</a> module is used, sys.argv[0] is set to the full name of the located module. Options found after -c command or -m module are not consumed by the Python interpreter’s option processing but left in sys.argv for the command or module to handle.</p>
-<h3 id="interactive-mode">Interactive Mode</h3>
+When a script file is used, it is sometimes useful to be able to run the script and enter interactive mode afterwards. This can be done by passing <a href="http://docs.python.org/py3k/using/cmdline.html#cmdoption-i"  class="external-link" target="_blank" rel="noopener">-i</a> before the script. (This does not work if the script is read from standard input, for the same reason as explained in the previous paragraph.)</p>
+<h3 id="argument-passing">
+  Argument Passing
+  <a class="heading-link" href="#argument-passing">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>When known to the interpreter, the script name and additional arguments thereafter are turned into a list of strings and assigned to the argv variable in the sys module. You can access this list by executing import sys. The length of the list is at least one; when no script and no arguments are given, sys.argv[0] is an empty string. When the script name is given as &lsquo;-&rsquo; (meaning standard input), sys.argv[0] is set to &lsquo;-&rsquo;. When -c command is used, sys.argv[0] is set to &lsquo;-c&rsquo;. When <a href="http://docs.python.org/py3k/using/cmdline.html#cmdoption-m"  class="external-link" target="_blank" rel="noopener">-m</a> module is used, sys.argv[0] is set to the full name of the located module. Options found after -c command or -m module are not consumed by the Python interpreter’s option processing but left in sys.argv for the command or module to handle.</p>
+<h3 id="interactive-mode">
+  Interactive Mode
+  <a class="heading-link" href="#interactive-mode">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
 <p>When commands are read from a tty, the interpreter is said to be in interactive mode. In this mode it prompts for the next command with the primary prompt, usually three greater-than signs <code>&gt;&gt;&gt;</code>; for continuation lines it prompts with the secondary prompt, by default three dots <code>...</code>. The interpreter prints a welcome message stating its version number and a copyright notice before printing the first prompt:</p>
 <pre><code>$ python3.2
 Python 3.2 (py3k, Sep 12 2007, 12:21:02)
@@ -193,38 +230,68 @@ Python 3.2 (py3k, Sep 12 2007, 12:21:02)
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 &gt;&gt;&gt;
 </code></pre>
-<p>Continuation lines are needed when entering a multi-line construct. As an example, take a look at this <a href="http://docs.python.org/py3k/reference/compound_stmts.html#if">if</a> statement:</p>
+<p>Continuation lines are needed when entering a multi-line construct. As an example, take a look at this <a href="http://docs.python.org/py3k/reference/compound_stmts.html#if"  class="external-link" target="_blank" rel="noopener">if</a> statement:</p>
 <pre><code>&gt;&gt;&gt; the_world_is_flat = 1
 &gt;&gt;&gt; if the_world_is_flat:
 ...     print(&quot;Be careful not to fall off!&quot;)
 ...
 Be careful not to fall off!
 </code></pre>
-<h3 id="the-interpreter-and-its-environment">The Interpreter and Its Environment</h3>
-<h4 id="error-handling">Error Handling</h4>
-<p>When an error occurs, the interpreter prints an error message and a stack trace. In interactive mode, it then returns to the primary prompt; when input came from a file, it exits with a nonzero exit status after printing the stack trace. (Exceptions handled by an <a href="http://docs.python.org/py3k/reference/compound_stmts.html#except">except</a> clause in a <a href="http://docs.python.org/py3k/reference/compound_stmts.html#try">try</a> statement are not errors in this context.) Some errors are unconditionally fatal and cause an exit with a nonzero exit; this applies to internal inconsistencies and some cases of running out of memory. All error messages are written to the standard error stream; normal output from executed commands is written to standard output.
-Typing the interrupt character (usually Control-C or DEL) to the primary or secondary prompt cancels the input and returns to the primary prompt.  Typing an interrupt while a command is executing raises the <a href="http://docs.python.org/py3k/library/exceptions.html#KeyboardInterrupt">KeyboardInterrupt</a> exception, which may be handled by a try statement.</p>
-<h4 id="executable-python-scripts">Executable Python Scripts</h4>
+<h3 id="the-interpreter-and-its-environment">
+  The Interpreter and Its Environment
+  <a class="heading-link" href="#the-interpreter-and-its-environment">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="error-handling">
+  Error Handling
+  <a class="heading-link" href="#error-handling">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>When an error occurs, the interpreter prints an error message and a stack trace. In interactive mode, it then returns to the primary prompt; when input came from a file, it exits with a nonzero exit status after printing the stack trace. (Exceptions handled by an <a href="http://docs.python.org/py3k/reference/compound_stmts.html#except"  class="external-link" target="_blank" rel="noopener">except</a> clause in a <a href="http://docs.python.org/py3k/reference/compound_stmts.html#try"  class="external-link" target="_blank" rel="noopener">try</a> statement are not errors in this context.) Some errors are unconditionally fatal and cause an exit with a nonzero exit; this applies to internal inconsistencies and some cases of running out of memory. All error messages are written to the standard error stream; normal output from executed commands is written to standard output.
+Typing the interrupt character (usually Control-C or DEL) to the primary or secondary prompt cancels the input and returns to the primary prompt.  Typing an interrupt while a command is executing raises the <a href="http://docs.python.org/py3k/library/exceptions.html#KeyboardInterrupt"  class="external-link" target="_blank" rel="noopener">KeyboardInterrupt</a> exception, which may be handled by a try statement.</p>
+<h4 id="executable-python-scripts">
+  Executable Python Scripts
+  <a class="heading-link" href="#executable-python-scripts">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
 <p>On BSD’ish Unix systems, Python scripts can be made directly executable, like shell scripts, by putting the line</p>
 <pre><code>#! /usr/bin/env python3.2
 </code></pre>
-<p>(assuming that the interpreter is on the user’s PATH) at the beginning of the script and giving the file an executable mode. The #! must be the first two characters of the file. On some platforms, this first line must end with a Unix-style line ending ('\n&rsquo;), not a Windows ('\r\n&rsquo;) line ending. Note that the hash, or pound, character, &lsquo;#', is used to start a comment in Python.
+<p>(assuming that the interpreter is on the user’s PATH) at the beginning of the script and giving the file an executable mode. The #! must be the first two characters of the file. On some platforms, this first line must end with a Unix-style line ending (&rsquo;\n&rsquo;), not a Windows (&rsquo;\r\n&rsquo;) line ending. Note that the hash, or pound, character, &lsquo;#&rsquo;, is used to start a comment in Python.
 The script can be given an executable mode, or permission, using the <strong>chmod</strong> command:</p>
 <pre><code>$ chmod +x myscript.py
 </code></pre>
 <p>On Windows systems, there is no notion of an “executable mode”. The Python installer automatically associates .py files with python.exe so that a double-click on a Python file will run it as a script. The extension can also be .pyw, in that case, the console window that normally appears is suppressed.</p>
-<h4 id="source-code-encoding">Source Code Encoding</h4>
+<h4 id="source-code-encoding">
+  Source Code Encoding
+  <a class="heading-link" href="#source-code-encoding">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
 <p>By default, Python source files are treated as encoded in UTF-8. In that encoding, characters of most languages in the world can be used simultaneously in string literals, identifiers and comments — although the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow. To display all these characters properly, your editor must recognize that the file is UTF-8, and it must use a font that supports all the characters in the file.
 It is also possible to specify a different encoding for source files. In order to do this, put one more special comment line right after the #! line to define the source file encoding:</p>
 <pre><code># -*- coding: encoding -*-
 </code></pre>
-<p>With that declaration, everything in the source file will be treated as having the encoding encoding instead of UTF-8. The list of possible encodings can be found in the Python Library Reference, in the section on <a href="http://docs.python.org/py3k/library/codecs.html#module-codecs">codecs</a>.</p>
+<p>With that declaration, everything in the source file will be treated as having the encoding encoding instead of UTF-8. The list of possible encodings can be found in the Python Library Reference, in the section on <a href="http://docs.python.org/py3k/library/codecs.html#module-codecs"  class="external-link" target="_blank" rel="noopener">codecs</a>.</p>
 <p>For example, if your editor of choice does not support UTF-8 encoded files and insists on using some other encoding, say Windows-1252, you can write:</p>
 <pre><code># -*- coding: cp-1252 -*-
 </code></pre>
 <p>and still use all characters in the Windows-1252 character set in the source files. The special encoding comment must be in the first or second line within the file.</p>
-<h4 id="the-interactive-startup-file">The Interactive Startup File</h4>
-<p>When you use Python interactively, it is frequently handy to have some standard commands executed every time the interpreter is started. You can do this by setting an environment variable named <a href="http://docs.python.org/py3k/using/cmdline.html#envvar-PYTHONSTARTUP">PYTHONSTARTUP</a> to the name of a file containing your start-up commands. This is similar to the .profile feature of the Unix shells.
+<h4 id="the-interactive-startup-file">
+  The Interactive Startup File
+  <a class="heading-link" href="#the-interactive-startup-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>When you use Python interactively, it is frequently handy to have some standard commands executed every time the interpreter is started. You can do this by setting an environment variable named <a href="http://docs.python.org/py3k/using/cmdline.html#envvar-PYTHONSTARTUP"  class="external-link" target="_blank" rel="noopener">PYTHONSTARTUP</a> to the name of a file containing your start-up commands. This is similar to the .profile feature of the Unix shells.
 This file is only read in interactive sessions, not when Python reads commands from a script, and not when /dev/tty is given as the explicit source of commands (which otherwise behaves like an interactive session). It is executed in the same namespace where interactive commands are executed, so that objects that it defines or imports can be used without qualification in the interactive session. You can also change the prompts sys.ps1 and sys.ps2 in this file.
 If you want to read an additional start-up file from the current directory, you can program this in the global start-up file using code like if <code>os.path.isfile('.pythonrc.py'): exec(open('.pythonrc.py').read())</code>. If you want to use the startup file in a script, you must do this explicitly in the script:</p>
 <pre><code>import os
@@ -232,15 +299,21 @@ filename = os.environ.get('PYTHONSTARTUP')
 if filename and os.path.isfile(filename):
     exec(open(filename).read())
 </code></pre>
-<h4 id="the-customization-modules">The Customization Modules</h4>
+<h4 id="the-customization-modules">
+  The Customization Modules
+  <a class="heading-link" href="#the-customization-modules">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
 <p>Python provides two hooks to let you customize it: sitecustomize and usercustomize. To see how it works, you need first to find the location of your user site-packages directory. Start Python and run this code:</p>
 <pre><code>&gt;&gt;&gt; import site
 &gt;&gt;&gt; site.getusersitepackages()
 '/home/user/.local/lib/python3.2/site-packages'
 </code></pre>
-<p>Now you can create a file named usercustomize.py in that directory and put anything you want in it. It will affect every invocation of Python, unless it is started with the <a href="http://docs.python.org/py3k/using/cmdline.html#cmdoption-s">-s</a> option to disable the automatic import.
+<p>Now you can create a file named usercustomize.py in that directory and put anything you want in it. It will affect every invocation of Python, unless it is started with the <a href="http://docs.python.org/py3k/using/cmdline.html#cmdoption-s"  class="external-link" target="_blank" rel="noopener">-s</a> option to disable the automatic import.
 sitecustomize works in the same way, but is typically created by an administrator of the computer in the global site-packages directory, and is imported before usercustomize.</p>
-<p>Courtesy: <a href="http://docs.python.org/py3k/tutorial/interpreter.html">Documentation in Python Official Website</a></p>
+<p>Courtesy: <a href="http://docs.python.org/py3k/tutorial/interpreter.html"  class="external-link" target="_blank" rel="noopener">Documentation in Python Official Website</a></p>
 
       </div>
 
@@ -252,72 +325,67 @@ sitecustomize works in the same way, but is typically created by an administrato
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -327,6 +395,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

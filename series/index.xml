@@ -4,11 +4,8 @@
     <title>Series on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/series/</link>
     <description>Recent content in Series on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/series/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

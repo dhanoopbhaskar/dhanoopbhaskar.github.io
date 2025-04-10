@@ -1,125 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="Read about DNS here&hellip;
-DNS Lookup - Implementation in C
-/**dnsclient.c**/ #include&#34;stdio.h&#34;  #include&#34;stdlib.h&#34;  #include&#34;sys/types.h&#34;  #include&#34;sys/socket.h&#34;  #include&#34;string.h&#34;  #include&#34;netinet/in.h&#34;  #include&#34;netdb.h&#34; #include&#34;arpa/inet.h&#34; #define BUF_SIZE 512  #define SERVER &#34;8.8.8.8&#34;  #define PORT 53  #define WIDTH 16  int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { .">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="DNS Lookup - Implementation in C"/>
-<meta name="twitter:description" content="Read about DNS here&hellip;
-DNS Lookup - Implementation in C
-/**dnsclient.c**/ #include&#34;stdio.h&#34;  #include&#34;stdlib.h&#34;  #include&#34;sys/types.h&#34;  #include&#34;sys/socket.h&#34;  #include&#34;string.h&#34;  #include&#34;netinet/in.h&#34;  #include&#34;netdb.h&#34; #include&#34;arpa/inet.h&#34; #define BUF_SIZE 512  #define SERVER &#34;8.8.8.8&#34;  #define PORT 53  #define WIDTH 16  int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { ."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="DNS Lookup - Implementation in C" />
-<meta property="og:description" content="Read about DNS here&hellip;
-DNS Lookup - Implementation in C
-/**dnsclient.c**/ #include&#34;stdio.h&#34;  #include&#34;stdlib.h&#34;  #include&#34;sys/types.h&#34;  #include&#34;sys/socket.h&#34;  #include&#34;string.h&#34;  #include&#34;netinet/in.h&#34;  #include&#34;netdb.h&#34; #include&#34;arpa/inet.h&#34; #define BUF_SIZE 512  #define SERVER &#34;8.8.8.8&#34;  #define PORT 53  #define WIDTH 16  int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { ." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2016-02-14-dns-lookup-implementation-in-c/" />
-<meta property="article:published_time" content="2016-02-14T01:23:00+05:30" />
-<meta property="article:modified_time" content="2016-02-14T01:23:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   DNS Lookup - Implementation in C · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2016-02-14-dns-lookup-implementation-in-c/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="Read about DNS
+here&hellip;
+DNS Lookup - Implementation in C
+     
+
+    /**dnsclient.c**/
+    #include&#34;stdio.h&#34;  
+    #include&#34;stdlib.h&#34;  
+    #include&#34;sys/types.h&#34;  
+    #include&#34;sys/socket.h&#34;  
+    #include&#34;string.h&#34;  
+    #include&#34;netinet/in.h&#34;  
+    #include&#34;netdb.h&#34;
+    #include&#34;arpa/inet.h&#34;
       
+    #define BUF_SIZE 512
+    #define SERVER &#34;8.8.8.8&#34;
+    #define PORT 53
+    #define WIDTH 16
       
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
+    int createSocket();
+    void createRequest(char * url);
+    void hexdump (char *desc, void *addr, int len);
+    void lookUp();
 
-    
+    struct query {
+        uint16_t length;
+        char * url;
+        unsigned char request[BUF_SIZE];
+        uint16_t reqType;
+    };
 
-    
-      
+    struct query dnsQuery = {
+                    .length = 12,
+                    .url = &#34;&#34;,
+                    .reqType = 0x01,
+                    .request = { 0xDB, 0x42, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                };
+
+    int main(int argc, char** argv) {
+        char * url;
+
+        if (argc != 2) {
+            fprintf(stderr,&#34;usage: %s hostnameToResolve\n&#34;, argv[0]);
+            exit(1);
+        }
+
+        url = argv[1];
+            
+        createRequest(url);
+        lookUp();
+    }
+
+
+
+    int createSocket() {
+        int sockfd;
+
+        sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+        if (sockfd &lt; 0) {  
+            printf(&#34;Error creating socket!\n&#34;);  
+            exit(1);  
+        }  
+        //printf(&#34;Socket created...\n&#34;);
+
+        return sockfd;
+    }
+
+    void createRequest(char * url) {
+        char * word;
+        int i;  
+        printf(&#34;Asking DNS server %s about %s\n&#34;, SERVER, url);
+        dnsQuery.url = strdup(url);
+        dnsQuery.reqType = 0x01;
+
+        word = strtok(url, &#34;.&#34;);
+        while (word) {
+            printf(&#34;parsing hostname: \&#34;%s\&#34; is %d characters\n&#34;, word, strlen(word));
+            dnsQuery.request[dnsQuery.length&#43;&#43;] = strlen(word);
+            for (i = 0; i &lt; strlen(word); i&#43;&#43;) {
+                dnsQuery.request[dnsQuery.length&#43;&#43;] = word[i];
+            }
+            word = strtok(NULL, &#34;.&#34;);
+        }
+
+        dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x00; // End of the host name
+        dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x00; // 0x0001 - Query is a Type A query (host address)
+        dnsQuery.request[dnsQuery.length&#43;&#43;] = dnsQuery.reqType;
+        dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x00; // 0x0001 - Query is class IN (Internet address)
+        dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x01;
+    }
+
+
+    // http://stackoverflow.com/questions/7775991/how-to-get-hexdump-of-a-structure-data
+    void hexdump (char *desc, void *addr, int len) {
+        int i;
+        unsigned char buff[17];
+        unsigned char *pc = addr;
+
+        // Output description if given.
+        if (desc != NULL)
+            printf (&#34;%s:\n&#34;, desc);
+
+        // Process every byte in the data.
+        for (i = 0; i &lt; len; i&#43;&#43;) {
+            // Multiple of 16 means new line (with line offset).
+
+            if ((i % 16) == 0) {
+                // Just don&#39;t print ASCII for the zeroth line.
+                if (i != 0)
+                    printf (&#34;  %s\n&#34;, buff);
+
+                // Output the offset.
+                printf (&#34;  %04x &#34;, i);
+            }
+
+            // Now the hex code for the specific character.
+            printf (&#34; %02x&#34;, pc[i]);
+
+            // And store a printable ASCII character for later.
+            if ((pc[i] &lt; 0x20) || (pc[i] &gt; 0x7e))
+                buff[i % 16] = &#39;.&#39;;
+            else
+                buff[i % 16] = pc[i];
+            buff[(i % 16) &#43; 1] = &#39;\0&#39;;
+        }
+
+        // Pad out last line if not exactly 16 characters.
+        while ((i % 16) != 0) {
+            printf (&#34;   &#34;);
+            i&#43;&#43;;
+        }
+
+        // And print the final ASCII bit.
+        printf (&#34;  %s\n&#34;, buff);
+    }
+
+
+    void lookUp() {
+        struct sockaddr_in addr;
+        int socket;
+        int ret, rcode, size, i;
+        int ip = 0, dom = 0;
+        int length;
+        unsigned char buffer[BUF_SIZE];
+        unsigned char tempBuf[3];
+        uint16_t QDCOUNT; //No. of items in Question Section
+        uint16_t ANCOUNT; //No. of items in Answer Section
+        uint16_t NSCOUNT; //No. of items in Authority Section
+        uint16_t ARCOUNT; //No. of items in Additional Section
+        uint16_t QCLASS; //Specifies the class of the query
+        uint16_t ATYPE; //Specifies the meaning of the data in the RDATA field
+        uint16_t ACLASS; //Specifies the class of the data in the RDATA field
+        uint32_t TTL; //The number of seconds the results can be cached
+        uint16_t RDLENGTH; //The length of the RDATA field
+        uint16_t MSGID;
+
+        socket = createSocket();
+
+        memset(&amp;addr, 0, sizeof(addr));  
+        addr.sin_family = AF_INET;  
+        addr.sin_addr.s_addr = inet_addr(SERVER);
+        addr.sin_port = htons(PORT);
+        size = sizeof(addr);
+
+        hexdump(&#34;sending packet&#34;, &amp;dnsQuery.request, dnsQuery.length);
+        ret = sendto(socket, dnsQuery.request, dnsQuery.length, 0, (struct sockaddr*)&amp;addr, size);
+        if (ret &lt; 0) {
+            printf(&#34;Error Sending Request&#34;);
+            exit(1);        
+        }
+        //printf(&#34;Sent\n&#34;);
+
+        memset(&amp;buffer, 0, BUF_SIZE);
+        ret = recvfrom(socket, buffer, BUF_SIZE, 0, (struct sockaddr*)&amp;addr, &amp;size);
+        if (ret &lt; 0) {
+            printf(&#34;Error Receiving Response&#34;);
+            exit(1);
+        }   
+            
+        hexdump(&#34;received packet&#34;, &amp;buffer, ret);
+
+        close(socket);
+
+        rcode = (buffer[3] &amp; 0x0F);
+
+        //tempBuf[0] = buffer[4];
+        //tempBuf[1] = buffer[5];
+        //tempBuf[2] = &#39;\0&#39;;
+        
+        //printf(&#34;%0x %0x %0x %0x\n&#34;, buffer[4], buffer[5], tempBuf[0], tempBuf[1]);
+
+        //QDCOUNT = (uint16_t) strtol(tempBuf, NULL, 16);
+        QDCOUNT = (uint16_t)  buffer[4] * 0x100 &#43; buffer[5];
+        printf(&#34;entries in question section: %u\n&#34;, QDCOUNT);
+        ANCOUNT = (uint16_t)  buffer[6] * 0x100 &#43; buffer[7];
+        printf(&#34;records in answer section: %u\n&#34;, ANCOUNT);
+        NSCOUNT = (uint16_t)  buffer[8] * 0x100 &#43; buffer[9];
+        printf(&#34;name server resource record count: %u\n&#34;, NSCOUNT);
+        ARCOUNT = (uint16_t)  buffer[10] * 0x100 &#43; buffer[11];
+        printf(&#34;additional records count: %u\n&#34;, ARCOUNT);
+
+        printf(&#34;query type: %u\n&#34;, dnsQuery.reqType);
+        QCLASS = (uint16_t) dnsQuery.request[dnsQuery.length - 2] * 0x100 &#43; dnsQuery.request[dnsQuery.length - 1];
+        printf(&#34;query class: %u\n&#34;, QCLASS);
+        length = dnsQuery.length &#43; 1;    // to skip 0xc00c
+        ATYPE = (uint16_t) buffer[length &#43; 1] * 0x100 &#43; buffer[length &#43; 2];
+        printf(&#34;answer type: %u\n&#34;, ATYPE);
+        ACLASS = (uint16_t) buffer[length &#43; 3] * 0x100 &#43; buffer[length &#43; 4];
+        printf(&#34;answer class: %u\n&#34;, ACLASS);
+        TTL = (uint32_t) buffer[length &#43; 5] * 0x1000000 &#43; buffer[length &#43; 6] * 0x10000 &#43; buffer[length &#43; 7] * 0x100 &#43; buffer[length &#43; 8];
+        printf(&#34;seconds to cache: %u\n&#34;, TTL);
+        RDLENGTH = (uint16_t) buffer[length &#43; 9] * 0x100 &#43; buffer[length &#43; 10];
+        printf(&#34;bytes in answer: %u\n&#34;, RDLENGTH);
+        MSGID = (uint16_t) buffer[0] * 0x100 &#43; buffer[1];
+        printf(&#34;answer msg id: %u\n&#34;, MSGID);   
         
         
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
 
-    
+        if (rcode == 2) {
+            printf(&#34;nameserver %s returned SERVFAIL:\n&#34;, SERVER);
+            printf(&#34;  the name server was unable to process this query due to a\n  problem with the name server.\n&#34;);
+            exit(1);
+        } else if (rcode == 3) {
+            printf(&#34;nameserver %s returned NXDOMAIN for %s:\n&#34;, SERVER, dnsQuery.url);
+            printf(&#34;  the domain name referenced in the query does not exist\n&#34;);
+            exit(1);
+        }
 
-    
+        /* search for and print IPv4 addresses */
+        if (dnsQuery.reqType == 0x01) {
+            printf(&#34;DNS server&#39;s answer is: (type#=%u):&#34;, ATYPE);
+            //printf(&#34;IPv4 address(es) for %s:\n&#34;, dnsQuery.url);
+            for (i = 0 ; i &lt; ret ; i&#43;&#43;) {
+                if (buffer[i] == 0xC0 &amp;&amp; buffer[i&#43;3] == 0x01) {
+                    ip&#43;&#43;; i &#43;= 12; /* ! &#43;= buf[i&#43;1]; */
+                    printf(&#34; %u.%u.%u.%u\n&#34;, buffer[i], buffer[i&#43;1], buffer[i&#43;2], buffer[i&#43;3]);
+                }
+            }
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+            if (!ip) {
+                printf(&#34;  No IPv4 address found in the DNS response!\n&#34;);
+                exit(1);
+            }
+        }
+    }
+Output">
+<meta name="keywords" content="">
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-    
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DNS Lookup - Implementation in C">
+  <meta name="twitter:description" content="Read about DNS here…
+DNS Lookup - Implementation in C
+/**dnsclient.c**/ #include&#34;stdio.h&#34; #include&#34;stdlib.h&#34; #include&#34;sys/types.h&#34; #include&#34;sys/socket.h&#34; #include&#34;string.h&#34; #include&#34;netinet/in.h&#34; #include&#34;netdb.h&#34; #include&#34;arpa/inet.h&#34; #define BUF_SIZE 512 #define SERVER &#34;8.8.8.8&#34; #define PORT 53 #define WIDTH 16 int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { .length = 12, .url = &#34;&#34;, .reqType = 0x01, .request = { 0xDB, 0x42, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 } }; int main(int argc, char** argv) { char * url; if (argc != 2) { fprintf(stderr,&#34;usage: %s hostnameToResolve\n&#34;, argv[0]); exit(1); } url = argv[1]; createRequest(url); lookUp(); } int createSocket() { int sockfd; sockfd = socket(AF_INET, SOCK_DGRAM, 0); if (sockfd &lt; 0) { printf(&#34;Error creating socket!\n&#34;); exit(1); } //printf(&#34;Socket created...\n&#34;); return sockfd; } void createRequest(char * url) { char * word; int i; printf(&#34;Asking DNS server %s about %s\n&#34;, SERVER, url); dnsQuery.url = strdup(url); dnsQuery.reqType = 0x01; word = strtok(url, &#34;.&#34;); while (word) { printf(&#34;parsing hostname: \&#34;%s\&#34; is %d characters\n&#34;, word, strlen(word)); dnsQuery.request[dnsQuery.length&#43;&#43;] = strlen(word); for (i = 0; i &lt; strlen(word); i&#43;&#43;) { dnsQuery.request[dnsQuery.length&#43;&#43;] = word[i]; } word = strtok(NULL, &#34;.&#34;); } dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x00; // End of the host name dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x00; // 0x0001 - Query is a Type A query (host address) dnsQuery.request[dnsQuery.length&#43;&#43;] = dnsQuery.reqType; dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x00; // 0x0001 - Query is class IN (Internet address) dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x01; } // http://stackoverflow.com/questions/7775991/how-to-get-hexdump-of-a-structure-data void hexdump (char *desc, void *addr, int len) { int i; unsigned char buff[17]; unsigned char *pc = addr; // Output description if given. if (desc != NULL) printf (&#34;%s:\n&#34;, desc); // Process every byte in the data. for (i = 0; i &lt; len; i&#43;&#43;) { // Multiple of 16 means new line (with line offset). if ((i % 16) == 0) { // Just don&#39;t print ASCII for the zeroth line. if (i != 0) printf (&#34; %s\n&#34;, buff); // Output the offset. printf (&#34; %04x &#34;, i); } // Now the hex code for the specific character. printf (&#34; %02x&#34;, pc[i]); // And store a printable ASCII character for later. if ((pc[i] &lt; 0x20) || (pc[i] &gt; 0x7e)) buff[i % 16] = &#39;.&#39;; else buff[i % 16] = pc[i]; buff[(i % 16) &#43; 1] = &#39;\0&#39;; } // Pad out last line if not exactly 16 characters. while ((i % 16) != 0) { printf (&#34; &#34;); i&#43;&#43;; } // And print the final ASCII bit. printf (&#34; %s\n&#34;, buff); } void lookUp() { struct sockaddr_in addr; int socket; int ret, rcode, size, i; int ip = 0, dom = 0; int length; unsigned char buffer[BUF_SIZE]; unsigned char tempBuf[3]; uint16_t QDCOUNT; //No. of items in Question Section uint16_t ANCOUNT; //No. of items in Answer Section uint16_t NSCOUNT; //No. of items in Authority Section uint16_t ARCOUNT; //No. of items in Additional Section uint16_t QCLASS; //Specifies the class of the query uint16_t ATYPE; //Specifies the meaning of the data in the RDATA field uint16_t ACLASS; //Specifies the class of the data in the RDATA field uint32_t TTL; //The number of seconds the results can be cached uint16_t RDLENGTH; //The length of the RDATA field uint16_t MSGID; socket = createSocket(); memset(&amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = inet_addr(SERVER); addr.sin_port = htons(PORT); size = sizeof(addr); hexdump(&#34;sending packet&#34;, &amp;dnsQuery.request, dnsQuery.length); ret = sendto(socket, dnsQuery.request, dnsQuery.length, 0, (struct sockaddr*)&amp;addr, size); if (ret &lt; 0) { printf(&#34;Error Sending Request&#34;); exit(1); } //printf(&#34;Sent\n&#34;); memset(&amp;buffer, 0, BUF_SIZE); ret = recvfrom(socket, buffer, BUF_SIZE, 0, (struct sockaddr*)&amp;addr, &amp;size); if (ret &lt; 0) { printf(&#34;Error Receiving Response&#34;); exit(1); } hexdump(&#34;received packet&#34;, &amp;buffer, ret); close(socket); rcode = (buffer[3] &amp; 0x0F); //tempBuf[0] = buffer[4]; //tempBuf[1] = buffer[5]; //tempBuf[2] = &#39;\0&#39;; //printf(&#34;%0x %0x %0x %0x\n&#34;, buffer[4], buffer[5], tempBuf[0], tempBuf[1]); //QDCOUNT = (uint16_t) strtol(tempBuf, NULL, 16); QDCOUNT = (uint16_t) buffer[4] * 0x100 &#43; buffer[5]; printf(&#34;entries in question section: %u\n&#34;, QDCOUNT); ANCOUNT = (uint16_t) buffer[6] * 0x100 &#43; buffer[7]; printf(&#34;records in answer section: %u\n&#34;, ANCOUNT); NSCOUNT = (uint16_t) buffer[8] * 0x100 &#43; buffer[9]; printf(&#34;name server resource record count: %u\n&#34;, NSCOUNT); ARCOUNT = (uint16_t) buffer[10] * 0x100 &#43; buffer[11]; printf(&#34;additional records count: %u\n&#34;, ARCOUNT); printf(&#34;query type: %u\n&#34;, dnsQuery.reqType); QCLASS = (uint16_t) dnsQuery.request[dnsQuery.length - 2] * 0x100 &#43; dnsQuery.request[dnsQuery.length - 1]; printf(&#34;query class: %u\n&#34;, QCLASS); length = dnsQuery.length &#43; 1; // to skip 0xc00c ATYPE = (uint16_t) buffer[length &#43; 1] * 0x100 &#43; buffer[length &#43; 2]; printf(&#34;answer type: %u\n&#34;, ATYPE); ACLASS = (uint16_t) buffer[length &#43; 3] * 0x100 &#43; buffer[length &#43; 4]; printf(&#34;answer class: %u\n&#34;, ACLASS); TTL = (uint32_t) buffer[length &#43; 5] * 0x1000000 &#43; buffer[length &#43; 6] * 0x10000 &#43; buffer[length &#43; 7] * 0x100 &#43; buffer[length &#43; 8]; printf(&#34;seconds to cache: %u\n&#34;, TTL); RDLENGTH = (uint16_t) buffer[length &#43; 9] * 0x100 &#43; buffer[length &#43; 10]; printf(&#34;bytes in answer: %u\n&#34;, RDLENGTH); MSGID = (uint16_t) buffer[0] * 0x100 &#43; buffer[1]; printf(&#34;answer msg id: %u\n&#34;, MSGID); if (rcode == 2) { printf(&#34;nameserver %s returned SERVFAIL:\n&#34;, SERVER); printf(&#34; the name server was unable to process this query due to a\n problem with the name server.\n&#34;); exit(1); } else if (rcode == 3) { printf(&#34;nameserver %s returned NXDOMAIN for %s:\n&#34;, SERVER, dnsQuery.url); printf(&#34; the domain name referenced in the query does not exist\n&#34;); exit(1); } /* search for and print IPv4 addresses */ if (dnsQuery.reqType == 0x01) { printf(&#34;DNS server&#39;s answer is: (type#=%u):&#34;, ATYPE); //printf(&#34;IPv4 address(es) for %s:\n&#34;, dnsQuery.url); for (i = 0 ; i &lt; ret ; i&#43;&#43;) { if (buffer[i] == 0xC0 &amp;&amp; buffer[i&#43;3] == 0x01) { ip&#43;&#43;; i &#43;= 12; /* ! &#43;= buf[i&#43;1]; */ printf(&#34; %u.%u.%u.%u\n&#34;, buffer[i], buffer[i&#43;1], buffer[i&#43;2], buffer[i&#43;3]); } } if (!ip) { printf(&#34; No IPv4 address found in the DNS response!\n&#34;); exit(1); } } } Output">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2016-02-14-dns-lookup-implementation-in-c/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="DNS Lookup - Implementation in C">
+  <meta property="og:description" content="Read about DNS here…
+DNS Lookup - Implementation in C
+/**dnsclient.c**/ #include&#34;stdio.h&#34; #include&#34;stdlib.h&#34; #include&#34;sys/types.h&#34; #include&#34;sys/socket.h&#34; #include&#34;string.h&#34; #include&#34;netinet/in.h&#34; #include&#34;netdb.h&#34; #include&#34;arpa/inet.h&#34; #define BUF_SIZE 512 #define SERVER &#34;8.8.8.8&#34; #define PORT 53 #define WIDTH 16 int createSocket(); void createRequest(char * url); void hexdump (char *desc, void *addr, int len); void lookUp(); struct query { uint16_t length; char * url; unsigned char request[BUF_SIZE]; uint16_t reqType; }; struct query dnsQuery = { .length = 12, .url = &#34;&#34;, .reqType = 0x01, .request = { 0xDB, 0x42, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 } }; int main(int argc, char** argv) { char * url; if (argc != 2) { fprintf(stderr,&#34;usage: %s hostnameToResolve\n&#34;, argv[0]); exit(1); } url = argv[1]; createRequest(url); lookUp(); } int createSocket() { int sockfd; sockfd = socket(AF_INET, SOCK_DGRAM, 0); if (sockfd &lt; 0) { printf(&#34;Error creating socket!\n&#34;); exit(1); } //printf(&#34;Socket created...\n&#34;); return sockfd; } void createRequest(char * url) { char * word; int i; printf(&#34;Asking DNS server %s about %s\n&#34;, SERVER, url); dnsQuery.url = strdup(url); dnsQuery.reqType = 0x01; word = strtok(url, &#34;.&#34;); while (word) { printf(&#34;parsing hostname: \&#34;%s\&#34; is %d characters\n&#34;, word, strlen(word)); dnsQuery.request[dnsQuery.length&#43;&#43;] = strlen(word); for (i = 0; i &lt; strlen(word); i&#43;&#43;) { dnsQuery.request[dnsQuery.length&#43;&#43;] = word[i]; } word = strtok(NULL, &#34;.&#34;); } dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x00; // End of the host name dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x00; // 0x0001 - Query is a Type A query (host address) dnsQuery.request[dnsQuery.length&#43;&#43;] = dnsQuery.reqType; dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x00; // 0x0001 - Query is class IN (Internet address) dnsQuery.request[dnsQuery.length&#43;&#43;] = 0x01; } // http://stackoverflow.com/questions/7775991/how-to-get-hexdump-of-a-structure-data void hexdump (char *desc, void *addr, int len) { int i; unsigned char buff[17]; unsigned char *pc = addr; // Output description if given. if (desc != NULL) printf (&#34;%s:\n&#34;, desc); // Process every byte in the data. for (i = 0; i &lt; len; i&#43;&#43;) { // Multiple of 16 means new line (with line offset). if ((i % 16) == 0) { // Just don&#39;t print ASCII for the zeroth line. if (i != 0) printf (&#34; %s\n&#34;, buff); // Output the offset. printf (&#34; %04x &#34;, i); } // Now the hex code for the specific character. printf (&#34; %02x&#34;, pc[i]); // And store a printable ASCII character for later. if ((pc[i] &lt; 0x20) || (pc[i] &gt; 0x7e)) buff[i % 16] = &#39;.&#39;; else buff[i % 16] = pc[i]; buff[(i % 16) &#43; 1] = &#39;\0&#39;; } // Pad out last line if not exactly 16 characters. while ((i % 16) != 0) { printf (&#34; &#34;); i&#43;&#43;; } // And print the final ASCII bit. printf (&#34; %s\n&#34;, buff); } void lookUp() { struct sockaddr_in addr; int socket; int ret, rcode, size, i; int ip = 0, dom = 0; int length; unsigned char buffer[BUF_SIZE]; unsigned char tempBuf[3]; uint16_t QDCOUNT; //No. of items in Question Section uint16_t ANCOUNT; //No. of items in Answer Section uint16_t NSCOUNT; //No. of items in Authority Section uint16_t ARCOUNT; //No. of items in Additional Section uint16_t QCLASS; //Specifies the class of the query uint16_t ATYPE; //Specifies the meaning of the data in the RDATA field uint16_t ACLASS; //Specifies the class of the data in the RDATA field uint32_t TTL; //The number of seconds the results can be cached uint16_t RDLENGTH; //The length of the RDATA field uint16_t MSGID; socket = createSocket(); memset(&amp;addr, 0, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_addr.s_addr = inet_addr(SERVER); addr.sin_port = htons(PORT); size = sizeof(addr); hexdump(&#34;sending packet&#34;, &amp;dnsQuery.request, dnsQuery.length); ret = sendto(socket, dnsQuery.request, dnsQuery.length, 0, (struct sockaddr*)&amp;addr, size); if (ret &lt; 0) { printf(&#34;Error Sending Request&#34;); exit(1); } //printf(&#34;Sent\n&#34;); memset(&amp;buffer, 0, BUF_SIZE); ret = recvfrom(socket, buffer, BUF_SIZE, 0, (struct sockaddr*)&amp;addr, &amp;size); if (ret &lt; 0) { printf(&#34;Error Receiving Response&#34;); exit(1); } hexdump(&#34;received packet&#34;, &amp;buffer, ret); close(socket); rcode = (buffer[3] &amp; 0x0F); //tempBuf[0] = buffer[4]; //tempBuf[1] = buffer[5]; //tempBuf[2] = &#39;\0&#39;; //printf(&#34;%0x %0x %0x %0x\n&#34;, buffer[4], buffer[5], tempBuf[0], tempBuf[1]); //QDCOUNT = (uint16_t) strtol(tempBuf, NULL, 16); QDCOUNT = (uint16_t) buffer[4] * 0x100 &#43; buffer[5]; printf(&#34;entries in question section: %u\n&#34;, QDCOUNT); ANCOUNT = (uint16_t) buffer[6] * 0x100 &#43; buffer[7]; printf(&#34;records in answer section: %u\n&#34;, ANCOUNT); NSCOUNT = (uint16_t) buffer[8] * 0x100 &#43; buffer[9]; printf(&#34;name server resource record count: %u\n&#34;, NSCOUNT); ARCOUNT = (uint16_t) buffer[10] * 0x100 &#43; buffer[11]; printf(&#34;additional records count: %u\n&#34;, ARCOUNT); printf(&#34;query type: %u\n&#34;, dnsQuery.reqType); QCLASS = (uint16_t) dnsQuery.request[dnsQuery.length - 2] * 0x100 &#43; dnsQuery.request[dnsQuery.length - 1]; printf(&#34;query class: %u\n&#34;, QCLASS); length = dnsQuery.length &#43; 1; // to skip 0xc00c ATYPE = (uint16_t) buffer[length &#43; 1] * 0x100 &#43; buffer[length &#43; 2]; printf(&#34;answer type: %u\n&#34;, ATYPE); ACLASS = (uint16_t) buffer[length &#43; 3] * 0x100 &#43; buffer[length &#43; 4]; printf(&#34;answer class: %u\n&#34;, ACLASS); TTL = (uint32_t) buffer[length &#43; 5] * 0x1000000 &#43; buffer[length &#43; 6] * 0x10000 &#43; buffer[length &#43; 7] * 0x100 &#43; buffer[length &#43; 8]; printf(&#34;seconds to cache: %u\n&#34;, TTL); RDLENGTH = (uint16_t) buffer[length &#43; 9] * 0x100 &#43; buffer[length &#43; 10]; printf(&#34;bytes in answer: %u\n&#34;, RDLENGTH); MSGID = (uint16_t) buffer[0] * 0x100 &#43; buffer[1]; printf(&#34;answer msg id: %u\n&#34;, MSGID); if (rcode == 2) { printf(&#34;nameserver %s returned SERVFAIL:\n&#34;, SERVER); printf(&#34; the name server was unable to process this query due to a\n problem with the name server.\n&#34;); exit(1); } else if (rcode == 3) { printf(&#34;nameserver %s returned NXDOMAIN for %s:\n&#34;, SERVER, dnsQuery.url); printf(&#34; the domain name referenced in the query does not exist\n&#34;); exit(1); } /* search for and print IPv4 addresses */ if (dnsQuery.reqType == 0x01) { printf(&#34;DNS server&#39;s answer is: (type#=%u):&#34;, ATYPE); //printf(&#34;IPv4 address(es) for %s:\n&#34;, dnsQuery.url); for (i = 0 ; i &lt; ret ; i&#43;&#43;) { if (buffer[i] == 0xC0 &amp;&amp; buffer[i&#43;3] == 0x01) { ip&#43;&#43;; i &#43;= 12; /* ! &#43;= buf[i&#43;1]; */ printf(&#34; %u.%u.%u.%u\n&#34;, buffer[i], buffer[i&#43;1], buffer[i&#43;2], buffer[i&#43;3]); } } if (!ip) { printf(&#34; No IPv4 address found in the DNS response!\n&#34;); exit(1); } } } Output">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2016-02-14T01:23:00+05:30">
+    <meta property="article:modified_time" content="2016-02-14T01:23:00+05:30">
+    <meta property="article:tag" content="Dns">
+    <meta property="article:tag" content="Gcc">
+    <meta property="article:tag" content="C/CPP">
+    <meta property="article:tag" content="Network">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2016-02-14-dns-lookup-implementation-in-c/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -130,8 +397,8 @@ DNS Lookup - Implementation in C
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -145,284 +412,292 @@ DNS Lookup - Implementation in C
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2016-02-14T01:23:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2016-02-14T01:23:00&#43;05:30">
                 February 14, 2016
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               6-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
     <a href="/categories/c/">C</a>
       <span class="separator">•</span>
-    <a href="/categories/gcc/">gcc</a></div>
+    <a href="/categories/gcc/">Gcc</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/dns/">dns</a>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/dns/">Dns</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/gcc/">gcc</a>
+    <span class="tag">
+      <a href="/tags/gcc/">Gcc</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/c/cpp/">C/CPP</a>
+    <span class="tag">
+      <a href="/tags/c/cpp/">C/CPP</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/network/">network</a></div>
+    <span class="tag">
+      <a href="/tags/network/">Network</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
         <p>Read about DNS
-<a href="https://en.wikipedia.org/wiki/Domain_Name_System">here&hellip;</a></p>
+<a href="https://en.wikipedia.org/wiki/Domain_Name_System"  class="external-link" target="_blank" rel="noopener">here&hellip;</a></p>
 <p><strong>DNS Lookup - Implementation in C</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">     
-
-    <span style="color:#75715e">/**dnsclient.c**/</span>
-    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdio.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdlib.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/types.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/socket.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;string.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netinet/in.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netdb.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;arpa/inet.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>      
-    <span style="color:#75715e">#define BUF_SIZE 512
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define SERVER &#34;8.8.8.8&#34;
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define PORT 53
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define WIDTH 16
-</span><span style="color:#75715e"></span>      
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>();
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">createRequest</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url);
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hexdump</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>desc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>addr, <span style="color:#66d9ef">int</span> len);
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">lookUp</span>();
-
-    <span style="color:#66d9ef">struct</span> query {
-        uint16_t length;
-        <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url;
-        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> request[BUF_SIZE];
-        uint16_t reqType;
-    };
-
-    <span style="color:#66d9ef">struct</span> query dnsQuery <span style="color:#f92672">=</span> {
-                    .length <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>,
-                    .url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>,
-                    .reqType <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01</span>,
-                    .request <span style="color:#f92672">=</span> { <span style="color:#ae81ff">0xDB</span>, <span style="color:#ae81ff">0x42</span>, <span style="color:#ae81ff">0x01</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x01</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span> }
-                };
-
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">**</span> argv) {
-        <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url;
-
-        <span style="color:#66d9ef">if</span> (argc <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>) {
-            fprintf(stderr,<span style="color:#e6db74">&#34;usage: %s hostnameToResolve</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, argv[<span style="color:#ae81ff">0</span>]);
-            exit(<span style="color:#ae81ff">1</span>);
-        }
-
-        url <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">1</span>];
-            
-        createRequest(url);
-        lookUp();
-    }
-
-
-
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>() {
-        <span style="color:#66d9ef">int</span> sockfd;
-
-        sockfd <span style="color:#f92672">=</span> socket(AF_INET, SOCK_DGRAM, <span style="color:#ae81ff">0</span>);
-        <span style="color:#66d9ef">if</span> (sockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-            printf(<span style="color:#e6db74">&#34;Error creating socket!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-            exit(<span style="color:#ae81ff">1</span>);  
-        }  
-        <span style="color:#75715e">//printf(&#34;Socket created...\n&#34;);
-</span><span style="color:#75715e"></span>
-        <span style="color:#66d9ef">return</span> sockfd;
-    }
-
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">createRequest</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url) {
-        <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> word;
-        <span style="color:#66d9ef">int</span> i;  
-        printf(<span style="color:#e6db74">&#34;Asking DNS server %s about %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, SERVER, url);
-        dnsQuery.url <span style="color:#f92672">=</span> strdup(url);
-        dnsQuery.reqType <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01</span>;
-
-        word <span style="color:#f92672">=</span> strtok(url, <span style="color:#e6db74">&#34;.&#34;</span>);
-        <span style="color:#66d9ef">while</span> (word) {
-            printf(<span style="color:#e6db74">&#34;parsing hostname: </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> is %d characters</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, word, strlen(word));
-            dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> strlen(word);
-            <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> strlen(word); i<span style="color:#f92672">++</span>) {
-                dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> word[i];
-            }
-            word <span style="color:#f92672">=</span> strtok(NULL, <span style="color:#e6db74">&#34;.&#34;</span>);
-        }
-
-        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>; <span style="color:#75715e">// End of the host name
-</span><span style="color:#75715e"></span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>; <span style="color:#75715e">// 0x0001 - Query is a Type A query (host address)
-</span><span style="color:#75715e"></span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> dnsQuery.reqType;
-        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>; <span style="color:#75715e">// 0x0001 - Query is class IN (Internet address)
-</span><span style="color:#75715e"></span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01</span>;
-    }
-
-
-    <span style="color:#75715e">// http://stackoverflow.com/questions/7775991/how-to-get-hexdump-of-a-structure-data
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hexdump</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>desc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>addr, <span style="color:#66d9ef">int</span> len) {
-        <span style="color:#66d9ef">int</span> i;
-        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> buff[<span style="color:#ae81ff">17</span>];
-        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>pc <span style="color:#f92672">=</span> addr;
-
-        <span style="color:#75715e">// Output description if given.
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (desc <span style="color:#f92672">!=</span> NULL)
-            printf (<span style="color:#e6db74">&#34;%s:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, desc);
-
-        <span style="color:#75715e">// Process every byte in the data.
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; i<span style="color:#f92672">++</span>) {
-            <span style="color:#75715e">// Multiple of 16 means new line (with line offset).
-</span><span style="color:#75715e"></span>
-            <span style="color:#66d9ef">if</span> ((i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
-                <span style="color:#75715e">// Just don&#39;t print ASCII for the zeroth line.
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
-                    printf (<span style="color:#e6db74">&#34;  %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buff);
-
-                <span style="color:#75715e">// Output the offset.
-</span><span style="color:#75715e"></span>                printf (<span style="color:#e6db74">&#34;  %04x &#34;</span>, i);
-            }
-
-            <span style="color:#75715e">// Now the hex code for the specific character.
-</span><span style="color:#75715e"></span>            printf (<span style="color:#e6db74">&#34; %02x&#34;</span>, pc[i]);
-
-            <span style="color:#75715e">// And store a printable ASCII character for later.
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> ((pc[i] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0x20</span>) <span style="color:#f92672">||</span> (pc[i] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0x7e</span>))
-                buff[i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span>;
-            <span style="color:#66d9ef">else</span>
-                buff[i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>] <span style="color:#f92672">=</span> pc[i];
-            buff[(i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
-        }
-
-        <span style="color:#75715e">// Pad out last line if not exactly 16 characters.
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> ((i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-            printf (<span style="color:#e6db74">&#34;   &#34;</span>);
-            i<span style="color:#f92672">++</span>;
-        }
-
-        <span style="color:#75715e">// And print the final ASCII bit.
-</span><span style="color:#75715e"></span>        printf (<span style="color:#e6db74">&#34;  %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buff);
-    }
-
-
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">lookUp</span>() {
-        <span style="color:#66d9ef">struct</span> sockaddr_in addr;
-        <span style="color:#66d9ef">int</span> socket;
-        <span style="color:#66d9ef">int</span> ret, rcode, size, i;
-        <span style="color:#66d9ef">int</span> ip <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, dom <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-        <span style="color:#66d9ef">int</span> length;
-        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> buffer[BUF_SIZE];
-        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> tempBuf[<span style="color:#ae81ff">3</span>];
-        uint16_t QDCOUNT; <span style="color:#75715e">//No. of items in Question Section
-</span><span style="color:#75715e"></span>        uint16_t ANCOUNT; <span style="color:#75715e">//No. of items in Answer Section
-</span><span style="color:#75715e"></span>        uint16_t NSCOUNT; <span style="color:#75715e">//No. of items in Authority Section
-</span><span style="color:#75715e"></span>        uint16_t ARCOUNT; <span style="color:#75715e">//No. of items in Additional Section
-</span><span style="color:#75715e"></span>        uint16_t QCLASS; <span style="color:#75715e">//Specifies the class of the query
-</span><span style="color:#75715e"></span>        uint16_t ATYPE; <span style="color:#75715e">//Specifies the meaning of the data in the RDATA field
-</span><span style="color:#75715e"></span>        uint16_t ACLASS; <span style="color:#75715e">//Specifies the class of the data in the RDATA field
-</span><span style="color:#75715e"></span>        uint32_t TTL; <span style="color:#75715e">//The number of seconds the results can be cached
-</span><span style="color:#75715e"></span>        uint16_t RDLENGTH; <span style="color:#75715e">//The length of the RDATA field
-</span><span style="color:#75715e"></span>        uint16_t MSGID;
-
-        socket <span style="color:#f92672">=</span> createSocket();
-
-        memset(<span style="color:#f92672">&amp;</span>addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(addr));  
-        addr.sin_family <span style="color:#f92672">=</span> AF_INET;  
-        addr.sin_addr.s_addr <span style="color:#f92672">=</span> inet_addr(SERVER);
-        addr.sin_port <span style="color:#f92672">=</span> htons(PORT);
-        size <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(addr);
-
-        hexdump(<span style="color:#e6db74">&#34;sending packet&#34;</span>, <span style="color:#f92672">&amp;</span>dnsQuery.request, dnsQuery.length);
-        ret <span style="color:#f92672">=</span> sendto(socket, dnsQuery.request, dnsQuery.length, <span style="color:#ae81ff">0</span>, (<span style="color:#66d9ef">struct</span> sockaddr<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, size);
-        <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-            printf(<span style="color:#e6db74">&#34;Error Sending Request&#34;</span>);
-            exit(<span style="color:#ae81ff">1</span>);        
-        }
-        <span style="color:#75715e">//printf(&#34;Sent\n&#34;);
-</span><span style="color:#75715e"></span>
-        memset(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, BUF_SIZE);
-        ret <span style="color:#f92672">=</span> recvfrom(socket, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>, (<span style="color:#66d9ef">struct</span> sockaddr<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, <span style="color:#f92672">&amp;</span>size);
-        <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-            printf(<span style="color:#e6db74">&#34;Error Receiving Response&#34;</span>);
-            exit(<span style="color:#ae81ff">1</span>);
-        }   
-            
-        hexdump(<span style="color:#e6db74">&#34;received packet&#34;</span>, <span style="color:#f92672">&amp;</span>buffer, ret);
-
-        close(socket);
-
-        rcode <span style="color:#f92672">=</span> (buffer[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x0F</span>);
-
-        <span style="color:#75715e">//tempBuf[0] = buffer[4];
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">//tempBuf[1] = buffer[5];
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">//tempBuf[2] = &#39;\0&#39;;
-</span><span style="color:#75715e"></span>        
-        <span style="color:#75715e">//printf(&#34;%0x %0x %0x %0x\n&#34;, buffer[4], buffer[5], tempBuf[0], tempBuf[1]);
-</span><span style="color:#75715e"></span>
-        <span style="color:#75715e">//QDCOUNT = (uint16_t) strtol(tempBuf, NULL, 16);
-</span><span style="color:#75715e"></span>        QDCOUNT <span style="color:#f92672">=</span> (uint16_t)  buffer[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">5</span>];
-        printf(<span style="color:#e6db74">&#34;entries in question section: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, QDCOUNT);
-        ANCOUNT <span style="color:#f92672">=</span> (uint16_t)  buffer[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">7</span>];
-        printf(<span style="color:#e6db74">&#34;records in answer section: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ANCOUNT);
-        NSCOUNT <span style="color:#f92672">=</span> (uint16_t)  buffer[<span style="color:#ae81ff">8</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">9</span>];
-        printf(<span style="color:#e6db74">&#34;name server resource record count: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, NSCOUNT);
-        ARCOUNT <span style="color:#f92672">=</span> (uint16_t)  buffer[<span style="color:#ae81ff">10</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">11</span>];
-        printf(<span style="color:#e6db74">&#34;additional records count: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ARCOUNT);
-
-        printf(<span style="color:#e6db74">&#34;query type: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, dnsQuery.reqType);
-        QCLASS <span style="color:#f92672">=</span> (uint16_t) dnsQuery.request[dnsQuery.length <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> dnsQuery.request[dnsQuery.length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
-        printf(<span style="color:#e6db74">&#34;query class: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, QCLASS);
-        length <span style="color:#f92672">=</span> dnsQuery.length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;    <span style="color:#75715e">// to skip 0xc00c
-</span><span style="color:#75715e"></span>        ATYPE <span style="color:#f92672">=</span> (uint16_t) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>];
-        printf(<span style="color:#e6db74">&#34;answer type: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ATYPE);
-        ACLASS <span style="color:#f92672">=</span> (uint16_t) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>];
-        printf(<span style="color:#e6db74">&#34;answer class: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ACLASS);
-        TTL <span style="color:#f92672">=</span> (uint32_t) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x1000000</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">6</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x10000</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">8</span>];
-        printf(<span style="color:#e6db74">&#34;seconds to cache: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, TTL);
-        RDLENGTH <span style="color:#f92672">=</span> (uint16_t) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">9</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>];
-        printf(<span style="color:#e6db74">&#34;bytes in answer: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, RDLENGTH);
-        MSGID <span style="color:#f92672">=</span> (uint16_t) buffer[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">1</span>];
-        printf(<span style="color:#e6db74">&#34;answer msg id: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, MSGID);   
-        
-        
-
-        <span style="color:#66d9ef">if</span> (rcode <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) {
-            printf(<span style="color:#e6db74">&#34;nameserver %s returned SERVFAIL:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, SERVER);
-            printf(<span style="color:#e6db74">&#34;  the name server was unable to process this query due to a</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  problem with the name server.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-            exit(<span style="color:#ae81ff">1</span>);
-        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (rcode <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) {
-            printf(<span style="color:#e6db74">&#34;nameserver %s returned NXDOMAIN for %s:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, SERVER, dnsQuery.url);
-            printf(<span style="color:#e6db74">&#34;  the domain name referenced in the query does not exist</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-            exit(<span style="color:#ae81ff">1</span>);
-        }
-
-        <span style="color:#75715e">/* search for and print IPv4 addresses */</span>
-        <span style="color:#66d9ef">if</span> (dnsQuery.reqType <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x01</span>) {
-            printf(<span style="color:#e6db74">&#34;DNS server&#39;s answer is: (type#=%u):&#34;</span>, ATYPE);
-            <span style="color:#75715e">//printf(&#34;IPv4 address(es) for %s:\n&#34;, dnsQuery.url);
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> ; i <span style="color:#f92672">&lt;</span> ret ; i<span style="color:#f92672">++</span>) {
-                <span style="color:#66d9ef">if</span> (buffer[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xC0</span> <span style="color:#f92672">&amp;&amp;</span> buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x01</span>) {
-                    ip<span style="color:#f92672">++</span>; i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">12</span>; <span style="color:#75715e">/* ! += buf[i+1]; */</span>
-                    printf(<span style="color:#e6db74">&#34; %u.%u.%u.%u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer[i], buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>], buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>], buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>]);
-                }
-            }
-
-            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ip) {
-                printf(<span style="color:#e6db74">&#34;  No IPv4 address found in the DNS response!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-                exit(<span style="color:#ae81ff">1</span>);
-            }
-        }
-    }</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**dnsclient.c**/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdio.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdlib.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/types.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/socket.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;string.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netinet/in.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netdb.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;arpa/inet.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#define BUF_SIZE 512
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define SERVER &#34;8.8.8.8&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define PORT 53
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define WIDTH 16
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">createRequest</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hexdump</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>desc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>addr, <span style="color:#66d9ef">int</span> len);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">lookUp</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> query {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">uint16_t</span> length;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> request[BUF_SIZE];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">uint16_t</span> reqType;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> query dnsQuery <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                    .length <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>,
+</span></span><span style="display:flex;"><span>                    .url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>                    .reqType <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01</span>,
+</span></span><span style="display:flex;"><span>                    .request <span style="color:#f92672">=</span> { <span style="color:#ae81ff">0xDB</span>, <span style="color:#ae81ff">0x42</span>, <span style="color:#ae81ff">0x01</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x01</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span>, <span style="color:#ae81ff">0x00</span> }
+</span></span><span style="display:flex;"><span>                };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">**</span> argv) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (argc <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fprintf</span>(stderr,<span style="color:#e6db74">&#34;usage: %s hostnameToResolve</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, argv[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        url <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">createRequest</span>(url);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">lookUp</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> sockfd;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        sockfd <span style="color:#f92672">=</span> <span style="color:#a6e22e">socket</span>(AF_INET, SOCK_DGRAM, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (sockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error creating socket!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);  
+</span></span><span style="display:flex;"><span>        }  
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//printf(&#34;Socket created...\n&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sockfd;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">createRequest</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> word;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i;  
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Asking DNS server %s about %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, SERVER, url);
+</span></span><span style="display:flex;"><span>        dnsQuery.url <span style="color:#f92672">=</span> <span style="color:#a6e22e">strdup</span>(url);
+</span></span><span style="display:flex;"><span>        dnsQuery.reqType <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        word <span style="color:#f92672">=</span> <span style="color:#a6e22e">strtok</span>(url, <span style="color:#e6db74">&#34;.&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (word) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;parsing hostname: </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> is %d characters</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, word, <span style="color:#a6e22e">strlen</span>(word));
+</span></span><span style="display:flex;"><span>            dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>(word);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">strlen</span>(word); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> word[i];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            word <span style="color:#f92672">=</span> <span style="color:#a6e22e">strtok</span>(NULL, <span style="color:#e6db74">&#34;.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>; <span style="color:#75715e">// End of the host name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>; <span style="color:#75715e">// 0x0001 - Query is a Type A query (host address)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> dnsQuery.reqType;
+</span></span><span style="display:flex;"><span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>; <span style="color:#75715e">// 0x0001 - Query is class IN (Internet address)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        dnsQuery.request[dnsQuery.length<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// http://stackoverflow.com/questions/7775991/how-to-get-hexdump-of-a-structure-data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hexdump</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>desc, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>addr, <span style="color:#66d9ef">int</span> len) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> buff[<span style="color:#ae81ff">17</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>pc <span style="color:#f92672">=</span> addr;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Output description if given.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (desc <span style="color:#f92672">!=</span> NULL)
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span> (<span style="color:#e6db74">&#34;%s:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, desc);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Process every byte in the data.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Multiple of 16 means new line (with line offset).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> ((i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Just don&#39;t print ASCII for the zeroth line.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">printf</span> (<span style="color:#e6db74">&#34;  %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buff);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Output the offset.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#a6e22e">printf</span> (<span style="color:#e6db74">&#34;  %04x &#34;</span>, i);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Now the hex code for the specific character.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">printf</span> (<span style="color:#e6db74">&#34; %02x&#34;</span>, pc[i]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// And store a printable ASCII character for later.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> ((pc[i] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0x20</span>) <span style="color:#f92672">||</span> (pc[i] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0x7e</span>))
+</span></span><span style="display:flex;"><span>                buff[i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                buff[i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>] <span style="color:#f92672">=</span> pc[i];
+</span></span><span style="display:flex;"><span>            buff[(i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Pad out last line if not exactly 16 characters.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> ((i <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span> (<span style="color:#e6db74">&#34;   &#34;</span>);
+</span></span><span style="display:flex;"><span>            i<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// And print the final ASCII bit.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">printf</span> (<span style="color:#e6db74">&#34;  %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buff);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">lookUp</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> sockaddr_in addr;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> socket;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> ret, rcode, size, i;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> ip <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, dom <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> length;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> buffer[BUF_SIZE];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> tempBuf[<span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">uint16_t</span> QDCOUNT; <span style="color:#75715e">//No. of items in Question Section
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint16_t</span> ANCOUNT; <span style="color:#75715e">//No. of items in Answer Section
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint16_t</span> NSCOUNT; <span style="color:#75715e">//No. of items in Authority Section
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint16_t</span> ARCOUNT; <span style="color:#75715e">//No. of items in Additional Section
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint16_t</span> QCLASS; <span style="color:#75715e">//Specifies the class of the query
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint16_t</span> ATYPE; <span style="color:#75715e">//Specifies the meaning of the data in the RDATA field
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint16_t</span> ACLASS; <span style="color:#75715e">//Specifies the class of the data in the RDATA field
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint32_t</span> TTL; <span style="color:#75715e">//The number of seconds the results can be cached
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint16_t</span> RDLENGTH; <span style="color:#75715e">//The length of the RDATA field
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint16_t</span> MSGID;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        socket <span style="color:#f92672">=</span> <span style="color:#a6e22e">createSocket</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(addr));  
+</span></span><span style="display:flex;"><span>        addr.sin_family <span style="color:#f92672">=</span> AF_INET;  
+</span></span><span style="display:flex;"><span>        addr.sin_addr.s_addr <span style="color:#f92672">=</span> <span style="color:#a6e22e">inet_addr</span>(SERVER);
+</span></span><span style="display:flex;"><span>        addr.sin_port <span style="color:#f92672">=</span> <span style="color:#a6e22e">htons</span>(PORT);
+</span></span><span style="display:flex;"><span>        size <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(addr);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">hexdump</span>(<span style="color:#e6db74">&#34;sending packet&#34;</span>, <span style="color:#f92672">&amp;</span>dnsQuery.request, dnsQuery.length);
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">sendto</span>(socket, dnsQuery.request, dnsQuery.length, <span style="color:#ae81ff">0</span>, (<span style="color:#66d9ef">struct</span> sockaddr<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, size);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error Sending Request&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);        
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//printf(&#34;Sent\n&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, BUF_SIZE);
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">recvfrom</span>(socket, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>, (<span style="color:#66d9ef">struct</span> sockaddr<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, <span style="color:#f92672">&amp;</span>size);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error Receiving Response&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        }   
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">hexdump</span>(<span style="color:#e6db74">&#34;received packet&#34;</span>, <span style="color:#f92672">&amp;</span>buffer, ret);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">close</span>(socket);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        rcode <span style="color:#f92672">=</span> (buffer[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x0F</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//tempBuf[0] = buffer[4];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//tempBuf[1] = buffer[5];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//tempBuf[2] = &#39;\0&#39;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//printf(&#34;%0x %0x %0x %0x\n&#34;, buffer[4], buffer[5], tempBuf[0], tempBuf[1]);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//QDCOUNT = (uint16_t) strtol(tempBuf, NULL, 16);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        QDCOUNT <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint16_t</span>)  buffer[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;entries in question section: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, QDCOUNT);
+</span></span><span style="display:flex;"><span>        ANCOUNT <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint16_t</span>)  buffer[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">7</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;records in answer section: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ANCOUNT);
+</span></span><span style="display:flex;"><span>        NSCOUNT <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint16_t</span>)  buffer[<span style="color:#ae81ff">8</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">9</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;name server resource record count: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, NSCOUNT);
+</span></span><span style="display:flex;"><span>        ARCOUNT <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint16_t</span>)  buffer[<span style="color:#ae81ff">10</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">11</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;additional records count: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ARCOUNT);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;query type: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, dnsQuery.reqType);
+</span></span><span style="display:flex;"><span>        QCLASS <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint16_t</span>) dnsQuery.request[dnsQuery.length <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> dnsQuery.request[dnsQuery.length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;query class: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, QCLASS);
+</span></span><span style="display:flex;"><span>        length <span style="color:#f92672">=</span> dnsQuery.length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;    <span style="color:#75715e">// to skip 0xc00c
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ATYPE <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint16_t</span>) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;answer type: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ATYPE);
+</span></span><span style="display:flex;"><span>        ACLASS <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint16_t</span>) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;answer class: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ACLASS);
+</span></span><span style="display:flex;"><span>        TTL <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint32_t</span>) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x1000000</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">6</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x10000</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">8</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;seconds to cache: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, TTL);
+</span></span><span style="display:flex;"><span>        RDLENGTH <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint16_t</span>) buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">9</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[length <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;bytes in answer: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, RDLENGTH);
+</span></span><span style="display:flex;"><span>        MSGID <span style="color:#f92672">=</span> (<span style="color:#66d9ef">uint16_t</span>) buffer[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x100</span> <span style="color:#f92672">+</span> buffer[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;answer msg id: %u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, MSGID);   
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (rcode <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;nameserver %s returned SERVFAIL:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, SERVER);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;  the name server was unable to process this query due to a</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  problem with the name server.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (rcode <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;nameserver %s returned NXDOMAIN for %s:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, SERVER, dnsQuery.url);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;  the domain name referenced in the query does not exist</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* search for and print IPv4 addresses */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (dnsQuery.reqType <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x01</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;DNS server&#39;s answer is: (type#=%u):&#34;</span>, ATYPE);
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//printf(&#34;IPv4 address(es) for %s:\n&#34;, dnsQuery.url);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> ; i <span style="color:#f92672">&lt;</span> ret ; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (buffer[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xC0</span> <span style="color:#f92672">&amp;&amp;</span> buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x01</span>) {
+</span></span><span style="display:flex;"><span>                    ip<span style="color:#f92672">++</span>; i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">12</span>; <span style="color:#75715e">/* ! += buf[i+1]; */</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34; %u.%u.%u.%u</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer[i], buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>], buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>], buffer[i<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>]);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ip) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;  No IPv4 address found in the DNS response!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>Output</strong></p>
 <pre><code>dhanoopbhaskar@dhanoop-laptop:~/workspace/Copy/_works$ gcc dnsclient.c 
 dhanoopbhaskar@dhanoop-laptop:~/workspace/Copy/_works$ ./a.out www.theinsanetechie.in
@@ -457,7 +732,8 @@ bytes in answer: 16
 answer msg id: 56130
 DNS server's answer is: (type#=5): 74.125.68.121
 
-dhanoopbhaskar@dhanoop-laptop:~/workspace/Copy/_works$ </code></pre>
+dhanoopbhaskar@dhanoop-laptop:~/workspace/Copy/_works$ 
+</code></pre>
 
       </div>
 
@@ -469,72 +745,67 @@ dhanoopbhaskar@dhanoop-laptop:~/workspace/Copy/_works$ </code></pre>
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -544,6 +815,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

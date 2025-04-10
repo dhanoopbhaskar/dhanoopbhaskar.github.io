@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>php on The Insane Techie</title>
+    <title>Php on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/tags/php/</link>
-    <description>Recent content in php on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Php on The Insane Techie</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 09 Mar 2016 21:57:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Installing and Configuring phpMyAdmin in Ubuntu/Linux Mint</title>
       <link>https://dhanoopbhaskar.github.io/posts/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</guid>
-      <description>Install phpmyadmin
-sudo apt-get install phpmyadmin  Configure phpmyadmin
-sudo dpkg-reconfigure -plow phpmyadmin  Then select Apache 2 for the webserver you wish to configure.
-Try hitting the URL http://localhost/phpmyadmin/
-If this does not work, then you have to include the phpMyAdmin-shipped Apache configuration into Apache:
-sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf.d/phpmyadmin.conf sudo /etc/init.d/apache2 reload  Since Ubuntu 13.10 (Saucy Salamander), Apache no longer loads configuration files from the /etc/apache2/conf.d directory.</description>
+      <description>&lt;p&gt;&lt;strong&gt;Install phpmyadmin&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo apt-get install phpmyadmin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;Configure phpmyadmin&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo dpkg-reconfigure -plow phpmyadmin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Then select Apache 2 for the webserver you wish to configure.&lt;/p&gt;&#xA;&lt;p&gt;Try hitting the URL &lt;strong&gt;http://localhost/phpmyadmin/&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;If this does not work, then you have to include the phpMyAdmin-shipped&#xA;Apache configuration into Apache:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf.d/phpmyadmin.conf&#xA;sudo /etc/init.d/apache2 reload&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Since Ubuntu 13.10 (Saucy Salamander), Apache no longer loads&#xA;configuration files from the &lt;code&gt;/etc/apache2/conf.d&lt;/code&gt; directory.&lt;br&gt;&#xA;Instead, they are placed in the &lt;code&gt;/etc/apache2/conf-available&lt;/code&gt; directory&#xA;which is managed with the &lt;code&gt;a2enconf&lt;/code&gt; command.&lt;br&gt;&#xA;Therefore, if you need to manually include the phpMyAdmin-shipped Apache&#xA;configuration file, you must run the following:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

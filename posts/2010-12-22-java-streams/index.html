@@ -1,119 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="/********************************************************************************* * This program uses the Keyboard as the input device to accept data from the * * MS-DOS prompt (console). It gets a character from the keyboard, and prints the * * ASCII value of the character inputted as well as the character itself. * *********************************************************************************/ import java.io.*; //for IOException &amp; read() throws and java.io.IOException  public class TestKeyboardIO1 { public static void main(String[] args) throws IOException {  System.">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java-Streams"/>
-<meta name="twitter:description" content="/********************************************************************************* * This program uses the Keyboard as the input device to accept data from the * * MS-DOS prompt (console). It gets a character from the keyboard, and prints the * * ASCII value of the character inputted as well as the character itself. * *********************************************************************************/ import java.io.*; //for IOException &amp; read() throws and java.io.IOException  public class TestKeyboardIO1 { public static void main(String[] args) throws IOException {  System."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="Java-Streams" />
-<meta property="og:description" content="/********************************************************************************* * This program uses the Keyboard as the input device to accept data from the * * MS-DOS prompt (console). It gets a character from the keyboard, and prints the * * ASCII value of the character inputted as well as the character itself. * *********************************************************************************/ import java.io.*; //for IOException &amp; read() throws and java.io.IOException  public class TestKeyboardIO1 { public static void main(String[] args) throws IOException {  System." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-streams/" />
-<meta property="article:published_time" content="2010-12-22T23:50:00+05:30" />
-<meta property="article:modified_time" content="2010-12-22T23:50:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   Java-Streams · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-streams/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
-      
-      
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
 
-    
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="	/*********************************************************************************
+	 * This program uses the Keyboard as the input device to accept data from the     *
+	 * MS-DOS prompt (console). It gets a character from the keyboard, and prints the *
+	 * ASCII value of the character inputted as well as the character itself.         *
+	 *********************************************************************************/
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
+	import java.io.*; //for IOException &amp; read() throws and java.io.IOException
 
-    
+	public class TestKeyboardIO1 {
+	    public static void main(String[] args) throws IOException {
+	        
+	        System.out.println(&#34;Type in a character and press ENTER.&#34;);
+	        System.out.println(&#34;------------------------------------&#34;);
 
-    
+	        // reads a byte from the keyboard Buffer.
+	        // Returns an int.
+	        int data = System.in.read();
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+	        System.out.println(&#34;ASCII  :  &#34; &#43; data);
+	        System.out.println(&#34;Character :  &#34; &#43; (char) data);
+	        System.out.println(&#34;Type in a character and press ENTER.&#34;);
+	        System.out.println(&#34;------------------------------------&#34;);
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	        int data = System.in.read();
+	        System.out.println(&#34;ASCII  :  &#34; &#43; data);
+	        System.out.println(&#34;Character :  &#34; &#43; (char) data);
 
-    
+	        data = System.in.read();
+	        System.out.println(&#34;ASCII  :  &#34; &#43; data);
+	        System.out.println(&#34;Character :  &#34; &#43; (char) data);
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+	        data = System.in.read();
+	        System.out.println(&#34;ASCII  :  &#34; &#43; data);
+	        System.out.println(&#34;Character :  &#34; &#43; (char) data);
+
+	        data = System.in.read();
+	        System.out.println(&#34;ASCII  :  &#34; &#43; data);
+	        System.out.println(&#34;Character :  &#34; &#43; (char) data);
+	        System.out.println(&#34;Type in a character and press ENTER.&#34;);
+	        System.out.println(&#34;------------------------------------&#34;);
+
+	        int data = System.in.read();
+	        System.out.println(&#34;ASCII  :  &#34; &#43; data);
+	        System.out.println(&#34;Character :  &#34; &#43; (char) data);
+
+	        System.in.skip(System.in.available()); // empty the inputstream
+
+	        data = System.in.read();
+	        System.out.println(&#34;ASCII  :  &#34; &#43; data);
+	        System.out.println(&#34;Character :  &#34; &#43; (char) data);
+	        byte[] buffer = new byte[10];
+	        int bytesRead = System.in.read(buffer);
+	        System.out.println(&#34;Actual bytes read: &#34; &#43; bytesRead);
+
+	        //System.out.println(buffer);// invalid usage
+
+	        for (int i = 0; i &lt; buffer.length; i&#43;&#43;) {
+	            System.out.println(buffer[i] &#43; &#34;  &#34; &#43; (char) buffer[i]);
+	        }
+
+	        System.out.println(&#34;Converted to string: &#34; &#43;
+	            new String(buffer));
+	        byte[] buffer = new byte[10];
+	        //System.in.read(buffer, 0, 5);
+	        System.in.read(buffer, 2, 6);
+
+	        for (int i = 0; i &lt; buffer.length; i&#43;&#43;) {
+	            System.out.println(buffer[i] &#43; &#34;  &#34; &#43;
+	                (char) buffer[i]);
+	        }
+
+	        System.out.println(new String(buffer));
+	        byte b[] = &#34;Hello World&#34;.getBytes();
+	        for (int i = 0; i &lt; b.length; i&#43;&#43;)
+	            System.out.println(b[i] &#43; &#34;  &#34; &#43; (char) b[i]);	        
+
+	        System.out.println(System.in.getClass().getName()); // java.io.BufferedInputStream
+	        System.out.println(System.out.getClass().getName()); // java.io.PrintStream
+
+	    }
+	}
+	
+	/********************************************************************************
+	 * This program uses the Keyboard as the input device to accept data from the    *
+	 * MS-DOS prompt (console). It gets a string from the keyboard and prints it.    *
+	 ********************************************************************************/
+
+	import java.io.*; //for IOException, InputStream, InputStreamReader, BufferedReader
+
+	public class TestKeyboardIO2 {
+	    public static void main(String args[]) throws IOException {
+	        /* converting from byte stream (InputStream subclass) to character stream (Reader subclass)*/
+	        InputStreamReader in_stream_reader =
+	            new InputStreamReader(System.in);
+
+	        /* converting from Reader subclass (in_stream_reader) to a BufferedReader object*/
+	        BufferedReader buf_reader =
+	            new BufferedReader(in_stream_reader);
+
+	        BufferedReader buf_reader = new BufferedReader(
+	            new InputStreamReader(System.in));
+
+
+	        System.out.println(&#34;Type in a sentence and press ENTER to terminate.&#34;);
+	        System.out.println(&#34;------------------------------------------------&#34;);
+	        String data1 = buf_reader.readLine(); // method to read a line.
+	        //String data1 = new BufferedReader(
+	        //   new InputStreamReader(System.in)).readLine();
+
+	        System.out.println();
+
+	        System.out.println(&#34;Type in a sentence and press ENTER to terminate.&#34;);
+	        System.out.println(&#34;------------------------------------------------&#34;);
+	        String data2 = buf_reader.readLine(); // method to read a line.
+	        //String data2 = new BufferedReader(
+	        //   new InputStreamReader(System.in)).readLine();
+
+	        System.out.println();
+
+	        System.out.println(&#34;1st sentence: &#34; &#43; data1);
+	        System.out.println(&#34;2nd sentence: &#34; &#43; data2);
+	    }
+	}">
+<meta name="keywords" content="">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java-Streams">
+  <meta name="twitter:description" content="/********************************************************************************* * This program uses the Keyboard as the input device to accept data from the * * MS-DOS prompt (console). It gets a character from the keyboard, and prints the * * ASCII value of the character inputted as well as the character itself. * *********************************************************************************/ import java.io.*; //for IOException &amp; read() throws and java.io.IOException public class TestKeyboardIO1 { public static void main(String[] args) throws IOException { System.out.println(&#34;Type in a character and press ENTER.&#34;); System.out.println(&#34;------------------------------------&#34;); // reads a byte from the keyboard Buffer. // Returns an int. int data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); System.out.println(&#34;Type in a character and press ENTER.&#34;); System.out.println(&#34;------------------------------------&#34;); int data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); System.out.println(&#34;Type in a character and press ENTER.&#34;); System.out.println(&#34;------------------------------------&#34;); int data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); System.in.skip(System.in.available()); // empty the inputstream data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); byte[] buffer = new byte[10]; int bytesRead = System.in.read(buffer); System.out.println(&#34;Actual bytes read: &#34; &#43; bytesRead); //System.out.println(buffer);// invalid usage for (int i = 0; i &lt; buffer.length; i&#43;&#43;) { System.out.println(buffer[i] &#43; &#34; &#34; &#43; (char) buffer[i]); } System.out.println(&#34;Converted to string: &#34; &#43; new String(buffer)); byte[] buffer = new byte[10]; //System.in.read(buffer, 0, 5); System.in.read(buffer, 2, 6); for (int i = 0; i &lt; buffer.length; i&#43;&#43;) { System.out.println(buffer[i] &#43; &#34; &#34; &#43; (char) buffer[i]); } System.out.println(new String(buffer)); byte b[] = &#34;Hello World&#34;.getBytes(); for (int i = 0; i &lt; b.length; i&#43;&#43;) System.out.println(b[i] &#43; &#34; &#34; &#43; (char) b[i]);	System.out.println(System.in.getClass().getName()); // java.io.BufferedInputStream System.out.println(System.out.getClass().getName()); // java.io.PrintStream } } /******************************************************************************** * This program uses the Keyboard as the input device to accept data from the * * MS-DOS prompt (console). It gets a string from the keyboard and prints it. * ********************************************************************************/ import java.io.*; //for IOException, InputStream, InputStreamReader, BufferedReader public class TestKeyboardIO2 { public static void main(String args[]) throws IOException { /* converting from byte stream (InputStream subclass) to character stream (Reader subclass)*/ InputStreamReader in_stream_reader = new InputStreamReader(System.in); /* converting from Reader subclass (in_stream_reader) to a BufferedReader object*/ BufferedReader buf_reader = new BufferedReader(in_stream_reader); BufferedReader buf_reader = new BufferedReader( new InputStreamReader(System.in)); System.out.println(&#34;Type in a sentence and press ENTER to terminate.&#34;); System.out.println(&#34;------------------------------------------------&#34;); String data1 = buf_reader.readLine(); // method to read a line. //String data1 = new BufferedReader( // new InputStreamReader(System.in)).readLine(); System.out.println(); System.out.println(&#34;Type in a sentence and press ENTER to terminate.&#34;); System.out.println(&#34;------------------------------------------------&#34;); String data2 = buf_reader.readLine(); // method to read a line. //String data2 = new BufferedReader( // new InputStreamReader(System.in)).readLine(); System.out.println(); System.out.println(&#34;1st sentence: &#34; &#43; data1); System.out.println(&#34;2nd sentence: &#34; &#43; data2); } }">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-streams/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Java-Streams">
+  <meta property="og:description" content="/********************************************************************************* * This program uses the Keyboard as the input device to accept data from the * * MS-DOS prompt (console). It gets a character from the keyboard, and prints the * * ASCII value of the character inputted as well as the character itself. * *********************************************************************************/ import java.io.*; //for IOException &amp; read() throws and java.io.IOException public class TestKeyboardIO1 { public static void main(String[] args) throws IOException { System.out.println(&#34;Type in a character and press ENTER.&#34;); System.out.println(&#34;------------------------------------&#34;); // reads a byte from the keyboard Buffer. // Returns an int. int data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); System.out.println(&#34;Type in a character and press ENTER.&#34;); System.out.println(&#34;------------------------------------&#34;); int data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); System.out.println(&#34;Type in a character and press ENTER.&#34;); System.out.println(&#34;------------------------------------&#34;); int data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); System.in.skip(System.in.available()); // empty the inputstream data = System.in.read(); System.out.println(&#34;ASCII : &#34; &#43; data); System.out.println(&#34;Character : &#34; &#43; (char) data); byte[] buffer = new byte[10]; int bytesRead = System.in.read(buffer); System.out.println(&#34;Actual bytes read: &#34; &#43; bytesRead); //System.out.println(buffer);// invalid usage for (int i = 0; i &lt; buffer.length; i&#43;&#43;) { System.out.println(buffer[i] &#43; &#34; &#34; &#43; (char) buffer[i]); } System.out.println(&#34;Converted to string: &#34; &#43; new String(buffer)); byte[] buffer = new byte[10]; //System.in.read(buffer, 0, 5); System.in.read(buffer, 2, 6); for (int i = 0; i &lt; buffer.length; i&#43;&#43;) { System.out.println(buffer[i] &#43; &#34; &#34; &#43; (char) buffer[i]); } System.out.println(new String(buffer)); byte b[] = &#34;Hello World&#34;.getBytes(); for (int i = 0; i &lt; b.length; i&#43;&#43;) System.out.println(b[i] &#43; &#34; &#34; &#43; (char) b[i]);	System.out.println(System.in.getClass().getName()); // java.io.BufferedInputStream System.out.println(System.out.getClass().getName()); // java.io.PrintStream } } /******************************************************************************** * This program uses the Keyboard as the input device to accept data from the * * MS-DOS prompt (console). It gets a string from the keyboard and prints it. * ********************************************************************************/ import java.io.*; //for IOException, InputStream, InputStreamReader, BufferedReader public class TestKeyboardIO2 { public static void main(String args[]) throws IOException { /* converting from byte stream (InputStream subclass) to character stream (Reader subclass)*/ InputStreamReader in_stream_reader = new InputStreamReader(System.in); /* converting from Reader subclass (in_stream_reader) to a BufferedReader object*/ BufferedReader buf_reader = new BufferedReader(in_stream_reader); BufferedReader buf_reader = new BufferedReader( new InputStreamReader(System.in)); System.out.println(&#34;Type in a sentence and press ENTER to terminate.&#34;); System.out.println(&#34;------------------------------------------------&#34;); String data1 = buf_reader.readLine(); // method to read a line. //String data1 = new BufferedReader( // new InputStreamReader(System.in)).readLine(); System.out.println(); System.out.println(&#34;Type in a sentence and press ENTER to terminate.&#34;); System.out.println(&#34;------------------------------------------------&#34;); String data2 = buf_reader.readLine(); // method to read a line. //String data2 = new BufferedReader( // new InputStreamReader(System.in)).readLine(); System.out.println(); System.out.println(&#34;1st sentence: &#34; &#43; data1); System.out.println(&#34;2nd sentence: &#34; &#43; data2); } }">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2010-12-22T23:50:00+05:30">
+    <meta property="article:modified_time" content="2010-12-22T23:50:00+05:30">
+    <meta property="article:tag" content="Java">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-streams/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -124,8 +266,8 @@
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -139,153 +281,155 @@
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2010-12-22T23:50:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2010-12-22T23:50:00&#43;05:30">
                 December 22, 2010
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               3-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="/categories/java/">java</a></div>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/java/">Java</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/java/">java</a></div>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/java/">Java</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
-        <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#75715e">/*********************************************************************************
-</span><span style="color:#75715e">	 * This program uses the Keyboard as the input device to accept data from the     *
-</span><span style="color:#75715e">	 * MS-DOS prompt (console). It gets a character from the keyboard, and prints the *
-</span><span style="color:#75715e">	 * ASCII value of the character inputted as well as the character itself.         *
-</span><span style="color:#75715e">	 *********************************************************************************/</span>
-
-	<span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span> <span style="color:#75715e">//for IOException &amp; read() throws and java.io.IOException
-</span><span style="color:#75715e"></span>
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestKeyboardIO1</span> <span style="color:#f92672">{</span>
-	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
-	        </code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Type in a character and press ENTER.&#34;</span><span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;------------------------------------&#34;</span><span style="color:#f92672">);</span>
-
-	        <span style="color:#75715e">// reads a byte from the keyboard Buffer.
-</span><span style="color:#75715e"></span>	        <span style="color:#75715e">// Returns an int.
-</span><span style="color:#75715e"></span>	        <span style="color:#66d9ef">int</span> data <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">();</span>
-
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> data<span style="color:#f92672">);</span></code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Type in a character and press ENTER.&#34;</span><span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;------------------------------------&#34;</span><span style="color:#f92672">);</span>
-
-	        <span style="color:#66d9ef">int</span> data <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">();</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> data<span style="color:#f92672">);</span>
-
-	        data <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">();</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> data<span style="color:#f92672">);</span>
-
-	        data <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">();</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> data<span style="color:#f92672">);</span>
-
-	        data <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">();</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> data<span style="color:#f92672">);</span></code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Type in a character and press ENTER.&#34;</span><span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;------------------------------------&#34;</span><span style="color:#f92672">);</span>
-
-	        <span style="color:#66d9ef">int</span> data <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">();</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> data<span style="color:#f92672">);</span>
-
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">skip</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">available</span><span style="color:#f92672">());</span> <span style="color:#75715e">// empty the inputstream
-</span><span style="color:#75715e"></span>
-	        data <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">();</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> data<span style="color:#f92672">);</span></code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>10<span style="color:#f92672">];</span>
-	        <span style="color:#66d9ef">int</span> bytesRead <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Actual bytes read: &#34;</span> <span style="color:#f92672">+</span> bytesRead<span style="color:#f92672">);</span>
-
-	        <span style="color:#75715e">//System.out.println(buffer);// invalid usage
-</span><span style="color:#75715e"></span>
-	        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> buffer<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;  &#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> buffer<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>
-	        <span style="color:#f92672">}</span>
-
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Converted to string: &#34;</span> <span style="color:#f92672">+</span>
-	            <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>buffer<span style="color:#f92672">));</span></code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>10<span style="color:#f92672">];</span>
-	        <span style="color:#75715e">//System.in.read(buffer, 0, 5);
-</span><span style="color:#75715e"></span>	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">,</span> 2<span style="color:#f92672">,</span> 6<span style="color:#f92672">);</span>
-
-	        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> buffer<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;  &#34;</span> <span style="color:#f92672">+</span>
-	                <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> buffer<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>
-	        <span style="color:#f92672">}</span>
-
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>buffer<span style="color:#f92672">));</span></code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	        <span style="color:#66d9ef">byte</span> b<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello World&#34;</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">();</span>
-	        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> b<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span>
-	            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>b<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;  &#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span> b<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>	        
-
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span> <span style="color:#75715e">// java.io.BufferedInputStream
-</span><span style="color:#75715e"></span>	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span> <span style="color:#75715e">// java.io.PrintStream
-</span><span style="color:#75715e"></span>
-	    <span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span>
-	</code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#75715e">/********************************************************************************
-</span><span style="color:#75715e">	 * This program uses the Keyboard as the input device to accept data from the    *
-</span><span style="color:#75715e">	 * MS-DOS prompt (console). It gets a string from the keyboard and prints it.    *
-</span><span style="color:#75715e">	 ********************************************************************************/</span>
-
-	<span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span> <span style="color:#75715e">//for IOException, InputStream, InputStreamReader, BufferedReader
-</span><span style="color:#75715e"></span>
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestKeyboardIO2</span> <span style="color:#f92672">{</span>
-	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
-	        <span style="color:#75715e">/* converting from byte stream (InputStream subclass) to character stream (Reader subclass)*/</span>
-	        InputStreamReader in_stream_reader <span style="color:#f92672">=</span>
-	            <span style="color:#66d9ef">new</span> InputStreamReader<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">);</span>
-
-	        <span style="color:#75715e">/* converting from Reader subclass (in_stream_reader) to a BufferedReader object*/</span>
-	        BufferedReader buf_reader <span style="color:#f92672">=</span>
-	            <span style="color:#66d9ef">new</span> BufferedReader<span style="color:#f92672">(</span>in_stream_reader<span style="color:#f92672">);</span>
-
-	        BufferedReader buf_reader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader<span style="color:#f92672">(</span>
-	            <span style="color:#66d9ef">new</span> InputStreamReader<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">));</span>
-
-
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Type in a sentence and press ENTER to terminate.&#34;</span><span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;------------------------------------------------&#34;</span><span style="color:#f92672">);</span>
-	        String data1 <span style="color:#f92672">=</span> buf_reader<span style="color:#f92672">.</span><span style="color:#a6e22e">readLine</span><span style="color:#f92672">();</span> <span style="color:#75715e">// method to read a line.
-</span><span style="color:#75715e"></span>	        <span style="color:#75715e">//String data1 = new BufferedReader(
-</span><span style="color:#75715e"></span>	        <span style="color:#75715e">//   new InputStreamReader(System.in)).readLine();
-</span><span style="color:#75715e"></span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
-
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Type in a sentence and press ENTER to terminate.&#34;</span><span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;------------------------------------------------&#34;</span><span style="color:#f92672">);</span>
-	        String data2 <span style="color:#f92672">=</span> buf_reader<span style="color:#f92672">.</span><span style="color:#a6e22e">readLine</span><span style="color:#f92672">();</span> <span style="color:#75715e">// method to read a line.
-</span><span style="color:#75715e"></span>	        <span style="color:#75715e">//String data2 = new BufferedReader(
-</span><span style="color:#75715e"></span>	        <span style="color:#75715e">//   new InputStreamReader(System.in)).readLine();
-</span><span style="color:#75715e"></span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
-
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1st sentence: &#34;</span> <span style="color:#f92672">+</span> data1<span style="color:#f92672">);</span>
-	        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2nd sentence: &#34;</span> <span style="color:#f92672">+</span> data2<span style="color:#f92672">);</span>
-	    <span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span></code></pre></div>
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#75715e">/*********************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * This program uses the Keyboard as the input device to accept data from the     *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * MS-DOS prompt (console). It gets a character from the keyboard, and prints the *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * ASCII value of the character inputted as well as the character itself.         *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 *********************************************************************************/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.*; <span style="color:#75715e">//for IOException &amp; read() throws and java.io.IOException</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestKeyboardIO1</span> {
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>	        </span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Type in a character and press ENTER.&#34;</span>);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;------------------------------------&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">// reads a byte from the keyboard Buffer.</span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">// Returns an int.</span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">int</span> data <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">char</span>) data);</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Type in a character and press ENTER.&#34;</span>);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;------------------------------------&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">int</span> data <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>();
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">char</span>) data);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        data <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>();
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">char</span>) data);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        data <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>();
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">char</span>) data);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        data <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>();
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">char</span>) data);</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Type in a character and press ENTER.&#34;</span>);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;------------------------------------&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">int</span> data <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>();
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">char</span>) data);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">skip</span>(System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">available</span>()); <span style="color:#75715e">// empty the inputstream</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        data <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>();
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;ASCII  :  &#34;</span> <span style="color:#f92672">+</span> data);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Character :  &#34;</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">char</span>) data);</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>10<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">int</span> bytesRead <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>(buffer);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Actual bytes read: &#34;</span> <span style="color:#f92672">+</span> bytesRead);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">//System.out.println(buffer);// invalid usage</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> buffer.<span style="color:#a6e22e">length</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(buffer<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;  &#34;</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">char</span>) buffer<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>	        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Converted to string: &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>	            <span style="color:#66d9ef">new</span> String(buffer));</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>10<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">//System.in.read(buffer, 0, 5);</span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>(buffer, 2, 6);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> buffer.<span style="color:#a6e22e">length</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(buffer<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;  &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>	                (<span style="color:#66d9ef">char</span>) buffer<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>	        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#66d9ef">new</span> String(buffer));</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	        <span style="color:#66d9ef">byte</span> b<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello World&#34;</span>.<span style="color:#a6e22e">getBytes</span>();
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> b.<span style="color:#a6e22e">length</span>; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>	            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(b<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;  &#34;</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">char</span>) b<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>);	        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getName</span>()); <span style="color:#75715e">// java.io.BufferedInputStream</span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getName</span>()); <span style="color:#75715e">// java.io.PrintStream</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	    }
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#75715e">/********************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * This program uses the Keyboard as the input device to accept data from the    *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * MS-DOS prompt (console). It gets a string from the keyboard and prints it.    *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 ********************************************************************************/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.*; <span style="color:#75715e">//for IOException, InputStream, InputStreamReader, BufferedReader</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestKeyboardIO2</span> {
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">/* converting from byte stream (InputStream subclass) to character stream (Reader subclass)*/</span>
+</span></span><span style="display:flex;"><span>	        InputStreamReader in_stream_reader <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>	            <span style="color:#66d9ef">new</span> InputStreamReader(System.<span style="color:#a6e22e">in</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">/* converting from Reader subclass (in_stream_reader) to a BufferedReader object*/</span>
+</span></span><span style="display:flex;"><span>	        BufferedReader buf_reader <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>	            <span style="color:#66d9ef">new</span> BufferedReader(in_stream_reader);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        BufferedReader buf_reader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(
+</span></span><span style="display:flex;"><span>	            <span style="color:#66d9ef">new</span> InputStreamReader(System.<span style="color:#a6e22e">in</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Type in a sentence and press ENTER to terminate.&#34;</span>);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;------------------------------------------------&#34;</span>);
+</span></span><span style="display:flex;"><span>	        String data1 <span style="color:#f92672">=</span> buf_reader.<span style="color:#a6e22e">readLine</span>(); <span style="color:#75715e">// method to read a line.</span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">//String data1 = new BufferedReader(</span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">//   new InputStreamReader(System.in)).readLine();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Type in a sentence and press ENTER to terminate.&#34;</span>);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;------------------------------------------------&#34;</span>);
+</span></span><span style="display:flex;"><span>	        String data2 <span style="color:#f92672">=</span> buf_reader.<span style="color:#a6e22e">readLine</span>(); <span style="color:#75715e">// method to read a line.</span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">//String data2 = new BufferedReader(</span>
+</span></span><span style="display:flex;"><span>	        <span style="color:#75715e">//   new InputStreamReader(System.in)).readLine();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;1st sentence: &#34;</span> <span style="color:#f92672">+</span> data1);
+</span></span><span style="display:flex;"><span>	        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;2nd sentence: &#34;</span> <span style="color:#f92672">+</span> data2);
+</span></span><span style="display:flex;"><span>	    }
+</span></span><span style="display:flex;"><span>	}</span></span></code></pre></div>
 
       </div>
 
@@ -297,72 +441,67 @@
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -372,6 +511,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

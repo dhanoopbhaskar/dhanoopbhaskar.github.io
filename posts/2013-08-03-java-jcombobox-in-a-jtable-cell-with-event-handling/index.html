@@ -1,125 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="Please refer to the previous post here&hellip;
-The function customizeTable() has been modified in order to include event handling functionality in the combo box.
-private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &#34;ComboBox&#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &#34;select gender&#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&#34;Male&#34;, &#34;Female&#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData.">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java - JComboBox in a JTable cell (with event handling)"/>
-<meta name="twitter:description" content="Please refer to the previous post here&hellip;
-The function customizeTable() has been modified in order to include event handling functionality in the combo box.
-private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &#34;ComboBox&#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &#34;select gender&#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&#34;Male&#34;, &#34;Female&#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="Java - JComboBox in a JTable cell (with event handling)" />
-<meta property="og:description" content="Please refer to the previous post here&hellip;
-The function customizeTable() has been modified in order to include event handling functionality in the combo box.
-private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &#34;ComboBox&#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &#34;select gender&#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&#34;Male&#34;, &#34;Female&#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/" />
-<meta property="article:published_time" content="2013-08-03T14:04:00+05:30" />
-<meta property="article:modified_time" content="2013-08-03T14:04:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   Java - JComboBox in a JTable cell (with event handling) · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
-      
-      
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
 
-    
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="Please refer to the previous post here&hellip;
+The function customizeTable() has been modified in order to include event handling functionality in the combo box.
+     
+        private void customizeTable() {
+            Object[] columnNames = new Object[1];
+            columnNames[0] = &#34;ComboBox&#34;;
+            Object[][] rowData = new Object[1][1];
+            rowData[0][0] = &#34;select gender&#34;;
+            DefaultTableModel tableModel = new DBTableModel(rowData, columnNames);
+            dbTable.setModel(tableModel);
+            String[] gender = {&#34;Male&#34;, &#34;Female&#34;};
+            tableData = new JComboBox(gender);
+            tableData.addActionListener(new ActionListener() {
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
+                public void actionPerformed(ActionEvent e) {
+                    String item = (String) tableData.getSelectedItem();
+                    JOptionPane.showMessageDialog(new JFrame(), item, &#34;Selected Item&#34;, JOptionPane.INFORMATION_MESSAGE);
+                }
+            });
+            dbTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(tableData));
+            dbTable.updateUI();
+        }
 
-    
+  
+For the JComboBox tableData to be accessible in the inner class&rsquo; method actionPerformed(), it should be declared in class level as below. (In the previous post, it&rsquo;s declared locally).">
+<meta name="keywords" content="">
 
-    
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java - JComboBox in a JTable cell (with event handling)">
+  <meta name="twitter:description" content="Please refer to the previous post here…
+The function customizeTable() has been modified in order to include event handling functionality in the combo box.
+private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &#34;ComboBox&#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &#34;select gender&#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&#34;Male&#34;, &#34;Female&#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData.getSelectedItem(); JOptionPane.showMessageDialog(new JFrame(), item, &#34;Selected Item&#34;, JOptionPane.INFORMATION_MESSAGE); } }); dbTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(tableData)); dbTable.updateUI(); } For the JComboBox tableData to be accessible in the inner class’ method actionPerformed(), it should be declared in class level as below. (In the previous post, it’s declared locally).">
 
-    
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Java - JComboBox in a JTable cell (with event handling)">
+  <meta property="og:description" content="Please refer to the previous post here…
+The function customizeTable() has been modified in order to include event handling functionality in the combo box.
+private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &#34;ComboBox&#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &#34;select gender&#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&#34;Male&#34;, &#34;Female&#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData.getSelectedItem(); JOptionPane.showMessageDialog(new JFrame(), item, &#34;Selected Item&#34;, JOptionPane.INFORMATION_MESSAGE); } }); dbTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(tableData)); dbTable.updateUI(); } For the JComboBox tableData to be accessible in the inner class’ method actionPerformed(), it should be declared in class level as below. (In the previous post, it’s declared locally).">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2013-08-03T14:04:00+05:30">
+    <meta property="article:modified_time" content="2013-08-03T14:04:00+05:30">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Swing">
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -130,8 +173,8 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -145,69 +188,73 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2013-08-03T14:04:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2013-08-03T14:04:00&#43;05:30">
                 August 3, 2013
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               One-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="/categories/java/">java</a>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/java/">Java</a>
       <span class="separator">•</span>
-    <a href="/categories/swing/">swing</a></div>
+    <a href="/categories/swing/">Swing</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/java/">java</a>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/java/">Java</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/swing/">swing</a></div>
+    <span class="tag">
+      <a href="/tags/swing/">Swing</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
-        <p>Please refer to the previous post <a href="/blog/2013-08-03-java-jcombobox-in-a-jtable-cell">here&hellip;</a></p>
+        <p>Please refer to the previous post <a href="/blog/2013-08-03-java-jcombobox-in-a-jtable-cell" >here&hellip;</a></p>
 <p>The function <code>customizeTable()</code> has been modified in order to include event handling functionality in the combo box.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">     
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">customizeTable</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-            Object<span style="color:#f92672">[]</span> columnNames <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>1<span style="color:#f92672">];</span>
-            columnNames<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ComboBox&#34;</span><span style="color:#f92672">;</span>
-            Object<span style="color:#f92672">[][]</span> rowData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>1<span style="color:#f92672">][</span>1<span style="color:#f92672">];</span>
-            rowData<span style="color:#f92672">[</span>0<span style="color:#f92672">][</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select gender&#34;</span><span style="color:#f92672">;</span>
-            DefaultTableModel tableModel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DBTableModel<span style="color:#f92672">(</span>rowData<span style="color:#f92672">,</span> columnNames<span style="color:#f92672">);</span>
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">setModel</span><span style="color:#f92672">(</span>tableModel<span style="color:#f92672">);</span>
-            String<span style="color:#f92672">[]</span> gender <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;Male&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Female&#34;</span><span style="color:#f92672">};</span>
-            tableData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JComboBox<span style="color:#f92672">(</span>gender<span style="color:#f92672">);</span>
-            tableData<span style="color:#f92672">.</span><span style="color:#a6e22e">addActionListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> ActionListener<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-
-                <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">actionPerformed</span><span style="color:#f92672">(</span>ActionEvent e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    String item <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>String<span style="color:#f92672">)</span> tableData<span style="color:#f92672">.</span><span style="color:#a6e22e">getSelectedItem</span><span style="color:#f92672">();</span>
-                    JOptionPane<span style="color:#f92672">.</span><span style="color:#a6e22e">showMessageDialog</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> JFrame<span style="color:#f92672">(),</span> item<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Selected Item&#34;</span><span style="color:#f92672">,</span> JOptionPane<span style="color:#f92672">.</span><span style="color:#a6e22e">INFORMATION_MESSAGE</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">});</span>
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">getColumnModel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getColumn</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">setCellEditor</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DefaultCellEditor<span style="color:#f92672">(</span>tableData<span style="color:#f92672">));</span>
-            dbTable<span style="color:#f92672">.</span><span style="color:#a6e22e">updateUI</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-
-  </code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">customizeTable</span>() {
+</span></span><span style="display:flex;"><span>            Object<span style="color:#f92672">[]</span> columnNames <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>            columnNames<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ComboBox&#34;</span>;
+</span></span><span style="display:flex;"><span>            Object<span style="color:#f92672">[][]</span> rowData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>1<span style="color:#f92672">][</span>1<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>            rowData<span style="color:#f92672">[</span>0<span style="color:#f92672">][</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select gender&#34;</span>;
+</span></span><span style="display:flex;"><span>            DefaultTableModel tableModel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DBTableModel(rowData, columnNames);
+</span></span><span style="display:flex;"><span>            dbTable.<span style="color:#a6e22e">setModel</span>(tableModel);
+</span></span><span style="display:flex;"><span>            String<span style="color:#f92672">[]</span> gender <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Male&#34;</span>, <span style="color:#e6db74">&#34;Female&#34;</span>};
+</span></span><span style="display:flex;"><span>            tableData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JComboBox(gender);
+</span></span><span style="display:flex;"><span>            tableData.<span style="color:#a6e22e">addActionListener</span>(<span style="color:#66d9ef">new</span> ActionListener() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">actionPerformed</span>(ActionEvent e) {
+</span></span><span style="display:flex;"><span>                    String item <span style="color:#f92672">=</span> (String) tableData.<span style="color:#a6e22e">getSelectedItem</span>();
+</span></span><span style="display:flex;"><span>                    JOptionPane.<span style="color:#a6e22e">showMessageDialog</span>(<span style="color:#66d9ef">new</span> JFrame(), item, <span style="color:#e6db74">&#34;Selected Item&#34;</span>, JOptionPane.<span style="color:#a6e22e">INFORMATION_MESSAGE</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>            dbTable.<span style="color:#a6e22e">getColumnModel</span>().<span style="color:#a6e22e">getColumn</span>(0).<span style="color:#a6e22e">setCellEditor</span>(<span style="color:#66d9ef">new</span> DefaultCellEditor(tableData));
+</span></span><span style="display:flex;"><span>            dbTable.<span style="color:#a6e22e">updateUI</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  </span></span></code></pre></div>
 <p>For the JComboBox tableData to be accessible in the inner class&rsquo; method <code>actionPerformed()</code>, it should be declared in class level as below. (In the previous post, it&rsquo;s declared locally).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">     
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainJFrame</span> <span style="color:#66d9ef">extends</span> javax<span style="color:#f92672">.</span><span style="color:#a6e22e">swing</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JFrame</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">private</span> JComboBox tableData <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">.</span>
-    <span style="color:#f92672">.</span>
-    <span style="color:#f92672">.</span>
-
-  </code></pre></div>
-<p><a href="/img/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling-9425502223_63c5949cf7_o_d.png"><img src="/img/thumbnails/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling-9425502223_63c5949cf7_o_d.png" alt=""></a></p>
-<p><a href="/img/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling-9428268520_519616aae3_o_d.png"><img src="/img/thumbnails/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling-9428268520_519616aae3_o_d.png" alt=""></a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainJFrame</span> <span style="color:#66d9ef">extends</span> javax.<span style="color:#a6e22e">swing</span>.<span style="color:#a6e22e">JFrame</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> JComboBox tableData <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    .
+</span></span><span style="display:flex;"><span>    .
+</span></span><span style="display:flex;"><span>    .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  </span></span></code></pre></div>
+<p><a href="/img/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling-9425502223_63c5949cf7_o_d.png" ><img src="/img/thumbnails/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling-9425502223_63c5949cf7_o_d.png" alt=""></a></p>
+<p><a href="/img/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling-9428268520_519616aae3_o_d.png" ><img src="/img/thumbnails/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling-9428268520_519616aae3_o_d.png" alt=""></a></p>
 
       </div>
 
@@ -219,72 +266,67 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -294,6 +336,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

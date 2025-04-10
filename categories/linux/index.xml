@@ -1,142 +1,82 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on The Insane Techie</title>
+    <title>Linux on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/categories/linux/</link>
-    <description>Recent content in linux on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Linux on The Insane Techie</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 02 Jul 2018 20:01:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mounting an iPhone to Linux Mint as an external drive to copy images and videos</title>
       <link>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</link>
       <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</guid>
-      <description>Phone: iPhone SE
-Operating System: Linux Mint 18.1(should work in Ubuntu as well)
-It is done by compiling most of the sources yourself.
-Only one library - usbmuxd - must be installed as root
-All others are installed in the home account.
-Install necessary software for building the source packages.
-To check-out and compile the needed packages from source, you have to install git first.
-Open a terminal and do the following:</description>
+      <description>&lt;p&gt;&lt;strong&gt;Phone: iPhone SE&lt;/strong&gt;&lt;br&gt;&#xA;&lt;strong&gt;Operating System: Linux Mint 18.1&lt;/strong&gt;(should work in Ubuntu as well)&lt;/p&gt;&#xA;&lt;p&gt;It is done by compiling most of the sources yourself.&lt;br&gt;&#xA;Only one library - &lt;code&gt;usbmuxd&lt;/code&gt; - must be installed as &lt;strong&gt;root&lt;/strong&gt;&lt;br&gt;&#xA;All others are installed in the home account.&lt;/p&gt;&#xA;&lt;p&gt;Install necessary software for building the source packages.&lt;/p&gt;&#xA;&lt;p&gt;To check-out and compile the needed packages from source, you have to&#xA;install &lt;strong&gt;git&lt;/strong&gt; first.&lt;/p&gt;&#xA;&lt;p&gt;Open a terminal and do the following:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Installing and Configuring phpMyAdmin in Ubuntu/Linux Mint</title>
       <link>https://dhanoopbhaskar.github.io/posts/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</guid>
-      <description>Install phpmyadmin
-sudo apt-get install phpmyadmin  Configure phpmyadmin
-sudo dpkg-reconfigure -plow phpmyadmin  Then select Apache 2 for the webserver you wish to configure.
-Try hitting the URL http://localhost/phpmyadmin/
-If this does not work, then you have to include the phpMyAdmin-shipped Apache configuration into Apache:
-sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf.d/phpmyadmin.conf sudo /etc/init.d/apache2 reload  Since Ubuntu 13.10 (Saucy Salamander), Apache no longer loads configuration files from the /etc/apache2/conf.d directory.</description>
+      <description>&lt;p&gt;&lt;strong&gt;Install phpmyadmin&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo apt-get install phpmyadmin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;Configure phpmyadmin&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo dpkg-reconfigure -plow phpmyadmin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Then select Apache 2 for the webserver you wish to configure.&lt;/p&gt;&#xA;&lt;p&gt;Try hitting the URL &lt;strong&gt;http://localhost/phpmyadmin/&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;If this does not work, then you have to include the phpMyAdmin-shipped&#xA;Apache configuration into Apache:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf.d/phpmyadmin.conf&#xA;sudo /etc/init.d/apache2 reload&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Since Ubuntu 13.10 (Saucy Salamander), Apache no longer loads&#xA;configuration files from the &lt;code&gt;/etc/apache2/conf.d&lt;/code&gt; directory.&lt;br&gt;&#xA;Instead, they are placed in the &lt;code&gt;/etc/apache2/conf-available&lt;/code&gt; directory&#xA;which is managed with the &lt;code&gt;a2enconf&lt;/code&gt; command.&lt;br&gt;&#xA;Therefore, if you need to manually include the phpMyAdmin-shipped Apache&#xA;configuration file, you must run the following:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Using Linux Utilities Under Windows</title>
       <link>https://dhanoopbhaskar.github.io/posts/2013-01-05-using-linux-utilities-under-windows/</link>
       <pubDate>Sat, 05 Jan 2013 16:27:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2013-01-05-using-linux-utilities-under-windows/</guid>
-      <description>There are many utilities in Linux/Unix which are very useful in our life say for example sed, awk, grep, etc. Some of us might have wished Windows/DOS environment to have similar kind of utilities. Anyway I did. Today I came across some of the open source projects, while googling, which provide some of the utilities in Windows too and thought of sharing :)
-The projects are GnuWin and UnxUtils.
-Please find below the links to their sourceforge pages GnuWin UnxUtils  </description>
+      <description>&lt;p&gt;There are many utilities in Linux/Unix which are very useful in our life say for example sed, awk, grep, etc. Some of us might have wished Windows/DOS environment to have similar kind of utilities. Anyway I did. Today I came across some of the open source projects, while googling, which provide some of the utilities in Windows too and thought of sharing :)&lt;/p&gt;&#xA;&lt;p&gt;The projects are &lt;strong&gt;GnuWin&lt;/strong&gt; and &lt;strong&gt;UnxUtils&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Please find below the links to their sourceforge pages&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Linux-Shell Programming</title>
       <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-shell-programming/</link>
       <pubDate>Thu, 23 Dec 2010 22:43:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-shell-programming/</guid>
-      <description>Write a program to print details of currently logged in users,
-print date and calendar?
- #/bin/bash echo &amp;quot;Current login users: `who`&amp;quot; echo &amp;quot;Date: `date`&amp;quot; echo &amp;quot;Calendar: `cal`&amp;quot;    Write a program to define user defined variables &amp;lsquo;x&amp;rsquo; with value
-&amp;lsquo;10&amp;rsquo; and &amp;lsquo;y&amp;rsquo; &amp;lsquo;20&amp;rsquo; and print it on screen?
- #/bin/bash a=10 b=20 echo &amp;quot;a = $a , b = $b&amp;quot;    Write a program to print current shell, present working directory,</description>
+      <description>&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Write a program to print details of currently logged in users,&lt;br&gt;&#xA;print date and calendar?&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt; #/bin/bash&#xA; echo &amp;quot;Current login users: `who`&amp;quot;&#xA; echo &amp;quot;Date: `date`&amp;quot;&#xA; echo &amp;quot;Calendar: `cal`&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Write a program to define user defined variables &amp;lsquo;x&amp;rsquo; with value&lt;br&gt;&#xA;&amp;lsquo;10&amp;rsquo; and &amp;lsquo;y&amp;rsquo; &amp;lsquo;20&amp;rsquo; and print it on screen?&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt; #/bin/bash&#xA; a=10&#xA; b=20&#xA; echo &amp;quot;a = $a , b = $b&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Write a program to print current shell, present working directory,&lt;br&gt;&#xA;and username, using system variable?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Linux-More commands</title>
       <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-more-commands/</link>
       <pubDate>Thu, 23 Dec 2010 22:37:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-more-commands/</guid>
-      <description>To show the full path of shell commands found in your path
-which &amp;lt;command name&amp;gt; eg: which grep //output like: /bin/grep  To locate the program, source code, and manual page for a command
-whereis &amp;lt;command name&amp;gt;  To search for files anywhere on the file system
-locate &amp;lt;keyword to search&amp;gt; //find all files and directories that contain the keyword  To search for files matching certain patterns
-find &amp;lt;directory name&amp;gt; &amp;lt;pattern to search&amp;gt; eg: find .</description>
+      <description>&lt;p&gt;&lt;strong&gt;To show the full path of shell commands found in your path&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;which &amp;lt;command name&amp;gt;&#xA;eg: which grep  &#xA;//output like: /bin/grep  &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To locate the program, source code, and manual page for a command&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;whereis &amp;lt;command name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To search for files anywhere on the file system&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;locate &amp;lt;keyword to search&amp;gt;&#xA;&#x9;//find all files and directories that contain the keyword&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To search for files matching certain patterns&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;find &amp;lt;directory name&amp;gt; &amp;lt;pattern to search&amp;gt;&#xA;           eg: find . -name \*mp3&#xA;           // starts searching in the current directory “.” and all subdirectories, &#xA;           // looking for files with “mp3” at the end of their names&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To list currently running process&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Linux-Working with files</title>
       <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-files/</link>
       <pubDate>Thu, 23 Dec 2010 22:10:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-files/</guid>
-      <description>To find the type of a file
-file &amp;lt;file name&amp;gt;  To create a file
-cat &amp;gt; filename.txt //type the contents and press Ctrl+D to exit  To display the contents of a text file
-cat &amp;lt;file name&amp;gt;  To view the contents of a file page by page
-more &amp;lt;file name&amp;gt; //traversal only in forward direction less &amp;lt;file name&amp;gt; //traversal in both directions  To display first few lines of a file</description>
+      <description>&lt;p&gt;&lt;strong&gt;To find the type of a file&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;file &amp;lt;file name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To create a file&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cat &amp;gt; filename.txt&#xA;      //type the contents and press Ctrl+D to exit&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To display the contents of a text file&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cat &amp;lt;file name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To view the contents of a file page by page&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;more &amp;lt;file name&amp;gt;&#xA;&#x9;//traversal only in forward direction&#xA;less &amp;lt;file name&amp;gt;&#xA;&#x9;//traversal in both directions&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To display first few lines of a file&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Linux-Working with directories</title>
       <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-directories/</link>
       <pubDate>Thu, 23 Dec 2010 22:02:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-directories/</guid>
-      <description>To print working directory
-pwd  To change directory
-To return to home directory
-cd  To change into specified directory name
-cd &amp;lt;directory name&amp;gt;  To change to home or other path relative to home
-// ~ is an alias for your home directory cd ~  To move up one directory
-cd ..  To return to previous directory
-cd -  To list all files in the current directory</description>
+      <description>&lt;p&gt;&lt;strong&gt;To print working directory&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;pwd&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To change directory&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;To return to home directory&lt;/em&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cd&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;em&gt;To change into specified directory name&lt;/em&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cd &amp;lt;directory name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;em&gt;To change to home or other path relative to home&lt;/em&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// ~ is an alias for your home directory&#xA;cd ~&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;em&gt;To move up one directory&lt;/em&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cd ..&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;em&gt;To return to previous directory&lt;/em&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cd -&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To list all files in the current directory&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Linux-help commands</title>
       <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-help-commands/</link>
       <pubDate>Thu, 23 Dec 2010 21:44:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-help-commands/</guid>
-      <description>To get help on commands
-help &amp;lt;command name&amp;gt; eg: help cat &amp;lt;command name&amp;gt; --help eg: grep --help &amp;lt;command name&amp;gt; -h eg: chmod -h whatis &amp;lt;command name&amp;gt; eg: whatis grep  To get man pages
-man &amp;lt;command name&amp;gt; eg: man ls  To search for a particular word within a man page type /word
-To quit from a man page, just type the Q key
-If you don’t remember the actual command:</description>
+      <description>&lt;p&gt;&lt;strong&gt;To get &lt;code&gt;help&lt;/code&gt; on commands&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;help &amp;lt;command name&amp;gt;&#xA;&#x9;eg: help cat&#xA;&amp;lt;command name&amp;gt; --help&#xA;&#x9;eg: grep --help&#xA;&amp;lt;command name&amp;gt; -h&#xA;&#x9;eg: chmod -h&#xA;whatis &amp;lt;command name&amp;gt;&#xA;&#x9;eg: whatis grep&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;strong&gt;To get &lt;code&gt;man&lt;/code&gt; pages&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;man &amp;lt;command name&amp;gt;&#xA;&#x9;eg: man ls&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;em&gt;To search for a particular word within a man page&lt;/em&gt; type &lt;code&gt;/word&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;To quit from a man page, just type the &lt;code&gt;Q&lt;/code&gt; key&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;If you don’t remember the actual command:&lt;/em&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Linux-Directory Layout</title>
       <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-directory-layout/</link>
       <pubDate>Thu, 23 Dec 2010 21:42:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-directory-layout/</guid>
-      <description>Directory Description       The nameless base of the file system. All other directories, files, drives, and devices are attached to this root. Commonly (but incorrectly) referred to as the “slash” or “/” directory. The “/” is just a directory separator, not a directory itself.   /bin Essential command binaries (programs) are stored here (bash, ls, mount, tar, etc.)   /boot Static files of the boot loader.</description>
+      <description>&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Directory&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt; &lt;/td&gt;&#xA;          &lt;td&gt;The nameless base of the file system. All other directories, files, drives, and devices are attached to this root. Commonly (but incorrectly) referred to as the “slash” or “/” directory. The “/” is just a directory separator, not a directory itself.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/bin&lt;/td&gt;&#xA;          &lt;td&gt;Essential command binaries (programs) are stored here (bash, ls, mount, tar, etc.)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/boot&lt;/td&gt;&#xA;          &lt;td&gt;Static files of the boot loader.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/dev&lt;/td&gt;&#xA;          &lt;td&gt;Device files. In Linux, hardware devices are accessed just like other files, and they are kept under this directory.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/etc&lt;/td&gt;&#xA;          &lt;td&gt;Host-specific system configuration files.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/home&lt;/td&gt;&#xA;          &lt;td&gt;Location of users&amp;rsquo; personal home directories (e.g./home/dhanoop).&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/lib&lt;/td&gt;&#xA;          &lt;td&gt;Essential shared libraries and kernel modules.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/proc&lt;/td&gt;&#xA;          &lt;td&gt;Process information pseudo-file system. An interface to kernel data structures.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/root&lt;/td&gt;&#xA;          &lt;td&gt;The root (super-user) home directory.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/sbin&lt;/td&gt;&#xA;          &lt;td&gt;Essential system binaries (fdisk, fsck, init, etc).&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/tmp&lt;/td&gt;&#xA;          &lt;td&gt;Temporary files. All users have permission to place temporary files here.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/usr&lt;/td&gt;&#xA;          &lt;td&gt;The base directory for most shareable, read-only data (programs, libraries, documentation, and much more).&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/usr/bin&lt;/td&gt;&#xA;          &lt;td&gt;Most user programs are kept here (cc, find, du, etc.).&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/usr/include&lt;/td&gt;&#xA;          &lt;td&gt;Header files for compiling C programs.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/usr/lib&lt;/td&gt;&#xA;          &lt;td&gt;Libraries for most binary programs.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/usr/local&lt;/td&gt;&#xA;          &lt;td&gt;“Locally” installed files. This directory only really matters in environments where files are stored on the network. Locally-installed files go in /usr/local/bin, /usr/local/lib, etc.). Also often used for software packages installed from source, or software not officially shipped with the distribution.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/usr/sbin&lt;/td&gt;&#xA;          &lt;td&gt;Non-vital system binaries (lpd, useradd, etc.)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/usr/share&lt;/td&gt;&#xA;          &lt;td&gt;Architecture-independent data (icons, backgrounds, documentation, terminfo, man pages, etc.).&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/usr/src&lt;/td&gt;&#xA;          &lt;td&gt;Program source code. E.g. The Linux Kernel, source RPMs, etc.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/usr/X11R6&lt;/td&gt;&#xA;          &lt;td&gt;The X Window System.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/var&lt;/td&gt;&#xA;          &lt;td&gt;Variable data: mail and printer spools, log files, lock files, etc.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
     </item>
-    
     <item>
       <title>Linux-basics</title>
       <link>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-basics/</link>
       <pubDate>Thu, 23 Dec 2010 21:40:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-basics/</guid>
-      <description>Character Description     \ Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: touch /tmp/filename\*   / Directory separator, used to separate a string of directory names. Example: /usr/src/linux   . dot denotes current directory. Can also “hide” files when it is the first character in a filename.   .. 2 dots denote parent directory   ~ User&amp;rsquo;s home directory   * Represents 0 or more characters in a filename, or by itself, all files in a directory.</description>
+      <description>&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Character&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;\&lt;/td&gt;&#xA;          &lt;td&gt;Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: &lt;code&gt;touch /tmp/filename\*&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;/&lt;/td&gt;&#xA;          &lt;td&gt;Directory separator, used to separate a string of directory names. Example: &lt;code&gt;/usr/src/linux&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;.&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;dot&lt;/code&gt; denotes current directory. Can also “hide” files when it is the first character in a filename.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;..&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;2 dots&lt;/code&gt; denote parent directory&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;~&lt;/td&gt;&#xA;          &lt;td&gt;User&amp;rsquo;s home directory&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;*&lt;/td&gt;&#xA;          &lt;td&gt;Represents 0 or more characters in a filename, or by itself, all files in a directory. Example: &lt;code&gt;pic*2002&lt;/code&gt; can represent the files pic2002, picJanuary2002, picFeb292002, etc.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;?&lt;/td&gt;&#xA;          &lt;td&gt;Represents a single character in a filename. Example: &lt;code&gt;hello?.txt&lt;/code&gt; can represent hello1.txt and helloz.txt but not hello22.txt&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;[ ]&lt;/td&gt;&#xA;          &lt;td&gt;Can be used to represent a range of values. Example: &lt;code&gt;hello[0-2].txt&lt;/code&gt; represents the names hello0.txt, hello1.txt and hello2.txt&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;|&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;Pipe&lt;/code&gt;. Redirect the output of one command into another command. Example: `ls&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;gt;&lt;/td&gt;&#xA;          &lt;td&gt;Redirect output of a command into a new file. If the file already exists, over-write it. Example: &lt;code&gt;ls &amp;gt; myfiles.txt&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;gt;&amp;gt;&lt;/td&gt;&#xA;          &lt;td&gt;Redirect the output of a command onto the end of an existing file. Example: &lt;code&gt;echo .Mary 555-1234. &amp;gt;&amp;gt; phonenumbers.txt&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;lt;&lt;/td&gt;&#xA;          &lt;td&gt;Redirect a file as input to a program. Example: &lt;code&gt;more &amp;lt; phonenumbers.txt&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;;&lt;/td&gt;&#xA;          &lt;td&gt;Command separator. Allows you to execute multiple commands on a single line. Example: &lt;code&gt;cd /var/log ; less messages&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;amp;&amp;amp;&lt;/td&gt;&#xA;          &lt;td&gt;Command separator as above, but only runs the second command if the first one finished without errors. Example: &lt;code&gt;cd /var/logs &amp;amp;&amp;amp; less messages&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;amp;&lt;/td&gt;&#xA;          &lt;td&gt;Execute a command in the background, and immediately get your shell back. Example: &lt;code&gt;find / -name core &amp;gt; /tmp/corefiles.txt &amp;amp;&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
     </item>
-    
   </channel>
 </rss>

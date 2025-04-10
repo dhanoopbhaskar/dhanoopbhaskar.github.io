@@ -1,134 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="Read about REST here&hellip;
-In the example program REST is implemented using Jersey Framework.
-Download Jersey framework from here&hellip;
-I used Dynamic Web Project in Eclipse for coding. Extract jersey zip file and copy all the .jar files from api, ext, lib folders to WebContent/WEB-INF/lib folder.
-Employee.java
-package in.theinsanetechie.rest; import java.io.Serializable; import javax.xml.bind.annotation.XmlElement; import javax.xml.bind.annotation.XmlRootElement; @XmlRootElement(name = &#34;employee&#34;) public class Employee implements Serializable { private static final long serialVersionUID = 1L; private int empcode; private String name; private String designation; private float basicpay; public Employee() { } public Employee(int empcode, String name, String designation, float basicpay) { super(); this.">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="RESTful Web Services in Java"/>
-<meta name="twitter:description" content="Read about REST here&hellip;
-In the example program REST is implemented using Jersey Framework.
-Download Jersey framework from here&hellip;
-I used Dynamic Web Project in Eclipse for coding. Extract jersey zip file and copy all the .jar files from api, ext, lib folders to WebContent/WEB-INF/lib folder.
-Employee.java
-package in.theinsanetechie.rest; import java.io.Serializable; import javax.xml.bind.annotation.XmlElement; import javax.xml.bind.annotation.XmlRootElement; @XmlRootElement(name = &#34;employee&#34;) public class Employee implements Serializable { private static final long serialVersionUID = 1L; private int empcode; private String name; private String designation; private float basicpay; public Employee() { } public Employee(int empcode, String name, String designation, float basicpay) { super(); this."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="RESTful Web Services in Java" />
-<meta property="og:description" content="Read about REST here&hellip;
-In the example program REST is implemented using Jersey Framework.
-Download Jersey framework from here&hellip;
-I used Dynamic Web Project in Eclipse for coding. Extract jersey zip file and copy all the .jar files from api, ext, lib folders to WebContent/WEB-INF/lib folder.
-Employee.java
-package in.theinsanetechie.rest; import java.io.Serializable; import javax.xml.bind.annotation.XmlElement; import javax.xml.bind.annotation.XmlRootElement; @XmlRootElement(name = &#34;employee&#34;) public class Employee implements Serializable { private static final long serialVersionUID = 1L; private int empcode; private String name; private String designation; private float basicpay; public Employee() { } public Employee(int empcode, String name, String designation, float basicpay) { super(); this." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2016-08-22-restful-web-services-in-java/" />
-<meta property="article:published_time" content="2016-08-22T20:13:00+05:30" />
-<meta property="article:modified_time" content="2016-08-22T20:13:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   RESTful Web Services in Java · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2016-08-22-restful-web-services-in-java/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
-      
-      
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
 
-    
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="Read about REST here&hellip;
+In the example program REST is implemented using Jersey Framework.
+Download Jersey framework from here&hellip;
+I used Dynamic Web Project in Eclipse for coding. Extract jersey
+zip file and copy all the .jar files from api, ext, lib
+folders to WebContent/WEB-INF/lib folder.
+Employee.java
+     
+package in.theinsanetechie.rest;
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
+import java.io.Serializable;
 
-    
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-    
+@XmlRootElement(name = &#34;employee&#34;)
+public class Employee implements Serializable {
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+    private static final long serialVersionUID = 1L;
+    private int empcode;
+    private String name;
+    private String designation;
+    private float basicpay;
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    public Employee() {
+    }
 
-    
+    public Employee(int empcode, String name, String designation, float basicpay) {
+        super();
+        this.empcode = empcode;
+        this.name = name;
+        this.designation = designation;
+        this.basicpay = basicpay;
+    }
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+    public int getEmpcode() {
+        return empcode;
+    }
+
+    @XmlElement
+    public void setEmpcode(int empcode) {
+        this.empcode = empcode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @XmlElement
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    @XmlElement
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public float getBasicpay() {
+        return basicpay;
+    }
+
+    @XmlElement
+    public void setBasicpay(float basicpay) {
+        this.basicpay = basicpay;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Employee other = (Employee) obj;
+        if (Float.floatToIntBits(basicpay) != Float.floatToIntBits(other.basicpay))
+            return false;
+        if (designation == null) {
+            if (other.designation != null)
+                return false;
+        } else if (!designation.equals(other.designation))
+            return false;
+        if (empcode != other.empcode)
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        return true;
+    }
+
+}
+EmployeeAccessObject.java">
+<meta name="keywords" content="">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="RESTful Web Services in Java">
+  <meta name="twitter:description" content="Read about REST here…
+In the example program REST is implemented using Jersey Framework.
+Download Jersey framework from here…
+I used Dynamic Web Project in Eclipse for coding. Extract jersey zip file and copy all the .jar files from api, ext, lib folders to WebContent/WEB-INF/lib folder.
+Employee.java
+package in.theinsanetechie.rest; import java.io.Serializable; import javax.xml.bind.annotation.XmlElement; import javax.xml.bind.annotation.XmlRootElement; @XmlRootElement(name = &#34;employee&#34;) public class Employee implements Serializable { private static final long serialVersionUID = 1L; private int empcode; private String name; private String designation; private float basicpay; public Employee() { } public Employee(int empcode, String name, String designation, float basicpay) { super(); this.empcode = empcode; this.name = name; this.designation = designation; this.basicpay = basicpay; } public int getEmpcode() { return empcode; } @XmlElement public void setEmpcode(int empcode) { this.empcode = empcode; } public String getName() { return name; } @XmlElement public void setName(String name) { this.name = name; } public String getDesignation() { return designation; } @XmlElement public void setDesignation(String designation) { this.designation = designation; } public float getBasicpay() { return basicpay; } @XmlElement public void setBasicpay(float basicpay) { this.basicpay = basicpay; } @Override public boolean equals(Object obj) { if (this == obj) return true; if (obj == null) return false; if (getClass() != obj.getClass()) return false; Employee other = (Employee) obj; if (Float.floatToIntBits(basicpay) != Float.floatToIntBits(other.basicpay)) return false; if (designation == null) { if (other.designation != null) return false; } else if (!designation.equals(other.designation)) return false; if (empcode != other.empcode) return false; if (name == null) { if (other.name != null) return false; } else if (!name.equals(other.name)) return false; return true; } } EmployeeAccessObject.java">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2016-08-22-restful-web-services-in-java/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="RESTful Web Services in Java">
+  <meta property="og:description" content="Read about REST here…
+In the example program REST is implemented using Jersey Framework.
+Download Jersey framework from here…
+I used Dynamic Web Project in Eclipse for coding. Extract jersey zip file and copy all the .jar files from api, ext, lib folders to WebContent/WEB-INF/lib folder.
+Employee.java
+package in.theinsanetechie.rest; import java.io.Serializable; import javax.xml.bind.annotation.XmlElement; import javax.xml.bind.annotation.XmlRootElement; @XmlRootElement(name = &#34;employee&#34;) public class Employee implements Serializable { private static final long serialVersionUID = 1L; private int empcode; private String name; private String designation; private float basicpay; public Employee() { } public Employee(int empcode, String name, String designation, float basicpay) { super(); this.empcode = empcode; this.name = name; this.designation = designation; this.basicpay = basicpay; } public int getEmpcode() { return empcode; } @XmlElement public void setEmpcode(int empcode) { this.empcode = empcode; } public String getName() { return name; } @XmlElement public void setName(String name) { this.name = name; } public String getDesignation() { return designation; } @XmlElement public void setDesignation(String designation) { this.designation = designation; } public float getBasicpay() { return basicpay; } @XmlElement public void setBasicpay(float basicpay) { this.basicpay = basicpay; } @Override public boolean equals(Object obj) { if (this == obj) return true; if (obj == null) return false; if (getClass() != obj.getClass()) return false; Employee other = (Employee) obj; if (Float.floatToIntBits(basicpay) != Float.floatToIntBits(other.basicpay)) return false; if (designation == null) { if (other.designation != null) return false; } else if (!designation.equals(other.designation)) return false; if (empcode != other.empcode) return false; if (name == null) { if (other.name != null) return false; } else if (!name.equals(other.name)) return false; return true; } } EmployeeAccessObject.java">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2016-08-22T20:13:00+05:30">
+    <meta property="article:modified_time" content="2016-08-22T20:13:00+05:30">
+    <meta property="article:tag" content="REST">
+    <meta property="article:tag" content="Jersey">
+    <meta property="article:tag" content="Java Ws">
+    <meta property="article:tag" content="Web Services">
+    <meta property="article:tag" content="Java">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2016-08-22-restful-web-services-in-java/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -139,8 +256,8 @@ package in.theinsanetechie.rest; import java.io.Serializable; import javax.xml.b
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -154,478 +271,488 @@ package in.theinsanetechie.rest; import java.io.Serializable; import javax.xml.b
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2016-08-22T20:13:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2016-08-22T20:13:00&#43;05:30">
                 August 22, 2016
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               5-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
     <a href="/categories/rest/">REST</a>
       <span class="separator">•</span>
     <a href="/categories/web-services/">Web Services</a>
       <span class="separator">•</span>
-    <a href="/categories/java/">java</a></div>
+    <a href="/categories/java/">Java</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/rest/">REST</a>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/rest/">REST</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/jersey/">jersey</a>
+    <span class="tag">
+      <a href="/tags/jersey/">Jersey</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/java-ws/">java ws</a>
+    <span class="tag">
+      <a href="/tags/java-ws/">Java Ws</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/web-services/">Web Services</a>
+    <span class="tag">
+      <a href="/tags/web-services/">Web Services</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/java/">java</a></div>
+    <span class="tag">
+      <a href="/tags/java/">Java</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
-        <p>Read about <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST here&hellip;</a><br>
+        <p>Read about <a href="https://en.wikipedia.org/wiki/Representational_state_transfer"  class="external-link" target="_blank" rel="noopener">REST here&hellip;</a><br>
 In the example program REST is implemented using Jersey Framework.<br>
-Download Jersey framework from <a href="https://jersey.java.net/">here&hellip;</a><br>
+Download Jersey framework from <a href="https://jersey.java.net/"  class="external-link" target="_blank" rel="noopener">here&hellip;</a><br>
 I used <strong>Dynamic Web Project</strong> in <strong>Eclipse</strong> for coding. Extract jersey
 zip file and copy all the <strong>.jar</strong> files from <strong>api</strong>, <strong>ext</strong>, <strong>lib</strong>
 folders to <strong>WebContent/WEB-INF/lib</strong> folder.</p>
 <p><strong>Employee.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">     
-<span style="color:#f92672">package</span> in.theinsanetechie.rest<span style="color:#f92672">;</span>
-
-<span style="color:#f92672">import</span> java.io.Serializable<span style="color:#f92672">;</span>
-
-<span style="color:#f92672">import</span> javax.xml.bind.annotation.XmlElement<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.xml.bind.annotation.XmlRootElement<span style="color:#f92672">;</span>
-
-<span style="color:#a6e22e">@XmlRootElement</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;employee&#34;</span><span style="color:#f92672">)</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> <span style="color:#66d9ef">implements</span> Serializable <span style="color:#f92672">{</span>
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">long</span> serialVersionUID <span style="color:#f92672">=</span> 1L<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> empcode<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> String name<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> String designation<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">float</span> basicpay<span style="color:#f92672">;</span>
-
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Employee</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Employee</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> empcode<span style="color:#f92672">,</span> String name<span style="color:#f92672">,</span> String designation<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> basicpay<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">super</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">empcode</span> <span style="color:#f92672">=</span> empcode<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">designation</span> <span style="color:#f92672">=</span> designation<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">basicpay</span> <span style="color:#f92672">=</span> basicpay<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getEmpcode</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> empcode<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@XmlElement</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setEmpcode</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> empcode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">empcode</span> <span style="color:#f92672">=</span> empcode<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> name<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@XmlElement</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getDesignation</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> designation<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@XmlElement</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDesignation</span><span style="color:#f92672">(</span>String designation<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">designation</span> <span style="color:#f92672">=</span> designation<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">getBasicpay</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> basicpay<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@XmlElement</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setBasicpay</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> basicpay<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">basicpay</span> <span style="color:#f92672">=</span> basicpay<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@Override</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>Object obj<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span> <span style="color:#f92672">==</span> obj<span style="color:#f92672">)</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>obj <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>getClass<span style="color:#f92672">()</span> <span style="color:#f92672">!=</span> obj<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">())</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-        Employee other <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Employee<span style="color:#f92672">)</span> obj<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>Float<span style="color:#f92672">.</span><span style="color:#a6e22e">floatToIntBits</span><span style="color:#f92672">(</span>basicpay<span style="color:#f92672">)</span> <span style="color:#f92672">!=</span> Float<span style="color:#f92672">.</span><span style="color:#a6e22e">floatToIntBits</span><span style="color:#f92672">(</span>other<span style="color:#f92672">.</span><span style="color:#a6e22e">basicpay</span><span style="color:#f92672">))</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>designation <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>other<span style="color:#f92672">.</span><span style="color:#a6e22e">designation</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>designation<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>other<span style="color:#f92672">.</span><span style="color:#a6e22e">designation</span><span style="color:#f92672">))</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>empcode <span style="color:#f92672">!=</span> other<span style="color:#f92672">.</span><span style="color:#a6e22e">empcode</span><span style="color:#f92672">)</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>name <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>other<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>name<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>other<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span><span style="color:#f92672">))</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-<span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> in.theinsanetechie.rest;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.Serializable;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.xml.bind.annotation.XmlElement;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.xml.bind.annotation.XmlRootElement;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@XmlRootElement</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;employee&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> <span style="color:#66d9ef">implements</span> Serializable {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">long</span> serialVersionUID <span style="color:#f92672">=</span> 1L;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> empcode;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String designation;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">float</span> basicpay;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Employee</span>() {
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Employee</span>(<span style="color:#66d9ef">int</span> empcode, String name, String designation, <span style="color:#66d9ef">float</span> basicpay) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">empcode</span> <span style="color:#f92672">=</span> empcode;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">designation</span> <span style="color:#f92672">=</span> designation;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">basicpay</span> <span style="color:#f92672">=</span> basicpay;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getEmpcode</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> empcode;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@XmlElement</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setEmpcode</span>(<span style="color:#66d9ef">int</span> empcode) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">empcode</span> <span style="color:#f92672">=</span> empcode;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@XmlElement</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span>(String name) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getDesignation</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> designation;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@XmlElement</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDesignation</span>(String designation) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">designation</span> <span style="color:#f92672">=</span> designation;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">getBasicpay</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> basicpay;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@XmlElement</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setBasicpay</span>(<span style="color:#66d9ef">float</span> basicpay) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">basicpay</span> <span style="color:#f92672">=</span> basicpay;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">equals</span>(Object obj) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">==</span> obj)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (obj <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (getClass() <span style="color:#f92672">!=</span> obj.<span style="color:#a6e22e">getClass</span>())
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        Employee other <span style="color:#f92672">=</span> (Employee) obj;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (Float.<span style="color:#a6e22e">floatToIntBits</span>(basicpay) <span style="color:#f92672">!=</span> Float.<span style="color:#a6e22e">floatToIntBits</span>(other.<span style="color:#a6e22e">basicpay</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (designation <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (other.<span style="color:#a6e22e">designation</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>designation.<span style="color:#a6e22e">equals</span>(other.<span style="color:#a6e22e">designation</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (empcode <span style="color:#f92672">!=</span> other.<span style="color:#a6e22e">empcode</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (name <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (other.<span style="color:#a6e22e">name</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>name.<span style="color:#a6e22e">equals</span>(other.<span style="color:#a6e22e">name</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 <p><strong>EmployeeAccessObject.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">     
-<span style="color:#f92672">package</span> in.theinsanetechie.rest<span style="color:#f92672">;</span>
-
-<span style="color:#f92672">import</span> java.io.File<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.io.FileInputStream<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.io.FileNotFoundException<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.io.FileOutputStream<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.io.ObjectInputStream<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.io.ObjectOutputStream<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.ArrayList<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
-
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeAccessObject</span> <span style="color:#f92672">{</span>
-
-    <span style="color:#66d9ef">private</span> String fileName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Employee.dat&#34;</span><span style="color:#f92672">;</span>
-
-    <span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;unchecked&#34;</span><span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">public</span> List <span style="color:#a6e22e">getFullList</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        List list <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-        File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>fileName<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>file<span style="color:#f92672">.</span><span style="color:#a6e22e">exists</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-                FileInputStream fileInputStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>file<span style="color:#f92672">);</span>
-                ObjectInputStream objectInputStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectInputStream<span style="color:#f92672">(</span>fileInputStream<span style="color:#f92672">);</span>
-                list <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>List<span style="color:#f92672">)</span> objectInputStream<span style="color:#f92672">.</span><span style="color:#a6e22e">readObject</span><span style="color:#f92672">();</span>
-                objectInputStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                Employee employee <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Employee<span style="color:#f92672">(</span>1001<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;The Insane Techie&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Dev&#34;</span><span style="color:#f92672">,</span> 99999<span style="color:#f92672">.</span><span style="color:#a6e22e">99f</span><span style="color:#f92672">);</span>
-                list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">();</span>
-                list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>employee<span style="color:#f92672">);</span>
-                saveList<span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ClassNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#66d9ef">return</span> list<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> Employee <span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> empcode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        List list <span style="color:#f92672">=</span> getFullList<span style="color:#f92672">();</span>
-
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Employee temp <span style="color:#f92672">:</span> list<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpcode</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> empcode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">return</span> temp<span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">addToList</span><span style="color:#f92672">(</span>Employee emp<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        List list <span style="color:#f92672">=</span> getFullList<span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">boolean</span> exists <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Employee temp <span style="color:#f92672">:</span> list<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpcode</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> emp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpcode</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-                exists <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>exists<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>emp<span style="color:#f92672">);</span>
-            saveList<span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">updateList</span><span style="color:#f92672">(</span>Employee emp<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        List list <span style="color:#f92672">=</span> getFullList<span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Employee temp <span style="color:#f92672">:</span> list<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpcode</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> emp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpcode</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">);</span>
-                list<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>index<span style="color:#f92672">,</span> emp<span style="color:#f92672">);</span>
-                saveList<span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">deleteFromList</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> empcode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        List list <span style="color:#f92672">=</span> getFullList<span style="color:#f92672">();</span>
-
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Employee temp <span style="color:#f92672">:</span> list<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpcode</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> empcode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">);</span>
-                list<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>index<span style="color:#f92672">);</span>
-                saveList<span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">saveList</span><span style="color:#f92672">(</span>List list<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-
-        File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>fileName<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            FileOutputStream fileOutputStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>file<span style="color:#f92672">);</span>
-            ObjectOutputStream objectOutputStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectOutputStream<span style="color:#f92672">(</span>fileOutputStream<span style="color:#f92672">);</span>
-            objectOutputStream<span style="color:#f92672">.</span><span style="color:#a6e22e">writeObject</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-            objectOutputStream<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> in.theinsanetechie.rest;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.File;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.FileInputStream;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.FileNotFoundException;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.FileOutputStream;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.ObjectInputStream;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.ObjectOutputStream;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.ArrayList;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeAccessObject</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String fileName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Employee.dat&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@SuppressWarnings</span>(<span style="color:#e6db74">&#34;unchecked&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> List <span style="color:#a6e22e">getFullList</span>() {
+</span></span><span style="display:flex;"><span>        List list <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(fileName);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (file.<span style="color:#a6e22e">exists</span>()) {
+</span></span><span style="display:flex;"><span>                FileInputStream fileInputStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(file);
+</span></span><span style="display:flex;"><span>                ObjectInputStream objectInputStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectInputStream(fileInputStream);
+</span></span><span style="display:flex;"><span>                list <span style="color:#f92672">=</span> (List) objectInputStream.<span style="color:#a6e22e">readObject</span>();
+</span></span><span style="display:flex;"><span>                objectInputStream.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                Employee employee <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Employee(1001, <span style="color:#e6db74">&#34;The Insane Techie&#34;</span>, <span style="color:#e6db74">&#34;Dev&#34;</span>, 99999.<span style="color:#a6e22e">99f</span>);
+</span></span><span style="display:flex;"><span>                list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList();
+</span></span><span style="display:flex;"><span>                list.<span style="color:#a6e22e">add</span>(employee);
+</span></span><span style="display:flex;"><span>                saveList(list);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (FileNotFoundException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (ClassNotFoundException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> list;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Employee <span style="color:#a6e22e">get</span>(<span style="color:#66d9ef">int</span> empcode) {
+</span></span><span style="display:flex;"><span>        List list <span style="color:#f92672">=</span> getFullList();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Employee temp : list) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (temp.<span style="color:#a6e22e">getEmpcode</span>() <span style="color:#f92672">==</span> empcode) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> temp;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">addToList</span>(Employee emp) {
+</span></span><span style="display:flex;"><span>        List list <span style="color:#f92672">=</span> getFullList();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">boolean</span> exists <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Employee temp : list) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (temp.<span style="color:#a6e22e">getEmpcode</span>() <span style="color:#f92672">==</span> emp.<span style="color:#a6e22e">getEmpcode</span>()) {
+</span></span><span style="display:flex;"><span>                exists <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>exists) {
+</span></span><span style="display:flex;"><span>            list.<span style="color:#a6e22e">add</span>(emp);
+</span></span><span style="display:flex;"><span>            saveList(list);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">updateList</span>(Employee emp) {
+</span></span><span style="display:flex;"><span>        List list <span style="color:#f92672">=</span> getFullList();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Employee temp : list) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (temp.<span style="color:#a6e22e">getEmpcode</span>() <span style="color:#f92672">==</span> emp.<span style="color:#a6e22e">getEmpcode</span>()) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> list.<span style="color:#a6e22e">indexOf</span>(temp);
+</span></span><span style="display:flex;"><span>                list.<span style="color:#a6e22e">set</span>(index, emp);
+</span></span><span style="display:flex;"><span>                saveList(list);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">deleteFromList</span>(<span style="color:#66d9ef">int</span> empcode) {
+</span></span><span style="display:flex;"><span>        List list <span style="color:#f92672">=</span> getFullList();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Employee temp : list) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (temp.<span style="color:#a6e22e">getEmpcode</span>() <span style="color:#f92672">==</span> empcode) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> list.<span style="color:#a6e22e">indexOf</span>(temp);
+</span></span><span style="display:flex;"><span>                list.<span style="color:#a6e22e">remove</span>(index);
+</span></span><span style="display:flex;"><span>                saveList(list);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">saveList</span>(List list) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(fileName);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            FileOutputStream fileOutputStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream(file);
+</span></span><span style="display:flex;"><span>            ObjectOutputStream objectOutputStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectOutputStream(fileOutputStream);
+</span></span><span style="display:flex;"><span>            objectOutputStream.<span style="color:#a6e22e">writeObject</span>(list);
+</span></span><span style="display:flex;"><span>            objectOutputStream.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (FileNotFoundException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 <p><strong>EmployeeService.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> in.theinsanetechie.rest<span style="color:#f92672">;</span>
-
-<span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
-
-<span style="color:#f92672">import</span> javax.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.Consumes<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.DELETE<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.FormParam<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.GET<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.OPTIONS<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.POST<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.PUT<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.Path<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.PathParam<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.Produces<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.core.Context<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.core.MediaType<span style="color:#f92672">;</span>
-
-<span style="color:#a6e22e">@Path</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/EmployeeService&#34;</span><span style="color:#f92672">)</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeService</span> <span style="color:#f92672">{</span>
-
-    EmployeeAccessObject accessObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EmployeeAccessObject<span style="color:#f92672">();</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String SUCCESS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;success&#34;</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String FAILURE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;failure&#34;</span><span style="color:#f92672">;</span>
-
-    <span style="color:#a6e22e">@GET</span>
-    <span style="color:#a6e22e">@Path</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/employees&#34;</span><span style="color:#f92672">)</span>
-    <span style="color:#a6e22e">@Produces</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">public</span> List <span style="color:#a6e22e">getFullList</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> accessObject<span style="color:#f92672">.</span><span style="color:#a6e22e">getFullList</span><span style="color:#f92672">();</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@GET</span>
-    <span style="color:#a6e22e">@Path</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/employees/{empcode}&#34;</span><span style="color:#f92672">)</span>
-    <span style="color:#a6e22e">@Produces</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">public</span> Employee <span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;empcode&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">int</span> empcode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> accessObject<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>empcode<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@PUT</span>
-    <span style="color:#a6e22e">@Path</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/employees&#34;</span><span style="color:#f92672">)</span>
-    <span style="color:#a6e22e">@Produces</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">)</span>
-    <span style="color:#a6e22e">@Consumes</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_FORM_URLENCODED</span><span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@FormParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;empcode&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">int</span> empcode<span style="color:#f92672">,</span> <span style="color:#a6e22e">@FormParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">)</span> String name<span style="color:#f92672">,</span>
-            <span style="color:#a6e22e">@FormParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;designation&#34;</span><span style="color:#f92672">)</span> String designation<span style="color:#f92672">,</span> <span style="color:#a6e22e">@FormParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;basicpay&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">float</span> basicpay<span style="color:#f92672">,</span>
-            <span style="color:#a6e22e">@Context</span> HttpServletResponse servletResponse<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
-        Employee emp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Employee<span style="color:#f92672">(</span>empcode<span style="color:#f92672">,</span> name<span style="color:#f92672">,</span> designation<span style="color:#f92672">,</span> basicpay<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">boolean</span> result <span style="color:#f92672">=</span> accessObject<span style="color:#f92672">.</span><span style="color:#a6e22e">addToList</span><span style="color:#f92672">(</span>emp<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>result <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> SUCCESS<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> FAILURE<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@POST</span>
-    <span style="color:#a6e22e">@Path</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/employees&#34;</span><span style="color:#f92672">)</span>
-    <span style="color:#a6e22e">@Produces</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">)</span>
-    <span style="color:#a6e22e">@Consumes</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_FORM_URLENCODED</span><span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">update</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@FormParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;empcode&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">int</span> empcode<span style="color:#f92672">,</span> <span style="color:#a6e22e">@FormParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">)</span> String name<span style="color:#f92672">,</span>
-            <span style="color:#a6e22e">@FormParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;designation&#34;</span><span style="color:#f92672">)</span> String designation<span style="color:#f92672">,</span> <span style="color:#a6e22e">@FormParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;basicpay&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">float</span> basicpay<span style="color:#f92672">,</span>
-            <span style="color:#a6e22e">@Context</span> HttpServletResponse servletResponse<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
-        Employee emp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Employee<span style="color:#f92672">(</span>empcode<span style="color:#f92672">,</span> name<span style="color:#f92672">,</span> designation<span style="color:#f92672">,</span> basicpay<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">boolean</span> result <span style="color:#f92672">=</span> accessObject<span style="color:#f92672">.</span><span style="color:#a6e22e">updateList</span><span style="color:#f92672">(</span>emp<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>result <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> SUCCESS<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> FAILURE<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@DELETE</span>
-    <span style="color:#a6e22e">@Path</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/employees/{empcode}&#34;</span><span style="color:#f92672">)</span>
-    <span style="color:#a6e22e">@Produces</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">deleteUser</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;empcode&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">int</span> empcode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">boolean</span> result <span style="color:#f92672">=</span> accessObject<span style="color:#f92672">.</span><span style="color:#a6e22e">deleteFromList</span><span style="color:#f92672">(</span>empcode<span style="color:#f92672">);</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>result <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> SUCCESS<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> FAILURE<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#a6e22e">@OPTIONS</span>
-    <span style="color:#a6e22e">@Path</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/employees&#34;</span><span style="color:#f92672">)</span>
-    <span style="color:#a6e22e">@Produces</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getSupportedOperations</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;GET, PUT, POST, DELETE&#34;</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-     </code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> in.theinsanetechie.rest;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.servlet.http.HttpServletResponse;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.Consumes;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.DELETE;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.FormParam;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.GET;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.OPTIONS;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.POST;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.PUT;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.Path;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.PathParam;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.Produces;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.core.Context;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.core.MediaType;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Path</span>(<span style="color:#e6db74">&#34;/EmployeeService&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeService</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    EmployeeAccessObject accessObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EmployeeAccessObject();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String SUCCESS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;success&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String FAILURE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;failure&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GET</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Path</span>(<span style="color:#e6db74">&#34;/employees&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Produces</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> List <span style="color:#a6e22e">getFullList</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> accessObject.<span style="color:#a6e22e">getFullList</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GET</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Path</span>(<span style="color:#e6db74">&#34;/employees/{empcode}&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Produces</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Employee <span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">@PathParam</span>(<span style="color:#e6db74">&#34;empcode&#34;</span>) <span style="color:#66d9ef">int</span> empcode) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> accessObject.<span style="color:#a6e22e">get</span>(empcode);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@PUT</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Path</span>(<span style="color:#e6db74">&#34;/employees&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Produces</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Consumes</span>(MediaType.<span style="color:#a6e22e">APPLICATION_FORM_URLENCODED</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">@FormParam</span>(<span style="color:#e6db74">&#34;empcode&#34;</span>) <span style="color:#66d9ef">int</span> empcode, <span style="color:#a6e22e">@FormParam</span>(<span style="color:#e6db74">&#34;name&#34;</span>) String name,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@FormParam</span>(<span style="color:#e6db74">&#34;designation&#34;</span>) String designation, <span style="color:#a6e22e">@FormParam</span>(<span style="color:#e6db74">&#34;basicpay&#34;</span>) <span style="color:#66d9ef">float</span> basicpay,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Context</span> HttpServletResponse servletResponse) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        Employee emp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Employee(empcode, name, designation, basicpay);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">boolean</span> result <span style="color:#f92672">=</span> accessObject.<span style="color:#a6e22e">addToList</span>(emp);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> SUCCESS;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> FAILURE;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@POST</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Path</span>(<span style="color:#e6db74">&#34;/employees&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Produces</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Consumes</span>(MediaType.<span style="color:#a6e22e">APPLICATION_FORM_URLENCODED</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">@FormParam</span>(<span style="color:#e6db74">&#34;empcode&#34;</span>) <span style="color:#66d9ef">int</span> empcode, <span style="color:#a6e22e">@FormParam</span>(<span style="color:#e6db74">&#34;name&#34;</span>) String name,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@FormParam</span>(<span style="color:#e6db74">&#34;designation&#34;</span>) String designation, <span style="color:#a6e22e">@FormParam</span>(<span style="color:#e6db74">&#34;basicpay&#34;</span>) <span style="color:#66d9ef">float</span> basicpay,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Context</span> HttpServletResponse servletResponse) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        Employee emp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Employee(empcode, name, designation, basicpay);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">boolean</span> result <span style="color:#f92672">=</span> accessObject.<span style="color:#a6e22e">updateList</span>(emp);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> SUCCESS;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> FAILURE;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@DELETE</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Path</span>(<span style="color:#e6db74">&#34;/employees/{empcode}&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Produces</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">deleteUser</span>(<span style="color:#a6e22e">@PathParam</span>(<span style="color:#e6db74">&#34;empcode&#34;</span>) <span style="color:#66d9ef">int</span> empcode) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">boolean</span> result <span style="color:#f92672">=</span> accessObject.<span style="color:#a6e22e">deleteFromList</span>(empcode);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> SUCCESS;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> FAILURE;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@OPTIONS</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Path</span>(<span style="color:#e6db74">&#34;/employees&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Produces</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getSupportedOperations</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;GET, PUT, POST, DELETE&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>     </span></span></code></pre></div>
 <p><strong>WebServiceTester.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">     
-<span style="color:#f92672">package</span> in.theinsanetechie.rest<span style="color:#f92672">;</span>
-
-<span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
-
-<span style="color:#f92672">import</span> javax.ws.rs.client.Client<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.client.ClientBuilder<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.client.Entity<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.core.Form<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.core.GenericType<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> javax.ws.rs.core.MediaType<span style="color:#f92672">;</span>
-
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WebServiceTester</span> <span style="color:#f92672">{</span>
-
-    <span style="color:#66d9ef">private</span> Client client<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> String REST_SERVICE_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:8080/EmployeeManagement/rest/EmployeeService/employees&#34;</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String SUCCESS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;success&#34;</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String PASS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pass&#34;</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String FAIL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fail&#34;</span><span style="color:#f92672">;</span>
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">init</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> ClientBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">newClient</span><span style="color:#f92672">();</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-
-        WebServiceTester tester <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> WebServiceTester<span style="color:#f92672">();</span>
-        tester<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">();</span>
-        tester<span style="color:#f92672">.</span><span style="color:#a6e22e">testGetFullList</span><span style="color:#f92672">();</span>
-        tester<span style="color:#f92672">.</span><span style="color:#a6e22e">testGet</span><span style="color:#f92672">();</span>
-        tester<span style="color:#f92672">.</span><span style="color:#a6e22e">testUpdate</span><span style="color:#f92672">();</span>
-        tester<span style="color:#f92672">.</span><span style="color:#a6e22e">testAdd</span><span style="color:#f92672">();</span>
-        tester<span style="color:#f92672">.</span><span style="color:#a6e22e">testDelete</span><span style="color:#f92672">();</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testGetFullList</span><span style="color:#f92672">(){</span>
-      GenericType<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GenericType<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{};</span>
-      List employees <span style="color:#f92672">=</span> client
-        <span style="color:#f92672">.</span><span style="color:#a6e22e">target</span><span style="color:#f92672">(</span>REST_SERVICE_URL<span style="color:#f92672">)</span>
-        <span style="color:#f92672">.</span><span style="color:#a6e22e">request</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">)</span>
-        <span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
-      String result <span style="color:#f92672">=</span> PASS<span style="color:#f92672">;</span>
-      <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>employees<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
-       result <span style="color:#f92672">=</span> FAIL<span style="color:#f92672">;</span>
-      <span style="color:#f92672">}</span>
-      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Test case name: testGetFullList, Result: &#34;</span> <span style="color:#f92672">+</span> result <span style="color:#f92672">);</span>
-     <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testGet</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        Employee sampleEmp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Employee<span style="color:#f92672">();</span>
-        sampleEmp<span style="color:#f92672">.</span><span style="color:#a6e22e">setEmpcode</span><span style="color:#f92672">(</span>1001<span style="color:#f92672">);</span>
-
-        Employee emp <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span><span style="color:#a6e22e">target</span><span style="color:#f92672">(</span>REST_SERVICE_URL<span style="color:#f92672">).</span><span style="color:#a6e22e">path</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/{empcode}&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">resolveTemplate</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;empcode&#34;</span><span style="color:#f92672">,</span> 1001<span style="color:#f92672">)</span>
-                <span style="color:#f92672">.</span><span style="color:#a6e22e">request</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">).</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>Employee<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-        String result <span style="color:#f92672">=</span> FAIL<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>sampleEmp <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> sampleEmp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpcode</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> emp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpcode</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-            result <span style="color:#f92672">=</span> PASS<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Test case name: testGet, Result: &#34;</span> <span style="color:#f92672">+</span> result<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testUpdate</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        Form form <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Form<span style="color:#f92672">();</span>
-        form<span style="color:#f92672">.</span><span style="color:#a6e22e">param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;empcode&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;1001&#34;</span><span style="color:#f92672">);</span>
-        form<span style="color:#f92672">.</span><span style="color:#a6e22e">param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Dhanoop Bhaskar&#34;</span><span style="color:#f92672">);</span>
-        form<span style="color:#f92672">.</span><span style="color:#a6e22e">param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;designation&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Computer Scientist&#34;</span><span style="color:#f92672">);</span>
-        form<span style="color:#f92672">.</span><span style="color:#a6e22e">param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;basicpay&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;100000.00f&#34;</span><span style="color:#f92672">);</span>
-
-        String callResult <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span><span style="color:#a6e22e">target</span><span style="color:#f92672">(</span>REST_SERVICE_URL<span style="color:#f92672">).</span><span style="color:#a6e22e">request</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">)</span>
-                <span style="color:#f92672">.</span><span style="color:#a6e22e">post</span><span style="color:#f92672">(</span>Entity<span style="color:#f92672">.</span><span style="color:#a6e22e">entity</span><span style="color:#f92672">(</span>form<span style="color:#f92672">,</span> MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_FORM_URLENCODED_TYPE</span><span style="color:#f92672">),</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-        String result <span style="color:#f92672">=</span> PASS<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>SUCCESS<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>callResult<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-            result <span style="color:#f92672">=</span> FAIL<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Test case name: testUpdate, Result: &#34;</span> <span style="color:#f92672">+</span> result<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testAdd</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        Form form <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Form<span style="color:#f92672">();</span>
-        form<span style="color:#f92672">.</span><span style="color:#a6e22e">param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;empcode&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;1002&#34;</span><span style="color:#f92672">);</span>
-        form<span style="color:#f92672">.</span><span style="color:#a6e22e">param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;The Insane Techie&#34;</span><span style="color:#f92672">);</span>
-        form<span style="color:#f92672">.</span><span style="color:#a6e22e">param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;designation&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Computer Scientist&#34;</span><span style="color:#f92672">);</span>
-        form<span style="color:#f92672">.</span><span style="color:#a6e22e">param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;basicpay&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;100000.00f&#34;</span><span style="color:#f92672">);</span>
-
-        String callResult <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span><span style="color:#a6e22e">target</span><span style="color:#f92672">(</span>REST_SERVICE_URL<span style="color:#f92672">).</span><span style="color:#a6e22e">request</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">)</span>
-                <span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>Entity<span style="color:#f92672">.</span><span style="color:#a6e22e">entity</span><span style="color:#f92672">(</span>form<span style="color:#f92672">,</span> MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_FORM_URLENCODED_TYPE</span><span style="color:#f92672">),</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-
-        String result <span style="color:#f92672">=</span> PASS<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>SUCCESS<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>callResult<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-            result <span style="color:#f92672">=</span> FAIL<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Test case name: testAdd, Result: &#34;</span> <span style="color:#f92672">+</span> result<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testDelete</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-        String callResult <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span><span style="color:#a6e22e">target</span><span style="color:#f92672">(</span>REST_SERVICE_URL<span style="color:#f92672">).</span><span style="color:#a6e22e">path</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/{empcode}&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">resolveTemplate</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;empcode&#34;</span><span style="color:#f92672">,</span> 1002<span style="color:#f92672">)</span>
-                <span style="color:#f92672">.</span><span style="color:#a6e22e">request</span><span style="color:#f92672">(</span>MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_XML</span><span style="color:#f92672">).</span><span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-
-        String result <span style="color:#f92672">=</span> PASS<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>SUCCESS<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>callResult<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-            result <span style="color:#f92672">=</span> FAIL<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-
-        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Test case name: testDelete, Result: &#34;</span> <span style="color:#f92672">+</span> result<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> in.theinsanetechie.rest;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.client.Client;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.client.ClientBuilder;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.client.Entity;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.core.Form;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.core.GenericType;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.ws.rs.core.MediaType;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WebServiceTester</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Client client;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String REST_SERVICE_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:8080/EmployeeManagement/rest/EmployeeService/employees&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String SUCCESS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;success&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String PASS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pass&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String FAIL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fail&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">init</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> ClientBuilder.<span style="color:#a6e22e">newClient</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        WebServiceTester tester <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> WebServiceTester();
+</span></span><span style="display:flex;"><span>        tester.<span style="color:#a6e22e">init</span>();
+</span></span><span style="display:flex;"><span>        tester.<span style="color:#a6e22e">testGetFullList</span>();
+</span></span><span style="display:flex;"><span>        tester.<span style="color:#a6e22e">testGet</span>();
+</span></span><span style="display:flex;"><span>        tester.<span style="color:#a6e22e">testUpdate</span>();
+</span></span><span style="display:flex;"><span>        tester.<span style="color:#a6e22e">testAdd</span>();
+</span></span><span style="display:flex;"><span>        tester.<span style="color:#a6e22e">testDelete</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testGetFullList</span>(){
+</span></span><span style="display:flex;"><span>      GenericType<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GenericType<span style="color:#f92672">&gt;</span>() {};
+</span></span><span style="display:flex;"><span>      List employees <span style="color:#f92672">=</span> client
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">target</span>(REST_SERVICE_URL)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">request</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">get</span>(list);
+</span></span><span style="display:flex;"><span>      String result <span style="color:#f92672">=</span> PASS;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span>(employees.<span style="color:#a6e22e">isEmpty</span>()){
+</span></span><span style="display:flex;"><span>       result <span style="color:#f92672">=</span> FAIL;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Test case name: testGetFullList, Result: &#34;</span> <span style="color:#f92672">+</span> result );
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testGet</span>() {
+</span></span><span style="display:flex;"><span>        Employee sampleEmp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Employee();
+</span></span><span style="display:flex;"><span>        sampleEmp.<span style="color:#a6e22e">setEmpcode</span>(1001);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Employee emp <span style="color:#f92672">=</span> client.<span style="color:#a6e22e">target</span>(REST_SERVICE_URL).<span style="color:#a6e22e">path</span>(<span style="color:#e6db74">&#34;/{empcode}&#34;</span>).<span style="color:#a6e22e">resolveTemplate</span>(<span style="color:#e6db74">&#34;empcode&#34;</span>, 1001)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">request</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>).<span style="color:#a6e22e">get</span>(Employee.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>        String result <span style="color:#f92672">=</span> FAIL;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (sampleEmp <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> sampleEmp.<span style="color:#a6e22e">getEmpcode</span>() <span style="color:#f92672">==</span> emp.<span style="color:#a6e22e">getEmpcode</span>()) {
+</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> PASS;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Test case name: testGet, Result: &#34;</span> <span style="color:#f92672">+</span> result);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testUpdate</span>() {
+</span></span><span style="display:flex;"><span>        Form form <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Form();
+</span></span><span style="display:flex;"><span>        form.<span style="color:#a6e22e">param</span>(<span style="color:#e6db74">&#34;empcode&#34;</span>, <span style="color:#e6db74">&#34;1001&#34;</span>);
+</span></span><span style="display:flex;"><span>        form.<span style="color:#a6e22e">param</span>(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Dhanoop Bhaskar&#34;</span>);
+</span></span><span style="display:flex;"><span>        form.<span style="color:#a6e22e">param</span>(<span style="color:#e6db74">&#34;designation&#34;</span>, <span style="color:#e6db74">&#34;Computer Scientist&#34;</span>);
+</span></span><span style="display:flex;"><span>        form.<span style="color:#a6e22e">param</span>(<span style="color:#e6db74">&#34;basicpay&#34;</span>, <span style="color:#e6db74">&#34;100000.00f&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        String callResult <span style="color:#f92672">=</span> client.<span style="color:#a6e22e">target</span>(REST_SERVICE_URL).<span style="color:#a6e22e">request</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">post</span>(Entity.<span style="color:#a6e22e">entity</span>(form, MediaType.<span style="color:#a6e22e">APPLICATION_FORM_URLENCODED_TYPE</span>), String.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>        String result <span style="color:#f92672">=</span> PASS;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>SUCCESS.<span style="color:#a6e22e">equals</span>(callResult)) {
+</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> FAIL;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Test case name: testUpdate, Result: &#34;</span> <span style="color:#f92672">+</span> result);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testAdd</span>() {
+</span></span><span style="display:flex;"><span>        Form form <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Form();
+</span></span><span style="display:flex;"><span>        form.<span style="color:#a6e22e">param</span>(<span style="color:#e6db74">&#34;empcode&#34;</span>, <span style="color:#e6db74">&#34;1002&#34;</span>);
+</span></span><span style="display:flex;"><span>        form.<span style="color:#a6e22e">param</span>(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;The Insane Techie&#34;</span>);
+</span></span><span style="display:flex;"><span>        form.<span style="color:#a6e22e">param</span>(<span style="color:#e6db74">&#34;designation&#34;</span>, <span style="color:#e6db74">&#34;Computer Scientist&#34;</span>);
+</span></span><span style="display:flex;"><span>        form.<span style="color:#a6e22e">param</span>(<span style="color:#e6db74">&#34;basicpay&#34;</span>, <span style="color:#e6db74">&#34;100000.00f&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        String callResult <span style="color:#f92672">=</span> client.<span style="color:#a6e22e">target</span>(REST_SERVICE_URL).<span style="color:#a6e22e">request</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">put</span>(Entity.<span style="color:#a6e22e">entity</span>(form, MediaType.<span style="color:#a6e22e">APPLICATION_FORM_URLENCODED_TYPE</span>), String.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        String result <span style="color:#f92672">=</span> PASS;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>SUCCESS.<span style="color:#a6e22e">equals</span>(callResult)) {
+</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> FAIL;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Test case name: testAdd, Result: &#34;</span> <span style="color:#f92672">+</span> result);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testDelete</span>() {
+</span></span><span style="display:flex;"><span>        String callResult <span style="color:#f92672">=</span> client.<span style="color:#a6e22e">target</span>(REST_SERVICE_URL).<span style="color:#a6e22e">path</span>(<span style="color:#e6db74">&#34;/{empcode}&#34;</span>).<span style="color:#a6e22e">resolveTemplate</span>(<span style="color:#e6db74">&#34;empcode&#34;</span>, 1002)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">request</span>(MediaType.<span style="color:#a6e22e">APPLICATION_XML</span>).<span style="color:#a6e22e">delete</span>(String.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        String result <span style="color:#f92672">=</span> PASS;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>SUCCESS.<span style="color:#a6e22e">equals</span>(callResult)) {
+</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> FAIL;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Test case name: testDelete, Result: &#34;</span> <span style="color:#f92672">+</span> result);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 <p><strong>web.xml</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
-<span style="color:#f92672">&lt;web-app</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
-    <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://java.sun.com/xml/ns/javaee&#34;</span>
-    <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://java.sun.com/xml/ns/javaee
-</span><span style="color:#e6db74">    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&#34;</span>
-    <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;WebApp_ID&#34;</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;3.0&#34;</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;display-name&gt;</span>Employee Management<span style="color:#f92672">&lt;/display-name&gt;</span>
-    <span style="color:#f92672">&lt;servlet&gt;</span>
-        <span style="color:#f92672">&lt;servlet-name&gt;</span>Jersey RESTful Application<span style="color:#f92672">&lt;/servlet-name&gt;</span>
-        <span style="color:#f92672">&lt;servlet-class&gt;</span>org.glassfish.jersey.servlet.ServletContainer<span style="color:#f92672">&lt;/servlet-class&gt;</span>
-            <span style="color:#f92672">&lt;init-param&gt;</span>
-                <span style="color:#f92672">&lt;param-name&gt;</span>jersey.config.server.provider.packages<span style="color:#f92672">&lt;/param-name&gt;</span>
-                <span style="color:#f92672">&lt;param-value&gt;</span>in.theinsanetechie.rest<span style="color:#f92672">&lt;/param-value&gt;</span>
-            <span style="color:#f92672">&lt;/init-param&gt;</span>
-        <span style="color:#f92672">&lt;/servlet&gt;</span>
-    <span style="color:#f92672">&lt;servlet-mapping&gt;</span>
-    <span style="color:#f92672">&lt;servlet-name&gt;</span>Jersey RESTful Application<span style="color:#f92672">&lt;/servlet-name&gt;</span>
-        <span style="color:#f92672">&lt;url-pattern&gt;</span>/rest/*<span style="color:#f92672">&lt;/url-pattern&gt;</span>
-    <span style="color:#f92672">&lt;/servlet-mapping&gt;</span>
-<span style="color:#f92672">&lt;/web-app&gt;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;web-app</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://java.sun.com/xml/ns/javaee&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://java.sun.com/xml/ns/javaee
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;WebApp_ID&#34;</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;3.0&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;display-name&gt;</span>Employee Management<span style="color:#f92672">&lt;/display-name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;servlet&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;servlet-name&gt;</span>Jersey RESTful Application<span style="color:#f92672">&lt;/servlet-name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;servlet-class&gt;</span>org.glassfish.jersey.servlet.ServletContainer<span style="color:#f92672">&lt;/servlet-class&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;init-param&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;param-name&gt;</span>jersey.config.server.provider.packages<span style="color:#f92672">&lt;/param-name&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;param-value&gt;</span>in.theinsanetechie.rest<span style="color:#f92672">&lt;/param-value&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/init-param&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/servlet&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;servlet-mapping&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;servlet-name&gt;</span>Jersey RESTful Application<span style="color:#f92672">&lt;/servlet-name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;url-pattern&gt;</span>/rest/*<span style="color:#f92672">&lt;/url-pattern&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/servlet-mapping&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/web-app&gt;</span></span></span></code></pre></div>
 
       </div>
 
@@ -637,72 +764,67 @@ folders to <strong>WebContent/WEB-INF/lib</strong> folder.</p>
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -712,6 +834,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

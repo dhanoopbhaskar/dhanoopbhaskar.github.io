@@ -1,38 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python3 on The Insane Techie</title>
+    <title>Python3 on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/tags/python3/</link>
-    <description>Recent content in python3 on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Python3 on The Insane Techie</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 07 May 2020 14:35:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/tags/python3/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/tags/python3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ROS In Docker Container</title>
       <link>https://dhanoopbhaskar.github.io/posts/2020-05-07-ros-in-docker-container/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2020-05-07-ros-in-docker-container/</guid>
-      <description>ROS (Robot Operating System) - Documentation - http://wiki.ros.org/
-In this example I use docker image of ROS Melodic and a Dockerfile for creating the required docker container. Python3 (python3.7) is also installed in this example.
-Please refer https://docs.docker.com/get-started/ for more information on Dockers.
-  Pull the docker image for ROS Melodic
- docker pull ros:melodic    Creating the Dockerfile FROM ros:melodic MAINTAINER dhanoopbhaskar@gmail.com RUN apt-get update &amp;amp;&amp;amp; apt-get upgrade -y \ &amp;amp;&amp;amp; apt-get install -y software-properties-common \ &amp;amp;&amp;amp; add-apt-repository ppa:deadsnakes/ppa \ &amp;amp;&amp;amp; apt-get install -y python3.</description>
+      <description>&lt;p&gt;ROS (Robot Operating System) - Documentation - &lt;a href=&#34;http://wiki.ros.org/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://wiki.ros.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;In this example I use docker image of ROS Melodic and a Dockerfile for creating the required docker container. Python3 (python3.7) is also installed in this example.&lt;/p&gt;&#xA;&lt;p&gt;Please refer &lt;a href=&#34;https://docs.docker.com/get-started/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.docker.com/get-started/&lt;/a&gt; for more information on Dockers.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Pull the docker image for ROS Melodic&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt; docker pull ros:melodic&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Creating the Dockerfile&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt; FROM ros:melodic&#xA; MAINTAINER dhanoopbhaskar@gmail.com&#xA; RUN apt-get update &amp;amp;&amp;amp; apt-get upgrade -y \&#xA;     &amp;amp;&amp;amp; apt-get install -y software-properties-common \&#xA;     &amp;amp;&amp;amp; add-apt-repository ppa:deadsnakes/ppa \&#xA;     &amp;amp;&amp;amp; apt-get install -y python3.7&#xA;&#xA; RUN apt-get update &amp;amp;&amp;amp; apt-get install -y \&#xA;     python-pip \&#xA;     python3-pip \&#xA;     python3-all-dev&#xA;&#xA; RUN apt-get install -y \&#xA;     python3-rospkg*&#xA;&#xA; RUN apt-get update --fix-missing&#xA; RUN dpkg --configure -a&#xA; RUN apt-get install -f&#xA; RUN apt-get install -y \&#xA;     ros-melodic-desktop-full --fix-missing&#xA; RUN apt-get install -y python-catkin-tools&#xA;&#xA; RUN apt-get install --no-install-recommends --no-install-suggests -y \&#xA;     build-essential \&#xA;     cmake \    &#xA;     python3.7-dev \&#xA;     &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/*&#xA;&#xA; RUN python -m pip install --upgrade pip&#xA; RUN python2 -m pip install --upgrade pip&#xA; RUN python3 -m pip install --upgrade pip&#xA; RUN pip3 install --upgrade pip&#xA; RUN pip3 install --upgrade setuptools&#xA; RUN python3.7 -m pip install --upgrade pip&#xA; RUN python3.7 -m pip install --upgrade setuptools&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Now create the docker using this Dockerfile and run 😊 (Refer documentation for more information).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Working With Python 3 In ROS Kinetic Or Melodic</title>
       <link>https://dhanoopbhaskar.github.io/posts/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</link>
       <pubDate>Thu, 07 May 2020 14:07:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</guid>
-      <description>ROS (Robot Operating System) - Documentation - http://wiki.ros.org/
- The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms. — https://www.ros.org/ 1 ROS (upto Melodic) officially supports only python2 and NOT python3. However some libraries we use in our projects (eg.</description>
+      <description>&lt;p&gt;ROS (Robot Operating System) - Documentation - &lt;a href=&#34;http://wiki.ros.org/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://wiki.ros.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The Robot Operating System (ROS) is a flexible framework for writing robot software. It is a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms.&#xA;— &lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://www.ros.org/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.ros.org/&lt;/a&gt; &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;ROS (upto Melodic) officially supports only python2 and NOT python3. However some libraries we use in our projects (eg. Speech Recognition using Google Cloud Speech) may require python3 to run.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

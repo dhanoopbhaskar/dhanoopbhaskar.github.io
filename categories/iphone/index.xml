@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>iphone on The Insane Techie</title>
+    <title>Iphone on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/categories/iphone/</link>
-    <description>Recent content in iphone on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Iphone on The Insane Techie</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 02 Jul 2018 20:01:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/categories/iphone/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/categories/iphone/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mounting an iPhone to Linux Mint as an external drive to copy images and videos</title>
       <link>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</link>
       <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</guid>
-      <description>Phone: iPhone SE
-Operating System: Linux Mint 18.1(should work in Ubuntu as well)
-It is done by compiling most of the sources yourself.
-Only one library - usbmuxd - must be installed as root
-All others are installed in the home account.
-Install necessary software for building the source packages.
-To check-out and compile the needed packages from source, you have to install git first.
-Open a terminal and do the following:</description>
+      <description>&lt;p&gt;&lt;strong&gt;Phone: iPhone SE&lt;/strong&gt;&lt;br&gt;&#xA;&lt;strong&gt;Operating System: Linux Mint 18.1&lt;/strong&gt;(should work in Ubuntu as well)&lt;/p&gt;&#xA;&lt;p&gt;It is done by compiling most of the sources yourself.&lt;br&gt;&#xA;Only one library - &lt;code&gt;usbmuxd&lt;/code&gt; - must be installed as &lt;strong&gt;root&lt;/strong&gt;&lt;br&gt;&#xA;All others are installed in the home account.&lt;/p&gt;&#xA;&lt;p&gt;Install necessary software for building the source packages.&lt;/p&gt;&#xA;&lt;p&gt;To check-out and compile the needed packages from source, you have to&#xA;install &lt;strong&gt;git&lt;/strong&gt; first.&lt;/p&gt;&#xA;&lt;p&gt;Open a terminal and do the following:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

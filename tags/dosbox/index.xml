@@ -4,27 +4,16 @@
     <title>DosBox on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/tags/dosbox/</link>
     <description>Recent content in DosBox on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 12 Dec 2010 13:36:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/tags/dosbox/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/tags/dosbox/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using Turbo C&#43;&#43; in Windows 7 along with graphics support</title>
       <link>https://dhanoopbhaskar.github.io/posts/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</link>
       <pubDate>Sun, 12 Dec 2010 13:36:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</guid>
-      <description>DOSBox Use dosbox to mount and run TC.EXE
-Download DOSBox here&amp;hellip;
-Mounting
-Z:\&amp;gt;MOUNT C &amp;quot;PATH OF BIN&amp;quot; Z:\&amp;gt;C: C:\&amp;gt;TC  [TURBO C++ IDE opens]
-NB:
-  You can include the codes for mounting and running in - C:\\Users\\username\\AppData\\Local\\DOSBox\\dosbox-0.74.conf - file at its end as autoexecute commands on startup; so that it will be executed automatically on every startup of DOSBox.
-  To run in fullscreen mode edit the .</description>
+      <description>&lt;h3 id=&#34;dosbox&#34;&gt;&#xA;  DOSBox&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#dosbox&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Use dosbox to mount and run TC.EXE&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://space.dl.sourceforge.net/project/dosbox/dosbox/0.74/DOSBox0.74-win32-installer.exe&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Download DOSBox here&amp;hellip;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Mounting&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Z:\&amp;gt;MOUNT C &amp;quot;PATH OF BIN&amp;quot;&#xA;Z:\&amp;gt;C:&#xA;C:\&amp;gt;TC &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;[TURBO C++ IDE opens]&lt;/p&gt;&#xA;&lt;p&gt;NB:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;You can include the codes for mounting and running in -&#xA;&lt;code&gt;C:\\Users\\username\\AppData\\Local\\DOSBox\\dosbox-0.74.conf&lt;/code&gt; - file at its end as autoexecute commands on startup; so that it will be executed automatically on every startup of DOSBox.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;To run in fullscreen mode edit the .conf file mentioned above and&#xA;change &amp;ldquo;fullscreen=false&amp;rdquo; to &amp;ldquo;fullscreen=true&amp;rdquo;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

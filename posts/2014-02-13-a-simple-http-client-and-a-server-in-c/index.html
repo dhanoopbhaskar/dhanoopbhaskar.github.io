@@ -1,122 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="The HTTP server sends the files requested by the client, if it is available at the server. The HTTP client uses GET method for requesting files from the server. Only .html, .txt and .pdf files are implemented. On receiving the file, the client program opens it using firefox or gedit or acrobat reader, as per the file type. Note that the given programs were done in Linux (Debian) environment.
-httpserver.c">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="A simple HTTP client and a server in C"/>
-<meta name="twitter:description" content="The HTTP server sends the files requested by the client, if it is available at the server. The HTTP client uses GET method for requesting files from the server. Only .html, .txt and .pdf files are implemented. On receiving the file, the client program opens it using firefox or gedit or acrobat reader, as per the file type. Note that the given programs were done in Linux (Debian) environment.
-httpserver.c"/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="A simple HTTP client and a server in C" />
-<meta property="og:description" content="The HTTP server sends the files requested by the client, if it is available at the server. The HTTP client uses GET method for requesting files from the server. Only .html, .txt and .pdf files are implemented. On receiving the file, the client program opens it using firefox or gedit or acrobat reader, as per the file type. Note that the given programs were done in Linux (Debian) environment.
-httpserver.c" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2014-02-13-a-simple-http-client-and-a-server-in-c/" />
-<meta property="article:published_time" content="2014-02-13T23:06:00+05:30" />
-<meta property="article:modified_time" content="2014-02-13T23:06:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   A simple HTTP client and a server in C · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2014-02-13-a-simple-http-client-and-a-server-in-c/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
-      
-      
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
 
-    
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="The HTTP server sends the files requested by the client, if it is available at the server. The HTTP client uses GET method for requesting files from the server. Only .html, .txt and .pdf files are implemented. On receiving the file, the client program opens it using firefox or gedit or acrobat reader, as per the file type. Note that the given programs were done in Linux (Debian) environment.
+httpserver.c">
+<meta name="keywords" content="">
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
 
-    
 
-    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="A simple HTTP client and a server in C">
+  <meta name="twitter:description" content="The HTTP server sends the files requested by the client, if it is available at the server. The HTTP client uses GET method for requesting files from the server. Only .html, .txt and .pdf files are implemented. On receiving the file, the client program opens it using firefox or gedit or acrobat reader, as per the file type. Note that the given programs were done in Linux (Debian) environment.
+httpserver.c">
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2014-02-13-a-simple-http-client-and-a-server-in-c/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="A simple HTTP client and a server in C">
+  <meta property="og:description" content="The HTTP server sends the files requested by the client, if it is available at the server. The HTTP client uses GET method for requesting files from the server. Only .html, .txt and .pdf files are implemented. On receiving the file, the client program opens it using firefox or gedit or acrobat reader, as per the file type. Note that the given programs were done in Linux (Debian) environment.
+httpserver.c">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2014-02-13T23:06:00+05:30">
+    <meta property="article:modified_time" content="2014-02-13T23:06:00+05:30">
+    <meta property="article:tag" content="Gcc">
+    <meta property="article:tag" content="Http">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="C/CPP">
+    <meta property="article:tag" content="Socket">
+    <meta property="article:tag" content="Tcp">
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-    
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2014-02-13-a-simple-http-client-and-a-server-in-c/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -127,8 +152,8 @@ httpserver.c" />
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -142,453 +167,467 @@ httpserver.c" />
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2014-02-13T23:06:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2014-02-13T23:06:00&#43;05:30">
                 February 13, 2014
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               7-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="/categories/gcc/">gcc</a>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/gcc/">Gcc</a>
       <span class="separator">•</span>
     <a href="/categories/c/">C</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/gcc/">gcc</a>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/gcc/">Gcc</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/http/">http</a>
+    <span class="tag">
+      <a href="/tags/http/">Http</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/linux/">linux</a>
+    <span class="tag">
+      <a href="/tags/linux/">Linux</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/c/cpp/">C/CPP</a>
+    <span class="tag">
+      <a href="/tags/c/cpp/">C/CPP</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/socket/">socket</a>
+    <span class="tag">
+      <a href="/tags/socket/">Socket</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/tcp/">tcp</a>
+    <span class="tag">
+      <a href="/tags/tcp/">Tcp</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/network/">network</a></div>
+    <span class="tag">
+      <a href="/tags/network/">Network</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
         <p><em>The HTTP server sends the files requested by the client, if it is available at the server. The HTTP client uses GET method for requesting files from the server. Only .html, .txt and .pdf files are implemented. On receiving the file, the client program opens it using firefox or gedit or acrobat reader, as per the file type. Note that the given programs were done in Linux (Debian) environment.</em></p>
 <p><strong>httpserver.c</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#75715e">/**httpserver.c**/</span>
-    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdio.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdlib.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/types.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/socket.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;string.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netinet/in.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;time.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;dirent.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netdb.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-    <span style="color:#75715e">#define BUF_SIZE 1024
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define CLADDR_LEN 100
-</span><span style="color:#75715e"></span>
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> host, <span style="color:#66d9ef">int</span> port);
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">listenForRequest</span>(<span style="color:#66d9ef">int</span> sockfd);
-    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">getFileType</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> file);
-
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv) { 
-     DIR <span style="color:#f92672">*</span> dirptr;
-     FILE <span style="color:#f92672">*</span> fileptr;
-     time_t timenow;
-     <span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span> timeinfo;
-     time (<span style="color:#f92672">&amp;</span>timenow);
-     timeinfo <span style="color:#f92672">=</span> localtime(<span style="color:#f92672">&amp;</span>timenow);
-
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> header, <span style="color:#f92672">*</span> request, <span style="color:#f92672">*</span> path, <span style="color:#f92672">*</span> newpath, <span style="color:#f92672">*</span> host;
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> dir, <span style="color:#f92672">*</span> temp;
-     <span style="color:#66d9ef">int</span> port, sockfd, connfd;
-     <span style="color:#66d9ef">char</span> get[<span style="color:#ae81ff">3</span>], http[<span style="color:#ae81ff">9</span>];
-     <span style="color:#66d9ef">char</span> filepath[BUF_SIZE];
-     <span style="color:#66d9ef">char</span> http_not_found[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HTTP/1.0 404 Not Found</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
-     <span style="color:#66d9ef">char</span> http_ok[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HTTP/1.0 200 OK</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
-     <span style="color:#66d9ef">char</span> buffer[BUF_SIZE];
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> contentType;
-
-     <span style="color:#66d9ef">if</span> (argc <span style="color:#f92672">!=</span> <span style="color:#ae81ff">4</span>) {
-      printf(<span style="color:#e6db74">&#34;usage: [host] [directory] [portnumber]</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      exit(<span style="color:#ae81ff">1</span>);
-     }
-
-     header <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)malloc(BUF_SIZE<span style="color:#f92672">*</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
-     request <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)malloc(BUF_SIZE<span style="color:#f92672">*</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
-     path <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)malloc(BUF_SIZE<span style="color:#f92672">*</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
-     newpath <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)malloc(BUF_SIZE<span style="color:#f92672">*</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
-
-     host <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">1</span>];
-     dir <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">2</span>];
-     port <span style="color:#f92672">=</span> atoi(argv[<span style="color:#ae81ff">3</span>]);
-
-     <span style="color:#66d9ef">if</span> ((dirptr <span style="color:#f92672">=</span> opendir(dir)) <span style="color:#f92672">==</span> NULL) {
-          printf(<span style="color:#e6db74">&#34;Directory Not Found!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-          exit(<span style="color:#ae81ff">1</span>);
-     }
-     
-     sockfd <span style="color:#f92672">=</span> createSocket(host, port);
-     
-     <span style="color:#66d9ef">for</span> (;;) {
-      printf(<span style="color:#e6db74">&#34;--------------------------------------------------------</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      printf(<span style="color:#e6db74">&#34;Waiting for a connection...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      connfd <span style="color:#f92672">=</span> listenForRequest(sockfd);
-      <span style="color:#75715e">//gets the request from the connection
-</span><span style="color:#75715e"></span>      recv(connfd, request, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">0</span>);
-      printf(<span style="color:#e6db74">&#34;Processing request...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      <span style="color:#75715e">//parses request
-</span><span style="color:#75715e"></span>      sscanf(request, <span style="color:#e6db74">&#34;%s %s %s&#34;</span>, get, path, http);
-      newpath <span style="color:#f92672">=</span> path <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//ignores the first slash
-</span><span style="color:#75715e"></span>        sprintf(filepath,<span style="color:#e6db74">&#34;%s/%s&#34;</span>, dir, newpath);
-      contentType <span style="color:#f92672">=</span> getFileType(newpath);
-      sprintf(header, <span style="color:#e6db74">&#34;Date: %sHostname: %s:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Location: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Content-Type: %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, asctime(timeinfo), host, port, newpath, contentType);
-      <span style="color:#66d9ef">if</span> ((fileptr <span style="color:#f92672">=</span> fopen(filepath, <span style="color:#e6db74">&#34;r&#34;</span>)) <span style="color:#f92672">==</span> NULL ) {
-       printf(<span style="color:#e6db74">&#34;File not found!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-       send(connfd, http_not_found, strlen(http_not_found), <span style="color:#ae81ff">0</span>); <span style="color:#75715e">//sends HTTP 404
-</span><span style="color:#75715e"></span>      } <span style="color:#66d9ef">else</span> {
-       printf(<span style="color:#e6db74">&#34;Sending the file...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-       send(connfd, http_ok, strlen(http_ok), <span style="color:#ae81ff">0</span>); <span style="color:#75715e">//sends HTTP 200 OK  
-</span><span style="color:#75715e"></span>       recv(connfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);
-       <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(buffer, <span style="color:#e6db74">&#34;OK&#34;</span>)) <span style="color:#f92672">==</span> NULL) {
-        printf(<span style="color:#e6db74">&#34;Operation aborted by the user!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-        <span style="color:#66d9ef">break</span>;
-       }
-       send(connfd, header, strlen(header), <span style="color:#ae81ff">0</span>); <span style="color:#75715e">//sends the header
-</span><span style="color:#75715e"></span>       recv(connfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);
-       <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(buffer, <span style="color:#e6db74">&#34;OK&#34;</span>)) <span style="color:#f92672">==</span> NULL) {
-        printf(<span style="color:#e6db74">&#34;Operation aborted by the user!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-        <span style="color:#66d9ef">break</span>;
-       }
-       memset(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
-       <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>feof(fileptr)) { <span style="color:#75715e">//sends the file
-</span><span style="color:#75715e"></span>        fread(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#66d9ef">sizeof</span>(buffer), <span style="color:#ae81ff">1</span>, fileptr);
-        send(connfd, buffer, <span style="color:#66d9ef">sizeof</span>(buffer), <span style="color:#ae81ff">0</span>);
-        memset(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
-       }
-       printf(<span style="color:#e6db74">&#34;File sent...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      }
-      printf(<span style="color:#e6db74">&#34;Processing completed...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      close(connfd);
-     }
-
-     close(sockfd);
-     free(header);
-     free(request);
-     free(path);
-     free(newpath);
-
-     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    }
-
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> host, <span style="color:#66d9ef">int</span> port) {
-     <span style="color:#66d9ef">int</span> sockfd;
-     <span style="color:#66d9ef">struct</span> sockaddr_in addr;
-     <span style="color:#66d9ef">struct</span> hostent <span style="color:#f92672">*</span> host_ent;
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> hostAddr;
-
-     memset(<span style="color:#f92672">&amp;</span>addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(addr));
-     addr.sin_family <span style="color:#f92672">=</span> AF_INET;
-     addr.sin_addr.s_addr <span style="color:#f92672">=</span> INADDR_ANY;
-     addr.sin_port <span style="color:#f92672">=</span> htons((<span style="color:#66d9ef">short</span>)port);
-
-     sockfd <span style="color:#f92672">=</span> socket(AF_INET, SOCK_STREAM, <span style="color:#ae81ff">0</span>);
-     <span style="color:#66d9ef">if</span> (sockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-      printf(<span style="color:#e6db74">&#34;Error creating socket!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-      exit(<span style="color:#ae81ff">1</span>);  
-     }  
-     printf(<span style="color:#e6db74">&#34;Socket created...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-
-     <span style="color:#66d9ef">if</span> (bind(sockfd, (<span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, <span style="color:#66d9ef">sizeof</span>(addr)) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-      printf(<span style="color:#e6db74">&#34;Error binding socket to port!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-      exit(<span style="color:#ae81ff">1</span>);
-       }
-     printf(<span style="color:#e6db74">&#34;Binding done...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-
-     <span style="color:#66d9ef">return</span> sockfd;
-    }
-
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">listenForRequest</span>(<span style="color:#66d9ef">int</span> sockfd) {
-     <span style="color:#66d9ef">int</span> conn;
-     <span style="color:#66d9ef">char</span> hostip[<span style="color:#ae81ff">32</span>];
-     <span style="color:#66d9ef">struct</span> sockaddr_in addr;
-     <span style="color:#66d9ef">struct</span> hostent <span style="color:#f92672">*</span> host;
-     <span style="color:#66d9ef">struct</span> in_addr inAddr;
-     <span style="color:#66d9ef">int</span> len;
-
-     addr.sin_family <span style="color:#f92672">=</span> AF_INET;
-
-     listen(sockfd, <span style="color:#ae81ff">5</span>); <span style="color:#75715e">//maximum 5 connections
-</span><span style="color:#75715e"></span>     len <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(addr); 
-     <span style="color:#66d9ef">if</span> ((conn <span style="color:#f92672">=</span> accept(sockfd, (<span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, <span style="color:#f92672">&amp;</span>len)) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-      printf(<span style="color:#e6db74">&#34;Error accepting connection!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      exit(<span style="color:#ae81ff">1</span>);
-     }
-     printf(<span style="color:#e6db74">&#34;Connection accepted...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      
-     inet_ntop(AF_INET, <span style="color:#f92672">&amp;</span>(addr.sin_addr), hostip, <span style="color:#ae81ff">32</span>);
-     inet_pton(AF_INET, hostip, <span style="color:#f92672">&amp;</span>inAddr);
-     host <span style="color:#f92672">=</span> gethostbyaddr(<span style="color:#f92672">&amp;</span>inAddr, <span style="color:#66d9ef">sizeof</span>(inAddr), AF_INET);
-
-     printf(<span style="color:#e6db74">&#34;---Connection received from: %s [IP= %s]---</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, host<span style="color:#f92672">-&gt;</span>h_name, hostip);
-     <span style="color:#66d9ef">return</span> conn;
-    }
-
-    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">getFileType</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> file) {
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> temp;
-     <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(file, <span style="color:#e6db74">&#34;.html&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
-      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;text/html&#34;</span>;
-     } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(file, <span style="color:#e6db74">&#34;.pdf&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
-      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;application/pdf&#34;</span>;
-     } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(file, <span style="color:#e6db74">&#34;.txt&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
-      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;text/html&#34;</span>;
-     }
-    }</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>    <span style="color:#75715e">/**httpserver.c**/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdio.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdlib.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/types.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/socket.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;string.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netinet/in.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;time.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;dirent.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netdb.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#define BUF_SIZE 1024
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#define CLADDR_LEN 100
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> host, <span style="color:#66d9ef">int</span> port);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">listenForRequest</span>(<span style="color:#66d9ef">int</span> sockfd);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">getFileType</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> file);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv) { 
+</span></span><span style="display:flex;"><span>     DIR <span style="color:#f92672">*</span> dirptr;
+</span></span><span style="display:flex;"><span>     FILE <span style="color:#f92672">*</span> fileptr;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">time_t</span> timenow;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span> timeinfo;
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">time</span> (<span style="color:#f92672">&amp;</span>timenow);
+</span></span><span style="display:flex;"><span>     timeinfo <span style="color:#f92672">=</span> <span style="color:#a6e22e">localtime</span>(<span style="color:#f92672">&amp;</span>timenow);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> header, <span style="color:#f92672">*</span> request, <span style="color:#f92672">*</span> path, <span style="color:#f92672">*</span> newpath, <span style="color:#f92672">*</span> host;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> dir, <span style="color:#f92672">*</span> temp;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> port, sockfd, connfd;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> get[<span style="color:#ae81ff">3</span>], http[<span style="color:#ae81ff">9</span>];
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> filepath[BUF_SIZE];
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> http_not_found[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HTTP/1.0 404 Not Found</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> http_ok[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HTTP/1.0 200 OK</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> buffer[BUF_SIZE];
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> contentType;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (argc <span style="color:#f92672">!=</span> <span style="color:#ae81ff">4</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;usage: [host] [directory] [portnumber]</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     header <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)<span style="color:#a6e22e">malloc</span>(BUF_SIZE<span style="color:#f92672">*</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
+</span></span><span style="display:flex;"><span>     request <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)<span style="color:#a6e22e">malloc</span>(BUF_SIZE<span style="color:#f92672">*</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
+</span></span><span style="display:flex;"><span>     path <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)<span style="color:#a6e22e">malloc</span>(BUF_SIZE<span style="color:#f92672">*</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
+</span></span><span style="display:flex;"><span>     newpath <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)<span style="color:#a6e22e">malloc</span>(BUF_SIZE<span style="color:#f92672">*</span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     host <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>     dir <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>     port <span style="color:#f92672">=</span> <span style="color:#a6e22e">atoi</span>(argv[<span style="color:#ae81ff">3</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> ((dirptr <span style="color:#f92672">=</span> <span style="color:#a6e22e">opendir</span>(dir)) <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Directory Not Found!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span>     sockfd <span style="color:#f92672">=</span> <span style="color:#a6e22e">createSocket</span>(host, port);
+</span></span><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">for</span> (;;) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;--------------------------------------------------------</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Waiting for a connection...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      connfd <span style="color:#f92672">=</span> <span style="color:#a6e22e">listenForRequest</span>(sockfd);
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//gets the request from the connection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">recv</span>(connfd, request, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Processing request...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//parses request
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">sscanf</span>(request, <span style="color:#e6db74">&#34;%s %s %s&#34;</span>, get, path, http);
+</span></span><span style="display:flex;"><span>      newpath <span style="color:#f92672">=</span> path <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//ignores the first slash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">sprintf</span>(filepath,<span style="color:#e6db74">&#34;%s/%s&#34;</span>, dir, newpath);
+</span></span><span style="display:flex;"><span>      contentType <span style="color:#f92672">=</span> <span style="color:#a6e22e">getFileType</span>(newpath);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">sprintf</span>(header, <span style="color:#e6db74">&#34;Date: %sHostname: %s:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Location: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Content-Type: %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">asctime</span>(timeinfo), host, port, newpath, contentType);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> ((fileptr <span style="color:#f92672">=</span> <span style="color:#a6e22e">fopen</span>(filepath, <span style="color:#e6db74">&#34;r&#34;</span>)) <span style="color:#f92672">==</span> NULL ) {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;File not found!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">send</span>(connfd, http_not_found, <span style="color:#a6e22e">strlen</span>(http_not_found), <span style="color:#ae81ff">0</span>); <span style="color:#75715e">//sends HTTP 404
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Sending the file...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">send</span>(connfd, http_ok, <span style="color:#a6e22e">strlen</span>(http_ok), <span style="color:#ae81ff">0</span>); <span style="color:#75715e">//sends HTTP 200 OK  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#a6e22e">recv</span>(connfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(buffer, <span style="color:#e6db74">&#34;OK&#34;</span>)) <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Operation aborted by the user!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">send</span>(connfd, header, <span style="color:#a6e22e">strlen</span>(header), <span style="color:#ae81ff">0</span>); <span style="color:#75715e">//sends the header
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#a6e22e">recv</span>(connfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(buffer, <span style="color:#e6db74">&#34;OK&#34;</span>)) <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Operation aborted by the user!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">feof</span>(fileptr)) { <span style="color:#75715e">//sends the file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">fread</span>(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#66d9ef">sizeof</span>(buffer), <span style="color:#ae81ff">1</span>, fileptr);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">send</span>(connfd, buffer, <span style="color:#66d9ef">sizeof</span>(buffer), <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;File sent...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Processing completed...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">close</span>(connfd);
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">close</span>(sockfd);
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">free</span>(header);
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">free</span>(request);
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">free</span>(path);
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">free</span>(newpath);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">createSocket</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> host, <span style="color:#66d9ef">int</span> port) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> sockfd;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">struct</span> sockaddr_in addr;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">struct</span> hostent <span style="color:#f92672">*</span> host_ent;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> hostAddr;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(addr));
+</span></span><span style="display:flex;"><span>     addr.sin_family <span style="color:#f92672">=</span> AF_INET;
+</span></span><span style="display:flex;"><span>     addr.sin_addr.s_addr <span style="color:#f92672">=</span> INADDR_ANY;
+</span></span><span style="display:flex;"><span>     addr.sin_port <span style="color:#f92672">=</span> <span style="color:#a6e22e">htons</span>((<span style="color:#66d9ef">short</span>)port);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     sockfd <span style="color:#f92672">=</span> <span style="color:#a6e22e">socket</span>(AF_INET, SOCK_STREAM, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (sockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error creating socket!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);  
+</span></span><span style="display:flex;"><span>     }  
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Socket created...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">bind</span>(sockfd, (<span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, <span style="color:#66d9ef">sizeof</span>(addr)) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error binding socket to port!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Binding done...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">return</span> sockfd;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">listenForRequest</span>(<span style="color:#66d9ef">int</span> sockfd) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> conn;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> hostip[<span style="color:#ae81ff">32</span>];
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">struct</span> sockaddr_in addr;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">struct</span> hostent <span style="color:#f92672">*</span> host;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">struct</span> in_addr inAddr;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> len;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     addr.sin_family <span style="color:#f92672">=</span> AF_INET;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">listen</span>(sockfd, <span style="color:#ae81ff">5</span>); <span style="color:#75715e">//maximum 5 connections
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     len <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(addr); 
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> ((conn <span style="color:#f92672">=</span> <span style="color:#a6e22e">accept</span>(sockfd, (<span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>addr, <span style="color:#f92672">&amp;</span>len)) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error accepting connection!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Connection accepted...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">inet_ntop</span>(AF_INET, <span style="color:#f92672">&amp;</span>(addr.sin_addr), hostip, <span style="color:#ae81ff">32</span>);
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">inet_pton</span>(AF_INET, hostip, <span style="color:#f92672">&amp;</span>inAddr);
+</span></span><span style="display:flex;"><span>     host <span style="color:#f92672">=</span> <span style="color:#a6e22e">gethostbyaddr</span>(<span style="color:#f92672">&amp;</span>inAddr, <span style="color:#66d9ef">sizeof</span>(inAddr), AF_INET);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;---Connection received from: %s [IP= %s]---</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, host<span style="color:#f92672">-&gt;</span>h_name, hostip);
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">return</span> conn;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">getFileType</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> file) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> temp;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(file, <span style="color:#e6db74">&#34;.html&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;text/html&#34;</span>;
+</span></span><span style="display:flex;"><span>     } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(file, <span style="color:#e6db74">&#34;.pdf&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;application/pdf&#34;</span>;
+</span></span><span style="display:flex;"><span>     } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(file, <span style="color:#e6db74">&#34;.txt&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;text/html&#34;</span>;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>httpclient.c</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">     
-    <span style="color:#75715e">/**httpclient.c**/</span>
-    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdio.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdlib.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/types.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/socket.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;string.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netinet/in.h&#34;  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netdb.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>      
-    <span style="color:#75715e">#define BUF_SIZE 1024 
-</span><span style="color:#75715e"></span>      
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_request</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> port);
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">isValidIP</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> ip);
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">parseHeader</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> header);
-    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">splitKeyValue</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> line, <span style="color:#66d9ef">int</span> index);
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">openFile</span>();
-
-    FILE <span style="color:#f92672">*</span> fileptr;
-    <span style="color:#66d9ef">char</span> keys[][<span style="color:#ae81ff">25</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Date: &#34;</span>, <span style="color:#e6db74">&#34;Hostname: &#34;</span>, <span style="color:#e6db74">&#34;Location: &#34;</span>, <span style="color:#e6db74">&#34;Content-Type: &#34;</span>};
-    <span style="color:#66d9ef">char</span> status[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>};
-    <span style="color:#66d9ef">char</span> contentFileType[<span style="color:#ae81ff">100</span>];
-    <span style="color:#66d9ef">char</span> path[<span style="color:#ae81ff">1000</span>];
-
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">**</span>argv) {  
-     <span style="color:#66d9ef">struct</span> sockaddr_in addr, cl_addr;  
-     <span style="color:#66d9ef">int</span> sockfd, ret; 
-     <span style="color:#66d9ef">struct</span> hostent <span style="color:#f92672">*</span> server;
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url, <span style="color:#f92672">*</span> temp;
-     <span style="color:#66d9ef">int</span> portNumber;
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> fileName;
-     <span style="color:#66d9ef">char</span> status_ok[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OK&#34;</span>;
-     <span style="color:#66d9ef">char</span> buffer[BUF_SIZE]; 
-     <span style="color:#66d9ef">char</span> http_not_found[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HTTP/1.0 404 Not Found&#34;</span>;
-     <span style="color:#66d9ef">char</span> http_ok[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HTTP/1.0 200 OK&#34;</span>;
-     <span style="color:#66d9ef">char</span> location[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Location: &#34;</span>;
-     <span style="color:#66d9ef">char</span> contentType[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Content-Type: &#34;</span>;
-     <span style="color:#66d9ef">int</span> sPos, ePos;
-
-     <span style="color:#66d9ef">if</span> (argc <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>) {
-      printf(<span style="color:#e6db74">&#34;usage: [URL] [port number]</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      exit(<span style="color:#ae81ff">1</span>);  
-     }
-
-     url <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">1</span>];
-     portNumber <span style="color:#f92672">=</span> atoi(argv[<span style="color:#ae81ff">2</span>]);
-
-     <span style="color:#75715e">//checking the protocol specified
-</span><span style="color:#75715e"></span>     <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(url, <span style="color:#e6db74">&#34;http://&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
-      url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>;
-     } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(url, <span style="color:#e6db74">&#34;https://&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
-      url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#ae81ff">8</span>;
-     }
-
-     <span style="color:#75715e">//checking the port number
-</span><span style="color:#75715e"></span>     <span style="color:#66d9ef">if</span> (portNumber <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">65536</span> <span style="color:#f92672">||</span> portNumber <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-      printf(<span style="color:#e6db74">&#34;Invalid Port Number!&#34;</span>);
-      exit(<span style="color:#ae81ff">1</span>);
-     }
-     
-     sockfd <span style="color:#f92672">=</span> get_request(url, argv[<span style="color:#ae81ff">2</span>]); 
-
-     memset(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
-     ret <span style="color:#f92672">=</span> recv(sockfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);  
-     <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-      printf(<span style="color:#e6db74">&#34;Error receiving HTTP status!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);    
-     } <span style="color:#66d9ef">else</span> {
-      printf(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);
-      <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(buffer, http_ok)) <span style="color:#f92672">!=</span> NULL) {
-       send(sockfd, status_ok, strlen(status_ok), <span style="color:#ae81ff">0</span>);
-      } <span style="color:#66d9ef">else</span> {
-       close(sockfd);
-       <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-      }
-     }
-
-     memset(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer)); 
-     ret <span style="color:#f92672">=</span> recv(sockfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);  
-     <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-      printf(<span style="color:#e6db74">&#34;Error receiving HTTP header!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);    
-     } <span style="color:#66d9ef">else</span> {
-      printf(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);
-      <span style="color:#66d9ef">if</span> (parseHeader(buffer) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
-       send(sockfd, status_ok, strlen(status_ok), <span style="color:#ae81ff">0</span>);
-      } <span style="color:#66d9ef">else</span> {
-       printf(<span style="color:#e6db74">&#34;Error in HTTP header!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-       close(sockfd);
-       <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-      }
-     } 
-
-     <span style="color:#75715e">//printf(&#34;file: [%s]\n&#34;, fileName);
-</span><span style="color:#75715e"></span>     fileptr <span style="color:#f92672">=</span> fopen(path, <span style="color:#e6db74">&#34;w&#34;</span>);
-     <span style="color:#66d9ef">if</span> (fileptr <span style="color:#f92672">==</span> NULL) {
-      printf(<span style="color:#e6db74">&#34;Error opening file!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      close(sockfd);
-      <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-     }
-
-     memset(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
-     <span style="color:#66d9ef">while</span> (recv(sockfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) { <span style="color:#75715e">//receives the file
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> ((strstr(contentFileType, <span style="color:#e6db74">&#34;text/html&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
-       fprintf(fileptr, <span style="color:#e6db74">&#34;%s&#34;</span>, buffer);
-      } <span style="color:#66d9ef">else</span> {
-       fwrite(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#66d9ef">sizeof</span>(buffer), <span style="color:#ae81ff">1</span>, fileptr);
-      }
-      memset(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
-     }
-
-     fclose(fileptr);
-     close(sockfd);
-
-     openFile();
-
-     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    }
-
-
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_request</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> port) {
-
-     <span style="color:#66d9ef">int</span> sockfd, bindfd;
-            <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> ptr, <span style="color:#f92672">*</span> host;
-     <span style="color:#66d9ef">char</span> getrequest[<span style="color:#ae81ff">1024</span>];
-            <span style="color:#66d9ef">struct</span> sockaddr_in addr;
-
-     <span style="color:#66d9ef">if</span> (isValidIP(url)) { <span style="color:#75715e">//when an IP address is given
-</span><span style="color:#75715e"></span>      sprintf(getrequest, <span style="color:#e6db74">&#34;GET / HTTP/1.0</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">HOST: %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, url);
-            } <span style="color:#66d9ef">else</span> { <span style="color:#75715e">//when a host name is given
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> ((ptr <span style="color:#f92672">=</span> strstr(url, <span style="color:#e6db74">&#34;/&#34;</span>)) <span style="color:#f92672">==</span> NULL) {
-       <span style="color:#75715e">//when hostname does not contain a slash
-</span><span style="color:#75715e"></span>       sprintf(getrequest, <span style="color:#e6db74">&#34;GET / HTTP/1.0</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">HOST: %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, url);
-      } <span style="color:#66d9ef">else</span> {
-       <span style="color:#75715e">//when hostname contains a slash, it is a path to file
-</span><span style="color:#75715e"></span>       strcpy(path, ptr);
-              host <span style="color:#f92672">=</span> strtok(url, <span style="color:#e6db74">&#34;/&#34;</span>);
-       sprintf(getrequest, <span style="color:#e6db74">&#34;GET %s HTTP/1.0</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">HOST: %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, path, url);
-      }
-     } 
-
-     <span style="color:#75715e">// creates a socket to the host
-</span><span style="color:#75715e"></span>     sockfd <span style="color:#f92672">=</span> socket(AF_INET, SOCK_STREAM, <span style="color:#ae81ff">0</span>);
-     <span style="color:#66d9ef">if</span> (sockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
-      printf(<span style="color:#e6db74">&#34;Error creating socket!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
-      exit(<span style="color:#ae81ff">1</span>);  
-     }  
-     printf(<span style="color:#e6db74">&#34;Socket created...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-
-     memset(<span style="color:#f92672">&amp;</span>addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(addr));  
-     addr.sin_family <span style="color:#f92672">=</span> AF_INET;  
-     addr.sin_addr.s_addr <span style="color:#f92672">=</span> inet_addr(url);
-     addr.sin_port <span style="color:#f92672">=</span> htons(atoi(port));
-
-     <span style="color:#66d9ef">if</span> (connect(sockfd, (<span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span>) <span style="color:#f92672">&amp;</span>addr, <span style="color:#66d9ef">sizeof</span>(addr)) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> ) {
-      printf(<span style="color:#e6db74">&#34;Connection Error!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      exit(<span style="color:#ae81ff">1</span>);
-     }
-     printf(<span style="color:#e6db74">&#34;Connection successful...</span><span style="color:#ae81ff">\n\n\n</span><span style="color:#e6db74">&#34;</span>);
-     ptr <span style="color:#f92672">=</span> strtok(path, <span style="color:#e6db74">&#34;/&#34;</span>);
-     strcpy(path, ptr);
-     <span style="color:#75715e">//printf(&#34;path=%s\n&#34;, path); 
-</span><span style="color:#75715e"></span>     <span style="color:#75715e">//fileptr = fopen(path, &#34;w&#34;);
-</span><span style="color:#75715e"></span>     <span style="color:#75715e">//strcpy(fileName, path);
-</span><span style="color:#75715e"></span>     <span style="color:#75715e">//sprintf(fileName, &#34;%s&#34;, path);
-</span><span style="color:#75715e"></span>
-            <span style="color:#75715e">//int optval = 1;
-</span><span style="color:#75715e"></span>            <span style="color:#75715e">//setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &amp;optval, sizeof optval);
-</span><span style="color:#75715e"></span>
-     <span style="color:#75715e">// writes the HTTP GET Request to the sockfd
-</span><span style="color:#75715e"></span>     write(sockfd, getrequest, strlen(getrequest));
-
-     <span style="color:#66d9ef">return</span> sockfd;
-    }
-
-
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">isValidIP</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> ip) {
-     <span style="color:#66d9ef">struct</span> sockaddr_in addr;
-     <span style="color:#66d9ef">int</span> valid <span style="color:#f92672">=</span> inet_pton(AF_INET, ip, <span style="color:#f92672">&amp;</span>(addr.sin_addr));
-     <span style="color:#66d9ef">return</span> valid <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>;
-    }
-
-
-    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">parseHeader</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> header) {
-     <span style="color:#75715e">//&#34;Date: %sHostname: %s:%d\nLocation: %s\nContent-Type: %s\n\n&#34;
-</span><span style="color:#75715e"></span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> line, <span style="color:#f92672">*</span> key, <span style="color:#f92672">*</span> value;
-     <span style="color:#66d9ef">char</span> temp[<span style="color:#ae81ff">100</span>];
-     <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-     line <span style="color:#f92672">=</span> strtok(header, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-     <span style="color:#66d9ef">while</span> (line <span style="color:#f92672">!=</span> NULL) {
-      <span style="color:#75715e">//printf(&#34;%s\n&#34;, line);
-</span><span style="color:#75715e"></span>      strcpy(temp, line);
-      value <span style="color:#f92672">=</span> splitKeyValue(line, i);  
-      <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) {   
-       strcpy(contentFileType, value);
-      }
-      <span style="color:#75715e">//printf(&#34;value=%s\n&#34;, value);
-</span><span style="color:#75715e"></span>      line <span style="color:#f92672">=</span> strtok(NULL, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-      i<span style="color:#f92672">++</span>; 
-     }
-     <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; i<span style="color:#f92672">++</span>) {
-      <span style="color:#66d9ef">if</span> (status[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
-      <span style="color:#75715e">//printf(&#34;status[%d]=%d\n&#34;, i, status[i]);
-</span><span style="color:#75715e"></span>     }
-     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    }
-
-    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">splitKeyValue</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> line, <span style="color:#66d9ef">int</span> index) {
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> temp;
-     <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(line, keys[index])) <span style="color:#f92672">!=</span> NULL) {
-      temp <span style="color:#f92672">=</span> temp <span style="color:#f92672">+</span> strlen(keys[index]);
-      status[index] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-     }
-     <span style="color:#66d9ef">return</span> temp;
-    }
-
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">openFile</span>() {
-     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> temp;
-     <span style="color:#66d9ef">char</span> command[<span style="color:#ae81ff">100</span>];
-     <span style="color:#66d9ef">char</span> fileName[<span style="color:#ae81ff">1000</span>];
-     strcpy(fileName, path);
-     <span style="color:#75715e">//printf(&#34;File Name: %s\n&#34;, fileName);
-</span><span style="color:#75715e"></span>     <span style="color:#75715e">//printf(&#34;Content Type: %s\n&#34;, contentFileType);
-</span><span style="color:#75715e"></span>     <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(contentFileType, <span style="color:#e6db74">&#34;text/html&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
-      <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(fileName, <span style="color:#e6db74">&#34;.txt&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
-       sprintf(command, <span style="color:#e6db74">&#34;gedit %s&#34;</span>, fileName);
-      } <span style="color:#66d9ef">else</span> {
-       sprintf(command, <span style="color:#e6db74">&#34;firefox %s&#34;</span>, fileName);
-      }
-      system(command);
-     } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> strstr(contentFileType, <span style="color:#e6db74">&#34;application/pdf&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
-      sprintf(command, <span style="color:#e6db74">&#34;acroread %s&#34;</span>, fileName);
-      system(command);
-     } <span style="color:#66d9ef">else</span> {
-      printf(<span style="color:#e6db74">&#34;The filetype %s is not supported. Failed to open %s!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, contentFileType, fileName);
-     }
-    }</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**httpclient.c**/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdio.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;stdlib.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/types.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;sys/socket.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;string.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netinet/in.h&#34;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#include</span><span style="color:#75715e">&#34;netdb.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#define BUF_SIZE 1024 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_request</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> port);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">isValidIP</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> ip);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">parseHeader</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> header);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">splitKeyValue</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> line, <span style="color:#66d9ef">int</span> index);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">openFile</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    FILE <span style="color:#f92672">*</span> fileptr;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> keys[][<span style="color:#ae81ff">25</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Date: &#34;</span>, <span style="color:#e6db74">&#34;Hostname: &#34;</span>, <span style="color:#e6db74">&#34;Location: &#34;</span>, <span style="color:#e6db74">&#34;Content-Type: &#34;</span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> status[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> contentFileType[<span style="color:#ae81ff">100</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> path[<span style="color:#ae81ff">1000</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">**</span>argv) {  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">struct</span> sockaddr_in addr, cl_addr;  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> sockfd, ret; 
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">struct</span> hostent <span style="color:#f92672">*</span> server;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url, <span style="color:#f92672">*</span> temp;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> portNumber;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> fileName;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> status_ok[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OK&#34;</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> buffer[BUF_SIZE]; 
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> http_not_found[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HTTP/1.0 404 Not Found&#34;</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> http_ok[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HTTP/1.0 200 OK&#34;</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> location[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Location: &#34;</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> contentType[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Content-Type: &#34;</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> sPos, ePos;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (argc <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;usage: [URL] [port number]</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);  
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     url <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>     portNumber <span style="color:#f92672">=</span> <span style="color:#a6e22e">atoi</span>(argv[<span style="color:#ae81ff">2</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//checking the protocol specified
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(url, <span style="color:#e6db74">&#34;http://&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>      url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>;
+</span></span><span style="display:flex;"><span>     } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(url, <span style="color:#e6db74">&#34;https://&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>      url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#ae81ff">8</span>;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//checking the port number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#66d9ef">if</span> (portNumber <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">65536</span> <span style="color:#f92672">||</span> portNumber <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Invalid Port Number!&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     
+</span></span><span style="display:flex;"><span>     sockfd <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_request</span>(url, argv[<span style="color:#ae81ff">2</span>]); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
+</span></span><span style="display:flex;"><span>     ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">recv</span>(sockfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error receiving HTTP status!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);    
+</span></span><span style="display:flex;"><span>     } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(buffer, http_ok)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">send</span>(sockfd, status_ok, <span style="color:#a6e22e">strlen</span>(status_ok), <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">close</span>(sockfd);
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer)); 
+</span></span><span style="display:flex;"><span>     ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">recv</span>(sockfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>);  
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error receiving HTTP header!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);    
+</span></span><span style="display:flex;"><span>     } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">parseHeader</span>(buffer) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">send</span>(sockfd, status_ok, <span style="color:#a6e22e">strlen</span>(status_ok), <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error in HTTP header!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">close</span>(sockfd);
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>     } 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//printf(&#34;file: [%s]\n&#34;, fileName);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     fileptr <span style="color:#f92672">=</span> <span style="color:#a6e22e">fopen</span>(path, <span style="color:#e6db74">&#34;w&#34;</span>);
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (fileptr <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error opening file!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">close</span>(sockfd);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">recv</span>(sockfd, buffer, BUF_SIZE, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) { <span style="color:#75715e">//receives the file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> ((<span style="color:#a6e22e">strstr</span>(contentFileType, <span style="color:#e6db74">&#34;text/html&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">fprintf</span>(fileptr, <span style="color:#e6db74">&#34;%s&#34;</span>, buffer);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">fwrite</span>(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#66d9ef">sizeof</span>(buffer), <span style="color:#ae81ff">1</span>, fileptr);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>buffer, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(buffer));
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">fclose</span>(fileptr);
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">close</span>(sockfd);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">openFile</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_request</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> url, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> port) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> sockfd, bindfd;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> ptr, <span style="color:#f92672">*</span> host;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> getrequest[<span style="color:#ae81ff">1024</span>];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">struct</span> sockaddr_in addr;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isValidIP</span>(url)) { <span style="color:#75715e">//when an IP address is given
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">sprintf</span>(getrequest, <span style="color:#e6db74">&#34;GET / HTTP/1.0</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">HOST: %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, url);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> { <span style="color:#75715e">//when a host name is given
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> ((ptr <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(url, <span style="color:#e6db74">&#34;/&#34;</span>)) <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">//when hostname does not contain a slash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#a6e22e">sprintf</span>(getrequest, <span style="color:#e6db74">&#34;GET / HTTP/1.0</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">HOST: %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, url);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">//when hostname contains a slash, it is a path to file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#a6e22e">strcpy</span>(path, ptr);
+</span></span><span style="display:flex;"><span>              host <span style="color:#f92672">=</span> <span style="color:#a6e22e">strtok</span>(url, <span style="color:#e6db74">&#34;/&#34;</span>);
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">sprintf</span>(getrequest, <span style="color:#e6db74">&#34;GET %s HTTP/1.0</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">HOST: %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, path, url);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>     } 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// creates a socket to the host
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     sockfd <span style="color:#f92672">=</span> <span style="color:#a6e22e">socket</span>(AF_INET, SOCK_STREAM, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (sockfd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {  
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Error creating socket!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);  
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);  
+</span></span><span style="display:flex;"><span>     }  
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Socket created...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">memset</span>(<span style="color:#f92672">&amp;</span>addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(addr));  
+</span></span><span style="display:flex;"><span>     addr.sin_family <span style="color:#f92672">=</span> AF_INET;  
+</span></span><span style="display:flex;"><span>     addr.sin_addr.s_addr <span style="color:#f92672">=</span> <span style="color:#a6e22e">inet_addr</span>(url);
+</span></span><span style="display:flex;"><span>     addr.sin_port <span style="color:#f92672">=</span> <span style="color:#a6e22e">htons</span>(<span style="color:#a6e22e">atoi</span>(port));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">connect</span>(sockfd, (<span style="color:#66d9ef">struct</span> sockaddr <span style="color:#f92672">*</span>) <span style="color:#f92672">&amp;</span>addr, <span style="color:#66d9ef">sizeof</span>(addr)) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> ) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Connection Error!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Connection successful...</span><span style="color:#ae81ff">\n\n\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>     ptr <span style="color:#f92672">=</span> <span style="color:#a6e22e">strtok</span>(path, <span style="color:#e6db74">&#34;/&#34;</span>);
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">strcpy</span>(path, ptr);
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//printf(&#34;path=%s\n&#34;, path); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#75715e">//fileptr = fopen(path, &#34;w&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#75715e">//strcpy(fileName, path);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#75715e">//sprintf(fileName, &#34;%s&#34;, path);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//int optval = 1;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">//setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &amp;optval, sizeof optval);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// writes the HTTP GET Request to the sockfd
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#a6e22e">write</span>(sockfd, getrequest, <span style="color:#a6e22e">strlen</span>(getrequest));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">return</span> sockfd;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">isValidIP</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> ip) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">struct</span> sockaddr_in addr;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> valid <span style="color:#f92672">=</span> <span style="color:#a6e22e">inet_pton</span>(AF_INET, ip, <span style="color:#f92672">&amp;</span>(addr.sin_addr));
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">return</span> valid <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">parseHeader</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> header) {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//&#34;Date: %sHostname: %s:%d\nLocation: %s\nContent-Type: %s\n\n&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> line, <span style="color:#f92672">*</span> key, <span style="color:#f92672">*</span> value;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> temp[<span style="color:#ae81ff">100</span>];
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>     line <span style="color:#f92672">=</span> <span style="color:#a6e22e">strtok</span>(header, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">while</span> (line <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//printf(&#34;%s\n&#34;, line);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">strcpy</span>(temp, line);
+</span></span><span style="display:flex;"><span>      value <span style="color:#f92672">=</span> <span style="color:#a6e22e">splitKeyValue</span>(line, i);  
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) {   
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">strcpy</span>(contentFileType, value);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//printf(&#34;value=%s\n&#34;, value);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      line <span style="color:#f92672">=</span> <span style="color:#a6e22e">strtok</span>(NULL, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>      i<span style="color:#f92672">++</span>; 
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (status[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//printf(&#34;status[%d]=%d\n&#34;, i, status[i]);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     }
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">splitKeyValue</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> line, <span style="color:#66d9ef">int</span> index) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> temp;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(line, keys[index])) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>      temp <span style="color:#f92672">=</span> temp <span style="color:#f92672">+</span> <span style="color:#a6e22e">strlen</span>(keys[index]);
+</span></span><span style="display:flex;"><span>      status[index] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">return</span> temp;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">openFile</span>() {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> temp;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> command[<span style="color:#ae81ff">100</span>];
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">char</span> fileName[<span style="color:#ae81ff">1000</span>];
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">strcpy</span>(fileName, path);
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//printf(&#34;File Name: %s\n&#34;, fileName);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#75715e">//printf(&#34;Content Type: %s\n&#34;, contentFileType);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(contentFileType, <span style="color:#e6db74">&#34;text/html&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(fileName, <span style="color:#e6db74">&#34;.txt&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">sprintf</span>(command, <span style="color:#e6db74">&#34;gedit %s&#34;</span>, fileName);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">sprintf</span>(command, <span style="color:#e6db74">&#34;firefox %s&#34;</span>, fileName);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">system</span>(command);
+</span></span><span style="display:flex;"><span>     } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ((temp <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(contentFileType, <span style="color:#e6db74">&#34;application/pdf&#34;</span>)) <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">sprintf</span>(command, <span style="color:#e6db74">&#34;acroread %s&#34;</span>, fileName);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">system</span>(command);
+</span></span><span style="display:flex;"><span>     } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;The filetype %s is not supported. Failed to open %s!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, contentFileType, fileName);
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>Execution:</strong></p>
 <p>(terminal 1)</p>
 <pre><code>gcc httpserver.c -o server 
@@ -612,72 +651,67 @@ httpserver.c" />
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -687,6 +721,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

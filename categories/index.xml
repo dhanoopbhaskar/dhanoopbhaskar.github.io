@@ -4,363 +4,282 @@
     <title>Categories on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/categories/</link>
     <description>Recent content in Categories on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Jan 2022 19:38:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>analytics</title>
+      <title>Analytics</title>
       <link>https://dhanoopbhaskar.github.io/categories/analytics/</link>
       <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/analytics/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>data science</title>
+      <title>Data Science</title>
       <link>https://dhanoopbhaskar.github.io/categories/data-science/</link>
       <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/data-science/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>pandas</title>
+      <title>Pandas</title>
       <link>https://dhanoopbhaskar.github.io/categories/pandas/</link>
       <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/pandas/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>python</title>
+      <title>Python</title>
       <link>https://dhanoopbhaskar.github.io/categories/python/</link>
       <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/python/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>regex</title>
+      <title>Regex</title>
       <link>https://dhanoopbhaskar.github.io/categories/regex/</link>
       <pubDate>Fri, 19 Jun 2020 14:07:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/regex/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Docker</title>
       <link>https://dhanoopbhaskar.github.io/categories/docker/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/docker/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ROS</title>
       <link>https://dhanoopbhaskar.github.io/categories/ros/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/ros/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>arduino</title>
+      <title>Arduino</title>
       <link>https://dhanoopbhaskar.github.io/categories/arduino/</link>
       <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/arduino/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>robotics</title>
+      <title>Robotics</title>
       <link>https://dhanoopbhaskar.github.io/categories/robotics/</link>
       <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/robotics/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>arts</title>
+      <title>Arts</title>
       <link>https://dhanoopbhaskar.github.io/categories/arts/</link>
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/arts/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>pencils</title>
+      <title>Pencils</title>
       <link>https://dhanoopbhaskar.github.io/categories/pencils/</link>
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/pencils/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>iphone</title>
+      <title>Iphone</title>
       <link>https://dhanoopbhaskar.github.io/categories/iphone/</link>
       <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/iphone/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>linux</title>
+      <title>Linux</title>
       <link>https://dhanoopbhaskar.github.io/categories/linux/</link>
       <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/linux/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>java</title>
+      <title>Java</title>
       <link>https://dhanoopbhaskar.github.io/categories/java/</link>
       <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/java/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>REST</title>
       <link>https://dhanoopbhaskar.github.io/categories/rest/</link>
       <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/rest/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Web Services</title>
       <link>https://dhanoopbhaskar.github.io/categories/web-services/</link>
       <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/web-services/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>mysql</title>
+      <title>Mysql</title>
       <link>https://dhanoopbhaskar.github.io/categories/mysql/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/mysql/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>phpmyadmin</title>
+      <title>Phpmyadmin</title>
       <link>https://dhanoopbhaskar.github.io/categories/phpmyadmin/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/phpmyadmin/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>C</title>
       <link>https://dhanoopbhaskar.github.io/categories/c/</link>
       <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/c/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gcc</title>
+      <title>Gcc</title>
       <link>https://dhanoopbhaskar.github.io/categories/gcc/</link>
       <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/gcc/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>aes algorithm</title>
+      <title>Aes Algorithm</title>
       <link>https://dhanoopbhaskar.github.io/categories/aes-algorithm/</link>
       <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/aes-algorithm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cryptography</title>
+      <title>Cryptography</title>
       <link>https://dhanoopbhaskar.github.io/categories/cryptography/</link>
       <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/cryptography/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>des algorithm</title>
+      <title>Des Algorithm</title>
       <link>https://dhanoopbhaskar.github.io/categories/des-algorithm/</link>
       <pubDate>Wed, 30 Jul 2014 21:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/des-algorithm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gratitude</title>
+      <title>Gratitude</title>
       <link>https://dhanoopbhaskar.github.io/categories/gratitude/</link>
       <pubDate>Mon, 19 May 2014 23:23:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/gratitude/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>blowfish algorithm</title>
+      <title>Blowfish Algorithm</title>
       <link>https://dhanoopbhaskar.github.io/categories/blowfish-algorithm/</link>
       <pubDate>Wed, 09 Apr 2014 20:00:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/blowfish-algorithm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>software design patterns</title>
+      <title>Software Design Patterns</title>
       <link>https://dhanoopbhaskar.github.io/categories/software-design-patterns/</link>
       <pubDate>Sat, 31 Aug 2013 19:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/software-design-patterns/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>software engineering</title>
+      <title>Software Engineering</title>
       <link>https://dhanoopbhaskar.github.io/categories/software-engineering/</link>
       <pubDate>Sat, 31 Aug 2013 19:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/software-engineering/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>string</title>
+      <title>String</title>
       <link>https://dhanoopbhaskar.github.io/categories/string/</link>
       <pubDate>Thu, 29 Aug 2013 23:34:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/string/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>swing</title>
+      <title>Swing</title>
       <link>https://dhanoopbhaskar.github.io/categories/swing/</link>
       <pubDate>Sat, 03 Aug 2013 17:04:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/swing/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ETL</title>
       <link>https://dhanoopbhaskar.github.io/categories/etl/</link>
       <pubDate>Sun, 21 Jul 2013 20:48:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/etl/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Talend</title>
       <link>https://dhanoopbhaskar.github.io/categories/talend/</link>
       <pubDate>Sun, 21 Jul 2013 20:48:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/talend/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>technology</title>
+      <title>Technology</title>
       <link>https://dhanoopbhaskar.github.io/categories/technology/</link>
       <pubDate>Sun, 16 Jun 2013 20:43:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/technology/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>projects</title>
+      <title>Projects</title>
       <link>https://dhanoopbhaskar.github.io/categories/projects/</link>
       <pubDate>Tue, 26 Feb 2013 01:14:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/projects/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>fun</title>
+      <title>Fun</title>
       <link>https://dhanoopbhaskar.github.io/categories/fun/</link>
       <pubDate>Tue, 18 Oct 2011 17:33:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/fun/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>microsoft</title>
+      <title>Microsoft</title>
       <link>https://dhanoopbhaskar.github.io/categories/microsoft/</link>
       <pubDate>Tue, 18 Oct 2011 17:33:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/microsoft/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>good-read</title>
+      <title>Good-Read</title>
       <link>https://dhanoopbhaskar.github.io/categories/good-read/</link>
       <pubDate>Sun, 09 Oct 2011 23:46:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/good-read/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ruby</title>
+      <title>Ruby</title>
       <link>https://dhanoopbhaskar.github.io/categories/ruby/</link>
       <pubDate>Fri, 16 Sep 2011 19:28:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/ruby/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SQL</title>
       <link>https://dhanoopbhaskar.github.io/categories/sql/</link>
       <pubDate>Sun, 10 Jan 2010 00:29:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/sql/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>C&#43;&#43;</title>
       <link>https://dhanoopbhaskar.github.io/categories/c&#43;&#43;/</link>
       <pubDate>Sun, 28 Jun 2009 19:17:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/categories/c&#43;&#43;/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

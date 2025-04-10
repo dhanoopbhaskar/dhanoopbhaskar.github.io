@@ -4,11 +4,8 @@
     <title>Authors on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/authors/</link>
     <description>Recent content in Authors on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

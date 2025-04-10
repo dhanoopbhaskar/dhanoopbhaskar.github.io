@@ -1,1484 +1,892 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/analytics/</loc>
-    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
   <url>
     <loc>https://dhanoopbhaskar.github.io/categories/analytics/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/analytics/</loc>
+    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/data-science/</loc>
-    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/data-science/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/pandas/</loc>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/data-science/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/pandas/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/pandas/</loc>
+    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-melt/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/python/</loc>
-    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/python/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/python/</loc>
+    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/</loc>
+    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-pivot/</loc>
     <lastmod>2022-01-23T19:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-amount-into-buckets/</loc>
     <lastmod>2022-01-23T17:44:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/regex/</loc>
-    <lastmod>2020-06-19T14:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/regex/</loc>
     <lastmod>2020-06-19T14:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/regex/</loc>
+    <lastmod>2020-06-19T14:07:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2020-06-19-regex/</loc>
     <lastmod>2020-06-19T14:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/regex-cheatsheet/</loc>
     <lastmod>2020-06-19T14:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/archives/</loc>
     <lastmod>2020-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/</loc>
-    <lastmod>2020-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/docker/</loc>
     <lastmod>2020-05-07T14:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/docker/</loc>
     <lastmod>2020-05-07T14:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/dockerfile/</loc>
     <lastmod>2020-05-07T14:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/melodic/</loc>
     <lastmod>2020-05-07T14:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/python3/</loc>
     <lastmod>2020-05-07T14:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/ros/</loc>
-    <lastmod>2020-05-07T14:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/ros/</loc>
     <lastmod>2020-05-07T14:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/ros/</loc>
+    <lastmod>2020-05-07T14:35:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2020-05-07-ros-in-docker-container/</loc>
     <lastmod>2020-05-07T14:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/kinetic/</loc>
     <lastmod>2020-05-07T14:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/robot/</loc>
-    <lastmod>2020-05-07T14:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/robotics/</loc>
     <lastmod>2020-05-07T14:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/</loc>
     <lastmod>2020-05-07T14:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/arduino/</loc>
-    <lastmod>2019-10-28T12:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/arduino/</loc>
     <lastmod>2019-10-28T12:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/arduino/</loc>
+    <lastmod>2019-10-28T12:10:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/biped-robot/</loc>
     <lastmod>2019-10-28T12:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2019-10-28-biped-walking-robot/</loc>
     <lastmod>2019-10-28T12:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/biped-walking-robot/</loc>
     <lastmod>2019-10-28T12:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/robot/</loc>
+    <lastmod>2019-10-28T12:10:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/robotics/</loc>
     <lastmod>2019-10-28T12:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/walking-robot/</loc>
     <lastmod>2019-10-28T12:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2019-10-28-robotic-arm/</loc>
     <lastmod>2019-10-28T12:05:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/robotic-arm/</loc>
     <lastmod>2019-10-28T12:05:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2019-10-28-7-robots-in-6-days/</loc>
     <lastmod>2019-10-28T12:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/arts/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/arts/</loc>
     <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/pencils/</loc>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/arts/</loc>
     <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/pencils/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/pencils/</loc>
     <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/iphone/</loc>
-    <lastmod>2018-07-02T20:01:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/pencils/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/pencils/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/iphone/</loc>
     <lastmod>2018-07-02T20:01:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/linux/</loc>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/iphone/</loc>
     <lastmod>2018-07-02T20:01:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/linux/</loc>
     <lastmod>2018-07-02T20:01:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/linux/</loc>
+    <lastmod>2018-07-02T20:01:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</loc>
     <lastmod>2018-07-02T20:01:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/java/</loc>
-    <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/java/</loc>
     <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/java/</loc>
+    <lastmod>2016-08-22T20:13:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/java-ws/</loc>
     <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/jersey/</loc>
     <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/rest/</loc>
-    <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/rest/</loc>
     <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/rest/</loc>
+    <lastmod>2016-08-22T20:13:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2016-08-22-restful-web-services-in-java/</loc>
     <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/web-services/</loc>
-    <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/web-services/</loc>
     <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/web-services/</loc>
+    <lastmod>2016-08-22T20:13:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/apache/</loc>
     <lastmod>2016-03-09T21:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2016-03-09-installing-and-configuring-phpmyadmin-in-ubuntu-linux-mint/</loc>
     <lastmod>2016-03-09T21:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/mysql/</loc>
-    <lastmod>2016-03-09T21:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/mysql/</loc>
     <lastmod>2016-03-09T21:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/mysql/</loc>
+    <lastmod>2016-03-09T21:57:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/php/</loc>
     <lastmod>2016-03-09T21:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/phpmyadmin/</loc>
-    <lastmod>2016-03-09T21:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/phpmyadmin/</loc>
     <lastmod>2016-03-09T21:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/phpmyadmin/</loc>
+    <lastmod>2016-03-09T21:57:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/c/</loc>
     <lastmod>2016-02-14T01:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/c/cpp/</loc>
+    <lastmod>2016-02-14T01:23:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/dns/</loc>
     <lastmod>2016-02-14T01:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2016-02-14-dns-lookup-implementation-in-c/</loc>
     <lastmod>2016-02-14T01:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/gcc/</loc>
-    <lastmod>2016-02-14T01:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/gcc/</loc>
     <lastmod>2016-02-14T01:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/gcc/</loc>
+    <lastmod>2016-02-14T01:23:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/network/</loc>
     <lastmod>2016-02-14T01:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/distance/</loc>
     <lastmod>2015-03-11T11:04:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/gps/</loc>
     <lastmod>2015-03-11T11:04:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2015-03-11-java-program-to-find-the-distance-between-two-gps-locations/</loc>
     <lastmod>2015-03-11T11:04:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/location/</loc>
     <lastmod>2015-03-11T11:04:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-12-30-sum-of-prime-numbers-between-1000000-and-1000100-using-sieve-of-eratosthenes/</loc>
     <lastmod>2014-12-30T09:36:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/aes-algorithm/</loc>
-    <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/aes-algorithm/</loc>
     <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/aes-algorithm/</loc>
+    <lastmod>2014-07-30T23:19:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-07-30-aes-implementation-in-java-with-ecb-cbc-ofb-cfb-modes-of-operation/</loc>
     <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/crypto/</loc>
     <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/cryptography/</loc>
-    <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/cryptography/</loc>
     <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/cryptography/</loc>
+    <lastmod>2014-07-30T23:19:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/decryption/</loc>
     <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/encryption/</loc>
     <lastmod>2014-07-30T23:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/des-algorithm/</loc>
-    <lastmod>2014-07-30T21:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/des-algorithm/</loc>
     <lastmod>2014-07-30T21:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/des-algorithm/</loc>
+    <lastmod>2014-07-30T21:35:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-07-30-des-implementation-in-java-with-ecb-cbc-ofb-cfb-modes-of-operation/</loc>
     <lastmod>2014-07-30T21:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-07-30-aes-implementation-in-java/</loc>
     <lastmod>2014-07-30T12:48:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-06-20-des-implementation-in-java/</loc>
     <lastmod>2014-06-20T00:12:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/gratitude/</loc>
-    <lastmod>2014-05-19T23:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/gratitude/</loc>
     <lastmod>2014-05-19T23:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/gratitude/</loc>
+    <lastmod>2014-05-19T23:23:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/thanks/</loc>
     <lastmod>2014-05-19T23:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-05-19-total-views-crossed-50k-thanks-for-your-support/</loc>
     <lastmod>2014-05-19T23:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-04-26-java-common-problems-and-their-solutions/</loc>
     <lastmod>2014-04-26T17:51:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/blowfish-algorithm/</loc>
-    <lastmod>2014-04-09T20:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/blowfish-algorithm/</loc>
     <lastmod>2014-04-09T20:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/blowfish-algorithm/</loc>
+    <lastmod>2014-04-09T20:00:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-04-09-java-encryption-and-decryption-of-an-image-using-another-image-blowfish-algorithm/</loc>
     <lastmod>2014-04-09T20:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-04-05-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm-using-password/</loc>
     <lastmod>2014-04-05T22:22:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-02-13-a-simple-http-client-and-a-server-in-c/</loc>
     <lastmod>2014-02-13T23:06:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/http/</loc>
     <lastmod>2014-02-13T23:06:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/socket/</loc>
     <lastmod>2014-02-13T23:06:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/tcp/</loc>
     <lastmod>2014-02-13T23:06:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-01-22-a-simple-chat-program-in-c-tcp/</loc>
     <lastmod>2014-01-22T20:26:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/thread/</loc>
     <lastmod>2014-01-22T20:26:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-01-16-tcp-in-c-one-server-and-multiple-clients/</loc>
     <lastmod>2014-01-16T21:12:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-01-16-socket-programming-in-c-tcp-over-a-network-2-systems/</loc>
     <lastmod>2014-01-16T20:53:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2014-01-05-socket-programming-in-c-tcp/</loc>
     <lastmod>2014-01-05T01:03:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/design-pattern/</loc>
     <lastmod>2013-08-31T19:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-31-initialization-on-demand-holder-idiom/</loc>
     <lastmod>2013-08-31T19:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/software-design/</loc>
     <lastmod>2013-08-31T19:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/software-design-patterns/</loc>
     <lastmod>2013-08-31T19:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/software-engineering/</loc>
     <lastmod>2013-08-31T19:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-31-eager-initialization/</loc>
     <lastmod>2013-08-31T17:20:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-31-double-checked-locking-and-lazy-initialization/</loc>
     <lastmod>2013-08-31T16:58:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-31-singleton-pattern/</loc>
     <lastmod>2013-08-31T16:29:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-31-software-design-pattern/</loc>
     <lastmod>2013-08-31T15:33:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-29-solved-missing-verify-dll/</loc>
     <lastmod>2013-08-29T23:58:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-29-solved-could-not-open-jvm-cfg/</loc>
     <lastmod>2013-08-29T23:49:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-29-java-avoid-multiple-occurrence-of-some-character-in-a-string/</loc>
     <lastmod>2013-08-29T23:34:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/string/</loc>
-    <lastmod>2013-08-29T23:34:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/string/</loc>
     <lastmod>2013-08-29T23:34:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/string/</loc>
+    <lastmod>2013-08-29T23:34:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-20-another-milestone/</loc>
     <lastmod>2013-08-20T00:54:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-15-independence-day-wishes/</loc>
     <lastmod>2013-08-15T00:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-11-java-encryption-and-decryption-of-an-image-using-blowfish-algorithm/</loc>
     <lastmod>2013-08-11T19:16:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-11-java-blowfish-encryption-algorithm/</loc>
     <lastmod>2013-08-11T16:08:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-11-java-advanced-encryption-standard-aes-algorithm/</loc>
     <lastmod>2013-08-11T15:23:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jbutton-in-a-jtable-cell/</loc>
     <lastmod>2013-08-03T17:04:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/swing/</loc>
-    <lastmod>2013-08-03T17:04:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/swing/</loc>
     <lastmod>2013-08-03T17:04:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/swing/</loc>
+    <lastmod>2013-08-03T17:04:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcheckbox-in-a-jtable-cell/</loc>
     <lastmod>2013-08-03T14:56:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/</loc>
     <lastmod>2013-08-03T14:04:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcombobox-in-a-jtable-cell/</loc>
     <lastmod>2013-08-03T00:47:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/etl/</loc>
-    <lastmod>2013-07-21T20:48:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/etl/</loc>
     <lastmod>2013-07-21T20:48:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/talend/</loc>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/etl/</loc>
     <lastmod>2013-07-21T20:48:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/talend/</loc>
     <lastmod>2013-07-21T20:48:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/talend/</loc>
+    <lastmod>2013-07-21T20:48:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-07-21-talend-out-of-memory-error-and-java-heap-space-error/</loc>
     <lastmod>2013-07-21T20:48:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-06-16-googles-project-loon-balloon-powered-internet-access/</loc>
     <lastmod>2013-06-16T20:43:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/technology/</loc>
-    <lastmod>2013-06-16T20:43:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/technology/</loc>
     <lastmod>2013-06-16T20:43:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/technology/</loc>
+    <lastmod>2013-06-16T20:43:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/datastage/</loc>
     <lastmod>2013-06-16T14:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-06-16-talend-equivalent-for-index-function-in-datastage/</loc>
     <lastmod>2013-06-16T14:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-06-16-talend-equivalent-for-trim-function-in-datastage/</loc>
     <lastmod>2013-06-16T14:30:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-06-16-talend-equivalent-for-matchfield-function-in-datastage/</loc>
     <lastmod>2013-06-16T13:59:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-02-26-exporting-google-contacts-to-a-nokia-phone/</loc>
     <lastmod>2013-02-26T01:14:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/projects/</loc>
-    <lastmod>2013-02-26T01:14:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/projects/</loc>
     <lastmod>2013-02-26T01:14:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/projects/</loc>
+    <lastmod>2013-02-26T01:14:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-01-12-a-command-line-smtp-gmailing-tool-in-java/</loc>
     <lastmod>2013-01-12T01:51:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2013-01-05-using-linux-utilities-under-windows/</loc>
     <lastmod>2013-01-05T16:27:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2012-10-20-talend-equivalent-for-oconv-function-in-datastage-only-for-time-and-date/</loc>
     <lastmod>2012-10-20T15:30:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2012-10-06-java-removing-leading-zeroes-from-a-string/</loc>
     <lastmod>2012-10-06T00:31:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/fun/</loc>
-    <lastmod>2011-10-18T17:33:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/fun/</loc>
     <lastmod>2011-10-18T17:33:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/microsoft/</loc>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/fun/</loc>
     <lastmod>2011-10-18T17:33:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/microsoft/</loc>
     <lastmod>2011-10-18T17:33:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/microsoft/</loc>
+    <lastmod>2011-10-18T17:33:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-10-18-microsoft-magic/</loc>
     <lastmod>2011-10-18T17:33:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/apjabdulkalam/</loc>
     <lastmod>2011-10-09T23:46:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/good-read/</loc>
     <lastmod>2011-10-09T23:46:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/must-read/</loc>
     <lastmod>2011-10-09T23:46:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-10-09-one-of-the-best-arguments-i-have-ever-read/</loc>
     <lastmod>2011-10-09T23:46:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-10-09-dr-a-p-j-abdul-kalams-speech-a-must-read/</loc>
     <lastmod>2011-10-09T20:55:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-10-07-creating-a-pdf-file-in-java/</loc>
     <lastmod>2011-10-07T20:11:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/pdf/</loc>
     <lastmod>2011-10-07T20:11:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-10-04-http-post-in-java-using-urlconnection/</loc>
     <lastmod>2011-10-04T16:53:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/post/</loc>
     <lastmod>2011-10-04T16:53:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/url/</loc>
     <lastmod>2011-10-04T16:53:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/chat-client/</loc>
     <lastmod>2011-09-22T14:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/gtalk/</loc>
     <lastmod>2011-09-22T14:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/im/</loc>
     <lastmod>2011-09-22T14:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-22-java-gtalk-client-using-smack-xmpp-api/</loc>
     <lastmod>2011-09-22T14:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/smack/</loc>
     <lastmod>2011-09-22T14:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/xmpp/</loc>
     <lastmod>2011-09-22T14:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-20-python-first-step-towards-programming/</loc>
     <lastmod>2011-09-20T18:47:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-20-python-strings/</loc>
     <lastmod>2011-09-20T17:53:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-20-java-rsa-algorithm/</loc>
     <lastmod>2011-09-20T16:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/rsa-algorithm/</loc>
     <lastmod>2011-09-20T16:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-20-java-data-encryption-standard-des-algorithm/</loc>
     <lastmod>2011-09-20T14:27:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-19-python-an-introduction/</loc>
     <lastmod>2011-09-19T16:31:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-19-using-the-python-interpreter/</loc>
     <lastmod>2011-09-19T15:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-19-python-programming-language/</loc>
     <lastmod>2011-09-19T15:48:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/ruby/</loc>
-    <lastmod>2011-09-16T19:28:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/ruby/</loc>
     <lastmod>2011-09-16T19:28:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/ruby/</loc>
+    <lastmod>2011-09-16T19:28:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-16-ruby-objects/</loc>
     <lastmod>2011-09-16T19:28:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-16-ruby-classes/</loc>
     <lastmod>2011-09-16T19:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-16-ruby-defining-a-method/</loc>
     <lastmod>2011-09-16T18:44:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-16-starting-with-ruby/</loc>
     <lastmod>2011-09-16T13:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-09-16-about-ruby-programming-language/</loc>
     <lastmod>2011-09-16T13:43:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/excel/</loc>
     <lastmod>2011-08-11T20:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-08-11-java-creating-an-ms-excel-file-using-jakarta-poi-api/</loc>
     <lastmod>2011-08-11T20:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/ms-excel/</loc>
     <lastmod>2011-08-11T20:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/xls/</loc>
     <lastmod>2011-08-11T20:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/java-projects/</loc>
     <lastmod>2011-06-27T19:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-06-27-projects/</loc>
     <lastmod>2011-06-27T19:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/applet/</loc>
     <lastmod>2011-06-27T18:52:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-06-27-java-a-simple-dictionary-using-applet/</loc>
     <lastmod>2011-06-27T18:52:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-06-27-java-writing-to-serial-port-using-java-communication-api/</loc>
     <lastmod>2011-06-27T18:42:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-26-java-sum-and-average-using-rmi/</loc>
     <lastmod>2011-03-26T23:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/rmi/</loc>
     <lastmod>2011-03-26T23:07:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-22-java-system-time-using-rmi/</loc>
     <lastmod>2011-03-22T18:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-22-java-mathematical-operations-using-rmi/</loc>
     <lastmod>2011-03-22T18:31:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-22-java-tcp-an-example-md-manager-and-employees/</loc>
     <lastmod>2011-03-22T18:20:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-18-java-notes-for-download/</loc>
     <lastmod>2011-03-18T17:26:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-bidirectional-data-transfer-using-udp/</loc>
     <lastmod>2011-03-05T21:43:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-public-chat-using-gui/</loc>
     <lastmod>2011-03-05T21:41:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-data-broadcasting-using-gui/</loc>
     <lastmod>2011-03-05T21:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-public-chat/</loc>
     <lastmod>2011-03-05T21:35:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-data-broadcasting/</loc>
     <lastmod>2011-03-05T21:33:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-bidirectional-data-transfer-using-tcp/</loc>
     <lastmod>2011-03-05T21:30:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-select-statament-my-sql/</loc>
     <lastmod>2011-03-05T21:14:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-insert-statement-my-sql/</loc>
     <lastmod>2011-03-05T21:08:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-getting-current-time-and-date/</loc>
     <lastmod>2011-03-05T20:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-giving-background-picture-to-a-jframe/</loc>
     <lastmod>2011-03-05T20:54:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-database-connectivity-my-sql/</loc>
     <lastmod>2011-03-05T20:50:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2011-03-05-java-getting-computer-name/</loc>
     <lastmod>2011-03-05T20:46:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-shell-programming/</loc>
     <lastmod>2010-12-23T22:43:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-more-commands/</loc>
     <lastmod>2010-12-23T22:37:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-files/</loc>
     <lastmod>2010-12-23T22:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-working-with-directories/</loc>
     <lastmod>2010-12-23T22:02:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-help-commands/</loc>
     <lastmod>2010-12-23T21:44:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-directory-layout/</loc>
     <lastmod>2010-12-23T21:42:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-basics/</loc>
     <lastmod>2010-12-23T21:40:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-23-java-multithreading/</loc>
     <lastmod>2010-12-23T00:02:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-23-java-tcp-socket-programming/</loc>
     <lastmod>2010-12-23T00:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-serialization-and-de-serialization/</loc>
     <lastmod>2010-12-22T23:57:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-renaming-a-file/</loc>
     <lastmod>2010-12-22T23:56:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-moving-a-file/</loc>
     <lastmod>2010-12-22T23:55:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-copying-a-file/</loc>
     <lastmod>2010-12-22T23:54:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-writing-to-a-file/</loc>
     <lastmod>2010-12-22T23:53:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-reading-a-file/</loc>
     <lastmod>2010-12-22T23:52:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-streams/</loc>
     <lastmod>2010-12-22T23:50:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-exception-handling/</loc>
     <lastmod>2010-12-22T23:41:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-packages/</loc>
     <lastmod>2010-12-22T23:39:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-interface/</loc>
     <lastmod>2010-12-22T23:33:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-abstraction/</loc>
     <lastmod>2010-12-22T23:22:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-boxing-and-un-boxing/</loc>
     <lastmod>2010-12-22T23:15:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-object-comparison/</loc>
     <lastmod>2010-12-22T23:06:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-printing-the-object/</loc>
     <lastmod>2010-12-22T23:03:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-reference-variable-super/</loc>
     <lastmod>2010-12-22T23:01:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-reference-variable-this/</loc>
     <lastmod>2010-12-22T22:59:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-testing-inheritance/</loc>
     <lastmod>2010-12-22T22:53:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-inheritance/</loc>
     <lastmod>2010-12-22T22:47:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-22-java-counting-the-instance-of-a-class/</loc>
     <lastmod>2010-12-22T22:40:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-19-java-constructors/</loc>
     <lastmod>2010-12-19T18:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-19-java-variable-declaration/</loc>
     <lastmod>2010-12-19T18:33:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-19-java-variable-reference/</loc>
     <lastmod>2010-12-19T18:26:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-19-java-access-modifiers/</loc>
     <lastmod>2010-12-19T18:18:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-19-java-variables-and-default-values/</loc>
     <lastmod>2010-12-19T18:14:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-19-java-variable-length-argument/</loc>
     <lastmod>2010-12-19T18:12:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-19-java-object-instantiation/</loc>
     <lastmod>2010-12-19T18:09:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-19-java-reading-command-line-arguments/</loc>
     <lastmod>2010-12-19T17:59:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/c-graphics-in-win7/</loc>
     <lastmod>2010-12-12T13:36:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/dosbox/</loc>
     <lastmod>2010-12-12T13:36:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/graphics/</loc>
     <lastmod>2010-12-12T13:36:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-12-using-turbo-c-in-windows-7-along-with-graphics-support/</loc>
     <lastmod>2010-12-12T13:36:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-12-12-simulate-a-car-in-c/</loc>
     <lastmod>2010-12-12T12:52:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-11-18-catching-a-fish-in-c/</loc>
     <lastmod>2010-11-18T18:49:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-11-18-sinking-of-titanic/</loc>
     <lastmod>2010-11-18T18:47:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-11-18-sunset-in-c/</loc>
     <lastmod>2010-11-18T18:46:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-11-18-rotation-of-fan-in-c/</loc>
     <lastmod>2010-11-18T18:44:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-11-18-sunrise-in-c/</loc>
     <lastmod>2010-11-18T18:44:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-11-18-analog-clock-in-c/</loc>
     <lastmod>2010-11-18T18:42:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-11-18-mid-point-ellipse-drawing-algorithm/</loc>
     <lastmod>2010-11-18T18:41:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-11-18-line-clipping-in-c/</loc>
     <lastmod>2010-11-18T18:39:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-05-28-wap-in-c-to-generate-recursive-descend-parser/</loc>
     <lastmod>2010-05-28T17:40:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-05-28-wap-to-generate-symbol-table/</loc>
     <lastmod>2010-05-28T17:38:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-05-28-wap-to-print-comments-in-a-given-program/</loc>
     <lastmod>2010-05-28T17:36:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-05-28-wap-to-check-the-syntax-of-for-loops/</loc>
     <lastmod>2010-05-28T17:34:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-05-28-wap-to-perform-macro-expansion/</loc>
     <lastmod>2010-05-28T17:31:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-05-28-wap-to-check-the-correctness-of-braces/</loc>
     <lastmod>2010-05-28T17:30:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-05-28-write-a-program-in-c-to-perform-token-separation/</loc>
     <lastmod>2010-05-28T17:14:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-05-25-tcp-programming-in-java/</loc>
     <lastmod>2010-05-25T12:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/dbms/</loc>
     <lastmod>2010-01-10T00:29:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/sql/</loc>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/pl/sql/</loc>
     <lastmod>2010-01-10T00:29:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/sql/</loc>
     <lastmod>2010-01-10T00:29:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/sql/</loc>
+    <lastmod>2010-01-10T00:29:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-university-exam-registration-system/</loc>
     <lastmod>2010-01-10T00:29:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-recruitment-database/</loc>
     <lastmod>2010-01-10T00:27:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-railway-reservation-system/</loc>
     <lastmod>2010-01-10T00:25:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-library-management-system/</loc>
     <lastmod>2010-01-10T00:22:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-hospital-management/</loc>
     <lastmod>2010-01-10T00:19:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-bank-account/</loc>
     <lastmod>2010-01-10T00:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2010-01-10-sql-student-database/</loc>
     <lastmod>2010-01-10T00:13:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/c&#43;&#43;/</loc>
     <lastmod>2009-06-28T19:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/data-structures/</loc>
     <lastmod>2009-06-28T19:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2009-06-28-some-data-structure-programs/</loc>
     <lastmod>2009-06-28T19:17:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2009-04-30-c-scientific-calculator/</loc>
     <lastmod>2009-04-30T18:54:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/oops/</loc>
     <lastmod>2009-04-30T18:54:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2009-04-23-data-structure-programs-in-c/</loc>
     <lastmod>2009-04-23T19:10:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/authors/</loc>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/c/cpp/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>https://dhanoopbhaskar.github.io/tags/pl/sql/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/projects/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/series/</loc>
   </url>
-  
 </urlset>

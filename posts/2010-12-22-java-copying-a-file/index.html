@@ -1,119 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="import java.io.*; public class CopyFile { public static void main(String[] args) throws IOException { switch (args.length) { case 0: System.out.println(&#34;Error in usage:&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 1: System.out.println( &#34;Specify the destination file.&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 2: File sourceFile = new File(args[0]); File destFile = new File(args[1]); if (!sourceFile.exists()) { System.out.println(args[0] &#43; &#34; not found !!!&#34;); System.exit(0); // stopping application 	} if (destFile.">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java-Copying a file"/>
-<meta name="twitter:description" content="import java.io.*; public class CopyFile { public static void main(String[] args) throws IOException { switch (args.length) { case 0: System.out.println(&#34;Error in usage:&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 1: System.out.println( &#34;Specify the destination file.&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 2: File sourceFile = new File(args[0]); File destFile = new File(args[1]); if (!sourceFile.exists()) { System.out.println(args[0] &#43; &#34; not found !!!&#34;); System.exit(0); // stopping application 	} if (destFile."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="Java-Copying a file" />
-<meta property="og:description" content="import java.io.*; public class CopyFile { public static void main(String[] args) throws IOException { switch (args.length) { case 0: System.out.println(&#34;Error in usage:&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 1: System.out.println( &#34;Specify the destination file.&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 2: File sourceFile = new File(args[0]); File destFile = new File(args[1]); if (!sourceFile.exists()) { System.out.println(args[0] &#43; &#34; not found !!!&#34;); System.exit(0); // stopping application 	} if (destFile." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-copying-a-file/" />
-<meta property="article:published_time" content="2010-12-22T23:54:00+05:30" />
-<meta property="article:modified_time" content="2010-12-22T23:54:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   Java-Copying a file · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-copying-a-file/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
-      
-      
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
 
-    
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="	import java.io.*;
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
+	public class CopyFile {
+	    public static void main(String[] args) throws IOException {
+	        switch (args.length) {
+	            case 0:
+	                System.out.println(&#34;Error in usage:&#34;);
+	                System.out.println(
+	                    &#34; Usage: java CopyFile &#34;);
+	                break;
+	            case 1:
+	                System.out.println(
+	                    &#34;Specify the destination file.&#34;);
+	                System.out.println(
+	                    &#34; Usage: java CopyFile &#34;);
+	                break;
+	            case 2:
+	                File sourceFile = new File(args[0]);
+	                File destFile = new File(args[1]);
 
-    
+	                if (!sourceFile.exists()) {
+	                    System.out.println(args[0] &#43; &#34; not found !!!&#34;);
+	                    System.exit(0); // stopping application
+	                }
 
-    
+	                if (destFile.exists()) {
+	                    System.out.print(args[1] &#43;
+	                        &#34; file already exists. Overwrite? (y/n): &#34;);
+	                    int response = System.in.read();
+	                    if (response == &#39;N&#39; || response == &#39;n&#39;) {
+	                        // if you do not want to overwrite the file.
+	                        System.out.print(&#34;Copy operation aborted.&#34;);
+	                        System.exit(0); // stopping application
+	                    }
+	                }
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+	                System.out.println(&#34;Copying file...\n&#34; &#43;
+	                    args[0] &#43; &#34; to &#34; &#43; args[1]);
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	                FileInputStream inputFile =
+	                    new FileInputStream(sourceFile);
+	                FileOutputStream outputFile =
+	                    new FileOutputStream(destFile);
 
-    
+	                //boolean arg is for &#34;append&#34;
+	                /*FileOutputStream outputFile =
+	                new FileOutputStream(destFile, true);
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+	                FileOutputStream outputFile =
+	                new FileOutputStream(args[1]);
+
+	                FileOutputStream outputFile =
+	                new FileOutputStream(args[1], true);*/
+
+	                byte[] inputFileData = new byte[inputFile.available()];
+	                inputFile.read(inputFileData);
+	                outputFile.write(inputFileData);
+
+	                inputFile.close();
+	                outputFile.close();
+
+	                System.out.println(&#34;File successfully copied !&#34;);
+
+	        }
+	    }
+	}
+	File oldFile = new File(&#34;abc.txt&#34;);
+	File newFile = new File(&#34;xyz.txt&#34;);
+	oldFile.renameTo(newFile);
+
+	new File(&#34;abc.txt&#34;).renameTo(new File(&#34;xyz.txt&#34;));">
+<meta name="keywords" content="">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java-Copying a file">
+  <meta name="twitter:description" content="import java.io.*; public class CopyFile { public static void main(String[] args) throws IOException { switch (args.length) { case 0: System.out.println(&#34;Error in usage:&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 1: System.out.println( &#34;Specify the destination file.&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 2: File sourceFile = new File(args[0]); File destFile = new File(args[1]); if (!sourceFile.exists()) { System.out.println(args[0] &#43; &#34; not found !!!&#34;); System.exit(0); // stopping application } if (destFile.exists()) { System.out.print(args[1] &#43; &#34; file already exists. Overwrite? (y/n): &#34;); int response = System.in.read(); if (response == &#39;N&#39; || response == &#39;n&#39;) { // if you do not want to overwrite the file. System.out.print(&#34;Copy operation aborted.&#34;); System.exit(0); // stopping application } } System.out.println(&#34;Copying file...\n&#34; &#43; args[0] &#43; &#34; to &#34; &#43; args[1]); FileInputStream inputFile = new FileInputStream(sourceFile); FileOutputStream outputFile = new FileOutputStream(destFile); //boolean arg is for &#34;append&#34; /*FileOutputStream outputFile = new FileOutputStream(destFile, true); FileOutputStream outputFile = new FileOutputStream(args[1]); FileOutputStream outputFile = new FileOutputStream(args[1], true);*/ byte[] inputFileData = new byte[inputFile.available()]; inputFile.read(inputFileData); outputFile.write(inputFileData); inputFile.close(); outputFile.close(); System.out.println(&#34;File successfully copied !&#34;); } } } File oldFile = new File(&#34;abc.txt&#34;); File newFile = new File(&#34;xyz.txt&#34;); oldFile.renameTo(newFile); new File(&#34;abc.txt&#34;).renameTo(new File(&#34;xyz.txt&#34;));">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-copying-a-file/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Java-Copying a file">
+  <meta property="og:description" content="import java.io.*; public class CopyFile { public static void main(String[] args) throws IOException { switch (args.length) { case 0: System.out.println(&#34;Error in usage:&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 1: System.out.println( &#34;Specify the destination file.&#34;); System.out.println( &#34; Usage: java CopyFile &#34;); break; case 2: File sourceFile = new File(args[0]); File destFile = new File(args[1]); if (!sourceFile.exists()) { System.out.println(args[0] &#43; &#34; not found !!!&#34;); System.exit(0); // stopping application } if (destFile.exists()) { System.out.print(args[1] &#43; &#34; file already exists. Overwrite? (y/n): &#34;); int response = System.in.read(); if (response == &#39;N&#39; || response == &#39;n&#39;) { // if you do not want to overwrite the file. System.out.print(&#34;Copy operation aborted.&#34;); System.exit(0); // stopping application } } System.out.println(&#34;Copying file...\n&#34; &#43; args[0] &#43; &#34; to &#34; &#43; args[1]); FileInputStream inputFile = new FileInputStream(sourceFile); FileOutputStream outputFile = new FileOutputStream(destFile); //boolean arg is for &#34;append&#34; /*FileOutputStream outputFile = new FileOutputStream(destFile, true); FileOutputStream outputFile = new FileOutputStream(args[1]); FileOutputStream outputFile = new FileOutputStream(args[1], true);*/ byte[] inputFileData = new byte[inputFile.available()]; inputFile.read(inputFileData); outputFile.write(inputFileData); inputFile.close(); outputFile.close(); System.out.println(&#34;File successfully copied !&#34;); } } } File oldFile = new File(&#34;abc.txt&#34;); File newFile = new File(&#34;xyz.txt&#34;); oldFile.renameTo(newFile); new File(&#34;abc.txt&#34;).renameTo(new File(&#34;xyz.txt&#34;));">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2010-12-22T23:54:00+05:30">
+    <meta property="article:modified_time" content="2010-12-22T23:54:00+05:30">
+    <meta property="article:tag" content="Java">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-copying-a-file/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -124,8 +214,8 @@
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -139,101 +229,103 @@
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2010-12-22T23:54:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2010-12-22T23:54:00&#43;05:30">
                 December 22, 2010
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               One-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="/categories/java/">java</a></div>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/java/">Java</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/java/">java</a></div>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/java/">Java</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
-        <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span>
-
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CopyFile</span> <span style="color:#f92672">{</span>
-	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
-	        <span style="color:#66d9ef">switch</span> <span style="color:#f92672">(</span>args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	            <span style="color:#66d9ef">case</span> 0<span style="color:#f92672">:</span>
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Error in usage:&#34;</span><span style="color:#f92672">);</span>
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-	                    <span style="color:#e6db74">&#34; Usage: java CopyFile &#34;</span><span style="color:#f92672">);</span>
-	                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-	            <span style="color:#66d9ef">case</span> 1<span style="color:#f92672">:</span>
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-	                    <span style="color:#e6db74">&#34;Specify the destination file.&#34;</span><span style="color:#f92672">);</span>
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-	                    <span style="color:#e6db74">&#34; Usage: java CopyFile &#34;</span><span style="color:#f92672">);</span>
-	                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-	            <span style="color:#66d9ef">case</span> 2<span style="color:#f92672">:</span>
-	                File sourceFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>0<span style="color:#f92672">]);</span>
-	                File destFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>1<span style="color:#f92672">]);</span>
-
-	                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>sourceFile<span style="color:#f92672">.</span><span style="color:#a6e22e">exists</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-	                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; not found !!!&#34;</span><span style="color:#f92672">);</span>
-	                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span> <span style="color:#75715e">// stopping application
-</span><span style="color:#75715e"></span>	                <span style="color:#f92672">}</span>
-
-	                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>destFile<span style="color:#f92672">.</span><span style="color:#a6e22e">exists</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-	                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span>
-	                        <span style="color:#e6db74">&#34; file already exists. Overwrite? (y/n): &#34;</span><span style="color:#f92672">);</span>
-	                    <span style="color:#66d9ef">int</span> response <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">();</span>
-	                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>response <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;N&#39;</span> <span style="color:#f92672">||</span> response <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;n&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	                        <span style="color:#75715e">// if you do not want to overwrite the file.
-</span><span style="color:#75715e"></span>	                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Copy operation aborted.&#34;</span><span style="color:#f92672">);</span>
-	                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span> <span style="color:#75715e">// stopping application
-</span><span style="color:#75715e"></span>	                    <span style="color:#f92672">}</span>
-	                <span style="color:#f92672">}</span>
-
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Copying file...\n&#34;</span> <span style="color:#f92672">+</span>
-	                    args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; to &#34;</span> <span style="color:#f92672">+</span> args<span style="color:#f92672">[</span>1<span style="color:#f92672">]);</span>
-
-	                FileInputStream inputFile <span style="color:#f92672">=</span>
-	                    <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>sourceFile<span style="color:#f92672">);</span>
-	                FileOutputStream outputFile <span style="color:#f92672">=</span>
-	                    <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>destFile<span style="color:#f92672">);</span>
-
-	                <span style="color:#75715e">//boolean arg is for &#34;append&#34;
-</span><span style="color:#75715e"></span>	                <span style="color:#75715e">/*FileOutputStream outputFile =
-</span><span style="color:#75715e">	                new FileOutputStream(destFile, true);
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">	                FileOutputStream outputFile =
-</span><span style="color:#75715e">	                new FileOutputStream(args[1]);
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">	                FileOutputStream outputFile =
-</span><span style="color:#75715e">	                new FileOutputStream(args[1], true);*/</span>
-
-	                <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> inputFileData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>inputFile<span style="color:#f92672">.</span><span style="color:#a6e22e">available</span><span style="color:#f92672">()];</span>
-	                inputFile<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>inputFileData<span style="color:#f92672">);</span>
-	                outputFile<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>inputFileData<span style="color:#f92672">);</span>
-
-	                inputFile<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
-	                outputFile<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
-
-	                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;File successfully copied !&#34;</span><span style="color:#f92672">);</span>
-
-	        <span style="color:#f92672">}</span>
-	    <span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span></code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	File oldFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;abc.txt&#34;</span><span style="color:#f92672">);</span>
-	File newFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;xyz.txt&#34;</span><span style="color:#f92672">);</span>
-	oldFile<span style="color:#f92672">.</span><span style="color:#a6e22e">renameTo</span><span style="color:#f92672">(</span>newFile<span style="color:#f92672">);</span>
-
-	<span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;abc.txt&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">renameTo</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;xyz.txt&#34;</span><span style="color:#f92672">));</span></code></pre></div>
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CopyFile</span> {
+</span></span><span style="display:flex;"><span>	    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">switch</span> (args.<span style="color:#a6e22e">length</span>) {
+</span></span><span style="display:flex;"><span>	            <span style="color:#66d9ef">case</span> 0:
+</span></span><span style="display:flex;"><span>	                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Error in usage:&#34;</span>);
+</span></span><span style="display:flex;"><span>	                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
+</span></span><span style="display:flex;"><span>	                    <span style="color:#e6db74">&#34; Usage: java CopyFile &#34;</span>);
+</span></span><span style="display:flex;"><span>	                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>	            <span style="color:#66d9ef">case</span> 1:
+</span></span><span style="display:flex;"><span>	                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
+</span></span><span style="display:flex;"><span>	                    <span style="color:#e6db74">&#34;Specify the destination file.&#34;</span>);
+</span></span><span style="display:flex;"><span>	                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
+</span></span><span style="display:flex;"><span>	                    <span style="color:#e6db74">&#34; Usage: java CopyFile &#34;</span>);
+</span></span><span style="display:flex;"><span>	                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>	            <span style="color:#66d9ef">case</span> 2:
+</span></span><span style="display:flex;"><span>	                File sourceFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>	                File destFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(args<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	                <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>sourceFile.<span style="color:#a6e22e">exists</span>()) {
+</span></span><span style="display:flex;"><span>	                    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; not found !!!&#34;</span>);
+</span></span><span style="display:flex;"><span>	                    System.<span style="color:#a6e22e">exit</span>(0); <span style="color:#75715e">// stopping application</span>
+</span></span><span style="display:flex;"><span>	                }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	                <span style="color:#66d9ef">if</span> (destFile.<span style="color:#a6e22e">exists</span>()) {
+</span></span><span style="display:flex;"><span>	                    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(args<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>	                        <span style="color:#e6db74">&#34; file already exists. Overwrite? (y/n): &#34;</span>);
+</span></span><span style="display:flex;"><span>	                    <span style="color:#66d9ef">int</span> response <span style="color:#f92672">=</span> System.<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">read</span>();
+</span></span><span style="display:flex;"><span>	                    <span style="color:#66d9ef">if</span> (response <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;N&#39;</span> <span style="color:#f92672">||</span> response <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;n&#39;</span>) {
+</span></span><span style="display:flex;"><span>	                        <span style="color:#75715e">// if you do not want to overwrite the file.</span>
+</span></span><span style="display:flex;"><span>	                        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Copy operation aborted.&#34;</span>);
+</span></span><span style="display:flex;"><span>	                        System.<span style="color:#a6e22e">exit</span>(0); <span style="color:#75715e">// stopping application</span>
+</span></span><span style="display:flex;"><span>	                    }
+</span></span><span style="display:flex;"><span>	                }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Copying file...\n&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>	                    args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; to &#34;</span> <span style="color:#f92672">+</span> args<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	                FileInputStream inputFile <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>	                    <span style="color:#66d9ef">new</span> FileInputStream(sourceFile);
+</span></span><span style="display:flex;"><span>	                FileOutputStream outputFile <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>	                    <span style="color:#66d9ef">new</span> FileOutputStream(destFile);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	                <span style="color:#75715e">//boolean arg is for &#34;append&#34;</span>
+</span></span><span style="display:flex;"><span>	                <span style="color:#75715e">/*FileOutputStream outputFile =
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	                new FileOutputStream(destFile, true);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	                FileOutputStream outputFile =
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	                new FileOutputStream(args[1]);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	                FileOutputStream outputFile =
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	                new FileOutputStream(args[1], true);*/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	                <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> inputFileData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>inputFile.<span style="color:#a6e22e">available</span>()<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>	                inputFile.<span style="color:#a6e22e">read</span>(inputFileData);
+</span></span><span style="display:flex;"><span>	                outputFile.<span style="color:#a6e22e">write</span>(inputFileData);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	                inputFile.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>	                outputFile.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;File successfully copied !&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	        }
+</span></span><span style="display:flex;"><span>	    }
+</span></span><span style="display:flex;"><span>	}</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	File oldFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;abc.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>	File newFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;xyz.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>	oldFile.<span style="color:#a6e22e">renameTo</span>(newFile);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;abc.txt&#34;</span>).<span style="color:#a6e22e">renameTo</span>(<span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;xyz.txt&#34;</span>));</span></span></code></pre></div>
 
       </div>
 
@@ -245,72 +337,67 @@
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -320,6 +407,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java projects on The Insane Techie</title>
+    <title>Java Projects on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/tags/java-projects/</link>
-    <description>Recent content in java projects on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Java Projects on The Insane Techie</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 27 Jun 2011 19:07:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/tags/java-projects/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/tags/java-projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projects</title>
       <link>https://dhanoopbhaskar.github.io/posts/2011-06-27-projects/</link>
       <pubDate>Mon, 27 Jun 2011 19:07:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/posts/2011-06-27-projects/</guid>
-      <description>Hi friends,
-Its glad to announce that our Mini Project and Main Project have been made open source and forged in SourceForge.net
-Our Mini Project was cybman - Cyber Cafe Management System
-Download cybman from here
-And our Main Project was XooDB - A cross platform object oriented database engine with multi client support using XML and Java.
-Download XooDB from here</description>
+      <description>&lt;p&gt;Hi friends,&lt;/p&gt;&#xA;&lt;p&gt;Its glad to announce that our Mini Project and Main Project have been made open source and forged in SourceForge.net&lt;/p&gt;&#xA;&lt;p&gt;Our Mini Project was &lt;strong&gt;cybman&lt;/strong&gt; - Cyber Cafe Management System&lt;br&gt;&#xA;&lt;a href=&#34;http://sourceforge.net/projects/cybman/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Download cybman from here&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;And our Main Project was &lt;strong&gt;XooDB&lt;/strong&gt; - A cross platform object oriented database engine with multi client support using XML and Java.&lt;br&gt;&#xA;&lt;a href=&#34;http://sourceforge.net/projects/xoodb/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Download XooDB from here&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

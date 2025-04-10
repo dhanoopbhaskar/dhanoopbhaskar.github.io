@@ -4,813 +4,632 @@
     <title>Tags on The Insane Techie</title>
     <link>https://dhanoopbhaskar.github.io/tags/</link>
     <description>Recent content in Tags on The Insane Techie</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Jan 2022 19:38:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://dhanoopbhaskar.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://dhanoopbhaskar.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>analytics</title>
+      <title>Analytics</title>
       <link>https://dhanoopbhaskar.github.io/tags/analytics/</link>
       <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/analytics/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>data science</title>
+      <title>Data Science</title>
       <link>https://dhanoopbhaskar.github.io/tags/data-science/</link>
       <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/data-science/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>pandas</title>
+      <title>Pandas</title>
       <link>https://dhanoopbhaskar.github.io/tags/pandas/</link>
       <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/pandas/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>python</title>
+      <title>Python</title>
       <link>https://dhanoopbhaskar.github.io/tags/python/</link>
       <pubDate>Sun, 23 Jan 2022 19:38:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/python/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>regex</title>
+      <title>Regex</title>
       <link>https://dhanoopbhaskar.github.io/tags/regex/</link>
       <pubDate>Fri, 19 Jun 2020 14:07:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/regex/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>regex cheatsheet</title>
+      <title>Regex Cheatsheet</title>
       <link>https://dhanoopbhaskar.github.io/tags/regex-cheatsheet/</link>
       <pubDate>Fri, 19 Jun 2020 14:07:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/regex-cheatsheet/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>docker</title>
+      <title>Docker</title>
       <link>https://dhanoopbhaskar.github.io/tags/docker/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/docker/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Dockerfile</title>
       <link>https://dhanoopbhaskar.github.io/tags/dockerfile/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/dockerfile/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>melodic</title>
+      <title>Melodic</title>
       <link>https://dhanoopbhaskar.github.io/tags/melodic/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/melodic/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>python3</title>
+      <title>Python3</title>
       <link>https://dhanoopbhaskar.github.io/tags/python3/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/python3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ROS</title>
       <link>https://dhanoopbhaskar.github.io/tags/ros/</link>
       <pubDate>Thu, 07 May 2020 14:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/ros/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>kinetic</title>
+      <title>Kinetic</title>
       <link>https://dhanoopbhaskar.github.io/tags/kinetic/</link>
       <pubDate>Thu, 07 May 2020 14:07:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/kinetic/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>robot</title>
-      <link>https://dhanoopbhaskar.github.io/tags/robot/</link>
-      <pubDate>Thu, 07 May 2020 14:07:00 +0530</pubDate>
-      
-      <guid>https://dhanoopbhaskar.github.io/tags/robot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>robotics</title>
+      <title>Robotics</title>
       <link>https://dhanoopbhaskar.github.io/tags/robotics/</link>
       <pubDate>Thu, 07 May 2020 14:07:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/robotics/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>arduino</title>
+      <title>Arduino</title>
       <link>https://dhanoopbhaskar.github.io/tags/arduino/</link>
       <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/arduino/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>biped robot</title>
+      <title>Biped Robot</title>
       <link>https://dhanoopbhaskar.github.io/tags/biped-robot/</link>
       <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/biped-robot/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>biped walking robot</title>
+      <title>Biped Walking Robot</title>
       <link>https://dhanoopbhaskar.github.io/tags/biped-walking-robot/</link>
       <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/biped-walking-robot/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>walking robot</title>
+      <title>Robot</title>
+      <link>https://dhanoopbhaskar.github.io/tags/robot/</link>
+      <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
+      <guid>https://dhanoopbhaskar.github.io/tags/robot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Walking Robot</title>
       <link>https://dhanoopbhaskar.github.io/tags/walking-robot/</link>
       <pubDate>Mon, 28 Oct 2019 12:10:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/walking-robot/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>robotic arm</title>
+      <title>Robotic Arm</title>
       <link>https://dhanoopbhaskar.github.io/tags/robotic-arm/</link>
       <pubDate>Mon, 28 Oct 2019 12:05:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/robotic-arm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>arts</title>
+      <title>Arts</title>
       <link>https://dhanoopbhaskar.github.io/tags/arts/</link>
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/arts/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>pencils</title>
+      <title>Pencils</title>
       <link>https://dhanoopbhaskar.github.io/tags/pencils/</link>
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/pencils/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>iphone</title>
+      <title>Iphone</title>
       <link>https://dhanoopbhaskar.github.io/tags/iphone/</link>
       <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/iphone/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>linux</title>
+      <title>Linux</title>
       <link>https://dhanoopbhaskar.github.io/tags/linux/</link>
       <pubDate>Mon, 02 Jul 2018 20:01:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/linux/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>java</title>
+      <title>Java</title>
       <link>https://dhanoopbhaskar.github.io/tags/java/</link>
       <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/java/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>java ws</title>
+      <title>Java Ws</title>
       <link>https://dhanoopbhaskar.github.io/tags/java-ws/</link>
       <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/java-ws/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>jersey</title>
+      <title>Jersey</title>
       <link>https://dhanoopbhaskar.github.io/tags/jersey/</link>
       <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/jersey/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>REST</title>
       <link>https://dhanoopbhaskar.github.io/tags/rest/</link>
       <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/rest/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Web Services</title>
       <link>https://dhanoopbhaskar.github.io/tags/web-services/</link>
       <pubDate>Mon, 22 Aug 2016 20:13:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/web-services/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>apache</title>
+      <title>Apache</title>
       <link>https://dhanoopbhaskar.github.io/tags/apache/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/apache/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>mysql</title>
+      <title>Mysql</title>
       <link>https://dhanoopbhaskar.github.io/tags/mysql/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/mysql/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>php</title>
+      <title>Php</title>
       <link>https://dhanoopbhaskar.github.io/tags/php/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/php/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>phpmyadmin</title>
+      <title>Phpmyadmin</title>
       <link>https://dhanoopbhaskar.github.io/tags/phpmyadmin/</link>
       <pubDate>Wed, 09 Mar 2016 21:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/phpmyadmin/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>dns</title>
+      <title>C/CPP</title>
+      <link>https://dhanoopbhaskar.github.io/tags/c/cpp/</link>
+      <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
+      <guid>https://dhanoopbhaskar.github.io/tags/c/cpp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dns</title>
       <link>https://dhanoopbhaskar.github.io/tags/dns/</link>
       <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/dns/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gcc</title>
+      <title>Gcc</title>
       <link>https://dhanoopbhaskar.github.io/tags/gcc/</link>
       <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/gcc/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>network</title>
+      <title>Network</title>
       <link>https://dhanoopbhaskar.github.io/tags/network/</link>
       <pubDate>Sun, 14 Feb 2016 01:23:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/network/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>distance</title>
+      <title>Distance</title>
       <link>https://dhanoopbhaskar.github.io/tags/distance/</link>
       <pubDate>Wed, 11 Mar 2015 11:04:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/distance/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gps</title>
+      <title>Gps</title>
       <link>https://dhanoopbhaskar.github.io/tags/gps/</link>
       <pubDate>Wed, 11 Mar 2015 11:04:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/gps/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>location</title>
+      <title>Location</title>
       <link>https://dhanoopbhaskar.github.io/tags/location/</link>
       <pubDate>Wed, 11 Mar 2015 11:04:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/location/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>aes algorithm</title>
+      <title>Aes Algorithm</title>
       <link>https://dhanoopbhaskar.github.io/tags/aes-algorithm/</link>
       <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/aes-algorithm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>crypto</title>
+      <title>Crypto</title>
       <link>https://dhanoopbhaskar.github.io/tags/crypto/</link>
       <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/crypto/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cryptography</title>
+      <title>Cryptography</title>
       <link>https://dhanoopbhaskar.github.io/tags/cryptography/</link>
       <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/cryptography/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>decryption</title>
+      <title>Decryption</title>
       <link>https://dhanoopbhaskar.github.io/tags/decryption/</link>
       <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/decryption/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>encryption</title>
+      <title>Encryption</title>
       <link>https://dhanoopbhaskar.github.io/tags/encryption/</link>
       <pubDate>Wed, 30 Jul 2014 23:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/encryption/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>des algorithm</title>
+      <title>Des Algorithm</title>
       <link>https://dhanoopbhaskar.github.io/tags/des-algorithm/</link>
       <pubDate>Wed, 30 Jul 2014 21:35:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/des-algorithm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gratitude</title>
+      <title>Gratitude</title>
       <link>https://dhanoopbhaskar.github.io/tags/gratitude/</link>
       <pubDate>Mon, 19 May 2014 23:23:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/gratitude/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>thanks</title>
+      <title>Thanks</title>
       <link>https://dhanoopbhaskar.github.io/tags/thanks/</link>
       <pubDate>Mon, 19 May 2014 23:23:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/thanks/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>blowfish algorithm</title>
+      <title>Blowfish Algorithm</title>
       <link>https://dhanoopbhaskar.github.io/tags/blowfish-algorithm/</link>
       <pubDate>Wed, 09 Apr 2014 20:00:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/blowfish-algorithm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>http</title>
+      <title>Http</title>
       <link>https://dhanoopbhaskar.github.io/tags/http/</link>
       <pubDate>Thu, 13 Feb 2014 23:06:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/http/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>socket</title>
+      <title>Socket</title>
       <link>https://dhanoopbhaskar.github.io/tags/socket/</link>
       <pubDate>Thu, 13 Feb 2014 23:06:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/socket/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>tcp</title>
+      <title>Tcp</title>
       <link>https://dhanoopbhaskar.github.io/tags/tcp/</link>
       <pubDate>Thu, 13 Feb 2014 23:06:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/tcp/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>thread</title>
+      <title>Thread</title>
       <link>https://dhanoopbhaskar.github.io/tags/thread/</link>
       <pubDate>Wed, 22 Jan 2014 20:26:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/thread/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>design pattern</title>
+      <title>Design Pattern</title>
       <link>https://dhanoopbhaskar.github.io/tags/design-pattern/</link>
       <pubDate>Sat, 31 Aug 2013 19:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/design-pattern/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>software design</title>
+      <title>Software Design</title>
       <link>https://dhanoopbhaskar.github.io/tags/software-design/</link>
       <pubDate>Sat, 31 Aug 2013 19:19:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/software-design/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>string</title>
+      <title>String</title>
       <link>https://dhanoopbhaskar.github.io/tags/string/</link>
       <pubDate>Thu, 29 Aug 2013 23:34:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/string/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>swing</title>
+      <title>Swing</title>
       <link>https://dhanoopbhaskar.github.io/tags/swing/</link>
       <pubDate>Sat, 03 Aug 2013 17:04:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/swing/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ETL</title>
       <link>https://dhanoopbhaskar.github.io/tags/etl/</link>
       <pubDate>Sun, 21 Jul 2013 20:48:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/etl/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Talend</title>
       <link>https://dhanoopbhaskar.github.io/tags/talend/</link>
       <pubDate>Sun, 21 Jul 2013 20:48:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/talend/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>technology</title>
+      <title>Technology</title>
       <link>https://dhanoopbhaskar.github.io/tags/technology/</link>
       <pubDate>Sun, 16 Jun 2013 20:43:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/technology/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Datastage</title>
       <link>https://dhanoopbhaskar.github.io/tags/datastage/</link>
       <pubDate>Sun, 16 Jun 2013 14:38:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/datastage/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>projects</title>
+      <title>Projects</title>
       <link>https://dhanoopbhaskar.github.io/tags/projects/</link>
       <pubDate>Tue, 26 Feb 2013 01:14:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/projects/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>fun</title>
+      <title>Fun</title>
       <link>https://dhanoopbhaskar.github.io/tags/fun/</link>
       <pubDate>Tue, 18 Oct 2011 17:33:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/fun/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>microsoft</title>
+      <title>Microsoft</title>
       <link>https://dhanoopbhaskar.github.io/tags/microsoft/</link>
       <pubDate>Tue, 18 Oct 2011 17:33:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/microsoft/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>apjabdulkalam</title>
+      <title>Apjabdulkalam</title>
       <link>https://dhanoopbhaskar.github.io/tags/apjabdulkalam/</link>
       <pubDate>Sun, 09 Oct 2011 23:46:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/apjabdulkalam/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>must read</title>
+      <title>Must Read</title>
       <link>https://dhanoopbhaskar.github.io/tags/must-read/</link>
       <pubDate>Sun, 09 Oct 2011 23:46:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/must-read/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>pdf</title>
+      <title>Pdf</title>
       <link>https://dhanoopbhaskar.github.io/tags/pdf/</link>
       <pubDate>Fri, 07 Oct 2011 20:11:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/pdf/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>post</title>
+      <title>Post</title>
       <link>https://dhanoopbhaskar.github.io/tags/post/</link>
       <pubDate>Tue, 04 Oct 2011 16:53:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/post/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>url</title>
+      <title>Url</title>
       <link>https://dhanoopbhaskar.github.io/tags/url/</link>
       <pubDate>Tue, 04 Oct 2011 16:53:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/url/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>chat client</title>
+      <title>Chat Client</title>
       <link>https://dhanoopbhaskar.github.io/tags/chat-client/</link>
       <pubDate>Thu, 22 Sep 2011 14:17:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/chat-client/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gtalk</title>
+      <title>Gtalk</title>
       <link>https://dhanoopbhaskar.github.io/tags/gtalk/</link>
       <pubDate>Thu, 22 Sep 2011 14:17:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/gtalk/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>IM</title>
       <link>https://dhanoopbhaskar.github.io/tags/im/</link>
       <pubDate>Thu, 22 Sep 2011 14:17:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/im/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>smack</title>
+      <title>Smack</title>
       <link>https://dhanoopbhaskar.github.io/tags/smack/</link>
       <pubDate>Thu, 22 Sep 2011 14:17:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/smack/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>xmpp</title>
+      <title>Xmpp</title>
       <link>https://dhanoopbhaskar.github.io/tags/xmpp/</link>
       <pubDate>Thu, 22 Sep 2011 14:17:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/xmpp/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>rsa algorithm</title>
+      <title>Rsa Algorithm</title>
       <link>https://dhanoopbhaskar.github.io/tags/rsa-algorithm/</link>
       <pubDate>Tue, 20 Sep 2011 16:13:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/rsa-algorithm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ruby</title>
+      <title>Ruby</title>
       <link>https://dhanoopbhaskar.github.io/tags/ruby/</link>
       <pubDate>Fri, 16 Sep 2011 19:28:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/ruby/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>excel</title>
+      <title>Excel</title>
       <link>https://dhanoopbhaskar.github.io/tags/excel/</link>
       <pubDate>Thu, 11 Aug 2011 20:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/excel/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ms excel</title>
+      <title>Ms Excel</title>
       <link>https://dhanoopbhaskar.github.io/tags/ms-excel/</link>
       <pubDate>Thu, 11 Aug 2011 20:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/ms-excel/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>xls</title>
+      <title>Xls</title>
       <link>https://dhanoopbhaskar.github.io/tags/xls/</link>
       <pubDate>Thu, 11 Aug 2011 20:57:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/xls/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>java projects</title>
+      <title>Java Projects</title>
       <link>https://dhanoopbhaskar.github.io/tags/java-projects/</link>
       <pubDate>Mon, 27 Jun 2011 19:07:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/java-projects/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>applet</title>
+      <title>Applet</title>
       <link>https://dhanoopbhaskar.github.io/tags/applet/</link>
       <pubDate>Mon, 27 Jun 2011 18:52:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/applet/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>rmi</title>
+      <title>Rmi</title>
       <link>https://dhanoopbhaskar.github.io/tags/rmi/</link>
       <pubDate>Sat, 26 Mar 2011 23:07:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/rmi/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>c graphics in win7</title>
+      <title>C Graphics in Win7</title>
       <link>https://dhanoopbhaskar.github.io/tags/c-graphics-in-win7/</link>
       <pubDate>Sun, 12 Dec 2010 13:36:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/c-graphics-in-win7/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>DosBox</title>
       <link>https://dhanoopbhaskar.github.io/tags/dosbox/</link>
       <pubDate>Sun, 12 Dec 2010 13:36:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/dosbox/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>graphics</title>
+      <title>Graphics</title>
       <link>https://dhanoopbhaskar.github.io/tags/graphics/</link>
       <pubDate>Sun, 12 Dec 2010 13:36:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/graphics/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>DBMS</title>
       <link>https://dhanoopbhaskar.github.io/tags/dbms/</link>
       <pubDate>Sun, 10 Jan 2010 00:29:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/dbms/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>PL/SQL</title>
+      <link>https://dhanoopbhaskar.github.io/tags/pl/sql/</link>
+      <pubDate>Sun, 10 Jan 2010 00:29:00 +0530</pubDate>
+      <guid>https://dhanoopbhaskar.github.io/tags/pl/sql/</guid>
+      <description></description>
+    </item>
     <item>
       <title>SQL</title>
       <link>https://dhanoopbhaskar.github.io/tags/sql/</link>
       <pubDate>Sun, 10 Jan 2010 00:29:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/sql/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>data structures</title>
+      <title>Data Structures</title>
       <link>https://dhanoopbhaskar.github.io/tags/data-structures/</link>
       <pubDate>Sun, 28 Jun 2009 19:17:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/data-structures/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>OOPS</title>
       <link>https://dhanoopbhaskar.github.io/tags/oops/</link>
       <pubDate>Thu, 30 Apr 2009 18:54:00 +0530</pubDate>
-      
       <guid>https://dhanoopbhaskar.github.io/tags/oops/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>C/CPP</title>
-      <link>https://dhanoopbhaskar.github.io/tags/c/cpp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://dhanoopbhaskar.github.io/tags/c/cpp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PL/SQL</title>
-      <link>https://dhanoopbhaskar.github.io/tags/pl/sql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://dhanoopbhaskar.github.io/tags/pl/sql/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>

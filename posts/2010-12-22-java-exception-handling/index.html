@@ -1,131 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="Exceptions are runtime anomalies that may result in the abnormal termination of the program.
-Exceptions are mainly thrown by system or by a function
-Thrown by system
-ArrayIndexOutOfBoundsException ClassCastException NullPointerException  Thrown by function
-NumberFormatException  In java all exceptions are classes. Mainly there are two types of exceptions. Exceptions | x-- Checked Exceptions: that are trapped by the compiler | x-- Unchecked Exceptions: that are not trapped by the compiler    A checked exception must be either reported or caught (handled) Otherwise the compiler may fail to compile the program.">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java-Exception Handling"/>
-<meta name="twitter:description" content="Exceptions are runtime anomalies that may result in the abnormal termination of the program.
-Exceptions are mainly thrown by system or by a function
-Thrown by system
-ArrayIndexOutOfBoundsException ClassCastException NullPointerException  Thrown by function
-NumberFormatException  In java all exceptions are classes. Mainly there are two types of exceptions. Exceptions | x-- Checked Exceptions: that are trapped by the compiler | x-- Unchecked Exceptions: that are not trapped by the compiler    A checked exception must be either reported or caught (handled) Otherwise the compiler may fail to compile the program."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="Java-Exception Handling" />
-<meta property="og:description" content="Exceptions are runtime anomalies that may result in the abnormal termination of the program.
-Exceptions are mainly thrown by system or by a function
-Thrown by system
-ArrayIndexOutOfBoundsException ClassCastException NullPointerException  Thrown by function
-NumberFormatException  In java all exceptions are classes. Mainly there are two types of exceptions. Exceptions | x-- Checked Exceptions: that are trapped by the compiler | x-- Unchecked Exceptions: that are not trapped by the compiler    A checked exception must be either reported or caught (handled) Otherwise the compiler may fail to compile the program." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-exception-handling/" />
-<meta property="article:published_time" content="2010-12-22T23:41:00+05:30" />
-<meta property="article:modified_time" content="2010-12-22T23:41:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   Java-Exception Handling · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-exception-handling/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
-      
-      
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
 
-    
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="Exceptions are runtime anomalies that may result in the abnormal termination of the program.
+Exceptions are mainly thrown by system or by a function
+Thrown by system
+ArrayIndexOutOfBoundsException
+ClassCastException
+NullPointerException
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
+Thrown by function
+NumberFormatException 
 
-    
+In java all exceptions are classes. Mainly there are two types of exceptions. 
+Exceptions
+|
+x-- Checked Exceptions: that are trapped by the compiler
+|
+x-- Unchecked Exceptions: that are not trapped by the compiler
 
-    
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+A checked exception must be either reported or caught (handled)
+Otherwise the compiler may fail to compile the program.">
+<meta name="keywords" content="">
 
-    
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java-Exception Handling">
+  <meta name="twitter:description" content="Exceptions are runtime anomalies that may result in the abnormal termination of the program.
+Exceptions are mainly thrown by system or by a function
+Thrown by system
+ArrayIndexOutOfBoundsException ClassCastException NullPointerException Thrown by function
+NumberFormatException In java all exceptions are classes. Mainly there are two types of exceptions. Exceptions | x-- Checked Exceptions: that are trapped by the compiler | x-- Unchecked Exceptions: that are not trapped by the compiler A checked exception must be either reported or caught (handled) Otherwise the compiler may fail to compile the program.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-exception-handling/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Java-Exception Handling">
+  <meta property="og:description" content="Exceptions are runtime anomalies that may result in the abnormal termination of the program.
+Exceptions are mainly thrown by system or by a function
+Thrown by system
+ArrayIndexOutOfBoundsException ClassCastException NullPointerException Thrown by function
+NumberFormatException In java all exceptions are classes. Mainly there are two types of exceptions. Exceptions | x-- Checked Exceptions: that are trapped by the compiler | x-- Unchecked Exceptions: that are not trapped by the compiler A checked exception must be either reported or caught (handled) Otherwise the compiler may fail to compile the program.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2010-12-22T23:41:00+05:30">
+    <meta property="article:modified_time" content="2010-12-22T23:41:00+05:30">
+    <meta property="article:tag" content="Java">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-exception-handling/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -136,8 +172,8 @@ NumberFormatException  In java all exceptions are classes. Mainly there are two
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -151,29 +187,31 @@ NumberFormatException  In java all exceptions are classes. Mainly there are two
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2010-12-22T23:41:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2010-12-22T23:41:00&#43;05:30">
                 December 22, 2010
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               5-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="/categories/java/">java</a></div>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/java/">Java</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/java/">java</a></div>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/java/">Java</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
         <p>Exceptions are runtime anomalies that may result in the abnormal termination of the program.</p>
 <p>Exceptions are mainly thrown by system or by a function</p>
@@ -226,228 +264,228 @@ NullPointerException
 <li>Direct or indirect subclasses of class RuntimeException are unchecked exceptions.</li>
 </ul>
 <p><strong>UncaughtException.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UncaughtException</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            function1<span style="color:#f92672">(</span>args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">);</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-                <span style="color:#e6db74">&#34;Program completed normally.&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">function1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> length<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> length<span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UncaughtException</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>            function1(args.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;Program completed normally.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">function1</span>(<span style="color:#66d9ef">int</span> length) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> length;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>CatchingSingleException.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatchingSingleException</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Still inside the try block.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArithmeticException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-                    <span style="color:#e6db74">&#34;Arithmetic Exception Handled Successfully.&#34;</span><span style="color:#f92672">);</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
-                <span style="color:#75715e">//e.printStackTrace();
-</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//optional block
-</span><span style="color:#75715e"></span>                <span style="color:#75715e">//write statements for releasing all your resources here.
-</span><span style="color:#75715e"></span>                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Inside the finally block.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Program terminated normally.&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatchingSingleException</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> args.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Still inside the try block.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ArithmeticException e) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;Arithmetic Exception Handled Successfully.&#34;</span>);
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(e);
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(e.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//e.printStackTrace();</span>
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">finally</span> { <span style="color:#75715e">//optional block</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//write statements for releasing all your resources here.</span>
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Inside the finally block.&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Program terminated normally.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>CatchingMultipleExceptions.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatchingMultipleExceptions</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
-                <span style="color:#75715e">//assume this to be an unforseen exception   
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">io</span><span style="color:#f92672">.</span><span style="color:#a6e22e">FileInputStream</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;abc.txt&#34;</span><span style="color:#f92672">);</span>
-
-                <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> ar <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
-                    10<span style="color:#f92672">,</span>
-                    20<span style="color:#f92672">,</span>
-                    30
-                <span style="color:#f92672">};</span>
-                ar<span style="color:#f92672">[</span>50<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 25<span style="color:#f92672">;</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;I am still inside the try block.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArithmeticException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArrayIndexOutOfBoundsException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Array element does not exist.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//generic exception handling
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-                    e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">io</span><span style="color:#f92672">.</span><span style="color:#a6e22e">PrintStream</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;error.log&#34;</span><span style="color:#f92672">));</span>
-                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-                        <span style="color:#e6db74">&#34;An error occurred. Check the error.log for details.&#34;</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">io</span><span style="color:#f92672">.</span><span style="color:#a6e22e">FileNotFoundException</span> ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Could not create error.log file.&#34;</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Program terminated normally.&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeClass</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// created by API provider
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">someFunction</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IllegalAccessException <span style="color:#f92672">{</span>
-            <span style="color:#75715e">//there are lots of statements here and validations follow before 
-</span><span style="color:#75715e"></span>            <span style="color:#75715e">//I throw the exception
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalAccessException<span style="color:#f92672">(</span>
-                <span style="color:#e6db74">&#34;Security violation.&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">//checked exception
-</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setBlahBlah</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> value<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ArithmeticException <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>value <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArithmeticException<span style="color:#f92672">(</span>
-                    <span style="color:#e6db74">&#34;Negative Number.&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">//unchecked exception
-</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CatchingMultipleExceptions</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> args.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//assume this to be an unforseen exception   </span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">FileInputStream</span>(<span style="color:#e6db74">&#34;abc.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> ar <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                    10,
+</span></span><span style="display:flex;"><span>                    20,
+</span></span><span style="display:flex;"><span>                    30
+</span></span><span style="display:flex;"><span>                };
+</span></span><span style="display:flex;"><span>                ar<span style="color:#f92672">[</span>50<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 25;
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;I am still inside the try block.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ArithmeticException e) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(e.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ArrayIndexOutOfBoundsException e) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Array element does not exist.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (Exception e) { <span style="color:#75715e">//generic exception handling</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                    e.<span style="color:#a6e22e">printStackTrace</span>(<span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">PrintStream</span>(<span style="color:#e6db74">&#34;error.log&#34;</span>));
+</span></span><span style="display:flex;"><span>                    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;An error occurred. Check the error.log for details.&#34;</span>);
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">catch</span> (java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">FileNotFoundException</span> ex) {
+</span></span><span style="display:flex;"><span>                    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Could not create error.log file.&#34;</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Program terminated normally.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeClass</span> { <span style="color:#75715e">// created by API provider</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">someFunction</span>() <span style="color:#66d9ef">throws</span> IllegalAccessException {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//there are lots of statements here and validations follow before </span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//I throw the exception</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalAccessException(
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;Security violation.&#34;</span>); <span style="color:#75715e">//checked exception</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setBlahBlah</span>(<span style="color:#66d9ef">int</span> value) <span style="color:#66d9ef">throws</span> ArithmeticException {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (value <span style="color:#f92672">&lt;</span> 0) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArithmeticException(
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;Negative Number.&#34;</span>); <span style="color:#75715e">//unchecked exception</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>NestedTry.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NestedTry</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//outer try starts here 
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
-
-                <span style="color:#75715e">//----------------------------Inner Try---------------------------
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//inner try starts here
-</span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 5 <span style="color:#f92672">/</span> <span style="color:#f92672">(</span>args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
-                    <span style="color:#66d9ef">int</span> ar<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
-                        10<span style="color:#f92672">,</span>
-                        20
-                    <span style="color:#f92672">};</span>
-                    ar<span style="color:#f92672">[</span>30<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 50<span style="color:#f92672">;</span>
-                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArrayIndexOutOfBoundsException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//inner try catch
-</span><span style="color:#75715e"></span>                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Array index out of bounds - Inner Try.&#34;</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
-                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Inside finally - Inner Try.&#34;</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
-                <span style="color:#75715e">//---------------------------Inner try ends here-------------------
-</span><span style="color:#75715e"></span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;I am still inside the Outer try block.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArithmeticException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//outer try catch
-</span><span style="color:#75715e"></span>                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Divide by Zero error - Outer Try.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArrayIndexOutOfBoundsException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//outer try catch
-</span><span style="color:#75715e"></span>                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Array element does not exist - Outer Try.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Program terminated normally.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#75715e">// last statement of the program
-</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeClass</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// class provided by an API-Provider
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">someFunction</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// implicit inner try
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                    i <span style="color:#f92672">/=</span> 0<span style="color:#f92672">;</span>
-                <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                    <span style="color:#66d9ef">int</span> ar<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
-                        10<span style="color:#f92672">,</span>
-                        20
-                    <span style="color:#f92672">};</span>
-                    ar<span style="color:#f92672">[</span>50<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArrayIndexOutOfBoundsException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Array element does not exist - Exception caught in someFunction().&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-
-
-    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NestedTryMethod</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// My Class
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//explicit try
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
-                SomeClass<span style="color:#f92672">.</span><span style="color:#a6e22e">someFunction</span><span style="color:#f92672">(</span>args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArithmeticException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-                    <span style="color:#e6db74">&#34;Divide by Zero error - Exception caught in main().&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Program terminated normally.&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NestedTry</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> { <span style="color:#75715e">//outer try starts here </span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> args.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//----------------------------Inner Try---------------------------</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">try</span> { <span style="color:#75715e">//inner try starts here</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 5 <span style="color:#f92672">/</span> (args.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">int</span> ar<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                        10,
+</span></span><span style="display:flex;"><span>                        20
+</span></span><span style="display:flex;"><span>                    };
+</span></span><span style="display:flex;"><span>                    ar<span style="color:#f92672">[</span>30<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 50;
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">catch</span> (ArrayIndexOutOfBoundsException e) { <span style="color:#75715e">//inner try catch</span>
+</span></span><span style="display:flex;"><span>                    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Array index out of bounds - Inner Try.&#34;</span>);
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>                    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Inside finally - Inner Try.&#34;</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//---------------------------Inner try ends here-------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;I am still inside the Outer try block.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ArithmeticException e) { <span style="color:#75715e">//outer try catch</span>
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Divide by Zero error - Outer Try.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ArrayIndexOutOfBoundsException e) { <span style="color:#75715e">//outer try catch</span>
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Array element does not exist - Outer Try.&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Program terminated normally.&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// last statement of the program</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeClass</span> { <span style="color:#75715e">// class provided by an API-Provider</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">someFunction</span>(<span style="color:#66d9ef">int</span> i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> { <span style="color:#75715e">// implicit inner try</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> 1) {
+</span></span><span style="display:flex;"><span>                    i <span style="color:#f92672">/=</span> 0;
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">int</span> ar<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                        10,
+</span></span><span style="display:flex;"><span>                        20
+</span></span><span style="display:flex;"><span>                    };
+</span></span><span style="display:flex;"><span>                    ar<span style="color:#f92672">[</span>50<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 10;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ArrayIndexOutOfBoundsException e) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Array element does not exist - Exception caught in someFunction().&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NestedTryMethod</span> { <span style="color:#75715e">// My Class</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> { <span style="color:#75715e">//explicit try</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> args.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>                SomeClass.<span style="color:#a6e22e">someFunction</span>(args.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ArithmeticException e) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;Divide by Zero error - Exception caught in main().&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Program terminated normally.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>ThrowCheckedException.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThrowCheckedException</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// created by developer of the application
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">new</span> SomeClass<span style="color:#f92672">().</span><span style="color:#a6e22e">someFunction</span><span style="color:#f92672">();</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalAccessException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;You do not have necessary privilege to continue this operation.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-
-            <span style="color:#75715e">//new SomeClass().someFunction();
-</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThrowCheckedException</span> { <span style="color:#75715e">// created by developer of the application</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> SomeClass().<span style="color:#a6e22e">someFunction</span>();
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (IllegalAccessException e) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;You do not have necessary privilege to continue this operation.&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//new SomeClass().someFunction();</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>ThrowUncheckedException.java</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThrowUncheckedException</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// created by an Application Developer
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">new</span> SomeClass<span style="color:#f92672">().</span><span style="color:#a6e22e">setBlahBlah</span><span style="color:#f92672">(</span>Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>0<span style="color:#f92672">]));</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArrayIndexOutOfBoundsException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-                    <span style="color:#e6db74">&#34;Please input a non-negative number as command line arg.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NumberFormatException excp<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Please input a integer value.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ArithmeticException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Please input a non-negative number.&#34;</span><span style="color:#f92672">);</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeClass</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// created by API provider
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setBlahBlah</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>value <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//validation
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArithmeticException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Negative Number.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>value <span style="color:#f92672">+</span>
-                    <span style="color:#e6db74">&#34; is a positive value. I like it!!!&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-            <span style="color:#75715e">//other statements follow
-</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThrowUncheckedException</span> { <span style="color:#75715e">// created by an Application Developer</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> SomeClass().<span style="color:#a6e22e">setBlahBlah</span>(Integer.<span style="color:#a6e22e">parseInt</span>(args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>));
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ArrayIndexOutOfBoundsException e) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;Please input a non-negative number as command line arg.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (NumberFormatException excp) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Please input a integer value.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ArithmeticException e) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Please input a non-negative number.&#34;</span>);
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(e);
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(e.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeClass</span> { <span style="color:#75715e">// created by API provider</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setBlahBlah</span>(<span style="color:#66d9ef">int</span> value) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (value <span style="color:#f92672">&lt;</span> 0) { <span style="color:#75715e">//validation</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArithmeticException(<span style="color:#e6db74">&#34;Negative Number.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(value <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34; is a positive value. I like it!!!&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//other statements follow</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>User Defined Exception</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyException</span> <span style="color:#66d9ef">extends</span> RuntimeException <span style="color:#f92672">{</span> <span style="color:#75715e">// created by API provider
-</span><span style="color:#75715e"></span>        MyException<span style="color:#f92672">()</span> <span style="color:#f92672">{}</span>
-        MyException<span style="color:#f92672">(</span>String msg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-
-
-    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeClass</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// created by API provider
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEvenNo</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> MyException <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> MyException<span style="color:#f92672">(</span>
-                    <span style="color:#e6db74">&#34;Negative value - Invalid.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> MyException<span style="color:#f92672">(</span>
-                    <span style="color:#e6db74">&#34;Zero value - Invalid.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span>x <span style="color:#f92672">%</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">!=</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> MyException<span style="color:#f92672">(</span>
-                    <span style="color:#e6db74">&#34;Odd Number - Invalid.&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-
-
-    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserDefinedException</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// created by developer of the application
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> SomeClass<span style="color:#f92672">().</span><span style="color:#a6e22e">isEvenNo</span><span style="color:#f92672">(</span>
-                        Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>args<span style="color:#f92672">[</span>0<span style="color:#f92672">])))</span> <span style="color:#f92672">{</span>
-                    <span style="color:#75715e">//may raise a exception called as MyException
-</span><span style="color:#75715e"></span>                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>
-                        <span style="color:#e6db74">&#34;The no &#34;</span> <span style="color:#f92672">+</span> args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span>
-                        <span style="color:#e6db74">&#34; is a even number.&#34;</span><span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>MyException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;----------------------------------------------------&#34;</span><span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyException</span> <span style="color:#66d9ef">extends</span> RuntimeException { <span style="color:#75715e">// created by API provider</span>
+</span></span><span style="display:flex;"><span>        MyException() {}
+</span></span><span style="display:flex;"><span>        MyException(String msg) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">super</span>(msg);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeClass</span> { <span style="color:#75715e">// created by API provider</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEvenNo</span>(<span style="color:#66d9ef">int</span> x) <span style="color:#66d9ef">throws</span> MyException {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">&lt;</span> 0) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> MyException(
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;Negative value - Invalid.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">==</span> 0) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> MyException(
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;Zero value - Invalid.&#34;</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> ((x <span style="color:#f92672">%</span> 2) <span style="color:#f92672">!=</span> 0) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> MyException(
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;Odd Number - Invalid.&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserDefinedException</span> { <span style="color:#75715e">// created by developer of the application</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">new</span> SomeClass().<span style="color:#a6e22e">isEvenNo</span>(
+</span></span><span style="display:flex;"><span>                        Integer.<span style="color:#a6e22e">parseInt</span>(args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>))) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">//may raise a exception called as MyException</span>
+</span></span><span style="display:flex;"><span>                    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;The no &#34;</span> <span style="color:#f92672">+</span> args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; is a even number.&#34;</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (MyException e) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(e);
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(e.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;----------------------------------------------------&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 
       </div>
 
@@ -459,72 +497,67 @@ NullPointerException
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -534,6 +567,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

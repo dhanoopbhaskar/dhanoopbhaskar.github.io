@@ -1,122 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Dhanoop Bhaskar">
-    <meta name="description" content="The function has been developed as a routine in the Talend.
-package routines; import java.text.ParseException; public class DateConv { public static String oConv(int secToAdd, String format) throws ParseException { final String date = &#34;31/12/1967&#34;;// 31 Dec 1967  java.util.Date returnDate = null; String returnString = null; java.text.DateFormat sdf = new java.text.SimpleDateFormat(&#34;dd/MM/yyyy&#34;); java.util.Date parsedDate = sdf.parse(date); java.util.Calendar now = java.util.Calendar.getInstance(); now.setTime(parsedDate); if (format.equals(&#34;MT&#34;)) { // 02:46  sdf = new java.text.SimpleDateFormat(&#34;HH:mm&#34;); now.">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Talend equivalent for OCONV function in Datastage (Only for time and date)"/>
-<meta name="twitter:description" content="The function has been developed as a routine in the Talend.
-package routines; import java.text.ParseException; public class DateConv { public static String oConv(int secToAdd, String format) throws ParseException { final String date = &#34;31/12/1967&#34;;// 31 Dec 1967  java.util.Date returnDate = null; String returnString = null; java.text.DateFormat sdf = new java.text.SimpleDateFormat(&#34;dd/MM/yyyy&#34;); java.util.Date parsedDate = sdf.parse(date); java.util.Calendar now = java.util.Calendar.getInstance(); now.setTime(parsedDate); if (format.equals(&#34;MT&#34;)) { // 02:46  sdf = new java.text.SimpleDateFormat(&#34;HH:mm&#34;); now."/>
-<meta name="twitter:site" content="@dhanoopbhaskar"/>
-
-    <meta property="og:title" content="Talend equivalent for OCONV function in Datastage (Only for time and date)" />
-<meta property="og:description" content="The function has been developed as a routine in the Talend.
-package routines; import java.text.ParseException; public class DateConv { public static String oConv(int secToAdd, String format) throws ParseException { final String date = &#34;31/12/1967&#34;;// 31 Dec 1967  java.util.Date returnDate = null; String returnString = null; java.text.DateFormat sdf = new java.text.SimpleDateFormat(&#34;dd/MM/yyyy&#34;); java.util.Date parsedDate = sdf.parse(date); java.util.Calendar now = java.util.Calendar.getInstance(); now.setTime(parsedDate); if (format.equals(&#34;MT&#34;)) { // 02:46  sdf = new java.text.SimpleDateFormat(&#34;HH:mm&#34;); now." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2012-10-20-talend-equivalent-for-oconv-function-in-datastage-only-for-time-and-date/" />
-<meta property="article:published_time" content="2012-10-20T15:30:00+05:30" />
-<meta property="article:modified_time" content="2012-10-20T15:30:00+05:30" />
-
-
-    <title>
+<head>
+  <title>
   Talend equivalent for OCONV function in Datastage (Only for time and date) · The Insane Techie
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
-    
-      <link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2012-10-20-talend-equivalent-for-oconv-function-in-datastage-only-for-time-and-date/">
-    
 
-    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
-    
-      
-      
-      <link rel="stylesheet" href="/css/coder.min.48b757908472e3abc96c82fcff3b02896aeaf64f8944096889031057db7233a6.css" integrity="sha256-SLdXkIRy46vJbIL8/zsCiWrq9k&#43;JRAloiQMQV9tyM6Y=" crossorigin="anonymous" media="screen" />
-    
 
-    
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="The function has been developed as a routine in the Talend.
+    package routines;
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
-      
-    
+    import java.text.ParseException;
 
-    
+    public class DateConv {
 
-    
+      public static String oConv(int secToAdd, String format) throws ParseException {
 
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+        final String date = &#34;31/12/1967&#34;;// 31 Dec 1967
+        java.util.Date returnDate = null;
+        String returnString = null;
+        java.text.DateFormat sdf = new java.text.SimpleDateFormat(&#34;dd/MM/yyyy&#34;);
+        java.util.Date parsedDate = sdf.parse(date);
+        java.util.Calendar now = java.util.Calendar.getInstance();
+        now.setTime(parsedDate);
 
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        if (format.equals(&#34;MT&#34;)) { // 02:46
+          sdf = new java.text.SimpleDateFormat(&#34;HH:mm&#34;);
+          now.add(java.util.Calendar.SECOND, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate);
+        } else if (format.equals(&#34;MTS&#34;)) { // 02:46:40
+          sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ss&#34;);
+          now.add(java.util.Calendar.SECOND, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate);
+        } else if (format.equals(&#34;MTHS&#34;)) { // 02:46:40am
+          sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ssa&#34;);
+          now.add(java.util.Calendar.SECOND, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate).toLowerCase();
+        } else if (format.equals(&#34;MTH&#34;)) { // 02:46am
+          sdf = new java.text.SimpleDateFormat(&#34;HH:mma&#34;);
+          now.add(java.util.Calendar.SECOND, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate).toLowerCase();
+        } else if (format.equals(&#34;MT.&#34;)) { // 02.46
+          sdf = new java.text.SimpleDateFormat(&#34;HH.mm&#34;);
+          now.add(java.util.Calendar.SECOND, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate);
+        } else if (format.equals(&#34;D2&#34;)) { // 3 Feb 93
+          sdf = new java.text.SimpleDateFormat(&#34;d MMM yy&#34;);
+          now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate);
+        } else if (format.equals(&#34;D/E&#34;)) { // 3/2/1993
+          sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;);
+          now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate);
+        } else if (format.equals(&#34;DI&#34;)) { // 3/2/1993
+          sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;);
+          now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate);
+        } else if (format.equals(&#34;D2-&#34;)) { // 2-3-93
+          sdf = new java.text.SimpleDateFormat(&#34;M-d-yy&#34;);
+          now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate);
+        } else if (format.equals(&#34;D&#34;)) { // 31 Dec 1967
+          sdf = new java.text.SimpleDateFormat(&#34;d MMM yyyy&#34;);
+          now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd);
+          returnDate = now.getTime();
+          returnString = sdf.format(returnDate);
+        }
 
-    
+        return returnString;
+      }
 
-    <meta name="generator" content="Hugo 0.68.3" />
-  </head>
+      public static String oConv(String input, String format) throws ParseException {
+        String returnString = null;
+        java.text.DateFormat sdf = null;
+
+        if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DMD[2,2]&#34;)) { // DMD[2,2]
+          sdf = new java.text.SimpleDateFormat(&#34;MMdd&#34;);
+          returnString = sdf.format(new java.util.Date());
+        } else if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DYMD[4,2,2]&#34;)) { // DYMD[4,2,2]
+          sdf = new java.text.SimpleDateFormat(&#34;yyyyMMdd&#34;);
+          returnString = sdf.format(new java.util.Date());
+        }
+
+        return returnString;
+      }
+
+    }
+eg:">
+<meta name="keywords" content="">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Talend equivalent for OCONV function in Datastage (Only for time and date)">
+  <meta name="twitter:description" content="The function has been developed as a routine in the Talend.
+package routines; import java.text.ParseException; public class DateConv { public static String oConv(int secToAdd, String format) throws ParseException { final String date = &#34;31/12/1967&#34;;// 31 Dec 1967 java.util.Date returnDate = null; String returnString = null; java.text.DateFormat sdf = new java.text.SimpleDateFormat(&#34;dd/MM/yyyy&#34;); java.util.Date parsedDate = sdf.parse(date); java.util.Calendar now = java.util.Calendar.getInstance(); now.setTime(parsedDate); if (format.equals(&#34;MT&#34;)) { // 02:46 sdf = new java.text.SimpleDateFormat(&#34;HH:mm&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;MTS&#34;)) { // 02:46:40 sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ss&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;MTHS&#34;)) { // 02:46:40am sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ssa&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate).toLowerCase(); } else if (format.equals(&#34;MTH&#34;)) { // 02:46am sdf = new java.text.SimpleDateFormat(&#34;HH:mma&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate).toLowerCase(); } else if (format.equals(&#34;MT.&#34;)) { // 02.46 sdf = new java.text.SimpleDateFormat(&#34;HH.mm&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D2&#34;)) { // 3 Feb 93 sdf = new java.text.SimpleDateFormat(&#34;d MMM yy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D/E&#34;)) { // 3/2/1993 sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;DI&#34;)) { // 3/2/1993 sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D2-&#34;)) { // 2-3-93 sdf = new java.text.SimpleDateFormat(&#34;M-d-yy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D&#34;)) { // 31 Dec 1967 sdf = new java.text.SimpleDateFormat(&#34;d MMM yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } return returnString; } public static String oConv(String input, String format) throws ParseException { String returnString = null; java.text.DateFormat sdf = null; if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DMD[2,2]&#34;)) { // DMD[2,2] sdf = new java.text.SimpleDateFormat(&#34;MMdd&#34;); returnString = sdf.format(new java.util.Date()); } else if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DYMD[4,2,2]&#34;)) { // DYMD[4,2,2] sdf = new java.text.SimpleDateFormat(&#34;yyyyMMdd&#34;); returnString = sdf.format(new java.util.Date()); } return returnString; } } eg:">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2012-10-20-talend-equivalent-for-oconv-function-in-datastage-only-for-time-and-date/">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Talend equivalent for OCONV function in Datastage (Only for time and date)">
+  <meta property="og:description" content="The function has been developed as a routine in the Talend.
+package routines; import java.text.ParseException; public class DateConv { public static String oConv(int secToAdd, String format) throws ParseException { final String date = &#34;31/12/1967&#34;;// 31 Dec 1967 java.util.Date returnDate = null; String returnString = null; java.text.DateFormat sdf = new java.text.SimpleDateFormat(&#34;dd/MM/yyyy&#34;); java.util.Date parsedDate = sdf.parse(date); java.util.Calendar now = java.util.Calendar.getInstance(); now.setTime(parsedDate); if (format.equals(&#34;MT&#34;)) { // 02:46 sdf = new java.text.SimpleDateFormat(&#34;HH:mm&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;MTS&#34;)) { // 02:46:40 sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ss&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;MTHS&#34;)) { // 02:46:40am sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ssa&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate).toLowerCase(); } else if (format.equals(&#34;MTH&#34;)) { // 02:46am sdf = new java.text.SimpleDateFormat(&#34;HH:mma&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate).toLowerCase(); } else if (format.equals(&#34;MT.&#34;)) { // 02.46 sdf = new java.text.SimpleDateFormat(&#34;HH.mm&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D2&#34;)) { // 3 Feb 93 sdf = new java.text.SimpleDateFormat(&#34;d MMM yy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D/E&#34;)) { // 3/2/1993 sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;DI&#34;)) { // 3/2/1993 sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D2-&#34;)) { // 2-3-93 sdf = new java.text.SimpleDateFormat(&#34;M-d-yy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D&#34;)) { // 31 Dec 1967 sdf = new java.text.SimpleDateFormat(&#34;d MMM yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } return returnString; } public static String oConv(String input, String format) throws ParseException { String returnString = null; java.text.DateFormat sdf = null; if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DMD[2,2]&#34;)) { // DMD[2,2] sdf = new java.text.SimpleDateFormat(&#34;MMdd&#34;); returnString = sdf.format(new java.util.Date()); } else if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DYMD[4,2,2]&#34;)) { // DYMD[4,2,2] sdf = new java.text.SimpleDateFormat(&#34;yyyyMMdd&#34;); returnString = sdf.format(new java.util.Date()); } return returnString; } } eg:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2012-10-20T15:30:00+05:30">
+    <meta property="article:modified_time" content="2012-10-20T15:30:00+05:30">
+    <meta property="article:tag" content="Talend">
+    <meta property="article:tag" content="Datastage">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="ETL">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2012-10-20-talend-equivalent-for-oconv-function-in-datastage-only-for-time-and-date/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-    
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
   
-  <body class="preload-transitions colorscheme-auto"
-        onload=""
-  >
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="/">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
       The Insane Techie
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/posts/">Posts</a>
+              <a class="navigation-link " href="/posts/">Posts</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/pencils/">Pencils</a>
+              <a class="navigation-link " href="/pencils/">Pencils</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="/categories/">Categories</a>
+              <a class="navigation-link " href="/categories/">Categories</a>
             </li>
           
         
@@ -127,8 +237,8 @@ package routines; import java.text.ParseException; public class DateConv { publi
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -142,128 +252,136 @@ package routines; import java.text.ParseException; public class DateConv { publi
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2012-10-20T15:30:00&#43;05:30'>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2012-10-20T15:30:00&#43;05:30">
                 October 20, 2012
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
               2-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
     <a href="/categories/talend/">Talend</a>
       <span class="separator">•</span>
-    <a href="/categories/java/">java</a>
+    <a href="/categories/java/">Java</a>
       <span class="separator">•</span>
     <a href="/categories/etl/">ETL</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/tags/talend/">Talend</a>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/talend/">Talend</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/datastage/">Datastage</a>
+    <span class="tag">
+      <a href="/tags/datastage/">Datastage</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/java/">java</a>
+    <span class="tag">
+      <a href="/tags/java/">Java</a>
+    </span>
       <span class="separator">•</span>
-    <a href="/tags/etl/">ETL</a></div>
+    <span class="tag">
+      <a href="/tags/etl/">ETL</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
         <p><em>The function has been developed as a routine in the Talend.</em></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#f92672">package</span> routines<span style="color:#f92672">;</span>
-
-    <span style="color:#f92672">import</span> java.text.ParseException<span style="color:#f92672">;</span>
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DateConv</span> <span style="color:#f92672">{</span>
-
-      <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">oConv</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> secToAdd<span style="color:#f92672">,</span> String format<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ParseException <span style="color:#f92672">{</span>
-
-        <span style="color:#66d9ef">final</span> String date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;31/12/1967&#34;</span><span style="color:#f92672">;</span><span style="color:#75715e">// 31 Dec 1967
-</span><span style="color:#75715e"></span>        java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Date</span> returnDate <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-        String returnString <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-        java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DateFormat</span> sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;dd/MM/yyyy&#34;</span><span style="color:#f92672">);</span>
-        java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Date</span> parsedDate <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">parse</span><span style="color:#f92672">(</span>date<span style="color:#f92672">);</span>
-        java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span> now <span style="color:#f92672">=</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
-        now<span style="color:#f92672">.</span><span style="color:#a6e22e">setTime</span><span style="color:#f92672">(</span>parsedDate<span style="color:#f92672">);</span>
-
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MT&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 02:46
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;HH:mm&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SECOND</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MTS&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 02:46:40
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;HH:mm:ss&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SECOND</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MTHS&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 02:46:40am
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;HH:mm:ssa&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SECOND</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">).</span><span style="color:#a6e22e">toLowerCase</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MTH&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 02:46am
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;HH:mma&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SECOND</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">).</span><span style="color:#a6e22e">toLowerCase</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MT.&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 02.46
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;HH.mm&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SECOND</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;D2&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 3 Feb 93
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;d MMM yy&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DAY_OF_MONTH</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;D/E&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 3/2/1993
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;d/M/yyyy&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DAY_OF_MONTH</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;DI&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 3/2/1993
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;d/M/yyyy&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DAY_OF_MONTH</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;D2-&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 2-3-93
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;M-d-yy&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DAY_OF_MONTH</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;D&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 31 Dec 1967
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;d MMM yyyy&#34;</span><span style="color:#f92672">);</span>
-          now<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Calendar</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DAY_OF_MONTH</span><span style="color:#f92672">,</span> secToAdd<span style="color:#f92672">);</span>
-          returnDate <span style="color:#f92672">=</span> now<span style="color:#f92672">.</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>returnDate<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#66d9ef">return</span> returnString<span style="color:#f92672">;</span>
-      <span style="color:#f92672">}</span>
-
-      <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">oConv</span><span style="color:#f92672">(</span>String input<span style="color:#f92672">,</span> String format<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ParseException <span style="color:#f92672">{</span>
-        String returnString <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-        java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DateFormat</span> sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>input<span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;@DATE&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;DMD[2,2]&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// DMD[2,2]
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MMdd&#34;</span><span style="color:#f92672">);</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Date</span><span style="color:#f92672">());</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>input<span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;@DATE&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> format<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;DYMD[4,2,2]&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// DYMD[4,2,2]
-</span><span style="color:#75715e"></span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SimpleDateFormat</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;yyyyMMdd&#34;</span><span style="color:#f92672">);</span>
-          returnString <span style="color:#f92672">=</span> sdf<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Date</span><span style="color:#f92672">());</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#66d9ef">return</span> returnString<span style="color:#f92672">;</span>
-      <span style="color:#f92672">}</span>
-
-    <span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#f92672">package</span> routines;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.text.ParseException;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DateConv</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">oConv</span>(<span style="color:#66d9ef">int</span> secToAdd, String format) <span style="color:#66d9ef">throws</span> ParseException {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> String date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;31/12/1967&#34;</span>;<span style="color:#75715e">// 31 Dec 1967</span>
+</span></span><span style="display:flex;"><span>        java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Date</span> returnDate <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        String returnString <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">DateFormat</span> sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;dd/MM/yyyy&#34;</span>);
+</span></span><span style="display:flex;"><span>        java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Date</span> parsedDate <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">parse</span>(date);
+</span></span><span style="display:flex;"><span>        java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span> now <span style="color:#f92672">=</span> java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">getInstance</span>();
+</span></span><span style="display:flex;"><span>        now.<span style="color:#a6e22e">setTime</span>(parsedDate);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;MT&#34;</span>)) { <span style="color:#75715e">// 02:46</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;HH:mm&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">SECOND</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;MTS&#34;</span>)) { <span style="color:#75715e">// 02:46:40</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;HH:mm:ss&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">SECOND</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;MTHS&#34;</span>)) { <span style="color:#75715e">// 02:46:40am</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;HH:mm:ssa&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">SECOND</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate).<span style="color:#a6e22e">toLowerCase</span>();
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;MTH&#34;</span>)) { <span style="color:#75715e">// 02:46am</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;HH:mma&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">SECOND</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate).<span style="color:#a6e22e">toLowerCase</span>();
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;MT.&#34;</span>)) { <span style="color:#75715e">// 02.46</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;HH.mm&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">SECOND</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;D2&#34;</span>)) { <span style="color:#75715e">// 3 Feb 93</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;d MMM yy&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">DAY_OF_MONTH</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;D/E&#34;</span>)) { <span style="color:#75715e">// 3/2/1993</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;d/M/yyyy&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">DAY_OF_MONTH</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;DI&#34;</span>)) { <span style="color:#75715e">// 3/2/1993</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;d/M/yyyy&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">DAY_OF_MONTH</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;D2-&#34;</span>)) { <span style="color:#75715e">// 2-3-93</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;M-d-yy&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">DAY_OF_MONTH</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;D&#34;</span>)) { <span style="color:#75715e">// 31 Dec 1967</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;d MMM yyyy&#34;</span>);
+</span></span><span style="display:flex;"><span>          now.<span style="color:#a6e22e">add</span>(java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Calendar</span>.<span style="color:#a6e22e">DAY_OF_MONTH</span>, secToAdd);
+</span></span><span style="display:flex;"><span>          returnDate <span style="color:#f92672">=</span> now.<span style="color:#a6e22e">getTime</span>();
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(returnDate);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> returnString;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">oConv</span>(String input, String format) <span style="color:#66d9ef">throws</span> ParseException {
+</span></span><span style="display:flex;"><span>        String returnString <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">DateFormat</span> sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (input.<span style="color:#a6e22e">equalsIgnoreCase</span>(<span style="color:#e6db74">&#34;@DATE&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;DMD[2,2]&#34;</span>)) { <span style="color:#75715e">// DMD[2,2]</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;MMdd&#34;</span>);
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(<span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Date</span>());
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (input.<span style="color:#a6e22e">equalsIgnoreCase</span>(<span style="color:#e6db74">&#34;@DATE&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> format.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;DYMD[4,2,2]&#34;</span>)) { <span style="color:#75715e">// DYMD[4,2,2]</span>
+</span></span><span style="display:flex;"><span>          sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">SimpleDateFormat</span>(<span style="color:#e6db74">&#34;yyyyMMdd&#34;</span>);
+</span></span><span style="display:flex;"><span>          returnString <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(<span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Date</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> returnString;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p>eg:</p>
 <pre><code>DateConv.oConv(10000, &quot;MTHS&quot;); // 02:46:40am
 
@@ -280,72 +398,67 @@ DateConv.oConv(9166, &quot;D2&quot;); // 3 Feb 93
         
         
         
+        
+        
+        
+        
       </footer>
     </article>
 
     
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Hey, let's talk with the computers!</p>
-      
-      
-        ©
-        
-          2019 -
-        
-        2022
-         Dhanoop Bhaskar 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
     
-      
-      <script src="/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    <p>Hey, let's talk with the computers!</p>
     
-
+    ©
     
-
+      2019 -
     
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-169392426-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
+    2025
+     Dhanoop Bhaskar 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -355,6 +468,21 @@ if (!doNotTrack) {
   gtag('config', 'UA-169392426-1');
 </script>
 
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>
