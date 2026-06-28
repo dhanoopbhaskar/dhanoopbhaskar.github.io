@@ -75,20 +75,20 @@
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Java-Testing Inheritance">
-  <meta name="twitter:description" content="class TestInheritance { public static void main(String[] args) { SomeClass sc = new SomeClass(); Shape s = sc.getShape(Integer.parseInt(args[0])); s.draw(); if (s instanceof Square) { Square sq = (Square) s; System.out.println(&#34;It&#39;s an instance of Square.&#34;); sq.someFunction(); } else if (s instanceof Circle) { System.out.println(&#34;It&#39;s an instance of Circle.&#34;); } else if (s instanceof Triangle) { System.out.println(&#34;It&#39;s an instance of Triangle.&#34;); } } } class SomeClass { Shape getShape(int option) { Shape s = null; switch (option) { case 1: s = new Square(); break; case 2: s = new Circle(); break; case 3: s = new Triangle(); } return s; } } class Shape { void draw() { System.out.println(&#34;This is an unknown shape.&#34;); } } class Square extends Shape { void draw() { System.out.println(&#34;This is a square.&#34;); } void someFunction() { super.draw(); } } class Circle extends Shape { void draw() { System.out.println(&#34;This is a circle.&#34;); } } class Triangle extends Shape { void draw() { System.out.println(&#34;This is a triangle.&#34;); } } —Case Study—">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Java-Testing Inheritance">
+	<meta name="twitter:description" content="class TestInheritance { public static void main(String[] args) { SomeClass sc = new SomeClass(); Shape s = sc.getShape(Integer.parseInt(args[0])); s.draw(); if (s instanceof Square) { Square sq = (Square) s; System.out.println(&#34;It&#39;s an instance of Square.&#34;); sq.someFunction(); } else if (s instanceof Circle) { System.out.println(&#34;It&#39;s an instance of Circle.&#34;); } else if (s instanceof Triangle) { System.out.println(&#34;It&#39;s an instance of Triangle.&#34;); } } } class SomeClass { Shape getShape(int option) { Shape s = null; switch (option) { case 1: s = new Square(); break; case 2: s = new Circle(); break; case 3: s = new Triangle(); } return s; } } class Shape { void draw() { System.out.println(&#34;This is an unknown shape.&#34;); } } class Square extends Shape { void draw() { System.out.println(&#34;This is a square.&#34;); } void someFunction() { super.draw(); } } class Circle extends Shape { void draw() { System.out.println(&#34;This is a circle.&#34;); } } class Triangle extends Shape { void draw() { System.out.println(&#34;This is a triangle.&#34;); } } —Case Study—">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-22-java-testing-inheritance/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="Java-Testing Inheritance">
-  <meta property="og:description" content="class TestInheritance { public static void main(String[] args) { SomeClass sc = new SomeClass(); Shape s = sc.getShape(Integer.parseInt(args[0])); s.draw(); if (s instanceof Square) { Square sq = (Square) s; System.out.println(&#34;It&#39;s an instance of Square.&#34;); sq.someFunction(); } else if (s instanceof Circle) { System.out.println(&#34;It&#39;s an instance of Circle.&#34;); } else if (s instanceof Triangle) { System.out.println(&#34;It&#39;s an instance of Triangle.&#34;); } } } class SomeClass { Shape getShape(int option) { Shape s = null; switch (option) { case 1: s = new Square(); break; case 2: s = new Circle(); break; case 3: s = new Triangle(); } return s; } } class Shape { void draw() { System.out.println(&#34;This is an unknown shape.&#34;); } } class Square extends Shape { void draw() { System.out.println(&#34;This is a square.&#34;); } void someFunction() { super.draw(); } } class Circle extends Shape { void draw() { System.out.println(&#34;This is a circle.&#34;); } } class Triangle extends Shape { void draw() { System.out.println(&#34;This is a triangle.&#34;); } } —Case Study—">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2010-12-22T22:53:00+05:30">
-    <meta property="article:modified_time" content="2010-12-22T22:53:00+05:30">
-    <meta property="article:tag" content="Java">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Java-Testing Inheritance">
+	<meta property="og:description" content="class TestInheritance { public static void main(String[] args) { SomeClass sc = new SomeClass(); Shape s = sc.getShape(Integer.parseInt(args[0])); s.draw(); if (s instanceof Square) { Square sq = (Square) s; System.out.println(&#34;It&#39;s an instance of Square.&#34;); sq.someFunction(); } else if (s instanceof Circle) { System.out.println(&#34;It&#39;s an instance of Circle.&#34;); } else if (s instanceof Triangle) { System.out.println(&#34;It&#39;s an instance of Triangle.&#34;); } } } class SomeClass { Shape getShape(int option) { Shape s = null; switch (option) { case 1: s = new Square(); break; case 2: s = new Circle(); break; case 3: s = new Triangle(); } return s; } } class Shape { void draw() { System.out.println(&#34;This is an unknown shape.&#34;); } } class Square extends Shape { void draw() { System.out.println(&#34;This is a square.&#34;); } void someFunction() { super.draw(); } } class Circle extends Shape { void draw() { System.out.println(&#34;This is a circle.&#34;); } } class Triangle extends Shape { void draw() { System.out.println(&#34;This is a triangle.&#34;); } } —Case Study—">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2010-12-22T22:53:00+05:30">
+		<meta property="article:modified_time" content="2010-12-22T22:53:00+05:30">
+		<meta property="article:tag" content="Java">
 
 
 
@@ -242,7 +242,7 @@
 
       <div class="post-content">
         
-        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestInheritance</span> {
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestInheritance</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
 </span></span><span style="display:flex;"><span>            SomeClass sc <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SomeClass();
 </span></span><span style="display:flex;"><span>            Shape s <span style="color:#f92672">=</span> sc.<span style="color:#a6e22e">getShape</span>(Integer.<span style="color:#a6e22e">parseInt</span>(args<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>));
@@ -362,7 +362,7 @@
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

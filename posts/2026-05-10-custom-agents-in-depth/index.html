@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Custom Agents in Depth: Designing Specialist Copilot Teammates · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Why custom agents are different
+  
+    
+    Link to heading
+  
+
+Custom instructions shape defaults and prompt files package one-off workflows, but custom agents define persistent specialist behavior.
+A custom agent can encode:
+
+Role and expertise
+Tool boundaries
+Model preferences
+MCP-backed capabilities
+Environment targeting
+
+This makes custom agents the right choice for complex, repeatable workflows where persona and permissions must be stable.
+
+  Use cases
+  
+    
+    Link to heading
+  
+
+
+Teams needing specialist Copilot behavior beyond one-off prompts
+Repository maintainers who need strict tool boundaries
+Developers deciding whether a prompt file or a custom agent fits their workflow
+
+
+  Step 1: Understand agent profile anatomy
+  
+    
+    Link to heading
+  
+
+A custom agent profile is a Markdown file with YAML frontmatter and instruction body.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Custom Agents in Depth: Designing Specialist Copilot Teammates">
+	<meta name="twitter:description" content="Why custom agents are different Link to heading Custom instructions shape defaults and prompt files package one-off workflows, but custom agents define persistent specialist behavior.
+A custom agent can encode:
+Role and expertise Tool boundaries Model preferences MCP-backed capabilities Environment targeting This makes custom agents the right choice for complex, repeatable workflows where persona and permissions must be stable.
+Use cases Link to heading Teams needing specialist Copilot behavior beyond one-off prompts Repository maintainers who need strict tool boundaries Developers deciding whether a prompt file or a custom agent fits their workflow Step 1: Understand agent profile anatomy Link to heading A custom agent profile is a Markdown file with YAML frontmatter and instruction body.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-10-custom-agents-in-depth/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Custom Agents in Depth: Designing Specialist Copilot Teammates">
+	<meta property="og:description" content="Why custom agents are different Link to heading Custom instructions shape defaults and prompt files package one-off workflows, but custom agents define persistent specialist behavior.
+A custom agent can encode:
+Role and expertise Tool boundaries Model preferences MCP-backed capabilities Environment targeting This makes custom agents the right choice for complex, repeatable workflows where persona and permissions must be stable.
+Use cases Link to heading Teams needing specialist Copilot behavior beyond one-off prompts Repository maintainers who need strict tool boundaries Developers deciding whether a prompt file or a custom agent fits their workflow Step 1: Understand agent profile anatomy Link to heading A custom agent profile is a Markdown file with YAML frontmatter and instruction body.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-05-10T19:10:00+05:30">
+		<meta property="article:modified_time" content="2026-05-10T19:10:00+05:30">
+		<meta property="article:tag" content="Github-Copilot">
+		<meta property="article:tag" content="Prompt-Engineering">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-05-10-custom-agents-in-depth/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-05-10-custom-agents-in-depth/">
+              Custom Agents in Depth: Designing Specialist Copilot Teammates
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-05-10T19:10:00&#43;05:30">
+                May 10, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              6-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/github-copilot/">Github-Copilot</a>
+      <span class="separator">•</span>
+    <a href="/categories/prompt-engineering/">Prompt-Engineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/github-copilot/">Github-Copilot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/prompt-engineering/">Prompt-Engineering</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="why-custom-agents-are-different">
+  Why custom agents are different
+  <a class="heading-link" href="#why-custom-agents-are-different">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Custom instructions shape defaults and prompt files package one-off workflows, but custom agents define persistent specialist behavior.</p>
+<p>A custom agent can encode:</p>
+<ul>
+<li>Role and expertise</li>
+<li>Tool boundaries</li>
+<li>Model preferences</li>
+<li>MCP-backed capabilities</li>
+<li>Environment targeting</li>
+</ul>
+<p>This makes custom agents the right choice for complex, repeatable workflows where persona and permissions must be stable.</p>
+<h2 id="use-cases">
+  Use cases
+  <a class="heading-link" href="#use-cases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Teams needing specialist Copilot behavior beyond one-off prompts</li>
+<li>Repository maintainers who need strict tool boundaries</li>
+<li>Developers deciding whether a prompt file or a custom agent fits their workflow</li>
+</ul>
+<h2 id="step-1-understand-agent-profile-anatomy">
+  Step 1: Understand agent profile anatomy
+  <a class="heading-link" href="#step-1-understand-agent-profile-anatomy">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>A custom agent profile is a Markdown file with YAML frontmatter and instruction body.</p>
+<p>Typical fields:</p>
+<ul>
+<li>name (optional)</li>
+<li>description (required)</li>
+<li>target (optional)</li>
+<li>tools (optional)</li>
+<li>model (optional)</li>
+<li>disable-model-invocation or user-invocable controls</li>
+<li>mcp-servers (optional, environment-dependent)</li>
+</ul>
+<p>Then the Markdown body defines behavioral instructions.</p>
+<h3 id="minimal-profile">
+  Minimal profile
+  <a class="heading-link" href="#minimal-profile">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: readme-specialist
+</span></span><span style="display:flex;"><span>description: Improve README files and documentation consistency
+</span></span><span style="display:flex;"><span>tools: [&#34;read&#34;, &#34;search&#34;, &#34;edit&#34;]
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>You are a documentation specialist.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Focus on README and docs files
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Keep content scannable and accurate
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Do not modify source code files unless asked
+</span></span></code></pre></div><h2 id="step-2-place-the-profile-at-the-right-scope">
+  Step 2: Place the profile at the right scope
+  <a class="heading-link" href="#step-2-place-the-profile-at-the-right-scope">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Common locations from docs:</p>
+<ul>
+<li>Repository-level custom agents in <code>.github/agents/</code></li>
+<li>Organization and enterprise variants in <code>.github-private</code> governance repositories, using root-level agents directories where supported</li>
+</ul>
+<p>Use repository scope first unless you already have stable standards to share organization-wide.</p>
+<h3 id="how-to-invoke-a-custom-agent">
+  How to invoke a custom agent
+  <a class="heading-link" href="#how-to-invoke-a-custom-agent">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>On GitHub.com:</strong></p>
+<ol>
+<li>Open a repository and click the Copilot icon to open the chat panel.</li>
+<li>In the agent picker (the dropdown next to the chat input), select your agent by name.</li>
+<li>Ask your question normally. The agent&rsquo;s instruction body and tool restrictions are active for the entire session.</li>
+</ol>
+<p><strong>In VS Code:</strong></p>
+<ol>
+<li>Open the Copilot Chat panel.</li>
+<li>Click the agent selector at the top of the chat pane and choose your custom agent from the list.</li>
+<li>All prompts sent in that session use the agent&rsquo;s profile.</li>
+</ol>
+<p>Agents with <code>disable-model-invocation: true</code> only appear when explicitly selected. Agents without this flag may be invoked automatically by Copilot when it determines the agent&rsquo;s description matches the task — which is useful for broadly applicable agents but risky for tightly scoped ones.</p>
+<h2 id="step-3-control-tool-exposure-deliberately">
+  Step 3: Control tool exposure deliberately
+  <a class="heading-link" href="#step-3-control-tool-exposure-deliberately">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The tools field is central to safety and reliability.</p>
+<p>Behavior summary:</p>
+<ul>
+<li>Omitted tools means all available tools can be used</li>
+<li>tools: [] disables tools</li>
+<li>tools: [list] enables only specified tools</li>
+</ul>
+<p>You can include aliases and namespaced tools, including MCP server tools.</p>
+<h3 id="diagram-safe-tool-narrowing">
+  Diagram: Safe tool narrowing
+  <a class="heading-link" href="#diagram-safe-tool-narrowing">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 248 297"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 232,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,32 L 232,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 232,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,112 L 232,112' fill='none' stroke='currentColor'></path>
+<path d='M 0,160 L 232,160' fill='none' stroke='currentColor'></path>
+<path d='M 0,192 L 232,192' fill='none' stroke='currentColor'></path>
+<path d='M 0,240 L 232,240' fill='none' stroke='currentColor'></path>
+<path d='M 0,272 L 232,272' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 0,112' fill='none' stroke='currentColor'></path>
+<path d='M 0,160 L 0,192' fill='none' stroke='currentColor'></path>
+<path d='M 0,240 L 0,272' fill='none' stroke='currentColor'></path>
+<path d='M 104,48 L 104,64' fill='none' stroke='currentColor'></path>
+<path d='M 104,128 L 104,144' fill='none' stroke='currentColor'></path>
+<path d='M 104,208 L 104,224' fill='none' stroke='currentColor'></path>
+<path d='M 232,0 L 232,32' fill='none' stroke='currentColor'></path>
+<path d='M 232,80 L 232,112' fill='none' stroke='currentColor'></path>
+<path d='M 232,160 L 232,192' fill='none' stroke='currentColor'></path>
+<path d='M 232,240 L 232,272' fill='none' stroke='currentColor'></path>
+<path d='M 104,40 L 104,48' fill='none' stroke='currentColor'></path>
+<path d='M 104,120 L 104,128' fill='none' stroke='currentColor'></path>
+<path d='M 104,200 L 104,208' fill='none' stroke='currentColor'></path>
+<path d='M 104,64 L 104,72' fill='none' stroke='currentColor'></path>
+<polygon points='120.000000,64.000000 108.000000,58.400002 108.000000,69.599998' fill='currentColor' transform='rotate(90.000000, 104.000000, 64.000000)'></polygon>
+<path d='M 104,144 L 104,152' fill='none' stroke='currentColor'></path>
+<polygon points='120.000000,144.000000 108.000000,138.399994 108.000000,149.600006' fill='currentColor' transform='rotate(90.000000, 104.000000, 144.000000)'></polygon>
+<path d='M 104,224 L 104,232' fill='none' stroke='currentColor'></path>
+<polygon points='120.000000,224.000000 108.000000,218.399994 108.000000,229.600006' fill='currentColor' transform='rotate(90.000000, 104.000000, 224.000000)'></polygon>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>D</text>
+<text text-anchor='middle' x='16' y='100' fill='currentColor' style='font-size:1em'>I</text>
+<text text-anchor='middle' x='16' y='180' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='16' y='260' fill='currentColor' style='font-size:1em'>V</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='24' y='100' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='24' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='24' y='260' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='32' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='260' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='40' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='40' y='100' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='40' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='40' y='260' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='48' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='48' y='180' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='48' y='260' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='56' y='100' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='56' y='180' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='56' y='260' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='100' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='64' y='180' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='64' y='260' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='72' y='20' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='72' y='100' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='72' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='72' y='260' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='80' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='88' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='100' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='88' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='260' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='96' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='96' y='100' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='96' y='180' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='96' y='260' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='104' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='104' y='100' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='104' y='180' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='104' y='260' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='112' y='20' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='112' y='100' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='112' y='180' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='112' y='260' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='120' y='100' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='120' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='120' y='260' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='128' y='100' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='128' y='260' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='136' y='20' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='136' y='100' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='136' y='180' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='136' y='260' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='144' y='180' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='152' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='152' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='152' y='260' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='160' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='160' y='180' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='160' y='260' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='168' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='168' y='180' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='168' y='260' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='176' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='176' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='176' y='180' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='184' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='184' y='180' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='184' y='260' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='192' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='192' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='192' y='180' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='192' y='260' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='200' y='20' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='200' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='200' y='180' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='200' y='260' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='208' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='208' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='208' y='260' fill='currentColor' style='font-size:1em'>s</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="step-4-add-mcp-servers-only-when-needed">
+  Step 4: Add MCP servers only when needed
+  <a class="heading-link" href="#step-4-add-mcp-servers-only-when-needed">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Custom agents can reference MCP servers for external capabilities in supported environments.</p>
+<p>Use MCP when the agent must interact with external systems or specialized tooling. Avoid adding MCP servers by default if core repository tools are sufficient.</p>
+<p>From official guidance, MCP configuration can include environment variables and secret references with supported syntax variants.</p>
+<h2 id="step-5-decide-manual-selection-vs-model-invocation">
+  Step 5: Decide manual selection vs model invocation
+  <a class="heading-link" href="#step-5-decide-manual-selection-vs-model-invocation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Two frontmatter fields control how an agent is invoked:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Value</th>
+					<th>Effect</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>disable-model-invocation</code></td>
+					<td><code>true</code></td>
+					<td>Copilot will never auto-select this agent; it only runs when the user explicitly picks it.</td>
+			</tr>
+			<tr>
+					<td><code>disable-model-invocation</code></td>
+					<td><code>false</code> (default)</td>
+					<td>Copilot may auto-select this agent when it determines the task matches the description.</td>
+			</tr>
+			<tr>
+					<td><code>user-invocable</code></td>
+					<td><code>true</code></td>
+					<td>Agent appears in the agent picker for manual selection.</td>
+			</tr>
+			<tr>
+					<td><code>user-invocable</code></td>
+					<td><code>false</code></td>
+					<td>Agent does not appear in the picker; model can still invoke it if <code>disable-model-invocation</code> is false.</td>
+			</tr>
+	</tbody>
+</table>
+<p>For most teams, the safest starting pattern is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>user-invocable: true
+</span></span><span style="display:flex;"><span>disable-model-invocation: true
+</span></span></code></pre></div><p>This makes the agent available to users through the picker but never activates it automatically. Expand to model invocation only for agents whose scope is broad enough that automatic activation adds consistent value rather than noise.</p>
+<p>Note: <code>infer</code> is a retired property in older profiles. Replace it with <code>disable-model-invocation</code>.</p>
+<h2 id="step-6-reuse-proven-patterns-from-the-4-library-examples">
+  Step 6: Reuse proven patterns from the 4 library examples
+  <a class="heading-link" href="#step-6-reuse-proven-patterns-from-the-4-library-examples">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The custom agent tutorial set includes four strong archetypes.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Example</th>
+					<th>Core role</th>
+					<th>Typical adaptation</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Your first custom agent</td>
+					<td>Documentation specialist</td>
+					<td>README and docs quality gates</td>
+			</tr>
+			<tr>
+					<td>Implementation planner</td>
+					<td>Planning and scoping specialist</td>
+					<td>Feature plan generation before coding</td>
+			</tr>
+			<tr>
+					<td>Bug fix teammate</td>
+					<td>Focused fix implementation</td>
+					<td>Root-cause-first bug remediation</td>
+			</tr>
+			<tr>
+					<td>Cleanup specialist</td>
+					<td>Maintainability specialist</td>
+					<td>Targeted codebase cleanup and deduplication</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="step-7-build-an-operating-loop-for-agent-quality">
+  Step 7: Build an operating loop for agent quality
+  <a class="heading-link" href="#step-7-build-an-operating-loop-for-agent-quality">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Use this practical loop:</p>
+<ol>
+<li>Define one narrow agent purpose</li>
+<li>Restrict tools to minimum required</li>
+<li>Run agent on 3 representative tasks</li>
+<li>Review logs, PR quality, and rework rate</li>
+<li>Refine prompt and tool list</li>
+</ol>
+<p>Avoid monolithic agents that attempt to do everything.</p>
+<h2 id="step-8-track-sessions-and-audit-behavior">
+  Step 8: Track sessions and audit behavior
+  <a class="heading-link" href="#step-8-track-sessions-and-audit-behavior">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Session tracking is part of operating custom agents safely at scale.</p>
+<p>You can inspect session status and logs across supported surfaces such as:</p>
+<ul>
+<li>GitHub agents tab/panel</li>
+<li>GitHub CLI command set for agent tasks</li>
+<li>IDE integrations</li>
+</ul>
+<p>Logs are useful for understanding why a change was made and for post-incident analysis.</p>
+<h2 id="step-9-plan-for-versioning-and-override-behavior">
+  Step 9: Plan for versioning and override behavior
+  <a class="heading-link" href="#step-9-plan-for-versioning-and-override-behavior">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Agent behavior is tied to profile versions in repository history. In multi-level setups, lower-level definitions can override higher-level definitions when names conflict.</p>
+<p>Treat profile updates as controlled changes:</p>
+<ul>
+<li>PR review required</li>
+<li>changelog notes for behavior changes</li>
+<li>rollback plan for critical regressions</li>
+</ul>
+<h2 id="step-10-end-to-end-lab">
+  Step 10: End-to-end lab
+  <a class="heading-link" href="#step-10-end-to-end-lab">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Use this lab to create one narrow agent and evaluate whether it improves plan quality.</p>
+<h3 id="goal">
+  Goal
+  <a class="heading-link" href="#goal">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Create a planning-only custom agent that cannot run broad tooling.</p>
+<h3 id="create-agent-profile">
+  Create agent profile
+  <a class="heading-link" href="#create-agent-profile">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Path: <code>.github/agents/implementation-planner.agent.md</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: implementation-planner
+</span></span><span style="display:flex;"><span>description: Creates scoped implementation plans with risks and validation
+</span></span><span style="display:flex;"><span>tools: [&#34;read&#34;, &#34;search&#34;, &#34;edit&#34;]
+</span></span><span style="display:flex;"><span>user-invocable: true
+</span></span><span style="display:flex;"><span>disable-model-invocation: true
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>You are a planning specialist.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Always return:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Problem statement
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Constraints and assumptions
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Phased plan
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Test strategy
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Rollback strategy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Do not generate production code unless explicitly requested.
+</span></span></code></pre></div><h3 id="run-the-lab">
+  Run the lab
+  <a class="heading-link" href="#run-the-lab">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ol>
+<li>Select the custom agent in GitHub.com agents UI or IDE agent picker.</li>
+<li>Prompt: &ldquo;Plan migration from REST v1 to v2 for user search endpoint.&rdquo;</li>
+<li>Verify the response is planning-focused and does not drift into broad implementation.</li>
+</ol>
+<h3 id="quality-checks">
+  Quality checks
+  <a class="heading-link" href="#quality-checks">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>Plan includes risks and validation checkpoints.</li>
+<li>Tool usage remains scoped to planning needs.</li>
+<li>Output is reusable as a PR planning artifact.</li>
+</ul>
+<h1 id="key-takeaways">
+  Key takeaways
+  <a class="heading-link" href="#key-takeaways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li>Custom agents are the right abstraction for specialist, repeatable, tool-aware workflows.</li>
+<li>Keep each agent narrow in purpose and constrained in tools.</li>
+<li>Introduce MCP integrations only where they add clear capability value.</li>
+<li>Use session logs and versioned profile changes as part of governance.</li>
+<li>Build multiple small agents instead of one oversized generalist.</li>
+</ul>
+<h1 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents</a></li>
+<li><a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-custom-agents"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-custom-agents</a></li>
+<li><a href="https://docs.github.com/en/copilot/reference/custom-agents-configuration"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/reference/custom-agents-configuration</a></li>
+<li><a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/track-copilot-sessions"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/track-copilot-sessions</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/your-first-custom-agent"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/your-first-custom-agent</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/implementation-planner"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/implementation-planner</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/bug-fix-teammate"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/bug-fix-teammate</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/cleanup-specialist"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/cleanup-specialist</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

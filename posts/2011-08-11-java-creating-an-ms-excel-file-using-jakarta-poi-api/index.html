@@ -98,25 +98,25 @@ NB: To compile and run the above program you need to download the jakarta-poi ap
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Java - Creating an MS Excel File using Jakarta POI api">
-  <meta name="twitter:description" content="CreateXLFile.java
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Java - Creating an MS Excel File using Jakarta POI api">
+	<meta name="twitter:description" content="CreateXLFile.java
 import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import org.apache.poi.hssf.usermodel.HSSFCell; import org.apache.poi.hssf.usermodel.HSSFRow; import org.apache.poi.hssf.usermodel.HSSFSheet; import org.apache.poi.hssf.usermodel.HSSFWorkbook; /** * * @author dhanoopbhaskar */ public class CreateXLFile { HSSFWorkbook xlWorkbook = null; HSSFSheet xlSheet = null; HSSFRow xlRow = null; HSSFCell xlCell = null; FileOutputStream xlFileOutputStream = null; public CreateXLFile() { /** * creating a new MS Excel work book */ xlWorkbook = new HSSFWorkbook(); /** * creating a new sheet named &#34;my first sheet&#34; in the above created * work book */ xlSheet = xlWorkbook.createSheet(&#34;my first sheet&#34;); /** * creating a new row at index 0 in the new sheet */ xlRow = xlSheet.createRow(0); /** * creating a new cell/column in the row 0 * the index required is of type short and so it has been type casted * to short */ xlCell = xlRow.createCell((short) 0); /** * setting the type of data that can be accommodated in the cell * CELL_TYPE_STRING is a public static final int variable in the class * HSSFCell. */ xlCell.setCellType(HSSFCell.CELL_TYPE_STRING); /** * setting the content of the cell as &#34;The Insane Techie&#34; */ xlCell.setCellValue(&#34;The Insane Techie&#34;); /** * The so created instance of HSSFWorkbook is converted to a file using * the method write() in HSSFWorkbook.class passing the file output stream * of the file as the parameter. */ try { xlFileOutputStream = new FileOutputStream(&#34;myexcelfile.xls&#34;); xlWorkbook.write(xlFileOutputStream); /** * Note: I couldn&#39;t find the need to flush and close the stream, * that we usually do. So it can be concluded that the API provider * performs the task already. * * xlFileOutputStream.flush(); * xlFileOutputStream.close(); */ System.out.println(&#34;Your First Excel File has been successfully created!&#34;); } catch (FileNotFoundException ex) { System.out.println(ex.getMessage()); } catch (IOException ex) { System.out.println(ex.getMessage()); } } public static void main(String[] args) { new CreateXLFile(); } } NB: To compile and run the above program you need to download the jakarta-poi api. You can download from here…">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-08-11-java-creating-an-ms-excel-file-using-jakarta-poi-api/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="Java - Creating an MS Excel File using Jakarta POI api">
-  <meta property="og:description" content="CreateXLFile.java
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Java - Creating an MS Excel File using Jakarta POI api">
+	<meta property="og:description" content="CreateXLFile.java
 import java.io.FileNotFoundException; import java.io.FileOutputStream; import java.io.IOException; import org.apache.poi.hssf.usermodel.HSSFCell; import org.apache.poi.hssf.usermodel.HSSFRow; import org.apache.poi.hssf.usermodel.HSSFSheet; import org.apache.poi.hssf.usermodel.HSSFWorkbook; /** * * @author dhanoopbhaskar */ public class CreateXLFile { HSSFWorkbook xlWorkbook = null; HSSFSheet xlSheet = null; HSSFRow xlRow = null; HSSFCell xlCell = null; FileOutputStream xlFileOutputStream = null; public CreateXLFile() { /** * creating a new MS Excel work book */ xlWorkbook = new HSSFWorkbook(); /** * creating a new sheet named &#34;my first sheet&#34; in the above created * work book */ xlSheet = xlWorkbook.createSheet(&#34;my first sheet&#34;); /** * creating a new row at index 0 in the new sheet */ xlRow = xlSheet.createRow(0); /** * creating a new cell/column in the row 0 * the index required is of type short and so it has been type casted * to short */ xlCell = xlRow.createCell((short) 0); /** * setting the type of data that can be accommodated in the cell * CELL_TYPE_STRING is a public static final int variable in the class * HSSFCell. */ xlCell.setCellType(HSSFCell.CELL_TYPE_STRING); /** * setting the content of the cell as &#34;The Insane Techie&#34; */ xlCell.setCellValue(&#34;The Insane Techie&#34;); /** * The so created instance of HSSFWorkbook is converted to a file using * the method write() in HSSFWorkbook.class passing the file output stream * of the file as the parameter. */ try { xlFileOutputStream = new FileOutputStream(&#34;myexcelfile.xls&#34;); xlWorkbook.write(xlFileOutputStream); /** * Note: I couldn&#39;t find the need to flush and close the stream, * that we usually do. So it can be concluded that the API provider * performs the task already. * * xlFileOutputStream.flush(); * xlFileOutputStream.close(); */ System.out.println(&#34;Your First Excel File has been successfully created!&#34;); } catch (FileNotFoundException ex) { System.out.println(ex.getMessage()); } catch (IOException ex) { System.out.println(ex.getMessage()); } } public static void main(String[] args) { new CreateXLFile(); } } NB: To compile and run the above program you need to download the jakarta-poi api. You can download from here…">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2011-08-11T20:57:00+05:30">
-    <meta property="article:modified_time" content="2011-08-11T20:57:00+05:30">
-    <meta property="article:tag" content="Xls">
-    <meta property="article:tag" content="Excel">
-    <meta property="article:tag" content="Ms Excel">
-    <meta property="article:tag" content="Java">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2011-08-11T20:57:00+05:30">
+		<meta property="article:modified_time" content="2011-08-11T20:57:00+05:30">
+		<meta property="article:tag" content="Xls">
+		<meta property="article:tag" content="Excel">
+		<meta property="article:tag" content="Ms Excel">
+		<meta property="article:tag" content="Java">
 
 
 
@@ -283,7 +283,7 @@ import java.io.FileNotFoundException; import java.io.FileOutputStream; import ja
       <div class="post-content">
         
         <p><strong>CreateXLFile.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.FileNotFoundException;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.FileNotFoundException;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.FileOutputStream;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.IOException;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> org.apache.poi.hssf.usermodel.HSSFCell;
@@ -395,7 +395,7 @@ import java.io.FileNotFoundException; import java.io.FileOutputStream; import ja
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

@@ -2,13 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://dhanoopbhaskar.github.io/categories/</loc>
+    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-20-cookbook-analyze-security-with-copilot-chat/</loc>
+    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/categories/github-copilot/</loc>
+    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/github-copilot/</loc>
+    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/</loc>
+    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/categories/prompt-engineering/</loc>
+    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/prompt-engineering/</loc>
+    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/</loc>
+    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/</loc>
+    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-19-cookbook-testing-code-with-copilot-chat/</loc>
+    <lastmod>2026-05-19T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-18-cookbook-document-code-with-copilot-chat/</loc>
+    <lastmod>2026-05-18T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-17-cookbook-refactor-code-with-copilot-chat/</loc>
+    <lastmod>2026-05-17T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-16-cookbook-analyze-functionality-with-copilot-chat/</loc>
+    <lastmod>2026-05-16T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-15-cookbook-debug-errors-with-copilot-chat/</loc>
+    <lastmod>2026-05-15T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-14-cookbook-communicate-effectively-with-copilot-chat/</loc>
+    <lastmod>2026-05-14T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-13-copilot-chat-cookbook-foundations-and-complete-map/</loc>
+    <lastmod>2026-05-13T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-12-rollout-governance-and-observability-playbook/</loc>
+    <lastmod>2026-05-12T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-11-complete-catalog-of-19-customization-examples/</loc>
+    <lastmod>2026-05-11T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-10-custom-agents-in-depth/</loc>
+    <lastmod>2026-05-10T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-09-prompt-files-in-depth/</loc>
+    <lastmod>2026-05-09T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-08-custom-instructions-in-depth/</loc>
+    <lastmod>2026-05-08T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-05-07-copilot-customization-library-roadmap/</loc>
+    <lastmod>2026-05-07T19:10:00+05:30</lastmod>
+  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/analytics/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/analytics/</loc>
-    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/categories/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/data-science/</loc>
@@ -26,19 +89,10 @@
     <loc>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-melt/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
   </url><url>
-    <loc>https://dhanoopbhaskar.github.io/posts/</loc>
-    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/python/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/python/</loc>
-    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/tags/</loc>
-    <lastmod>2022-01-23T19:38:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/</loc>
     <lastmod>2022-01-23T19:38:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-pivot/</loc>

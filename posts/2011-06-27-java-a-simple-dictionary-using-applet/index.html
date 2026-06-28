@@ -90,23 +90,23 @@
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Java -  A simple dictionary using applet">
-  <meta name="twitter:description" content="This is a simple dictionary in which you can add words and their meanings and thereafter search for the same.
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Java -  A simple dictionary using applet">
+	<meta name="twitter:description" content="This is a simple dictionary in which you can add words and their meanings and thereafter search for the same.
 import java.awt.event.ActionEvent; import javax.swing.JButton; import javax.swing.JTextArea; import javax.swing.JTextField; /* * * @author dhanoopbhaskar */ public class Main extends javax.swing.JApplet implements java.awt.event.ActionListener { JTextField textField = null; JTextArea textArea = null; JButton addButton = null; JButton showButton = null; String[] words = null; String[] meanings = null; int ptr = -1; public Main() { initComponents(); setLayout(null); add(textArea); add(textField); add(addButton); add(showButton); } public void actionPerformed(ActionEvent e) { if(e.getSource() == addButton) { String word = textField.getText(); String meaning = textArea.getText(); words[&#43;&#43;ptr] = word; meanings[ptr] = meaning; textArea.setText(&#34;&#34;); textField.setText(&#34;&#34;); } if(e.getSource() == showButton) { String word = textField.getText(); String meaning = &#34;&#34;; boolean found = false; for(int i = 0 ; i &lt;= ptr ; i&#43;&#43;) { if(word.equalsIgnoreCase(words[i])) { textArea.setText(meanings[i]); found = true; } } if (found == false) { textArea.setText(&#34;Error: Not found !!!&#34;); } } } private void initComponents() { words = new String[20]; meanings = new String[20]; textField = new JTextField(20); textArea = new JTextArea(); addButton = new JButton(&#34;Add&#34;); showButton = new JButton(&#34;Show&#34;); addButton.addActionListener(this); showButton.addActionListener(this); textField.setBounds(5, 5, 250, 30); textArea.setBounds(5, 40, 250, 100); addButton.setBounds(5, 150, 70, 20); showButton.setBounds(185, 150, 70, 20); } }">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-06-27-java-a-simple-dictionary-using-applet/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="Java -  A simple dictionary using applet">
-  <meta property="og:description" content="This is a simple dictionary in which you can add words and their meanings and thereafter search for the same.
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Java -  A simple dictionary using applet">
+	<meta property="og:description" content="This is a simple dictionary in which you can add words and their meanings and thereafter search for the same.
 import java.awt.event.ActionEvent; import javax.swing.JButton; import javax.swing.JTextArea; import javax.swing.JTextField; /* * * @author dhanoopbhaskar */ public class Main extends javax.swing.JApplet implements java.awt.event.ActionListener { JTextField textField = null; JTextArea textArea = null; JButton addButton = null; JButton showButton = null; String[] words = null; String[] meanings = null; int ptr = -1; public Main() { initComponents(); setLayout(null); add(textArea); add(textField); add(addButton); add(showButton); } public void actionPerformed(ActionEvent e) { if(e.getSource() == addButton) { String word = textField.getText(); String meaning = textArea.getText(); words[&#43;&#43;ptr] = word; meanings[ptr] = meaning; textArea.setText(&#34;&#34;); textField.setText(&#34;&#34;); } if(e.getSource() == showButton) { String word = textField.getText(); String meaning = &#34;&#34;; boolean found = false; for(int i = 0 ; i &lt;= ptr ; i&#43;&#43;) { if(word.equalsIgnoreCase(words[i])) { textArea.setText(meanings[i]); found = true; } } if (found == false) { textArea.setText(&#34;Error: Not found !!!&#34;); } } } private void initComponents() { words = new String[20]; meanings = new String[20]; textField = new JTextField(20); textArea = new JTextArea(); addButton = new JButton(&#34;Add&#34;); showButton = new JButton(&#34;Show&#34;); addButton.addActionListener(this); showButton.addActionListener(this); textField.setBounds(5, 5, 250, 30); textArea.setBounds(5, 40, 250, 100); addButton.setBounds(5, 150, 70, 20); showButton.setBounds(185, 150, 70, 20); } }">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2011-06-27T18:52:00+05:30">
-    <meta property="article:modified_time" content="2011-06-27T18:52:00+05:30">
-    <meta property="article:tag" content="Applet">
-    <meta property="article:tag" content="Java">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2011-06-27T18:52:00+05:30">
+		<meta property="article:modified_time" content="2011-06-27T18:52:00+05:30">
+		<meta property="article:tag" content="Applet">
+		<meta property="article:tag" content="Java">
 
 
 
@@ -265,7 +265,7 @@ import java.awt.event.ActionEvent; import javax.swing.JButton; import javax.swin
       <div class="post-content">
         
         <p><em>This is a simple dictionary in which you can add words and their meanings and thereafter search for the same.</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.awt.event.ActionEvent;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.awt.event.ActionEvent;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> javax.swing.JButton;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> javax.swing.JTextArea;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> javax.swing.JTextField;
@@ -369,7 +369,7 @@ import java.awt.event.ActionEvent; import javax.swing.JButton; import javax.swin
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

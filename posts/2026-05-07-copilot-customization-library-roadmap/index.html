@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  GitHub Copilot Customization Library: A Practical Roadmap · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  GitHub Copilot and where customization fits
+  
+    
+    Link to heading
+  
+
+GitHub Copilot is an AI coding assistant built into GitHub.com, VS Code, JetBrains IDEs, and Visual Studio. It generates code completions in the editor, answers questions in a chat pane, reviews pull requests, and runs multi-step agent tasks.
+Out of the box, Copilot draws context from open files and the current conversation. That is enough for one-off tasks. But when a team wants consistent responses, enforced standards, and repeatable task automation, that out-of-the-box behavior needs to be shaped.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="GitHub Copilot Customization Library: A Practical Roadmap">
+	<meta name="twitter:description" content="GitHub Copilot and where customization fits Link to heading GitHub Copilot is an AI coding assistant built into GitHub.com, VS Code, JetBrains IDEs, and Visual Studio. It generates code completions in the editor, answers questions in a chat pane, reviews pull requests, and runs multi-step agent tasks.
+Out of the box, Copilot draws context from open files and the current conversation. That is enough for one-off tasks. But when a team wants consistent responses, enforced standards, and repeatable task automation, that out-of-the-box behavior needs to be shaped.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-07-copilot-customization-library-roadmap/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="GitHub Copilot Customization Library: A Practical Roadmap">
+	<meta property="og:description" content="GitHub Copilot and where customization fits Link to heading GitHub Copilot is an AI coding assistant built into GitHub.com, VS Code, JetBrains IDEs, and Visual Studio. It generates code completions in the editor, answers questions in a chat pane, reviews pull requests, and runs multi-step agent tasks.
+Out of the box, Copilot draws context from open files and the current conversation. That is enough for one-off tasks. But when a team wants consistent responses, enforced standards, and repeatable task automation, that out-of-the-box behavior needs to be shaped.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-05-07T19:10:00+05:30">
+		<meta property="article:modified_time" content="2026-05-07T19:10:00+05:30">
+		<meta property="article:tag" content="Github-Copilot">
+		<meta property="article:tag" content="Prompt-Engineering">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-05-07-copilot-customization-library-roadmap/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-05-07-copilot-customization-library-roadmap/">
+              GitHub Copilot Customization Library: A Practical Roadmap
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-05-07T19:10:00&#43;05:30">
+                May 7, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              8-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/github-copilot/">Github-Copilot</a>
+      <span class="separator">•</span>
+    <a href="/categories/prompt-engineering/">Prompt-Engineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/github-copilot/">Github-Copilot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/prompt-engineering/">Prompt-Engineering</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="github-copilot-and-where-customization-fits">
+  GitHub Copilot and where customization fits
+  <a class="heading-link" href="#github-copilot-and-where-customization-fits">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>GitHub Copilot is an AI coding assistant built into GitHub.com, VS Code, JetBrains IDEs, and Visual Studio. It generates code completions in the editor, answers questions in a chat pane, reviews pull requests, and runs multi-step agent tasks.</p>
+<p>Out of the box, Copilot draws context from open files and the current conversation. That is enough for one-off tasks. But when a team wants consistent responses, enforced standards, and repeatable task automation, that out-of-the-box behavior needs to be shaped.</p>
+<p>The Customization Library is the official set of tools and examples for doing exactly that.</p>
+<hr>
+<h1 id="why-this-roadmap-matters">
+  Why this roadmap matters
+  <a class="heading-link" href="#why-this-roadmap-matters">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>The Customization Library is not just a set of examples. It is a design system for how teams encode engineering standards, reusable workflows, and specialist AI behavior.</p>
+<p>If you apply the right customization type to the right problem, you get:</p>
+<ul>
+<li>Better response quality with less prompt repetition</li>
+<li>More predictable outputs across people and repositories</li>
+<li>Faster onboarding and less process drift</li>
+</ul>
+<p>If you apply the wrong one, you get noisy context, conflicting instructions, and brittle workflows.</p>
+<p>This post gives you a step-by-step decision model for choosing the right customization mechanism.</p>
+<h2 id="use-cases">
+  Use cases
+  <a class="heading-link" href="#use-cases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Teams establishing a practical mental model for Copilot customization layers</li>
+<li>Team leads defining standards for repository workflows</li>
+<li>Platform engineers designing reusable AI operating patterns</li>
+</ul>
+<h2 id="assumptions-for-this-series">
+  Assumptions for this series
+  <a class="heading-link" href="#assumptions-for-this-series">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>GitHub Copilot access in at least one surface (GitHub.com or a supported IDE)</li>
+<li>Permission to edit files in a test repository</li>
+<li>Basic familiarity with Markdown and pull requests</li>
+</ul>
+<p>The remaining posts in this series build on these assumptions instead of repeating them.</p>
+<h2 id="step-1-build-the-mental-model">
+  Step 1: Build the mental model
+  <a class="heading-link" href="#step-1-build-the-mental-model">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Copilot customization has three primary layers in the library:</p>
+<ol>
+<li>Custom instructions</li>
+<li>Prompt files</li>
+<li>Custom agents</li>
+</ol>
+<p>Each one answers a different question:</p>
+<ul>
+<li>Custom instructions: What should always be true?</li>
+<li>Prompt files: How should this specific task be executed?</li>
+<li>Custom agents: Who is the specialist that should own this workflow?</li>
+</ul>
+<h3 id="diagram-how-context-is-assembled">
+  Diagram: How context is assembled
+  <a class="heading-link" href="#diagram-how-context-is-assembled">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 360 345"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 248,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,32 L 248,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 328,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,144 L 328,144' fill='none' stroke='currentColor'></path>
+<path d='M 0,192 L 328,192' fill='none' stroke='currentColor'></path>
+<path d='M 0,240 L 328,240' fill='none' stroke='currentColor'></path>
+<path d='M 0,288 L 328,288' fill='none' stroke='currentColor'></path>
+<path d='M 0,320 L 328,320' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 0,144' fill='none' stroke='currentColor'></path>
+<path d='M 0,192 L 0,240' fill='none' stroke='currentColor'></path>
+<path d='M 0,288 L 0,320' fill='none' stroke='currentColor'></path>
+<path d='M 120,48 L 120,64' fill='none' stroke='currentColor'></path>
+<path d='M 120,160 L 120,176' fill='none' stroke='currentColor'></path>
+<path d='M 120,256 L 120,272' fill='none' stroke='currentColor'></path>
+<path d='M 248,0 L 248,32' fill='none' stroke='currentColor'></path>
+<path d='M 344,96 L 344,128' fill='none' stroke='currentColor'></path>
+<path d='M 344,208 L 344,224' fill='none' stroke='currentColor'></path>
+<path d='M 344,296 L 344,312' fill='none' stroke='currentColor'></path>
+<path d='M 120,40 L 120,48' fill='none' stroke='currentColor'></path>
+<path d='M 120,152 L 120,160' fill='none' stroke='currentColor'></path>
+<path d='M 120,248 L 120,256' fill='none' stroke='currentColor'></path>
+<path d='M 120,64 L 120,72' fill='none' stroke='currentColor'></path>
+<polygon points='136.000000,64.000000 124.000000,58.400002 124.000000,69.599998' fill='currentColor' transform='rotate(90.000000, 120.000000, 64.000000)'></polygon>
+<path d='M 120,176 L 120,184' fill='none' stroke='currentColor'></path>
+<polygon points='136.000000,176.000000 124.000000,170.399994 124.000000,181.600006' fill='currentColor' transform='rotate(90.000000, 120.000000, 176.000000)'></polygon>
+<path d='M 120,272 L 120,280' fill='none' stroke='currentColor'></path>
+<polygon points='136.000000,272.000000 124.000000,266.399994 124.000000,277.600006' fill='currentColor' transform='rotate(90.000000, 120.000000, 272.000000)'></polygon>
+<path d='M 328,80 A 16,16 0 0,1 344,96' fill='none' stroke='currentColor'></path>
+<path d='M 344,128 A 16,16 0 0,1 328,144' fill='none' stroke='currentColor'></path>
+<path d='M 328,192 A 16,16 0 0,1 344,208' fill='none' stroke='currentColor'></path>
+<path d='M 344,224 A 16,16 0 0,1 328,240' fill='none' stroke='currentColor'></path>
+<path d='M 328,288 A 16,16 0 0,1 344,304' fill='none' stroke='currentColor'></path>
+<path d='M 344,304 A 16,16 0 0,1 328,320' fill='none' stroke='currentColor'></path>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>U</text>
+<text text-anchor='middle' x='16' y='100' fill='currentColor' style='font-size:1em'>A</text>
+<text text-anchor='middle' x='16' y='116' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='16' y='132' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='16' y='212' fill='currentColor' style='font-size:1em'>O</text>
+<text text-anchor='middle' x='16' y='228' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='16' y='308' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='24' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='24' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='24' y='132' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='24' y='212' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='24' y='228' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='24' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='100' fill='currentColor' style='font-size:1em'>w</text>
+<text text-anchor='middle' x='32' y='116' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='32' y='132' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='212' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='32' y='228' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='32' y='308' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='40' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='40' y='100' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='40' y='116' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='40' y='132' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='40' y='212' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='40' y='228' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='40' y='308' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='48' y='100' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='48' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='48' y='132' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='48' y='212' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='48' y='228' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='48' y='308' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='56' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='56' y='116' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='56' y='132' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='56' y='212' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='56' y='228' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='56' y='308' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='64' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='64' y='100' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='64' y='116' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='212' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='308' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='72' y='20' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='72' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='72' y='116' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='72' y='132' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='72' y='212' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='72' y='228' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='72' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='80' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='80' y='100' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='80' y='132' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='80' y='228' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='88' y='116' fill='currentColor' style='font-size:1em'>+</text>
+<text text-anchor='middle' x='88' y='132' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='212' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='228' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='88' y='308' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='96' y='20' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='96' y='100' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='96' y='132' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='96' y='212' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='96' y='228' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='104' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='104' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='104' y='116' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='104' y='132' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='104' y='212' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='104' y='308' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='112' y='20' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='112' y='100' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='112' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='112' y='132' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='112' y='212' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='112' y='228' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='112' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='120' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='120' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='120' y='116' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='120' y='132' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='120' y='228' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='120' y='308' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='128' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='128' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='128' y='132' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='128' y='212' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='128' y='228' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='128' y='308' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='136' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='136' y='100' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='136' y='116' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='136' y='132' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='136' y='212' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='136' y='228' fill='currentColor' style='font-size:1em'>/</text>
+<text text-anchor='middle' x='136' y='308' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='144' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='144' y='116' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='132' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='144' y='212' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='144' y='228' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='144' y='308' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='152' y='116' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='152' y='132' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='152' y='212' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='152' y='228' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='152' y='308' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='160' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='160' y='132' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='160' y='212' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='160' y='308' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='168' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='168' y='116' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='168' y='212' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='168' y='228' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='176' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='176' y='116' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='176' y='212' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='176' y='228' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='176' y='308' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='184' y='228' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='184' y='308' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='192' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='192' y='116' fill='currentColor' style='font-size:1em'>+</text>
+<text text-anchor='middle' x='192' y='228' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='192' y='308' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='200' y='228' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='208' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='208' y='116' fill='currentColor' style='font-size:1em'>O</text>
+<text text-anchor='middle' x='208' y='228' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='208' y='308' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='216' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='216' y='116' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='216' y='228' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='216' y='308' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='224' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='224' y='116' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='224' y='228' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='224' y='308' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='232' y='20' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='232' y='116' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='232' y='308' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='240' y='116' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='240' y='228' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='248' y='116' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='248' y='228' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='248' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='256' y='116' fill='currentColor' style='font-size:1em'>z</text>
+<text text-anchor='middle' x='256' y='228' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='256' y='308' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='264' y='116' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='264' y='228' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='264' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='272' y='116' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='272' y='228' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='272' y='308' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='280' y='116' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='280' y='228' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='280' y='308' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='288' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='288' y='308' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='296' y='116' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='296' y='228' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='296' y='308' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='304' y='228' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='304' y='308' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='312' y='228' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='312' y='308' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='320' y='228' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='328' y='228' fill='currentColor' style='font-size:1em'>t</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="step-2-understand-scope-and-trigger">
+  Step 2: Understand scope and trigger
+  <a class="heading-link" href="#step-2-understand-scope-and-trigger">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The most common reason teams struggle is mixing scope and trigger.</p>
+<ul>
+<li>Scope asks: where should this rule apply?</li>
+<li>Trigger asks: when should it run?</li>
+</ul>
+<p>Use this map:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Customization type</th>
+					<th>Scope</th>
+					<th>Trigger style</th>
+					<th>Best fit</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Personal instructions</td>
+					<td>One user on GitHub Chat surfaces</td>
+					<td>Automatic</td>
+					<td>Personal communication preferences</td>
+			</tr>
+			<tr>
+					<td>Repository-wide instructions</td>
+					<td>Entire repo</td>
+					<td>Automatic</td>
+					<td>Coding conventions, architecture constraints</td>
+			</tr>
+			<tr>
+					<td>Path-specific instructions</td>
+					<td>Matching files/paths</td>
+					<td>Automatic</td>
+					<td>Language or folder-specific rules</td>
+			</tr>
+			<tr>
+					<td>Organization instructions</td>
+					<td>Organization-level</td>
+					<td>Automatic</td>
+					<td>Security/compliance defaults</td>
+			</tr>
+			<tr>
+					<td>Prompt files</td>
+					<td>Workspace/user prompt library</td>
+					<td>Manual slash command</td>
+					<td>Repeatable single tasks</td>
+			</tr>
+			<tr>
+					<td>Custom agents</td>
+					<td>Repo/org/enterprise profiles</td>
+					<td>Manual or model invocation</td>
+					<td>Persistent specialist persona with tool controls</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="step-3-start-with-a-layered-baseline">
+  Step 3: Start with a layered baseline
+  <a class="heading-link" href="#step-3-start-with-a-layered-baseline">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>A robust baseline usually follows this order:</p>
+<ol>
+<li>Add repository-wide instructions for shared defaults</li>
+<li>Add path-specific instruction files for high-variance areas</li>
+<li>Add prompt files for recurring workflows</li>
+<li>Add custom agents for specialist or multi-step workflows</li>
+</ol>
+<p>This order keeps your repository-wide context small and focused.</p>
+<h2 id="step-4-decide-with-a-simple-decision-tree">
+  Step 4: Decide with a simple decision tree
+  <a class="heading-link" href="#step-4-decide-with-a-simple-decision-tree">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Use this practical chooser:</p>
+<ol>
+<li>Is this a rule that should apply to most requests?
+Use custom instructions.</li>
+<li>Is this a repeatable task users trigger intentionally?
+Use a prompt file.</li>
+<li>Does this need a persistent specialist behavior, tool limits, or model controls?
+Use a custom agent.</li>
+</ol>
+<h3 id="diagram-decision-flow">
+  Diagram: Decision flow
+  <a class="heading-link" href="#diagram-decision-flow">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 576 297"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 280,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,32 L 280,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 280,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,112 L 280,112' fill='none' stroke='currentColor'></path>
+<path d='M 0,160 L 184,160' fill='none' stroke='currentColor'></path>
+<path d='M 216,160 L 464,160' fill='none' stroke='currentColor'></path>
+<path d='M 0,192 L 184,192' fill='none' stroke='currentColor'></path>
+<path d='M 216,192 L 464,192' fill='none' stroke='currentColor'></path>
+<path d='M 192,240 L 376,240' fill='none' stroke='currentColor'></path>
+<path d='M 408,240 L 560,240' fill='none' stroke='currentColor'></path>
+<path d='M 192,272 L 376,272' fill='none' stroke='currentColor'></path>
+<path d='M 408,272 L 560,272' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 0,112' fill='none' stroke='currentColor'></path>
+<path d='M 0,160 L 0,192' fill='none' stroke='currentColor'></path>
+<path d='M 120,48 L 120,64' fill='none' stroke='currentColor'></path>
+<path d='M 184,160 L 184,192' fill='none' stroke='currentColor'></path>
+<path d='M 192,240 L 192,272' fill='none' stroke='currentColor'></path>
+<path d='M 216,160 L 216,192' fill='none' stroke='currentColor'></path>
+<path d='M 280,0 L 280,32' fill='none' stroke='currentColor'></path>
+<path d='M 280,80 L 280,112' fill='none' stroke='currentColor'></path>
+<path d='M 376,240 L 376,272' fill='none' stroke='currentColor'></path>
+<path d='M 408,240 L 408,272' fill='none' stroke='currentColor'></path>
+<path d='M 464,160 L 464,192' fill='none' stroke='currentColor'></path>
+<path d='M 560,240 L 560,272' fill='none' stroke='currentColor'></path>
+<path d='M 120,40 L 120,48' fill='none' stroke='currentColor'></path>
+<path d='M 48,144 L 48,152' fill='none' stroke='currentColor'></path>
+<polygon points='64.000000,144.000000 52.000000,138.399994 52.000000,149.600006' fill='currentColor' transform='rotate(90.000000, 48.000000, 144.000000)'></polygon>
+<path d='M 120,64 L 120,72' fill='none' stroke='currentColor'></path>
+<polygon points='136.000000,64.000000 124.000000,58.400002 124.000000,69.599998' fill='currentColor' transform='rotate(90.000000, 120.000000, 64.000000)'></polygon>
+<path d='M 256,144 L 256,152' fill='none' stroke='currentColor'></path>
+<polygon points='272.000000,144.000000 260.000000,138.399994 260.000000,149.600006' fill='currentColor' transform='rotate(90.000000, 256.000000, 144.000000)'></polygon>
+<path d='M 264,224 L 264,232' fill='none' stroke='currentColor'></path>
+<polygon points='280.000000,224.000000 268.000000,218.399994 268.000000,229.600006' fill='currentColor' transform='rotate(90.000000, 264.000000, 224.000000)'></polygon>
+<path d='M 440,224 L 440,232' fill='none' stroke='currentColor'></path>
+<polygon points='456.000000,224.000000 444.000000,218.399994 444.000000,229.600006' fill='currentColor' transform='rotate(90.000000, 440.000000, 224.000000)'></polygon>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>N</text>
+<text text-anchor='middle' x='16' y='100' fill='currentColor' style='font-size:1em'>A</text>
+<text text-anchor='middle' x='16' y='180' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='24' y='100' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='24' y='180' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>w</text>
+<text text-anchor='middle' x='32' y='100' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='32' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='40' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='40' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='48' y='100' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='48' y='132' fill='currentColor' style='font-size:1em'>|</text>
+<text text-anchor='middle' x='48' y='180' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='56' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='56' y='180' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='64' y='20' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='64' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='64' y='132' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='72' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='72' y='132' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='72' y='180' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='80' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='80' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='80' y='132' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='80' y='180' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='88' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='88' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='88' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='96' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='96' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='100' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='104' y='180' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='112' y='20' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='112' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='112' y='180' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='120' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='120' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='120' y='180' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='128' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='128' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='136' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='136' y='180' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='144' y='100' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='144' y='180' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='152' y='20' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='152' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='152' y='180' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='160' y='100' fill='currentColor' style='font-size:1em'>q</text>
+<text text-anchor='middle' x='160' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='168' y='20' fill='currentColor' style='font-size:1em'>z</text>
+<text text-anchor='middle' x='168' y='100' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='176' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='176' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='184' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='184' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='192' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='192' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='200' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='200' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='208' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='208' y='100' fill='currentColor' style='font-size:1em'>?</text>
+<text text-anchor='middle' x='208' y='260' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='216' y='260' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='224' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='224' y='260' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='232' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='232' y='180' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='232' y='260' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='240' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='240' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='240' y='260' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='248' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='248' y='180' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='248' y='260' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='256' y='132' fill='currentColor' style='font-size:1em'>|</text>
+<text text-anchor='middle' x='256' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='264' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='264' y='212' fill='currentColor' style='font-size:1em'>|</text>
+<text text-anchor='middle' x='264' y='260' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='272' y='132' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='272' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='272' y='260' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='280' y='132' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='280' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='280' y='212' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='280' y='260' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='288' y='180' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='288' y='212' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='288' y='260' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='296' y='180' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='296' y='212' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='304' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='320' y='180' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='328' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='336' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='344' y='180' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='352' y='180' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='360' y='180' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='368' y='180' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='376' y='180' fill='currentColor' style='font-size:1em'>v</text>
+<text text-anchor='middle' x='384' y='180' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='392' y='180' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='400' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='408' y='180' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='424' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='424' y='260' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='432' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='432' y='260' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='440' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='440' y='212' fill='currentColor' style='font-size:1em'>|</text>
+<text text-anchor='middle' x='440' y='260' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='448' y='180' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='448' y='260' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='456' y='180' fill='currentColor' style='font-size:1em'>?</text>
+<text text-anchor='middle' x='456' y='212' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='456' y='260' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='464' y='212' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='464' y='260' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='480' y='260' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='488' y='260' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='496' y='260' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='504' y='260' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='512' y='260' fill='currentColor' style='font-size:1em'>t</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="step-5-use-minimal-starting-templates">
+  Step 5: Use minimal starting templates
+  <a class="heading-link" href="#step-5-use-minimal-starting-templates">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Use these as starter patterns and evolve them.</p>
+<h3 id="minimal-repository-wide-instruction">
+  Minimal repository-wide instruction
+  <a class="heading-link" href="#minimal-repository-wide-instruction">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Engineering defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Prefer small, testable functions with explicit error handling.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add or update tests for new behavior.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Use existing project conventions before introducing new patterns.
+</span></span></code></pre></div><h3 id="minimal-prompt-file">
+  Minimal prompt file
+  <a class="heading-link" href="#minimal-prompt-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>description: Generate a migration plan for a selected feature
+</span></span><span style="display:flex;"><span>agent: agent
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create a migration plan for ${input:feature:Describe the feature}.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Include:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Current state
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Risks
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Phased rollout
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Validation plan
+</span></span></code></pre></div><h3 id="minimal-custom-agent">
+  Minimal custom agent
+  <a class="heading-link" href="#minimal-custom-agent">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: implementation-planner
+</span></span><span style="display:flex;"><span>description: Breaks features into phases, risks, and acceptance criteria
+</span></span><span style="display:flex;"><span>tools: [&#34;read&#34;, &#34;search&#34;, &#34;edit&#34;]
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>You are a planning specialist.
+</span></span><span style="display:flex;"><span>Always produce:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Problem statement
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Constraints and assumptions
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Phased implementation plan
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Test and rollout strategy
+</span></span></code></pre></div><h2 id="step-6-run-one-complete-hands-on-lab">
+  Step 6: Run one complete hands-on lab
+  <a class="heading-link" href="#step-6-run-one-complete-hands-on-lab">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Set up this lab in a test repository to see how the three layers interact in practice.</p>
+<h3 id="lab-goal">
+  Lab goal
+  <a class="heading-link" href="#lab-goal">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Create one repository instruction, one prompt file, and one custom agent, then compare results on the same task.</p>
+<h3 id="setup-files">
+  Setup files
+  <a class="heading-link" href="#setup-files">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ol>
+<li>Create <code>.github/copilot-instructions.md</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Repo defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Use TypeScript for new source files.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Prefer explicit error handling.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Include tests for behavior changes.
+</span></span></code></pre></div><ol start="2">
+<li>Create <code>.github/prompts/review-api.prompt.md</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: review-api
+</span></span><span style="display:flex;"><span>description: Review selected API code for correctness and risks
+</span></span><span style="display:flex;"><span>agent: agent
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Review this code:
+</span></span><span style="display:flex;"><span>${selection}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Return sections:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Critical issues
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Suggested patch
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Tests to add
+</span></span></code></pre></div><ol start="3">
+<li>Create <code>.github/agents/implementation-planner.agent.md</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: implementation-planner
+</span></span><span style="display:flex;"><span>description: Produces implementation plans with risks and validation
+</span></span><span style="display:flex;"><span>tools: [&#34;read&#34;, &#34;search&#34;, &#34;edit&#34;]
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>You are a planning specialist.
+</span></span><span style="display:flex;"><span>Output:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Scope
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Risks
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Plan by phase
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Validation checklist
+</span></span></code></pre></div><h3 id="run-the-same-task-three-ways">
+  Run the same task three ways
+  <a class="heading-link" href="#run-the-same-task-three-ways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Task: &ldquo;Add pagination to listUsers endpoint.&rdquo;</p>
+<ol>
+<li>Ask Copilot without prompt file or custom agent.</li>
+<li>Run <code>/review-api</code> on the target file.</li>
+<li>Select the custom agent <code>implementation-planner</code> and ask for a phased plan.</li>
+</ol>
+<h3 id="compare-outcomes">
+  Compare outcomes
+  <a class="heading-link" href="#compare-outcomes">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>Consistency with repository coding rules</li>
+<li>Output structure and actionability</li>
+<li>Rework needed before opening a PR</li>
+</ul>
+<p>Running the same task three ways makes the tradeoffs between each layer immediately visible.</p>
+<h2 id="step-7-avoid-the-common-failure-modes">
+  Step 7: Avoid the common failure modes
+  <a class="heading-link" href="#step-7-avoid-the-common-failure-modes">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Most quality regressions in customization come from these issues:</p>
+<ul>
+<li>Overloaded global instructions with task-specific details</li>
+<li>Conflicting instructions between personal, repository, and organization layers</li>
+<li>Tool overexposure in custom agents</li>
+<li>Prompt files without explicit output format</li>
+<li>No validation loop for measuring whether customizations improved outcomes</li>
+</ul>
+<p>A useful rule: keep always-on instructions short and move complexity into prompt files and agents.</p>
+<h2 id="step-8-validate-in-short-feedback-cycles">
+  Step 8: Validate in short feedback cycles
+  <a class="heading-link" href="#step-8-validate-in-short-feedback-cycles">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Use a lightweight quality loop:</p>
+<ol>
+<li>Capture 3 to 5 representative tasks</li>
+<li>Run before/after outputs with and without customization</li>
+<li>Measure factual correctness, policy alignment, and rework rate</li>
+<li>Revise wording to remove ambiguity</li>
+<li>Keep a change log for customization files</li>
+</ol>
+<p>This gives you measurable quality gains without overengineering.</p>
+<h1 id="key-takeaways">
+  Key takeaways
+  <a class="heading-link" href="#key-takeaways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li>Treat custom instructions, prompt files, and custom agents as complementary layers, not substitutes.</li>
+<li>Start with repository-wide defaults, then add path-specific precision.</li>
+<li>Use prompt files for deterministic task reuse and custom agents for specialist autonomy.</li>
+<li>Keep always-on instruction context short and conflict-free.</li>
+<li>Validate with real tasks and iterate based on measurable outcomes.</li>
+</ul>
+<h1 id="what-to-read-next">
+  What to read next
+  <a class="heading-link" href="#what-to-read-next">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Each customization layer has its own post in this series:</p>
+<ul>
+<li><strong>Post 2</strong> — Custom instructions in depth: precedence, path-scoped files, and the nine library patterns.</li>
+<li><strong>Post 3</strong> — Prompt files in depth: frontmatter, input variables, tool resolution, and the six library examples.</li>
+<li><strong>Post 4</strong> — Custom agents in depth: profile anatomy, tool scoping, MCP servers, and the four library examples.</li>
+<li><strong>Post 5</strong> — Complete catalog of all 19 examples with adaptation tips and mini labs.</li>
+<li><strong>Post 6</strong> — Rollout, governance, and observability playbook for teams deploying customization at scale.</li>
+</ul>
+<h1 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/prompting/response-customization"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/concepts/prompting/response-customization</a></li>
+<li><a href="https://docs.github.com/en/copilot/how-tos/configure-custom-instructions"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/how-tos/configure-custom-instructions</a></li>
+<li><a href="https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/customization/prompt-files"  class="external-link" target="_blank" rel="noopener">https://code.visualstudio.com/docs/copilot/customization/prompt-files</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents</a></li>
+<li><a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-custom-agents"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-custom-agents</a></li>
+<li><a href="https://gohugo.io/documentation/"  class="external-link" target="_blank" rel="noopener">https://gohugo.io/documentation/</a></li>
+<li><a href="https://gohugo.io/content-management/front-matter/"  class="external-link" target="_blank" rel="noopener">https://gohugo.io/content-management/front-matter/</a></li>
+<li><a href="https://gohugo.io/content-management/diagrams/"  class="external-link" target="_blank" rel="noopener">https://gohugo.io/content-management/diagrams/</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

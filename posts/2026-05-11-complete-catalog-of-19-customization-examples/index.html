@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Complete Catalog: All 19 GitHub Copilot Customization Library Examples · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Why this catalog exists
+  
+    
+    Link to heading
+  
+
+The customization library includes 19 examples, but teams often need help turning them into day-to-day workflows.
+This catalog focuses on three things for each example:
+
+What problem it solves
+What design pattern it demonstrates
+How to adapt it without overfitting
+
+
+  Use cases
+  
+    
+    Link to heading
+  
+
+
+Developers who want one reference for the full customization library
+Team leads deciding where to start in production repositories
+Engineers who need examples they can run immediately
+
+
+  Coverage map
+  
+    
+    Link to heading
+  
+
+The 19 examples are split into three groups:">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Complete Catalog: All 19 GitHub Copilot Customization Library Examples">
+	<meta name="twitter:description" content="Why this catalog exists Link to heading The customization library includes 19 examples, but teams often need help turning them into day-to-day workflows.
+This catalog focuses on three things for each example:
+What problem it solves What design pattern it demonstrates How to adapt it without overfitting Use cases Link to heading Developers who want one reference for the full customization library Team leads deciding where to start in production repositories Engineers who need examples they can run immediately Coverage map Link to heading The 19 examples are split into three groups:">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-11-complete-catalog-of-19-customization-examples/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Complete Catalog: All 19 GitHub Copilot Customization Library Examples">
+	<meta property="og:description" content="Why this catalog exists Link to heading The customization library includes 19 examples, but teams often need help turning them into day-to-day workflows.
+This catalog focuses on three things for each example:
+What problem it solves What design pattern it demonstrates How to adapt it without overfitting Use cases Link to heading Developers who want one reference for the full customization library Team leads deciding where to start in production repositories Engineers who need examples they can run immediately Coverage map Link to heading The 19 examples are split into three groups:">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-05-11T19:10:00+05:30">
+		<meta property="article:modified_time" content="2026-05-11T19:10:00+05:30">
+		<meta property="article:tag" content="Github-Copilot">
+		<meta property="article:tag" content="Prompt-Engineering">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-05-11-complete-catalog-of-19-customization-examples/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-05-11-complete-catalog-of-19-customization-examples/">
+              Complete Catalog: All 19 GitHub Copilot Customization Library Examples
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-05-11T19:10:00&#43;05:30">
+                May 11, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              9-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/github-copilot/">Github-Copilot</a>
+      <span class="separator">•</span>
+    <a href="/categories/prompt-engineering/">Prompt-Engineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/github-copilot/">Github-Copilot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/prompt-engineering/">Prompt-Engineering</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="why-this-catalog-exists">
+  Why this catalog exists
+  <a class="heading-link" href="#why-this-catalog-exists">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>The customization library includes 19 examples, but teams often need help turning them into day-to-day workflows.</p>
+<p>This catalog focuses on three things for each example:</p>
+<ul>
+<li>What problem it solves</li>
+<li>What design pattern it demonstrates</li>
+<li>How to adapt it without overfitting</li>
+</ul>
+<h2 id="use-cases">
+  Use cases
+  <a class="heading-link" href="#use-cases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Developers who want one reference for the full customization library</li>
+<li>Team leads deciding where to start in production repositories</li>
+<li>Engineers who need examples they can run immediately</li>
+</ul>
+<h2 id="coverage-map">
+  Coverage map
+  <a class="heading-link" href="#coverage-map">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The 19 examples are split into three groups:</p>
+<ul>
+<li>9 custom instruction examples</li>
+<li>6 prompt file examples</li>
+<li>4 custom agent examples</li>
+</ul>
+<h3 id="diagram-library-coverage">
+  Diagram: Library coverage
+  <a class="heading-link" href="#diagram-library-coverage">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 424 153"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 248,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,32 L 248,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 96,80' fill='none' stroke='currentColor'></path>
+<path d='M 136,80 L 240,80' fill='none' stroke='currentColor'></path>
+<path d='M 280,80 L 392,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,128 L 96,128' fill='none' stroke='currentColor'></path>
+<path d='M 136,128 L 240,128' fill='none' stroke='currentColor'></path>
+<path d='M 280,128 L 392,128' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 0,128' fill='none' stroke='currentColor'></path>
+<path d='M 48,48 L 48,64' fill='none' stroke='currentColor'></path>
+<path d='M 112,96 L 112,112' fill='none' stroke='currentColor'></path>
+<path d='M 144,96 L 144,112' fill='none' stroke='currentColor'></path>
+<path d='M 176,48 L 176,64' fill='none' stroke='currentColor'></path>
+<path d='M 248,0 L 248,32' fill='none' stroke='currentColor'></path>
+<path d='M 256,96 L 256,112' fill='none' stroke='currentColor'></path>
+<path d='M 288,96 L 288,112' fill='none' stroke='currentColor'></path>
+<path d='M 304,48 L 304,64' fill='none' stroke='currentColor'></path>
+<path d='M 408,96 L 408,112' fill='none' stroke='currentColor'></path>
+<path d='M 48,40 L 48,48' fill='none' stroke='currentColor'></path>
+<path d='M 144,88 L 144,96' fill='none' stroke='currentColor'></path>
+<path d='M 144,112 L 144,120' fill='none' stroke='currentColor'></path>
+<path d='M 176,40 L 176,48' fill='none' stroke='currentColor'></path>
+<path d='M 288,88 L 288,96' fill='none' stroke='currentColor'></path>
+<path d='M 288,112 L 288,120' fill='none' stroke='currentColor'></path>
+<path d='M 48,64 L 48,72' fill='none' stroke='currentColor'></path>
+<polygon points='64.000000,64.000000 52.000000,58.400002 52.000000,69.599998' fill='currentColor' transform='rotate(90.000000, 48.000000, 64.000000)'></polygon>
+<path d='M 176,64 L 176,72' fill='none' stroke='currentColor'></path>
+<polygon points='192.000000,64.000000 180.000000,58.400002 180.000000,69.599998' fill='currentColor' transform='rotate(90.000000, 176.000000, 64.000000)'></polygon>
+<path d='M 304,64 L 304,72' fill='none' stroke='currentColor'></path>
+<polygon points='320.000000,64.000000 308.000000,58.400002 308.000000,69.599998' fill='currentColor' transform='rotate(90.000000, 304.000000, 64.000000)'></polygon>
+<path d='M 96,80 A 16,16 0 0,1 112,96' fill='none' stroke='currentColor'></path>
+<path d='M 240,80 A 16,16 0 0,1 256,96' fill='none' stroke='currentColor'></path>
+<path d='M 392,80 A 16,16 0 0,1 408,96' fill='none' stroke='currentColor'></path>
+<path d='M 112,112 A 16,16 0 0,1 96,128' fill='none' stroke='currentColor'></path>
+<path d='M 256,112 A 16,16 0 0,1 240,128' fill='none' stroke='currentColor'></path>
+<path d='M 408,112 A 16,16 0 0,1 392,128' fill='none' stroke='currentColor'></path>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='16' y='100' fill='currentColor' style='font-size:1em'>I</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='24' y='100' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='40' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='40' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='48' y='100' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='56' y='100' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='56' y='116' fill='currentColor' style='font-size:1em'>9</text>
+<text text-anchor='middle' x='64' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='64' y='100' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='72' y='20' fill='currentColor' style='font-size:1em'>z</text>
+<text text-anchor='middle' x='72' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='80' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='80' y='100' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='88' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='96' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='96' y='100' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='104' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='104' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='112' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>L</text>
+<text text-anchor='middle' x='136' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='152' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='160' y='100' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='168' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='168' y='100' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='176' y='20' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='176' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='184' y='100' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='192' y='20' fill='currentColor' style='font-size:1em'>(</text>
+<text text-anchor='middle' x='192' y='100' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='200' y='20' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='200' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='200' y='116' fill='currentColor' style='font-size:1em'>6</text>
+<text text-anchor='middle' x='208' y='20' fill='currentColor' style='font-size:1em'>9</text>
+<text text-anchor='middle' x='216' y='20' fill='currentColor' style='font-size:1em'>)</text>
+<text text-anchor='middle' x='216' y='100' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='224' y='100' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='232' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='240' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='248' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='304' y='100' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='312' y='100' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='320' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='328' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='336' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='344' y='100' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='352' y='116' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='360' y='100' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='368' y='100' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='376' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='384' y='100' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='392' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='400' y='100' fill='currentColor' style='font-size:1em'>s</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="part-a-custom-instructions-9">
+  Part A: Custom instructions (9)
+  <a class="heading-link" href="#part-a-custom-instructions-9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h2 id="1-your-first-custom-instructions">
+  1) Your first custom instructions
+  <a class="heading-link" href="#1-your-first-custom-instructions">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Start with simple, always-on coding preferences</li>
+<li>Compare behavior before and after adding instructions</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Broad standards in one baseline file</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Keep this file concise and move niche rules to path-specific instruction files.</li>
+</ul>
+<p><strong>Minimal working file</strong> — <code>.github/copilot-instructions.md</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Coding defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Use TypeScript for new source files.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Prefer early returns over nested conditionals.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Validate external inputs before processing.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add tests for new behavior and bug fixes.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Run lint and tests before finalizing changes.
+</span></span></code></pre></div><p>Ask Copilot to add a new API endpoint and compare the response with and without this file in place. The second response should include input validation and a test suggestion.</p>
+<h2 id="2-concept-explainer">
+  2) Concept explainer
+  <a class="heading-link" href="#2-concept-explainer">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Teaching-oriented explanation style</li>
+<li>Progressive complexity and practical examples</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Instruction-guided pedagogy for onboarding and docs</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add your team glossary and common misconceptions to reduce repeated clarification cycles.</li>
+</ul>
+<h2 id="3-debugging-tutor">
+  3) Debugging tutor
+  <a class="heading-link" href="#3-debugging-tutor">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Structured debugging process instead of guesswork</li>
+<li>Question-led diagnosis and reproducibility discipline</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Root-cause-first troubleshooting guidance</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add your stack-specific observability tools and log locations.</li>
+</ul>
+<h2 id="4-code-reviewer">
+  4) Code reviewer
+  <a class="heading-link" href="#4-code-reviewer">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Review lens across security, performance, and code quality</li>
+<li>Constructive and actionable feedback style</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Risk-prioritized review rubric</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Encode your merge-blocking criteria and severity conventions.</li>
+</ul>
+<p><strong>Minimal working file</strong> — <code>.github/copilot-instructions.md</code> extension or a dedicated instruction:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Code review lens
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When reviewing code:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Flag security issues first: unvalidated input, hardcoded secrets, unsafe deserialization.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Then flag performance: N+1 queries, unbounded loops, unnecessary allocations.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Then flag maintainability: names that obscure intent, duplication, missing error handling.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> For each finding, state: location, severity (Critical / Major / Minor), and one concrete fix.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> End with up to three positive observations.
+</span></span></code></pre></div><p>Pair this with the <code>review-code</code> prompt file (example 14) for an on-demand slash command.</p>
+<h2 id="5-github-actions-helper">
+  5) GitHub Actions helper
+  <a class="heading-link" href="#5-github-actions-helper">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Path-scoped instructions for workflow files</li>
+<li>Security-first CI guidance</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>File-targeted standards using applyTo</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add your organization-approved actions list and permission defaults.</li>
+</ul>
+<h2 id="6-pull-request-assistant">
+  6) Pull request assistant
+  <a class="heading-link" href="#6-pull-request-assistant">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Structured PR descriptions and review focus areas</li>
+<li>Review communication consistency</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Standardized PR narrative template</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add deployment checklist items specific to your environment.</li>
+</ul>
+<h2 id="7-issue-manager">
+  7) Issue manager
+  <a class="heading-link" href="#7-issue-manager">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Better bug and feature issue structure</li>
+<li>Actionable issue hygiene and triage signals</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Template-driven issue quality framework</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add required metadata fields for your backlog process.</li>
+</ul>
+<h2 id="8-accessibility-auditor">
+  8) Accessibility auditor
+  <a class="heading-link" href="#8-accessibility-auditor">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Accessibility-first generation and review criteria</li>
+<li>Practical checks for semantic structure and assistive tech support</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Path-specific domain constraints with testable rules</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add your required audit tooling in CI and manual QA checklists.</li>
+</ul>
+<h2 id="9-testing-automation">
+  9) Testing automation
+  <a class="heading-link" href="#9-testing-automation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Test authoring discipline with framework-specific guidance</li>
+<li>Edge-case and dependency-mocking patterns</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Tests-only path-specific instruction profile</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Align examples to your existing test directory and naming conventions.</li>
+</ul>
+<h2 id="part-b-prompt-files-6">
+  Part B: Prompt files (6)
+  <a class="heading-link" href="#part-b-prompt-files-6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h2 id="10-your-first-prompt-file">
+  10) Your first prompt file
+  <a class="heading-link" href="#10-your-first-prompt-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Prompt file anatomy with frontmatter and inputs</li>
+<li>Running a reusable slash command</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Interactive explanation workflow with user variables</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add output structure sections so explanations are easier to compare and review.</li>
+</ul>
+<p><strong>Minimal working file</strong> — <code>.github/prompts/explain-code.prompt.md</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: explain-code
+</span></span><span style="display:flex;"><span>description: Explain selected code with clear language and a usage example
+</span></span><span style="display:flex;"><span>argument-hint: detail=high|medium|low
+</span></span><span style="display:flex;"><span>agent: agent
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Explain the selected code with ${input:detail:medium} level of detail.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Code:
+</span></span><span style="display:flex;"><span>${selection}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Return exactly three sections:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> What it does (one paragraph)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> Step-by-step flow
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> One realistic usage example with inputs and expected output
+</span></span></code></pre></div><p>In VS Code, select a function in the editor, open Copilot Chat, run <code>/explain-code detail=high</code>, and press Enter. Because the prompt enforces structure, each response includes the same three sections and is easy to compare across files.</p>
+<h2 id="11-create-readme">
+  11) Create README
+  <a class="heading-link" href="#11-create-readme">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Repository-wide documentation synthesis workflow</li>
+<li>Scannable output structure and practical constraints</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Project analysis to targeted docs output</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add your required policy sections, such as support matrix and release process.</li>
+</ul>
+<h2 id="12-onboarding-plan">
+  12) Onboarding plan
+  <a class="heading-link" href="#12-onboarding-plan">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Phased onboarding decomposition</li>
+<li>Personalization using user inputs</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Multi-phase planning template</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add links to internal onboarding docs and starter issues.</li>
+</ul>
+<h2 id="13-document-api">
+  13) Document API
+  <a class="heading-link" href="#13-document-api">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>OpenAPI-oriented documentation generation</li>
+<li>Structured schema and response coverage requirements</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Output-constrained machine-readable documentation generation</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add API versioning and auth scheme rules used by your platform.</li>
+</ul>
+<h2 id="14-review-code">
+  14) Review code
+  <a class="heading-link" href="#14-review-code">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Structured review report output format</li>
+<li>Explicit issue classification</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Human-readable review report with severity buckets</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add acceptance thresholds for PR approval recommendations.</li>
+</ul>
+<h2 id="15-generate-unit-tests">
+  15) Generate unit tests
+  <a class="heading-link" href="#15-generate-unit-tests">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Behavioral test generation strategy</li>
+<li>Input, error, and side-effect coverage guidance</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Parameterized test generation task with framework selection</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Bind it to your project framework defaults to reduce setup friction.</li>
+</ul>
+<h2 id="part-c-custom-agents-4">
+  Part C: Custom agents (4)
+  <a class="heading-link" href="#part-c-custom-agents-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h2 id="16-your-first-custom-agent">
+  16) Your first custom agent
+  <a class="heading-link" href="#16-your-first-custom-agent">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Agent profile fundamentals</li>
+<li>Purpose-bound specialist behavior</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Documentation specialist with scoped responsibility</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Keep explicit non-goals in the prompt body to prevent scope drift.</li>
+</ul>
+<p><strong>Minimal working file</strong> — <code>.github/agents/readme-specialist.agent.md</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: readme-specialist
+</span></span><span style="display:flex;"><span>description: Reviews and improves README files for clarity and completeness
+</span></span><span style="display:flex;"><span>tools: [&#34;read&#34;, &#34;search&#34;, &#34;edit&#34;]
+</span></span><span style="display:flex;"><span>user-invocable: true
+</span></span><span style="display:flex;"><span>disable-model-invocation: true
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>You are a documentation specialist focused on README quality.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Always:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Assess the current README for missing sections (description, installation, usage, contributing, license).
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Suggest concrete additions or rewrites for unclear sections.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Keep language direct and scannable.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Do not:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Modify source code files.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Suggest infrastructure or architecture changes.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Generate content beyond the scope of the current repository.
+</span></span></code></pre></div><p>Select this agent in the GitHub.com Agents panel or the VS Code agent picker, then ask: &ldquo;Review the README and suggest improvements.&rdquo; The <code>disable-model-invocation: true</code> field keeps invocation explicit, so the agent does not auto-activate from general conversation context.</p>
+<h2 id="17-implementation-planner">
+  17) Implementation planner
+  <a class="heading-link" href="#17-implementation-planner">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Structured implementation planning format</li>
+<li>Phased decomposition with risks and constraints</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Plan-first specialist for pre-implementation design</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add your architecture decision template and acceptance criteria format.</li>
+</ul>
+<h2 id="18-bug-fix-teammate">
+  18) Bug fix teammate
+  <a class="heading-link" href="#18-bug-fix-teammate">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Root-cause bug resolution workflow</li>
+<li>Tight scope and minimal-change fix strategy</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Reliability specialist with implementation bias</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Add bug severity definitions and regression test expectations.</li>
+</ul>
+<h2 id="19-cleanup-specialist">
+  19) Cleanup specialist
+  <a class="heading-link" href="#19-cleanup-specialist">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>What it teaches:</p>
+<ul>
+<li>Maintainability cleanup and deduplication</li>
+<li>Scope-aware refactor hygiene</li>
+</ul>
+<p>Pattern:</p>
+<ul>
+<li>Safe simplification specialist</li>
+</ul>
+<p>Adaptation tip:</p>
+<ul>
+<li>Require before/after validation checks for any cleanup task.</li>
+</ul>
+<h2 id="cross-example-implementation-strategy">
+  Cross-example implementation strategy
+  <a class="heading-link" href="#cross-example-implementation-strategy">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>To operationalize all 19 examples safely:</p>
+<ol>
+<li>Start from one example per category</li>
+<li>Pilot in one repository</li>
+<li>Measure quality and cycle time changes</li>
+<li>Expand to adjacent workflows</li>
+<li>Standardize naming conventions and ownership</li>
+</ol>
+<h2 id="scenario-selector">
+  Scenario selector
+  <a class="heading-link" href="#scenario-selector">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Use this quick selector:</p>
+<ul>
+<li>Need always-on behavior: choose custom instruction pattern</li>
+<li>Need repeatable slash command: choose prompt file pattern</li>
+<li>Need specialist autonomous workflow: choose custom agent pattern</li>
+</ul>
+<h2 id="hands-on-mini-labs">
+  Hands-on mini labs
+  <a class="heading-link" href="#hands-on-mini-labs">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Run these three mini labs to convert the catalog into practical muscle memory.</p>
+<h3 id="lab-a-custom-instructions">
+  Lab A: Custom instructions
+  <a class="heading-link" href="#lab-a-custom-instructions">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Create <code>.github/copilot-instructions.md</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Team defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Prefer explicit error handling.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add tests for behavior changes.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Reuse existing modules before adding new abstractions.
+</span></span></code></pre></div><p>Ask Copilot: &ldquo;Add a <code>deleteUser</code> endpoint.&rdquo; Without the instruction file, the response is usually a bare skeleton. With it, expect explicit error handling, test guidance, and reuse of existing deletion logic.</p>
+<p><strong>What a good response looks like:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// Reuses existing db module pattern
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#e6db74">&#39;/users/:id&#39;</span>, <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">id</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">params</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">deleted</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">deleteUser</span>(<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">deleted</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">404</span>).<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;User not found&#39;</span>, <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;NOT_FOUND&#39;</span> });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">204</span>).<span style="color:#a6e22e">send</span>();
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">500</span>).<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Delete failed&#39;</span>, <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;DB_ERROR&#39;</span> });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Suggested test:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// DELETE /users/:id with unknown id → 404 NOT_FOUND
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// DELETE /users/:id with valid id  → 204 No Content
+</span></span></span></code></pre></div><p>Compared to the uninstructed version, this output adds error handling, structured error codes, and a concrete test suggestion.</p>
+<h3 id="lab-b-prompt-file">
+  Lab B: Prompt file
+  <a class="heading-link" href="#lab-b-prompt-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Create <code>.github/prompts/create-pr-summary.prompt.md</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: create-pr-summary
+</span></span><span style="display:flex;"><span>description: Generate a structured PR summary from selected changes
+</span></span><span style="display:flex;"><span>agent: agent
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create a PR summary for this diff:
+</span></span><span style="display:flex;"><span>${selection}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Return sections:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> What changed
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Why it changed
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Risks
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Validation steps
+</span></span></code></pre></div><p>Select a git diff in the editor, open Copilot Chat, and run <code>/create-pr-summary</code>. Run it on two different diffs and compare structure. Consistent sections are the main advantage over free-text prompting.</p>
+<h3 id="lab-c-custom-agent">
+  Lab C: Custom agent
+  <a class="heading-link" href="#lab-c-custom-agent">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Create <code>.github/agents/bug-fix-teammate.agent.md</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: bug-fix-teammate
+</span></span><span style="display:flex;"><span>description: Diagnoses root cause and proposes minimal fix
+</span></span><span style="display:flex;"><span>tools: [&#34;read&#34;, &#34;search&#34;, &#34;edit&#34;]
+</span></span><span style="display:flex;"><span>user-invocable: true
+</span></span><span style="display:flex;"><span>disable-model-invocation: true
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>You are a bug-fix specialist.
+</span></span><span style="display:flex;"><span>Always return:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Root cause
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Minimal patch plan
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Regression tests
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Do not rewrite unrelated code. Do not change behavior beyond the reported bug.
+</span></span></code></pre></div><p>Select the agent and describe a bug: &ldquo;The <code>calculateDiscount</code> function returns 0 for <code>corporate</code> tier even though it should return 15%.&rdquo; A well-scoped agent should identify the missing branch, propose a minimal patch, and list a regression test without refactoring unrelated code.</p>
+<p>When all three labs produce structured, scoped, and consistent outputs, you have a strong foundation for the remaining 16 patterns.</p>
+<h1 id="key-takeaways">
+  Key takeaways
+  <a class="heading-link" href="#key-takeaways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li>The 19 examples are pattern blueprints, not final production artifacts.</li>
+<li>Customize each example around your repository standards, process, and risk model.</li>
+<li>Keep global context small and move specificity into prompts and agents.</li>
+<li>Validate each adaptation with real tasks and track measurable quality signals.</li>
+<li>Roll out gradually: pilot, measure, expand.</li>
+</ul>
+<h1 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/your-first-custom-instructions"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/your-first-custom-instructions</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/concept-explainer"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/concept-explainer</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/debugging-tutor"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/debugging-tutor</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/code-reviewer"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/code-reviewer</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/github-actions-helper"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/github-actions-helper</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/pull-request-assistant"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/pull-request-assistant</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/issue-manager"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/issue-manager</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/accessibility-auditor"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/accessibility-auditor</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/testing-automation"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/testing-automation</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/your-first-prompt-file"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/your-first-prompt-file</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/create-readme"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/create-readme</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/onboarding-plan"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/onboarding-plan</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/document-api"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/document-api</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/review-code"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/review-code</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/generate-unit-tests"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/generate-unit-tests</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/your-first-custom-agent"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/your-first-custom-agent</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/implementation-planner"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/implementation-planner</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/bug-fix-teammate"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/bug-fix-teammate</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/cleanup-specialist"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents/cleanup-specialist</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

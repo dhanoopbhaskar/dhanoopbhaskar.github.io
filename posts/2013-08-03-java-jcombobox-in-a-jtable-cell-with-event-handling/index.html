@@ -42,25 +42,25 @@ For the JComboBox tableData to be accessible in the inner class&rsquo; method ac
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Java - JComboBox in a JTable cell (with event handling)">
-  <meta name="twitter:description" content="Please refer to the previous post here…
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Java - JComboBox in a JTable cell (with event handling)">
+	<meta name="twitter:description" content="Please refer to the previous post here…
 The function customizeTable() has been modified in order to include event handling functionality in the combo box.
 private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &#34;ComboBox&#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &#34;select gender&#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&#34;Male&#34;, &#34;Female&#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData.getSelectedItem(); JOptionPane.showMessageDialog(new JFrame(), item, &#34;Selected Item&#34;, JOptionPane.INFORMATION_MESSAGE); } }); dbTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(tableData)); dbTable.updateUI(); } For the JComboBox tableData to be accessible in the inner class’ method actionPerformed(), it should be declared in class level as below. (In the previous post, it’s declared locally).">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2013-08-03-java-jcombobox-in-a-jtable-cell-with-event-handling/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="Java - JComboBox in a JTable cell (with event handling)">
-  <meta property="og:description" content="Please refer to the previous post here…
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Java - JComboBox in a JTable cell (with event handling)">
+	<meta property="og:description" content="Please refer to the previous post here…
 The function customizeTable() has been modified in order to include event handling functionality in the combo box.
 private void customizeTable() { Object[] columnNames = new Object[1]; columnNames[0] = &#34;ComboBox&#34;; Object[][] rowData = new Object[1][1]; rowData[0][0] = &#34;select gender&#34;; DefaultTableModel tableModel = new DBTableModel(rowData, columnNames); dbTable.setModel(tableModel); String[] gender = {&#34;Male&#34;, &#34;Female&#34;}; tableData = new JComboBox(gender); tableData.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { String item = (String) tableData.getSelectedItem(); JOptionPane.showMessageDialog(new JFrame(), item, &#34;Selected Item&#34;, JOptionPane.INFORMATION_MESSAGE); } }); dbTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(tableData)); dbTable.updateUI(); } For the JComboBox tableData to be accessible in the inner class’ method actionPerformed(), it should be declared in class level as below. (In the previous post, it’s declared locally).">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2013-08-03T14:04:00+05:30">
-    <meta property="article:modified_time" content="2013-08-03T14:04:00+05:30">
-    <meta property="article:tag" content="Java">
-    <meta property="article:tag" content="Swing">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2013-08-03T14:04:00+05:30">
+		<meta property="article:modified_time" content="2013-08-03T14:04:00+05:30">
+		<meta property="article:tag" content="Java">
+		<meta property="article:tag" content="Swing">
 
 
 
@@ -222,7 +222,7 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
         
         <p>Please refer to the previous post <a href="/blog/2013-08-03-java-jcombobox-in-a-jtable-cell" >here&hellip;</a></p>
 <p>The function <code>customizeTable()</code> has been modified in order to include event handling functionality in the combo box.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">customizeTable</span>() {
 </span></span><span style="display:flex;"><span>            Object<span style="color:#f92672">[]</span> columnNames <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>;
 </span></span><span style="display:flex;"><span>            columnNames<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ComboBox&#34;</span>;
@@ -245,7 +245,7 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  </span></span></code></pre></div>
 <p>For the JComboBox tableData to be accessible in the inner class&rsquo; method <code>actionPerformed()</code>, it should be declared in class level as below. (In the previous post, it&rsquo;s declared locally).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainJFrame</span> <span style="color:#66d9ef">extends</span> javax.<span style="color:#a6e22e">swing</span>.<span style="color:#a6e22e">JFrame</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> JComboBox tableData <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
 </span></span><span style="display:flex;"><span>    .
@@ -287,7 +287,7 @@ private void customizeTable() { Object[] columnNames = new Object[1]; columnName
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

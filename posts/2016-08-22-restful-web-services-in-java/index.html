@@ -116,9 +116,9 @@ EmployeeAccessObject.java">
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="RESTful Web Services in Java">
-  <meta name="twitter:description" content="Read about REST here…
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="RESTful Web Services in Java">
+	<meta name="twitter:description" content="Read about REST here…
 In the example program REST is implemented using Jersey Framework.
 Download Jersey framework from here…
 I used Dynamic Web Project in Eclipse for coding. Extract jersey zip file and copy all the .jar files from api, ext, lib folders to WebContent/WEB-INF/lib folder.
@@ -126,24 +126,24 @@ Employee.java
 package in.theinsanetechie.rest; import java.io.Serializable; import javax.xml.bind.annotation.XmlElement; import javax.xml.bind.annotation.XmlRootElement; @XmlRootElement(name = &#34;employee&#34;) public class Employee implements Serializable { private static final long serialVersionUID = 1L; private int empcode; private String name; private String designation; private float basicpay; public Employee() { } public Employee(int empcode, String name, String designation, float basicpay) { super(); this.empcode = empcode; this.name = name; this.designation = designation; this.basicpay = basicpay; } public int getEmpcode() { return empcode; } @XmlElement public void setEmpcode(int empcode) { this.empcode = empcode; } public String getName() { return name; } @XmlElement public void setName(String name) { this.name = name; } public String getDesignation() { return designation; } @XmlElement public void setDesignation(String designation) { this.designation = designation; } public float getBasicpay() { return basicpay; } @XmlElement public void setBasicpay(float basicpay) { this.basicpay = basicpay; } @Override public boolean equals(Object obj) { if (this == obj) return true; if (obj == null) return false; if (getClass() != obj.getClass()) return false; Employee other = (Employee) obj; if (Float.floatToIntBits(basicpay) != Float.floatToIntBits(other.basicpay)) return false; if (designation == null) { if (other.designation != null) return false; } else if (!designation.equals(other.designation)) return false; if (empcode != other.empcode) return false; if (name == null) { if (other.name != null) return false; } else if (!name.equals(other.name)) return false; return true; } } EmployeeAccessObject.java">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2016-08-22-restful-web-services-in-java/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="RESTful Web Services in Java">
-  <meta property="og:description" content="Read about REST here…
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="RESTful Web Services in Java">
+	<meta property="og:description" content="Read about REST here…
 In the example program REST is implemented using Jersey Framework.
 Download Jersey framework from here…
 I used Dynamic Web Project in Eclipse for coding. Extract jersey zip file and copy all the .jar files from api, ext, lib folders to WebContent/WEB-INF/lib folder.
 Employee.java
 package in.theinsanetechie.rest; import java.io.Serializable; import javax.xml.bind.annotation.XmlElement; import javax.xml.bind.annotation.XmlRootElement; @XmlRootElement(name = &#34;employee&#34;) public class Employee implements Serializable { private static final long serialVersionUID = 1L; private int empcode; private String name; private String designation; private float basicpay; public Employee() { } public Employee(int empcode, String name, String designation, float basicpay) { super(); this.empcode = empcode; this.name = name; this.designation = designation; this.basicpay = basicpay; } public int getEmpcode() { return empcode; } @XmlElement public void setEmpcode(int empcode) { this.empcode = empcode; } public String getName() { return name; } @XmlElement public void setName(String name) { this.name = name; } public String getDesignation() { return designation; } @XmlElement public void setDesignation(String designation) { this.designation = designation; } public float getBasicpay() { return basicpay; } @XmlElement public void setBasicpay(float basicpay) { this.basicpay = basicpay; } @Override public boolean equals(Object obj) { if (this == obj) return true; if (obj == null) return false; if (getClass() != obj.getClass()) return false; Employee other = (Employee) obj; if (Float.floatToIntBits(basicpay) != Float.floatToIntBits(other.basicpay)) return false; if (designation == null) { if (other.designation != null) return false; } else if (!designation.equals(other.designation)) return false; if (empcode != other.empcode) return false; if (name == null) { if (other.name != null) return false; } else if (!name.equals(other.name)) return false; return true; } } EmployeeAccessObject.java">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2016-08-22T20:13:00+05:30">
-    <meta property="article:modified_time" content="2016-08-22T20:13:00+05:30">
-    <meta property="article:tag" content="REST">
-    <meta property="article:tag" content="Jersey">
-    <meta property="article:tag" content="Java Ws">
-    <meta property="article:tag" content="Web Services">
-    <meta property="article:tag" content="Java">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2016-08-22T20:13:00+05:30">
+		<meta property="article:modified_time" content="2016-08-22T20:13:00+05:30">
+		<meta property="article:tag" content="REST">
+		<meta property="article:tag" content="Jersey">
+		<meta property="article:tag" content="Java Ws">
+		<meta property="article:tag" content="Web Services">
+		<meta property="article:tag" content="Java">
 
 
 
@@ -324,7 +324,7 @@ I used <strong>Dynamic Web Project</strong> in <strong>Eclipse</strong> for codi
 zip file and copy all the <strong>.jar</strong> files from <strong>api</strong>, <strong>ext</strong>, <strong>lib</strong>
 folders to <strong>WebContent/WEB-INF/lib</strong> folder.</p>
 <p><strong>Employee.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
 </span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> in.theinsanetechie.rest;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.Serializable;
@@ -416,7 +416,7 @@ folders to <strong>WebContent/WEB-INF/lib</strong> folder.</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 <p><strong>EmployeeAccessObject.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
 </span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> in.theinsanetechie.rest;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.File;
@@ -534,7 +534,7 @@ folders to <strong>WebContent/WEB-INF/lib</strong> folder.</p>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 <p><strong>EmployeeService.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> in.theinsanetechie.rest;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> in.theinsanetechie.rest;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
@@ -624,7 +624,7 @@ folders to <strong>WebContent/WEB-INF/lib</strong> folder.</p>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>     </span></span></code></pre></div>
 <p><strong>WebServiceTester.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>     
 </span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> in.theinsanetechie.rest;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
@@ -733,7 +733,7 @@ folders to <strong>WebContent/WEB-INF/lib</strong> folder.</p>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 <p><strong>web.xml</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;web-app</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://java.sun.com/xml/ns/javaee&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://java.sun.com/xml/ns/javaee
@@ -785,7 +785,7 @@ folders to <strong>WebContent/WEB-INF/lib</strong> folder.</p>
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

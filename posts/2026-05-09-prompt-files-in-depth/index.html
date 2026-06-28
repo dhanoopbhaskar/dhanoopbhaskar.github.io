@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Prompt Files in Depth: Build Reusable Slash Commands That Actually Scale · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Why prompt files are a force multiplier
+  
+    
+    Link to heading
+  
+
+Prompt files let you turn ad-hoc prompting into reusable team workflows. Instead of rewriting the same long instruction every day, you package it once and run it as a slash command.
+They are ideal for high-frequency, bounded tasks such as:
+
+README generation
+code review reports
+API documentation generation
+test generation
+onboarding plans
+
+Prompt files are supported in VS Code, Visual Studio, and JetBrains IDEs. Verify support for your IDE version and Copilot plan in the official documentation before standardizing team workflows.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Prompt Files in Depth: Build Reusable Slash Commands That Actually Scale">
+	<meta name="twitter:description" content="Why prompt files are a force multiplier Link to heading Prompt files let you turn ad-hoc prompting into reusable team workflows. Instead of rewriting the same long instruction every day, you package it once and run it as a slash command.
+They are ideal for high-frequency, bounded tasks such as:
+README generation code review reports API documentation generation test generation onboarding plans Prompt files are supported in VS Code, Visual Studio, and JetBrains IDEs. Verify support for your IDE version and Copilot plan in the official documentation before standardizing team workflows.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-09-prompt-files-in-depth/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Prompt Files in Depth: Build Reusable Slash Commands That Actually Scale">
+	<meta property="og:description" content="Why prompt files are a force multiplier Link to heading Prompt files let you turn ad-hoc prompting into reusable team workflows. Instead of rewriting the same long instruction every day, you package it once and run it as a slash command.
+They are ideal for high-frequency, bounded tasks such as:
+README generation code review reports API documentation generation test generation onboarding plans Prompt files are supported in VS Code, Visual Studio, and JetBrains IDEs. Verify support for your IDE version and Copilot plan in the official documentation before standardizing team workflows.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-05-09T19:10:00+05:30">
+		<meta property="article:modified_time" content="2026-05-09T19:10:00+05:30">
+		<meta property="article:tag" content="Github-Copilot">
+		<meta property="article:tag" content="Prompt-Engineering">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-05-09-prompt-files-in-depth/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-05-09-prompt-files-in-depth/">
+              Prompt Files in Depth: Build Reusable Slash Commands That Actually Scale
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-05-09T19:10:00&#43;05:30">
+                May 9, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              6-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/github-copilot/">Github-Copilot</a>
+      <span class="separator">•</span>
+    <a href="/categories/prompt-engineering/">Prompt-Engineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/github-copilot/">Github-Copilot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/prompt-engineering/">Prompt-Engineering</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="why-prompt-files-are-a-force-multiplier">
+  Why prompt files are a force multiplier
+  <a class="heading-link" href="#why-prompt-files-are-a-force-multiplier">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Prompt files let you turn ad-hoc prompting into reusable team workflows. Instead of rewriting the same long instruction every day, you package it once and run it as a slash command.</p>
+<p>They are ideal for high-frequency, bounded tasks such as:</p>
+<ul>
+<li>README generation</li>
+<li>code review reports</li>
+<li>API documentation generation</li>
+<li>test generation</li>
+<li>onboarding plans</li>
+</ul>
+<p>Prompt files are supported in VS Code, Visual Studio, and JetBrains IDEs. Verify support for your IDE version and Copilot plan in the official documentation before standardizing team workflows.</p>
+<h2 id="use-cases">
+  Use cases
+  <a class="heading-link" href="#use-cases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Developers who repeat the same chat workflows every day</li>
+<li>Leads creating reusable slash-command workflows for teams</li>
+<li>Developers who want consistent, structured output from Copilot Chat</li>
+</ul>
+<h2 id="step-1-understand-where-prompt-files-live">
+  Step 1: Understand where prompt files live
+  <a class="heading-link" href="#step-1-understand-where-prompt-files-live">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Common locations:</p>
+<ul>
+<li>Workspace scope: .github/prompts</li>
+<li>User scope: profile-level prompt storage (IDE-managed)</li>
+</ul>
+<p>In VS Code, workspace discovery can be extended with configuration settings and monorepo parent discovery options.</p>
+<h2 id="step-2-learn-the-file-format">
+  Step 2: Learn the file format
+  <a class="heading-link" href="#step-2-learn-the-file-format">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Prompt files are Markdown files with <code>.prompt.md</code> extension and optional YAML frontmatter.</p>
+<p>Frequently used frontmatter fields:</p>
+<ul>
+<li><code>description</code> — shown in the slash-command picker and tooltips</li>
+<li><code>name</code> — controls the slash-command name (e.g., <code>name: review-code</code> → invoked as <code>/review-code</code>)</li>
+<li><code>argument-hint</code> — text shown in the chat input as a usage hint, e.g., <code>focus=security|performance</code></li>
+<li><code>agent</code> — set to <code>agent</code> to use the default Copilot agent, or a custom agent name for specialist routing</li>
+<li><code>model</code> — override the model for this prompt (optional)</li>
+<li><code>tools</code> — restrict tools available during this prompt&rsquo;s execution</li>
+</ul>
+<h3 id="minimal-file">
+  Minimal file
+  <a class="heading-link" href="#minimal-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>description: Explain selected code with clear language
+</span></span><span style="display:flex;"><span>agent: agent
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Explain the selected code:
+</span></span><span style="display:flex;"><span>${selection}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Include:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> What it does
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Step-by-step flow
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> One usage example
+</span></span></code></pre></div><h2 id="step-3-understand-tool-resolution-priority">
+  Step 3: Understand tool resolution priority
+  <a class="heading-link" href="#step-3-understand-tool-resolution-priority">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>If tools are declared in multiple places, the effective tool set follows priority:</p>
+<ol>
+<li>Tools in the prompt file</li>
+<li>Tools from the custom agent referenced by that prompt</li>
+<li>Default tools from selected/current agent</li>
+</ol>
+<p>This is one of the most important controls for reducing tool misuse in sensitive workflows.</p>
+<h3 id="diagram-tool-resolution">
+  Diagram: Tool resolution
+  <a class="heading-link" href="#diagram-tool-resolution">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 512 217"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 240,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,32 L 240,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 152,80' fill='none' stroke='currentColor'></path>
+<path d='M 184,80 L 432,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,112 L 152,112' fill='none' stroke='currentColor'></path>
+<path d='M 184,112 L 432,112' fill='none' stroke='currentColor'></path>
+<path d='M 176,160 L 328,160' fill='none' stroke='currentColor'></path>
+<path d='M 360,160 L 496,160' fill='none' stroke='currentColor'></path>
+<path d='M 176,192 L 328,192' fill='none' stroke='currentColor'></path>
+<path d='M 360,192 L 496,192' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 0,112' fill='none' stroke='currentColor'></path>
+<path d='M 152,80 L 152,112' fill='none' stroke='currentColor'></path>
+<path d='M 176,160 L 176,192' fill='none' stroke='currentColor'></path>
+<path d='M 184,80 L 184,112' fill='none' stroke='currentColor'></path>
+<path d='M 240,0 L 240,32' fill='none' stroke='currentColor'></path>
+<path d='M 328,160 L 328,192' fill='none' stroke='currentColor'></path>
+<path d='M 360,160 L 360,192' fill='none' stroke='currentColor'></path>
+<path d='M 432,80 L 432,112' fill='none' stroke='currentColor'></path>
+<path d='M 496,160 L 496,192' fill='none' stroke='currentColor'></path>
+<path d='M 64,64 L 64,72' fill='none' stroke='currentColor'></path>
+<polygon points='80.000000,64.000000 68.000000,58.400002 68.000000,69.599998' fill='currentColor' transform='rotate(90.000000, 64.000000, 64.000000)'></polygon>
+<path d='M 192,64 L 192,72' fill='none' stroke='currentColor'></path>
+<polygon points='208.000000,64.000000 196.000000,58.400002 196.000000,69.599998' fill='currentColor' transform='rotate(90.000000, 192.000000, 64.000000)'></polygon>
+<path d='M 240,144 L 240,152' fill='none' stroke='currentColor'></path>
+<polygon points='256.000000,144.000000 244.000000,138.399994 244.000000,149.600006' fill='currentColor' transform='rotate(90.000000, 240.000000, 144.000000)'></polygon>
+<path d='M 400,144 L 400,152' fill='none' stroke='currentColor'></path>
+<polygon points='416.000000,144.000000 404.000000,138.399994 404.000000,149.600006' fill='currentColor' transform='rotate(90.000000, 400.000000, 144.000000)'></polygon>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='16' y='100' fill='currentColor' style='font-size:1em'>U</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='24' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='32' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='20' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='48' y='100' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='56' y='100' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='64' y='52' fill='currentColor' style='font-size:1em'>|</text>
+<text text-anchor='middle' x='64' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='72' y='20' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='72' y='100' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='80' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='80' y='52' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='80' y='100' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='88' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='88' y='52' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='88' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='96' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='52' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='104' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='112' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='112' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='120' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='120' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='128' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='136' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='136' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='152' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='168' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='184' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='192' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='192' y='52' fill='currentColor' style='font-size:1em'>|</text>
+<text text-anchor='middle' x='192' y='180' fill='currentColor' style='font-size:1em'>U</text>
+<text text-anchor='middle' x='200' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='200' y='100' fill='currentColor' style='font-size:1em'>A</text>
+<text text-anchor='middle' x='200' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='208' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='208' y='52' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='208' y='100' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='208' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='216' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='216' y='52' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='216' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='224' y='20' fill='currentColor' style='font-size:1em'>?</text>
+<text text-anchor='middle' x='224' y='100' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='224' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='232' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='232' y='180' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='240' y='132' fill='currentColor' style='font-size:1em'>|</text>
+<text text-anchor='middle' x='240' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='248' y='100' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='248' y='180' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='256' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='256' y='132' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='256' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='264' y='100' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='264' y='132' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='272' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='272' y='132' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='272' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='280' y='100' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='280' y='180' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='288' y='100' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='288' y='180' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='296' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='296' y='180' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='304' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='304' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='320' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='328' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='336' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='344' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='352' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='360' y='100' fill='currentColor' style='font-size:1em'>?</text>
+<text text-anchor='middle' x='376' y='180' fill='currentColor' style='font-size:1em'>U</text>
+<text text-anchor='middle' x='384' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='392' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='400' y='132' fill='currentColor' style='font-size:1em'>|</text>
+<text text-anchor='middle' x='408' y='180' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='416' y='132' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='416' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='424' y='132' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='424' y='180' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='432' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='440' y='180' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='448' y='180' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='456' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='464' y='180' fill='currentColor' style='font-size:1em'>s</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="step-4-use-input-variables-for-flexibility">
+  Step 4: Use input variables for flexibility
+  <a class="heading-link" href="#step-4-use-input-variables-for-flexibility">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Prompt files become much more useful when you parameterize them.</p>
+<p>Common variable patterns:</p>
+<ul>
+<li>${selection} for selected editor text</li>
+<li>${input:name} for user-supplied values</li>
+<li>${input:name:placeholder text} for guided input</li>
+</ul>
+<h3 id="example-with-variables">
+  Example with variables
+  <a class="heading-link" href="#example-with-variables">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: review-code
+</span></span><span style="display:flex;"><span>description: Perform a structured code review report
+</span></span><span style="display:flex;"><span>agent: agent
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Review this code with focus on ${input:focus:security, performance, maintainability}.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Code:
+</span></span><span style="display:flex;"><span>${selection}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Return:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Critical issues
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Improvement suggestions
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Positive patterns
+</span></span></code></pre></div><h2 id="step-5-create-prompt-files-with-and-without-ai-assistance">
+  Step 5: Create prompt files with and without AI assistance
+  <a class="heading-link" href="#step-5-create-prompt-files-with-and-without-ai-assistance">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>In VS Code, practical creation paths include:</p>
+<ol>
+<li><strong>Manual authoring</strong> — Create the <code>.prompt.md</code> file directly in <code>.github/prompts/</code>. Add frontmatter fields and write the instruction body.</li>
+<li><strong>Convert a successful chat session</strong> — When you find a prompt that produced a reliably good output, save that exact prompt as a prompt file. This is the fastest way to build a library from real usage patterns.</li>
+<li><strong>Generate a template with Copilot</strong> — Ask Copilot Chat to draft a prompt file for a specific task. For example: <em>&ldquo;Create a prompt file that generates an OpenAPI spec summary for a selected API file. Include input variables for API version and output format.&rdquo;</em></li>
+</ol>
+<p>Treat any AI-generated prompt file as a draft. Before sharing it with a team, test it on at least two real inputs and verify the output structure matches what you actually want. The frontmatter is straightforward; the instruction body requires human judgment about scope and output constraints.</p>
+<h2 id="step-6-map-the-six-library-examples-to-real-world-use">
+  Step 6: Map the six library examples to real-world use
+  <a class="heading-link" href="#step-6-map-the-six-library-examples-to-real-world-use">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The customization library includes six prompt file examples. Here is how to use them strategically.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Example</th>
+					<th>Task shape</th>
+					<th>Suggested usage</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Your first prompt file</td>
+					<td>General explanation workflow</td>
+					<td>Internal knowledge sharing</td>
+			</tr>
+			<tr>
+					<td>Create README</td>
+					<td>Documentation synthesis</td>
+					<td>New repository initialization</td>
+			</tr>
+			<tr>
+					<td>Onboarding plan</td>
+					<td>Personalized phased guidance</td>
+					<td>New hire onboarding</td>
+			</tr>
+			<tr>
+					<td>Document API</td>
+					<td>OpenAPI-oriented documentation</td>
+					<td>API governance and docs automation</td>
+			</tr>
+			<tr>
+					<td>Review code</td>
+					<td>Structured report format</td>
+					<td>Manual quality gates before PR</td>
+			</tr>
+			<tr>
+					<td>Generate unit tests</td>
+					<td>Behavior-focused test generation</td>
+					<td>Fast regression coverage</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="step-7-design-for-deterministic-outputs">
+  Step 7: Design for deterministic outputs
+  <a class="heading-link" href="#step-7-design-for-deterministic-outputs">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>To improve repeatability:</p>
+<ul>
+<li>Define exact output structure</li>
+<li>Constrain scope explicitly</li>
+<li>Provide success criteria</li>
+<li>Include concrete examples of expected output</li>
+</ul>
+<p>Weak instruction:</p>
+<ul>
+<li>Review this code.</li>
+</ul>
+<p>Strong instruction:</p>
+<ul>
+<li>Review this file and output three sections: Critical issues, Suggested fixes with code snippets, and Positive practices. Prioritize security first.</li>
+</ul>
+<h2 id="step-8-adopt-a-publish-and-test-lifecycle">
+  Step 8: Adopt a publish-and-test lifecycle
+  <a class="heading-link" href="#step-8-adopt-a-publish-and-test-lifecycle">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>A practical team lifecycle:</p>
+<ol>
+<li>Draft prompt file</li>
+<li>Test against 3 real examples</li>
+<li>Collect feedback from 2 or more users</li>
+<li>Revise for clarity and edge cases</li>
+<li>Version in repository and document intended use</li>
+</ol>
+<p>Keep a lightweight changelog in prompt comments or adjacent docs for traceability.</p>
+<h2 id="step-9-avoid-prompt-file-anti-patterns">
+  Step 9: Avoid prompt file anti-patterns
+  <a class="heading-link" href="#step-9-avoid-prompt-file-anti-patterns">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Common anti-patterns:</p>
+<ul>
+<li>Repeating global conventions already covered by custom instructions</li>
+<li>Leaving outputs unconstrained, causing variable response formats</li>
+<li>Making prompts too broad, effectively replacing custom agents</li>
+<li>Not specifying focus areas when review rigor is required</li>
+</ul>
+<p>A reliable pattern is narrow prompts with explicit outputs and just enough inputs.</p>
+<h2 id="step-10-hands-on-lab">
+  Step 10: Hands-on lab
+  <a class="heading-link" href="#step-10-hands-on-lab">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Follow this exact lab to create, run, and verify one useful prompt file.</p>
+<h3 id="goal">
+  Goal
+  <a class="heading-link" href="#goal">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Create a reusable review prompt that always returns a structured report.</p>
+<h3 id="create-the-file">
+  Create the file
+  <a class="heading-link" href="#create-the-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Path: <code>.github/prompts/review-selected-code.prompt.md</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>name: review-selected-code
+</span></span><span style="display:flex;"><span>description: Structured review for selected code
+</span></span><span style="display:flex;"><span>argument-hint: focus=security|performance|maintainability
+</span></span><span style="display:flex;"><span>agent: agent
+</span></span><span style="display:flex;"><span>tools: [&#34;read&#34;, &#34;search&#34;]
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Review the selected code with focus on ${input:focus:maintainability}.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Code:
+</span></span><span style="display:flex;"><span>${selection}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Return exactly these sections:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> Findings (ordered by severity)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> Suggested patch
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> Tests to add
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> Residual risks
+</span></span></code></pre></div><h3 id="run-it">
+  Run it
+  <a class="heading-link" href="#run-it">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>In VS Code:</strong></p>
+<ol>
+<li>Open any source file and select a function with your cursor.</li>
+<li>Open the Copilot Chat panel (<code>Ctrl+Alt+I</code> / <code>Cmd+Alt+I</code>).</li>
+<li>Type <code>/review-selected-code</code> — the <code>argument-hint</code> value appears as placeholder text in the input field.</li>
+<li>Type <code>focus=security</code> after the slash command and press Enter.</li>
+<li>Copilot resolves <code>${selection}</code> automatically from your editor selection and <code>${input:focus}</code> from your typed argument.</li>
+</ol>
+<p>The response will always contain the four sections defined in the prompt file: Findings, Suggested patch, Tests to add, and Residual risks. That structure is guaranteed by the prompt — you do not need to remember to ask for each section manually.</p>
+<h3 id="validate-quality">
+  Validate quality
+  <a class="heading-link" href="#validate-quality">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>Run the prompt on two different files and compare consistency.</li>
+<li>Ensure recommendations are specific to the selected code, not generic.</li>
+<li>Update the prompt if you see repeated ambiguity.</li>
+</ul>
+<p>This lab covers the full prompt lifecycle — author, execute, evaluate, refine — in a single session.</p>
+<h1 id="key-takeaways">
+  Key takeaways
+  <a class="heading-link" href="#key-takeaways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li>Prompt files convert repeat work into reusable slash commands.</li>
+<li>Input variables dramatically improve reuse without sacrificing control.</li>
+<li>Tool priority rules are essential for safe execution boundaries.</li>
+<li>Library examples are best used as design patterns, not fixed templates.</li>
+<li>Test and iterate prompt files like production assets.</li>
+</ul>
+<h1 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/your-first-prompt-file"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/your-first-prompt-file</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/create-readme"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/create-readme</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/onboarding-plan"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/onboarding-plan</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/document-api"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/document-api</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/review-code"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/review-code</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/generate-unit-tests"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/generate-unit-tests</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/prompting/response-customization"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/concepts/prompting/response-customization</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/customization/prompt-files"  class="external-link" target="_blank" rel="noopener">https://code.visualstudio.com/docs/copilot/customization/prompt-files</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -138,27 +138,27 @@
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Java - Data Encryption Standard (DES) Algorithm">
-  <meta name="twitter:description" content="DESAlgorithm.java
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Java - Data Encryption Standard (DES) Algorithm">
+	<meta name="twitter:description" content="DESAlgorithm.java
 import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; /** * * @author dhanoopbhaskar */ public class DESAlgorithm { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; public DESAlgorithm() { try { /** * Create a DES key */ keyGenerator = KeyGenerator.getInstance(&#34;DES&#34;); secretKey = keyGenerator.generateKey(); /** * Create an instance of cipher providing the following info * separated by slash. * * - Algorithm name * - Mode (optional) * - Padding scheme (optional) * * NB: * DES = Data Encryption Standard. * ECB = Electronic Codebook mode. * PKCS5Padding = PKCS #5-style padding. */ cipher = Cipher.getInstance(&#34;DES/ECB/PKCS5Padding&#34;); } catch (NoSuchPaddingException ex) { System.out.println(ex); } catch (NoSuchAlgorithmException ex) { System.out.println(ex); } } /** * * @param plainText * @return cipherText */ public byte[] encryptText(String plainText) { byte[] cipherText = null; try { /** * Initialize the cipher for encryption */ cipher.init(Cipher.ENCRYPT_MODE, secretKey); /** * Convert the text string to byte format */ byte[] plainBytes = plainText.getBytes(); /** * Perform encryption with method doFinal() */ cipherText = cipher.doFinal(plainBytes); } catch (IllegalBlockSizeException ex) { System.out.println(ex); } catch (BadPaddingException ex) { System.out.println(ex); } catch (InvalidKeyException ex) { System.out.println(ex); } return cipherText; } /** * * @param cipherText * @return plainText */ public String decryptText(byte[] cipherText) { String plainText = null; try { /** * Initialize the cipher for decryption */ cipher.init(Cipher.DECRYPT_MODE, secretKey); /** * Perform decryption with method doFinal() */ byte[] plainBytes = cipher.doFinal(cipherText); /** * Convert encrypted text to string format */ plainText = new String(plainBytes); } catch (IllegalBlockSizeException ex) { System.out.println(ex); } catch (BadPaddingException ex) { System.out.println(ex); } catch (InvalidKeyException ex) { System.out.println(ex); } return plainText; } public static void main(String[] args) { DESAlgorithm desAlgorithm = new DESAlgorithm(); String textToEncrypt = &#34;DES Algorithm&#34;; System.out.println(&#34;Text before Encryption: &#34; &#43; textToEncrypt); byte[] cipherText = desAlgorithm.encryptText(textToEncrypt); System.out.println(&#34;Cipher Text[bytes]: &#34; &#43; cipherText); String textDecrypted = desAlgorithm.decryptText(cipherText); System.out.println(&#34;Text after Decryption: &#34; &#43; textDecrypted); } }">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-09-20-java-data-encryption-standard-des-algorithm/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="Java - Data Encryption Standard (DES) Algorithm">
-  <meta property="og:description" content="DESAlgorithm.java
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Java - Data Encryption Standard (DES) Algorithm">
+	<meta property="og:description" content="DESAlgorithm.java
 import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmException; import javax.crypto.BadPaddingException; import javax.crypto.Cipher; import javax.crypto.IllegalBlockSizeException; import javax.crypto.KeyGenerator; import javax.crypto.NoSuchPaddingException; import javax.crypto.SecretKey; /** * * @author dhanoopbhaskar */ public class DESAlgorithm { KeyGenerator keyGenerator = null; SecretKey secretKey = null; Cipher cipher = null; public DESAlgorithm() { try { /** * Create a DES key */ keyGenerator = KeyGenerator.getInstance(&#34;DES&#34;); secretKey = keyGenerator.generateKey(); /** * Create an instance of cipher providing the following info * separated by slash. * * - Algorithm name * - Mode (optional) * - Padding scheme (optional) * * NB: * DES = Data Encryption Standard. * ECB = Electronic Codebook mode. * PKCS5Padding = PKCS #5-style padding. */ cipher = Cipher.getInstance(&#34;DES/ECB/PKCS5Padding&#34;); } catch (NoSuchPaddingException ex) { System.out.println(ex); } catch (NoSuchAlgorithmException ex) { System.out.println(ex); } } /** * * @param plainText * @return cipherText */ public byte[] encryptText(String plainText) { byte[] cipherText = null; try { /** * Initialize the cipher for encryption */ cipher.init(Cipher.ENCRYPT_MODE, secretKey); /** * Convert the text string to byte format */ byte[] plainBytes = plainText.getBytes(); /** * Perform encryption with method doFinal() */ cipherText = cipher.doFinal(plainBytes); } catch (IllegalBlockSizeException ex) { System.out.println(ex); } catch (BadPaddingException ex) { System.out.println(ex); } catch (InvalidKeyException ex) { System.out.println(ex); } return cipherText; } /** * * @param cipherText * @return plainText */ public String decryptText(byte[] cipherText) { String plainText = null; try { /** * Initialize the cipher for decryption */ cipher.init(Cipher.DECRYPT_MODE, secretKey); /** * Perform decryption with method doFinal() */ byte[] plainBytes = cipher.doFinal(cipherText); /** * Convert encrypted text to string format */ plainText = new String(plainBytes); } catch (IllegalBlockSizeException ex) { System.out.println(ex); } catch (BadPaddingException ex) { System.out.println(ex); } catch (InvalidKeyException ex) { System.out.println(ex); } return plainText; } public static void main(String[] args) { DESAlgorithm desAlgorithm = new DESAlgorithm(); String textToEncrypt = &#34;DES Algorithm&#34;; System.out.println(&#34;Text before Encryption: &#34; &#43; textToEncrypt); byte[] cipherText = desAlgorithm.encryptText(textToEncrypt); System.out.println(&#34;Cipher Text[bytes]: &#34; &#43; cipherText); String textDecrypted = desAlgorithm.decryptText(cipherText); System.out.println(&#34;Text after Decryption: &#34; &#43; textDecrypted); } }">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2011-09-20T14:27:00+05:30">
-    <meta property="article:modified_time" content="2011-09-20T14:27:00+05:30">
-    <meta property="article:tag" content="Des Algorithm">
-    <meta property="article:tag" content="Encryption">
-    <meta property="article:tag" content="Crypto">
-    <meta property="article:tag" content="Decryption">
-    <meta property="article:tag" content="Cryptography">
-    <meta property="article:tag" content="Java">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2011-09-20T14:27:00+05:30">
+		<meta property="article:modified_time" content="2011-09-20T14:27:00+05:30">
+		<meta property="article:tag" content="Des Algorithm">
+		<meta property="article:tag" content="Encryption">
+		<meta property="article:tag" content="Crypto">
+		<meta property="article:tag" content="Decryption">
+		<meta property="article:tag" content="Cryptography">
+		<meta property="article:tag" content="Java">
 
 
 
@@ -337,7 +337,7 @@ import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmEx
       <div class="post-content">
         
         <p><strong>DESAlgorithm.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.security.InvalidKeyException;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.security.InvalidKeyException;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.security.NoSuchAlgorithmException;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> javax.crypto.BadPaddingException;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> javax.crypto.Cipher;
@@ -489,7 +489,7 @@ import java.security.InvalidKeyException; import java.security.NoSuchAlgorithmEx
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

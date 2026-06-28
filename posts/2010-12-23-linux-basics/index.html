@@ -14,93 +14,93 @@
 
 <meta name="author" content="Dhanoop Bhaskar">
 <meta name="description" content="
-  
-      
-          Character
-          Description
-      
-  
-  
-      
-          \
-          Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: touch /tmp/filename\*
-      
-      
-          /
-          Directory separator, used to separate a string of directory names. Example: /usr/src/linux
-      
-      
-          .
-          dot denotes current directory. Can also “hide” files when it is the first character in a filename.
-      
-      
-          ..
-          2 dots denote parent directory
-      
-      
-          ~
-          User&rsquo;s home directory
-      
-      
-          *
-          Represents 0 or more characters in a filename, or by itself, all files in a directory. Example: pic*2002 can represent the files pic2002, picJanuary2002, picFeb292002, etc.
-      
-      
-          ?
-          Represents a single character in a filename. Example: hello?.txt can represent hello1.txt and helloz.txt but not hello22.txt
-      
-      
-          [ ]
-          Can be used to represent a range of values. Example: hello[0-2].txt represents the names hello0.txt, hello1.txt and hello2.txt
-      
-      
-          |
-          Pipe. Redirect the output of one command into another command. Example: `ls
-      
-      
-          &gt;
-          Redirect output of a command into a new file. If the file already exists, over-write it. Example: ls &gt; myfiles.txt
-      
-      
-          &gt;&gt;
-          Redirect the output of a command onto the end of an existing file. Example: echo .Mary 555-1234. &gt;&gt; phonenumbers.txt
-      
-      
-          &lt;
-          Redirect a file as input to a program. Example: more &lt; phonenumbers.txt
-      
-      
-          ;
-          Command separator. Allows you to execute multiple commands on a single line. Example: cd /var/log ; less messages
-      
-      
-          &amp;&amp;
-          Command separator as above, but only runs the second command if the first one finished without errors. Example: cd /var/logs &amp;&amp; less messages
-      
-      
-          &amp;
-          Execute a command in the background, and immediately get your shell back. Example: find / -name core &gt; /tmp/corefiles.txt &amp;
-      
-  
+	
+			
+					Character
+					Description
+			
+	
+	
+			
+					\
+					Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: touch /tmp/filename\*
+			
+			
+					/
+					Directory separator, used to separate a string of directory names. Example: /usr/src/linux
+			
+			
+					.
+					dot denotes current directory. Can also “hide” files when it is the first character in a filename.
+			
+			
+					..
+					2 dots denote parent directory
+			
+			
+					~
+					User&rsquo;s home directory
+			
+			
+					*
+					Represents 0 or more characters in a filename, or by itself, all files in a directory. Example: pic*2002 can represent the files pic2002, picJanuary2002, picFeb292002, etc.
+			
+			
+					?
+					Represents a single character in a filename. Example: hello?.txt can represent hello1.txt and helloz.txt but not hello22.txt
+			
+			
+					[ ]
+					Can be used to represent a range of values. Example: hello[0-2].txt represents the names hello0.txt, hello1.txt and hello2.txt
+			
+			
+					|
+					Pipe. Redirect the output of one command into another command. Example: `ls
+			
+			
+					&gt;
+					Redirect output of a command into a new file. If the file already exists, over-write it. Example: ls &gt; myfiles.txt
+			
+			
+					&gt;&gt;
+					Redirect the output of a command onto the end of an existing file. Example: echo .Mary 555-1234. &gt;&gt; phonenumbers.txt
+			
+			
+					&lt;
+					Redirect a file as input to a program. Example: more &lt; phonenumbers.txt
+			
+			
+					;
+					Command separator. Allows you to execute multiple commands on a single line. Example: cd /var/log ; less messages
+			
+			
+					&amp;&amp;
+					Command separator as above, but only runs the second command if the first one finished without errors. Example: cd /var/logs &amp;&amp; less messages
+			
+			
+					&amp;
+					Execute a command in the background, and immediately get your shell back. Example: find / -name core &gt; /tmp/corefiles.txt &amp;
+			
+	
 ">
 <meta name="keywords" content="">
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Linux-basics">
-  <meta name="twitter:description" content="Character Description \ Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: touch /tmp/filename\* / Directory separator, used to separate a string of directory names. Example: /usr/src/linux . dot denotes current directory. Can also “hide” files when it is the first character in a filename. .. 2 dots denote parent directory ~ User’s home directory * Represents 0 or more characters in a filename, or by itself, all files in a directory. Example: pic*2002 can represent the files pic2002, picJanuary2002, picFeb292002, etc. ? Represents a single character in a filename. Example: hello?.txt can represent hello1.txt and helloz.txt but not hello22.txt [ ] Can be used to represent a range of values. Example: hello[0-2].txt represents the names hello0.txt, hello1.txt and hello2.txt | Pipe. Redirect the output of one command into another command. Example: `ls &gt; Redirect output of a command into a new file. If the file already exists, over-write it. Example: ls &gt; myfiles.txt &gt;&gt; Redirect the output of a command onto the end of an existing file. Example: echo .Mary 555-1234. &gt;&gt; phonenumbers.txt &lt; Redirect a file as input to a program. Example: more &lt; phonenumbers.txt ; Command separator. Allows you to execute multiple commands on a single line. Example: cd /var/log ; less messages &amp;&amp; Command separator as above, but only runs the second command if the first one finished without errors. Example: cd /var/logs &amp;&amp; less messages &amp; Execute a command in the background, and immediately get your shell back. Example: find / -name core &gt; /tmp/corefiles.txt &amp;">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Linux-basics">
+	<meta name="twitter:description" content="Character Description \ Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: touch /tmp/filename\* / Directory separator, used to separate a string of directory names. Example: /usr/src/linux . dot denotes current directory. Can also “hide” files when it is the first character in a filename. .. 2 dots denote parent directory ~ User’s home directory * Represents 0 or more characters in a filename, or by itself, all files in a directory. Example: pic*2002 can represent the files pic2002, picJanuary2002, picFeb292002, etc. ? Represents a single character in a filename. Example: hello?.txt can represent hello1.txt and helloz.txt but not hello22.txt [ ] Can be used to represent a range of values. Example: hello[0-2].txt represents the names hello0.txt, hello1.txt and hello2.txt | Pipe. Redirect the output of one command into another command. Example: `ls &gt; Redirect output of a command into a new file. If the file already exists, over-write it. Example: ls &gt; myfiles.txt &gt;&gt; Redirect the output of a command onto the end of an existing file. Example: echo .Mary 555-1234. &gt;&gt; phonenumbers.txt &lt; Redirect a file as input to a program. Example: more &lt; phonenumbers.txt ; Command separator. Allows you to execute multiple commands on a single line. Example: cd /var/log ; less messages &amp;&amp; Command separator as above, but only runs the second command if the first one finished without errors. Example: cd /var/logs &amp;&amp; less messages &amp; Execute a command in the background, and immediately get your shell back. Example: find / -name core &gt; /tmp/corefiles.txt &amp;">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2010-12-23-linux-basics/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="Linux-basics">
-  <meta property="og:description" content="Character Description \ Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: touch /tmp/filename\* / Directory separator, used to separate a string of directory names. Example: /usr/src/linux . dot denotes current directory. Can also “hide” files when it is the first character in a filename. .. 2 dots denote parent directory ~ User’s home directory * Represents 0 or more characters in a filename, or by itself, all files in a directory. Example: pic*2002 can represent the files pic2002, picJanuary2002, picFeb292002, etc. ? Represents a single character in a filename. Example: hello?.txt can represent hello1.txt and helloz.txt but not hello22.txt [ ] Can be used to represent a range of values. Example: hello[0-2].txt represents the names hello0.txt, hello1.txt and hello2.txt | Pipe. Redirect the output of one command into another command. Example: `ls &gt; Redirect output of a command into a new file. If the file already exists, over-write it. Example: ls &gt; myfiles.txt &gt;&gt; Redirect the output of a command onto the end of an existing file. Example: echo .Mary 555-1234. &gt;&gt; phonenumbers.txt &lt; Redirect a file as input to a program. Example: more &lt; phonenumbers.txt ; Command separator. Allows you to execute multiple commands on a single line. Example: cd /var/log ; less messages &amp;&amp; Command separator as above, but only runs the second command if the first one finished without errors. Example: cd /var/logs &amp;&amp; less messages &amp; Execute a command in the background, and immediately get your shell back. Example: find / -name core &gt; /tmp/corefiles.txt &amp;">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2010-12-23T21:40:00+05:30">
-    <meta property="article:modified_time" content="2010-12-23T21:40:00+05:30">
-    <meta property="article:tag" content="Linux">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Linux-basics">
+	<meta property="og:description" content="Character Description \ Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: touch /tmp/filename\* / Directory separator, used to separate a string of directory names. Example: /usr/src/linux . dot denotes current directory. Can also “hide” files when it is the first character in a filename. .. 2 dots denote parent directory ~ User’s home directory * Represents 0 or more characters in a filename, or by itself, all files in a directory. Example: pic*2002 can represent the files pic2002, picJanuary2002, picFeb292002, etc. ? Represents a single character in a filename. Example: hello?.txt can represent hello1.txt and helloz.txt but not hello22.txt [ ] Can be used to represent a range of values. Example: hello[0-2].txt represents the names hello0.txt, hello1.txt and hello2.txt | Pipe. Redirect the output of one command into another command. Example: `ls &gt; Redirect output of a command into a new file. If the file already exists, over-write it. Example: ls &gt; myfiles.txt &gt;&gt; Redirect the output of a command onto the end of an existing file. Example: echo .Mary 555-1234. &gt;&gt; phonenumbers.txt &lt; Redirect a file as input to a program. Example: more &lt; phonenumbers.txt ; Command separator. Allows you to execute multiple commands on a single line. Example: cd /var/log ; less messages &amp;&amp; Command separator as above, but only runs the second command if the first one finished without errors. Example: cd /var/logs &amp;&amp; less messages &amp; Execute a command in the background, and immediately get your shell back. Example: find / -name core &gt; /tmp/corefiles.txt &amp;">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2010-12-23T21:40:00+05:30">
+		<meta property="article:modified_time" content="2010-12-23T21:40:00+05:30">
+		<meta property="article:tag" content="Linux">
 
 
 
@@ -255,74 +255,74 @@
       <div class="post-content">
         
         <table>
-  <thead>
-      <tr>
-          <th>Character</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>\</td>
-          <td>Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: <code>touch /tmp/filename\*</code></td>
-      </tr>
-      <tr>
-          <td>/</td>
-          <td>Directory separator, used to separate a string of directory names. Example: <code>/usr/src/linux</code></td>
-      </tr>
-      <tr>
-          <td>.</td>
-          <td><code>dot</code> denotes current directory. Can also “hide” files when it is the first character in a filename.</td>
-      </tr>
-      <tr>
-          <td>..</td>
-          <td><code>2 dots</code> denote parent directory</td>
-      </tr>
-      <tr>
-          <td>~</td>
-          <td>User&rsquo;s home directory</td>
-      </tr>
-      <tr>
-          <td>*</td>
-          <td>Represents 0 or more characters in a filename, or by itself, all files in a directory. Example: <code>pic*2002</code> can represent the files pic2002, picJanuary2002, picFeb292002, etc.</td>
-      </tr>
-      <tr>
-          <td>?</td>
-          <td>Represents a single character in a filename. Example: <code>hello?.txt</code> can represent hello1.txt and helloz.txt but not hello22.txt</td>
-      </tr>
-      <tr>
-          <td>[ ]</td>
-          <td>Can be used to represent a range of values. Example: <code>hello[0-2].txt</code> represents the names hello0.txt, hello1.txt and hello2.txt</td>
-      </tr>
-      <tr>
-          <td>|</td>
-          <td><code>Pipe</code>. Redirect the output of one command into another command. Example: `ls</td>
-      </tr>
-      <tr>
-          <td>&gt;</td>
-          <td>Redirect output of a command into a new file. If the file already exists, over-write it. Example: <code>ls &gt; myfiles.txt</code></td>
-      </tr>
-      <tr>
-          <td>&gt;&gt;</td>
-          <td>Redirect the output of a command onto the end of an existing file. Example: <code>echo .Mary 555-1234. &gt;&gt; phonenumbers.txt</code></td>
-      </tr>
-      <tr>
-          <td>&lt;</td>
-          <td>Redirect a file as input to a program. Example: <code>more &lt; phonenumbers.txt</code></td>
-      </tr>
-      <tr>
-          <td>;</td>
-          <td>Command separator. Allows you to execute multiple commands on a single line. Example: <code>cd /var/log ; less messages</code></td>
-      </tr>
-      <tr>
-          <td>&amp;&amp;</td>
-          <td>Command separator as above, but only runs the second command if the first one finished without errors. Example: <code>cd /var/logs &amp;&amp; less messages</code></td>
-      </tr>
-      <tr>
-          <td>&amp;</td>
-          <td>Execute a command in the background, and immediately get your shell back. Example: <code>find / -name core &gt; /tmp/corefiles.txt &amp;</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Character</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>\</td>
+					<td>Escape character. If you want to reference a special character, you must “escape” it with a backslash first. Example: <code>touch /tmp/filename\*</code></td>
+			</tr>
+			<tr>
+					<td>/</td>
+					<td>Directory separator, used to separate a string of directory names. Example: <code>/usr/src/linux</code></td>
+			</tr>
+			<tr>
+					<td>.</td>
+					<td><code>dot</code> denotes current directory. Can also “hide” files when it is the first character in a filename.</td>
+			</tr>
+			<tr>
+					<td>..</td>
+					<td><code>2 dots</code> denote parent directory</td>
+			</tr>
+			<tr>
+					<td>~</td>
+					<td>User&rsquo;s home directory</td>
+			</tr>
+			<tr>
+					<td>*</td>
+					<td>Represents 0 or more characters in a filename, or by itself, all files in a directory. Example: <code>pic*2002</code> can represent the files pic2002, picJanuary2002, picFeb292002, etc.</td>
+			</tr>
+			<tr>
+					<td>?</td>
+					<td>Represents a single character in a filename. Example: <code>hello?.txt</code> can represent hello1.txt and helloz.txt but not hello22.txt</td>
+			</tr>
+			<tr>
+					<td>[ ]</td>
+					<td>Can be used to represent a range of values. Example: <code>hello[0-2].txt</code> represents the names hello0.txt, hello1.txt and hello2.txt</td>
+			</tr>
+			<tr>
+					<td>|</td>
+					<td><code>Pipe</code>. Redirect the output of one command into another command. Example: `ls</td>
+			</tr>
+			<tr>
+					<td>&gt;</td>
+					<td>Redirect output of a command into a new file. If the file already exists, over-write it. Example: <code>ls &gt; myfiles.txt</code></td>
+			</tr>
+			<tr>
+					<td>&gt;&gt;</td>
+					<td>Redirect the output of a command onto the end of an existing file. Example: <code>echo .Mary 555-1234. &gt;&gt; phonenumbers.txt</code></td>
+			</tr>
+			<tr>
+					<td>&lt;</td>
+					<td>Redirect a file as input to a program. Example: <code>more &lt; phonenumbers.txt</code></td>
+			</tr>
+			<tr>
+					<td>;</td>
+					<td>Command separator. Allows you to execute multiple commands on a single line. Example: <code>cd /var/log ; less messages</code></td>
+			</tr>
+			<tr>
+					<td>&amp;&amp;</td>
+					<td>Command separator as above, but only runs the second command if the first one finished without errors. Example: <code>cd /var/logs &amp;&amp; less messages</code></td>
+			</tr>
+			<tr>
+					<td>&amp;</td>
+					<td>Execute a command in the background, and immediately get your shell back. Example: <code>find / -name core &gt; /tmp/corefiles.txt &amp;</code></td>
+			</tr>
+	</tbody>
 </table>
 
       </div>
@@ -356,7 +356,7 @@
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

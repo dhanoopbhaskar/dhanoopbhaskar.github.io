@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Custom Instructions in Depth: From Personal Defaults to Path-Specific Precision · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Why custom instructions are foundational
+  
+    
+    Link to heading
+  
+
+Custom instructions are the highest-leverage customization primitive because they travel with every relevant request. They define your baseline quality bar before any one-off prompt is written.
+This post focuses on:
+
+Instruction types and precedence
+File layout and syntax
+Path-specific targeting with applyTo
+Patterns from the 9 library instruction examples
+A step-by-step rollout model
+
+
+  Use cases
+  
+    
+    Link to heading
+  
+
+
+Developers setting up Copilot for a repository for the first time
+Maintainers who want consistent code review outcomes
+Teams that need path-specific guidance without bloating global context
+
+
+  Step 1: Know the instruction types
+  
+    
+    Link to heading
+  
+
+GitHub Copilot supports three broad instruction scopes on GitHub surfaces:">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Custom Instructions in Depth: From Personal Defaults to Path-Specific Precision">
+	<meta name="twitter:description" content="Why custom instructions are foundational Link to heading Custom instructions are the highest-leverage customization primitive because they travel with every relevant request. They define your baseline quality bar before any one-off prompt is written.
+This post focuses on:
+Instruction types and precedence File layout and syntax Path-specific targeting with applyTo Patterns from the 9 library instruction examples A step-by-step rollout model Use cases Link to heading Developers setting up Copilot for a repository for the first time Maintainers who want consistent code review outcomes Teams that need path-specific guidance without bloating global context Step 1: Know the instruction types Link to heading GitHub Copilot supports three broad instruction scopes on GitHub surfaces:">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-08-custom-instructions-in-depth/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Custom Instructions in Depth: From Personal Defaults to Path-Specific Precision">
+	<meta property="og:description" content="Why custom instructions are foundational Link to heading Custom instructions are the highest-leverage customization primitive because they travel with every relevant request. They define your baseline quality bar before any one-off prompt is written.
+This post focuses on:
+Instruction types and precedence File layout and syntax Path-specific targeting with applyTo Patterns from the 9 library instruction examples A step-by-step rollout model Use cases Link to heading Developers setting up Copilot for a repository for the first time Maintainers who want consistent code review outcomes Teams that need path-specific guidance without bloating global context Step 1: Know the instruction types Link to heading GitHub Copilot supports three broad instruction scopes on GitHub surfaces:">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-05-08T19:10:00+05:30">
+		<meta property="article:modified_time" content="2026-05-08T19:10:00+05:30">
+		<meta property="article:tag" content="Github-Copilot">
+		<meta property="article:tag" content="Prompt-Engineering">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-05-08-custom-instructions-in-depth/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-05-08-custom-instructions-in-depth/">
+              Custom Instructions in Depth: From Personal Defaults to Path-Specific Precision
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-05-08T19:10:00&#43;05:30">
+                May 8, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              7-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/github-copilot/">Github-Copilot</a>
+      <span class="separator">•</span>
+    <a href="/categories/prompt-engineering/">Prompt-Engineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/github-copilot/">Github-Copilot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/prompt-engineering/">Prompt-Engineering</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="why-custom-instructions-are-foundational">
+  Why custom instructions are foundational
+  <a class="heading-link" href="#why-custom-instructions-are-foundational">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Custom instructions are the highest-leverage customization primitive because they travel with every relevant request. They define your baseline quality bar before any one-off prompt is written.</p>
+<p>This post focuses on:</p>
+<ul>
+<li>Instruction types and precedence</li>
+<li>File layout and syntax</li>
+<li>Path-specific targeting with applyTo</li>
+<li>Patterns from the 9 library instruction examples</li>
+<li>A step-by-step rollout model</li>
+</ul>
+<h2 id="use-cases">
+  Use cases
+  <a class="heading-link" href="#use-cases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Developers setting up Copilot for a repository for the first time</li>
+<li>Maintainers who want consistent code review outcomes</li>
+<li>Teams that need path-specific guidance without bloating global context</li>
+</ul>
+<h2 id="step-1-know-the-instruction-types">
+  Step 1: Know the instruction types
+  <a class="heading-link" href="#step-1-know-the-instruction-types">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>GitHub Copilot supports three broad instruction scopes on GitHub surfaces:</p>
+<ol>
+<li>Personal instructions</li>
+<li>Repository custom instructions</li>
+<li>Organization custom instructions</li>
+</ol>
+<p>Repository instructions can be split further into:</p>
+<ul>
+<li>Repository-wide file</li>
+<li>Path-specific instruction files</li>
+<li>Agent instruction files for agent-oriented workflows</li>
+</ul>
+<h2 id="step-2-understand-precedence-and-composition">
+  Step 2: Understand precedence and composition
+  <a class="heading-link" href="#step-2-understand-precedence-and-composition">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>When multiple instruction sets apply, precedence matters.</p>
+<p>A practical precedence view:</p>
+<ol>
+<li>Personal instructions</li>
+<li>Repository instructions
+<ul>
+<li>Path-specific instruction files</li>
+<li>Repository-wide instruction file</li>
+<li>Agent instruction files</li>
+</ul>
+</li>
+<li>Organization instructions</li>
+</ol>
+<p>Even with precedence, all relevant instructions may be provided to Copilot. That means conflicts still hurt quality.</p>
+<h3 id="diagram-precedence-stack">
+  Diagram: Precedence stack
+  <a class="heading-link" href="#diagram-precedence-stack">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 280 265"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 264,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,48 L 264,48' fill='none' stroke='currentColor'></path>
+<path d='M 0,96 L 264,96' fill='none' stroke='currentColor'></path>
+<path d='M 0,144 L 264,144' fill='none' stroke='currentColor'></path>
+<path d='M 0,192 L 264,192' fill='none' stroke='currentColor'></path>
+<path d='M 0,240 L 264,240' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,48' fill='none' stroke='currentColor'></path>
+<path d='M 0,48 L 0,96' fill='none' stroke='currentColor'></path>
+<path d='M 0,96 L 0,144' fill='none' stroke='currentColor'></path>
+<path d='M 0,144 L 0,192' fill='none' stroke='currentColor'></path>
+<path d='M 0,192 L 0,240' fill='none' stroke='currentColor'></path>
+<path d='M 264,0 L 264,48' fill='none' stroke='currentColor'></path>
+<path d='M 264,48 L 264,96' fill='none' stroke='currentColor'></path>
+<path d='M 264,96 L 264,144' fill='none' stroke='currentColor'></path>
+<path d='M 264,144 L 264,192' fill='none' stroke='currentColor'></path>
+<path d='M 264,192 L 264,240' fill='none' stroke='currentColor'></path>
+<path d='M 128,176 L 136,160' fill='none' stroke='currentColor'></path>
+<circle cx='136' cy='160' r='6' stroke='currentColor' fill='#fff'></circle>
+<circle cx='136' cy='176' r='6' stroke='currentColor' fill='currentColor'></circle>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'>H</text>
+<text text-anchor='middle' x='16' y='68' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='16' y='84' fill='currentColor' style='font-size:1em'>.</text>
+<text text-anchor='middle' x='16' y='116' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='16' y='132' fill='currentColor' style='font-size:1em'>.</text>
+<text text-anchor='middle' x='16' y='164' fill='currentColor' style='font-size:1em'>A</text>
+<text text-anchor='middle' x='16' y='180' fill='currentColor' style='font-size:1em'>.</text>
+<text text-anchor='middle' x='16' y='212' fill='currentColor' style='font-size:1em'>O</text>
+<text text-anchor='middle' x='16' y='228' fill='currentColor' style='font-size:1em'>L</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='24' y='36' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='24' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='24' y='84' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='24' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='24' y='132' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='24' y='164' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='24' y='180' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='24' y='212' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='24' y='228' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='32' y='68' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='32' y='84' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='32' y='116' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='32' y='132' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='32' y='164' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='180' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='32' y='212' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='32' y='228' fill='currentColor' style='font-size:1em'>w</text>
+<text text-anchor='middle' x='40' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='40' y='68' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='40' y='84' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='40' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='40' y='132' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='40' y='164' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='40' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='40' y='212' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='40' y='228' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='48' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='48' y='68' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='48' y='84' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='48' y='116' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='48' y='132' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='48' y='164' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='48' y='180' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='48' y='212' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='48' y='228' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='56' y='68' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='56' y='84' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='56' y='116' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='56' y='132' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='56' y='180' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='56' y='212' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='56' y='228' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='64' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='36' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='64' y='68' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='64' y='84' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='64' y='116' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='64' y='132' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='64' y='164' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='64' y='180' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='64' y='212' fill='currentColor' style='font-size:1em'>z</text>
+<text text-anchor='middle' x='72' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='72' y='68' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='72' y='84' fill='currentColor' style='font-size:1em'>/</text>
+<text text-anchor='middle' x='72' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='72' y='132' fill='currentColor' style='font-size:1em'>/</text>
+<text text-anchor='middle' x='72' y='164' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='72' y='180' fill='currentColor' style='font-size:1em'>/</text>
+<text text-anchor='middle' x='72' y='212' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='72' y='228' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='80' y='36' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='80' y='68' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='80' y='84' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='80' y='116' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='80' y='132' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='80' y='164' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='80' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='80' y='212' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='80' y='228' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='88' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='88' y='36' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='88' y='68' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='88' y='84' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='88' y='116' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='88' y='132' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='88' y='164' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='180' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='88' y='212' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='88' y='228' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='96' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='96' y='36' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='96' y='84' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='96' y='116' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='96' y='132' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='96' y='164' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='96' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='212' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='96' y='228' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='104' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='104' y='36' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='104' y='68' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='104' y='84' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='116' fill='currentColor' style='font-size:1em'>w</text>
+<text text-anchor='middle' x='104' y='132' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='104' y='164' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='104' y='180' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='104' y='212' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='104' y='228' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='112' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='112' y='36' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='112' y='68' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='112' y='84' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='112' y='116' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='112' y='132' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='112' y='164' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='112' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='112' y='228' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='120' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='120' y='36' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='120' y='68' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='120' y='84' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='120' y='116' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='120' y='132' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='120' y='164' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='120' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='120' y='212' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='120' y='228' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='128' y='36' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='128' y='68' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='128' y='84' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='128' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='128' y='132' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='128' y='164' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='128' y='212' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='128' y='228' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='136' y='20' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='136' y='36' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='136' y='68' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='136' y='84' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='136' y='132' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='136' y='212' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='144' y='68' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='144' y='84' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='116' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='132' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='164' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='144' y='180' fill='currentColor' style='font-size:1em'>.</text>
+<text text-anchor='middle' x='144' y='212' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='152' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='152' y='68' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='152' y='84' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='152' y='116' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='152' y='132' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='152' y='164' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='152' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='152' y='212' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='160' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='160' y='84' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='160' y='116' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='160' y='132' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='160' y='180' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='160' y='212' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='168' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='168' y='68' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='168' y='84' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='168' y='116' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='168' y='132' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='168' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='168' y='212' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='176' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='176' y='68' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='176' y='84' fill='currentColor' style='font-size:1em'>/</text>
+<text text-anchor='middle' x='176' y='116' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='176' y='132' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='176' y='180' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='176' y='212' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='184' y='68' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='184' y='84' fill='currentColor' style='font-size:1em'>*</text>
+<text text-anchor='middle' x='184' y='116' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='184' y='132' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='184' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='184' y='212' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='192' y='68' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='192' y='84' fill='currentColor' style='font-size:1em'>.</text>
+<text text-anchor='middle' x='192' y='116' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='192' y='132' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='192' y='180' fill='currentColor' style='font-size:1em'>.</text>
+<text text-anchor='middle' x='192' y='212' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='200' y='68' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='200' y='84' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='200' y='116' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='200' y='132' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='200' y='180' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='200' y='212' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='208' y='84' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='208' y='116' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='208' y='132' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='208' y='180' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='208' y='212' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='216' y='68' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='216' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='216' y='132' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='224' y='68' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='224' y='116' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='224' y='132' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='232' y='68' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='232' y='116' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='232' y='132' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='240' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='240' y='132' fill='currentColor' style='font-size:1em'>.</text>
+<text text-anchor='middle' x='248' y='68' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='248' y='132' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='256' y='132' fill='currentColor' style='font-size:1em'>d</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="step-3-set-up-repository-wide-instructions-correctly">
+  Step 3: Set up repository-wide instructions correctly
+  <a class="heading-link" href="#step-3-set-up-repository-wide-instructions-correctly">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Use a single repository-wide file for stable defaults.</p>
+<p>Location:</p>
+<ul>
+<li>.github/copilot-instructions.md</li>
+</ul>
+<p>Design principles:</p>
+<ul>
+<li>Keep statements short and self-contained</li>
+<li>Prefer broadly applicable engineering rules</li>
+<li>Avoid task-specific templates in this file</li>
+</ul>
+<h3 id="example-repository-wide-file">
+  Example repository-wide file
+  <a class="heading-link" href="#example-repository-wide-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Project overview
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> This repository contains a TypeScript service and React frontend.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Prefer existing domain patterns before introducing new abstractions.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Coding conventions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Use TypeScript for new source files.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Prefer early returns over deeply nested conditionals.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add tests for new behavior and bug fixes.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Quality checks
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Run lint and tests before finalizing code changes.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> If a command fails, report the failure mode and workaround.
+</span></span></code></pre></div><h2 id="step-4-add-path-specific-instructions-for-precision">
+  Step 4: Add path-specific instructions for precision
+  <a class="heading-link" href="#step-4-add-path-specific-instructions-for-precision">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Path-specific files are ideal when different parts of a repo require different standards.</p>
+<p>Location pattern:</p>
+<ul>
+<li>.github/instructions/NAME.instructions.md</li>
+</ul>
+<p>Core frontmatter field:</p>
+<ul>
+<li>applyTo with glob patterns</li>
+</ul>
+<p>Optional control:</p>
+<ul>
+<li><code>excludeAgent</code> — set to <code>copilot-cloud</code> to prevent this path-specific file from being included when a cloud agent is running, or to <code>copilot-code-review</code> to exclude it from automated code review. Use this when an instruction is author-assistance guidance that would be noisy or contradictory in a code review context.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>applyTo: &#34;docs/**/*.md&#34;
+</span></span><span style="display:flex;"><span>excludeAgent: &#34;copilot-code-review&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When editing documentation:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Use sentence-case headings.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Avoid acronyms without definition on first use.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Link to related docs on first mention.
+</span></span></code></pre></div><h3 id="example-github-actions-path-scoped-file">
+  Example: GitHub Actions path-scoped file
+  <a class="heading-link" href="#example-github-actions-path-scoped-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>applyTo: &#34;.github/workflows/**/*.yml&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When editing workflows:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Pin third-party actions to commit SHAs.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Set least-privilege permissions for GITHUB_TOKEN.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add timeout-minutes to long-running jobs.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Prefer matrix strategies for multi-runtime testing.
+</span></span></code></pre></div><h3 id="example-python-tests-path-scoped-file">
+  Example: Python tests path-scoped file
+  <a class="heading-link" href="#example-python-tests-path-scoped-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>applyTo: &#34;tests/**/*.py&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When writing tests:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Use pytest fixtures for setup and teardown.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Follow Arrange, Act, Assert.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Cover edge cases and failure behavior.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Mock external dependencies and unstable integrations.
+</span></span></code></pre></div><h2 id="step-5-apply-the-nine-library-patterns-intentionally">
+  Step 5: Apply the nine library patterns intentionally
+  <a class="heading-link" href="#step-5-apply-the-nine-library-patterns-intentionally">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The customization library includes nine custom instruction examples. Treat them as pattern modules, not copy-paste artifacts.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Example</th>
+					<th>Primary purpose</th>
+					<th>Where it shines</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Your first custom instructions</td>
+					<td>Baseline coding style defaults</td>
+					<td>Team bootstrap</td>
+			</tr>
+			<tr>
+					<td>Concept explainer</td>
+					<td>Pedagogical explanations</td>
+					<td>Learning docs and onboarding</td>
+			</tr>
+			<tr>
+					<td>Debugging tutor</td>
+					<td>Systematic troubleshooting guidance</td>
+					<td>Incident and bug triage</td>
+			</tr>
+			<tr>
+					<td>Code reviewer</td>
+					<td>Security/performance/quality review lens</td>
+					<td>Pre-merge feedback</td>
+			</tr>
+			<tr>
+					<td>GitHub Actions helper</td>
+					<td>Workflow security and efficiency</td>
+					<td>CI/CD files</td>
+			</tr>
+			<tr>
+					<td>Pull request assistant</td>
+					<td>Structured PR authoring and review style</td>
+					<td>PR consistency</td>
+			</tr>
+			<tr>
+					<td>Issue manager</td>
+					<td>Clear bug/feature issue templates</td>
+					<td>Backlog hygiene</td>
+			</tr>
+			<tr>
+					<td>Accessibility auditor</td>
+					<td>WCAG-aware generation/testing guidance</td>
+					<td>Frontend templates and audits</td>
+			</tr>
+			<tr>
+					<td>Testing automation</td>
+					<td>Focused unit-test generation standards</td>
+					<td>Test-heavy repositories</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="step-6-design-instructions-for-signal-not-verbosity">
+  Step 6: Design instructions for signal, not verbosity
+  <a class="heading-link" href="#step-6-design-instructions-for-signal-not-verbosity">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>A strong instruction statement is:</p>
+<ul>
+<li>Specific</li>
+<li>Observable</li>
+<li>Actionable</li>
+<li>Low ambiguity</li>
+</ul>
+<p>Weak statement:</p>
+<ul>
+<li>Write clean code.</li>
+</ul>
+<p>Strong statement:</p>
+<ul>
+<li>For new API handlers, validate all external inputs and return structured error objects with stable error codes.</li>
+</ul>
+<p>Use explicit outcomes where possible.</p>
+<h3 id="before-and-after-seeing-instruction-impact">
+  Before and after: seeing instruction impact
+  <a class="heading-link" href="#before-and-after-seeing-instruction-impact">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>This comparison shows what changes when a custom instruction is active.</p>
+<p><strong>Prompt (no instruction active):</strong></p>
+<pre tabindex="0"><code>Add a handler for POST /users.
+</code></pre><p><strong>Typical response without instructions:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/users&#39;</span>, <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">body</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>(<span style="color:#a6e22e">user</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>No input validation, no error handling, no test suggestion.</p>
+<p><strong>With this instruction in <code>.github/copilot-instructions.md</code>:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Validate all external inputs in API handlers before processing.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Return structured error objects: <span style="color:#e6db74">`{ error: string, code: string }`</span>.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add or suggest tests for new behavior.
+</span></span></code></pre></div><p><strong>Typical response with instructions:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/users&#39;</span>, <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">email</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">body</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">email</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">400</span>).<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Missing required fields&#39;</span>, <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;VALIDATION_ERROR&#39;</span> });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">createUser</span>({ <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">email</span> });
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">201</span>).<span style="color:#a6e22e">json</span>(<span style="color:#a6e22e">user</span>);
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">500</span>).<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;User creation failed&#39;</span>, <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;DB_ERROR&#39;</span> });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Suggested test:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// POST /users with missing email should return 400 VALIDATION_ERROR
+</span></span></span></code></pre></div><p>The instruction moved the response from a skeleton to a review-ready draft. That is the leverage point.</p>
+<h2 id="step-7-validate-with-an-ab-prompt-loop">
+  Step 7: Validate with an A/B prompt loop
+  <a class="heading-link" href="#step-7-validate-with-an-ab-prompt-loop">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>A lightweight validation routine:</p>
+<ol>
+<li>Pick a representative prompt, for example, create a handler and tests.</li>
+<li>Run once with no custom instructions.</li>
+<li>Run again with current instructions.</li>
+<li>Score quality on consistency, correctness, and review readiness.</li>
+<li>Tighten wording where behavior was ambiguous.</li>
+</ol>
+<h2 id="step-8-watch-critical-caveats">
+  Step 8: Watch critical caveats
+  <a class="heading-link" href="#step-8-watch-critical-caveats">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Important operational caveats from official docs:</p>
+<ul>
+<li>Copilot is non-deterministic; instructions increase consistency but do not guarantee identical outputs.</li>
+<li>For Copilot code review, only the first 4,000 characters of an instruction file are considered.</li>
+<li>In PR review scenarios on GitHub, instruction resolution uses the base branch context.</li>
+<li>On GitHub.com, path-specific instructions are currently supported for Copilot cloud agent and Copilot code review.</li>
+<li>Path-specific support varies by surface overall; validate support for your target workflow.</li>
+</ul>
+<h2 id="step-9-end-to-end-example">
+  Step 9: End-to-end example
+  <a class="heading-link" href="#step-9-end-to-end-example">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>This example is intentionally small and fully runnable.</p>
+<h3 id="goal">
+  Goal
+  <a class="heading-link" href="#goal">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Apply strict guidance only to workflow files and tests, while keeping general repo defaults concise.</p>
+<h3 id="files-to-create">
+  Files to create
+  <a class="heading-link" href="#files-to-create">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ol>
+<li><code>.github/copilot-instructions.md</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Repository defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Use existing project patterns before introducing new abstractions.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add tests for new behavior and bug fixes.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Explain tradeoffs when suggesting non-trivial changes.
+</span></span></code></pre></div><ol start="2">
+<li><code>.github/instructions/workflows.instructions.md</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>applyTo: &#34;.github/workflows/**/*.yml&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When editing workflows:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Pin third-party actions to immutable SHAs.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Set least-privilege permissions.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add timeout-minutes to long-running jobs.
+</span></span></code></pre></div><ol start="3">
+<li><code>.github/instructions/tests.instructions.md</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>applyTo: &#34;tests/**/*.py&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When writing tests:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Use Arrange, Act, Assert.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Cover edge and failure cases.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Mock unstable external dependencies.
+</span></span></code></pre></div><h3 id="verification-walkthrough">
+  Verification walkthrough
+  <a class="heading-link" href="#verification-walkthrough">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ol>
+<li>Ask Copilot to update a workflow file and verify that SHA pinning and timeout guidance appears.</li>
+<li>Ask Copilot to generate a test under <code>tests/</code> and verify AAA structure and failure coverage.</li>
+<li>Ask for a regular source-code refactor and confirm workflow/test-specific rules do not leak unnecessarily.</li>
+</ol>
+<h3 id="what-success-looks-like">
+  What success looks like
+  <a class="heading-link" href="#what-success-looks-like">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>General rules apply everywhere.</li>
+<li>Path-specific guidance activates only when matching files are in scope.</li>
+<li>Output quality improves without overwhelming context.</li>
+</ul>
+<h1 id="key-takeaways">
+  Key takeaways
+  <a class="heading-link" href="#key-takeaways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li>Custom instructions are your always-on quality baseline.</li>
+<li>Keep repository-wide instructions concise; use path-specific files for precision.</li>
+<li>Resolve conflicts across personal, repository, and organization scopes early.</li>
+<li>Design statements as testable engineering constraints, not style slogans.</li>
+<li>Validate instruction effectiveness with repeatable before/after tasks.</li>
+</ul>
+<h1 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/concepts/prompting/response-customization"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/concepts/prompting/response-customization</a></li>
+<li><a href="https://docs.github.com/en/copilot/how-tos/configure-custom-instructions"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/how-tos/configure-custom-instructions</a></li>
+<li><a href="https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/your-first-custom-instructions"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/your-first-custom-instructions</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/concept-explainer"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/concept-explainer</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/debugging-tutor"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/debugging-tutor</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/code-reviewer"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/code-reviewer</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/github-actions-helper"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/github-actions-helper</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/pull-request-assistant"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/pull-request-assistant</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/issue-manager"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/issue-manager</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/accessibility-auditor"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/accessibility-auditor</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/testing-automation"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/testing-automation</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -106,25 +106,25 @@ eg:">
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Talend equivalent for OCONV function in Datastage (Only for time and date)">
-  <meta name="twitter:description" content="The function has been developed as a routine in the Talend.
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Talend equivalent for OCONV function in Datastage (Only for time and date)">
+	<meta name="twitter:description" content="The function has been developed as a routine in the Talend.
 package routines; import java.text.ParseException; public class DateConv { public static String oConv(int secToAdd, String format) throws ParseException { final String date = &#34;31/12/1967&#34;;// 31 Dec 1967 java.util.Date returnDate = null; String returnString = null; java.text.DateFormat sdf = new java.text.SimpleDateFormat(&#34;dd/MM/yyyy&#34;); java.util.Date parsedDate = sdf.parse(date); java.util.Calendar now = java.util.Calendar.getInstance(); now.setTime(parsedDate); if (format.equals(&#34;MT&#34;)) { // 02:46 sdf = new java.text.SimpleDateFormat(&#34;HH:mm&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;MTS&#34;)) { // 02:46:40 sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ss&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;MTHS&#34;)) { // 02:46:40am sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ssa&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate).toLowerCase(); } else if (format.equals(&#34;MTH&#34;)) { // 02:46am sdf = new java.text.SimpleDateFormat(&#34;HH:mma&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate).toLowerCase(); } else if (format.equals(&#34;MT.&#34;)) { // 02.46 sdf = new java.text.SimpleDateFormat(&#34;HH.mm&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D2&#34;)) { // 3 Feb 93 sdf = new java.text.SimpleDateFormat(&#34;d MMM yy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D/E&#34;)) { // 3/2/1993 sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;DI&#34;)) { // 3/2/1993 sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D2-&#34;)) { // 2-3-93 sdf = new java.text.SimpleDateFormat(&#34;M-d-yy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D&#34;)) { // 31 Dec 1967 sdf = new java.text.SimpleDateFormat(&#34;d MMM yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } return returnString; } public static String oConv(String input, String format) throws ParseException { String returnString = null; java.text.DateFormat sdf = null; if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DMD[2,2]&#34;)) { // DMD[2,2] sdf = new java.text.SimpleDateFormat(&#34;MMdd&#34;); returnString = sdf.format(new java.util.Date()); } else if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DYMD[4,2,2]&#34;)) { // DYMD[4,2,2] sdf = new java.text.SimpleDateFormat(&#34;yyyyMMdd&#34;); returnString = sdf.format(new java.util.Date()); } return returnString; } } eg:">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2012-10-20-talend-equivalent-for-oconv-function-in-datastage-only-for-time-and-date/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="Talend equivalent for OCONV function in Datastage (Only for time and date)">
-  <meta property="og:description" content="The function has been developed as a routine in the Talend.
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Talend equivalent for OCONV function in Datastage (Only for time and date)">
+	<meta property="og:description" content="The function has been developed as a routine in the Talend.
 package routines; import java.text.ParseException; public class DateConv { public static String oConv(int secToAdd, String format) throws ParseException { final String date = &#34;31/12/1967&#34;;// 31 Dec 1967 java.util.Date returnDate = null; String returnString = null; java.text.DateFormat sdf = new java.text.SimpleDateFormat(&#34;dd/MM/yyyy&#34;); java.util.Date parsedDate = sdf.parse(date); java.util.Calendar now = java.util.Calendar.getInstance(); now.setTime(parsedDate); if (format.equals(&#34;MT&#34;)) { // 02:46 sdf = new java.text.SimpleDateFormat(&#34;HH:mm&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;MTS&#34;)) { // 02:46:40 sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ss&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;MTHS&#34;)) { // 02:46:40am sdf = new java.text.SimpleDateFormat(&#34;HH:mm:ssa&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate).toLowerCase(); } else if (format.equals(&#34;MTH&#34;)) { // 02:46am sdf = new java.text.SimpleDateFormat(&#34;HH:mma&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate).toLowerCase(); } else if (format.equals(&#34;MT.&#34;)) { // 02.46 sdf = new java.text.SimpleDateFormat(&#34;HH.mm&#34;); now.add(java.util.Calendar.SECOND, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D2&#34;)) { // 3 Feb 93 sdf = new java.text.SimpleDateFormat(&#34;d MMM yy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D/E&#34;)) { // 3/2/1993 sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;DI&#34;)) { // 3/2/1993 sdf = new java.text.SimpleDateFormat(&#34;d/M/yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D2-&#34;)) { // 2-3-93 sdf = new java.text.SimpleDateFormat(&#34;M-d-yy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } else if (format.equals(&#34;D&#34;)) { // 31 Dec 1967 sdf = new java.text.SimpleDateFormat(&#34;d MMM yyyy&#34;); now.add(java.util.Calendar.DAY_OF_MONTH, secToAdd); returnDate = now.getTime(); returnString = sdf.format(returnDate); } return returnString; } public static String oConv(String input, String format) throws ParseException { String returnString = null; java.text.DateFormat sdf = null; if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DMD[2,2]&#34;)) { // DMD[2,2] sdf = new java.text.SimpleDateFormat(&#34;MMdd&#34;); returnString = sdf.format(new java.util.Date()); } else if (input.equalsIgnoreCase(&#34;@DATE&#34;) &amp;&amp; format.equals(&#34;DYMD[4,2,2]&#34;)) { // DYMD[4,2,2] sdf = new java.text.SimpleDateFormat(&#34;yyyyMMdd&#34;); returnString = sdf.format(new java.util.Date()); } return returnString; } } eg:">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2012-10-20T15:30:00+05:30">
-    <meta property="article:modified_time" content="2012-10-20T15:30:00+05:30">
-    <meta property="article:tag" content="Talend">
-    <meta property="article:tag" content="Datastage">
-    <meta property="article:tag" content="Java">
-    <meta property="article:tag" content="ETL">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2012-10-20T15:30:00+05:30">
+		<meta property="article:modified_time" content="2012-10-20T15:30:00+05:30">
+		<meta property="article:tag" content="Talend">
+		<meta property="article:tag" content="Datastage">
+		<meta property="article:tag" content="Java">
+		<meta property="article:tag" content="ETL">
 
 
 
@@ -295,7 +295,7 @@ package routines; import java.text.ParseException; public class DateConv { publi
       <div class="post-content">
         
         <p><em>The function has been developed as a routine in the Talend.</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#f92672">package</span> routines;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#f92672">package</span> routines;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.text.ParseException;
 </span></span><span style="display:flex;"><span>
@@ -419,7 +419,7 @@ DateConv.oConv(9166, &quot;D2&quot;); // 3 Feb 93
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

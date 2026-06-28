@@ -52,29 +52,29 @@ Word.java">
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="AES Implementation In Java with ECB | CBC | OFB | CFB Modes Of Operation">
-  <meta name="twitter:description" content="Note that these are ONLY basic level programs for easy understanding of the Advanced Encryption Standard (AES) algorithm
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="AES Implementation In Java with ECB | CBC | OFB | CFB Modes Of Operation">
+	<meta name="twitter:description" content="Note that these are ONLY basic level programs for easy understanding of the Advanced Encryption Standard (AES) algorithm
 Key Generation - AESkeygen.java
 import java.io.File; import java.io.FileWriter; public class AESkeygen { private final File file = new File(&#34;AESkey.txt&#34;); private final int KEY_LENGTH = 32; private final static char[] hexArray = &#34;0123456789ABCDEF&#34;.toCharArray(); public AESkeygen() { try { FileWriter fileWriter = new FileWriter(file); fileWriter.write(&#34;&#34;); for (int i = 0; i &lt; KEY_LENGTH; i&#43;&#43;) { double random = Math.random(); int index = (int) (random * 16); fileWriter.append(hexArray[index]); fileWriter.flush(); } fileWriter.close(); System.out.println(&#34;Key generated and saved in &#34; &#43; file.getName()); } catch (Exception exp) { exp.printStackTrace(); } } public static void main(String[] args) { new AESkeygen(); } } Word.java">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2014-07-30-aes-implementation-in-java-with-ecb-cbc-ofb-cfb-modes-of-operation/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="AES Implementation In Java with ECB | CBC | OFB | CFB Modes Of Operation">
-  <meta property="og:description" content="Note that these are ONLY basic level programs for easy understanding of the Advanced Encryption Standard (AES) algorithm
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="AES Implementation In Java with ECB | CBC | OFB | CFB Modes Of Operation">
+	<meta property="og:description" content="Note that these are ONLY basic level programs for easy understanding of the Advanced Encryption Standard (AES) algorithm
 Key Generation - AESkeygen.java
 import java.io.File; import java.io.FileWriter; public class AESkeygen { private final File file = new File(&#34;AESkey.txt&#34;); private final int KEY_LENGTH = 32; private final static char[] hexArray = &#34;0123456789ABCDEF&#34;.toCharArray(); public AESkeygen() { try { FileWriter fileWriter = new FileWriter(file); fileWriter.write(&#34;&#34;); for (int i = 0; i &lt; KEY_LENGTH; i&#43;&#43;) { double random = Math.random(); int index = (int) (random * 16); fileWriter.append(hexArray[index]); fileWriter.flush(); } fileWriter.close(); System.out.println(&#34;Key generated and saved in &#34; &#43; file.getName()); } catch (Exception exp) { exp.printStackTrace(); } } public static void main(String[] args) { new AESkeygen(); } } Word.java">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2014-07-30T23:19:00+05:30">
-    <meta property="article:modified_time" content="2014-07-30T23:19:00+05:30">
-    <meta property="article:tag" content="Aes Algorithm">
-    <meta property="article:tag" content="Encryption">
-    <meta property="article:tag" content="Crypto">
-    <meta property="article:tag" content="Decryption">
-    <meta property="article:tag" content="Cryptography">
-    <meta property="article:tag" content="Java">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2014-07-30T23:19:00+05:30">
+		<meta property="article:modified_time" content="2014-07-30T23:19:00+05:30">
+		<meta property="article:tag" content="Aes Algorithm">
+		<meta property="article:tag" content="Encryption">
+		<meta property="article:tag" content="Crypto">
+		<meta property="article:tag" content="Decryption">
+		<meta property="article:tag" content="Cryptography">
+		<meta property="article:tag" content="Java">
 
 
 
@@ -255,7 +255,7 @@ import java.io.File; import java.io.FileWriter; public class AESkeygen { private
         <p><em><strong>Note that these are ONLY basic level programs for easy understanding
 of the Advanced Encryption Standard (AES) algorithm</strong></em></p>
 <p><strong>Key Generation - AESkeygen.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.File;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.File;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.FileWriter;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AESkeygen</span> {
@@ -287,7 +287,7 @@ of the Advanced Encryption Standard (AES) algorithm</strong></em></p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>Word.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Word</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Word</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> word <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
 </span></span><span style="display:flex;"><span>
@@ -370,7 +370,7 @@ of the Advanced Encryption Standard (AES) algorithm</strong></em></p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  </span></span></code></pre></div>
 <p><strong>Encryption - AESencrypt.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>        
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.BufferedReader;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.File;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.FileInputStream;
@@ -957,7 +957,7 @@ of the Advanced Encryption Standard (AES) algorithm</strong></em></p>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }</span></span></code></pre></div>
 <p><strong>Decryption - AESdecrypt.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.BufferedReader;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.BufferedReader;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.File;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.FileInputStream;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.FileOutputStream;
@@ -1604,7 +1604,7 @@ AESplaintext.txt</p>
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

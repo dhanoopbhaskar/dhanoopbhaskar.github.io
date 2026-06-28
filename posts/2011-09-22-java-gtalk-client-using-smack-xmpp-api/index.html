@@ -195,27 +195,27 @@
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Java - GTalk Client using SMACK XMPP API">
-  <meta name="twitter:description" content="GtalkClient.java
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Java - GTalk Client using SMACK XMPP API">
+	<meta name="twitter:description" content="GtalkClient.java
 import java.io.BufferedReader; import java.io.IOException; import java.io.InputStreamReader; import java.util.Collection; import java.util.Iterator; import org.jivesoftware.smack.Chat; import org.jivesoftware.smack.ConnectionConfiguration; import org.jivesoftware.smack.MessageListener; import org.jivesoftware.smack.Roster; import org.jivesoftware.smack.RosterEntry; import org.jivesoftware.smack.XMPPConnection; import org.jivesoftware.smack.XMPPException; import org.jivesoftware.smack.packet.Message; /** * * @author dhanoopbhaskar */ public class GtalkClient implements Runnable, MessageListener { ConnectionConfiguration connConfig = null; XMPPConnection xMPPConnection = null; BufferedReader readFromKeyboard = null; String toAddresss = null; String[] buddies = null; int buddySize = 0; public GtalkClient() { /** * Set the &#39;ConnectionConfiguration&#39; with * -host name * -port number * -service name */ connConfig = new ConnectionConfiguration(&#34;talk.google.com&#34;, 5222, &#34;gmail.com&#34;); /** * Create an instance of &#39;XMPPConnection&#39; with the already created * instance of &#39;ConnectionConfiguration&#39; */ xMPPConnection = new XMPPConnection(connConfig); try { /** * Connecting to the service */ xMPPConnection.connect(); /** * Login to the GMail account from which you want to chat * Provide * -email id * -password */ xMPPConnection.login(&#34;user-name@gmail.com&#34;, &#34;password&#34;); } catch (XMPPException ex) { System.out.println(&#34;Error: &#34; &#43; ex.getMessage()); } /** * BufferedReader to read from the keyboard */ readFromKeyboard = new BufferedReader(new InputStreamReader(System.in)); displayBuddyList(); System.out.println(&#34;\n\nEnter the recipient&#39;s Email Id! or &#34; &#43; &#34;buddy id in the list&#34;); try { String temp = readFromKeyboard.readLine(); try { int j = Integer.parseInt(temp); toAddresss = getBuddy(j); System.out.println(&#34;Buddy &lt;&#34; &#43; toAddresss &#43; &#34;&gt; selected!&#34;); } catch(NumberFormatException exp) { toAddresss = temp; } } catch (IOException ex) { System.out.println(&#34;Error: &#34; &#43; ex.getMessage()); } System.out.println(&#34;Enter your chat messages one by one!&#34;); System.out.println(&#34;[Enter \&#34;quit\&#34; to end the chat!]&#34;); String msg = &#34;&#34;; while(true) { try { msg = readFromKeyboard.readLine(); } catch (IOException ex) { System.out.println(&#34;Error: &#34; &#43; ex.getMessage()); } if(msg.equalsIgnoreCase(&#34;quit&#34;)) { System.out.println(&#34;--Chat Ended--&#34;); break; } else { sendMessage(toAddresss, msg); } } } /** * * @param recipient * @param message */ private void sendMessage(String recipient, String message) { /** * Create an instance of &#39;Chat&#39; providing the recipient&#39;s email-id * and an instance of MessageListener interface(The predefined * reference &#39;this&#39; will do, since the class * implements the MessageListener interface. */ Chat chat = xMPPConnection.getChatManager().createChat(recipient, this); try { /** * Sending the chat message */ chat.sendMessage(message); } catch (XMPPException ex) { System.out.println(&#34;Error: &#34; &#43; ex.getMessage()); } } /** * This method belongs to MessageListener interface. * It listens for the incoming chat messages. */ @Override public void processMessage(Chat chat, Message msg) { String msgStr = msg.getBody(); System.out.println(&#34;&lt;&#34; &#43; chat.getParticipant() &#43; &#34;&gt; says &#34; &#43; msgStr); } public static void main(String[] args) { GtalkClient gtalkClient = new GtalkClient(); } @Override public void run() { } private void displayBuddyList() { Roster roster = xMPPConnection.getRoster(); Collection entries = roster.getEntries(); System.out.println(&#34;\n\n------------Your Buddies!!------------&#34;); System.out.println(entries.size() &#43; &#34; buddy(ies):\n&#34;); Iterator iter = entries.iterator(); buddySize = entries.size(); buddies = new String[buddySize]; int i = 0; while (iter.hasNext()) { RosterEntry rosterEntry = (RosterEntry) iter.next(); buddies[i] = rosterEntry.getUser(); i&#43;&#43;; System.out.println(i &#43; &#34;. &#34; &#43; rosterEntry.getUser()); } System.out.println(&#34;--------------------------------------&#34;); } private String getBuddy(int i) { String buddy = &#34;&#34;; if(i &gt; 0 &amp;&amp; i &lt;= buddySize) { buddy = buddies[i-1]; } else { System.out.println(&#34;Invalid Buddy Id!! Selected default one!!&#34;); buddy = buddies[0]; } return buddy; } } ——Sample Output——">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-09-22-java-gtalk-client-using-smack-xmpp-api/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="Java - GTalk Client using SMACK XMPP API">
-  <meta property="og:description" content="GtalkClient.java
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Java - GTalk Client using SMACK XMPP API">
+	<meta property="og:description" content="GtalkClient.java
 import java.io.BufferedReader; import java.io.IOException; import java.io.InputStreamReader; import java.util.Collection; import java.util.Iterator; import org.jivesoftware.smack.Chat; import org.jivesoftware.smack.ConnectionConfiguration; import org.jivesoftware.smack.MessageListener; import org.jivesoftware.smack.Roster; import org.jivesoftware.smack.RosterEntry; import org.jivesoftware.smack.XMPPConnection; import org.jivesoftware.smack.XMPPException; import org.jivesoftware.smack.packet.Message; /** * * @author dhanoopbhaskar */ public class GtalkClient implements Runnable, MessageListener { ConnectionConfiguration connConfig = null; XMPPConnection xMPPConnection = null; BufferedReader readFromKeyboard = null; String toAddresss = null; String[] buddies = null; int buddySize = 0; public GtalkClient() { /** * Set the &#39;ConnectionConfiguration&#39; with * -host name * -port number * -service name */ connConfig = new ConnectionConfiguration(&#34;talk.google.com&#34;, 5222, &#34;gmail.com&#34;); /** * Create an instance of &#39;XMPPConnection&#39; with the already created * instance of &#39;ConnectionConfiguration&#39; */ xMPPConnection = new XMPPConnection(connConfig); try { /** * Connecting to the service */ xMPPConnection.connect(); /** * Login to the GMail account from which you want to chat * Provide * -email id * -password */ xMPPConnection.login(&#34;user-name@gmail.com&#34;, &#34;password&#34;); } catch (XMPPException ex) { System.out.println(&#34;Error: &#34; &#43; ex.getMessage()); } /** * BufferedReader to read from the keyboard */ readFromKeyboard = new BufferedReader(new InputStreamReader(System.in)); displayBuddyList(); System.out.println(&#34;\n\nEnter the recipient&#39;s Email Id! or &#34; &#43; &#34;buddy id in the list&#34;); try { String temp = readFromKeyboard.readLine(); try { int j = Integer.parseInt(temp); toAddresss = getBuddy(j); System.out.println(&#34;Buddy &lt;&#34; &#43; toAddresss &#43; &#34;&gt; selected!&#34;); } catch(NumberFormatException exp) { toAddresss = temp; } } catch (IOException ex) { System.out.println(&#34;Error: &#34; &#43; ex.getMessage()); } System.out.println(&#34;Enter your chat messages one by one!&#34;); System.out.println(&#34;[Enter \&#34;quit\&#34; to end the chat!]&#34;); String msg = &#34;&#34;; while(true) { try { msg = readFromKeyboard.readLine(); } catch (IOException ex) { System.out.println(&#34;Error: &#34; &#43; ex.getMessage()); } if(msg.equalsIgnoreCase(&#34;quit&#34;)) { System.out.println(&#34;--Chat Ended--&#34;); break; } else { sendMessage(toAddresss, msg); } } } /** * * @param recipient * @param message */ private void sendMessage(String recipient, String message) { /** * Create an instance of &#39;Chat&#39; providing the recipient&#39;s email-id * and an instance of MessageListener interface(The predefined * reference &#39;this&#39; will do, since the class * implements the MessageListener interface. */ Chat chat = xMPPConnection.getChatManager().createChat(recipient, this); try { /** * Sending the chat message */ chat.sendMessage(message); } catch (XMPPException ex) { System.out.println(&#34;Error: &#34; &#43; ex.getMessage()); } } /** * This method belongs to MessageListener interface. * It listens for the incoming chat messages. */ @Override public void processMessage(Chat chat, Message msg) { String msgStr = msg.getBody(); System.out.println(&#34;&lt;&#34; &#43; chat.getParticipant() &#43; &#34;&gt; says &#34; &#43; msgStr); } public static void main(String[] args) { GtalkClient gtalkClient = new GtalkClient(); } @Override public void run() { } private void displayBuddyList() { Roster roster = xMPPConnection.getRoster(); Collection entries = roster.getEntries(); System.out.println(&#34;\n\n------------Your Buddies!!------------&#34;); System.out.println(entries.size() &#43; &#34; buddy(ies):\n&#34;); Iterator iter = entries.iterator(); buddySize = entries.size(); buddies = new String[buddySize]; int i = 0; while (iter.hasNext()) { RosterEntry rosterEntry = (RosterEntry) iter.next(); buddies[i] = rosterEntry.getUser(); i&#43;&#43;; System.out.println(i &#43; &#34;. &#34; &#43; rosterEntry.getUser()); } System.out.println(&#34;--------------------------------------&#34;); } private String getBuddy(int i) { String buddy = &#34;&#34;; if(i &gt; 0 &amp;&amp; i &lt;= buddySize) { buddy = buddies[i-1]; } else { System.out.println(&#34;Invalid Buddy Id!! Selected default one!!&#34;); buddy = buddies[0]; } return buddy; } } ——Sample Output——">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2011-09-22T14:17:00+05:30">
-    <meta property="article:modified_time" content="2011-09-22T14:17:00+05:30">
-    <meta property="article:tag" content="Chat Client">
-    <meta property="article:tag" content="Gtalk">
-    <meta property="article:tag" content="Smack">
-    <meta property="article:tag" content="IM">
-    <meta property="article:tag" content="Xmpp">
-    <meta property="article:tag" content="Java">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2011-09-22T14:17:00+05:30">
+		<meta property="article:modified_time" content="2011-09-22T14:17:00+05:30">
+		<meta property="article:tag" content="Chat Client">
+		<meta property="article:tag" content="Gtalk">
+		<meta property="article:tag" content="Smack">
+		<meta property="article:tag" content="IM">
+		<meta property="article:tag" content="Xmpp">
+		<meta property="article:tag" content="Java">
 
 
 
@@ -390,7 +390,7 @@ import java.io.BufferedReader; import java.io.IOException; import java.io.InputS
       <div class="post-content">
         
         <p><strong>GtalkClient.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.BufferedReader;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.BufferedReader;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.IOException;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.io.InputStreamReader;
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> java.util.Collection;
@@ -621,7 +621,7 @@ quit
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

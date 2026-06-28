@@ -115,24 +115,24 @@ OUTPUT">
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="HTTP POST in Java using URLConnection">
-  <meta name="twitter:description" content="URLPost.java
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="HTTP POST in Java using URLConnection">
+	<meta name="twitter:description" content="URLPost.java
 import java.io.BufferedReader; import java.io.IOException; import java.io.InputStreamReader; import java.io.OutputStreamWriter; import java.io.UnsupportedEncodingException; import java.net.MalformedURLException; import java.net.URL; import java.net.URLConnection; import java.net.URLEncoder; /** * * @author dhanoopbhaskar */ public class URLPost { public URLPost() { } /** * @param args the command line arguments */ public static void main(String[] args) { try { /** * Constructing the data to be sent. * The data is encoded in UTF8 encoding scheme. * For that encode() method in the class java.net.URLEncoder * is used */ String data = URLEncoder.encode(&#34;sName&#34;, &#34;UTF-8&#34;) &#43; &#34;=&#34; &#43; URLEncoder.encode(&#34;PI&#34;, &#34;UTF-8&#34;); data &#43;= &#34;&amp;&#34; &#43; URLEncoder.encode(&#34;sData&#34;, &#34;UTF-8&#34;) &#43; &#34;=&#34; &#43; URLEncoder.encode(&#34;3.14159&#34;, &#34;UTF-8&#34;); System.out.println(&#34;Data: &#34; &#43; data); /** * URL to which the post data has to be sent. */ URL url = new URL(&#34;http://localhost/cybman/test/post2.php&#34;); /** * A URLConnection is opened */ URLConnection conn = url.openConnection(); /** * The variable doOutput in URLConnection is false by default. * It should be set as true, otherwise we cannot write to a * URLConnection. * * Possible Exception (if doOuput is false): * java.net.ProtocolException: cannot write to a URLConnection * if doOutput=false - call setDoOutput(true) * at sun.net.www.protocol.http.HttpURLConnection.getOutputStream( * HttpURLConnection.java:885) * */ conn.setDoOutput(true); /** * Getting the output stream of URLConnection */ OutputStreamWriter outputStreamWriter = new OutputStreamWriter( conn.getOutputStream()); /** * Writing and flushing the data */ outputStreamWriter.write(data); outputStreamWriter.flush(); /** * Getting the input stream of URLConnection */ BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(conn.getInputStream())); String line; System.out.print(&#34;Result: &#34;); /** * The Response is read and displayed. */ while ((line = bufferedReader.readLine()) != null) { System.out.println(line); } /** * Close the opened readers and writers. */ outputStreamWriter.close(); bufferedReader.close(); } catch (MalformedURLException ex) { //thrown by new URL() System.out.println(ex); } catch (UnsupportedEncodingException ex) { //thrown by URLEncoder.encode() System.out.println(ex); } catch (IOException ex) { //thrown by stream class methods System.out.println(ex); } } } OUTPUT">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2011-10-04-http-post-in-java-using-urlconnection/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="HTTP POST in Java using URLConnection">
-  <meta property="og:description" content="URLPost.java
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="HTTP POST in Java using URLConnection">
+	<meta property="og:description" content="URLPost.java
 import java.io.BufferedReader; import java.io.IOException; import java.io.InputStreamReader; import java.io.OutputStreamWriter; import java.io.UnsupportedEncodingException; import java.net.MalformedURLException; import java.net.URL; import java.net.URLConnection; import java.net.URLEncoder; /** * * @author dhanoopbhaskar */ public class URLPost { public URLPost() { } /** * @param args the command line arguments */ public static void main(String[] args) { try { /** * Constructing the data to be sent. * The data is encoded in UTF8 encoding scheme. * For that encode() method in the class java.net.URLEncoder * is used */ String data = URLEncoder.encode(&#34;sName&#34;, &#34;UTF-8&#34;) &#43; &#34;=&#34; &#43; URLEncoder.encode(&#34;PI&#34;, &#34;UTF-8&#34;); data &#43;= &#34;&amp;&#34; &#43; URLEncoder.encode(&#34;sData&#34;, &#34;UTF-8&#34;) &#43; &#34;=&#34; &#43; URLEncoder.encode(&#34;3.14159&#34;, &#34;UTF-8&#34;); System.out.println(&#34;Data: &#34; &#43; data); /** * URL to which the post data has to be sent. */ URL url = new URL(&#34;http://localhost/cybman/test/post2.php&#34;); /** * A URLConnection is opened */ URLConnection conn = url.openConnection(); /** * The variable doOutput in URLConnection is false by default. * It should be set as true, otherwise we cannot write to a * URLConnection. * * Possible Exception (if doOuput is false): * java.net.ProtocolException: cannot write to a URLConnection * if doOutput=false - call setDoOutput(true) * at sun.net.www.protocol.http.HttpURLConnection.getOutputStream( * HttpURLConnection.java:885) * */ conn.setDoOutput(true); /** * Getting the output stream of URLConnection */ OutputStreamWriter outputStreamWriter = new OutputStreamWriter( conn.getOutputStream()); /** * Writing and flushing the data */ outputStreamWriter.write(data); outputStreamWriter.flush(); /** * Getting the input stream of URLConnection */ BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(conn.getInputStream())); String line; System.out.print(&#34;Result: &#34;); /** * The Response is read and displayed. */ while ((line = bufferedReader.readLine()) != null) { System.out.println(line); } /** * Close the opened readers and writers. */ outputStreamWriter.close(); bufferedReader.close(); } catch (MalformedURLException ex) { //thrown by new URL() System.out.println(ex); } catch (UnsupportedEncodingException ex) { //thrown by URLEncoder.encode() System.out.println(ex); } catch (IOException ex) { //thrown by stream class methods System.out.println(ex); } } } OUTPUT">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2011-10-04T16:53:00+05:30">
-    <meta property="article:modified_time" content="2011-10-04T16:53:00+05:30">
-    <meta property="article:tag" content="Post">
-    <meta property="article:tag" content="Url">
-    <meta property="article:tag" content="Java">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2011-10-04T16:53:00+05:30">
+		<meta property="article:modified_time" content="2011-10-04T16:53:00+05:30">
+		<meta property="article:tag" content="Post">
+		<meta property="article:tag" content="Url">
+		<meta property="article:tag" content="Java">
 
 
 
@@ -295,7 +295,7 @@ import java.io.BufferedReader; import java.io.IOException; import java.io.InputS
       <div class="post-content">
         
         <p><strong>URLPost.java</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.BufferedReader;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.BufferedReader;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.IOException;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.InputStreamReader;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">import</span> java.io.OutputStreamWriter;
@@ -450,7 +450,7 @@ Result: Done!!
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Copilot Chat Cookbook Deep Dive: Debug Errors · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Why this category matters
+  
+    
+    Link to heading
+  
+
+Debugging prompts are most useful when they include concrete failure context: error text, logs, and relevant files.
+The Debug errors category demonstrates this pattern with three practical examples.
+
+  Use cases
+  
+    
+    Link to heading
+  
+
+
+Developers debugging production-like failures under time pressure
+QA and CI owners diagnosing flaky test behavior
+Developers learning to write high-signal debugging prompts
+
+
+  The 3 examples in this category
+  
+    
+    Link to heading
+  
+
+
+Debugging invalid JSON
+Handling API rate limits
+Diagnosing test failures
+
+
+  Diagram: Debug prompt-to-fix loop
+  
+    
+    Link to heading
+  
+
+
+
+
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+C
+-
+-
+-
+P
+-
+-
+V
+-
+-
+-
+a
+r
+a
+p
+e
+l
+r
+o
+a
+a
+l
+r
+r
+c
+t
+r
+o
+e
+m
+s
+s
+i
+e
+e
+h
+u
+r
+g
+l
+p
+k
+k
+d
+r
+p
+e
+r
+o
+s
+e
+t
+a
+u
+r
+c
+e
+r
+v
+r
+t
+t
+n
+o
+k
+a
+C
+o
+a
+e
+d
+f
+m
+n
+o
+o
+r
+t
+u
+r
+a
+e
+t
+p
+t
+g
+f
+e
+c
+e
+i
+s
+i
+e
+i
+s
+e
+g
+l
+s
+c
+l
+c
+t
+x
+t
+r
+u
+a
+o
+o
+a
+e
+s
+s
+e
+r
+g
+d
+t
+u
+d
+c
+s
+e
+e
+e
+s
+e
+s
+/
+C
+e
+f
+n
+i
+e
+f
+h
+i
+a
+o
+v
+i
+a
+x
+r
+n
+i
+l
+t
+i
+s
+d
+e
+o
+e
+s
+n
+c
+e
+
+
+		
+	
+
+
+  1) Debugging invalid JSON
+  
+    
+    Link to heading
+  
+
+Scenario from the cookbook:">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Copilot Chat Cookbook Deep Dive: Debug Errors">
+	<meta name="twitter:description" content="Why this category matters Link to heading Debugging prompts are most useful when they include concrete failure context: error text, logs, and relevant files.
+The Debug errors category demonstrates this pattern with three practical examples.
+Use cases Link to heading Developers debugging production-like failures under time pressure QA and CI owners diagnosing flaky test behavior Developers learning to write high-signal debugging prompts The 3 examples in this category Link to heading Debugging invalid JSON Handling API rate limits Diagnosing test failures Diagram: Debug prompt-to-fix loop Link to heading C - - - P - - V - - - a r a p e l r o a a l r r c t r o e m s s i e e h u r g l p k k d r p e r o s e t a u r c e r v r t t n o k a C o a e d f m n o o r t u r a e t p t g f e c e i s i e i s e g l s c l c t x t r u a o o a e s s e r g d t u d c s e e e s e s / C e f n i e f h i a o v i a x r n i l t i s d e o e s n c e 1) Debugging invalid JSON Link to heading Scenario from the cookbook:">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-15-cookbook-debug-errors-with-copilot-chat/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Copilot Chat Cookbook Deep Dive: Debug Errors">
+	<meta property="og:description" content="Why this category matters Link to heading Debugging prompts are most useful when they include concrete failure context: error text, logs, and relevant files.
+The Debug errors category demonstrates this pattern with three practical examples.
+Use cases Link to heading Developers debugging production-like failures under time pressure QA and CI owners diagnosing flaky test behavior Developers learning to write high-signal debugging prompts The 3 examples in this category Link to heading Debugging invalid JSON Handling API rate limits Diagnosing test failures Diagram: Debug prompt-to-fix loop Link to heading C - - - P - - V - - - a r a p e l r o a a l r r c t r o e m s s i e e h u r g l p k k d r p e r o s e t a u r c e r v r t t n o k a C o a e d f m n o o r t u r a e t p t g f e c e i s i e i s e g l s c l c t x t r u a o o a e s s e r g d t u d c s e e e s e s / C e f n i e f h i a o v i a x r n i l t i s d e o e s n c e 1) Debugging invalid JSON Link to heading Scenario from the cookbook:">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-05-15T19:10:00+05:30">
+		<meta property="article:modified_time" content="2026-05-15T19:10:00+05:30">
+		<meta property="article:tag" content="Github-Copilot">
+		<meta property="article:tag" content="Prompt-Engineering">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-05-15-cookbook-debug-errors-with-copilot-chat/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-05-15-cookbook-debug-errors-with-copilot-chat/">
+              Copilot Chat Cookbook Deep Dive: Debug Errors
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-05-15T19:10:00&#43;05:30">
+                May 15, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/github-copilot/">Github-Copilot</a>
+      <span class="separator">•</span>
+    <a href="/categories/prompt-engineering/">Prompt-Engineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/github-copilot/">Github-Copilot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/prompt-engineering/">Prompt-Engineering</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="why-this-category-matters">
+  Why this category matters
+  <a class="heading-link" href="#why-this-category-matters">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Debugging prompts are most useful when they include concrete failure context: error text, logs, and relevant files.</p>
+<p>The Debug errors category demonstrates this pattern with three practical examples.</p>
+<h2 id="use-cases">
+  Use cases
+  <a class="heading-link" href="#use-cases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Developers debugging production-like failures under time pressure</li>
+<li>QA and CI owners diagnosing flaky test behavior</li>
+<li>Developers learning to write high-signal debugging prompts</li>
+</ul>
+<h2 id="the-3-examples-in-this-category">
+  The 3 examples in this category
+  <a class="heading-link" href="#the-3-examples-in-this-category">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li>Debugging invalid JSON</li>
+<li>Handling API rate limits</li>
+<li>Diagnosing test failures</li>
+</ol>
+<h3 id="diagram-debug-prompt-to-fix-loop">
+  Diagram: Debug prompt-to-fix loop
+  <a class="heading-link" href="#diagram-debug-prompt-to-fix-loop">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 248 345"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 232,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 232,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,128 L 232,128' fill='none' stroke='currentColor'></path>
+<path d='M 0,192 L 232,192' fill='none' stroke='currentColor'></path>
+<path d='M 0,240 L 232,240' fill='none' stroke='currentColor'></path>
+<path d='M 0,320 L 232,320' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,128 L 0,192' fill='none' stroke='currentColor'></path>
+<path d='M 0,240 L 0,320' fill='none' stroke='currentColor'></path>
+<path d='M 104,96 L 104,112' fill='none' stroke='currentColor'></path>
+<path d='M 104,208 L 104,224' fill='none' stroke='currentColor'></path>
+<path d='M 232,0 L 232,80' fill='none' stroke='currentColor'></path>
+<path d='M 232,128 L 232,192' fill='none' stroke='currentColor'></path>
+<path d='M 232,240 L 232,320' fill='none' stroke='currentColor'></path>
+<path d='M 104,88 L 104,96' fill='none' stroke='currentColor'></path>
+<path d='M 104,200 L 104,208' fill='none' stroke='currentColor'></path>
+<path d='M 104,112 L 104,120' fill='none' stroke='currentColor'></path>
+<polygon points='120.000000,112.000000 108.000000,106.400002 108.000000,117.599998' fill='currentColor' transform='rotate(90.000000, 104.000000, 112.000000)'></polygon>
+<path d='M 104,224 L 104,232' fill='none' stroke='currentColor'></path>
+<polygon points='120.000000,224.000000 108.000000,218.399994 108.000000,229.600006' fill='currentColor' transform='rotate(90.000000, 104.000000, 224.000000)'></polygon>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='52' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='68' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='148' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='16' y='164' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='180' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='260' fill='currentColor' style='font-size:1em'>V</text>
+<text text-anchor='middle' x='16' y='276' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='292' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='308' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='24' y='148' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='24' y='260' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='52' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='32' y='68' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='32' y='148' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='32' y='164' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='32' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='32' y='260' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='32' y='276' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='32' y='292' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='32' y='308' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='40' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='40' y='52' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='40' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='148' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='40' y='164' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='40' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='40' y='260' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='40' y='276' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='292' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='308' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='48' y='36' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='48' y='52' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='48' y='68' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='48' y='148' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='48' y='164' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='48' y='180' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='48' y='260' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='48' y='276' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='48' y='292' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='48' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='56' y='52' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='56' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='56' y='148' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='56' y='260' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='56' y='276' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='56' y='292' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='56' y='308' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='64' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='36' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='64' y='68' fill='currentColor' style='font-size:1em'>v</text>
+<text text-anchor='middle' x='64' y='164' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='64' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='64' y='260' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='64' y='276' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='64' y='292' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='64' y='308' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='72' y='68' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='72' y='148' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='72' y='164' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='72' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='72' y='260' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='72' y='292' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='80' y='20' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='80' y='36' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='80' y='68' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='80' y='148' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='80' y='164' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='80' y='180' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='80' y='276' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='80' y='292' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='80' y='308' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='88' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='88' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='88' y='68' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='148' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='88' y='164' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='180' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='88' y='260' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='88' y='276' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='88' y='292' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='88' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='96' y='36' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='96' y='148' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='96' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='260' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='96' y='276' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='96' y='292' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='308' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='104' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='104' y='36' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='104' y='68' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='104' y='148' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='104' y='164' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='104' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='260' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='104' y='276' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='308' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='112' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='112' y='36' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='112' y='68' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='112' y='148' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='112' y='164' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='112' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='112' y='276' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='112' y='292' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='112' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='120' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='120' y='36' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='120' y='68' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='120' y='148' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='120' y='164' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='120' y='180' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='120' y='292' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='120' y='308' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='128' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='128' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='128' y='164' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='128' y='292' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='128' y='308' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='136' y='68' fill='currentColor' style='font-size:1em'>/</text>
+<text text-anchor='middle' x='136' y='148' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='136' y='164' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='136' y='180' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='136' y='292' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='136' y='308' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='144' y='68' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='144' y='148' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='144' y='180' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='292' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='144' y='308' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='152' y='20' fill='currentColor' style='font-size:1em'>v</text>
+<text text-anchor='middle' x='152' y='68' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='152' y='148' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='152' y='180' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='152' y='292' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='152' y='308' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='160' y='68' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='160' y='148' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='160' y='292' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='160' y='308' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='168' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='168' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='168' y='292' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='176' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='176' y='68' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='184' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='192' y='20' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='200' y='20' fill='currentColor' style='font-size:1em'>e</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="1-debugging-invalid-json">
+  1) Debugging invalid JSON
+  <a class="heading-link" href="#1-debugging-invalid-json">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Scenario from the cookbook:</p>
+<ul>
+<li>A JSON parse error occurs due to malformed JSON.</li>
+<li>Prompt asks why JSON is invalid and how to fix it.</li>
+</ul>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Why is my JSON object invalid and how can I fix it?
+</span></span></code></pre></div><p>Expected response style:</p>
+<ul>
+<li>Pinpoint exact syntax issue.</li>
+<li>Return corrected JSON.</li>
+</ul>
+<p>Validation checklist:</p>
+<ul>
+<li>Parse with a JSON parser.</li>
+<li>Confirm no trailing commas or quote mismatches.</li>
+<li>Ensure original semantics remain unchanged.</li>
+</ul>
+<h2 id="2-handling-api-rate-limits">
+  2) Handling API rate limits
+  <a class="heading-link" href="#2-handling-api-rate-limits">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Scenario from the cookbook:</p>
+<ul>
+<li>API calls can fail due to limits; app needs resilient retry behavior.</li>
+</ul>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>How can I handle API rate limits within get_weather().
+</span></span></code></pre></div><p>Typical improvement pattern in response:</p>
+<ul>
+<li>Retry session</li>
+<li>Backoff strategy</li>
+<li>Error handling around request failures</li>
+</ul>
+<p>Validation checklist:</p>
+<ul>
+<li>Confirm backoff and retry limits match service policy.</li>
+<li>Handle HTTP status families intentionally.</li>
+<li>Ensure failures return predictable API responses.</li>
+</ul>
+<h2 id="3-diagnosing-test-failures">
+  3) Diagnosing test failures
+  <a class="heading-link" href="#3-diagnosing-test-failures">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Cookbook showcases two high-value scenarios:</p>
+<ul>
+<li>Passes locally, fails in CI (timezone/time-boundary mismatch).</li>
+<li>Intermittent failures (race condition in async/background workflow).</li>
+</ul>
+<p>Prompt pattern with strong context:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Please take a look at this CI failure message.
+</span></span><span style="display:flex;"><span>The test passes locally, but intermittently fails in CI.
+</span></span><span style="display:flex;"><span>Can you help me figure out if this looks like a code bug,
+</span></span><span style="display:flex;"><span>environment issue, or a flaky test?
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;failure excerpt&gt;
+</span></span><span style="display:flex;"><span>#file:order.py
+</span></span><span style="display:flex;"><span>#file:test_order_service.py
+</span></span></code></pre></div><p>Why this works:</p>
+<ul>
+<li>Includes failure output.</li>
+<li>Includes relevant files.</li>
+<li>Asks for classification and root-cause reasoning.</li>
+</ul>
+<p>Validation checklist:</p>
+<ul>
+<li>Reproduce with deterministic clocks/timezones where relevant.</li>
+<li>Add synchronization/waiting for async state transitions.</li>
+<li>Rerun tests multiple times in CI-like conditions.</li>
+</ul>
+<h2 id="debug-prompting-patterns-that-consistently-help">
+  Debug prompting patterns that consistently help
+  <a class="heading-link" href="#debug-prompting-patterns-that-consistently-help">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Ask for root-cause categories, not only fixes.</li>
+<li>Include before/after logs for flaky behavior.</li>
+<li>Ask for minimal patch plus explanation.</li>
+<li>Ask for follow-up tests that prevent recurrence.</li>
+</ul>
+<h2 id="worked-example">
+  Worked example
+  <a class="heading-link" href="#worked-example">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="scenario">
+  Scenario
+  <a class="heading-link" href="#scenario">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>A test passes locally but fails intermittently in CI around date boundaries.</p>
+<h3 id="code-under-test">
+  Code under test
+  <a class="heading-link" href="#code-under-test">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># order.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> date, timedelta
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">expected_delivery_date</span>(order_date: date) <span style="color:#f92672">-&gt;</span> date:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Returns next business day. Skips Friday-into-weekend.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> order_date<span style="color:#f92672">.</span>weekday() <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">4</span>:  <span style="color:#75715e"># Friday=4, Saturday=5, Sunday=6</span>
+</span></span><span style="display:flex;"><span>        days_ahead <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span> <span style="color:#f92672">-</span> order_date<span style="color:#f92672">.</span>weekday()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        days_ahead <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> order_date <span style="color:#f92672">+</span> timedelta(days<span style="color:#f92672">=</span>days_ahead)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># test_order_service.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> date
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> order <span style="color:#f92672">import</span> expected_delivery_date
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_weekday_delivery</span>():
+</span></span><span style="display:flex;"><span>    today <span style="color:#f92672">=</span> date<span style="color:#f92672">.</span>today()          <span style="color:#75715e"># Bug: binds test to system clock</span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> expected_delivery_date(today)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> result <span style="color:#f92672">&gt;</span> today         <span style="color:#75715e"># Passes Monday–Thursday, fails Friday in some timezones</span>
+</span></span></code></pre></div><p>The test uses <code>date.today()</code>, which means its assertions change depending on when and where it runs. In CI, the server timezone or date boundary can push the evaluation to Friday, causing the test to fail.</p>
+<h3 id="evidence-bundle-to-include">
+  Evidence bundle to include
+  <a class="heading-link" href="#evidence-bundle-to-include">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>Failure excerpt</li>
+<li>Runtime timezone details</li>
+<li>Relevant implementation and test files</li>
+</ul>
+<h3 id="prompt">
+  Prompt
+  <a class="heading-link" href="#prompt">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Classify this failure as code bug, environment issue, or flaky test.
+</span></span><span style="display:flex;"><span>Then provide:
+</span></span><span style="display:flex;"><span>1) likely root cause,
+</span></span><span style="display:flex;"><span>2) minimal patch,
+</span></span><span style="display:flex;"><span>3) regression test additions,
+</span></span><span style="display:flex;"><span>4) rerun strategy.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Failure log:
+</span></span><span style="display:flex;"><span>&lt;paste CI failure&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Files:
+</span></span><span style="display:flex;"><span>#file:order.py
+</span></span><span style="display:flex;"><span>#file:test_order_service.py
+</span></span></code></pre></div><h3 id="expected-good-response-characteristics">
+  Expected good response characteristics
+  <a class="heading-link" href="#expected-good-response-characteristics">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>Explains why timezone assumptions cause divergence.</li>
+<li>Proposes deterministic clock/timezone handling.</li>
+<li>Adds regression coverage for edge boundaries.</li>
+</ul>
+<h3 id="validation-steps">
+  Validation steps
+  <a class="heading-link" href="#validation-steps">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ol>
+<li>Re-run failing tests multiple times with controlled timezone.</li>
+<li>Re-run entire suite in CI.</li>
+<li>Confirm no unrelated behavior changed.</li>
+</ol>
+<h2 id="key-takeaways">
+  Key takeaways
+  <a class="heading-link" href="#key-takeaways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Best debugging prompts include concrete evidence, not vague symptoms.</li>
+<li>Root-cause classification is often more valuable than immediate patching.</li>
+<li>Flaky test diagnosis benefits heavily from logs and file references.</li>
+<li>Every suggested fix must be validated with reruns and regression checks.</li>
+</ul>
+<h2 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/debug-errors"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/debug-errors</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/debug-errors/debug-invalid-json"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/debug-errors/debug-invalid-json</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/debug-errors/handle-api-rate-limits"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/debug-errors/handle-api-rate-limits</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/debug-errors/diagnose-test-failures"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/debug-errors/diagnose-test-failures</a></li>
+<li><a href="https://gohugo.io/documentation/"  class="external-link" target="_blank" rel="noopener">https://gohugo.io/documentation/</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

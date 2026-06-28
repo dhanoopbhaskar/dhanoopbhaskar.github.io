@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Copilot Chat Cookbook Deep Dive: Testing Code · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Why this category matters
+  
+    
+    Link to heading
+  
+
+The Testing code category focuses on keeping test suites effective as code evolves. It covers generation, isolation, browser-level coverage, and adaptation after logic changes.
+
+  Use cases
+  
+    
+    Link to heading
+  
+
+
+Developers adding or repairing test coverage quickly
+QA engineers validating AI-generated tests for reliability
+Developers learning to review and strengthen AI-generated tests
+
+
+  The 4 examples in this category
+  
+    
+    Link to heading
+  
+
+
+Generating unit tests
+Creating mock objects to abstract layers
+Creating end-to-end tests for a webpage
+Updating unit tests to match code changes
+
+
+  Diagram: Test generation and maintenance loop
+  
+    
+    Link to heading
+  
+
+
+
+
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+P
+P
+-
+-
+-
+E
+-
+-
+-
+R
+-
+-
+-
+r
+r
+x
+e
+o
+o
+n
+f
+e
+e
+f
+m
+p
+f
+m
+f
+u
+d
+m
+o
+a
+d
+c
+l
+i
+o
+i
+o
+i
+p
+u
+p
+r
+i
+g
+u
+a
+s
+o
+n
+c
+x
+d
+c
+t
+m
+l
+e
+t
+k
+s
+r
+e
+k
+t
+a
+t
+a
+u
+e
+i
+i
+s
+u
+t
+i
+f
+l
+r
+c
+n
+n
+i
+t
+/
+r
+e
+o
+o
+e
+a
+a
+e
+g
+s
+e
+s
+e
+d
+n
+r
+p
+s
+s
+n
+s
+o
+s
+t
+s
+a
+e
+d
+s
+a
+l
+t
+u
+e
+c
+t
+t
+s
+s
+a
+s
+b
+x
+o
+e
+h
+i
+s
+t
+s
+p
+d
+s
+s
+n
+e
+i
+e
+e
+t
+s
+r
+o
+c
+s
+p
+t
+n
+t
+i
+e
+i
+a
+n
+c
+o
+t
+t
+t
+n
+i
+e
+s
+o
+n
+n
+t
+s
+
+
+		
+	
+
+
+  1) Generating unit tests
+  
+    
+    Link to heading
+  
+
+Cookbook scenario:">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Copilot Chat Cookbook Deep Dive: Testing Code">
+	<meta name="twitter:description" content="Why this category matters Link to heading The Testing code category focuses on keeping test suites effective as code evolves. It covers generation, isolation, browser-level coverage, and adaptation after logic changes.
+Use cases Link to heading Developers adding or repairing test coverage quickly QA engineers validating AI-generated tests for reliability Developers learning to review and strengthen AI-generated tests The 4 examples in this category Link to heading Generating unit tests Creating mock objects to abstract layers Creating end-to-end tests for a webpage Updating unit tests to match code changes Diagram: Test generation and maintenance loop Link to heading P P - - - E - - - R - - - r r x e o o n f e e f m p f m f u d m o a d c l i o i o i p u p r i g u a s o n c x d c t m l e t k s r e k t a t a u e i i s u t i f l r c n n i t / r e o o e a a e g s e s e d n r p s s n s o s t s a e d s a l t u e c t t s s a s b x o e h i s t s p d s s n e i e e t s r o c s p t n t i e i a n c o t t t n i e s o n n t s 1) Generating unit tests Link to heading Cookbook scenario:">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-19-cookbook-testing-code-with-copilot-chat/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Copilot Chat Cookbook Deep Dive: Testing Code">
+	<meta property="og:description" content="Why this category matters Link to heading The Testing code category focuses on keeping test suites effective as code evolves. It covers generation, isolation, browser-level coverage, and adaptation after logic changes.
+Use cases Link to heading Developers adding or repairing test coverage quickly QA engineers validating AI-generated tests for reliability Developers learning to review and strengthen AI-generated tests The 4 examples in this category Link to heading Generating unit tests Creating mock objects to abstract layers Creating end-to-end tests for a webpage Updating unit tests to match code changes Diagram: Test generation and maintenance loop Link to heading P P - - - E - - - R - - - r r x e o o n f e e f m p f m f u d m o a d c l i o i o i p u p r i g u a s o n c x d c t m l e t k s r e k t a t a u e i i s u t i f l r c n n i t / r e o o e a a e g s e s e d n r p s s n s o s t s a e d s a l t u e c t t s s a s b x o e h i s t s p d s s n e i e e t s r o c s p t n t i e i a n c o t t t n i e s o n n t s 1) Generating unit tests Link to heading Cookbook scenario:">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-05-19T19:10:00+05:30">
+		<meta property="article:modified_time" content="2026-05-19T19:10:00+05:30">
+		<meta property="article:tag" content="Github-Copilot">
+		<meta property="article:tag" content="Prompt-Engineering">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-05-19-cookbook-testing-code-with-copilot-chat/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-05-19-cookbook-testing-code-with-copilot-chat/">
+              Copilot Chat Cookbook Deep Dive: Testing Code
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-05-19T19:10:00&#43;05:30">
+                May 19, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/github-copilot/">Github-Copilot</a>
+      <span class="separator">•</span>
+    <a href="/categories/prompt-engineering/">Prompt-Engineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/github-copilot/">Github-Copilot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/prompt-engineering/">Prompt-Engineering</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="why-this-category-matters">
+  Why this category matters
+  <a class="heading-link" href="#why-this-category-matters">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>The Testing code category focuses on keeping test suites effective as code evolves. It covers generation, isolation, browser-level coverage, and adaptation after logic changes.</p>
+<h2 id="use-cases">
+  Use cases
+  <a class="heading-link" href="#use-cases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Developers adding or repairing test coverage quickly</li>
+<li>QA engineers validating AI-generated tests for reliability</li>
+<li>Developers learning to review and strengthen AI-generated tests</li>
+</ul>
+<h2 id="the-4-examples-in-this-category">
+  The 4 examples in this category
+  <a class="heading-link" href="#the-4-examples-in-this-category">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li>Generating unit tests</li>
+<li>Creating mock objects to abstract layers</li>
+<li>Creating end-to-end tests for a webpage</li>
+<li>Updating unit tests to match code changes</li>
+</ol>
+<h3 id="diagram-test-generation-and-maintenance-loop">
+  Diagram: Test generation and maintenance loop
+  <a class="heading-link" href="#diagram-test-generation-and-maintenance-loop">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 264 441"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 248,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,32 L 248,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 248,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,160 L 248,160' fill='none' stroke='currentColor'></path>
+<path d='M 0,208 L 248,208' fill='none' stroke='currentColor'></path>
+<path d='M 0,288 L 248,288' fill='none' stroke='currentColor'></path>
+<path d='M 0,336 L 248,336' fill='none' stroke='currentColor'></path>
+<path d='M 0,416 L 248,416' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,32' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 0,160' fill='none' stroke='currentColor'></path>
+<path d='M 0,208 L 0,288' fill='none' stroke='currentColor'></path>
+<path d='M 0,336 L 0,416' fill='none' stroke='currentColor'></path>
+<path d='M 112,48 L 112,64' fill='none' stroke='currentColor'></path>
+<path d='M 112,176 L 112,192' fill='none' stroke='currentColor'></path>
+<path d='M 112,304 L 112,320' fill='none' stroke='currentColor'></path>
+<path d='M 248,0 L 248,32' fill='none' stroke='currentColor'></path>
+<path d='M 248,80 L 248,160' fill='none' stroke='currentColor'></path>
+<path d='M 248,208 L 248,288' fill='none' stroke='currentColor'></path>
+<path d='M 248,336 L 248,416' fill='none' stroke='currentColor'></path>
+<path d='M 112,40 L 112,48' fill='none' stroke='currentColor'></path>
+<path d='M 112,168 L 112,176' fill='none' stroke='currentColor'></path>
+<path d='M 112,296 L 112,304' fill='none' stroke='currentColor'></path>
+<path d='M 112,64 L 112,72' fill='none' stroke='currentColor'></path>
+<polygon points='128.000000,64.000000 116.000000,58.400002 116.000000,69.599998' fill='currentColor' transform='rotate(90.000000, 112.000000, 64.000000)'></polygon>
+<path d='M 112,192 L 112,200' fill='none' stroke='currentColor'></path>
+<polygon points='128.000000,192.000000 116.000000,186.399994 116.000000,197.600006' fill='currentColor' transform='rotate(90.000000, 112.000000, 192.000000)'></polygon>
+<path d='M 112,320 L 112,328' fill='none' stroke='currentColor'></path>
+<polygon points='128.000000,320.000000 116.000000,314.399994 116.000000,325.600006' fill='currentColor' transform='rotate(90.000000, 112.000000, 320.000000)'></polygon>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='16' y='100' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='16' y='116' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='132' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='148' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='228' fill='currentColor' style='font-size:1em'>E</text>
+<text text-anchor='middle' x='16' y='244' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='260' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='276' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='356' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='16' y='372' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='388' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='404' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='24' y='100' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='24' y='228' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='24' y='356' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='32' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='32' y='116' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='32' y='132' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='32' y='148' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='228' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='244' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='32' y='260' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='32' y='276' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='32' y='356' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='32' y='372' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='32' y='388' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='32' y='404' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='40' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='40' y='100' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='40' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='40' y='132' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='40' y='148' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='40' y='228' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='40' y='244' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='40' y='260' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='40' y='276' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='40' y='356' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='40' y='372' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='40' y='388' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='40' y='404' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='48' y='100' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='48' y='116' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='48' y='132' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='48' y='148' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='48' y='228' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='48' y='244' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='48' y='260' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='48' y='276' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='48' y='356' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='48' y='372' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='48' y='388' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='48' y='404' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='56' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='56' y='116' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='56' y='132' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='56' y='148' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='56' y='228' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='56' y='244' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='56' y='260' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='56' y='276' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='56' y='356' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='56' y='372' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='56' y='388' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='56' y='404' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='64' y='116' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='132' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='64' y='228' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='244' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='64' y='260' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='64' y='372' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='64' y='388' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='64' y='404' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='72' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='72' y='100' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='72' y='116' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='72' y='132' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='72' y='148' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='72' y='244' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='72' y='260' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='72' y='276' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='72' y='356' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='72' y='372' fill='currentColor' style='font-size:1em'>/</text>
+<text text-anchor='middle' x='72' y='388' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='72' y='404' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='80' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='80' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='80' y='132' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='80' y='148' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='80' y='228' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='80' y='244' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='80' y='260' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='80' y='276' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='80' y='356' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='80' y='372' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='80' y='388' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='80' y='404' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='88' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='88' y='100' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='88' y='116' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='88' y='132' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='148' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='228' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='88' y='244' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='276' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='88' y='356' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='372' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='388' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='96' y='116' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='96' y='148' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='228' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='96' y='244' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='96' y='260' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='96' y='276' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='96' y='356' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='96' y='372' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='96' y='404' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='104' y='20' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='104' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='116' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='148' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='104' y='260' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='104' y='276' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='104' y='356' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='104' y='372' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='104' y='404' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='112' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='112' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='112' y='116' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='112' y='228' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='112' y='260' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='112' y='276' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='112' y='372' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='112' y='404' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='120' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='120' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='120' y='116' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='120' y='228' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='120' y='260' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='120' y='276' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='120' y='404' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='128' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='128' y='228' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='128' y='260' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='128' y='276' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='128' y='404' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='136' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='136' y='228' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='136' y='260' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='136' y='276' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='136' y='404' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='228' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='144' y='260' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='404' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='152' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='152' y='228' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='152' y='260' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='152' y='404' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='160' y='228' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='160' y='260' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='160' y='404' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='168' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='168' y='260' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='168' y='404' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='176' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='176' y='404' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='184' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='184' y='404' fill='currentColor' style='font-size:1em'>s</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="1-generating-unit-tests">
+  1) Generating unit tests
+  <a class="heading-link" href="#1-generating-unit-tests">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Cookbook scenario:</p>
+<ul>
+<li>Generate tests for input validation logic with success and failure paths.</li>
+</ul>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Generate unit tests for this function.
+</span></span><span style="display:flex;"><span>Validate both success and failure, and include edge cases.
+</span></span></code></pre></div><p>What to verify:</p>
+<ul>
+<li>Correct assertions for boundary values.</li>
+<li>Error messages/types where relevant.</li>
+<li>No duplicated or redundant test cases.</li>
+</ul>
+<h2 id="2-creating-mock-objects">
+  2) Creating mock objects
+  <a class="heading-link" href="#2-creating-mock-objects">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Cookbook scenario:</p>
+<ul>
+<li>Mock a service dependency so server-side logic can be tested without database access.</li>
+</ul>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Create a unit test to ensure the service is called correctly.
+</span></span><span style="display:flex;"><span>Mock the service object.
+</span></span></code></pre></div><p>Practical notes from cookbook:</p>
+<ul>
+<li>Mention test framework (for example Vitest).</li>
+<li>Provide existing test files via #file when you want style consistency.</li>
+</ul>
+<p>What to verify:</p>
+<ul>
+<li>Dependency calls use expected arguments.</li>
+<li>Call counts and behavior assertions are meaningful.</li>
+<li>Mocks are reset between tests.</li>
+</ul>
+<h2 id="3-creating-end-to-end-tests">
+  3) Creating end-to-end tests
+  <a class="heading-link" href="#3-creating-end-to-end-tests">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Cookbook scenario:</p>
+<ul>
+<li>Generate Playwright tests for loading, success, and error states.</li>
+</ul>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Using Playwright, generate an e2e test to ensure the product displays correctly.
+</span></span></code></pre></div><p>What to verify:</p>
+<ul>
+<li>Stable selectors.</li>
+<li>Correct API mocking/stubbing behavior.</li>
+<li>Assertions for loading, happy path, and error UI.</li>
+</ul>
+<h2 id="4-updating-tests-after-code-changes">
+  4) Updating tests after code changes
+  <a class="heading-link" href="#4-updating-tests-after-code-changes">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Cookbook scenario:</p>
+<ul>
+<li>Discount logic changed thresholds and tiers, requiring test updates.</li>
+</ul>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Given the update to the function, update unit tests that may fail or become outdated.
+</span></span></code></pre></div><p>Expected response quality:</p>
+<ul>
+<li>Identifies which old tests fail.</li>
+<li>Flags misleading but passing tests.</li>
+<li>Adds coverage for newly introduced behavior.</li>
+</ul>
+<h2 id="quality-checks-for-cookbook-generated-tests">
+  Quality checks for cookbook-generated tests
+  <a class="heading-link" href="#quality-checks-for-cookbook-generated-tests">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Determinism: avoid flaky time, randomness, or async race assumptions.</li>
+<li>Clarity: test names encode behavior and condition.</li>
+<li>Coverage intent: branch and edge coverage are explicit.</li>
+<li>Maintainability: avoid over-mocking and brittle implementation-coupled assertions.</li>
+</ul>
+<h2 id="worked-example">
+  Worked example
+  <a class="heading-link" href="#worked-example">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="scenario">
+  Scenario
+  <a class="heading-link" href="#scenario">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>You changed discount logic and need unit tests updated safely.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// src/pricing/calculateDiscount.ts (original)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateDiscount</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">price</span>: <span style="color:#66d9ef">number</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tier</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;standard&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;premium&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;vip&#34;</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">tier</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;standard&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.05</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">tier</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;premium&#34;</span>)  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.10</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">tier</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;vip&#34;</span>)      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.20</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The rule change raises the <code>standard</code> rate to 8 % and adds a new <code>corporate</code> tier at 15 %. Tests anchored to the old rates will silently pass the wrong values until someone manually spots the drift.</p>
+<h3 id="prompt-1-generate-baseline-tests">
+  Prompt 1 (generate baseline tests)
+  <a class="heading-link" href="#prompt-1-generate-baseline-tests">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Generate unit tests for this function.
+</span></span><span style="display:flex;"><span>Cover normal path, boundary values, and invalid input.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#file:src/pricing/calculateDiscount.ts
+</span></span></code></pre></div><h3 id="prompt-2-introduce-mocks-where-needed">
+  Prompt 2 (introduce mocks where needed)
+  <a class="heading-link" href="#prompt-2-introduce-mocks-where-needed">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>If this function depends on external services, generate mock-based tests that verify call arguments and error handling.
+</span></span></code></pre></div><h3 id="prompt-3-update-after-rule-change">
+  Prompt 3 (update after rule change)
+  <a class="heading-link" href="#prompt-3-update-after-rule-change">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Given the new discount thresholds, update existing tests and list any obsolete assertions.
+</span></span></code></pre></div><h3 id="validation-checklist">
+  Validation checklist
+  <a class="heading-link" href="#validation-checklist">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>Tests fail before fix and pass after fix when expected.</li>
+<li>Boundary and failure paths are explicitly covered.</li>
+<li>No time/randomness assumptions cause flakiness.</li>
+</ul>
+<h2 id="key-takeaways">
+  Key takeaways
+  <a class="heading-link" href="#key-takeaways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Generated tests are a starting point; quality comes from targeted review.</li>
+<li>Isolation via mocks is critical for fast and reliable unit tests.</li>
+<li>End-to-end tests should include both happy and failure paths.</li>
+<li>Test updates must track business-rule changes, not just syntax changes.</li>
+</ul>
+<h2 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code/generate-unit-tests"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code/generate-unit-tests</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code/create-mock-objects"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code/create-mock-objects</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code/create-end-to-end-tests"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code/create-end-to-end-tests</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code/update-unit-tests"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/testing-code/update-unit-tests</a></li>
+<li><a href="https://playwright.dev/"  class="external-link" target="_blank" rel="noopener">https://playwright.dev/</a></li>
+<li><a href="https://vitest.dev/"  class="external-link" target="_blank" rel="noopener">https://vitest.dev/</a></li>
+<li><a href="https://gohugo.io/documentation/"  class="external-link" target="_blank" rel="noopener">https://gohugo.io/documentation/</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Copilot Chat Cookbook Deep Dive: Analyze Security · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Why this category matters
+  
+    
+    Link to heading
+  
+
+Security work needs repeatable workflows and explicit controls. The Analyze security category shows how Copilot Chat can accelerate setup and triage while keeping humans in control of final decisions.
+
+  Use cases
+  
+    
+    Link to heading
+  
+
+
+Engineers hardening repository defaults and dependency workflows
+Security champions triaging vulnerability findings with developers
+Developers who need guardrails for Copilot-assisted security workflows
+
+
+  The 3 examples in this category
+  
+    
+    Link to heading
+  
+
+
+Securing your repository
+Managing dependency updates
+Finding existing vulnerabilities in code
+
+
+  Diagram: Security hardening flow
+  
+    
+    Link to heading
+  
+
+
+
+
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+B
+-
+-
+-
+D
+-
+-
+-
+C
+-
+C
+-
+-
+a
+e
+o
+o
+s
+s
+p
+b
+p
+d
+u
+P
+d
+v
+s
+n
+c
+r
+e
+e
+u
+r
+e
+e
+p
+R
+e
+u
+e
+t
+o
+e
+l
+c
+s
+a
+n
+p
+d
+-
+l
+c
+i
+d
+v
+i
+r
+h
+n
+d
+e
+a
+p
+l
+n
+u
+n
+e
+i
+n
+e
+c
+e
+n
+t
+o
+e
+e
+r
+u
+e
+e
+t
+p
+h
+n
+d
+e
+l
+v
+r
+e
+o
+s
+w
+r
+c
+a
+i
+e
+a
+u
+c
+r
+s
+o
+r
+y
+b
+s
+c
+l
+b
+c
+s
+a
+a
+e
+c
+t
+u
+o
+c
+y
+i
+o
+n
+n
+p
+a
+e
+l
+h
+t
+h
+r
+l
+d
+v
+n
+d
+o
+n
+c
+e
+y
+.
+e
+t
+e
+i
+i
+a
+i
+n
+t
+s
+g
+y
+d
+u
+v
+t
+n
+l
+n
+t
+s
+i
+i
+i
+m
+u
+n
+i
+y
+g
+i
+g
+r
+e
+n
+o
+e
+l
+l
+i
+e
+d
+i
+t
+g
+n
+n
+e
+n
+w
+p
+f
+a
+a
+u
+e
+s
+g
+r
+i
+t
+g
+p
+o
+x
+i
+e
+m
+e
+o
+p
+s
+n
+t
+s
+
+
+		
+	
+
+
+  1) Securing your repository
+  
+    
+    Link to heading
+  
+
+Cookbook scenario:">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Copilot Chat Cookbook Deep Dive: Analyze Security">
+	<meta name="twitter:description" content="Why this category matters Link to heading Security work needs repeatable workflows and explicit controls. The Analyze security category shows how Copilot Chat can accelerate setup and triage while keeping humans in control of final decisions.
+Use cases Link to heading Engineers hardening repository defaults and dependency workflows Security champions triaging vulnerability findings with developers Developers who need guardrails for Copilot-assisted security workflows The 3 examples in this category Link to heading Securing your repository Managing dependency updates Finding existing vulnerabilities in code Diagram: Security hardening flow Link to heading B - - - D - - - C - C - - a e o o s s p b p d u P d v s n c r e e u r e e p R e u e t o e l c s a n p d - l c i d v i r h n d e a p l n u n e i n e c e n t o e e r u e e t p h n d e l v r e o s w r c a i e a u c r s o r y b s c l b c s a a e c t u o c y i o n n p a e l h t h r l d v n d o n c e y . e t e i i a i n t s g y d u v t n l n t s i i i m u n i y g i g r e n o e l l i e d i t g n n e n w p f a a u e s g r i t g p o x i e m e o p s n t s 1) Securing your repository Link to heading Cookbook scenario:">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-20-cookbook-analyze-security-with-copilot-chat/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Copilot Chat Cookbook Deep Dive: Analyze Security">
+	<meta property="og:description" content="Why this category matters Link to heading Security work needs repeatable workflows and explicit controls. The Analyze security category shows how Copilot Chat can accelerate setup and triage while keeping humans in control of final decisions.
+Use cases Link to heading Engineers hardening repository defaults and dependency workflows Security champions triaging vulnerability findings with developers Developers who need guardrails for Copilot-assisted security workflows The 3 examples in this category Link to heading Securing your repository Managing dependency updates Finding existing vulnerabilities in code Diagram: Security hardening flow Link to heading B - - - D - - - C - C - - a e o o s s p b p d u P d v s n c r e e u r e e p R e u e t o e l c s a n p d - l c i d v i r h n d e a p l n u n e i n e c e n t o e e r u e e t p h n d e l v r e o s w r c a i e a u c r s o r y b s c l b c s a a e c t u o c y i o n n p a e l h t h r l d v n d o n c e y . e t e i i a i n t s g y d u v t n l n t s i i i m u n i y g i g r e n o e l l i e d i t g n n e n w p f a a u e s g r i t g p o x i e m e o p s n t s 1) Securing your repository Link to heading Cookbook scenario:">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-05-20T19:10:00+05:30">
+		<meta property="article:modified_time" content="2026-05-20T19:10:00+05:30">
+		<meta property="article:tag" content="Github-Copilot">
+		<meta property="article:tag" content="Prompt-Engineering">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-05-20-cookbook-analyze-security-with-copilot-chat/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-05-20-cookbook-analyze-security-with-copilot-chat/">
+              Copilot Chat Cookbook Deep Dive: Analyze Security
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-05-20T19:10:00&#43;05:30">
+                May 20, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/github-copilot/">Github-Copilot</a>
+      <span class="separator">•</span>
+    <a href="/categories/prompt-engineering/">Prompt-Engineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/github-copilot/">Github-Copilot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/prompt-engineering/">Prompt-Engineering</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="why-this-category-matters">
+  Why this category matters
+  <a class="heading-link" href="#why-this-category-matters">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Security work needs repeatable workflows and explicit controls. The Analyze security category shows how Copilot Chat can accelerate setup and triage while keeping humans in control of final decisions.</p>
+<h2 id="use-cases">
+  Use cases
+  <a class="heading-link" href="#use-cases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Engineers hardening repository defaults and dependency workflows</li>
+<li>Security champions triaging vulnerability findings with developers</li>
+<li>Developers who need guardrails for Copilot-assisted security workflows</li>
+</ul>
+<h2 id="the-3-examples-in-this-category">
+  The 3 examples in this category
+  <a class="heading-link" href="#the-3-examples-in-this-category">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li>Securing your repository</li>
+<li>Managing dependency updates</li>
+<li>Finding existing vulnerabilities in code</li>
+</ol>
+<h3 id="diagram-security-hardening-flow">
+  Diagram: Security hardening flow
+  <a class="heading-link" href="#diagram-security-hardening-flow">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 256 457"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 240,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 240,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,128 L 240,128' fill='none' stroke='currentColor'></path>
+<path d='M 0,208 L 240,208' fill='none' stroke='currentColor'></path>
+<path d='M 0,256 L 240,256' fill='none' stroke='currentColor'></path>
+<path d='M 16,288 L 24,288' fill='none' stroke='currentColor'></path>
+<path d='M 0,320 L 240,320' fill='none' stroke='currentColor'></path>
+<path d='M 0,368 L 240,368' fill='none' stroke='currentColor'></path>
+<path d='M 0,432 L 240,432' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,128 L 0,208' fill='none' stroke='currentColor'></path>
+<path d='M 0,256 L 0,320' fill='none' stroke='currentColor'></path>
+<path d='M 0,368 L 0,432' fill='none' stroke='currentColor'></path>
+<path d='M 104,96 L 104,112' fill='none' stroke='currentColor'></path>
+<path d='M 104,224 L 104,240' fill='none' stroke='currentColor'></path>
+<path d='M 104,336 L 104,352' fill='none' stroke='currentColor'></path>
+<path d='M 240,0 L 240,80' fill='none' stroke='currentColor'></path>
+<path d='M 240,128 L 240,208' fill='none' stroke='currentColor'></path>
+<path d='M 240,256 L 240,320' fill='none' stroke='currentColor'></path>
+<path d='M 240,368 L 240,432' fill='none' stroke='currentColor'></path>
+<path d='M 104,88 L 104,96' fill='none' stroke='currentColor'></path>
+<path d='M 104,216 L 104,224' fill='none' stroke='currentColor'></path>
+<path d='M 104,328 L 104,336' fill='none' stroke='currentColor'></path>
+<path d='M 104,112 L 104,120' fill='none' stroke='currentColor'></path>
+<polygon points='120.000000,112.000000 108.000000,106.400002 108.000000,117.599998' fill='currentColor' transform='rotate(90.000000, 104.000000, 112.000000)'></polygon>
+<path d='M 104,240 L 104,248' fill='none' stroke='currentColor'></path>
+<polygon points='120.000000,240.000000 108.000000,234.399994 108.000000,245.600006' fill='currentColor' transform='rotate(90.000000, 104.000000, 240.000000)'></polygon>
+<path d='M 104,352 L 104,360' fill='none' stroke='currentColor'></path>
+<polygon points='120.000000,352.000000 108.000000,346.399994 108.000000,357.600006' fill='currentColor' transform='rotate(90.000000, 104.000000, 352.000000)'></polygon>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>B</text>
+<text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='52' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='68' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='148' fill='currentColor' style='font-size:1em'>D</text>
+<text text-anchor='middle' x='16' y='164' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='180' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='196' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='276' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='16' y='308' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='388' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='16' y='404' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='420' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='24' y='148' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='24' y='276' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='24' y='388' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='52' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='32' y='68' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='32' y='148' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='32' y='164' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='32' y='180' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='32' y='196' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='32' y='276' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='32' y='292' fill='currentColor' style='font-size:1em'>v</text>
+<text text-anchor='middle' x='32' y='308' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='388' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='32' y='404' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='32' y='420' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='40' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='52' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='40' y='68' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='40' y='148' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='164' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='180' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='40' y='196' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='40' y='276' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='292' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='40' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='388' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='40' y='404' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='40' y='420' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='48' y='36' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='48' y='52' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='48' y='68' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='48' y='148' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='48' y='164' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='48' y='180' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='48' y='276' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='48' y='292' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='48' y='308' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='48' y='388' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='48' y='404' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='48' y='420' fill='currentColor' style='font-size:1em'>v</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='56' y='52' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='56' y='68' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='56' y='148' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='56' y='164' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='56' y='180' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='56' y='196' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='56' y='276' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='56' y='292' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='56' y='308' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='56' y='388' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='56' y='404' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='56' y='420' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='64' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='64' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='68' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='64' y='148' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='164' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='64' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='64' y='196' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='64' y='276' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='292' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='308' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='64' y='388' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='64' y='420' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='72' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='72' y='36' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='72' y='52' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='72' y='68' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='72' y='148' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='72' y='164' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='72' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='72' y='196' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='72' y='276' fill='currentColor' style='font-size:1em'>v</text>
+<text text-anchor='middle' x='72' y='292' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='72' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='72' y='388' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='72' y='404' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='72' y='420' fill='currentColor' style='font-size:1em'>w</text>
+<text text-anchor='middle' x='80' y='52' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='80' y='148' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='80' y='164' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='80' y='196' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='80' y='276' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='80' y='292' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='80' y='388' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='80' y='404' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='88' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='88' y='36' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='52' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='88' y='68' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='88' y='148' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='88' y='164' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='88' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='196' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='88' y='276' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='88' y='292' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='88' y='308' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='88' y='388' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='404' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='88' y='420' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='96' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='36' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='96' y='52' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='96' y='68' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='96' y='164' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='96' y='180' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='96' y='196' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='96' y='292' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='96' y='308' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='96' y='404' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='96' y='420' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='104' y='20' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='104' y='36' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='104' y='52' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='104' y='68' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='104' y='148' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='104' y='164' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='180' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='104' y='276' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='104' y='292' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='104' y='308' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='104' y='388' fill='currentColor' style='font-size:1em'>v</text>
+<text text-anchor='middle' x='104' y='404' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='104' y='420' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='112' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='112' y='36' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='112' y='52' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='112' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='112' y='148' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='112' y='164' fill='currentColor' style='font-size:1em'>.</text>
+<text text-anchor='middle' x='112' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='112' y='196' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='112' y='276' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='112' y='292' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='112' y='308' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='112' y='388' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='112' y='404' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='120' y='36' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='120' y='52' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='120' y='68' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='120' y='148' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='120' y='164' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='120' y='180' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='120' y='196' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='120' y='276' fill='currentColor' style='font-size:1em'>v</text>
+<text text-anchor='middle' x='120' y='292' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='120' y='308' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='120' y='388' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='120' y='404' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='120' y='420' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='128' y='36' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='128' y='52' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='128' y='148' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='128' y='164' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='128' y='180' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='128' y='196' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='128' y='276' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='128' y='292' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='128' y='308' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='128' y='388' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='128' y='404' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='128' y='420' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='136' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='136' y='36' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='136' y='52' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='136' y='148' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='136' y='164' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='136' y='180' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='136' y='196' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='136' y='276' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='136' y='388' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='136' y='420' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='144' y='36' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='144' y='52' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='144' y='148' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='144' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='144' y='196' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='144' y='276' fill='currentColor' style='font-size:1em'>w</text>
+<text text-anchor='middle' x='144' y='292' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='144' y='308' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='144' y='388' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='144' y='420' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='152' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='152' y='148' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='152' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='152' y='196' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='152' y='292' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='152' y='308' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='152' y='388' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='152' y='420' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='160' y='292' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='160' y='308' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='160' y='388' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='160' y='420' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='168' y='292' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='168' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='168' y='388' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='176' y='292' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='176' y='308' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='176' y='388' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='184' y='292' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='192' y='292' fill='currentColor' style='font-size:1em'>s</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="1-securing-your-repository">
+  1) Securing your repository
+  <a class="heading-link" href="#1-securing-your-repository">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Cookbook scenario:</p>
+<ul>
+<li>Ask for step-by-step enablement of essential repository security features.</li>
+</ul>
+<p>Features called out in the example:</p>
+<ul>
+<li>Secret scanning</li>
+<li>Push protection</li>
+<li>Dependabot alerts</li>
+<li>Dependabot security updates</li>
+<li>Branch protection rules with required reviews</li>
+</ul>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Provide step-by-step instructions to enable essential repository security features,
+</span></span><span style="display:flex;"><span>including why each one matters.
+</span></span></code></pre></div><p>Additional cookbook workflow:</p>
+<ul>
+<li>Generate a SECURITY.md policy with reporting path, response timeline, disclosure guidance, and supported versions.</li>
+</ul>
+<h2 id="2-managing-dependency-updates">
+  2) Managing dependency updates
+  <a class="heading-link" href="#2-managing-dependency-updates">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Cookbook demonstrates two workflows.</p>
+<p>Workflow A: generate baseline dependabot configuration by detecting package ecosystems.</p>
+<p>Workflow B: customize Dependabot behavior for team workflow.</p>
+<p>Customization examples from the cookbook:</p>
+<ul>
+<li>Auto-assign reviewers/team.</li>
+<li>Add labels for routing and governance.</li>
+<li>Limit open PRs.</li>
+<li>Ignore development dependencies where appropriate.</li>
+</ul>
+<p>What to verify:</p>
+<ul>
+<li>Ecosystem directories are correct.</li>
+<li>Schedules and PR limits align with team capacity.</li>
+<li>Labels and assignees exist in target repository.</li>
+</ul>
+<h2 id="3-finding-vulnerabilities-in-code">
+  3) Finding vulnerabilities in code
+  <a class="heading-link" href="#3-finding-vulnerabilities-in-code">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Cookbook scenario:</p>
+<ul>
+<li>Detect potential XSS in DOM update logic and suggest safer rendering.</li>
+</ul>
+<p><strong>Vulnerable code:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Directly inserts user-controlled text into the DOM
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">renderUserComment</span>(<span style="color:#a6e22e">commentText</span>) {
+</span></span><span style="display:flex;"><span>  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;comments&#34;</span>).<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">commentText</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>An attacker who supplies <code>&lt;img src=x onerror=&quot;stealCookies()&quot;&gt;</code> as <code>commentText</code> executes arbitrary JavaScript in every viewer&rsquo;s browser.</p>
+<p><strong>Safer alternative:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Treats user input as text, never as markup
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">renderUserComment</span>(<span style="color:#a6e22e">commentText</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;p&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">commentText</span>;
+</span></span><span style="display:flex;"><span>  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;comments&#34;</span>).<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">p</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Analyze this code for potential security vulnerabilities and suggest fixes.
+</span></span></code></pre></div><p>Cookbook guardrail (important):</p>
+<ul>
+<li>Do not rely on Copilot Chat as a comprehensive security analysis tool.</li>
+<li>Use GitHub code scanning for broader and deeper security coverage.</li>
+</ul>
+<h2 id="high-value-prompt-constraints-for-security-tasks">
+  High-value prompt constraints for security tasks
+  <a class="heading-link" href="#high-value-prompt-constraints-for-security-tasks">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Ask for threat explanation plus fix.</li>
+<li>Ask for minimally invasive patch.</li>
+<li>Ask for tests or checks that verify the fix.</li>
+<li>Ask for residual risk and recommended follow-up scanning.</li>
+</ul>
+<h2 id="worked-example">
+  Worked example
+  <a class="heading-link" href="#worked-example">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="scenario">
+  Scenario
+  <a class="heading-link" href="#scenario">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>You want to establish a baseline security posture for a new service repository.</p>
+<h3 id="prompt-1-baseline-hardening">
+  Prompt 1 (baseline hardening)
+  <a class="heading-link" href="#prompt-1-baseline-hardening">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Provide a step-by-step checklist to secure this repository.
+</span></span><span style="display:flex;"><span>Include secret scanning, push protection, branch protection, and code scanning.
+</span></span><span style="display:flex;"><span>For each item, explain why it matters and how to validate it.
+</span></span></code></pre></div><h3 id="prompt-2-dependency-hygiene">
+  Prompt 2 (dependency hygiene)
+  <a class="heading-link" href="#prompt-2-dependency-hygiene">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Generate a Dependabot configuration for npm and GitHub Actions with weekly updates,
+</span></span><span style="display:flex;"><span>labels, and reviewer assignment.
+</span></span></code></pre></div><h3 id="prompt-3-code-vulnerability-triage">
+  Prompt 3 (code vulnerability triage)
+  <a class="heading-link" href="#prompt-3-code-vulnerability-triage">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Analyze this code snippet for likely XSS, injection, or insecure output handling.
+</span></span><span style="display:flex;"><span>Suggest minimal patches and tests.
+</span></span></code></pre></div><h3 id="validation-checklist">
+  Validation checklist
+  <a class="heading-link" href="#validation-checklist">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>Security settings are actually enabled in repository UI.</li>
+<li>Dependabot config matches real package ecosystems.</li>
+<li>Proposed code fix is backed by tests and code scanning results.</li>
+</ul>
+<p>Always pair these prompts with GitHub code scanning and human review before merge.</p>
+<h2 id="key-takeaways">
+  Key takeaways
+  <a class="heading-link" href="#key-takeaways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Security prompts can accelerate setup, but policy and validation remain human responsibilities.</li>
+<li>Dependabot effectiveness depends on well-tuned configuration, not defaults alone.</li>
+<li>Vulnerability prompts are useful for triage and patch ideas, not full security assurance.</li>
+<li>Pair Copilot Chat with code scanning and disciplined review workflows.</li>
+</ul>
+<h2 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/analyze-security"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/analyze-security</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/analyze-security/secure-your-repository"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/analyze-security/secure-your-repository</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/analyze-security/manage-dependency-updates"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/analyze-security/manage-dependency-updates</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/analyze-security/find-vulnerabilities"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/analyze-security/find-vulnerabilities</a></li>
+<li><a href="https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates</a></li>
+<li><a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates</a></li>
+<li><a href="https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/customizing-dependabot-security-prs"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/customizing-dependabot-security-prs</a></li>
+<li><a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/customizing-dependabot-prs"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/customizing-dependabot-prs</a></li>
+<li><a href="https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning</a></li>
+<li><a href="https://docs.github.com/en/code-security/code-scanning/enabling-code-scanning/configuring-default-setup-for-code-scanning"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/code-security/code-scanning/enabling-code-scanning/configuring-default-setup-for-code-scanning</a></li>
+<li><a href="https://gohugo.io/documentation/"  class="external-link" target="_blank" rel="noopener">https://gohugo.io/documentation/</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

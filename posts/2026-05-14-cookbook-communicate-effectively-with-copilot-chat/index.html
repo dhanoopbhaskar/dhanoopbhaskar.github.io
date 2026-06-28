@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Copilot Chat Cookbook Deep Dive: Communicate Effectively · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Why this category matters
+  
+    
+    Link to heading
+  
+
+The Communicate effectively category focuses on turning unstructured content into reusable artifacts: templates, summaries, diagrams, and tables.
+These workflows are high leverage because they reduce coordination friction across teams.
+
+  Use cases
+  
+    
+    Link to heading
+  
+
+
+Developers writing templates, summaries, and project artifacts
+Project managers converting issue discussions into action items
+Developers who need consistent, reusable communication artifacts from Copilot Chat
+
+
+  The 5 examples in this category
+  
+    
+    Link to heading
+  
+
+
+Creating templates
+Extracting information
+Synthesizing research
+Creating diagrams
+Generating tables
+
+
+  Diagram: Communication transformation pipeline
+  
+    
+    Link to heading
+  
+
+
+
+
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+R
+-
+-
+-
+C
+-
+-
+R
+-
+-
+-
+-
+a
+o
+e
+w
+i
+r
+t
+p
+s
+s
+v
+u
+R
+a
+M
+m
+s
+e
+e
+i
+u
+t
+i
+s
+E
+c
+e
+a
+i
+s
+s
+a
+l
+m
+r
+s
+a
+A
+t
+r
+r
+n
+u
+e
+m
+o
+m
+u
+u
+b
+D
+i
+m
+k
+p
+e
+a
+t
+a
+c
+a
+l
+M
+o
+a
+d
+u
+r
+n
+r
+t
+l
+e
+E
+n
+i
+o
+t
+t
+c
+o
+C
+i
+u
+i
+-
+d
+w
+s
+h
+h
+t
+h
+z
+r
+z
+o
+t
+i
+n
+r
+e
+a
+e
+e
+e
+u
+e
+t
+d
+e
+t
+s
+t
+t
+m
+e
+i
+t
+a
+e
+p
+p
+m
+a
+a
+d
+x
+p
+u
+l
+g
+b
+s
+t
+r
+t
+a
+l
+r
+l
+o
+s
+t
+i
+a
+e
+m
+e
+s
+m
+s
+p
+s
+t
+s
+t
+s
+s
+
+
+		
+	
+
+
+  1) Creating templates
+  
+    
+    Link to heading
+  
+
+Typical scenario: generate a README template with sections for description, installation, usage, and contribution.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Copilot Chat Cookbook Deep Dive: Communicate Effectively">
+	<meta name="twitter:description" content="Why this category matters Link to heading The Communicate effectively category focuses on turning unstructured content into reusable artifacts: templates, summaries, diagrams, and tables.
+These workflows are high leverage because they reduce coordination friction across teams.
+Use cases Link to heading Developers writing templates, summaries, and project artifacts Project managers converting issue discussions into action items Developers who need consistent, reusable communication artifacts from Copilot Chat The 5 examples in this category Link to heading Creating templates Extracting information Synthesizing research Creating diagrams Generating tables Diagram: Communication transformation pipeline Link to heading R - - - C - - R - - - - a o e w i r t p s s v u R a M m s e e i u t i s E c e a i s s a l m r s a A t r r n u e m o m u u b D i m k p e a t a c a l M o a d u r n r t l e E n i o t t c o C i u i - d w s h h t h z r z o t i n r e a e e e u e t d e t s t t m e i t a e p p m a a d x p u l g b s t r t a l r l o s t i a e m e s m s p s t s t s s 1) Creating templates Link to heading Typical scenario: generate a README template with sections for description, installation, usage, and contribution.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-14-cookbook-communicate-effectively-with-copilot-chat/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Copilot Chat Cookbook Deep Dive: Communicate Effectively">
+	<meta property="og:description" content="Why this category matters Link to heading The Communicate effectively category focuses on turning unstructured content into reusable artifacts: templates, summaries, diagrams, and tables.
+These workflows are high leverage because they reduce coordination friction across teams.
+Use cases Link to heading Developers writing templates, summaries, and project artifacts Project managers converting issue discussions into action items Developers who need consistent, reusable communication artifacts from Copilot Chat The 5 examples in this category Link to heading Creating templates Extracting information Synthesizing research Creating diagrams Generating tables Diagram: Communication transformation pipeline Link to heading R - - - C - - R - - - - a o e w i r t p s s v u R a M m s e e i u t i s E c e a i s s a l m r s a A t r r n u e m o m u u b D i m k p e a t a c a l M o a d u r n r t l e E n i o t t c o C i u i - d w s h h t h z r z o t i n r e a e e e u e t d e t s t t m e i t a e p p m a a d x p u l g b s t r t a l r l o s t i a e m e s m s p s t s t s s 1) Creating templates Link to heading Typical scenario: generate a README template with sections for description, installation, usage, and contribution.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-05-14T19:10:00+05:30">
+		<meta property="article:modified_time" content="2026-05-14T19:10:00+05:30">
+		<meta property="article:tag" content="Github-Copilot">
+		<meta property="article:tag" content="Prompt-Engineering">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-05-14-cookbook-communicate-effectively-with-copilot-chat/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-05-14-cookbook-communicate-effectively-with-copilot-chat/">
+              Copilot Chat Cookbook Deep Dive: Communicate Effectively
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-05-14T19:10:00&#43;05:30">
+                May 14, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/github-copilot/">Github-Copilot</a>
+      <span class="separator">•</span>
+    <a href="/categories/prompt-engineering/">Prompt-Engineering</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/github-copilot/">Github-Copilot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/prompt-engineering/">Prompt-Engineering</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="why-this-category-matters">
+  Why this category matters
+  <a class="heading-link" href="#why-this-category-matters">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>The Communicate effectively category focuses on turning unstructured content into reusable artifacts: templates, summaries, diagrams, and tables.</p>
+<p>These workflows are high leverage because they reduce coordination friction across teams.</p>
+<h2 id="use-cases">
+  Use cases
+  <a class="heading-link" href="#use-cases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Developers writing templates, summaries, and project artifacts</li>
+<li>Project managers converting issue discussions into action items</li>
+<li>Developers who need consistent, reusable communication artifacts from Copilot Chat</li>
+</ul>
+<h2 id="the-5-examples-in-this-category">
+  The 5 examples in this category
+  <a class="heading-link" href="#the-5-examples-in-this-category">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li>Creating templates</li>
+<li>Extracting information</li>
+<li>Synthesizing research</li>
+<li>Creating diagrams</li>
+<li>Generating tables</li>
+</ol>
+<h3 id="diagram-communication-transformation-pipeline">
+  Diagram: Communication transformation pipeline
+  <a class="heading-link" href="#diagram-communication-transformation-pipeline">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+
+
+
+<div class="goat svg-container ">
+	
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			font-family="Menlo,Lucida Console,monospace"
+			
+				viewBox="0 0 264 377"
+			>
+			<g transform='translate(8,16)'>
+<path d='M 0,0 L 248,0' fill='none' stroke='currentColor'></path>
+<path d='M 0,80 L 248,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,128 L 248,128' fill='none' stroke='currentColor'></path>
+<path d='M 16,192 L 24,192' fill='none' stroke='currentColor'></path>
+<path d='M 0,208 L 248,208' fill='none' stroke='currentColor'></path>
+<path d='M 0,256 L 248,256' fill='none' stroke='currentColor'></path>
+<path d='M 0,352 L 248,352' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 0,80' fill='none' stroke='currentColor'></path>
+<path d='M 0,128 L 0,208' fill='none' stroke='currentColor'></path>
+<path d='M 0,256 L 0,352' fill='none' stroke='currentColor'></path>
+<path d='M 112,96 L 112,112' fill='none' stroke='currentColor'></path>
+<path d='M 112,224 L 112,240' fill='none' stroke='currentColor'></path>
+<path d='M 248,0 L 248,80' fill='none' stroke='currentColor'></path>
+<path d='M 248,128 L 248,208' fill='none' stroke='currentColor'></path>
+<path d='M 248,256 L 248,352' fill='none' stroke='currentColor'></path>
+<path d='M 112,88 L 112,96' fill='none' stroke='currentColor'></path>
+<path d='M 112,216 L 112,224' fill='none' stroke='currentColor'></path>
+<path d='M 112,112 L 112,120' fill='none' stroke='currentColor'></path>
+<polygon points='128.000000,112.000000 116.000000,106.400002 116.000000,117.599998' fill='currentColor' transform='rotate(90.000000, 112.000000, 112.000000)'></polygon>
+<path d='M 112,240 L 112,248' fill='none' stroke='currentColor'></path>
+<polygon points='128.000000,240.000000 116.000000,234.399994 116.000000,245.600006' fill='currentColor' transform='rotate(90.000000, 112.000000, 240.000000)'></polygon>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='52' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='68' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='148' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='16' y='164' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='180' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='276' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='16' y='292' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='308' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='324' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='16' y='340' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='24' y='148' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='24' y='276' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>w</text>
+<text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='32' y='52' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='32' y='68' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='32' y='148' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='32' y='164' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='180' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='196' fill='currentColor' style='font-size:1em'>v</text>
+<text text-anchor='middle' x='32' y='276' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='32' y='292' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='32' y='308' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='32' y='324' fill='currentColor' style='font-size:1em'>M</text>
+<text text-anchor='middle' x='32' y='340' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='40' y='52' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='148' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='40' y='164' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='40' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='40' y='196' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='40' y='276' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='40' y='292' fill='currentColor' style='font-size:1em'>E</text>
+<text text-anchor='middle' x='40' y='308' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='40' y='324' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='340' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='48' y='36' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='48' y='52' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='48' y='68' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='48' y='148' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='48' y='164' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='48' y='180' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='48' y='196' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='48' y='276' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='48' y='292' fill='currentColor' style='font-size:1em'>A</text>
+<text text-anchor='middle' x='48' y='308' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='48' y='324' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='48' y='340' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='56' y='52' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='56' y='68' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='56' y='148' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='56' y='164' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='56' y='180' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='56' y='196' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='56' y='276' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='56' y='292' fill='currentColor' style='font-size:1em'>D</text>
+<text text-anchor='middle' x='56' y='308' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='56' y='324' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='56' y='340' fill='currentColor' style='font-size:1em'>k</text>
+<text text-anchor='middle' x='64' y='20' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='64' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='52' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='148' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='64' y='164' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='180' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='64' y='196' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='276' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='64' y='292' fill='currentColor' style='font-size:1em'>M</text>
+<text text-anchor='middle' x='64' y='308' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='64' y='324' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='340' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='72' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='72' y='52' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='72' y='68' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='72' y='164' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='72' y='180' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='72' y='196' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='72' y='276' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='72' y='292' fill='currentColor' style='font-size:1em'>E</text>
+<text text-anchor='middle' x='72' y='308' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='72' y='324' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='72' y='340' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='80' y='20' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='80' y='36' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='80' y='52' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='80' y='68' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='80' y='148' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='80' y='164' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='80' y='180' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='80' y='196' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='80' y='308' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='80' y='324' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='80' y='340' fill='currentColor' style='font-size:1em'>w</text>
+<text text-anchor='middle' x='88' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='88' y='36' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='88' y='52' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='88' y='68' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='148' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='88' y='164' fill='currentColor' style='font-size:1em'>z</text>
+<text text-anchor='middle' x='88' y='180' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='88' y='196' fill='currentColor' style='font-size:1em'>z</text>
+<text text-anchor='middle' x='88' y='276' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='88' y='292' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='308' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='88' y='340' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='96' y='36' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='96' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='148' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='96' y='164' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='180' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='196' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='276' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='96' y='292' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='96' y='308' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='96' y='324' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='104' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='104' y='52' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='68' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='104' y='148' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='276' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='104' y='292' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='104' y='308' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='104' y='324' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='104' y='340' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='112' y='36' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='112' y='52' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='112' y='276' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='112' y='292' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='112' y='308' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='112' y='324' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='112' y='340' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='120' y='36' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='120' y='52' fill='currentColor' style='font-size:1em'>x</text>
+<text text-anchor='middle' x='120' y='148' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='120' y='276' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='120' y='292' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='120' y='324' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='120' y='340' fill='currentColor' style='font-size:1em'>b</text>
+<text text-anchor='middle' x='128' y='36' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='128' y='52' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='128' y='148' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='128' y='276' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='128' y='292' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='128' y='308' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='128' y='324' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='128' y='340' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='136' y='148' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='136' y='276' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='136' y='292' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='136' y='308' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='136' y='324' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='136' y='340' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='144' y='148' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='144' y='292' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='144' y='308' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='144' y='324' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='144' y='340' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='152' y='148' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='152' y='292' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='152' y='308' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='152' y='324' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='160' y='148' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='160' y='308' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='168' y='148' fill='currentColor' style='font-size:1em'>s</text>
+</g>
+
+		</svg>
+	
+</div>
+<h2 id="1-creating-templates">
+  1) Creating templates
+  <a class="heading-link" href="#1-creating-templates">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Typical scenario: generate a README template with sections for description, installation, usage, and contribution.</p>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Create a README template for a new open-source project that includes sections for:
+</span></span><span style="display:flex;"><span>- project description
+</span></span><span style="display:flex;"><span>- installation instructions
+</span></span><span style="display:flex;"><span>- usage examples
+</span></span><span style="display:flex;"><span>- contribution guidelines
+</span></span><span style="display:flex;"><span>Make it clear and easy to follow.
+</span></span></code></pre></div><p>What to check in output:</p>
+<ul>
+<li>Includes practical section order and table of contents.</li>
+<li>Includes commands and code examples.</li>
+<li>Includes contribution process and license/contact sections.</li>
+</ul>
+<h2 id="2-extracting-information">
+  2) Extracting information
+  <a class="heading-link" href="#2-extracting-information">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Typical scenarios:</p>
+<ul>
+<li>Summarize a long discussion and extract action items.</li>
+<li>List open issues with deadlines and priority cues.</li>
+</ul>
+<p>Prompt patterns:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Can you summarize the key points and action items from this discussion?
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Can you list the open issues assigned to me, along with their deadlines and priorities?
+</span></span></code></pre></div><p>What to check in output:</p>
+<ul>
+<li>Action items should be explicit and assignable.</li>
+<li>Deadlines should map to real issue content.</li>
+<li>No invented issue metadata.</li>
+</ul>
+<h2 id="3-synthesizing-research">
+  3) Synthesizing research
+  <a class="heading-link" href="#3-synthesizing-research">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Typical scenario: condense large source material into key trends and insights.</p>
+<p>Strong prompt characteristics from the cookbook:</p>
+<ul>
+<li>Include source title and abstract.</li>
+<li>Include sectioned body text.</li>
+<li>Ask for trends, insights, and recommendations.</li>
+</ul>
+<p>What to check in output:</p>
+<ul>
+<li>Distinguishes observed findings from recommendations.</li>
+<li>Preserves caveats and limitations.</li>
+<li>Avoids adding unsupported claims.</li>
+</ul>
+<h2 id="4-creating-diagrams">
+  4) Creating diagrams
+  <a class="heading-link" href="#4-creating-diagrams">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Typical scenario: ask for Mermaid code for project timelines or flowcharts.</p>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Create a Mermaid Gantt diagram that covers August 1st 2025 to January 31st 2026.
+</span></span><span style="display:flex;"><span>Include 5 phases, each taking 6 weeks, and overlapping equally.
+</span></span></code></pre></div><p>Important implementation detail:</p>
+<ul>
+<li>Wrap output in a Mermaid fenced block:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>```mermaid
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>```
+</span></span></code></pre></div><p>What to check in output:</p>
+<ul>
+<li>Date boundaries are valid.</li>
+<li>Durations and overlaps match requirements.</li>
+<li>Diagram syntax renders correctly where pasted.</li>
+</ul>
+<h2 id="5-generating-tables">
+  5) Generating tables
+  <a class="heading-link" href="#5-generating-tables">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Typical scenario: convert repeated person/team records into markdown tables.</p>
+<p>Prompt pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Convert the following information into a markdown table:
+</span></span><span style="display:flex;"><span>&lt;records&gt;
+</span></span></code></pre></div><p>Useful follow-up from the cookbook:</p>
+<ul>
+<li>Ask for diagram generation from table fields, such as timezone overlap visualization.</li>
+</ul>
+<p>What to check in output:</p>
+<ul>
+<li>Column completeness and alignment.</li>
+<li>No dropped rows.</li>
+<li>Consistent formatting and sorting where required.</li>
+</ul>
+<h2 id="cross-cutting-best-practices-for-this-category">
+  Cross-cutting best practices for this category
+  <a class="heading-link" href="#cross-cutting-best-practices-for-this-category">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Specify output format explicitly: markdown template, checklist, table, or Mermaid.</li>
+<li>For research synthesis, include source text in structured chunks.</li>
+<li>For discussion extraction, ask for both summary and action items.</li>
+<li>Review generated text for tone, accuracy, and audience fit.</li>
+</ul>
+<h2 id="worked-example">
+  Worked example
+  <a class="heading-link" href="#worked-example">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="scenario">
+  Scenario
+  <a class="heading-link" href="#scenario">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>You have raw team notes and need a publishable project update with a table and diagram.</p>
+<h3 id="input-notes">
+  Input notes
+  <a class="heading-link" href="#input-notes">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Project: Checkout rewrite
+</span></span><span style="display:flex;"><span>- API integration complete
+</span></span><span style="display:flex;"><span>- UI validation incomplete
+</span></span><span style="display:flex;"><span>- Performance benchmark delayed by one week
+</span></span><span style="display:flex;"><span>- Security review scheduled next Tuesday
+</span></span><span style="display:flex;"><span>Owners: Ana (API), Ravi (UI), Mei (Perf), Luis (Security)
+</span></span></code></pre></div><h3 id="prompt-1-summary--action-items">
+  Prompt 1 (summary + action items)
+  <a class="heading-link" href="#prompt-1-summary--action-items">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Summarize these notes for engineering leadership.
+</span></span><span style="display:flex;"><span>Return two sections: &#34;Status Summary&#34; and &#34;Action Items&#34;.
+</span></span><span style="display:flex;"><span>Each action item must include owner and due date placeholder.
+</span></span></code></pre></div><h3 id="prompt-2-table">
+  Prompt 2 (table)
+  <a class="heading-link" href="#prompt-2-table">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Convert the action items into a markdown table with columns:
+</span></span><span style="display:flex;"><span>Task, Owner, Status, Due Date, Risk.
+</span></span></code></pre></div><h3 id="prompt-3-diagram">
+  Prompt 3 (diagram)
+  <a class="heading-link" href="#prompt-3-diagram">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Create a Mermaid flowchart showing dependencies between API, UI, performance, and security review.
+</span></span></code></pre></div><h3 id="validation-checklist">
+  Validation checklist
+  <a class="heading-link" href="#validation-checklist">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>No task from notes is dropped.</li>
+<li>Owners are mapped correctly.</li>
+<li>Diagram syntax renders successfully.</li>
+<li>Status wording is audience-appropriate.</li>
+</ul>
+<h2 id="key-takeaways">
+  Key takeaways
+  <a class="heading-link" href="#key-takeaways">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>This category is about turning raw collaboration data into reusable artifacts.</li>
+<li>Explicit output formats dramatically improve consistency.</li>
+<li>Summaries should produce actionable, verifiable next steps.</li>
+<li>Diagram and table generation work best with concrete constraints.</li>
+</ul>
+<h2 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/creating-templates"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/creating-templates</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/extracting-information"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/extracting-information</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/synthesizing-research"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/synthesizing-research</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/creating-diagrams"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/creating-diagrams</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/generating-tables"  class="external-link" target="_blank" rel="noopener">https://docs.github.com/en/copilot/tutorials/copilot-chat-cookbook/communicate-effectively/generating-tables</a></li>
+<li><a href="https://mermaid.js.org/"  class="external-link" target="_blank" rel="noopener">https://mermaid.js.org/</a></li>
+<li><a href="https://gohugo.io/documentation/"  class="external-link" target="_blank" rel="noopener">https://gohugo.io/documentation/</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

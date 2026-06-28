@@ -44,27 +44,27 @@ Index([&#39;BASIC&#39;, &#39;DA&#39;, &#39;HRA&#39;, &#39;SPECIAL&#39;], dtype=&
 
 
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Pandas - Using pandas.melt">
-  <meta name="twitter:description" content="The pandas.melt(frame, id_vars=None, value_vars=None, var_name=None, value_name=&#39;value&#39;, col_level=None, ignore_index=True) function unpivots a DataFrame from wide to long format, optionally leaving identifiers set.
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Pandas - Using pandas.melt">
+	<meta name="twitter:description" content="The pandas.melt(frame, id_vars=None, value_vars=None, var_name=None, value_name=&#39;value&#39;, col_level=None, ignore_index=True) function unpivots a DataFrame from wide to long format, optionally leaving identifiers set.
 Click here for the documentation.
 import pandas as pd import numpy as np df_to_melt = pd.read_csv(&#39;to_melt.csv&#39;, header=0) df_to_melt.head() ## The columns to unpivot will form the entries in the &#39;variable&#39; column. ## So better to rename them before doing melt df_to_melt.rename(columns={&#39;BASIC_AMOUNT&#39;:&#39;BASIC&#39;, &#39;DA_AMOUNT&#39;:&#39;DA&#39;, &#39;HRA_AMOUNT&#39;:&#39;HRA&#39;, &#39;SPECIAL_AMOUNT&#39;:&#39;SPECIAL&#39; }, inplace=True) df_to_melt.columns Index([&#39;EMP_NO&#39;, &#39;BASIC&#39;, &#39;DA&#39;, &#39;HRA&#39;, &#39;SPECIAL&#39;], dtype=&#39;object&#39;) value_cols = df_to_melt.columns[1:] value_cols Index([&#39;BASIC&#39;, &#39;DA&#39;, &#39;HRA&#39;, &#39;SPECIAL&#39;], dtype=&#39;object&#39;) ## If &#39;value_vars&#39; is not specified, it uses all columns that are not set as ## id_vars. Still, we are passing it for understanding df_to_melt = pd.melt(df_to_melt, id_vars=[&#39;EMP_NO&#39;], value_vars=value_cols, value_name=&#39;AMOUNT&#39;, var_name=&#39;HEAD&#39;) df_to_melt.head()">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2022-01-23-python-pandas-melt/">
-  <meta property="og:site_name" content="The Insane Techie">
-  <meta property="og:title" content="Pandas - Using pandas.melt">
-  <meta property="og:description" content="The pandas.melt(frame, id_vars=None, value_vars=None, var_name=None, value_name=&#39;value&#39;, col_level=None, ignore_index=True) function unpivots a DataFrame from wide to long format, optionally leaving identifiers set.
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Pandas - Using pandas.melt">
+	<meta property="og:description" content="The pandas.melt(frame, id_vars=None, value_vars=None, var_name=None, value_name=&#39;value&#39;, col_level=None, ignore_index=True) function unpivots a DataFrame from wide to long format, optionally leaving identifiers set.
 Click here for the documentation.
 import pandas as pd import numpy as np df_to_melt = pd.read_csv(&#39;to_melt.csv&#39;, header=0) df_to_melt.head() ## The columns to unpivot will form the entries in the &#39;variable&#39; column. ## So better to rename them before doing melt df_to_melt.rename(columns={&#39;BASIC_AMOUNT&#39;:&#39;BASIC&#39;, &#39;DA_AMOUNT&#39;:&#39;DA&#39;, &#39;HRA_AMOUNT&#39;:&#39;HRA&#39;, &#39;SPECIAL_AMOUNT&#39;:&#39;SPECIAL&#39; }, inplace=True) df_to_melt.columns Index([&#39;EMP_NO&#39;, &#39;BASIC&#39;, &#39;DA&#39;, &#39;HRA&#39;, &#39;SPECIAL&#39;], dtype=&#39;object&#39;) value_cols = df_to_melt.columns[1:] value_cols Index([&#39;BASIC&#39;, &#39;DA&#39;, &#39;HRA&#39;, &#39;SPECIAL&#39;], dtype=&#39;object&#39;) ## If &#39;value_vars&#39; is not specified, it uses all columns that are not set as ## id_vars. Still, we are passing it for understanding df_to_melt = pd.melt(df_to_melt, id_vars=[&#39;EMP_NO&#39;], value_vars=value_cols, value_name=&#39;AMOUNT&#39;, var_name=&#39;HEAD&#39;) df_to_melt.head()">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2022-01-23T19:38:00+05:30">
-    <meta property="article:modified_time" content="2022-01-23T19:38:00+05:30">
-    <meta property="article:tag" content="Python">
-    <meta property="article:tag" content="Data Science">
-    <meta property="article:tag" content="Pandas">
-    <meta property="article:tag" content="Analytics">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2022-01-23T19:38:00+05:30">
+		<meta property="article:modified_time" content="2022-01-23T19:38:00+05:30">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Data Science">
+		<meta property="article:tag" content="Pandas">
+		<meta property="article:tag" content="Analytics">
 
 
 
@@ -238,14 +238,14 @@ import pandas as pd import numpy as np df_to_melt = pd.read_csv(&#39;to_melt.csv
         
         <p>The <code>pandas.melt(frame, id_vars=None, value_vars=None, var_name=None, value_name='value', col_level=None, ignore_index=True)</code> function unpivots a DataFrame from wide to long format, optionally leaving identifiers set.</p>
 <p>Click <a href="https://pandas.pydata.org/docs/reference/api/pandas.melt.html"  class="external-link" target="_blank" rel="noopener">here</a> for the documentation.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	df_to_melt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;to_melt.csv&#39;</span>, header<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>	df_to_melt<span style="color:#f92672">.</span>head()</span></span></code></pre></div>
 <p><a href="/img/2022/01/03_01.jpg" ><img src="/img/2022/01/03_01.jpg" alt=""></a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#75715e">## The columns to unpivot will form the entries in the &#39;variable&#39; column.</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#75715e">## The columns to unpivot will form the entries in the &#39;variable&#39; column.</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">## So better to rename them before doing melt</span>
 </span></span><span style="display:flex;"><span>	df_to_melt<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;BASIC_AMOUNT&#39;</span>:<span style="color:#e6db74">&#39;BASIC&#39;</span>, <span style="color:#e6db74">&#39;DA_AMOUNT&#39;</span>:<span style="color:#e6db74">&#39;DA&#39;</span>, 
 </span></span><span style="display:flex;"><span>	                           <span style="color:#e6db74">&#39;HRA_AMOUNT&#39;</span>:<span style="color:#e6db74">&#39;HRA&#39;</span>, <span style="color:#e6db74">&#39;SPECIAL_AMOUNT&#39;</span>:<span style="color:#e6db74">&#39;SPECIAL&#39;</span>
@@ -253,17 +253,17 @@ import pandas as pd import numpy as np df_to_melt = pd.read_csv(&#39;to_melt.csv
 </span></span><span style="display:flex;"><span>	df_to_melt<span style="color:#f92672">.</span>columns</span></span></code></pre></div>
 <pre><code>Index(['EMP_NO', 'BASIC', 'DA', 'HRA', 'SPECIAL'], dtype='object')
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	value_cols <span style="color:#f92672">=</span> df_to_melt<span style="color:#f92672">.</span>columns[<span style="color:#ae81ff">1</span>:]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	value_cols <span style="color:#f92672">=</span> df_to_melt<span style="color:#f92672">.</span>columns[<span style="color:#ae81ff">1</span>:]
 </span></span><span style="display:flex;"><span>	value_cols</span></span></code></pre></div>
 <pre><code>Index(['BASIC', 'DA', 'HRA', 'SPECIAL'], dtype='object')
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#75715e">## If &#39;value_vars&#39; is not specified, it uses all columns that are not set as </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#75715e">## If &#39;value_vars&#39; is not specified, it uses all columns that are not set as </span>
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">## id_vars. Still, we are passing it for understanding</span>
 </span></span><span style="display:flex;"><span>	df_to_melt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>melt(df_to_melt, id_vars<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;EMP_NO&#39;</span>], value_vars<span style="color:#f92672">=</span>value_cols, 
 </span></span><span style="display:flex;"><span>	                     value_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;AMOUNT&#39;</span>, var_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;HEAD&#39;</span>)
 </span></span><span style="display:flex;"><span>	df_to_melt<span style="color:#f92672">.</span>head()</span></span></code></pre></div>
 <p><a href="/img/2022/01/03_02.jpg" ><img src="/img/2022/01/03_02.jpg" alt=""></a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	df_to_melt[<span style="color:#e6db74">&#39;HEAD&#39;</span>]<span style="color:#f92672">.</span>unique()</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	df_to_melt[<span style="color:#e6db74">&#39;HEAD&#39;</span>]<span style="color:#f92672">.</span>unique()</span></span></code></pre></div>
 <pre><code>array(['BASIC', 'DA', 'HRA', 'SPECIAL'], dtype=object)
 </code></pre>
 
@@ -298,7 +298,7 @@ import pandas as pd import numpy as np df_to_melt = pd.read_csv(&#39;to_melt.csv
     
       2019 -
     
-    2025
+    2026
      Dhanoop Bhaskar 
     ·
     
