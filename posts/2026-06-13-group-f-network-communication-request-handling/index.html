@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Patterns of Distributed Systems | Network Communication &amp; Request Handling · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Patterns of Distributed Systems
+  
+    
+    Link to heading
+  
+
+
+Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+
+
+
+  Table of Contents
+  
+    
+    Link to heading
+  
+
+
+Group F — Network Communication &amp; Request Handling
+
+Single-Socket Channel
+Request Pipeline
+Request Batch
+Singular Update Queue
+Request Waiting List
+Idempotent Receiver
+
+
+
+
+
+  Group F — Network Communication &amp; Request Handling
+  
+    
+    Link to heading
+  
+
+Reliable data structures and leader election aren&rsquo;t enough. Nodes must communicate efficiently and correctly over unreliable networks.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Patterns of Distributed Systems | Network Communication & Request Handling">
+	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group F — Network Communication &amp; Request Handling Single-Socket Channel Request Pipeline Request Batch Singular Update Queue Request Waiting List Idempotent Receiver Group F — Network Communication &amp; Request Handling Link to heading Reliable data structures and leader election aren’t enough. Nodes must communicate efficiently and correctly over unreliable networks.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-13-group-f-network-communication-request-handling/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Patterns of Distributed Systems | Network Communication & Request Handling">
+	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group F — Network Communication &amp; Request Handling Single-Socket Channel Request Pipeline Request Batch Singular Update Queue Request Waiting List Idempotent Receiver Group F — Network Communication &amp; Request Handling Link to heading Reliable data structures and leader election aren’t enough. Nodes must communicate efficiently and correctly over unreliable networks.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-06-13T14:10:00+05:30">
+		<meta property="article:modified_time" content="2026-06-13T14:10:00+05:30">
+		<meta property="article:tag" content="Distributed-Systems">
+		<meta property="article:tag" content="Design-Patterns">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-06-13-group-f-network-communication-request-handling/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-06-13-group-f-network-communication-request-handling/">
+              Patterns of Distributed Systems | Network Communication &amp; Request Handling
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-06-13T14:10:00&#43;05:30">
+                June 13, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              9-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/distributed-systems/">Distributed-Systems</a>
+      <span class="separator">•</span>
+    <a href="/categories/design-patterns/">Design-Patterns</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/distributed-systems/">Distributed-Systems</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/design-patterns/">Design-Patterns</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="patterns-of-distributed-systems">
+  Patterns of Distributed Systems
+  <a class="heading-link" href="#patterns-of-distributed-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="heading-link" href="#table-of-contents">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li><a href="#group-f--network-communication--request-handling" >Group F — Network Communication &amp; Request Handling</a>
+<ul>
+<li><a href="#f1-single-socket-channel" >Single-Socket Channel</a></li>
+<li><a href="#f2-request-pipeline" >Request Pipeline</a></li>
+<li><a href="#f3-request-batch" >Request Batch</a></li>
+<li><a href="#f4-singular-update-queue" >Singular Update Queue</a></li>
+<li><a href="#f5-request-waiting-list" >Request Waiting List</a></li>
+<li><a href="#f6-idempotent-receiver" >Idempotent Receiver</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="group-f--network-communication--request-handling">
+  Group F — Network Communication &amp; Request Handling
+  <a class="heading-link" href="#group-f--network-communication--request-handling">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Reliable data structures and leader election aren&rsquo;t enough. Nodes must communicate efficiently and correctly over unreliable networks.</p>
+<hr>
+<h3 id="f1-single-socket-channel">
+  F1. Single-Socket Channel
+  <a class="heading-link" href="#f1-single-socket-channel">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>One TCP connection per peer pair to preserve message order.</strong></p>
+<h4 id="problem">
+  Problem
+  <a class="heading-link" href="#problem">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>When a node sends multiple messages to another node using separate connections (or UDP), messages can arrive out of order. For many distributed protocols (like log replication), ordering is critical: entry 5 must be applied before entry 6.</p>
+<h4 id="solution">
+  Solution
+  <a class="heading-link" href="#solution">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Maintain <em>one persistent TCP connection</em> between each pair of communicating nodes. TCP guarantees in-order delivery within a single connection, so messages always arrive in the order sent.</p>
+<h4 id="how-it-works">
+  How it works
+  <a class="heading-link" href="#how-it-works">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Node A ◄═══ single TCP socket ═══► Node B
+</span></span><span style="display:flex;"><span>                                     (reused for all messages between A and B)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Message ordering:
+</span></span><span style="display:flex;"><span>  A sends: [msg1, msg2, msg3]
+</span></span><span style="display:flex;"><span>  B receives: [msg1, msg2, msg3]  ← guaranteed by TCP ✓
+</span></span></code></pre></div><p>Connection lifecycle:</p>
+<ul>
+<li>Connection established at startup or on first message</li>
+<li>Reused indefinitely (with heartbeats to detect dead connections)</li>
+<li>On disconnect, reconnect and resume from the right position (using log indices)</li>
+</ul>
+<h4 id="real-world-analogy">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A dedicated phone line between two offices used for all communications, rather than dialing a new number for each call. Everything said on that line is heard in order.</p>
+<h4 id="example-systems">
+  Example systems
+  <a class="heading-link" href="#example-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>ZooKeeper (single connection per client), Raft implementations, etcd</p>
+<h4 id="trade-offs">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Guaranteed message ordering at no extra cost</td>
+					<td>Head-of-line blocking: a slow message delays all subsequent messages</td>
+			</tr>
+			<tr>
+					<td>Simple — no sequence numbering needed</td>
+					<td>Connection management complexity (reconnection, multiplexing)</td>
+			</tr>
+			<tr>
+					<td>Efficient (reuse TCP handshake cost)</td>
+					<td>Single socket limits throughput if messages are large</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns">
+  Related patterns
+  <a class="heading-link" href="#related-patterns">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f2-request-pipeline" >Request Pipeline</a> (send multiple requests without waiting for responses)
+→ <a href="/posts/2026-06-03-group-b-cluster-coordination-leadership#b1-heartbeat" >HeartBeat</a> (keeps the socket alive)
+→ <a href="#f4-singular-update-queue" >Singular Update Queue</a> (processes messages from the socket serially)</p>
+<hr>
+<h3 id="f2-request-pipeline">
+  F2. Request Pipeline
+  <a class="heading-link" href="#f2-request-pipeline">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Don&rsquo;t wait for acknowledgement before sending the next request.</strong></p>
+<h4 id="problem-1">
+  Problem
+  <a class="heading-link" href="#problem-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Using a <a href="#f1-single-socket-channel" >Single-Socket Channel</a>, if you send a request and wait for a response before sending the next request, your throughput is limited by the round-trip latency. If latency is 10ms and requests take 1ms to process, you can only do 100 requests/second even if the server could handle 10,000.</p>
+<h4 id="solution-1">
+  Solution
+  <a class="heading-link" href="#solution-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p><em>Pipeline</em> multiple requests: send them one after another without waiting for the previous response. The server processes them in order (FIFO) and returns responses in the same order.</p>
+<h4 id="how-it-works-1">
+  How it works
+  <a class="heading-link" href="#how-it-works-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Without pipelining:
+</span></span><span style="display:flex;"><span>  Send Req1 → wait → Recv Resp1 → Send Req2 → wait → Recv Resp2
+</span></span><span style="display:flex;"><span>  Time = 2 × RTT per operation
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>With pipelining:
+</span></span><span style="display:flex;"><span>  Send Req1 → Send Req2 → Send Req3 → ...
+</span></span><span style="display:flex;"><span>                     → Recv Resp1 → Recv Resp2 → Recv Resp3
+</span></span><span style="display:flex;"><span>  Time ≈ 1 × RTT for many operations
+</span></span></code></pre></div><p>The sender keeps an in-flight window (e.g., up to 100 outstanding requests). If the window fills up, it pauses until acknowledgements arrive.</p>
+<h4 id="real-world-analogy-1">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>An assembly line vs. building one product at a time. You start work on the next unit before the first is finished — the stages overlap.</p>
+<h4 id="example-systems-1">
+  Example systems
+  <a class="heading-link" href="#example-systems-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Redis pipelining, HTTP/2 multiplexing, Raft leader-to-follower replication</p>
+<h4 id="trade-offs-1">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Dramatically improves throughput</td>
+					<td>Errors are harder to handle (which request failed?)</td>
+			</tr>
+			<tr>
+					<td>Reduces effective latency under load</td>
+					<td>Window sizing is tricky — too large can overwhelm receiver</td>
+			</tr>
+			<tr>
+					<td>Utilizes network bandwidth efficiently</td>
+					<td>Out-of-order responses (if using multiplexed channels) require correlation IDs</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-1">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f1-single-socket-channel" >Single-Socket Channel</a> (provides the ordered channel)
+→ <a href="#f3-request-batch" >Request Batch</a> (complementary throughput optimization)
+→ <a href="#f5-request-waiting-list" >Request Waiting List</a> (tracks in-flight requests)</p>
+<hr>
+<h3 id="f3-request-batch">
+  F3. Request Batch
+  <a class="heading-link" href="#f3-request-batch">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Bundle multiple small requests into one large request.</strong></p>
+<h4 id="problem-2">
+  Problem
+  <a class="heading-link" href="#problem-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Sending many small requests incurs high overhead: each request has network framing, serialization, and processing overhead. When throughput is critical (e.g., log replication), the overhead per message can dominate actual work time.</p>
+<h4 id="solution-2">
+  Solution
+  <a class="heading-link" href="#solution-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Accumulate multiple pending requests and send them as a single batch. The receiver processes the batch together and sends a single response for the batch.</p>
+<h4 id="how-it-works-2">
+  How it works
+  <a class="heading-link" href="#how-it-works-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Without batching (N small requests):
+</span></span><span style="display:flex;"><span>  [req1] → network → [resp1]
+</span></span><span style="display:flex;"><span>  [req2] → network → [resp2]
+</span></span><span style="display:flex;"><span>  [req3] → network → [resp3]
+</span></span><span style="display:flex;"><span>  Cost: N × (serialization + network overhead)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>With batching:
+</span></span><span style="display:flex;"><span>  [req1 + req2 + req3] → network → [resp1 + resp2 + resp3]
+</span></span><span style="display:flex;"><span>  Cost: 1 × (serialization + network overhead) + 3 × processing
+</span></span></code></pre></div><p>Batching strategies:</p>
+<ul>
+<li><strong>Size-based:</strong> batch when accumulated size reaches N bytes</li>
+<li><strong>Time-based:</strong> batch every T milliseconds (e.g., 5ms)</li>
+<li><strong>Hybrid:</strong> batch when size OR time threshold is reached</li>
+</ul>
+<h4 id="real-world-analogy-2">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A courier service: instead of sending 50 individual packages across the city one by one, fill a van and deliver them all in one trip.</p>
+<h4 id="example-systems-2">
+  Example systems
+  <a class="heading-link" href="#example-systems-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Kafka (producer batching), database write batching, Raft heartbeat piggybacking</p>
+<h4 id="trade-offs-2">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Major throughput improvements</td>
+					<td>Increases latency for individual requests (must wait for batch to fill)</td>
+			</tr>
+			<tr>
+					<td>Reduces per-request overhead</td>
+					<td>More complex error handling (partial batch failures)</td>
+			</tr>
+			<tr>
+					<td>Efficient network utilization</td>
+					<td>Buffering introduces memory overhead</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-2">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f2-request-pipeline" >Request Pipeline</a> (send batches in a pipeline)
+→ <a href="#f4-singular-update-queue" >Singular Update Queue</a> (where batches are assembled)
+→ <a href="/posts/2026-06-02-group-a-durability-and-storage#a1-write-ahead-log" >Write-Ahead Log</a> (batch writes to the log)</p>
+<hr>
+<h3 id="f4-singular-update-queue">
+  F4. Singular Update Queue
+  <a class="heading-link" href="#f4-singular-update-queue">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Process state changes sequentially using a single worker thread.</strong></p>
+<h4 id="problem-3">
+  Problem
+  <a class="heading-link" href="#problem-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Multiple threads or network handlers updating shared state concurrently require locks, condition variables, and careful synchronization — a recipe for deadlocks, race conditions, and hard-to-test code.</p>
+<h4 id="solution-3">
+  Solution
+  <a class="heading-link" href="#solution-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Route all state-changing operations through a single queue processed by one dedicated thread. This thread processes one request at a time, eliminating all concurrency issues around shared state. Callers submit tasks to the queue and optionally wait for a result via a future/promise.</p>
+<h4 id="how-it-works-3">
+  How it works
+  <a class="heading-link" href="#how-it-works-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Thread 1 ─────► ┌─────────────────────┐
+</span></span><span style="display:flex;"><span>Thread 2 ─────► │    Request Queue    │ ◄──── Single Worker Thread
+</span></span><span style="display:flex;"><span>Thread 3 ─────► │  [req1, req2, req3] │          (processes serially)
+</span></span><span style="display:flex;"><span>                └─────────────────────┘
+</span></span></code></pre></div><p>Network I/O and request parsing are still multi-threaded. Only <em>state mutation</em> is serialized through the queue.</p>
+<p>This is the actor model in miniature.</p>
+<h4 id="real-world-analogy-3">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A restaurant kitchen has one expediter who calls out orders one at a time to the kitchen staff. No two orders are processed simultaneously — each is completed before the next is started. Waiters (multiple threads) can still take orders concurrently.</p>
+<h4 id="example-systems-3">
+  Example systems
+  <a class="heading-link" href="#example-systems-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>etcd (single Raft goroutine), ZooKeeper, Actor frameworks (Akka), Node.js event loop</p>
+<h4 id="trade-offs-3">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Eliminates concurrency bugs on shared state</td>
+					<td>Single thread is a throughput ceiling</td>
+			</tr>
+			<tr>
+					<td>Dramatically simplified code — no locks needed</td>
+					<td>Queue can become a bottleneck under high load</td>
+			</tr>
+			<tr>
+					<td>Easy to reason about state transitions</td>
+					<td>Slow operations in the queue block everything</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-3">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f5-request-waiting-list" >Request Waiting List</a> (tracks async responses from the queue)
+→ <a href="#f3-request-batch" >Request Batch</a> (queue can batch work)
+→ <a href="#f1-single-socket-channel" >Single-Socket Channel</a> (feeds the queue)</p>
+<hr>
+<h3 id="f5-request-waiting-list">
+  F5. Request Waiting List
+  <a class="heading-link" href="#f5-request-waiting-list">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Track in-flight requests waiting for responses from the cluster.</strong></p>
+<h4 id="problem-4">
+  Problem
+  <a class="heading-link" href="#problem-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A server receives a client request and must wait for acknowledgements from multiple cluster nodes before it can respond. The server is asynchronous — it doesn&rsquo;t block waiting — so it must remember which client is waiting for which cluster responses.</p>
+<h4 id="solution-4">
+  Solution
+  <a class="heading-link" href="#solution-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Maintain a <em>waiting list</em> (a map) of in-flight client requests. Each entry stores:</p>
+<ul>
+<li>The original client request</li>
+<li>A callback or future to invoke when the required conditions are met (e.g., majority acks)</li>
+<li>A timeout</li>
+</ul>
+<p>When cluster node responses arrive, match them to waiting list entries, check if the success criterion is met, and either respond to the client or trigger retry logic.</p>
+<h4 id="how-it-works-4">
+  How it works
+  <a class="heading-link" href="#how-it-works-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Client sends write request → Server creates WaitEntry {
+</span></span><span style="display:flex;"><span>  requestId: &#34;abc123&#34;,
+</span></span><span style="display:flex;"><span>  requiredAcks: 3,  (majority of 5)
+</span></span><span style="display:flex;"><span>  receivedAcks: [],
+</span></span><span style="display:flex;"><span>  timeout: 5000ms,
+</span></span><span style="display:flex;"><span>  clientCallback: fn
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>Server stores WaitEntry in map[&#34;abc123&#34;]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Follower1 acks → map[&#34;abc123&#34;].receivedAcks.push(1) → count=1
+</span></span><span style="display:flex;"><span>Follower2 acks → map[&#34;abc123&#34;].receivedAcks.push(2) → count=2
+</span></span><span style="display:flex;"><span>Follower3 acks → map[&#34;abc123&#34;].receivedAcks.push(3) → count=3 = majority
+</span></span><span style="display:flex;"><span>  → clientCallback(&#34;SUCCESS&#34;) → respond to client
+</span></span><span style="display:flex;"><span>  → remove from waiting list
+</span></span></code></pre></div><h4 id="real-world-analogy-4">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A restaurant manager tracks each table&rsquo;s order. When the kitchen finishes each dish, the manager checks if the whole table&rsquo;s order is complete. Only when all dishes are ready does the server bring them out.</p>
+<h4 id="example-systems-4">
+  Example systems
+  <a class="heading-link" href="#example-systems-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Raft leader implementations, ZooKeeper request processors, custom quorum write handlers</p>
+<h4 id="trade-offs-4">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Non-blocking — server doesn&rsquo;t stall</td>
+					<td>Must handle timeouts explicitly</td>
+			</tr>
+			<tr>
+					<td>Clean separation of request receipt and response</td>
+					<td>Memory grows with in-flight requests</td>
+			</tr>
+			<tr>
+					<td>Natural place to implement retry and timeout logic</td>
+					<td>Correlating responses with requests requires unique IDs</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-4">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f4-singular-update-queue" >Singular Update Queue</a> (submits tasks that eventually respond via the waiting list)
+→ <a href="#f2-request-pipeline" >Request Pipeline</a> (multiple in-flight requests simultaneously)
+→ <a href="#f6-idempotent-receiver" >Idempotent Receiver</a> (handle retries when waiting list times out)</p>
+<hr>
+<h3 id="f6-idempotent-receiver">
+  F6. Idempotent Receiver
+  <a class="heading-link" href="#f6-idempotent-receiver">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Make servers safe to retry: process the same request twice = process it once.</strong></p>
+<h4 id="problem-5">
+  Problem
+  <a class="heading-link" href="#problem-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Networks are unreliable. A client sends a request, the server processes it, but the response is lost. The client times out and retries. The server processes the request <em>again</em> — potentially double-charging a credit card, double-sending an email, or creating duplicate records.</p>
+<h4 id="solution-5">
+  Solution
+  <a class="heading-link" href="#solution-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Assign each request a unique <em>client ID + request ID</em> pair. The server tracks which requests it has already processed (in a deduplication store, usually persisted). On receiving a request, check if its ID has been seen before:</p>
+<ul>
+<li>If yes → return the cached response (don&rsquo;t re-execute)</li>
+<li>If no → process and store the result</li>
+</ul>
+<h4 id="how-it-works-5">
+  How it works
+  <a class="heading-link" href="#how-it-works-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Client:
+</span></span><span style="display:flex;"><span>  requestId = UUID()  ← unique per request attempt
+</span></span><span style="display:flex;"><span>  Send: {clientId: &#34;client-1&#34;, requestId: &#34;req-abc&#34;, data: &#34;charge $100&#34;}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Server:
+</span></span><span style="display:flex;"><span>  Check dedup_store[&#34;client-1&#34;][&#34;req-abc&#34;]
+</span></span><span style="display:flex;"><span>  → Not found → process → charge $100 → response = &#34;OK, charge ID=XYZ&#34;
+</span></span><span style="display:flex;"><span>  → Store dedup_store[&#34;client-1&#34;][&#34;req-abc&#34;] = &#34;OK, charge ID=XYZ&#34;
+</span></span><span style="display:flex;"><span>  → Return &#34;OK, charge ID=XYZ&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Client retry (response was lost):
+</span></span><span style="display:flex;"><span>  Send again: {clientId: &#34;client-1&#34;, requestId: &#34;req-abc&#34;, data: &#34;charge $100&#34;}
+</span></span><span style="display:flex;"><span>  Server:
+</span></span><span style="display:flex;"><span>  → Found in dedup_store → return &#34;OK, charge ID=XYZ&#34; (no re-execution)
+</span></span></code></pre></div><p>The dedup store has a TTL — old entries can be cleaned up once the client is done retrying.</p>
+<h4 id="real-world-analogy-5">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A bank check with a unique check number. If you lose the confirmation that your check was cashed and submit it again, the bank recognizes the duplicate check number and rejects the second submission.</p>
+<h4 id="example-systems-5">
+  Example systems
+  <a class="heading-link" href="#example-systems-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>AWS API Gateway (idempotency keys), Stripe (idempotency keys), Kafka exactly-once semantics, database UPSERT with unique constraints</p>
+<h4 id="trade-offs-5">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Safe retries — clients can always retry on timeout</td>
+					<td>Requires persistent deduplication storage</td>
+			</tr>
+			<tr>
+					<td>Simplifies client logic (just retry on any failure)</td>
+					<td>Dedup store must be consulted on every request (overhead)</td>
+			</tr>
+			<tr>
+					<td>Enables exactly-once semantics</td>
+					<td>Old dedup entries must be cleaned up eventually</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-5">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f5-request-waiting-list" >Request Waiting List</a> (server retries internally; idempotency handles external retries)
+→ <a href="/posts/2026-06-02-group-a-durability-and-storage#a1-write-ahead-log" >Write-Ahead Log</a> (dedup results are persisted here)
+→ <a href="/posts/2026-06-03-group-b-cluster-coordination-leadership#b3-generation-clock" >Generation Clock</a> (can be used to detect outdated requests)</p>
+<hr>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

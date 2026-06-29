@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Patterns of Distributed Systems | Distributed Transactions · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Patterns of Distributed Systems
+  
+    
+    Link to heading
+  
+
+
+Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+
+
+
+  Table of Contents
+  
+    
+    Link to heading
+  
+
+
+Group H — Distributed Transactions
+
+Two-Phase Commit
+
+
+
+
+
+  Group H — Distributed Transactions
+  
+    
+    Link to heading
+  
+
+Sometimes you need to update data on multiple nodes atomically — all updates succeed or all fail.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Patterns of Distributed Systems | Distributed Transactions">
+	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group H — Distributed Transactions Two-Phase Commit Group H — Distributed Transactions Link to heading Sometimes you need to update data on multiple nodes atomically — all updates succeed or all fail.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-15-group-h-distributed-transactions/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Patterns of Distributed Systems | Distributed Transactions">
+	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group H — Distributed Transactions Two-Phase Commit Group H — Distributed Transactions Link to heading Sometimes you need to update data on multiple nodes atomically — all updates succeed or all fail.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-06-15T14:10:00+05:30">
+		<meta property="article:modified_time" content="2026-06-15T14:10:00+05:30">
+		<meta property="article:tag" content="Distributed-Systems">
+		<meta property="article:tag" content="Design-Patterns">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-06-15-group-h-distributed-transactions/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-06-15-group-h-distributed-transactions/">
+              Patterns of Distributed Systems | Distributed Transactions
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-06-15T14:10:00&#43;05:30">
+                June 15, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/distributed-systems/">Distributed-Systems</a>
+      <span class="separator">•</span>
+    <a href="/categories/design-patterns/">Design-Patterns</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/distributed-systems/">Distributed-Systems</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/design-patterns/">Design-Patterns</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="patterns-of-distributed-systems">
+  Patterns of Distributed Systems
+  <a class="heading-link" href="#patterns-of-distributed-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="heading-link" href="#table-of-contents">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li><a href="#group-h--distributed-transactions" >Group H — Distributed Transactions</a>
+<ul>
+<li><a href="#h1-two-phase-commit" >Two-Phase Commit</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="group-h--distributed-transactions">
+  Group H — Distributed Transactions
+  <a class="heading-link" href="#group-h--distributed-transactions">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Sometimes you need to update data on multiple nodes atomically — all updates succeed or all fail.</p>
+<hr>
+<h3 id="h1-two-phase-commit">
+  H1. Two-Phase Commit
+  <a class="heading-link" href="#h1-two-phase-commit">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>The classic protocol for atomic distributed transactions.</strong></p>
+<h4 id="problem">
+  Problem
+  <a class="heading-link" href="#problem">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A transaction updates data on two or more nodes (e.g., debit $100 from Account A on Node 1, credit $100 to Account B on Node 2). If Node 2 crashes after Node 1 debits, you have inconsistent state: money vanished.</p>
+<p>You need atomicity across nodes: either both updates commit, or neither does.</p>
+<h4 id="solution">
+  Solution
+  <a class="heading-link" href="#solution">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Divide the commit into two phases, coordinated by a <em>transaction coordinator</em>:</p>
+<p><strong>Phase 1 — Prepare (Voting):</strong>
+The coordinator asks each participant: &ldquo;Are you ready to commit?&rdquo; Each participant:</p>
+<ul>
+<li>Acquires locks on affected data</li>
+<li>Writes the proposed changes to its WAL (but does NOT commit yet)</li>
+<li>Votes YES (ready) or NO (cannot commit)</li>
+</ul>
+<p><strong>Phase 2 — Commit or Abort:</strong></p>
+<ul>
+<li>If all participants voted YES → coordinator sends COMMIT to all; participants commit and release locks</li>
+<li>If any participant voted NO (or timed out) → coordinator sends ABORT to all; participants roll back</li>
+</ul>
+<h4 id="how-it-works">
+  How it works
+  <a class="heading-link" href="#how-it-works">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Coordinator: &#34;Prepare tx-123: debit A=$100, credit B=$100&#34;
+</span></span><span style="display:flex;"><span>  Node 1 (has Account A): locks A, writes to WAL, votes YES
+</span></span><span style="display:flex;"><span>  Node 2 (has Account B): locks B, writes to WAL, votes YES
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Coordinator: all YES → &#34;Commit tx-123&#34;
+</span></span><span style="display:flex;"><span>  Node 1: commits → Account A -= $100, releases lock
+</span></span><span style="display:flex;"><span>  Node 2: commits → Account B += $100, releases lock
+</span></span><span style="display:flex;"><span>  Transaction coordinator: writes commit record
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>--- If Node 2 votes NO ---
+</span></span><span style="display:flex;"><span>Coordinator: &#34;Abort tx-123&#34;
+</span></span><span style="display:flex;"><span>  Node 1: rolls back WAL changes, releases lock
+</span></span><span style="display:flex;"><span>  Node 2: rolls back WAL changes, releases lock
+</span></span></code></pre></div><p><strong>The blocking problem:</strong> If the coordinator crashes after Phase 1 but before Phase 2, participants are stuck holding locks — they voted YES but don&rsquo;t know if the coordinator decided to commit or abort. This is the fundamental limitation of 2PC.</p>
+<h4 id="real-world-analogy">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A marriage ceremony. The officiant (coordinator) asks each party &ldquo;Do you take&hellip;?&rdquo; (Phase 1 — prepare). Only after both say &ldquo;I do&rdquo; does the officiant declare &ldquo;I now pronounce you married&rdquo; (Phase 2 — commit). If anyone says &ldquo;No,&rdquo; the ceremony is cancelled.</p>
+<h4 id="example-systems">
+  Example systems
+  <a class="heading-link" href="#example-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>XA transactions (JTA in Java EE), distributed SQL databases (CockroachDB, Spanner use 2PC variants), some message queues</p>
+<h4 id="trade-offs">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Atomic updates across multiple nodes</td>
+					<td><strong>Blocking protocol</strong> — coordinator failure leaves participants locked</td>
+			</tr>
+			<tr>
+					<td>Well-understood, widely implemented</td>
+					<td>Latency: 2 round trips minimum</td>
+			</tr>
+			<tr>
+					<td>Works with heterogeneous systems (via XA)</td>
+					<td>Locks held for the entire 2PC duration — poor for high contention</td>
+			</tr>
+			<tr>
+					<td></td>
+					<td>Not fault-tolerant on its own — needs a coordinator that can recover</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Mitigations for blocking:</strong></p>
+<ul>
+<li>Use a persistent coordinator that can recover from WAL</li>
+<li>Use <a href="/posts/2026-06-04-group-c-replication-consensus#c4-consistent-core" >Consistent Core</a> + <a href="/posts/2026-06-04-group-c-replication-consensus#c2-replicated-log" >Replicated Log</a> as the coordinator for fault tolerance</li>
+<li>Use saga patterns or eventual consistency instead for long-running transactions</li>
+</ul>
+<h4 id="related-patterns">
+  Related patterns
+  <a class="heading-link" href="#related-patterns">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="/posts/2026-06-02-group-a-durability-and-storage#a1-write-ahead-log" >Write-Ahead Log</a> (both coordinator and participants log their state)
+→ <a href="/posts/2026-06-04-group-c-replication-consensus#c4-consistent-core" >Consistent Core</a> (often hosts the coordinator for fault tolerance)
+→ <a href="/posts/2026-06-11-group-d-time-ordering#d3-clock-bound-wait" >Clock-Bound Wait</a> (Spanner uses this to order 2PC transactions)</p>
+<hr>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

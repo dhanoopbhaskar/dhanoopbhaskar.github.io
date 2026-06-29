@@ -3,7 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://dhanoopbhaskar.github.io/categories/</loc>
-    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
+    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/categories/design-patterns/</loc>
+    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/design-patterns/</loc>
+    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/categories/distributed-systems/</loc>
+    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/distributed-systems/</loc>
+    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-17-patterns-of-distributed-systems-quick-reference/</loc>
+    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/</loc>
+    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/</loc>
+    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/</loc>
+    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-16-patterns-of-distributed-systems-a-layered-view/</loc>
+    <lastmod>2026-06-16T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-15-group-h-distributed-transactions/</loc>
+    <lastmod>2026-06-15T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-14-group-g-data-propagation-observation/</loc>
+    <lastmod>2026-06-14T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-13-group-f-network-communication-request-handling/</loc>
+    <lastmod>2026-06-13T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-12-group-e-data-distribution-partitioning/</loc>
+    <lastmod>2026-06-12T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-11-group-d-time-ordering/</loc>
+    <lastmod>2026-06-11T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-04-group-c-replication-consensus/</loc>
+    <lastmod>2026-06-04T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-03-group-b-cluster-coordination-leadership/</loc>
+    <lastmod>2026-06-03T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-02-group-a-durability-and-storage/</loc>
+    <lastmod>2026-06-02T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-01-patterns-of-distributed-systems/</loc>
+    <lastmod>2026-06-01T14:10:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2026-05-20-cookbook-analyze-security-with-copilot-chat/</loc>
     <lastmod>2026-05-20T19:10:00+05:30</lastmod>
@@ -14,19 +68,10 @@
     <loc>https://dhanoopbhaskar.github.io/tags/github-copilot/</loc>
     <lastmod>2026-05-20T19:10:00+05:30</lastmod>
   </url><url>
-    <loc>https://dhanoopbhaskar.github.io/posts/</loc>
-    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
-  </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/prompt-engineering/</loc>
     <lastmod>2026-05-20T19:10:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/prompt-engineering/</loc>
-    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/tags/</loc>
-    <lastmod>2026-05-20T19:10:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/</loc>
     <lastmod>2026-05-20T19:10:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2026-05-19-cookbook-testing-code-with-copilot-chat/</loc>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Patterns of Distributed Systems | Durability &amp; Storage · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Patterns of Distributed Systems
+  
+    
+    Link to heading
+  
+
+
+Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+
+
+
+  Table of Contents
+  
+    
+    Link to heading
+  
+
+
+Group A — Durability &amp; Storage
+
+Write-Ahead Log
+Segmented Log
+Low-Water Mark
+High-Water Mark
+Versioned Value
+
+
+
+
+
+  Group A — Durability &amp; Storage
+  
+    
+    Link to heading
+  
+
+These are the foundational patterns. Before nodes can coordinate, each individual node must be able to survive a crash and recover its own state reliably.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Patterns of Distributed Systems | Durability & Storage">
+	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group A — Durability &amp; Storage Write-Ahead Log Segmented Log Low-Water Mark High-Water Mark Versioned Value Group A — Durability &amp; Storage Link to heading These are the foundational patterns. Before nodes can coordinate, each individual node must be able to survive a crash and recover its own state reliably.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-02-group-a-durability-and-storage/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Patterns of Distributed Systems | Durability & Storage">
+	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group A — Durability &amp; Storage Write-Ahead Log Segmented Log Low-Water Mark High-Water Mark Versioned Value Group A — Durability &amp; Storage Link to heading These are the foundational patterns. Before nodes can coordinate, each individual node must be able to survive a crash and recover its own state reliably.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-06-02T14:10:00+05:30">
+		<meta property="article:modified_time" content="2026-06-02T14:10:00+05:30">
+		<meta property="article:tag" content="Distributed-Systems">
+		<meta property="article:tag" content="Design-Patterns">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-06-02-group-a-durability-and-storage/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-06-02-group-a-durability-and-storage/">
+              Patterns of Distributed Systems | Durability &amp; Storage
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-06-02T14:10:00&#43;05:30">
+                June 2, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              7-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/distributed-systems/">Distributed-Systems</a>
+      <span class="separator">•</span>
+    <a href="/categories/design-patterns/">Design-Patterns</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/distributed-systems/">Distributed-Systems</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/design-patterns/">Design-Patterns</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="patterns-of-distributed-systems">
+  Patterns of Distributed Systems
+  <a class="heading-link" href="#patterns-of-distributed-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="heading-link" href="#table-of-contents">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li><a href="#group-a--durability--storage" >Group A — Durability &amp; Storage</a>
+<ul>
+<li><a href="#a1-write-ahead-log" >Write-Ahead Log</a></li>
+<li><a href="#a2-segmented-log" >Segmented Log</a></li>
+<li><a href="#a3-low-water-mark" >Low-Water Mark</a></li>
+<li><a href="#a4-high-water-mark" >High-Water Mark</a></li>
+<li><a href="#a5-versioned-value" >Versioned Value</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="group-a--durability--storage">
+  Group A — Durability &amp; Storage
+  <a class="heading-link" href="#group-a--durability--storage">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>These are the foundational patterns. Before nodes can coordinate, each individual node must be able to survive a crash and recover its own state reliably.</p>
+<hr>
+<h3 id="a1-write-ahead-log">
+  A1. Write-Ahead Log
+  <a class="heading-link" href="#a1-write-ahead-log">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>The single most fundamental pattern in distributed storage.</strong></p>
+<h4 id="problem">
+  Problem
+  <a class="heading-link" href="#problem">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A server maintains data structures in memory (e.g., a B-tree, a hash map). If the server crashes, all in-memory state is lost. Writing every change immediately to the final storage structure is too slow — it requires random-access disk writes.</p>
+<h4 id="solution">
+  Solution
+  <a class="heading-link" href="#solution">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Before applying any change to an in-memory or on-disk data structure, first append a record describing that change to a sequential log file. This log is the <em>source of truth</em>. On restart, replay the log to reconstruct state.</p>
+<h4 id="how-it-works">
+  How it works
+  <a class="heading-link" href="#how-it-works">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Client request  →  1. Append entry to WAL (append-only, sequential)
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">2.</span> Apply change to in-memory state
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">3.</span> Acknowledge client
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>On crash/restart: replay WAL from last checkpoint → state restored
+</span></span></code></pre></div><p>The key properties of the log:</p>
+<ul>
+<li><strong>Append-only</strong> — sequential writes are extremely fast on disk</li>
+<li><strong>Each entry has a monotonically increasing index</strong> — enables replay</li>
+<li><strong>Fsynced to disk</strong> before acknowledging — guarantees durability</li>
+</ul>
+<h4 id="real-world-analogy">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A bank teller writes every transaction in a ledger book before touching the cash drawer. Even if the teller is interrupted mid-transaction, the ledger tells you exactly what happened.</p>
+<h4 id="example-systems">
+  Example systems
+  <a class="heading-link" href="#example-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>PostgreSQL WAL, MySQL binlog, Kafka (the log <em>is</em> the data), etcd, RocksDB</p>
+<h4 id="trade-offs">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Crash recovery without full data flush</td>
+					<td>Log grows indefinitely (see Low-Water Mark)</td>
+			</tr>
+			<tr>
+					<td>Sequential writes are fast</td>
+					<td>Replay can be slow if log is huge</td>
+			</tr>
+			<tr>
+					<td>Enables replication (ship the log)</td>
+					<td>Storage overhead</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns">
+  Related patterns
+  <a class="heading-link" href="#related-patterns">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a2-segmented-log" >Segmented Log</a> (manage log size)
+→ <a href="#a3-low-water-mark" >Low-Water Mark</a> (garbage collect old log entries)
+→ <a href="#a4-high-water-mark" >High-Water Mark</a> (track safe replication point)
+→ <a href="/posts/2026-06-04-group-c-replication-consensus#c2-replicated-log" >Replicated Log</a> (extend WAL to multiple nodes)</p>
+<hr>
+<h3 id="a2-segmented-log">
+  A2. Segmented Log
+  <a class="heading-link" href="#a2-segmented-log">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="problem-1">
+  Problem
+  <a class="heading-link" href="#problem-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A single, ever-growing log file becomes impractical: it is slow to search, hard to truncate, and risky to delete portions of without careful bookkeeping.</p>
+<h4 id="solution-1">
+  Solution
+  <a class="heading-link" href="#solution-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Split the log into multiple fixed-size <em>segment</em> files. Each segment covers a range of log indices. Old segments can be safely deleted once they are no longer needed.</p>
+<h4 id="how-it-works-1">
+  How it works
+  <a class="heading-link" href="#how-it-works-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Segment 1: [index 0 – 999]    ← can be deleted once replicated
+</span></span><span style="display:flex;"><span>Segment 2: [index 1000 – 1999]
+</span></span><span style="display:flex;"><span>Segment 3: [index 2000 – 2999] ← active segment (current writes go here)
+</span></span></code></pre></div><ul>
+<li>A new segment file is created when the current one reaches a size or time threshold.</li>
+<li>Each segment has a metadata file recording its index range.</li>
+<li>Log reads span multiple segment files transparently.</li>
+</ul>
+<h4 id="real-world-analogy-1">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Instead of one never-ending journal notebook, you use separate dated volumes. When a volume is filled and backed up, you can archive or shred old ones safely.</p>
+<h4 id="example-systems-1">
+  Example systems
+  <a class="heading-link" href="#example-systems-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Kafka (partition log segments), etcd, Apache Bookkeeper</p>
+<h4 id="trade-offs-1">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Easy log cleanup (delete whole segments)</td>
+					<td>Slightly more complex to read across segments</td>
+			</tr>
+			<tr>
+					<td>Faster startup (fewer files to check)</td>
+					<td>Segment boundary management overhead</td>
+			</tr>
+			<tr>
+					<td>Parallel operations on different segments</td>
+					<td>—</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-1">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a> (the log being segmented)
+→ <a href="#a3-low-water-mark" >Low-Water Mark</a> (determines which segments are safe to delete)</p>
+<hr>
+<h3 id="a3-low-water-mark">
+  A3. Low-Water Mark
+  <a class="heading-link" href="#a3-low-water-mark">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="problem-2">
+  Problem
+  <a class="heading-link" href="#problem-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A Write-Ahead Log grows forever. You need to know which portion is safe to discard — but you cannot just delete old entries if a slow follower node still needs them for replication.</p>
+<h4 id="solution-2">
+  Solution
+  <a class="heading-link" href="#solution-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Maintain a <em>low-water mark</em> index: the highest log index that has been safely processed (replicated AND applied) by all followers. Everything below the low-water mark can be deleted.</p>
+<h4 id="how-it-works-2">
+  How it works
+  <a class="heading-link" href="#how-it-works-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Log:  [0][1][2][3][4][5][6][7][8]
+</span></span><span style="display:flex;"><span>                    ↑
+</span></span><span style="display:flex;"><span>              Low-Water Mark = 4
+</span></span><span style="display:flex;"><span>              (entries 0–4 can be discarded)
+</span></span></code></pre></div><p>The leader tracks acknowledgements from all followers. The low-water mark advances to the <em>minimum</em> index acknowledged by all followers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Follower A confirmed up to index 7
+</span></span><span style="display:flex;"><span>Follower B confirmed up to index 4
+</span></span><span style="display:flex;"><span>Follower C confirmed up to index 9
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Low-Water Mark = min(7, 4, 9) = 4
+</span></span></code></pre></div><h4 id="real-world-analogy-2">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A newspaper delivery company keeps back-issues in a warehouse. Once all subscribers have received a particular issue (the slowest subscriber has collected it), that issue can be shredded.</p>
+<h4 id="example-systems-2">
+  Example systems
+  <a class="heading-link" href="#example-systems-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Kafka (consumer offsets drive log retention), Raft implementations, ZooKeeper</p>
+<h4 id="trade-offs-2">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Prevents unbounded log growth</td>
+					<td>A single slow/dead follower can hold up cleanup</td>
+			</tr>
+			<tr>
+					<td>Safe — nothing is deleted prematurely</td>
+					<td>Requires tracking per-follower acknowledgements</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-2">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a>
+→ <a href="#a2-segmented-log" >Segmented Log</a> (enables deletion of whole segments)
+→ <a href="#a4-high-water-mark" >High-Water Mark</a> (complementary concept)</p>
+<hr>
+<h3 id="a4-high-water-mark">
+  A4. High-Water Mark
+  <a class="heading-link" href="#a4-high-water-mark">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="problem-3">
+  Problem
+  <a class="heading-link" href="#problem-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a replicated system, followers receive log entries from a leader. However, the leader might crash before some entries are fully replicated. Followers must not expose or apply entries that weren&rsquo;t confirmed replicated — those might be rolled back.</p>
+<h4 id="solution-3">
+  Solution
+  <a class="heading-link" href="#solution-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Maintain a <em>high-water mark</em> index: the last log entry that has been successfully replicated to a majority of nodes. Only entries at or below the high-water mark are considered committed and safe to serve to clients.</p>
+<h4 id="how-it-works-3">
+  How it works
+  <a class="heading-link" href="#how-it-works-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Leader log:   [0][1][2][3][4][5]
+</span></span><span style="display:flex;"><span>                              ↑
+</span></span><span style="display:flex;"><span>                    High-Water Mark = 5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Entries 0–5 are replicated to majority → committed → safe to serve
+</span></span><span style="display:flex;"><span>Entry 6 exists on leader but not yet replicated → NOT committed
+</span></span></code></pre></div><p>The leader piggybacks the high-water mark in every message to followers, so followers also know what they can expose.</p>
+<h4 id="real-world-analogy-3">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A newspaper printing press prints 10,000 copies per run. The &ldquo;ready for distribution&rdquo; marker advances only when QA has confirmed enough copies passed inspection — not when the press first produces them.</p>
+<h4 id="example-systems-3">
+  Example systems
+  <a class="heading-link" href="#example-systems-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Raft protocol, Kafka (Log End Offset vs. High Watermark), ZooKeeper ZAB</p>
+<h4 id="trade-offs-3">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Clients never read uncommitted data</td>
+					<td>Adds latency (wait for replication before committing)</td>
+			</tr>
+			<tr>
+					<td>Safe crash recovery — no rollback of visible state</td>
+					<td>Under-replicated state is invisible but takes storage</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-3">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a>
+→ <a href="/posts/2026-06-03-group-b-cluster-coordination-leadership#b2-leader-and-followers" >Leader and Followers</a> (leader broadcasts high-water mark)
+→ <a href="/posts/2026-06-04-group-c-replication-consensus#c2-replicated-log" >Replicated Log</a></p>
+<hr>
+<h3 id="a5-versioned-value">
+  A5. Versioned Value
+  <a class="heading-link" href="#a5-versioned-value">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="problem-4">
+  Problem
+  <a class="heading-link" href="#problem-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a distributed system, multiple clients may update the same key simultaneously. You need to track the history of a value to handle conflicts, support time-travel queries, and enable multi-version concurrency control (MVCC).</p>
+<h4 id="solution-4">
+  Solution
+  <a class="heading-link" href="#solution-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Instead of overwriting a value on update, store every version of the value alongside a monotonically increasing version number (or timestamp). Reads can request a specific version or always get the latest.</p>
+<h4 id="how-it-works-4">
+  How it works
+  <a class="heading-link" href="#how-it-works-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Key: &#34;user:42:email&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Version 1 → &#34;alice@old.com&#34;   (written at t=100)
+</span></span><span style="display:flex;"><span>Version 2 → &#34;alice@new.com&#34;   (written at t=200)
+</span></span><span style="display:flex;"><span>Version 3 → &#34;alice@latest.com&#34; (written at t=300)  ← current
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Read latest → &#34;alice@latest.com&#34;
+</span></span><span style="display:flex;"><span>Read at version 2 → &#34;alice@new.com&#34;
+</span></span></code></pre></div><p>Old versions are eventually garbage collected based on a retention policy.</p>
+<h4 id="real-world-analogy-4">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Google Docs keeps a full revision history of every document. You can always look at what a document looked like three months ago.</p>
+<h4 id="example-systems-4">
+  Example systems
+  <a class="heading-link" href="#example-systems-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>etcd, CockroachDB, Spanner, Cassandra (with timestamps), HBase</p>
+<h4 id="trade-offs-4">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Supports historical reads</td>
+					<td>Storage grows with number of versions</td>
+			</tr>
+			<tr>
+					<td>Enables snapshot isolation</td>
+					<td>Garbage collection complexity</td>
+			</tr>
+			<tr>
+					<td>Conflict detection and resolution</td>
+					<td>Clients must handle multiple versions</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-4">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="/posts/2026-06-11-group-d-time-ordering#d4-version-vector" >Version Vector</a> (track causal versions across nodes)
+→ <a href="/posts/2026-06-11-group-d-time-ordering#d1-lamport-clock" >Lamport Clock</a> / <a href="/posts/2026-06-11-group-d-time-ordering#d2-hybrid-clock" >Hybrid Clock</a> (provide the version numbers)
+→ <a href="/posts/2026-06-04-group-c-replication-consensus#c2-replicated-log" >Replicated Log</a> (applies versioned writes across nodes)</p>
+<hr>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

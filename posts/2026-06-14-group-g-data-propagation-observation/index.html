@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Patterns of Distributed Systems | Data Propagation &amp; Observation · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Patterns of Distributed Systems
+  
+    
+    Link to heading
+  
+
+
+Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+
+
+
+  Table of Contents
+  
+    
+    Link to heading
+  
+
+
+Group G — Data Propagation &amp; Observation
+
+Gossip Dissemination
+Follower Reads
+State Watch
+
+
+
+
+
+  Group G — Data Propagation &amp; Observation
+  
+    
+    Link to heading
+  
+
+These patterns handle how information spreads through a cluster and how clients track cluster state changes.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Patterns of Distributed Systems | Data Propagation & Observation">
+	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group G — Data Propagation &amp; Observation Gossip Dissemination Follower Reads State Watch Group G — Data Propagation &amp; Observation Link to heading These patterns handle how information spreads through a cluster and how clients track cluster state changes.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-14-group-g-data-propagation-observation/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Patterns of Distributed Systems | Data Propagation & Observation">
+	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group G — Data Propagation &amp; Observation Gossip Dissemination Follower Reads State Watch Group G — Data Propagation &amp; Observation Link to heading These patterns handle how information spreads through a cluster and how clients track cluster state changes.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-06-14T14:10:00+05:30">
+		<meta property="article:modified_time" content="2026-06-14T14:10:00+05:30">
+		<meta property="article:tag" content="Distributed-Systems">
+		<meta property="article:tag" content="Design-Patterns">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-06-14-group-g-data-propagation-observation/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-06-14-group-g-data-propagation-observation/">
+              Patterns of Distributed Systems | Data Propagation &amp; Observation
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-06-14T14:10:00&#43;05:30">
+                June 14, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/distributed-systems/">Distributed-Systems</a>
+      <span class="separator">•</span>
+    <a href="/categories/design-patterns/">Design-Patterns</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/distributed-systems/">Distributed-Systems</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/design-patterns/">Design-Patterns</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="patterns-of-distributed-systems">
+  Patterns of Distributed Systems
+  <a class="heading-link" href="#patterns-of-distributed-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="heading-link" href="#table-of-contents">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li><a href="#group-g--data-propagation--observation" >Group G — Data Propagation &amp; Observation</a>
+<ul>
+<li><a href="#g1-gossip-dissemination" >Gossip Dissemination</a></li>
+<li><a href="#g2-follower-reads" >Follower Reads</a></li>
+<li><a href="#g3-state-watch" >State Watch</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="group-g--data-propagation--observation">
+  Group G — Data Propagation &amp; Observation
+  <a class="heading-link" href="#group-g--data-propagation--observation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>These patterns handle how information spreads through a cluster and how clients track cluster state changes.</p>
+<hr>
+<h3 id="g1-gossip-dissemination">
+  G1. Gossip Dissemination
+  <a class="heading-link" href="#g1-gossip-dissemination">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Spread information through the cluster like an epidemic — without a central broker.</strong></p>
+<h4 id="problem">
+  Problem
+  <a class="heading-link" href="#problem">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a large cluster (hundreds or thousands of nodes), you need to disseminate information to all nodes (e.g., &ldquo;Node X has failed,&rdquo; &ldquo;the new cluster configuration&rdquo;). Broadcasting to every node is O(N) messages from a single source — it floods the network and creates a bottleneck.</p>
+<h4 id="solution">
+  Solution
+  <a class="heading-link" href="#solution">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Each node periodically picks a <em>random</em> subset of peers and exchanges state with them. Each peer then spreads the information to other random peers. Information propagates exponentially fast (like a rumor spreading through a crowd) with no central coordinator.</p>
+<h4 id="how-it-works">
+  How it works
+  <a class="heading-link" href="#how-it-works">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Time 0: Node A knows new info
+</span></span><span style="display:flex;"><span>Time 1: A gossips to [B, E] → B and E learn it
+</span></span><span style="display:flex;"><span>Time 2: B gossips to [C, F], E gossips to [D, G] → 6 nodes know
+</span></span><span style="display:flex;"><span>Time 3: C, D, F, G gossip to others → 14 nodes know
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>After O(log N) rounds: all N nodes know
+</span></span></code></pre></div><p>Each gossip message includes a <strong>version number</strong> or <strong>digest</strong> so nodes can tell what information is new vs. already known. This prevents infinite re-gossip.</p>
+<h4 id="real-world-analogy">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Office rumors. Person A tells two colleagues. Each of them tells two more. Within a few hours, the whole building knows — without anyone sending a company-wide broadcast.</p>
+<h4 id="example-systems">
+  Example systems
+  <a class="heading-link" href="#example-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Amazon Dynamo (membership and failure detection), Cassandra (cluster metadata), Consul, Riak, Bitcoin peer discovery</p>
+<h4 id="trade-offs">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Highly scalable — no central bottleneck</td>
+					<td>Eventually consistent (not instant) — there&rsquo;s a propagation delay</td>
+			</tr>
+			<tr>
+					<td>Fault-tolerant — works even if many nodes are down</td>
+					<td>Hard to guarantee a specific delivery time</td>
+			</tr>
+			<tr>
+					<td>No single point of failure</td>
+					<td>Information may be slightly stale at any given node</td>
+			</tr>
+			<tr>
+					<td>Self-healing — new nodes quickly learn cluster state</td>
+					<td>Verbose — generates constant background traffic</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns">
+  Related patterns
+  <a class="heading-link" href="#related-patterns">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="/posts/2026-06-03-group-b-cluster-coordination-leadership#b1-heartbeat" >HeartBeat</a> (often piggybacked in gossip messages)
+→ <a href="/posts/2026-06-11-group-d-time-ordering#d4-version-vector" >Version Vector</a> / <a href="/posts/2026-06-02-group-a-durability-and-storage#a5-versioned-value" >Versioned Value</a> (for deduplication in gossip)
+→ <a href="/posts/2026-06-03-group-b-cluster-coordination-leadership#b4-emergent-leader" >Emergent Leader</a> (uses gossip for membership info)
+→ <a href="/posts/2026-06-04-group-c-replication-consensus#c4-consistent-core" >Consistent Core</a> (alternative to gossip for strongly consistent metadata)</p>
+<hr>
+<h3 id="g2-follower-reads">
+  G2. Follower Reads
+  <a class="heading-link" href="#g2-follower-reads">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Scale read throughput by serving reads from follower nodes.</strong></p>
+<h4 id="problem-1">
+  Problem
+  <a class="heading-link" href="#problem-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a <a href="/posts/2026-06-03-group-b-cluster-coordination-leadership#b2-leader-and-followers" >Leader and Followers</a> setup, all writes and strong reads go to the leader. As read traffic grows, the leader becomes a bottleneck. You have multiple follower nodes sitting idle for reads.</p>
+<h4 id="solution-1">
+  Solution
+  <a class="heading-link" href="#solution-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Allow clients to read from follower nodes. Followers may be slightly behind the leader (stale data), but for many use cases, slightly stale reads are acceptable — and the throughput gain is significant.</p>
+<h4 id="how-it-works-1">
+  How it works
+  <a class="heading-link" href="#how-it-works-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Write path:  Client → Leader → replicate to followers
+</span></span><span style="display:flex;"><span>Read path:
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> Strong read:   Client → Leader (always up-to-date)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> Follower read: Client → any Follower (may be slightly stale)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Client can specify: read-my-own-writes?
+</span></span><span style="display:flex;"><span>  If yes: read from leader, or wait for follower to catch up to your last write&#39;s index
+</span></span><span style="display:flex;"><span>  If no: any follower is fine
+</span></span></code></pre></div><p><strong>Read-your-own-writes consistency:</strong> After a write, the client can pass the log index of their write to the follower. The follower waits until it has applied entries up to that index before responding.</p>
+<h4 id="real-world-analogy-1">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A company&rsquo;s website: the main database handles all updates. Reporting dashboards and analytics pages can read from a replica that&rsquo;s a few seconds behind — nobody cares if the &ldquo;total users&rdquo; count is 3 seconds stale.</p>
+<h4 id="example-systems-1">
+  Example systems
+  <a class="heading-link" href="#example-systems-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>MySQL read replicas, MongoDB secondary reads, Cassandra (tunable consistency), CockroachDB follower reads</p>
+<h4 id="trade-offs-1">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Linear read throughput scaling with cluster size</td>
+					<td>Reads may be stale (replication lag)</td>
+			</tr>
+			<tr>
+					<td>Reduces leader load dramatically</td>
+					<td>Read-your-own-writes requires extra bookkeeping</td>
+			</tr>
+			<tr>
+					<td>Geographic distribution (read from nearby replica)</td>
+					<td>Strong consistency requires going to leader</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-1">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="/posts/2026-06-03-group-b-cluster-coordination-leadership#b2-leader-and-followers" >Leader and Followers</a>
+→ <a href="/posts/2026-06-02-group-a-durability-and-storage#a4-high-water-mark" >High-Water Mark</a> (follower knows how far behind it is)
+→ <a href="/posts/2026-06-02-group-a-durability-and-storage#a5-versioned-value" >Versioned Value</a> (client can request specific version for consistency)</p>
+<hr>
+<h3 id="g3-state-watch">
+  G3. State Watch
+  <a class="heading-link" href="#g3-state-watch">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Push notifications: tell me when something changes.</strong></p>
+<h4 id="problem-2">
+  Problem
+  <a class="heading-link" href="#problem-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Clients often need to react to changes in cluster state (e.g., &ldquo;tell me when the leader changes,&rdquo; &ldquo;tell me when a configuration key is updated&rdquo;). Polling — repeatedly asking &ldquo;has it changed?&rdquo; — is wasteful: it generates load even when nothing has changed and adds latency to detect changes.</p>
+<h4 id="solution-2">
+  Solution
+  <a class="heading-link" href="#solution-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Clients register a <em>watch</em> (subscription) on a specific key or path in the consistent store. When that key&rsquo;s value changes, the server pushes a notification to all registered watchers. No polling required.</p>
+<h4 id="how-it-works-2">
+  How it works
+  <a class="heading-link" href="#how-it-works-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Client A:  &#34;Watch key /config/leader&#34;
+</span></span><span style="display:flex;"><span>  → Server registers watch: {key: &#34;/config/leader&#34;, callback: A.notify}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Some time later...]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>New leader elected → Server writes &#34;/config/leader&#34; = &#34;Node5&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Server iterates watches for &#34;/config/leader&#34;:
+</span></span><span style="display:flex;"><span>  → Sends notification to Client A: {key: &#34;/config/leader&#34;, newValue: &#34;Node5&#34;}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Client A receives notification → updates its cached leader address
+</span></span><span style="display:flex;"><span>  → Client A can re-register the watch if it wants future notifications
+</span></span></code></pre></div><p>Watches are typically <em>one-shot</em>: they fire once and must be re-registered. This prevents memory leaks from forgotten watches.</p>
+<h4 id="real-world-analogy-2">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A stock price alert: you set an alert at &ldquo;$AAPL crosses $200.&rdquo; Your broker notifies you once when it crosses — you don&rsquo;t have to check the price every second.</p>
+<h4 id="example-systems-2">
+  Example systems
+  <a class="heading-link" href="#example-systems-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>ZooKeeper (watches), etcd (watch API), Kubernetes controller-manager (watches the API server), Consul watches</p>
+<h4 id="trade-offs-2">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Event-driven — eliminates polling overhead</td>
+					<td>Missed events if the client is disconnected during a change</td>
+			</tr>
+			<tr>
+					<td>Immediate reaction to changes</td>
+					<td>Watch re-registration overhead</td>
+			</tr>
+			<tr>
+					<td>Natural fit for reactive/event-driven architectures</td>
+					<td>Server must track all registered watches (memory)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-2">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="/posts/2026-06-04-group-c-replication-consensus#c4-consistent-core" >Consistent Core</a> (provides the watch service)
+→ <a href="/posts/2026-06-03-group-b-cluster-coordination-leadership#b5-lease" >Lease</a> (watches combined with leases implement leader election in ZooKeeper)</p>
+<hr>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

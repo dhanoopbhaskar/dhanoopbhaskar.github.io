@@ -1,0 +1,4030 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>
+  Patterns of Distributed Systems · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Patterns of Distributed Systems
+  
+    
+    Link to heading
+  
+
+
+Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+
+
+
+  Table of Contents
+  
+    
+    Link to heading
+  
+
+
+Why Distributed Systems Are Hard
+How to Use This Guide
+Pattern Groups at a Glance
+Group A — Durability &amp; Storage
+
+Write-Ahead Log
+Segmented Log
+Low-Water Mark
+High-Water Mark
+Versioned Value
+
+
+Group B — Cluster Coordination &amp; Leadership
+
+HeartBeat
+Leader and Followers
+Generation Clock
+Emergent Leader
+Lease
+
+
+Group C — Replication &amp; Consensus
+
+Majority Quorum
+Replicated Log
+Paxos
+Consistent Core
+
+
+Group D — Time &amp; Ordering
+
+Lamport Clock
+Hybrid Clock
+Clock-Bound Wait
+Version Vector
+
+
+Group E — Data Distribution &amp; Partitioning
+
+Fixed Partitions
+Key-Range Partitions
+
+
+Group F — Network Communication &amp; Request Handling
+
+Single-Socket Channel
+Request Pipeline
+Request Batch
+Singular Update Queue
+Request Waiting List
+Idempotent Receiver
+
+
+Group G — Data Propagation &amp; Observation
+
+Gossip Dissemination
+Follower Reads
+State Watch
+
+
+Group H — Distributed Transactions
+
+Two-Phase Commit
+
+
+How Patterns Fit Together — A Layered View
+Quick Reference Summary Table
+
+
+
+  1. Why Distributed Systems Are Hard
+  
+    
+    Link to heading
+  
+
+A distributed system is a collection of independent computers that work together and appear to users as a single coherent system. Your bank, your email, your cloud storage — all of these are distributed systems.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Patterns of Distributed Systems">
+	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Why Distributed Systems Are Hard How to Use This Guide Pattern Groups at a Glance Group A — Durability &amp; Storage Write-Ahead Log Segmented Log Low-Water Mark High-Water Mark Versioned Value Group B — Cluster Coordination &amp; Leadership HeartBeat Leader and Followers Generation Clock Emergent Leader Lease Group C — Replication &amp; Consensus Majority Quorum Replicated Log Paxos Consistent Core Group D — Time &amp; Ordering Lamport Clock Hybrid Clock Clock-Bound Wait Version Vector Group E — Data Distribution &amp; Partitioning Fixed Partitions Key-Range Partitions Group F — Network Communication &amp; Request Handling Single-Socket Channel Request Pipeline Request Batch Singular Update Queue Request Waiting List Idempotent Receiver Group G — Data Propagation &amp; Observation Gossip Dissemination Follower Reads State Watch Group H — Distributed Transactions Two-Phase Commit How Patterns Fit Together — A Layered View Quick Reference Summary Table 1. Why Distributed Systems Are Hard Link to heading A distributed system is a collection of independent computers that work together and appear to users as a single coherent system. Your bank, your email, your cloud storage — all of these are distributed systems.">
+
+<meta property="og:url" content="http://localhost:1313/posts/2026-06-29-patterns-of-distributed-systems/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Patterns of Distributed Systems">
+	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Why Distributed Systems Are Hard How to Use This Guide Pattern Groups at a Glance Group A — Durability &amp; Storage Write-Ahead Log Segmented Log Low-Water Mark High-Water Mark Versioned Value Group B — Cluster Coordination &amp; Leadership HeartBeat Leader and Followers Generation Clock Emergent Leader Lease Group C — Replication &amp; Consensus Majority Quorum Replicated Log Paxos Consistent Core Group D — Time &amp; Ordering Lamport Clock Hybrid Clock Clock-Bound Wait Version Vector Group E — Data Distribution &amp; Partitioning Fixed Partitions Key-Range Partitions Group F — Network Communication &amp; Request Handling Single-Socket Channel Request Pipeline Request Batch Singular Update Queue Request Waiting List Idempotent Receiver Group G — Data Propagation &amp; Observation Gossip Dissemination Follower Reads State Watch Group H — Distributed Transactions Two-Phase Commit How Patterns Fit Together — A Layered View Quick Reference Summary Table 1. Why Distributed Systems Are Hard Link to heading A distributed system is a collection of independent computers that work together and appear to users as a single coherent system. Your bank, your email, your cloud storage — all of these are distributed systems.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-06-29T14:10:00+05:30">
+		<meta property="article:modified_time" content="2026-06-29T14:10:00+05:30">
+		<meta property="article:tag" content="Distributed-Systems">
+		<meta property="article:tag" content="Design-Patterns">
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/posts/2026-06-29-patterns-of-distributed-systems/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:1313/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://localhost:1313/posts/2026-06-29-patterns-of-distributed-systems/">
+              Patterns of Distributed Systems
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-06-29T14:10:00&#43;05:30">
+                June 29, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              52-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/distributed-systems/">Distributed-Systems</a>
+      <span class="separator">•</span>
+    <a href="/categories/design-patterns/">Design-Patterns</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/distributed-systems/">Distributed-Systems</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/design-patterns/">Design-Patterns</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="patterns-of-distributed-systems">
+  Patterns of Distributed Systems
+  <a class="heading-link" href="#patterns-of-distributed-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="heading-link" href="#table-of-contents">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li><a href="#1-why-distributed-systems-are-hard" >Why Distributed Systems Are Hard</a></li>
+<li><a href="#2-how-to-use-this-guide" >How to Use This Guide</a></li>
+<li><a href="#3-pattern-groups-at-a-glance" >Pattern Groups at a Glance</a></li>
+<li><a href="#group-a--durability--storage" >Group A — Durability &amp; Storage</a>
+<ul>
+<li><a href="#a1-write-ahead-log" >Write-Ahead Log</a></li>
+<li><a href="#a2-segmented-log" >Segmented Log</a></li>
+<li><a href="#a3-low-water-mark" >Low-Water Mark</a></li>
+<li><a href="#a4-high-water-mark" >High-Water Mark</a></li>
+<li><a href="#a5-versioned-value" >Versioned Value</a></li>
+</ul>
+</li>
+<li><a href="#group-b--cluster-coordination--leadership" >Group B — Cluster Coordination &amp; Leadership</a>
+<ul>
+<li><a href="#b1-heartbeat" >HeartBeat</a></li>
+<li><a href="#b2-leader-and-followers" >Leader and Followers</a></li>
+<li><a href="#b3-generation-clock" >Generation Clock</a></li>
+<li><a href="#b4-emergent-leader" >Emergent Leader</a></li>
+<li><a href="#b5-lease" >Lease</a></li>
+</ul>
+</li>
+<li><a href="#group-c--replication--consensus" >Group C — Replication &amp; Consensus</a>
+<ul>
+<li><a href="#c1-majority-quorum" >Majority Quorum</a></li>
+<li><a href="#c2-replicated-log" >Replicated Log</a></li>
+<li><a href="#c3-paxos" >Paxos</a></li>
+<li><a href="#c4-consistent-core" >Consistent Core</a></li>
+</ul>
+</li>
+<li><a href="#group-d--time--ordering" >Group D — Time &amp; Ordering</a>
+<ul>
+<li><a href="#d1-lamport-clock" >Lamport Clock</a></li>
+<li><a href="#d2-hybrid-clock" >Hybrid Clock</a></li>
+<li><a href="#d3-clock-bound-wait" >Clock-Bound Wait</a></li>
+<li><a href="#d4-version-vector" >Version Vector</a></li>
+</ul>
+</li>
+<li><a href="#group-e--data-distribution--partitioning" >Group E — Data Distribution &amp; Partitioning</a>
+<ul>
+<li><a href="#e1-fixed-partitions" >Fixed Partitions</a></li>
+<li><a href="#e2-key-range-partitions" >Key-Range Partitions</a></li>
+</ul>
+</li>
+<li><a href="#group-f--network-communication--request-handling" >Group F — Network Communication &amp; Request Handling</a>
+<ul>
+<li><a href="#f1-single-socket-channel" >Single-Socket Channel</a></li>
+<li><a href="#f2-request-pipeline" >Request Pipeline</a></li>
+<li><a href="#f3-request-batch" >Request Batch</a></li>
+<li><a href="#f4-singular-update-queue" >Singular Update Queue</a></li>
+<li><a href="#f5-request-waiting-list" >Request Waiting List</a></li>
+<li><a href="#f6-idempotent-receiver" >Idempotent Receiver</a></li>
+</ul>
+</li>
+<li><a href="#group-g--data-propagation--observation" >Group G — Data Propagation &amp; Observation</a>
+<ul>
+<li><a href="#g1-gossip-dissemination" >Gossip Dissemination</a></li>
+<li><a href="#g2-follower-reads" >Follower Reads</a></li>
+<li><a href="#g3-state-watch" >State Watch</a></li>
+</ul>
+</li>
+<li><a href="#group-h--distributed-transactions" >Group H — Distributed Transactions</a>
+<ul>
+<li><a href="#h1-two-phase-commit" >Two-Phase Commit</a></li>
+</ul>
+</li>
+<li><a href="#12-how-patterns-fit-together--a-layered-view" >How Patterns Fit Together — A Layered View</a></li>
+<li><a href="#13-quick-reference-summary-table" >Quick Reference Summary Table</a></li>
+</ol>
+<hr>
+<h2 id="1-why-distributed-systems-are-hard">
+  1. Why Distributed Systems Are Hard
+  <a class="heading-link" href="#1-why-distributed-systems-are-hard">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>A <em>distributed system</em> is a collection of independent computers that work together and appear to users as a single coherent system. Your bank, your email, your cloud storage — all of these are distributed systems.</p>
+<p>The core challenges fall into three buckets:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Challenge</th>
+					<th>Plain English</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Partial failure</strong></td>
+					<td>Some nodes crash; others keep running</td>
+					<td>One database server dies mid-transaction</td>
+			</tr>
+			<tr>
+					<td><strong>Network unreliability</strong></td>
+					<td>Messages can be lost, delayed, or duplicated</td>
+					<td>A &ldquo;save&rdquo; request arrives twice</td>
+			</tr>
+			<tr>
+					<td><strong>No shared clock</strong></td>
+					<td>Machines can&rsquo;t agree on what &ldquo;now&rdquo; means</td>
+					<td>Two writes arrive simultaneously — which one wins?</td>
+			</tr>
+	</tbody>
+</table>
+<p>The patterns in this guide are battle-tested solutions to these recurring problems. They are not new inventions; they are codified wisdom extracted from systems like ZooKeeper, Kafka, etcd, Cassandra, and Spanner.</p>
+<hr>
+<h2 id="2-how-to-use-this-guide">
+  2. How to Use This Guide
+  <a class="heading-link" href="#2-how-to-use-this-guide">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><strong>Beginners:</strong> Read the groups in order. Each pattern builds on the previous ones.</li>
+<li><strong>Intermediate practitioners:</strong> Use the group summaries to navigate directly to what you need.</li>
+<li><strong>Architects &amp; seniors:</strong> Jump to the <a href="#13-quick-reference-summary-table" >Quick Reference Summary Table</a> and drill into specific patterns.</li>
+</ul>
+<p>Each pattern entry is structured as:</p>
+<ol>
+<li><strong>Problem</strong> — What breaks without this pattern</li>
+<li><strong>Solution</strong> — The core idea</li>
+<li><strong>How it works</strong> — Step-by-step mechanics</li>
+<li><strong>Real-world analogy</strong> — Intuition builder</li>
+<li><strong>Example systems</strong> — Where you see it in production</li>
+<li><strong>Trade-offs</strong> — Nothing is free</li>
+<li><strong>Related patterns</strong> — What to pair it with</li>
+</ol>
+<hr>
+<h2 id="3-pattern-groups-at-a-glance">
+  3. Pattern Groups at a Glance
+  <a class="heading-link" href="#3-pattern-groups-at-a-glance">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<pre tabindex="0"><code>┌──────────────────────────────────────────────────────────────────┐
+│                    DISTRIBUTED SYSTEM LAYERS                     │
+├──────────────────────────────────────────────────────────────────┤
+│  G: Data Propagation &amp; Observation  │  H: Distributed Txns       │
+├──────────────────────────────────────────────────────────────────┤
+│  E: Data Partitioning               │  F: Network &amp; Requests     │
+├──────────────────────────────────────────────────────────────────┤
+│  C: Replication &amp; Consensus         │  D: Time &amp; Ordering        │
+├──────────────────────────────────────────────────────────────────┤
+│  B: Cluster Coordination &amp; Leadership                            │
+├──────────────────────────────────────────────────────────────────┤
+│  A: Durability &amp; Storage (foundation)                            │
+└──────────────────────────────────────────────────────────────────┘
+</code></pre><hr>
+<h2 id="group-a--durability--storage">
+  Group A — Durability &amp; Storage
+  <a class="heading-link" href="#group-a--durability--storage">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>These are the foundational patterns. Before nodes can coordinate, each individual node must be able to survive a crash and recover its own state reliably.</p>
+<hr>
+<h3 id="a1-write-ahead-log">
+  A1. Write-Ahead Log
+  <a class="heading-link" href="#a1-write-ahead-log">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>The single most fundamental pattern in distributed storage.</strong></p>
+<h4 id="problem">
+  Problem
+  <a class="heading-link" href="#problem">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A server maintains data structures in memory (e.g., a B-tree, a hash map). If the server crashes, all in-memory state is lost. Writing every change immediately to the final storage structure is too slow — it requires random-access disk writes.</p>
+<h4 id="solution">
+  Solution
+  <a class="heading-link" href="#solution">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Before applying any change to an in-memory or on-disk data structure, first append a record describing that change to a sequential log file. This log is the <em>source of truth</em>. On restart, replay the log to reconstruct state.</p>
+<h4 id="how-it-works">
+  How it works
+  <a class="heading-link" href="#how-it-works">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Client request  →  1. Append entry to WAL (append-only, sequential)
+                   2. Apply change to in-memory state
+                   3. Acknowledge client
+
+On crash/restart: replay WAL from last checkpoint → state restored
+</code></pre><p>The key properties of the log:</p>
+<ul>
+<li><strong>Append-only</strong> — sequential writes are extremely fast on disk</li>
+<li><strong>Each entry has a monotonically increasing index</strong> — enables replay</li>
+<li><strong>Fsynced to disk</strong> before acknowledging — guarantees durability</li>
+</ul>
+<h4 id="real-world-analogy">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A bank teller writes every transaction in a ledger book before touching the cash drawer. Even if the teller is interrupted mid-transaction, the ledger tells you exactly what happened.</p>
+<h4 id="example-systems">
+  Example systems
+  <a class="heading-link" href="#example-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>PostgreSQL WAL, MySQL binlog, Kafka (the log <em>is</em> the data), etcd, RocksDB</p>
+<h4 id="trade-offs">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Crash recovery without full data flush</td>
+					<td>Log grows indefinitely (see Low-Water Mark)</td>
+			</tr>
+			<tr>
+					<td>Sequential writes are fast</td>
+					<td>Replay can be slow if log is huge</td>
+			</tr>
+			<tr>
+					<td>Enables replication (ship the log)</td>
+					<td>Storage overhead</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns">
+  Related patterns
+  <a class="heading-link" href="#related-patterns">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a2-segmented-log" >Segmented Log</a> (manage log size)
+→ <a href="#a3-low-water-mark" >Low-Water Mark</a> (garbage collect old log entries)
+→ <a href="#a4-high-water-mark" >High-Water Mark</a> (track safe replication point)
+→ <a href="#c2-replicated-log" >Replicated Log</a> (extend WAL to multiple nodes)</p>
+<hr>
+<h3 id="a2-segmented-log">
+  A2. Segmented Log
+  <a class="heading-link" href="#a2-segmented-log">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="problem-1">
+  Problem
+  <a class="heading-link" href="#problem-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A single, ever-growing log file becomes impractical: it is slow to search, hard to truncate, and risky to delete portions of without careful bookkeeping.</p>
+<h4 id="solution-1">
+  Solution
+  <a class="heading-link" href="#solution-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Split the log into multiple fixed-size <em>segment</em> files. Each segment covers a range of log indices. Old segments can be safely deleted once they are no longer needed.</p>
+<h4 id="how-it-works-1">
+  How it works
+  <a class="heading-link" href="#how-it-works-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Segment 1: [index 0 – 999]    ← can be deleted once replicated
+Segment 2: [index 1000 – 1999]
+Segment 3: [index 2000 – 2999] ← active segment (current writes go here)
+</code></pre><ul>
+<li>A new segment file is created when the current one reaches a size or time threshold.</li>
+<li>Each segment has a metadata file recording its index range.</li>
+<li>Log reads span multiple segment files transparently.</li>
+</ul>
+<h4 id="real-world-analogy-1">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Instead of one never-ending journal notebook, you use separate dated volumes. When a volume is filled and backed up, you can archive or shred old ones safely.</p>
+<h4 id="example-systems-1">
+  Example systems
+  <a class="heading-link" href="#example-systems-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Kafka (partition log segments), etcd, Apache Bookkeeper</p>
+<h4 id="trade-offs-1">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Easy log cleanup (delete whole segments)</td>
+					<td>Slightly more complex to read across segments</td>
+			</tr>
+			<tr>
+					<td>Faster startup (fewer files to check)</td>
+					<td>Segment boundary management overhead</td>
+			</tr>
+			<tr>
+					<td>Parallel operations on different segments</td>
+					<td>—</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-1">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a> (the log being segmented)
+→ <a href="#a3-low-water-mark" >Low-Water Mark</a> (determines which segments are safe to delete)</p>
+<hr>
+<h3 id="a3-low-water-mark">
+  A3. Low-Water Mark
+  <a class="heading-link" href="#a3-low-water-mark">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="problem-2">
+  Problem
+  <a class="heading-link" href="#problem-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A Write-Ahead Log grows forever. You need to know which portion is safe to discard — but you cannot just delete old entries if a slow follower node still needs them for replication.</p>
+<h4 id="solution-2">
+  Solution
+  <a class="heading-link" href="#solution-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Maintain a <em>low-water mark</em> index: the highest log index that has been safely processed (replicated AND applied) by all followers. Everything below the low-water mark can be deleted.</p>
+<h4 id="how-it-works-2">
+  How it works
+  <a class="heading-link" href="#how-it-works-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Log:  [0][1][2][3][4][5][6][7][8]
+                    ↑
+              Low-Water Mark = 4
+              (entries 0–4 can be discarded)
+</code></pre><p>The leader tracks acknowledgements from all followers. The low-water mark advances to the <em>minimum</em> index acknowledged by all followers.</p>
+<pre tabindex="0"><code>Follower A confirmed up to index 7
+Follower B confirmed up to index 4
+Follower C confirmed up to index 9
+
+Low-Water Mark = min(7, 4, 9) = 4
+</code></pre><h4 id="real-world-analogy-2">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A newspaper delivery company keeps back-issues in a warehouse. Once all subscribers have received a particular issue (the slowest subscriber has collected it), that issue can be shredded.</p>
+<h4 id="example-systems-2">
+  Example systems
+  <a class="heading-link" href="#example-systems-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Kafka (consumer offsets drive log retention), Raft implementations, ZooKeeper</p>
+<h4 id="trade-offs-2">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Prevents unbounded log growth</td>
+					<td>A single slow/dead follower can hold up cleanup</td>
+			</tr>
+			<tr>
+					<td>Safe — nothing is deleted prematurely</td>
+					<td>Requires tracking per-follower acknowledgements</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-2">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a>
+→ <a href="#a2-segmented-log" >Segmented Log</a> (enables deletion of whole segments)
+→ <a href="#a4-high-water-mark" >High-Water Mark</a> (complementary concept)</p>
+<hr>
+<h3 id="a4-high-water-mark">
+  A4. High-Water Mark
+  <a class="heading-link" href="#a4-high-water-mark">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="problem-3">
+  Problem
+  <a class="heading-link" href="#problem-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a replicated system, followers receive log entries from a leader. However, the leader might crash before some entries are fully replicated. Followers must not expose or apply entries that weren&rsquo;t confirmed replicated — those might be rolled back.</p>
+<h4 id="solution-3">
+  Solution
+  <a class="heading-link" href="#solution-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Maintain a <em>high-water mark</em> index: the last log entry that has been successfully replicated to a majority of nodes. Only entries at or below the high-water mark are considered committed and safe to serve to clients.</p>
+<h4 id="how-it-works-3">
+  How it works
+  <a class="heading-link" href="#how-it-works-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Leader log:   [0][1][2][3][4][5]
+                              ↑
+                    High-Water Mark = 5
+
+Entries 0–5 are replicated to majority → committed → safe to serve
+Entry 6 exists on leader but not yet replicated → NOT committed
+</code></pre><p>The leader piggybacks the high-water mark in every message to followers, so followers also know what they can expose.</p>
+<h4 id="real-world-analogy-3">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A newspaper printing press prints 10,000 copies per run. The &ldquo;ready for distribution&rdquo; marker advances only when QA has confirmed enough copies passed inspection — not when the press first produces them.</p>
+<h4 id="example-systems-3">
+  Example systems
+  <a class="heading-link" href="#example-systems-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Raft protocol, Kafka (Log End Offset vs. High Watermark), ZooKeeper ZAB</p>
+<h4 id="trade-offs-3">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Clients never read uncommitted data</td>
+					<td>Adds latency (wait for replication before committing)</td>
+			</tr>
+			<tr>
+					<td>Safe crash recovery — no rollback of visible state</td>
+					<td>Under-replicated state is invisible but takes storage</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-3">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a>
+→ <a href="#b2-leader-and-followers" >Leader and Followers</a> (leader broadcasts high-water mark)
+→ <a href="#c2-replicated-log" >Replicated Log</a></p>
+<hr>
+<h3 id="a5-versioned-value">
+  A5. Versioned Value
+  <a class="heading-link" href="#a5-versioned-value">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="problem-4">
+  Problem
+  <a class="heading-link" href="#problem-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a distributed system, multiple clients may update the same key simultaneously. You need to track the history of a value to handle conflicts, support time-travel queries, and enable multi-version concurrency control (MVCC).</p>
+<h4 id="solution-4">
+  Solution
+  <a class="heading-link" href="#solution-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Instead of overwriting a value on update, store every version of the value alongside a monotonically increasing version number (or timestamp). Reads can request a specific version or always get the latest.</p>
+<h4 id="how-it-works-4">
+  How it works
+  <a class="heading-link" href="#how-it-works-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Key: &#34;user:42:email&#34;
+
+Version 1 → &#34;alice@old.com&#34;   (written at t=100)
+Version 2 → &#34;alice@new.com&#34;   (written at t=200)
+Version 3 → &#34;alice@latest.com&#34; (written at t=300)  ← current
+
+Read latest → &#34;alice@latest.com&#34;
+Read at version 2 → &#34;alice@new.com&#34;
+</code></pre><p>Old versions are eventually garbage collected based on a retention policy.</p>
+<h4 id="real-world-analogy-4">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Google Docs keeps a full revision history of every document. You can always look at what a document looked like three months ago.</p>
+<h4 id="example-systems-4">
+  Example systems
+  <a class="heading-link" href="#example-systems-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>etcd, CockroachDB, Spanner, Cassandra (with timestamps), HBase</p>
+<h4 id="trade-offs-4">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Supports historical reads</td>
+					<td>Storage grows with number of versions</td>
+			</tr>
+			<tr>
+					<td>Enables snapshot isolation</td>
+					<td>Garbage collection complexity</td>
+			</tr>
+			<tr>
+					<td>Conflict detection and resolution</td>
+					<td>Clients must handle multiple versions</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-4">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#d4-version-vector" >Version Vector</a> (track causal versions across nodes)
+→ <a href="#d1-lamport-clock" >Lamport Clock</a> / <a href="#d2-hybrid-clock" >Hybrid Clock</a> (provide the version numbers)
+→ <a href="#c2-replicated-log" >Replicated Log</a> (applies versioned writes across nodes)</p>
+<hr>
+<h2 id="group-b--cluster-coordination--leadership">
+  Group B — Cluster Coordination &amp; Leadership
+  <a class="heading-link" href="#group-b--cluster-coordination--leadership">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Once individual nodes can store state reliably, you need them to act as a team. These patterns manage cluster membership, detect failures, and elect a single coordinator.</p>
+<hr>
+<h3 id="b1-heartbeat">
+  B1. HeartBeat
+  <a class="heading-link" href="#b1-heartbeat">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>The simplest liveness detector.</strong></p>
+<h4 id="problem-5">
+  Problem
+  <a class="heading-link" href="#problem-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a distributed cluster, nodes need to know which other nodes are still alive and reachable. There is no reliable way to distinguish between &ldquo;that node is very slow&rdquo; and &ldquo;that node has crashed.&rdquo;</p>
+<h4 id="solution-5">
+  Solution
+  <a class="heading-link" href="#solution-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Each server periodically sends a small <em>heartbeat</em> message to every other server (or to a central coordinator). If a node does not receive a heartbeat from a peer within a configured timeout, it marks that peer as unavailable.</p>
+<h4 id="how-it-works-5">
+  How it works
+  <a class="heading-link" href="#how-it-works-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Node A  ──── heartbeat (every 1s) ────►  Node B
+Node A  ◄─── heartbeat (every 1s) ────   Node B
+
+If Node A doesn&#39;t hear from Node B for &gt; 3s:
+  Node A marks Node B as SUSPECTED DEAD
+  (may trigger leader election)
+</code></pre><p>Configuration knobs:</p>
+<ul>
+<li><strong>Interval:</strong> How often to send (e.g., every 500ms)</li>
+<li><strong>Timeout:</strong> How long to wait before declaring failure (e.g., 3× interval)</li>
+</ul>
+<h4 id="real-world-analogy-5">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A fleet of ships uses radio check-ins every hour. If a ship misses three consecutive check-ins, it is declared in distress.</p>
+<h4 id="example-systems-5">
+  Example systems
+  <a class="heading-link" href="#example-systems-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>ZooKeeper sessions, Kubernetes node liveness probes, Raft, HDFS DataNode heartbeats</p>
+<h4 id="trade-offs-5">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Simple to implement</td>
+					<td>Network congestion can cause false positives</td>
+			</tr>
+			<tr>
+					<td>Works under all failure conditions</td>
+					<td>Timeout tuning is tricky — too short → false alarms; too long → slow failure detection</td>
+			</tr>
+			<tr>
+					<td>No external dependencies</td>
+					<td>Generates constant background traffic</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-5">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#b2-leader-and-followers" >Leader and Followers</a> (heartbeats from followers to leader)
+→ <a href="#b5-lease" >Lease</a> (heartbeats renew leases)
+→ <a href="#b3-generation-clock" >Generation Clock</a> (heartbeats carry generation numbers)</p>
+<hr>
+<h3 id="b2-leader-and-followers">
+  B2. Leader and Followers
+  <a class="heading-link" href="#b2-leader-and-followers">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>The workhorse of distributed coordination.</strong></p>
+<h4 id="problem-6">
+  Problem
+  <a class="heading-link" href="#problem-6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>When multiple nodes can accept writes simultaneously, you risk conflicts: two nodes might apply the same update in a different order, leading to divergent state.</p>
+<h4 id="solution-6">
+  Solution
+  <a class="heading-link" href="#solution-6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Designate exactly one node as the <em>leader</em> (also called primary, master). All writes go through the leader, which ensures a single total ordering of operations. Other nodes are <em>followers</em> (replicas, secondaries) that apply operations in the same order.</p>
+<h4 id="how-it-works-6">
+  How it works
+  <a class="heading-link" href="#how-it-works-6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>		  ┌─────────────┐
+Client ──►│   LEADER    │── replicate ──► Follower 1
+          │  (Primary)  │── replicate ──► Follower 2
+          └─────────────┘── replicate ──► Follower 3
+</code></pre><p><strong>Write path:</strong></p>
+<ol>
+<li>Client sends write to leader</li>
+<li>Leader appends to its log</li>
+<li>Leader replicates to followers (synchronously or asynchronously)</li>
+<li>Once quorum confirms, leader commits and responds to client</li>
+</ol>
+<p><strong>Read path:</strong></p>
+<ul>
+<li>Strong reads → always from leader</li>
+<li>Stale reads → from followers (see <a href="#g2-follower-reads" >Follower Reads</a>)</li>
+</ul>
+<h4 id="real-world-analogy-6">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A committee has a chairperson. Proposals must go through the chair, who ensures all members process business in the same order.</p>
+<h4 id="example-systems-6">
+  Example systems
+  <a class="heading-link" href="#example-systems-6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>MySQL primary-replica, MongoDB primary-secondary, Raft&rsquo;s leader, ZooKeeper&rsquo;s leader</p>
+<h4 id="trade-offs-6">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Simple to reason about (single ordering point)</td>
+					<td>Leader is a bottleneck for write throughput</td>
+			</tr>
+			<tr>
+					<td>Strong consistency easily achievable</td>
+					<td>Leader failure requires election (unavailability window)</td>
+			</tr>
+			<tr>
+					<td>Straightforward conflict resolution</td>
+					<td>All writes travel to the leader (latency for geographically distributed clients)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-6">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#b1-heartbeat" >HeartBeat</a> (detect leader failures)
+→ <a href="#b3-generation-clock" >Generation Clock</a> (identify the current leader term)
+→ <a href="#c1-majority-quorum" >Majority Quorum</a> (how replication is confirmed)
+→ <a href="#c2-replicated-log" >Replicated Log</a> (the mechanism for replication)
+→ <a href="#g2-follower-reads" >Follower Reads</a> (scaling reads)</p>
+<hr>
+<h3 id="b3-generation-clock">
+  B3. Generation Clock
+  <a class="heading-link" href="#b3-generation-clock">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>A monotonic counter that tracks &ldquo;who is the current leader.&rdquo;</strong></p>
+<h4 id="problem-7">
+  Problem
+  <a class="heading-link" href="#problem-7">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>After a leader crash and re-election, the old leader might come back online (e.g., after a network partition heals) and believe it is still the leader. This <em>split-brain</em> scenario leads to two nodes both accepting writes, causing data divergence.</p>
+<h4 id="solution-7">
+  Solution
+  <a class="heading-link" href="#solution-7">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Maintain a <em>generation number</em> (also called epoch, term, or ballot number) that increments every time a new leader is elected. Every message is tagged with the sender&rsquo;s generation number. Any node that receives a message with a <em>higher</em> generation than its own updates its state and defers to the new leader. Any message from a lower generation is rejected.</p>
+<h4 id="how-it-works-7">
+  How it works
+  <a class="heading-link" href="#how-it-works-7">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Election 1: Leader A wins → generation = 1
+  [All messages tagged with generation=1]
+
+Leader A crashes. Network partition heals.
+
+Election 2: Leader B wins → generation = 2
+  [All messages tagged with generation=2]
+
+Leader A comes back online with generation=1
+  Leader A sends a write (generation=1)
+  Followers see: current generation is 2 &gt; 1 → REJECT A&#39;s message
+  Leader A steps down
+</code></pre><h4 id="real-world-analogy-7">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-7">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A government election cycle. A president from the previous term (term 44) cannot issue executive orders after a new president takes office (term 45). The term number on the order invalidates it.</p>
+<h4 id="example-systems-7">
+  Example systems
+  <a class="heading-link" href="#example-systems-7">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Raft (term), Paxos (ballot number), Zookeeper ZAB (epoch), Kafka (controller epoch)</p>
+<h4 id="trade-offs-7">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-7">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Prevents split-brain elegantly</td>
+					<td>Generation number must be persisted to survive restarts</td>
+			</tr>
+			<tr>
+					<td>Enables safe leader changes</td>
+					<td>Requires coordination to agree on the new generation</td>
+			</tr>
+			<tr>
+					<td>Can be used to version any durable state</td>
+					<td>—</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-7">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-7">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#b2-leader-and-followers" >Leader and Followers</a>
+→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a> (persists the generation)
+→ <a href="#c3-paxos" >Paxos</a> / Raft (use generation/term extensively)</p>
+<hr>
+<h3 id="b4-emergent-leader">
+  B4. Emergent Leader
+  <a class="heading-link" href="#b4-emergent-leader">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="problem-8">
+  Problem
+  <a class="heading-link" href="#problem-8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Running a full leader election algorithm (like Paxos or Raft) is complex, slow, and requires a quorum. For some use cases, you need a simpler way to designate a coordinator, especially at cluster startup.</p>
+<h4 id="solution-8">
+  Solution
+  <a class="heading-link" href="#solution-8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Order all cluster nodes by their <em>age</em> (how long they have been a member of the cluster). The oldest living node automatically becomes the leader without any explicit voting. When the current leader dies, the next oldest takes over.</p>
+<h4 id="how-it-works-8">
+  How it works
+  <a class="heading-link" href="#how-it-works-8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Nodes join in this order:
+  Node A (joined at t=100)  ← oldest → becomes leader
+  Node B (joined at t=200)
+  Node C (joined at t=300)
+
+Node A dies → Node B is now oldest → becomes leader automatically
+</code></pre><p>Nodes learn each other&rsquo;s ages through cluster membership information propagated via <a href="#g1-gossip-dissemination" >Gossip Dissemination</a>.</p>
+<h4 id="real-world-analogy-8">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a traditional workplace without a named manager, the most senior employee by tenure naturally takes responsibility.</p>
+<h4 id="example-systems-8">
+  Example systems
+  <a class="heading-link" href="#example-systems-8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Akka Cluster (oldest node becomes singleton actor), some service mesh implementations</p>
+<h4 id="trade-offs-8">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>No explicit election protocol</td>
+					<td>Only works when cluster membership is known</td>
+			</tr>
+			<tr>
+					<td>Deterministic — no voting rounds</td>
+					<td>Leader changes are implicit, not announced</td>
+			</tr>
+			<tr>
+					<td>Works well in stable clusters</td>
+					<td>New nodes always start as followers, regardless of capability</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-8">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#g1-gossip-dissemination" >Gossip Dissemination</a> (propagate age/membership info)
+→ <a href="#b3-generation-clock" >Generation Clock</a> (still needed to handle stale leaders)</p>
+<hr>
+<h3 id="b5-lease">
+  B5. Lease
+  <a class="heading-link" href="#b5-lease">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>A time-limited grant of authority.</strong></p>
+<h4 id="problem-9">
+  Problem
+  <a class="heading-link" href="#problem-9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A leader needs to hold an exclusive lock on a resource (e.g., &ldquo;I am the master and I alone will write to this shard&rdquo;). But if the leader crashes, the lock must be automatically released so a new leader can take over. Traditional locks require the holder to explicitly release them — which is impossible if the holder crashes.</p>
+<h4 id="solution-9">
+  Solution
+  <a class="heading-link" href="#solution-9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A <em>lease</em> is a lock with a built-in expiration time (TTL). The lease holder must continuously renew the lease (usually via heartbeat) before it expires. If the holder crashes, the lease simply expires and another node can acquire it.</p>
+<h4 id="how-it-works-9">
+  How it works
+  <a class="heading-link" href="#how-it-works-9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Lease server grants lease to Node A with TTL = 10 seconds
+
+Node A must send renewal every 5 seconds:
+  t=0  → A acquires lease (expires at t=10)
+  t=5  → A renews lease (expires at t=15)
+  t=10 → A renews lease (expires at t=20)
+  ... A crashes at t=12 ...
+  t=20 → Lease expires → Node B can acquire it
+</code></pre><p><strong>Critical nuance:</strong> Node A must stop using the lease <em>before</em> it expires — not when it renews. This handles the case where A is alive but partitioned from the lease server.</p>
+<h4 id="real-world-analogy-9">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A library book loan. You can borrow it for 3 weeks and renew it. If you don&rsquo;t return or renew it, someone else can borrow it automatically.</p>
+<h4 id="example-systems-9">
+  Example systems
+  <a class="heading-link" href="#example-systems-9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>etcd leases (used by Kubernetes leader election), ZooKeeper ephemeral nodes, Chubby (Google&rsquo;s lock service)</p>
+<h4 id="trade-offs-9">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Crash-safe locking without explicit release</td>
+					<td>Clock skew can cause subtle bugs</td>
+			</tr>
+			<tr>
+					<td>Self-healing (expired leases auto-release)</td>
+					<td>Brief unavailability window when lease expires</td>
+			</tr>
+			<tr>
+					<td>Used to fence off old leaders (fencing tokens)</td>
+					<td>Lease holder must be conservative about when to stop</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-9">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#b1-heartbeat" >HeartBeat</a> (renews the lease)
+→ <a href="#b3-generation-clock" >Generation Clock</a> (lease version acts as generation)
+→ <a href="#c4-consistent-core" >Consistent Core</a> (often the service that grants leases)</p>
+<hr>
+<h2 id="group-c--replication--consensus">
+  Group C — Replication &amp; Consensus
+  <a class="heading-link" href="#group-c--replication--consensus">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Individual nodes can now store data and elect a leader. The next challenge is keeping data <em>consistent</em> across multiple nodes when failures occur.</p>
+<hr>
+<h3 id="c1-majority-quorum">
+  C1. Majority Quorum
+  <a class="heading-link" href="#c1-majority-quorum">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>The rule: get at least ⌊N/2⌋ + 1 nodes to agree.</strong></p>
+<h4 id="problem-10">
+  Problem
+  <a class="heading-link" href="#problem-10">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a cluster of N nodes, some nodes may be unavailable. If you require <em>all</em> nodes to confirm an operation, one slow node blocks everything. If you require <em>any single</em> node, you might accept a write that only one node knows about (and loses it on crash).</p>
+<h4 id="solution-10">
+  Solution
+  <a class="heading-link" href="#solution-10">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Require a <em>majority</em> (more than half) of nodes to confirm any decision. Because any two majorities always share at least one node in common, you can never have two conflicting majorities — guaranteeing consistency.</p>
+<h4 id="how-it-works-10">
+  How it works
+  <a class="heading-link" href="#how-it-works-10">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Cluster of 5 nodes (need majority = 3)
+
+Write &#34;x=10&#34;:
+  Node 1: confirmed ✓
+  Node 2: confirmed ✓
+  Node 3: confirmed ✓   ← majority reached → commit!
+  Node 4: timeout
+  Node 5: timeout
+
+The write is committed. Nodes 4 and 5 are out of date but the cluster proceeds.
+</code></pre><p><strong>Fault tolerance formula:</strong> A cluster of <code>N</code> nodes can tolerate <code>⌊N/2⌋</code> failures.</p>
+<ul>
+<li>3 nodes → 1 failure tolerated</li>
+<li>5 nodes → 2 failures tolerated</li>
+<li>7 nodes → 3 failures tolerated</li>
+</ul>
+<h4 id="real-world-analogy-10">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-10">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A board vote: you need more than half to pass a resolution, not unanimous agreement, not just one person.</p>
+<h4 id="example-systems-10">
+  Example systems
+  <a class="heading-link" href="#example-systems-10">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Raft (replication quorum), Paxos, ZooKeeper (ensemble quorum), etcd</p>
+<h4 id="trade-offs-10">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-10">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Tolerates minority node failures</td>
+					<td>Odd cluster sizes required for clean majorities</td>
+			</tr>
+			<tr>
+					<td>No single point of failure</td>
+					<td>Write latency = slowest majority node</td>
+			</tr>
+			<tr>
+					<td>Mathematical guarantee against split-brain</td>
+					<td>Adds operational overhead (can&rsquo;t just run 2 nodes)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-10">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-10">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#b2-leader-and-followers" >Leader and Followers</a> (quorum used to commit writes)
+→ <a href="#c3-paxos" >Paxos</a> / Raft (implement quorum-based consensus)
+→ <a href="#c2-replicated-log" >Replicated Log</a></p>
+<hr>
+<h3 id="c2-replicated-log">
+  C2. Replicated Log
+  <a class="heading-link" href="#c2-replicated-log">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>The backbone of fault-tolerant stateful services.</strong></p>
+<h4 id="problem-11">
+  Problem
+  <a class="heading-link" href="#problem-11">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A single-node server can use a Write-Ahead Log to survive crashes. But if the server&rsquo;s disk fails, all data is lost. You need multiple servers to hold the same log so any one server&rsquo;s failure doesn&rsquo;t lose data.</p>
+<h4 id="solution-11">
+  Solution
+  <a class="heading-link" href="#solution-11">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Combine <a href="#a1-write-ahead-log" >Write-Ahead Log</a>, <a href="#b2-leader-and-followers" >Leader and Followers</a>, and <a href="#c1-majority-quorum" >Majority Quorum</a>: the leader accepts writes, appends them to its log, replicates the log entries to followers, and only commits (marks as durable) once a majority of followers acknowledge.</p>
+<h4 id="how-it-works-11">
+  How it works
+  <a class="heading-link" href="#how-it-works-11">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Client write: &#34;SET x = 42&#34;
+
+Leader:
+  1. Append [index=100, SET x=42] to own WAL
+  2. Send AppendEntries(index=100, SET x=42) to all followers
+  3. Wait for majority acks
+  4. Advance High-Water Mark to 100
+  5. Apply to state machine → x=42
+  6. Reply to client: SUCCESS
+
+Follower 1: Receives entry, appends to local WAL → acks
+Follower 2: Receives entry, appends to local WAL → acks
+Follower 3: Slow/dead → no ack (doesn&#39;t block commit — majority already met)
+</code></pre><p>This is essentially how <strong>Raft</strong> works.</p>
+<h4 id="real-world-analogy-11">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-11">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A shipping manifest: the captain (leader) records every item loaded onto the ship. First mates (followers) keep identical copies. If the captain&rsquo;s copy is destroyed, any first mate&rsquo;s copy reconstructs the full cargo list.</p>
+<h4 id="example-systems-11">
+  Example systems
+  <a class="heading-link" href="#example-systems-11">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Raft (etcd, CockroachDB, TiKV), ZooKeeper ZAB, Viewstamped Replication, Kafka (ISR replication)</p>
+<h4 id="trade-offs-11">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-11">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Fault-tolerant (survives minority node failures)</td>
+					<td>Complexity: leader election + replication + log management</td>
+			</tr>
+			<tr>
+					<td>Strong consistency guarantee</td>
+					<td>Write latency includes network round-trips to followers</td>
+			</tr>
+			<tr>
+					<td>Single source of truth (the log)</td>
+					<td>Requires careful handling of log divergence after leader failover</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-11">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-11">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a>
+→ <a href="#b2-leader-and-followers" >Leader and Followers</a>
+→ <a href="#c1-majority-quorum" >Majority Quorum</a>
+→ <a href="#a4-high-water-mark" >High-Water Mark</a>
+→ <a href="#b3-generation-clock" >Generation Clock</a></p>
+<hr>
+<h3 id="c3-paxos">
+  C3. Paxos
+  <a class="heading-link" href="#c3-paxos">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>The original distributed consensus algorithm.</strong></p>
+<h4 id="problem-12">
+  Problem
+  <a class="heading-link" href="#problem-12">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>How can a set of nodes <em>agree</em> on a single value (e.g., the next entry to commit to the log) even when some nodes crash or messages are lost?</p>
+<h4 id="solution-12">
+  Solution
+  <a class="heading-link" href="#solution-12">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Paxos splits consensus into two phases and uses ballot numbers (generation numbers) to handle concurrent proposals safely.</p>
+<h4 id="how-it-works-12">
+  How it works
+  <a class="heading-link" href="#how-it-works-12">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p><strong>Phase 1 — Prepare:</strong></p>
+<ol>
+<li>A proposer picks a ballot number <code>n</code> (higher than any it has seen)</li>
+<li>Sends <code>Prepare(n)</code> to a majority of acceptors</li>
+<li>Each acceptor responds with the highest-numbered proposal it has already accepted (if any), and promises to reject any future proposal with ballot &lt; <code>n</code></li>
+</ol>
+<p><strong>Phase 2 — Accept:</strong>
+4. If proposer receives majority responses, it picks the value from the highest-accepted proposal (or its own value if none)
+5. Sends <code>Accept(n, value)</code> to a majority
+6. Acceptors accept unless they&rsquo;ve already promised to a higher ballot
+7. Once a majority accepts, the value is <em>chosen</em></p>
+<pre tabindex="0"><code>Proposer ──► Prepare(n=5) ──► Acceptors (majority)
+Acceptors ──► Promise(n=5, already-accepted=null) ──► Proposer
+Proposer ──► Accept(n=5, value=&#34;x=42&#34;) ──► Acceptors
+Acceptors ──► Accepted(n=5) ──► Proposer/Learners
+Value &#34;x=42&#34; is CHOSEN
+</code></pre><h4 id="real-world-analogy-12">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-12">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A sealed-bid auction with two rounds. In round one, bidders announce their intent and the highest bidder gets priority in round two. In round two, if anyone outbid you in round one, you must use their preferred item instead of yours.</p>
+<h4 id="example-systems-12">
+  Example systems
+  <a class="heading-link" href="#example-systems-12">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Google Chubby (Multi-Paxos), Apache ZooKeeper ZAB (Paxos-inspired), etcd (Raft is Paxos-equivalent), CockroachDB</p>
+<h4 id="trade-offs-12">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-12">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Mathematically proven correct</td>
+					<td>Hard to understand and implement correctly</td>
+			</tr>
+			<tr>
+					<td>Handles concurrent proposals safely</td>
+					<td>2 round-trips minimum per decision</td>
+			</tr>
+			<tr>
+					<td>Tolerates minority failures</td>
+					<td>Performance degrades with many concurrent proposers (livelocks)</td>
+			</tr>
+			<tr>
+					<td></td>
+					<td>&ldquo;Multi-Paxos&rdquo; optimizations needed for log replication</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-12">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-12">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#b3-generation-clock" >Generation Clock</a> (ballot numbers)
+→ <a href="#c1-majority-quorum" >Majority Quorum</a>
+→ <a href="#c2-replicated-log" >Replicated Log</a> (Paxos implements this)</p>
+<hr>
+<h3 id="c4-consistent-core">
+  C4. Consistent Core
+  <a class="heading-link" href="#c4-consistent-core">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Delegate the hard coordination problem to a small, specialized cluster.</strong></p>
+<h4 id="problem-13">
+  Problem
+  <a class="heading-link" href="#problem-13">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Running a quorum-based consensus protocol (Paxos/Raft) on every node in a large data cluster (hundreds of nodes) is operationally and computationally expensive. But you still need a reliable coordination service for things like leader election, distributed locks, and configuration.</p>
+<h4 id="solution-13">
+  Solution
+  <a class="heading-link" href="#solution-13">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Run a <em>small</em> cluster (3–5 nodes) with strong consistency guarantees (using Replicated Log/Paxos/Raft) as the &ldquo;brain&rdquo; of the system. Large data nodes offload coordination tasks to this consistent core, using it as a trusted oracle.</p>
+<h4 id="how-it-works-13">
+  How it works
+  <a class="heading-link" href="#how-it-works-13">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Large Data Cluster (100 nodes, eventual consistency)
+    │
+    │ uses for: leader election, locks, config, membership
+    ▼
+Consistent Core (5 nodes, strong consistency: Raft/Paxos)
+    │
+    │ stores:
+    │ - which data node is the current master?
+    │ - cluster configuration
+    │ - distributed locks (leases)
+    └──────────────────────────────────────
+</code></pre><p>The data cluster nodes register with the consistent core. The core manages their lifecycle and coordinates split-brain prevention. Data nodes handle the scale; the core handles correctness.</p>
+<h4 id="real-world-analogy-13">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-13">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A large corporation has a main trading floor (the data cluster) and a small legal/compliance department (the consistent core). All binding decisions (contracts, approvals) must go through legal. Traders don&rsquo;t need to implement contract law themselves.</p>
+<h4 id="example-systems-13">
+  Example systems
+  <a class="heading-link" href="#example-systems-13">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>ZooKeeper (consistent core for Kafka, HBase, Hadoop)
+etcd (consistent core for Kubernetes)
+Consul (consistent core for service discovery)</p>
+<h4 id="trade-offs-13">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-13">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Separates scalability concerns from consistency concerns</td>
+					<td>Another system to operate and monitor</td>
+			</tr>
+			<tr>
+					<td>Strong guarantees without burdening data nodes</td>
+					<td>Consistent core can become a bottleneck</td>
+			</tr>
+			<tr>
+					<td>Well-tested solutions available (ZooKeeper, etcd)</td>
+					<td>Adds a dependency and potential failure point</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-13">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-13">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#c2-replicated-log" >Replicated Log</a> (how the core achieves consistency)
+→ <a href="#b5-lease" >Lease</a> (commonly provided by the core)
+→ <a href="#g3-state-watch" >State Watch</a> (clients observe core state)
+→ <a href="#g1-gossip-dissemination" >Gossip Dissemination</a> (data nodes may use gossip; core does not)</p>
+<hr>
+<h2 id="group-d--time--ordering">
+  Group D — Time &amp; Ordering
+  <a class="heading-link" href="#group-d--time--ordering">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>In a distributed system, there is no global clock. Machines&rsquo; clocks drift, network delays cause message reordering, and concurrent events are impossible to order without explicit mechanisms. These patterns address event ordering.</p>
+<hr>
+<h3 id="d1-lamport-clock">
+  D1. Lamport Clock
+  <a class="heading-link" href="#d1-lamport-clock">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Logical time: if A happened before B, then clock(A) &lt; clock(B).</strong></p>
+<h4 id="problem-14">
+  Problem
+  <a class="heading-link" href="#problem-14">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Two events on different servers each have a timestamp from their local system clock. But clocks drift. You cannot tell from wall-clock timestamps alone which event happened first.</p>
+<h4 id="solution-14">
+  Solution
+  <a class="heading-link" href="#solution-14">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Use <em>logical timestamps</em>: each node maintains an integer counter. The counter obeys one rule: <strong>if event A causally preceded event B, then A&rsquo;s counter value is less than B&rsquo;s</strong>. This gives a partial ordering of events without relying on synchronized clocks.</p>
+<h4 id="how-it-works-14">
+  How it works
+  <a class="heading-link" href="#how-it-works-14">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p><strong>Rules:</strong></p>
+<ol>
+<li>Increment your counter before every event you generate</li>
+<li>When you send a message, include your current counter value</li>
+<li>When you receive a message, set your counter to <code>max(local, received) + 1</code></li>
+</ol>
+<pre tabindex="0"><code>Initial state: Node A counter=0, Node B counter=0
+
+Node A does something:  A.counter=1  (event a1)
+Node A sends message to B with timestamp=1
+Node B receives message: B.counter = max(0, 1) + 1 = 2
+Node B does something:  B.counter=3  (event b1)
+Node A does something:  A.counter=2  (event a2)
+
+Ordering: a1(1) → b1(3), a2(2) → b1(3)
+But: a1 and a2 are on the same node, so a1(1) &lt; a2(2) ✓
+</code></pre><p><strong>Limitation:</strong> If two events are concurrent (no causal relationship), their Lamport timestamps may be identical or inverted — you can&rsquo;t distinguish them.</p>
+<h4 id="real-world-analogy-14">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-14">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A project timeline that only records &ldquo;Task B started after Task A finished&rdquo; rather than actual calendar dates. The sequence is correct, even if you don&rsquo;t know the exact dates.</p>
+<h4 id="example-systems-14">
+  Example systems
+  <a class="heading-link" href="#example-systems-14">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Distributed databases for version numbering, message ordering in distributed logs</p>
+<h4 id="trade-offs-14">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-14">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Simple to implement</td>
+					<td>Cannot distinguish truly concurrent events</td>
+			</tr>
+			<tr>
+					<td>No clock synchronization needed</td>
+					<td>Only provides a partial ordering</td>
+			</tr>
+			<tr>
+					<td>Enables causal reasoning</td>
+					<td>Not human-readable (not real time)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-14">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-14">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a5-versioned-value" >Versioned Value</a> (Lamport timestamps used as versions)
+→ <a href="#d4-version-vector" >Version Vector</a> (extends Lamport to track per-node causality)
+→ <a href="#d2-hybrid-clock" >Hybrid Clock</a> (adds real-time component)</p>
+<hr>
+<h3 id="d2-hybrid-clock">
+  D2. Hybrid Clock
+  <a class="heading-link" href="#d2-hybrid-clock">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Wall-clock time + logical counter: the best of both worlds.</strong></p>
+<h4 id="problem-15">
+  Problem
+  <a class="heading-link" href="#problem-15">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Lamport Clocks give correct ordering but produce timestamps that are meaningless to humans (they are just integers). Real-world systems often need to query data &ldquo;as of a point in time&rdquo; — which requires real timestamps. But wall-clock timestamps alone are unreliable due to clock drift and NTP jumps.</p>
+<h4 id="solution-15">
+  Solution
+  <a class="heading-link" href="#solution-15">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A <em>hybrid logical clock (HLC)</em> combines a physical wall-clock component with a logical counter. It:</p>
+<ol>
+<li>Advances to match the physical clock when possible</li>
+<li>Falls back to a pure logical counter when the physical clock would go backwards or when causality requires it</li>
+</ol>
+<h4 id="how-it-works-15">
+  How it works
+  <a class="heading-link" href="#how-it-works-15">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A hybrid timestamp is a pair: <code>(wall_time, logical_counter)</code></p>
+<p><strong>Rules:</strong></p>
+<ul>
+<li>On a local event: if wall clock &gt; current HLC time → use wall clock, reset counter to 0; else increment counter</li>
+<li>On receiving a message: take max of (local HLC, received HLC), then handle counter</li>
+</ul>
+<pre tabindex="0"><code>Node A: HLC = (10:00:01.000, 0)
+  Local event → wall time is 10:00:01.500 → HLC = (10:00:01.500, 0)
+  Send message with HLC (10:00:01.500, 0)
+
+Node B (wall clock slightly behind at 10:00:01.300):
+  Receives message with (10:00:01.500, 0)
+  HLC = max(local=10:00:01.300, received=10:00:01.500) = (10:00:01.500, 1)
+  → Logical counter increments because wall times matched
+</code></pre><h4 id="real-world-analogy-15">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-15">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A traveler adjusts their watch to the local timezone when they arrive (physical), but also keeps a universal logical sequence number for all events in their trip journal.</p>
+<h4 id="example-systems-15">
+  Example systems
+  <a class="heading-link" href="#example-systems-15">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>CockroachDB (HLC for MVCC), YugabyteDB, MongoDB (oplog timestamps)</p>
+<h4 id="trade-offs-15">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-15">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Human-readable timestamps</td>
+					<td>More complex than pure Lamport or pure wall clock</td>
+			</tr>
+			<tr>
+					<td>Maintains causality guarantees</td>
+					<td>Requires bounded clock skew between nodes (e.g., 500ms)</td>
+			</tr>
+			<tr>
+					<td>Enables time-travel queries with real timestamps</td>
+					<td>—</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-15">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-15">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#d1-lamport-clock" >Lamport Clock</a> (the logical component)
+→ <a href="#a5-versioned-value" >Versioned Value</a> (HLC values used as versions)
+→ <a href="#d3-clock-bound-wait" >Clock-Bound Wait</a> (deals with clock uncertainty)</p>
+<hr>
+<h3 id="d3-clock-bound-wait">
+  D3. Clock-Bound Wait
+  <a class="heading-link" href="#d3-clock-bound-wait">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Wait out the clock uncertainty window before making decisions.</strong></p>
+<h4 id="problem-16">
+  Problem
+  <a class="heading-link" href="#problem-16">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Even with Hybrid Clocks, there is <em>uncertainty</em> about the exact current time. Two nodes&rsquo; clocks can differ by up to some maximum skew <code>ε</code>. If Node A writes a value at time T and Node B reads at time T (where both T values could be off by ε), they may disagree on ordering.</p>
+<p><strong>Google Spanner</strong> makes this concrete: it uses GPS and atomic clocks to know that the real time is within <code>[T-ε, T+ε]</code>. Before committing a transaction, it <em>waits</em> until the lower bound of the interval has definitely passed.</p>
+<h4 id="solution-16">
+  Solution
+  <a class="heading-link" href="#solution-16">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Before reading or writing a value that must be ordered relative to another, wait for <code>2ε</code> (the maximum possible clock uncertainty) to elapse. This guarantees that by the time you proceed, all other nodes&rsquo; clocks have definitely passed the same point in real time.</p>
+<h4 id="how-it-works-16">
+  How it works
+  <a class="heading-link" href="#how-it-works-16">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Node A wants to commit transaction at real time T_real:
+  1. Capture TrueTime interval: [T_now - ε, T_now + ε]
+  2. Assign commit timestamp = T_now + ε  (upper bound)
+  3. Wait until wall clock ≥ commit timestamp  (the &#34;commit wait&#34;)
+  4. Commit
+
+Result: Any transaction that started after this one
+        will have a commit timestamp &gt; T_now + ε ✓
+</code></pre><p>The wait is typically small (10–20ms in Spanner with GPS/atomic clocks; potentially longer with NTP).</p>
+<h4 id="real-world-analogy-16">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-16">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Before announcing a policy change that must take effect &ldquo;simultaneously&rdquo; across all offices worldwide, you schedule a delay to ensure the announcement has reached every office (accounting for communication lag).</p>
+<h4 id="example-systems-16">
+  Example systems
+  <a class="heading-link" href="#example-systems-16">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Google Spanner (TrueTime API), CockroachDB (approximate clock-bound wait with HLC)</p>
+<h4 id="trade-offs-16">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-16">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Enables externally consistent distributed transactions</td>
+					<td>Adds latency equal to clock uncertainty</td>
+			</tr>
+			<tr>
+					<td>Correct global ordering without communication overhead</td>
+					<td>Requires precise clock infrastructure (GPS, atomic clocks for short waits)</td>
+			</tr>
+			<tr>
+					<td>Simplifies transaction protocols</td>
+					<td>Standard NTP makes uncertainty too large for most practical use</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-16">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-16">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#d2-hybrid-clock" >Hybrid Clock</a>
+→ <a href="#h1-two-phase-commit" >Two-Phase Commit</a> (Clock-Bound Wait is used here)
+→ <a href="#a5-versioned-value" >Versioned Value</a></p>
+<hr>
+<h3 id="d4-version-vector">
+  D4. Version Vector
+  <a class="heading-link" href="#d4-version-vector">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Track causality per-node: detect concurrent writes.</strong></p>
+<h4 id="problem-17">
+  Problem
+  <a class="heading-link" href="#problem-17">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Lamport Clocks tell you if A happened before B, but cannot tell you if A and B happened <em>concurrently</em> (neither caused the other). In multi-master systems (where multiple nodes can accept writes for the same key), you need to detect conflicts: did server 1&rsquo;s write of key K happen before or after server 2&rsquo;s write? Or simultaneously?</p>
+<h4 id="solution-17">
+  Solution
+  <a class="heading-link" href="#solution-17">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Instead of a single counter, maintain a <em>vector</em> of counters — one per node. Each node increments only its own counter. Comparing two version vectors:</p>
+<ul>
+<li>V1 <strong>dominates</strong> V2 if every element of V1 ≥ V2 (V2 happened before V1)</li>
+<li>V1 and V2 are <strong>concurrent</strong> if neither dominates the other</li>
+</ul>
+<h4 id="how-it-works-17">
+  How it works
+  <a class="heading-link" href="#how-it-works-17">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>3-node cluster: [A, B, C]
+Initial: all version vectors = [0, 0, 0]
+
+Node A writes key K:  version vector = [1, 0, 0]
+Node B writes key K:  version vector = [0, 1, 0]
+
+These are concurrent writes! Neither [1,0,0] nor [0,1,0] dominates the other.
+→ System detects conflict → merge or present both to user
+
+Node A receives B&#39;s update, merges:
+  New vector = [max(1,0), max(0,1), max(0,0)] = [1, 1, 0]
+  → This version causally follows both ✓
+</code></pre><h4 id="real-world-analogy-17">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-17">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A shared document edited by two authors simultaneously. Track which edits each author made. If author A edited section 3 while author B also edited section 3 independently, you have a conflict. If A&rsquo;s edit was sent to B first and B then made changes, there&rsquo;s no conflict — B&rsquo;s version is newer.</p>
+<h4 id="example-systems-17">
+  Example systems
+  <a class="heading-link" href="#example-systems-17">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Riak (vector clocks), Amazon Dynamo (inspired much of the theory), CouchDB, Git (similar concept)</p>
+<h4 id="trade-offs-17">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-17">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Detects concurrent writes reliably</td>
+					<td>Vector size grows with number of nodes</td>
+			</tr>
+			<tr>
+					<td>Enables &ldquo;last-write-wins&rdquo; or &ldquo;merge&rdquo; conflict resolution</td>
+					<td>Complex to reason about with many nodes</td>
+			</tr>
+			<tr>
+					<td>Works in eventually consistent, multi-master systems</td>
+					<td>Requires nodes to share their vectors on sync</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-17">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-17">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#d1-lamport-clock" >Lamport Clock</a> (simpler predecessor)
+→ <a href="#a5-versioned-value" >Versioned Value</a>
+→ <a href="#g1-gossip-dissemination" >Gossip Dissemination</a> (how vectors are exchanged)</p>
+<hr>
+<h2 id="group-e--data-distribution--partitioning">
+  Group E — Data Distribution &amp; Partitioning
+  <a class="heading-link" href="#group-e--data-distribution--partitioning">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>A single node cannot hold all data for a large-scale system. Partitioning distributes data across nodes. These two patterns cover the main approaches.</p>
+<hr>
+<h3 id="e1-fixed-partitions">
+  E1. Fixed Partitions
+  <a class="heading-link" href="#e1-fixed-partitions">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Pre-assign a fixed number of buckets; map data to buckets.</strong></p>
+<h4 id="problem-18">
+  Problem
+  <a class="heading-link" href="#problem-18">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>As data grows, you need to spread it across multiple nodes. But if the mapping of &ldquo;data → node&rdquo; changes every time you add or remove a node, you must move massive amounts of data around, which is expensive and disruptive.</p>
+<h4 id="solution-18">
+  Solution
+  <a class="heading-link" href="#solution-18">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Create a fixed number of <em>partitions</em> (far more than the number of nodes — e.g., 1024 partitions for a 10-node cluster). Assign partitions to nodes. When you add/remove nodes, you reassign <em>partitions</em>, not individual data items. The partition count never changes.</p>
+<h4 id="how-it-works-18">
+  How it works
+  <a class="heading-link" href="#how-it-works-18">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>1024 fixed partitions, 4 nodes:
+  Node 1: partitions 0–255
+  Node 2: partitions 256–511
+  Node 3: partitions 512–767
+  Node 4: partitions 768–1023
+
+To store key K:
+  partition = hash(K) % 1024  → e.g., partition 317
+  → goes to Node 2
+
+Add Node 5:
+  Reassign some partitions from existing nodes to Node 5
+  e.g., Node 1: 0–191, Node 5: 192–255 (and some from others)
+  Only those partitions&#39; data moves — the rest stays put
+</code></pre><h4 id="real-world-analogy-18">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-18">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A postal system where countries have fixed ZIP codes. Adding a new post office means reassigning some ZIP code ranges to it, not renumbering every address.</p>
+<h4 id="example-systems-18">
+  Example systems
+  <a class="heading-link" href="#example-systems-18">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Kafka (fixed partitions per topic), Apache Cassandra (vnodes), Redis Cluster (16384 hash slots), Riak</p>
+<h4 id="trade-offs-18">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-18">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Stable data routing (partition → node mapping is simple)</td>
+					<td>Fixed partition count can be too small (or too large) for growth</td>
+			</tr>
+			<tr>
+					<td>Adding nodes only moves some data</td>
+					<td>Hot partitions can overload specific nodes (uneven load)</td>
+			</tr>
+			<tr>
+					<td>Easy to reason about data placement</td>
+					<td>Partition count must be set at creation time — hard to change later</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-18">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-18">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#e2-key-range-partitions" >Key-Range Partitions</a> (alternative strategy)
+→ <a href="#c4-consistent-core" >Consistent Core</a> (often tracks partition → node assignments)
+→ <a href="#g1-gossip-dissemination" >Gossip Dissemination</a> (propagates routing tables)</p>
+<hr>
+<h3 id="e2-key-range-partitions">
+  E2. Key-Range Partitions
+  <a class="heading-link" href="#e2-key-range-partitions">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Assign sorted key ranges to nodes; enables efficient range queries.</strong></p>
+<h4 id="problem-19">
+  Problem
+  <a class="heading-link" href="#problem-19">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Hash-based partitions scatter keys randomly across nodes. This is great for uniform load distribution but terrible for range queries: &ldquo;give me all orders between January 1 and January 31&rdquo; would require querying every partition.</p>
+<h4 id="solution-19">
+  Solution
+  <a class="heading-link" href="#solution-19">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Assign contiguous ranges of the <em>key space</em> to nodes (e.g., keys A–M go to Node 1, N–Z to Node 2). Since keys within a range are co-located, range queries only need to contact a small number of nodes.</p>
+<h4 id="how-it-works-19">
+  How it works
+  <a class="heading-link" href="#how-it-works-19">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Node 1: keys [&#34;a&#34; – &#34;mzzz&#34;]
+Node 2: keys [&#34;n&#34; – &#34;rzzz&#34;]
+Node 3: keys [&#34;s&#34; – &#34;zzz&#34;]
+
+Query: all records with key starting with &#34;o&#34;
+  → Contacts only Node 2 ✓ (efficient)
+
+Query: all orders with order_date between 2024-01-01 and 2024-01-31
+  If key = order_date → all in a small range → contacts 1-2 nodes ✓
+</code></pre><p><strong>Split and merge:</strong> When a range grows too large, split it into two. When adjacent ranges shrink, merge them. Node count stays the same; partition boundaries shift.</p>
+<h4 id="real-world-analogy-19">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-19">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A library using alphabetical sections. Looking for all books by authors with last names &ldquo;Smith&rdquo; through &ldquo;Taylor&rdquo; requires visiting only one contiguous shelf section.</p>
+<h4 id="example-systems-19">
+  Example systems
+  <a class="heading-link" href="#example-systems-19">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Google Bigtable (tablets with row ranges), Apache HBase (regions), CockroachDB (key ranges), TiKV</p>
+<h4 id="trade-offs-19">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-19">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Efficient range queries</td>
+					<td>Risk of hotspots if keys are sequential (e.g., timestamps all going to one node)</td>
+			</tr>
+			<tr>
+					<td>Natural ordering of data</td>
+					<td>Requires rebalancing (split/merge operations) as data grows</td>
+			</tr>
+			<tr>
+					<td>Maps well to time-series and sorted data</td>
+					<td>More complex routing than fixed hash partitions</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-19">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-19">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#e1-fixed-partitions" >Fixed Partitions</a> (alternative for non-range queries)
+→ <a href="#c4-consistent-core" >Consistent Core</a> (manages range-to-node mapping)
+→ <a href="#a5-versioned-value" >Versioned Value</a> (range queries often include version filtering)</p>
+<hr>
+<h2 id="group-f--network-communication--request-handling">
+  Group F — Network Communication &amp; Request Handling
+  <a class="heading-link" href="#group-f--network-communication--request-handling">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Reliable data structures and leader election aren&rsquo;t enough. Nodes must communicate efficiently and correctly over unreliable networks.</p>
+<hr>
+<h3 id="f1-single-socket-channel">
+  F1. Single-Socket Channel
+  <a class="heading-link" href="#f1-single-socket-channel">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>One TCP connection per peer pair to preserve message order.</strong></p>
+<h4 id="problem-20">
+  Problem
+  <a class="heading-link" href="#problem-20">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>When a node sends multiple messages to another node using separate connections (or UDP), messages can arrive out of order. For many distributed protocols (like log replication), ordering is critical: entry 5 must be applied before entry 6.</p>
+<h4 id="solution-20">
+  Solution
+  <a class="heading-link" href="#solution-20">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Maintain <em>one persistent TCP connection</em> between each pair of communicating nodes. TCP guarantees in-order delivery within a single connection, so messages always arrive in the order sent.</p>
+<h4 id="how-it-works-20">
+  How it works
+  <a class="heading-link" href="#how-it-works-20">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Node A ◄═══ single TCP socket ═══► Node B
+                                     (reused for all messages between A and B)
+
+Message ordering:
+  A sends: [msg1, msg2, msg3]
+  B receives: [msg1, msg2, msg3]  ← guaranteed by TCP ✓
+</code></pre><p>Connection lifecycle:</p>
+<ul>
+<li>Connection established at startup or on first message</li>
+<li>Reused indefinitely (with heartbeats to detect dead connections)</li>
+<li>On disconnect, reconnect and resume from the right position (using log indices)</li>
+</ul>
+<h4 id="real-world-analogy-20">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-20">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A dedicated phone line between two offices used for all communications, rather than dialing a new number for each call. Everything said on that line is heard in order.</p>
+<h4 id="example-systems-20">
+  Example systems
+  <a class="heading-link" href="#example-systems-20">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>ZooKeeper (single connection per client), Raft implementations, etcd</p>
+<h4 id="trade-offs-20">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-20">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Guaranteed message ordering at no extra cost</td>
+					<td>Head-of-line blocking: a slow message delays all subsequent messages</td>
+			</tr>
+			<tr>
+					<td>Simple — no sequence numbering needed</td>
+					<td>Connection management complexity (reconnection, multiplexing)</td>
+			</tr>
+			<tr>
+					<td>Efficient (reuse TCP handshake cost)</td>
+					<td>Single socket limits throughput if messages are large</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-20">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-20">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f2-request-pipeline" >Request Pipeline</a> (send multiple requests without waiting for responses)
+→ <a href="#b1-heartbeat" >HeartBeat</a> (keeps the socket alive)
+→ <a href="#f4-singular-update-queue" >Singular Update Queue</a> (processes messages from the socket serially)</p>
+<hr>
+<h3 id="f2-request-pipeline">
+  F2. Request Pipeline
+  <a class="heading-link" href="#f2-request-pipeline">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Don&rsquo;t wait for acknowledgement before sending the next request.</strong></p>
+<h4 id="problem-21">
+  Problem
+  <a class="heading-link" href="#problem-21">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Using a <a href="#f1-single-socket-channel" >Single-Socket Channel</a>, if you send a request and wait for a response before sending the next request, your throughput is limited by the round-trip latency. If latency is 10ms and requests take 1ms to process, you can only do 100 requests/second even if the server could handle 10,000.</p>
+<h4 id="solution-21">
+  Solution
+  <a class="heading-link" href="#solution-21">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p><em>Pipeline</em> multiple requests: send them one after another without waiting for the previous response. The server processes them in order (FIFO) and returns responses in the same order.</p>
+<h4 id="how-it-works-21">
+  How it works
+  <a class="heading-link" href="#how-it-works-21">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Without pipelining:
+  Send Req1 → wait → Recv Resp1 → Send Req2 → wait → Recv Resp2
+  Time = 2 × RTT per operation
+
+With pipelining:
+  Send Req1 → Send Req2 → Send Req3 → ...
+                     → Recv Resp1 → Recv Resp2 → Recv Resp3
+  Time ≈ 1 × RTT for many operations
+</code></pre><p>The sender keeps an in-flight window (e.g., up to 100 outstanding requests). If the window fills up, it pauses until acknowledgements arrive.</p>
+<h4 id="real-world-analogy-21">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-21">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>An assembly line vs. building one product at a time. You start work on the next unit before the first is finished — the stages overlap.</p>
+<h4 id="example-systems-21">
+  Example systems
+  <a class="heading-link" href="#example-systems-21">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Redis pipelining, HTTP/2 multiplexing, Raft leader-to-follower replication</p>
+<h4 id="trade-offs-21">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-21">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Dramatically improves throughput</td>
+					<td>Errors are harder to handle (which request failed?)</td>
+			</tr>
+			<tr>
+					<td>Reduces effective latency under load</td>
+					<td>Window sizing is tricky — too large can overwhelm receiver</td>
+			</tr>
+			<tr>
+					<td>Utilizes network bandwidth efficiently</td>
+					<td>Out-of-order responses (if using multiplexed channels) require correlation IDs</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-21">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-21">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f1-single-socket-channel" >Single-Socket Channel</a> (provides the ordered channel)
+→ <a href="#f3-request-batch" >Request Batch</a> (complementary throughput optimization)
+→ <a href="#f5-request-waiting-list" >Request Waiting List</a> (tracks in-flight requests)</p>
+<hr>
+<h3 id="f3-request-batch">
+  F3. Request Batch
+  <a class="heading-link" href="#f3-request-batch">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Bundle multiple small requests into one large request.</strong></p>
+<h4 id="problem-22">
+  Problem
+  <a class="heading-link" href="#problem-22">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Sending many small requests incurs high overhead: each request has network framing, serialization, and processing overhead. When throughput is critical (e.g., log replication), the overhead per message can dominate actual work time.</p>
+<h4 id="solution-22">
+  Solution
+  <a class="heading-link" href="#solution-22">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Accumulate multiple pending requests and send them as a single batch. The receiver processes the batch together and sends a single response for the batch.</p>
+<h4 id="how-it-works-22">
+  How it works
+  <a class="heading-link" href="#how-it-works-22">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Without batching (N small requests):
+  [req1] → network → [resp1]
+  [req2] → network → [resp2]
+  [req3] → network → [resp3]
+  Cost: N × (serialization + network overhead)
+
+With batching:
+  [req1 + req2 + req3] → network → [resp1 + resp2 + resp3]
+  Cost: 1 × (serialization + network overhead) + 3 × processing
+</code></pre><p>Batching strategies:</p>
+<ul>
+<li><strong>Size-based:</strong> batch when accumulated size reaches N bytes</li>
+<li><strong>Time-based:</strong> batch every T milliseconds (e.g., 5ms)</li>
+<li><strong>Hybrid:</strong> batch when size OR time threshold is reached</li>
+</ul>
+<h4 id="real-world-analogy-22">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-22">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A courier service: instead of sending 50 individual packages across the city one by one, fill a van and deliver them all in one trip.</p>
+<h4 id="example-systems-22">
+  Example systems
+  <a class="heading-link" href="#example-systems-22">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Kafka (producer batching), database write batching, Raft heartbeat piggybacking</p>
+<h4 id="trade-offs-22">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-22">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Major throughput improvements</td>
+					<td>Increases latency for individual requests (must wait for batch to fill)</td>
+			</tr>
+			<tr>
+					<td>Reduces per-request overhead</td>
+					<td>More complex error handling (partial batch failures)</td>
+			</tr>
+			<tr>
+					<td>Efficient network utilization</td>
+					<td>Buffering introduces memory overhead</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-22">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-22">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f2-request-pipeline" >Request Pipeline</a> (send batches in a pipeline)
+→ <a href="#f4-singular-update-queue" >Singular Update Queue</a> (where batches are assembled)
+→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a> (batch writes to the log)</p>
+<hr>
+<h3 id="f4-singular-update-queue">
+  F4. Singular Update Queue
+  <a class="heading-link" href="#f4-singular-update-queue">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Process state changes sequentially using a single worker thread.</strong></p>
+<h4 id="problem-23">
+  Problem
+  <a class="heading-link" href="#problem-23">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Multiple threads or network handlers updating shared state concurrently require locks, condition variables, and careful synchronization — a recipe for deadlocks, race conditions, and hard-to-test code.</p>
+<h4 id="solution-23">
+  Solution
+  <a class="heading-link" href="#solution-23">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Route all state-changing operations through a single queue processed by one dedicated thread. This thread processes one request at a time, eliminating all concurrency issues around shared state. Callers submit tasks to the queue and optionally wait for a result via a future/promise.</p>
+<h4 id="how-it-works-23">
+  How it works
+  <a class="heading-link" href="#how-it-works-23">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Thread 1 ─────► ┌─────────────────────┐
+Thread 2 ─────► │    Request Queue    │ ◄──── Single Worker Thread
+Thread 3 ─────► │  [req1, req2, req3] │          (processes serially)
+                └─────────────────────┘
+</code></pre><p>Network I/O and request parsing are still multi-threaded. Only <em>state mutation</em> is serialized through the queue.</p>
+<p>This is the actor model in miniature.</p>
+<h4 id="real-world-analogy-23">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-23">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A restaurant kitchen has one expediter who calls out orders one at a time to the kitchen staff. No two orders are processed simultaneously — each is completed before the next is started. Waiters (multiple threads) can still take orders concurrently.</p>
+<h4 id="example-systems-23">
+  Example systems
+  <a class="heading-link" href="#example-systems-23">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>etcd (single Raft goroutine), ZooKeeper, Actor frameworks (Akka), Node.js event loop</p>
+<h4 id="trade-offs-23">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-23">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Eliminates concurrency bugs on shared state</td>
+					<td>Single thread is a throughput ceiling</td>
+			</tr>
+			<tr>
+					<td>Dramatically simplified code — no locks needed</td>
+					<td>Queue can become a bottleneck under high load</td>
+			</tr>
+			<tr>
+					<td>Easy to reason about state transitions</td>
+					<td>Slow operations in the queue block everything</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-23">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-23">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f5-request-waiting-list" >Request Waiting List</a> (tracks async responses from the queue)
+→ <a href="#f3-request-batch" >Request Batch</a> (queue can batch work)
+→ <a href="#f1-single-socket-channel" >Single-Socket Channel</a> (feeds the queue)</p>
+<hr>
+<h3 id="f5-request-waiting-list">
+  F5. Request Waiting List
+  <a class="heading-link" href="#f5-request-waiting-list">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Track in-flight requests waiting for responses from the cluster.</strong></p>
+<h4 id="problem-24">
+  Problem
+  <a class="heading-link" href="#problem-24">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A server receives a client request and must wait for acknowledgements from multiple cluster nodes before it can respond. The server is asynchronous — it doesn&rsquo;t block waiting — so it must remember which client is waiting for which cluster responses.</p>
+<h4 id="solution-24">
+  Solution
+  <a class="heading-link" href="#solution-24">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Maintain a <em>waiting list</em> (a map) of in-flight client requests. Each entry stores:</p>
+<ul>
+<li>The original client request</li>
+<li>A callback or future to invoke when the required conditions are met (e.g., majority acks)</li>
+<li>A timeout</li>
+</ul>
+<p>When cluster node responses arrive, match them to waiting list entries, check if the success criterion is met, and either respond to the client or trigger retry logic.</p>
+<h4 id="how-it-works-24">
+  How it works
+  <a class="heading-link" href="#how-it-works-24">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Client sends write request → Server creates WaitEntry {
+  requestId: &#34;abc123&#34;,
+  requiredAcks: 3,  (majority of 5)
+  receivedAcks: [],
+  timeout: 5000ms,
+  clientCallback: fn
+}
+Server stores WaitEntry in map[&#34;abc123&#34;]
+
+Follower1 acks → map[&#34;abc123&#34;].receivedAcks.push(1) → count=1
+Follower2 acks → map[&#34;abc123&#34;].receivedAcks.push(2) → count=2
+Follower3 acks → map[&#34;abc123&#34;].receivedAcks.push(3) → count=3 = majority
+  → clientCallback(&#34;SUCCESS&#34;) → respond to client
+  → remove from waiting list
+</code></pre><h4 id="real-world-analogy-24">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-24">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A restaurant manager tracks each table&rsquo;s order. When the kitchen finishes each dish, the manager checks if the whole table&rsquo;s order is complete. Only when all dishes are ready does the server bring them out.</p>
+<h4 id="example-systems-24">
+  Example systems
+  <a class="heading-link" href="#example-systems-24">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Raft leader implementations, ZooKeeper request processors, custom quorum write handlers</p>
+<h4 id="trade-offs-24">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-24">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Non-blocking — server doesn&rsquo;t stall</td>
+					<td>Must handle timeouts explicitly</td>
+			</tr>
+			<tr>
+					<td>Clean separation of request receipt and response</td>
+					<td>Memory grows with in-flight requests</td>
+			</tr>
+			<tr>
+					<td>Natural place to implement retry and timeout logic</td>
+					<td>Correlating responses with requests requires unique IDs</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-24">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-24">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f4-singular-update-queue" >Singular Update Queue</a> (submits tasks that eventually respond via the waiting list)
+→ <a href="#f2-request-pipeline" >Request Pipeline</a> (multiple in-flight requests simultaneously)
+→ <a href="#f6-idempotent-receiver" >Idempotent Receiver</a> (handle retries when waiting list times out)</p>
+<hr>
+<h3 id="f6-idempotent-receiver">
+  F6. Idempotent Receiver
+  <a class="heading-link" href="#f6-idempotent-receiver">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Make servers safe to retry: process the same request twice = process it once.</strong></p>
+<h4 id="problem-25">
+  Problem
+  <a class="heading-link" href="#problem-25">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Networks are unreliable. A client sends a request, the server processes it, but the response is lost. The client times out and retries. The server processes the request <em>again</em> — potentially double-charging a credit card, double-sending an email, or creating duplicate records.</p>
+<h4 id="solution-25">
+  Solution
+  <a class="heading-link" href="#solution-25">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Assign each request a unique <em>client ID + request ID</em> pair. The server tracks which requests it has already processed (in a deduplication store, usually persisted). On receiving a request, check if its ID has been seen before:</p>
+<ul>
+<li>If yes → return the cached response (don&rsquo;t re-execute)</li>
+<li>If no → process and store the result</li>
+</ul>
+<h4 id="how-it-works-25">
+  How it works
+  <a class="heading-link" href="#how-it-works-25">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Client:
+  requestId = UUID()  ← unique per request attempt
+  Send: {clientId: &#34;client-1&#34;, requestId: &#34;req-abc&#34;, data: &#34;charge $100&#34;}
+
+Server:
+  Check dedup_store[&#34;client-1&#34;][&#34;req-abc&#34;]
+  → Not found → process → charge $100 → response = &#34;OK, charge ID=XYZ&#34;
+  → Store dedup_store[&#34;client-1&#34;][&#34;req-abc&#34;] = &#34;OK, charge ID=XYZ&#34;
+  → Return &#34;OK, charge ID=XYZ&#34;
+
+Client retry (response was lost):
+  Send again: {clientId: &#34;client-1&#34;, requestId: &#34;req-abc&#34;, data: &#34;charge $100&#34;}
+  Server:
+  → Found in dedup_store → return &#34;OK, charge ID=XYZ&#34; (no re-execution)
+</code></pre><p>The dedup store has a TTL — old entries can be cleaned up once the client is done retrying.</p>
+<h4 id="real-world-analogy-25">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-25">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A bank check with a unique check number. If you lose the confirmation that your check was cashed and submit it again, the bank recognizes the duplicate check number and rejects the second submission.</p>
+<h4 id="example-systems-25">
+  Example systems
+  <a class="heading-link" href="#example-systems-25">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>AWS API Gateway (idempotency keys), Stripe (idempotency keys), Kafka exactly-once semantics, database UPSERT with unique constraints</p>
+<h4 id="trade-offs-25">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-25">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Safe retries — clients can always retry on timeout</td>
+					<td>Requires persistent deduplication storage</td>
+			</tr>
+			<tr>
+					<td>Simplifies client logic (just retry on any failure)</td>
+					<td>Dedup store must be consulted on every request (overhead)</td>
+			</tr>
+			<tr>
+					<td>Enables exactly-once semantics</td>
+					<td>Old dedup entries must be cleaned up eventually</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-25">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-25">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#f5-request-waiting-list" >Request Waiting List</a> (server retries internally; idempotency handles external retries)
+→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a> (dedup results are persisted here)
+→ <a href="#b3-generation-clock" >Generation Clock</a> (can be used to detect outdated requests)</p>
+<hr>
+<h2 id="group-g--data-propagation--observation">
+  Group G — Data Propagation &amp; Observation
+  <a class="heading-link" href="#group-g--data-propagation--observation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>These patterns handle how information spreads through a cluster and how clients track cluster state changes.</p>
+<hr>
+<h3 id="g1-gossip-dissemination">
+  G1. Gossip Dissemination
+  <a class="heading-link" href="#g1-gossip-dissemination">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Spread information through the cluster like an epidemic — without a central broker.</strong></p>
+<h4 id="problem-26">
+  Problem
+  <a class="heading-link" href="#problem-26">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a large cluster (hundreds or thousands of nodes), you need to disseminate information to all nodes (e.g., &ldquo;Node X has failed,&rdquo; &ldquo;the new cluster configuration&rdquo;). Broadcasting to every node is O(N) messages from a single source — it floods the network and creates a bottleneck.</p>
+<h4 id="solution-26">
+  Solution
+  <a class="heading-link" href="#solution-26">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Each node periodically picks a <em>random</em> subset of peers and exchanges state with them. Each peer then spreads the information to other random peers. Information propagates exponentially fast (like a rumor spreading through a crowd) with no central coordinator.</p>
+<h4 id="how-it-works-26">
+  How it works
+  <a class="heading-link" href="#how-it-works-26">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Time 0: Node A knows new info
+Time 1: A gossips to [B, E] → B and E learn it
+Time 2: B gossips to [C, F], E gossips to [D, G] → 6 nodes know
+Time 3: C, D, F, G gossip to others → 14 nodes know
+...
+After O(log N) rounds: all N nodes know
+</code></pre><p>Each gossip message includes a <strong>version number</strong> or <strong>digest</strong> so nodes can tell what information is new vs. already known. This prevents infinite re-gossip.</p>
+<h4 id="real-world-analogy-26">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-26">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Office rumors. Person A tells two colleagues. Each of them tells two more. Within a few hours, the whole building knows — without anyone sending a company-wide broadcast.</p>
+<h4 id="example-systems-26">
+  Example systems
+  <a class="heading-link" href="#example-systems-26">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Amazon Dynamo (membership and failure detection), Cassandra (cluster metadata), Consul, Riak, Bitcoin peer discovery</p>
+<h4 id="trade-offs-26">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-26">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Highly scalable — no central bottleneck</td>
+					<td>Eventually consistent (not instant) — there&rsquo;s a propagation delay</td>
+			</tr>
+			<tr>
+					<td>Fault-tolerant — works even if many nodes are down</td>
+					<td>Hard to guarantee a specific delivery time</td>
+			</tr>
+			<tr>
+					<td>No single point of failure</td>
+					<td>Information may be slightly stale at any given node</td>
+			</tr>
+			<tr>
+					<td>Self-healing — new nodes quickly learn cluster state</td>
+					<td>Verbose — generates constant background traffic</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-26">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-26">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#b1-heartbeat" >HeartBeat</a> (often piggybacked in gossip messages)
+→ <a href="#d4-version-vector" >Version Vector</a> / <a href="#a5-versioned-value" >Versioned Value</a> (for deduplication in gossip)
+→ <a href="#b4-emergent-leader" >Emergent Leader</a> (uses gossip for membership info)
+→ <a href="#c4-consistent-core" >Consistent Core</a> (alternative to gossip for strongly consistent metadata)</p>
+<hr>
+<h3 id="g2-follower-reads">
+  G2. Follower Reads
+  <a class="heading-link" href="#g2-follower-reads">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Scale read throughput by serving reads from follower nodes.</strong></p>
+<h4 id="problem-27">
+  Problem
+  <a class="heading-link" href="#problem-27">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In a <a href="#b2-leader-and-followers" >Leader and Followers</a> setup, all writes and strong reads go to the leader. As read traffic grows, the leader becomes a bottleneck. You have multiple follower nodes sitting idle for reads.</p>
+<h4 id="solution-27">
+  Solution
+  <a class="heading-link" href="#solution-27">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Allow clients to read from follower nodes. Followers may be slightly behind the leader (stale data), but for many use cases, slightly stale reads are acceptable — and the throughput gain is significant.</p>
+<h4 id="how-it-works-27">
+  How it works
+  <a class="heading-link" href="#how-it-works-27">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Write path:  Client → Leader → replicate to followers
+Read path:
+  - Strong read:   Client → Leader (always up-to-date)
+  - Follower read: Client → any Follower (may be slightly stale)
+
+Client can specify: read-my-own-writes?
+  If yes: read from leader, or wait for follower to catch up to your last write&#39;s index
+  If no: any follower is fine
+</code></pre><p><strong>Read-your-own-writes consistency:</strong> After a write, the client can pass the log index of their write to the follower. The follower waits until it has applied entries up to that index before responding.</p>
+<h4 id="real-world-analogy-27">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-27">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A company&rsquo;s website: the main database handles all updates. Reporting dashboards and analytics pages can read from a replica that&rsquo;s a few seconds behind — nobody cares if the &ldquo;total users&rdquo; count is 3 seconds stale.</p>
+<h4 id="example-systems-27">
+  Example systems
+  <a class="heading-link" href="#example-systems-27">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>MySQL read replicas, MongoDB secondary reads, Cassandra (tunable consistency), CockroachDB follower reads</p>
+<h4 id="trade-offs-27">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-27">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Linear read throughput scaling with cluster size</td>
+					<td>Reads may be stale (replication lag)</td>
+			</tr>
+			<tr>
+					<td>Reduces leader load dramatically</td>
+					<td>Read-your-own-writes requires extra bookkeeping</td>
+			</tr>
+			<tr>
+					<td>Geographic distribution (read from nearby replica)</td>
+					<td>Strong consistency requires going to leader</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-27">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-27">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#b2-leader-and-followers" >Leader and Followers</a>
+→ <a href="#a4-high-water-mark" >High-Water Mark</a> (follower knows how far behind it is)
+→ <a href="#a5-versioned-value" >Versioned Value</a> (client can request specific version for consistency)</p>
+<hr>
+<h3 id="g3-state-watch">
+  G3. State Watch
+  <a class="heading-link" href="#g3-state-watch">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Push notifications: tell me when something changes.</strong></p>
+<h4 id="problem-28">
+  Problem
+  <a class="heading-link" href="#problem-28">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Clients often need to react to changes in cluster state (e.g., &ldquo;tell me when the leader changes,&rdquo; &ldquo;tell me when a configuration key is updated&rdquo;). Polling — repeatedly asking &ldquo;has it changed?&rdquo; — is wasteful: it generates load even when nothing has changed and adds latency to detect changes.</p>
+<h4 id="solution-28">
+  Solution
+  <a class="heading-link" href="#solution-28">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Clients register a <em>watch</em> (subscription) on a specific key or path in the consistent store. When that key&rsquo;s value changes, the server pushes a notification to all registered watchers. No polling required.</p>
+<h4 id="how-it-works-28">
+  How it works
+  <a class="heading-link" href="#how-it-works-28">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Client A:  &#34;Watch key /config/leader&#34;
+  → Server registers watch: {key: &#34;/config/leader&#34;, callback: A.notify}
+
+[Some time later...]
+
+New leader elected → Server writes &#34;/config/leader&#34; = &#34;Node5&#34;
+
+Server iterates watches for &#34;/config/leader&#34;:
+  → Sends notification to Client A: {key: &#34;/config/leader&#34;, newValue: &#34;Node5&#34;}
+
+Client A receives notification → updates its cached leader address
+  → Client A can re-register the watch if it wants future notifications
+</code></pre><p>Watches are typically <em>one-shot</em>: they fire once and must be re-registered. This prevents memory leaks from forgotten watches.</p>
+<h4 id="real-world-analogy-28">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-28">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A stock price alert: you set an alert at &ldquo;$AAPL crosses $200.&rdquo; Your broker notifies you once when it crosses — you don&rsquo;t have to check the price every second.</p>
+<h4 id="example-systems-28">
+  Example systems
+  <a class="heading-link" href="#example-systems-28">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>ZooKeeper (watches), etcd (watch API), Kubernetes controller-manager (watches the API server), Consul watches</p>
+<h4 id="trade-offs-28">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-28">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Event-driven — eliminates polling overhead</td>
+					<td>Missed events if the client is disconnected during a change</td>
+			</tr>
+			<tr>
+					<td>Immediate reaction to changes</td>
+					<td>Watch re-registration overhead</td>
+			</tr>
+			<tr>
+					<td>Natural fit for reactive/event-driven architectures</td>
+					<td>Server must track all registered watches (memory)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-28">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-28">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#c4-consistent-core" >Consistent Core</a> (provides the watch service)
+→ <a href="#b5-lease" >Lease</a> (watches combined with leases implement leader election in ZooKeeper)</p>
+<hr>
+<h2 id="group-h--distributed-transactions">
+  Group H — Distributed Transactions
+  <a class="heading-link" href="#group-h--distributed-transactions">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Sometimes you need to update data on multiple nodes atomically — all updates succeed or all fail.</p>
+<hr>
+<h3 id="h1-two-phase-commit">
+  H1. Two-Phase Commit
+  <a class="heading-link" href="#h1-two-phase-commit">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>The classic protocol for atomic distributed transactions.</strong></p>
+<h4 id="problem-29">
+  Problem
+  <a class="heading-link" href="#problem-29">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A transaction updates data on two or more nodes (e.g., debit $100 from Account A on Node 1, credit $100 to Account B on Node 2). If Node 2 crashes after Node 1 debits, you have inconsistent state: money vanished.</p>
+<p>You need atomicity across nodes: either both updates commit, or neither does.</p>
+<h4 id="solution-29">
+  Solution
+  <a class="heading-link" href="#solution-29">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Divide the commit into two phases, coordinated by a <em>transaction coordinator</em>:</p>
+<p><strong>Phase 1 — Prepare (Voting):</strong>
+The coordinator asks each participant: &ldquo;Are you ready to commit?&rdquo; Each participant:</p>
+<ul>
+<li>Acquires locks on affected data</li>
+<li>Writes the proposed changes to its WAL (but does NOT commit yet)</li>
+<li>Votes YES (ready) or NO (cannot commit)</li>
+</ul>
+<p><strong>Phase 2 — Commit or Abort:</strong></p>
+<ul>
+<li>If all participants voted YES → coordinator sends COMMIT to all; participants commit and release locks</li>
+<li>If any participant voted NO (or timed out) → coordinator sends ABORT to all; participants roll back</li>
+</ul>
+<h4 id="how-it-works-29">
+  How it works
+  <a class="heading-link" href="#how-it-works-29">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<pre tabindex="0"><code>Coordinator: &#34;Prepare tx-123: debit A=$100, credit B=$100&#34;
+  Node 1 (has Account A): locks A, writes to WAL, votes YES
+  Node 2 (has Account B): locks B, writes to WAL, votes YES
+
+Coordinator: all YES → &#34;Commit tx-123&#34;
+  Node 1: commits → Account A -= $100, releases lock
+  Node 2: commits → Account B += $100, releases lock
+  Transaction coordinator: writes commit record
+
+--- If Node 2 votes NO ---
+Coordinator: &#34;Abort tx-123&#34;
+  Node 1: rolls back WAL changes, releases lock
+  Node 2: rolls back WAL changes, releases lock
+</code></pre><p><strong>The blocking problem:</strong> If the coordinator crashes after Phase 1 but before Phase 2, participants are stuck holding locks — they voted YES but don&rsquo;t know if the coordinator decided to commit or abort. This is the fundamental limitation of 2PC.</p>
+<h4 id="real-world-analogy-29">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-29">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A marriage ceremony. The officiant (coordinator) asks each party &ldquo;Do you take&hellip;?&rdquo; (Phase 1 — prepare). Only after both say &ldquo;I do&rdquo; does the officiant declare &ldquo;I now pronounce you married&rdquo; (Phase 2 — commit). If anyone says &ldquo;No,&rdquo; the ceremony is cancelled.</p>
+<h4 id="example-systems-29">
+  Example systems
+  <a class="heading-link" href="#example-systems-29">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>XA transactions (JTA in Java EE), distributed SQL databases (CockroachDB, Spanner use 2PC variants), some message queues</p>
+<h4 id="trade-offs-29">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-29">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Atomic updates across multiple nodes</td>
+					<td><strong>Blocking protocol</strong> — coordinator failure leaves participants locked</td>
+			</tr>
+			<tr>
+					<td>Well-understood, widely implemented</td>
+					<td>Latency: 2 round trips minimum</td>
+			</tr>
+			<tr>
+					<td>Works with heterogeneous systems (via XA)</td>
+					<td>Locks held for the entire 2PC duration — poor for high contention</td>
+			</tr>
+			<tr>
+					<td></td>
+					<td>Not fault-tolerant on its own — needs a coordinator that can recover</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Mitigations for blocking:</strong></p>
+<ul>
+<li>Use a persistent coordinator that can recover from WAL</li>
+<li>Use <a href="#c4-consistent-core" >Consistent Core</a> + <a href="#c2-replicated-log" >Replicated Log</a> as the coordinator for fault tolerance</li>
+<li>Use saga patterns or eventual consistency instead for long-running transactions</li>
+</ul>
+<h4 id="related-patterns-29">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-29">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#a1-write-ahead-log" >Write-Ahead Log</a> (both coordinator and participants log their state)
+→ <a href="#c4-consistent-core" >Consistent Core</a> (often hosts the coordinator for fault tolerance)
+→ <a href="#d3-clock-bound-wait" >Clock-Bound Wait</a> (Spanner uses this to order 2PC transactions)</p>
+<hr>
+<h2 id="12-how-patterns-fit-together--a-layered-view">
+  12. How Patterns Fit Together — A Layered View
+  <a class="heading-link" href="#12-how-patterns-fit-together--a-layered-view">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The patterns are not independent. They compose into complete systems:</p>
+<h3 id="example-a-raft-based-key-value-store">
+  Example: A Raft-based Key-Value Store
+  <a class="heading-link" href="#example-a-raft-based-key-value-store">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────┐
+│                   CLIENT API                            │
+│    Idempotent Receiver + Request Waiting List           │
+├─────────────────────────────────────────────────────────┤
+│                NETWORK LAYER                            │
+│  Single-Socket Channel + Request Pipeline + Batching    │
+├─────────────────────────────────────────────────────────┤
+│              CONSENSUS LAYER (Raft)                     │
+│  Leader &amp; Followers + Generation Clock + Majority Quorum│
+│  + Replicated Log + High-Water Mark                     │
+├─────────────────────────────────────────────────────────┤
+│             FAILURE DETECTION                           │
+│  HeartBeat + Lease                                      │
+├─────────────────────────────────────────────────────────┤
+│               STORAGE LAYER                             │
+│  Write-Ahead Log + Segmented Log + Low-Water Mark       │
+│  + Versioned Value                                      │
+└─────────────────────────────────────────────────────────┘
+</code></pre><h3 id="example-a-cassandra-style-eventually-consistent-store">
+  Example: A Cassandra-style Eventually Consistent Store
+  <a class="heading-link" href="#example-a-cassandra-style-eventually-consistent-store">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────┐
+│               CLIENT INTERFACE                          │
+│   Follower Reads + Idempotent Receiver                  │
+├─────────────────────────────────────────────────────────┤
+│             DATA DISTRIBUTION                           │
+│   Fixed Partitions + Gossip Dissemination               │
+├─────────────────────────────────────────────────────────┤
+│            CONFLICT RESOLUTION                          │
+│   Version Vector + Versioned Value + Hybrid Clock       │
+├─────────────────────────────────────────────────────────┤
+│               FAILURE DETECTION                         │
+│   HeartBeat + Gossip                                    │
+├─────────────────────────────────────────────────────────┤
+│                STORAGE                                  │
+│   Write-Ahead Log + Segmented Log                       │
+└─────────────────────────────────────────────────────────┘
+</code></pre><hr>
+<h2 id="13-quick-reference-summary-table">
+  13. Quick Reference Summary Table
+  <a class="heading-link" href="#13-quick-reference-summary-table">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>Pattern</th>
+					<th>Category</th>
+					<th>One-Line Problem</th>
+					<th>Core Idea</th>
+					<th>Key Systems</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><strong>Write-Ahead Log</strong></td>
+					<td>Durability</td>
+					<td>Survive crashes without losing state</td>
+					<td>Append every change to a sequential log before applying it</td>
+					<td>PostgreSQL WAL, Kafka, RocksDB</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><strong>Segmented Log</strong></td>
+					<td>Durability</td>
+					<td>Single log file grows unbounded</td>
+					<td>Split log into fixed-size segment files; delete old segments</td>
+					<td>Kafka, etcd, Bookkeeper</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><strong>Low-Water Mark</strong></td>
+					<td>Durability</td>
+					<td>Can&rsquo;t tell which old log entries are safe to delete</td>
+					<td>Track the minimum log index confirmed by all followers</td>
+					<td>Kafka, Raft implementations</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><strong>High-Water Mark</strong></td>
+					<td>Durability</td>
+					<td>Followers might expose uncommitted entries to clients</td>
+					<td>Track the highest log index replicated to a majority</td>
+					<td>Kafka, Raft, ZooKeeper</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><strong>Versioned Value</strong></td>
+					<td>Durability</td>
+					<td>Overwriting loses history; concurrent writes conflict</td>
+					<td>Store every update with a new version number</td>
+					<td>etcd, CockroachDB, Cassandra</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><strong>HeartBeat</strong></td>
+					<td>Coordination</td>
+					<td>Can&rsquo;t tell if a remote node is alive or crashed</td>
+					<td>Periodic messages; silence = failure</td>
+					<td>ZooKeeper, Kubernetes, Raft</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td><strong>Leader and Followers</strong></td>
+					<td>Coordination</td>
+					<td>Multiple writers cause conflicting state</td>
+					<td>Single leader serializes all writes; followers replicate</td>
+					<td>MySQL, MongoDB, Raft</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td><strong>Generation Clock</strong></td>
+					<td>Coordination</td>
+					<td>Old leader comes back and causes split-brain</td>
+					<td>Monotonic epoch counter; reject messages from stale epochs</td>
+					<td>Raft (term), Paxos (ballot)</td>
+			</tr>
+			<tr>
+					<td>9</td>
+					<td><strong>Emergent Leader</strong></td>
+					<td>Coordination</td>
+					<td>Explicit elections are complex</td>
+					<td>Oldest node in cluster is automatically the leader</td>
+					<td>Akka Cluster</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td><strong>Lease</strong></td>
+					<td>Coordination</td>
+					<td>Crash-proof distributed locks needed</td>
+					<td>Time-limited lock; must be renewed; expires on crash</td>
+					<td>etcd, ZooKeeper, Chubby</td>
+			</tr>
+			<tr>
+					<td>11</td>
+					<td><strong>Majority Quorum</strong></td>
+					<td>Consensus</td>
+					<td>All-or-nothing availability vs. data loss trade-off</td>
+					<td>Require ⌊N/2⌋+1 confirmations; any two majorities overlap</td>
+					<td>Raft, Paxos, ZooKeeper</td>
+			</tr>
+			<tr>
+					<td>12</td>
+					<td><strong>Replicated Log</strong></td>
+					<td>Consensus</td>
+					<td>Single-node WAL isn&rsquo;t fault tolerant</td>
+					<td>Ship WAL entries to followers; commit on majority ack</td>
+					<td>Raft (etcd), ZooKeeper ZAB</td>
+			</tr>
+			<tr>
+					<td>13</td>
+					<td><strong>Paxos</strong></td>
+					<td>Consensus</td>
+					<td>Nodes must agree on a single value despite failures</td>
+					<td>Two-phase protocol with ballot numbers to prevent conflicting commits</td>
+					<td>Chubby, ZooKeeper (inspired)</td>
+			</tr>
+			<tr>
+					<td>14</td>
+					<td><strong>Consistent Core</strong></td>
+					<td>Consensus</td>
+					<td>Running consensus on every node in a large cluster is expensive</td>
+					<td>Small 3–5 node strongly-consistent cluster as coordination oracle</td>
+					<td>ZooKeeper, etcd, Consul</td>
+			</tr>
+			<tr>
+					<td>15</td>
+					<td><strong>Lamport Clock</strong></td>
+					<td>Ordering</td>
+					<td>Wall-clock timestamps are unreliable across nodes</td>
+					<td>Logical counter; max(local, received) + 1 on message receipt</td>
+					<td>Distributed version numbers</td>
+			</tr>
+			<tr>
+					<td>16</td>
+					<td><strong>Hybrid Clock</strong></td>
+					<td>Ordering</td>
+					<td>Lamport clocks aren&rsquo;t human-readable; wall clocks aren&rsquo;t safe</td>
+					<td>Combine physical time + logical counter</td>
+					<td>CockroachDB, MongoDB, YugabyteDB</td>
+			</tr>
+			<tr>
+					<td>17</td>
+					<td><strong>Clock-Bound Wait</strong></td>
+					<td>Ordering</td>
+					<td>Clock uncertainty causes ordering violations in global transactions</td>
+					<td>Wait <code>2ε</code> before committing so all clocks have passed the same point</td>
+					<td>Google Spanner, CockroachDB</td>
+			</tr>
+			<tr>
+					<td>18</td>
+					<td><strong>Version Vector</strong></td>
+					<td>Ordering</td>
+					<td>Need to detect concurrent writes in multi-master systems</td>
+					<td>Per-node counter vector; concurrent if neither vector dominates</td>
+					<td>Riak, Amazon Dynamo, CouchDB</td>
+			</tr>
+			<tr>
+					<td>19</td>
+					<td><strong>Fixed Partitions</strong></td>
+					<td>Partitioning</td>
+					<td>Data too large for one node; need stable routing</td>
+					<td>Fixed bucket count (e.g., 1024); reassign buckets, not data</td>
+					<td>Kafka, Cassandra vnodes, Redis Cluster</td>
+			</tr>
+			<tr>
+					<td>20</td>
+					<td><strong>Key-Range Partitions</strong></td>
+					<td>Partitioning</td>
+					<td>Range queries require scanning all nodes</td>
+					<td>Co-locate sorted key ranges on nodes; split/merge as needed</td>
+					<td>Bigtable, HBase, CockroachDB</td>
+			</tr>
+			<tr>
+					<td>21</td>
+					<td><strong>Single-Socket Channel</strong></td>
+					<td>Networking</td>
+					<td>Messages arrive out of order with multiple connections</td>
+					<td>One TCP connection per peer pair; TCP guarantees order</td>
+					<td>ZooKeeper, Raft implementations</td>
+			</tr>
+			<tr>
+					<td>22</td>
+					<td><strong>Request Pipeline</strong></td>
+					<td>Networking</td>
+					<td>Waiting for each response limits throughput</td>
+					<td>Send next request before receiving previous response</td>
+					<td>Redis pipeline, HTTP/2, Raft replication</td>
+			</tr>
+			<tr>
+					<td>23</td>
+					<td><strong>Request Batch</strong></td>
+					<td>Networking</td>
+					<td>Per-request network overhead dominates processing cost</td>
+					<td>Accumulate multiple requests; send as one payload</td>
+					<td>Kafka producer, Raft heartbeat</td>
+			</tr>
+			<tr>
+					<td>24</td>
+					<td><strong>Singular Update Queue</strong></td>
+					<td>Concurrency</td>
+					<td>Locks and concurrent state mutation cause bugs</td>
+					<td>Single thread processes all state changes from a queue</td>
+					<td>etcd, ZooKeeper, Node.js event loop</td>
+			</tr>
+			<tr>
+					<td>25</td>
+					<td><strong>Request Waiting List</strong></td>
+					<td>Concurrency</td>
+					<td>Server must track which client waits for which cluster response</td>
+					<td>Map of in-flight requests → callbacks triggered on quorum ack</td>
+					<td>Raft leaders, ZooKeeper</td>
+			</tr>
+			<tr>
+					<td>26</td>
+					<td><strong>Idempotent Receiver</strong></td>
+					<td>Reliability</td>
+					<td>Client retries on timeout cause duplicate side effects</td>
+					<td>Unique request ID; server deduplicates using cached results</td>
+					<td>Stripe, AWS APIs, Kafka EOS</td>
+			</tr>
+			<tr>
+					<td>27</td>
+					<td><strong>Gossip Dissemination</strong></td>
+					<td>Propagation</td>
+					<td>Broadcasting cluster state to all N nodes is O(N) bottleneck</td>
+					<td>Each node randomly picks peers to exchange state; spreads exponentially</td>
+					<td>Cassandra, Dynamo, Consul, Riak</td>
+			</tr>
+			<tr>
+					<td>28</td>
+					<td><strong>Follower Reads</strong></td>
+					<td>Scalability</td>
+					<td>Leader is bottleneck for read-heavy workloads</td>
+					<td>Serve reads from followers (with bounded staleness)</td>
+					<td>MySQL replicas, Cassandra, MongoDB</td>
+			</tr>
+			<tr>
+					<td>29</td>
+					<td><strong>State Watch</strong></td>
+					<td>Observation</td>
+					<td>Polling for cluster state changes wastes resources</td>
+					<td>Server pushes notifications to registered watchers on key changes</td>
+					<td>ZooKeeper, etcd, Kubernetes</td>
+			</tr>
+			<tr>
+					<td>30</td>
+					<td><strong>Two-Phase Commit</strong></td>
+					<td>Transactions</td>
+					<td>Atomic updates across multiple nodes are not naturally safe</td>
+					<td>Coordinator collects votes (prepare), then issues global commit/abort</td>
+					<td>XA/JTA, CockroachDB, Spanner</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h3 id="pattern-selection-guide">
+  Pattern Selection Guide
+  <a class="heading-link" href="#pattern-selection-guide">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<table>
+	<thead>
+			<tr>
+					<th>If you need&hellip;</th>
+					<th>Consider these patterns</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Crash recovery for a single node</td>
+					<td>Write-Ahead Log, Segmented Log, Low-Water Mark</td>
+			</tr>
+			<tr>
+					<td>Fault-tolerant data replication</td>
+					<td>Replicated Log, Leader and Followers, Majority Quorum</td>
+			</tr>
+			<tr>
+					<td>Leader election</td>
+					<td>Leader and Followers, Generation Clock, Emergent Leader, Consistent Core</td>
+			</tr>
+			<tr>
+					<td>Ordering events across nodes</td>
+					<td>Lamport Clock, Hybrid Clock, Version Vector</td>
+			</tr>
+			<tr>
+					<td>Handling clock skew in global transactions</td>
+					<td>Clock-Bound Wait, Hybrid Clock</td>
+			</tr>
+			<tr>
+					<td>Conflict detection in multi-master systems</td>
+					<td>Version Vector, Versioned Value</td>
+			</tr>
+			<tr>
+					<td>Scaling read throughput</td>
+					<td>Follower Reads</td>
+			</tr>
+			<tr>
+					<td>Efficient cluster information spread</td>
+					<td>Gossip Dissemination</td>
+			</tr>
+			<tr>
+					<td>Reliable distributed locking</td>
+					<td>Lease, Consistent Core</td>
+			</tr>
+			<tr>
+					<td>Safe client retries</td>
+					<td>Idempotent Receiver</td>
+			</tr>
+			<tr>
+					<td>Atomic multi-node updates</td>
+					<td>Two-Phase Commit</td>
+			</tr>
+			<tr>
+					<td>Reactive updates to cluster state</td>
+					<td>State Watch</td>
+			</tr>
+			<tr>
+					<td>High-throughput messaging</td>
+					<td>Request Pipeline, Request Batch, Single-Socket Channel</td>
+			</tr>
+			<tr>
+					<td>Concurrent state management</td>
+					<td>Singular Update Queue, Request Waiting List</td>
+			</tr>
+			<tr>
+					<td>Distributing data across nodes</td>
+					<td>Fixed Partitions, Key-Range Partitions</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<p><em>Last updated: June 2026. Based on Unmesh Joshi&rsquo;s patterns catalog on martinfowler.com.</em></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

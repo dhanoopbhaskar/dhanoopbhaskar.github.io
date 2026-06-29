@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Patterns of Distributed Systems | Quick Reference · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Patterns of Distributed Systems
+  
+    
+    Link to heading
+  
+
+
+Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+
+
+
+  Table of Contents
+  
+    
+    Link to heading
+  
+
+
+Quick Reference Summary Table
+
+
+
+  1. Quick Reference Summary Table
+  
+    
+    Link to heading
+  
+
+
+	
+			
+					#
+					Pattern
+					Category
+					One-Line Problem
+					Core Idea
+					Key Systems
+			
+	
+	
+			
+					1
+					Write-Ahead Log
+					Durability
+					Survive crashes without losing state
+					Append every change to a sequential log before applying it
+					PostgreSQL WAL, Kafka, RocksDB
+			
+			
+					2
+					Segmented Log
+					Durability
+					Single log file grows unbounded
+					Split log into fixed-size segment files; delete old segments
+					Kafka, etcd, Bookkeeper
+			
+			
+					3
+					Low-Water Mark
+					Durability
+					Can&rsquo;t tell which old log entries are safe to delete
+					Track the minimum log index confirmed by all followers
+					Kafka, Raft implementations
+			
+			
+					4
+					High-Water Mark
+					Durability
+					Followers might expose uncommitted entries to clients
+					Track the highest log index replicated to a majority
+					Kafka, Raft, ZooKeeper
+			
+			
+					5
+					Versioned Value
+					Durability
+					Overwriting loses history; concurrent writes conflict
+					Store every update with a new version number
+					etcd, CockroachDB, Cassandra
+			
+			
+					6
+					HeartBeat
+					Coordination
+					Can&rsquo;t tell if a remote node is alive or crashed
+					Periodic messages; silence = failure
+					ZooKeeper, Kubernetes, Raft
+			
+			
+					7
+					Leader and Followers
+					Coordination
+					Multiple writers cause conflicting state
+					Single leader serializes all writes; followers replicate
+					MySQL, MongoDB, Raft
+			
+			
+					8
+					Generation Clock
+					Coordination
+					Old leader comes back and causes split-brain
+					Monotonic epoch counter; reject messages from stale epochs
+					Raft (term), Paxos (ballot)
+			
+			
+					9
+					Emergent Leader
+					Coordination
+					Explicit elections are complex
+					Oldest node in cluster is automatically the leader
+					Akka Cluster
+			
+			
+					10
+					Lease
+					Coordination
+					Crash-proof distributed locks needed
+					Time-limited lock; must be renewed; expires on crash
+					etcd, ZooKeeper, Chubby
+			
+			
+					11
+					Majority Quorum
+					Consensus
+					All-or-nothing availability vs. data loss trade-off
+					Require ⌊N/2⌋&#43;1 confirmations; any two majorities overlap
+					Raft, Paxos, ZooKeeper
+			
+			
+					12
+					Replicated Log
+					Consensus
+					Single-node WAL isn&rsquo;t fault tolerant
+					Ship WAL entries to followers; commit on majority ack
+					Raft (etcd), ZooKeeper ZAB
+			
+			
+					13
+					Paxos
+					Consensus
+					Nodes must agree on a single value despite failures
+					Two-phase protocol with ballot numbers to prevent conflicting commits
+					Chubby, ZooKeeper (inspired)
+			
+			
+					14
+					Consistent Core
+					Consensus
+					Running consensus on every node in a large cluster is expensive
+					Small 3–5 node strongly-consistent cluster as coordination oracle
+					ZooKeeper, etcd, Consul
+			
+			
+					15
+					Lamport Clock
+					Ordering
+					Wall-clock timestamps are unreliable across nodes
+					Logical counter; max(local, received) &#43; 1 on message receipt
+					Distributed version numbers
+			
+			
+					16
+					Hybrid Clock
+					Ordering
+					Lamport clocks aren&rsquo;t human-readable; wall clocks aren&rsquo;t safe
+					Combine physical time &#43; logical counter
+					CockroachDB, MongoDB, YugabyteDB
+			
+			
+					17
+					Clock-Bound Wait
+					Ordering
+					Clock uncertainty causes ordering violations in global transactions
+					Wait 2ε before committing so all clocks have passed the same point
+					Google Spanner, CockroachDB
+			
+			
+					18
+					Version Vector
+					Ordering
+					Need to detect concurrent writes in multi-master systems
+					Per-node counter vector; concurrent if neither vector dominates
+					Riak, Amazon Dynamo, CouchDB
+			
+			
+					19
+					Fixed Partitions
+					Partitioning
+					Data too large for one node; need stable routing
+					Fixed bucket count (e.g., 1024); reassign buckets, not data
+					Kafka, Cassandra vnodes, Redis Cluster
+			
+			
+					20
+					Key-Range Partitions
+					Partitioning
+					Range queries require scanning all nodes
+					Co-locate sorted key ranges on nodes; split/merge as needed
+					Bigtable, HBase, CockroachDB
+			
+			
+					21
+					Single-Socket Channel
+					Networking
+					Messages arrive out of order with multiple connections
+					One TCP connection per peer pair; TCP guarantees order
+					ZooKeeper, Raft implementations
+			
+			
+					22
+					Request Pipeline
+					Networking
+					Waiting for each response limits throughput
+					Send next request before receiving previous response
+					Redis pipeline, HTTP/2, Raft replication
+			
+			
+					23
+					Request Batch
+					Networking
+					Per-request network overhead dominates processing cost
+					Accumulate multiple requests; send as one payload
+					Kafka producer, Raft heartbeat
+			
+			
+					24
+					Singular Update Queue
+					Concurrency
+					Locks and concurrent state mutation cause bugs
+					Single thread processes all state changes from a queue
+					etcd, ZooKeeper, Node.js event loop
+			
+			
+					25
+					Request Waiting List
+					Concurrency
+					Server must track which client waits for which cluster response
+					Map of in-flight requests → callbacks triggered on quorum ack
+					Raft leaders, ZooKeeper
+			
+			
+					26
+					Idempotent Receiver
+					Reliability
+					Client retries on timeout cause duplicate side effects
+					Unique request ID; server deduplicates using cached results
+					Stripe, AWS APIs, Kafka EOS
+			
+			
+					27
+					Gossip Dissemination
+					Propagation
+					Broadcasting cluster state to all N nodes is O(N) bottleneck
+					Each node randomly picks peers to exchange state; spreads exponentially
+					Cassandra, Dynamo, Consul, Riak
+			
+			
+					28
+					Follower Reads
+					Scalability
+					Leader is bottleneck for read-heavy workloads
+					Serve reads from followers (with bounded staleness)
+					MySQL replicas, Cassandra, MongoDB
+			
+			
+					29
+					State Watch
+					Observation
+					Polling for cluster state changes wastes resources
+					Server pushes notifications to registered watchers on key changes
+					ZooKeeper, etcd, Kubernetes
+			
+			
+					30
+					Two-Phase Commit
+					Transactions
+					Atomic updates across multiple nodes are not naturally safe
+					Coordinator collects votes (prepare), then issues global commit/abort
+					XA/JTA, CockroachDB, Spanner
+			
+	
+
+
+
+  Pattern Selection Guide
+  
+    
+    Link to heading
+  
+
+
+	
+			
+					If you need&hellip;
+					Consider these patterns
+			
+	
+	
+			
+					Crash recovery for a single node
+					Write-Ahead Log, Segmented Log, Low-Water Mark
+			
+			
+					Fault-tolerant data replication
+					Replicated Log, Leader and Followers, Majority Quorum
+			
+			
+					Leader election
+					Leader and Followers, Generation Clock, Emergent Leader, Consistent Core
+			
+			
+					Ordering events across nodes
+					Lamport Clock, Hybrid Clock, Version Vector
+			
+			
+					Handling clock skew in global transactions
+					Clock-Bound Wait, Hybrid Clock
+			
+			
+					Conflict detection in multi-master systems
+					Version Vector, Versioned Value
+			
+			
+					Scaling read throughput
+					Follower Reads
+			
+			
+					Efficient cluster information spread
+					Gossip Dissemination
+			
+			
+					Reliable distributed locking
+					Lease, Consistent Core
+			
+			
+					Safe client retries
+					Idempotent Receiver
+			
+			
+					Atomic multi-node updates
+					Two-Phase Commit
+			
+			
+					Reactive updates to cluster state
+					State Watch
+			
+			
+					High-throughput messaging
+					Request Pipeline, Request Batch, Single-Socket Channel
+			
+			
+					Concurrent state management
+					Singular Update Queue, Request Waiting List
+			
+			
+					Distributing data across nodes
+					Fixed Partitions, Key-Range Partitions
+			
+	
+
+">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Patterns of Distributed Systems | Quick Reference">
+	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Quick Reference Summary Table 1. Quick Reference Summary Table Link to heading # Pattern Category One-Line Problem Core Idea Key Systems 1 Write-Ahead Log Durability Survive crashes without losing state Append every change to a sequential log before applying it PostgreSQL WAL, Kafka, RocksDB 2 Segmented Log Durability Single log file grows unbounded Split log into fixed-size segment files; delete old segments Kafka, etcd, Bookkeeper 3 Low-Water Mark Durability Can’t tell which old log entries are safe to delete Track the minimum log index confirmed by all followers Kafka, Raft implementations 4 High-Water Mark Durability Followers might expose uncommitted entries to clients Track the highest log index replicated to a majority Kafka, Raft, ZooKeeper 5 Versioned Value Durability Overwriting loses history; concurrent writes conflict Store every update with a new version number etcd, CockroachDB, Cassandra 6 HeartBeat Coordination Can’t tell if a remote node is alive or crashed Periodic messages; silence = failure ZooKeeper, Kubernetes, Raft 7 Leader and Followers Coordination Multiple writers cause conflicting state Single leader serializes all writes; followers replicate MySQL, MongoDB, Raft 8 Generation Clock Coordination Old leader comes back and causes split-brain Monotonic epoch counter; reject messages from stale epochs Raft (term), Paxos (ballot) 9 Emergent Leader Coordination Explicit elections are complex Oldest node in cluster is automatically the leader Akka Cluster 10 Lease Coordination Crash-proof distributed locks needed Time-limited lock; must be renewed; expires on crash etcd, ZooKeeper, Chubby 11 Majority Quorum Consensus All-or-nothing availability vs. data loss trade-off Require ⌊N/2⌋&#43;1 confirmations; any two majorities overlap Raft, Paxos, ZooKeeper 12 Replicated Log Consensus Single-node WAL isn’t fault tolerant Ship WAL entries to followers; commit on majority ack Raft (etcd), ZooKeeper ZAB 13 Paxos Consensus Nodes must agree on a single value despite failures Two-phase protocol with ballot numbers to prevent conflicting commits Chubby, ZooKeeper (inspired) 14 Consistent Core Consensus Running consensus on every node in a large cluster is expensive Small 3–5 node strongly-consistent cluster as coordination oracle ZooKeeper, etcd, Consul 15 Lamport Clock Ordering Wall-clock timestamps are unreliable across nodes Logical counter; max(local, received) &#43; 1 on message receipt Distributed version numbers 16 Hybrid Clock Ordering Lamport clocks aren’t human-readable; wall clocks aren’t safe Combine physical time &#43; logical counter CockroachDB, MongoDB, YugabyteDB 17 Clock-Bound Wait Ordering Clock uncertainty causes ordering violations in global transactions Wait 2ε before committing so all clocks have passed the same point Google Spanner, CockroachDB 18 Version Vector Ordering Need to detect concurrent writes in multi-master systems Per-node counter vector; concurrent if neither vector dominates Riak, Amazon Dynamo, CouchDB 19 Fixed Partitions Partitioning Data too large for one node; need stable routing Fixed bucket count (e.g., 1024); reassign buckets, not data Kafka, Cassandra vnodes, Redis Cluster 20 Key-Range Partitions Partitioning Range queries require scanning all nodes Co-locate sorted key ranges on nodes; split/merge as needed Bigtable, HBase, CockroachDB 21 Single-Socket Channel Networking Messages arrive out of order with multiple connections One TCP connection per peer pair; TCP guarantees order ZooKeeper, Raft implementations 22 Request Pipeline Networking Waiting for each response limits throughput Send next request before receiving previous response Redis pipeline, HTTP/2, Raft replication 23 Request Batch Networking Per-request network overhead dominates processing cost Accumulate multiple requests; send as one payload Kafka producer, Raft heartbeat 24 Singular Update Queue Concurrency Locks and concurrent state mutation cause bugs Single thread processes all state changes from a queue etcd, ZooKeeper, Node.js event loop 25 Request Waiting List Concurrency Server must track which client waits for which cluster response Map of in-flight requests → callbacks triggered on quorum ack Raft leaders, ZooKeeper 26 Idempotent Receiver Reliability Client retries on timeout cause duplicate side effects Unique request ID; server deduplicates using cached results Stripe, AWS APIs, Kafka EOS 27 Gossip Dissemination Propagation Broadcasting cluster state to all N nodes is O(N) bottleneck Each node randomly picks peers to exchange state; spreads exponentially Cassandra, Dynamo, Consul, Riak 28 Follower Reads Scalability Leader is bottleneck for read-heavy workloads Serve reads from followers (with bounded staleness) MySQL replicas, Cassandra, MongoDB 29 State Watch Observation Polling for cluster state changes wastes resources Server pushes notifications to registered watchers on key changes ZooKeeper, etcd, Kubernetes 30 Two-Phase Commit Transactions Atomic updates across multiple nodes are not naturally safe Coordinator collects votes (prepare), then issues global commit/abort XA/JTA, CockroachDB, Spanner Pattern Selection Guide Link to heading If you need… Consider these patterns Crash recovery for a single node Write-Ahead Log, Segmented Log, Low-Water Mark Fault-tolerant data replication Replicated Log, Leader and Followers, Majority Quorum Leader election Leader and Followers, Generation Clock, Emergent Leader, Consistent Core Ordering events across nodes Lamport Clock, Hybrid Clock, Version Vector Handling clock skew in global transactions Clock-Bound Wait, Hybrid Clock Conflict detection in multi-master systems Version Vector, Versioned Value Scaling read throughput Follower Reads Efficient cluster information spread Gossip Dissemination Reliable distributed locking Lease, Consistent Core Safe client retries Idempotent Receiver Atomic multi-node updates Two-Phase Commit Reactive updates to cluster state State Watch High-throughput messaging Request Pipeline, Request Batch, Single-Socket Channel Concurrent state management Singular Update Queue, Request Waiting List Distributing data across nodes Fixed Partitions, Key-Range Partitions">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-17-patterns-of-distributed-systems-quick-reference/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Patterns of Distributed Systems | Quick Reference">
+	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Quick Reference Summary Table 1. Quick Reference Summary Table Link to heading # Pattern Category One-Line Problem Core Idea Key Systems 1 Write-Ahead Log Durability Survive crashes without losing state Append every change to a sequential log before applying it PostgreSQL WAL, Kafka, RocksDB 2 Segmented Log Durability Single log file grows unbounded Split log into fixed-size segment files; delete old segments Kafka, etcd, Bookkeeper 3 Low-Water Mark Durability Can’t tell which old log entries are safe to delete Track the minimum log index confirmed by all followers Kafka, Raft implementations 4 High-Water Mark Durability Followers might expose uncommitted entries to clients Track the highest log index replicated to a majority Kafka, Raft, ZooKeeper 5 Versioned Value Durability Overwriting loses history; concurrent writes conflict Store every update with a new version number etcd, CockroachDB, Cassandra 6 HeartBeat Coordination Can’t tell if a remote node is alive or crashed Periodic messages; silence = failure ZooKeeper, Kubernetes, Raft 7 Leader and Followers Coordination Multiple writers cause conflicting state Single leader serializes all writes; followers replicate MySQL, MongoDB, Raft 8 Generation Clock Coordination Old leader comes back and causes split-brain Monotonic epoch counter; reject messages from stale epochs Raft (term), Paxos (ballot) 9 Emergent Leader Coordination Explicit elections are complex Oldest node in cluster is automatically the leader Akka Cluster 10 Lease Coordination Crash-proof distributed locks needed Time-limited lock; must be renewed; expires on crash etcd, ZooKeeper, Chubby 11 Majority Quorum Consensus All-or-nothing availability vs. data loss trade-off Require ⌊N/2⌋&#43;1 confirmations; any two majorities overlap Raft, Paxos, ZooKeeper 12 Replicated Log Consensus Single-node WAL isn’t fault tolerant Ship WAL entries to followers; commit on majority ack Raft (etcd), ZooKeeper ZAB 13 Paxos Consensus Nodes must agree on a single value despite failures Two-phase protocol with ballot numbers to prevent conflicting commits Chubby, ZooKeeper (inspired) 14 Consistent Core Consensus Running consensus on every node in a large cluster is expensive Small 3–5 node strongly-consistent cluster as coordination oracle ZooKeeper, etcd, Consul 15 Lamport Clock Ordering Wall-clock timestamps are unreliable across nodes Logical counter; max(local, received) &#43; 1 on message receipt Distributed version numbers 16 Hybrid Clock Ordering Lamport clocks aren’t human-readable; wall clocks aren’t safe Combine physical time &#43; logical counter CockroachDB, MongoDB, YugabyteDB 17 Clock-Bound Wait Ordering Clock uncertainty causes ordering violations in global transactions Wait 2ε before committing so all clocks have passed the same point Google Spanner, CockroachDB 18 Version Vector Ordering Need to detect concurrent writes in multi-master systems Per-node counter vector; concurrent if neither vector dominates Riak, Amazon Dynamo, CouchDB 19 Fixed Partitions Partitioning Data too large for one node; need stable routing Fixed bucket count (e.g., 1024); reassign buckets, not data Kafka, Cassandra vnodes, Redis Cluster 20 Key-Range Partitions Partitioning Range queries require scanning all nodes Co-locate sorted key ranges on nodes; split/merge as needed Bigtable, HBase, CockroachDB 21 Single-Socket Channel Networking Messages arrive out of order with multiple connections One TCP connection per peer pair; TCP guarantees order ZooKeeper, Raft implementations 22 Request Pipeline Networking Waiting for each response limits throughput Send next request before receiving previous response Redis pipeline, HTTP/2, Raft replication 23 Request Batch Networking Per-request network overhead dominates processing cost Accumulate multiple requests; send as one payload Kafka producer, Raft heartbeat 24 Singular Update Queue Concurrency Locks and concurrent state mutation cause bugs Single thread processes all state changes from a queue etcd, ZooKeeper, Node.js event loop 25 Request Waiting List Concurrency Server must track which client waits for which cluster response Map of in-flight requests → callbacks triggered on quorum ack Raft leaders, ZooKeeper 26 Idempotent Receiver Reliability Client retries on timeout cause duplicate side effects Unique request ID; server deduplicates using cached results Stripe, AWS APIs, Kafka EOS 27 Gossip Dissemination Propagation Broadcasting cluster state to all N nodes is O(N) bottleneck Each node randomly picks peers to exchange state; spreads exponentially Cassandra, Dynamo, Consul, Riak 28 Follower Reads Scalability Leader is bottleneck for read-heavy workloads Serve reads from followers (with bounded staleness) MySQL replicas, Cassandra, MongoDB 29 State Watch Observation Polling for cluster state changes wastes resources Server pushes notifications to registered watchers on key changes ZooKeeper, etcd, Kubernetes 30 Two-Phase Commit Transactions Atomic updates across multiple nodes are not naturally safe Coordinator collects votes (prepare), then issues global commit/abort XA/JTA, CockroachDB, Spanner Pattern Selection Guide Link to heading If you need… Consider these patterns Crash recovery for a single node Write-Ahead Log, Segmented Log, Low-Water Mark Fault-tolerant data replication Replicated Log, Leader and Followers, Majority Quorum Leader election Leader and Followers, Generation Clock, Emergent Leader, Consistent Core Ordering events across nodes Lamport Clock, Hybrid Clock, Version Vector Handling clock skew in global transactions Clock-Bound Wait, Hybrid Clock Conflict detection in multi-master systems Version Vector, Versioned Value Scaling read throughput Follower Reads Efficient cluster information spread Gossip Dissemination Reliable distributed locking Lease, Consistent Core Safe client retries Idempotent Receiver Atomic multi-node updates Two-Phase Commit Reactive updates to cluster state State Watch High-throughput messaging Request Pipeline, Request Batch, Single-Socket Channel Concurrent state management Singular Update Queue, Request Waiting List Distributing data across nodes Fixed Partitions, Key-Range Partitions">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-06-17T14:10:00+05:30">
+		<meta property="article:modified_time" content="2026-06-17T14:10:00+05:30">
+		<meta property="article:tag" content="Distributed-Systems">
+		<meta property="article:tag" content="Design-Patterns">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-06-17-patterns-of-distributed-systems-quick-reference/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-06-17-patterns-of-distributed-systems-quick-reference/">
+              Patterns of Distributed Systems | Quick Reference
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-06-17T14:10:00&#43;05:30">
+                June 17, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/distributed-systems/">Distributed-Systems</a>
+      <span class="separator">•</span>
+    <a href="/categories/design-patterns/">Design-Patterns</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/distributed-systems/">Distributed-Systems</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/design-patterns/">Design-Patterns</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="patterns-of-distributed-systems">
+  Patterns of Distributed Systems
+  <a class="heading-link" href="#patterns-of-distributed-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="heading-link" href="#table-of-contents">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li><a href="#1-quick-reference-summary-table" >Quick Reference Summary Table</a></li>
+</ol>
+<hr>
+<h2 id="1-quick-reference-summary-table">
+  1. Quick Reference Summary Table
+  <a class="heading-link" href="#1-quick-reference-summary-table">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>Pattern</th>
+					<th>Category</th>
+					<th>One-Line Problem</th>
+					<th>Core Idea</th>
+					<th>Key Systems</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><strong>Write-Ahead Log</strong></td>
+					<td>Durability</td>
+					<td>Survive crashes without losing state</td>
+					<td>Append every change to a sequential log before applying it</td>
+					<td>PostgreSQL WAL, Kafka, RocksDB</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><strong>Segmented Log</strong></td>
+					<td>Durability</td>
+					<td>Single log file grows unbounded</td>
+					<td>Split log into fixed-size segment files; delete old segments</td>
+					<td>Kafka, etcd, Bookkeeper</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><strong>Low-Water Mark</strong></td>
+					<td>Durability</td>
+					<td>Can&rsquo;t tell which old log entries are safe to delete</td>
+					<td>Track the minimum log index confirmed by all followers</td>
+					<td>Kafka, Raft implementations</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><strong>High-Water Mark</strong></td>
+					<td>Durability</td>
+					<td>Followers might expose uncommitted entries to clients</td>
+					<td>Track the highest log index replicated to a majority</td>
+					<td>Kafka, Raft, ZooKeeper</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><strong>Versioned Value</strong></td>
+					<td>Durability</td>
+					<td>Overwriting loses history; concurrent writes conflict</td>
+					<td>Store every update with a new version number</td>
+					<td>etcd, CockroachDB, Cassandra</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><strong>HeartBeat</strong></td>
+					<td>Coordination</td>
+					<td>Can&rsquo;t tell if a remote node is alive or crashed</td>
+					<td>Periodic messages; silence = failure</td>
+					<td>ZooKeeper, Kubernetes, Raft</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td><strong>Leader and Followers</strong></td>
+					<td>Coordination</td>
+					<td>Multiple writers cause conflicting state</td>
+					<td>Single leader serializes all writes; followers replicate</td>
+					<td>MySQL, MongoDB, Raft</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td><strong>Generation Clock</strong></td>
+					<td>Coordination</td>
+					<td>Old leader comes back and causes split-brain</td>
+					<td>Monotonic epoch counter; reject messages from stale epochs</td>
+					<td>Raft (term), Paxos (ballot)</td>
+			</tr>
+			<tr>
+					<td>9</td>
+					<td><strong>Emergent Leader</strong></td>
+					<td>Coordination</td>
+					<td>Explicit elections are complex</td>
+					<td>Oldest node in cluster is automatically the leader</td>
+					<td>Akka Cluster</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td><strong>Lease</strong></td>
+					<td>Coordination</td>
+					<td>Crash-proof distributed locks needed</td>
+					<td>Time-limited lock; must be renewed; expires on crash</td>
+					<td>etcd, ZooKeeper, Chubby</td>
+			</tr>
+			<tr>
+					<td>11</td>
+					<td><strong>Majority Quorum</strong></td>
+					<td>Consensus</td>
+					<td>All-or-nothing availability vs. data loss trade-off</td>
+					<td>Require ⌊N/2⌋+1 confirmations; any two majorities overlap</td>
+					<td>Raft, Paxos, ZooKeeper</td>
+			</tr>
+			<tr>
+					<td>12</td>
+					<td><strong>Replicated Log</strong></td>
+					<td>Consensus</td>
+					<td>Single-node WAL isn&rsquo;t fault tolerant</td>
+					<td>Ship WAL entries to followers; commit on majority ack</td>
+					<td>Raft (etcd), ZooKeeper ZAB</td>
+			</tr>
+			<tr>
+					<td>13</td>
+					<td><strong>Paxos</strong></td>
+					<td>Consensus</td>
+					<td>Nodes must agree on a single value despite failures</td>
+					<td>Two-phase protocol with ballot numbers to prevent conflicting commits</td>
+					<td>Chubby, ZooKeeper (inspired)</td>
+			</tr>
+			<tr>
+					<td>14</td>
+					<td><strong>Consistent Core</strong></td>
+					<td>Consensus</td>
+					<td>Running consensus on every node in a large cluster is expensive</td>
+					<td>Small 3–5 node strongly-consistent cluster as coordination oracle</td>
+					<td>ZooKeeper, etcd, Consul</td>
+			</tr>
+			<tr>
+					<td>15</td>
+					<td><strong>Lamport Clock</strong></td>
+					<td>Ordering</td>
+					<td>Wall-clock timestamps are unreliable across nodes</td>
+					<td>Logical counter; max(local, received) + 1 on message receipt</td>
+					<td>Distributed version numbers</td>
+			</tr>
+			<tr>
+					<td>16</td>
+					<td><strong>Hybrid Clock</strong></td>
+					<td>Ordering</td>
+					<td>Lamport clocks aren&rsquo;t human-readable; wall clocks aren&rsquo;t safe</td>
+					<td>Combine physical time + logical counter</td>
+					<td>CockroachDB, MongoDB, YugabyteDB</td>
+			</tr>
+			<tr>
+					<td>17</td>
+					<td><strong>Clock-Bound Wait</strong></td>
+					<td>Ordering</td>
+					<td>Clock uncertainty causes ordering violations in global transactions</td>
+					<td>Wait <code>2ε</code> before committing so all clocks have passed the same point</td>
+					<td>Google Spanner, CockroachDB</td>
+			</tr>
+			<tr>
+					<td>18</td>
+					<td><strong>Version Vector</strong></td>
+					<td>Ordering</td>
+					<td>Need to detect concurrent writes in multi-master systems</td>
+					<td>Per-node counter vector; concurrent if neither vector dominates</td>
+					<td>Riak, Amazon Dynamo, CouchDB</td>
+			</tr>
+			<tr>
+					<td>19</td>
+					<td><strong>Fixed Partitions</strong></td>
+					<td>Partitioning</td>
+					<td>Data too large for one node; need stable routing</td>
+					<td>Fixed bucket count (e.g., 1024); reassign buckets, not data</td>
+					<td>Kafka, Cassandra vnodes, Redis Cluster</td>
+			</tr>
+			<tr>
+					<td>20</td>
+					<td><strong>Key-Range Partitions</strong></td>
+					<td>Partitioning</td>
+					<td>Range queries require scanning all nodes</td>
+					<td>Co-locate sorted key ranges on nodes; split/merge as needed</td>
+					<td>Bigtable, HBase, CockroachDB</td>
+			</tr>
+			<tr>
+					<td>21</td>
+					<td><strong>Single-Socket Channel</strong></td>
+					<td>Networking</td>
+					<td>Messages arrive out of order with multiple connections</td>
+					<td>One TCP connection per peer pair; TCP guarantees order</td>
+					<td>ZooKeeper, Raft implementations</td>
+			</tr>
+			<tr>
+					<td>22</td>
+					<td><strong>Request Pipeline</strong></td>
+					<td>Networking</td>
+					<td>Waiting for each response limits throughput</td>
+					<td>Send next request before receiving previous response</td>
+					<td>Redis pipeline, HTTP/2, Raft replication</td>
+			</tr>
+			<tr>
+					<td>23</td>
+					<td><strong>Request Batch</strong></td>
+					<td>Networking</td>
+					<td>Per-request network overhead dominates processing cost</td>
+					<td>Accumulate multiple requests; send as one payload</td>
+					<td>Kafka producer, Raft heartbeat</td>
+			</tr>
+			<tr>
+					<td>24</td>
+					<td><strong>Singular Update Queue</strong></td>
+					<td>Concurrency</td>
+					<td>Locks and concurrent state mutation cause bugs</td>
+					<td>Single thread processes all state changes from a queue</td>
+					<td>etcd, ZooKeeper, Node.js event loop</td>
+			</tr>
+			<tr>
+					<td>25</td>
+					<td><strong>Request Waiting List</strong></td>
+					<td>Concurrency</td>
+					<td>Server must track which client waits for which cluster response</td>
+					<td>Map of in-flight requests → callbacks triggered on quorum ack</td>
+					<td>Raft leaders, ZooKeeper</td>
+			</tr>
+			<tr>
+					<td>26</td>
+					<td><strong>Idempotent Receiver</strong></td>
+					<td>Reliability</td>
+					<td>Client retries on timeout cause duplicate side effects</td>
+					<td>Unique request ID; server deduplicates using cached results</td>
+					<td>Stripe, AWS APIs, Kafka EOS</td>
+			</tr>
+			<tr>
+					<td>27</td>
+					<td><strong>Gossip Dissemination</strong></td>
+					<td>Propagation</td>
+					<td>Broadcasting cluster state to all N nodes is O(N) bottleneck</td>
+					<td>Each node randomly picks peers to exchange state; spreads exponentially</td>
+					<td>Cassandra, Dynamo, Consul, Riak</td>
+			</tr>
+			<tr>
+					<td>28</td>
+					<td><strong>Follower Reads</strong></td>
+					<td>Scalability</td>
+					<td>Leader is bottleneck for read-heavy workloads</td>
+					<td>Serve reads from followers (with bounded staleness)</td>
+					<td>MySQL replicas, Cassandra, MongoDB</td>
+			</tr>
+			<tr>
+					<td>29</td>
+					<td><strong>State Watch</strong></td>
+					<td>Observation</td>
+					<td>Polling for cluster state changes wastes resources</td>
+					<td>Server pushes notifications to registered watchers on key changes</td>
+					<td>ZooKeeper, etcd, Kubernetes</td>
+			</tr>
+			<tr>
+					<td>30</td>
+					<td><strong>Two-Phase Commit</strong></td>
+					<td>Transactions</td>
+					<td>Atomic updates across multiple nodes are not naturally safe</td>
+					<td>Coordinator collects votes (prepare), then issues global commit/abort</td>
+					<td>XA/JTA, CockroachDB, Spanner</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h3 id="pattern-selection-guide">
+  Pattern Selection Guide
+  <a class="heading-link" href="#pattern-selection-guide">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<table>
+	<thead>
+			<tr>
+					<th>If you need&hellip;</th>
+					<th>Consider these patterns</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Crash recovery for a single node</td>
+					<td>Write-Ahead Log, Segmented Log, Low-Water Mark</td>
+			</tr>
+			<tr>
+					<td>Fault-tolerant data replication</td>
+					<td>Replicated Log, Leader and Followers, Majority Quorum</td>
+			</tr>
+			<tr>
+					<td>Leader election</td>
+					<td>Leader and Followers, Generation Clock, Emergent Leader, Consistent Core</td>
+			</tr>
+			<tr>
+					<td>Ordering events across nodes</td>
+					<td>Lamport Clock, Hybrid Clock, Version Vector</td>
+			</tr>
+			<tr>
+					<td>Handling clock skew in global transactions</td>
+					<td>Clock-Bound Wait, Hybrid Clock</td>
+			</tr>
+			<tr>
+					<td>Conflict detection in multi-master systems</td>
+					<td>Version Vector, Versioned Value</td>
+			</tr>
+			<tr>
+					<td>Scaling read throughput</td>
+					<td>Follower Reads</td>
+			</tr>
+			<tr>
+					<td>Efficient cluster information spread</td>
+					<td>Gossip Dissemination</td>
+			</tr>
+			<tr>
+					<td>Reliable distributed locking</td>
+					<td>Lease, Consistent Core</td>
+			</tr>
+			<tr>
+					<td>Safe client retries</td>
+					<td>Idempotent Receiver</td>
+			</tr>
+			<tr>
+					<td>Atomic multi-node updates</td>
+					<td>Two-Phase Commit</td>
+			</tr>
+			<tr>
+					<td>Reactive updates to cluster state</td>
+					<td>State Watch</td>
+			</tr>
+			<tr>
+					<td>High-throughput messaging</td>
+					<td>Request Pipeline, Request Batch, Single-Socket Channel</td>
+			</tr>
+			<tr>
+					<td>Concurrent state management</td>
+					<td>Singular Update Queue, Request Waiting List</td>
+			</tr>
+			<tr>
+					<td>Distributing data across nodes</td>
+					<td>Fixed Partitions, Key-Range Partitions</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Patterns of Distributed Systems | Time &amp; Ordering · The Insane Techie
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dhanoop Bhaskar">
+<meta name="description" content="
+  Patterns of Distributed Systems
+  
+    
+    Link to heading
+  
+
+
+Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+
+
+
+  Table of Contents
+  
+    
+    Link to heading
+  
+
+
+Group D — Time &amp; Ordering
+
+Lamport Clock
+Hybrid Clock
+Clock-Bound Wait
+Version Vector
+
+
+
+
+
+  Group D — Time &amp; Ordering
+  
+    
+    Link to heading
+  
+
+In a distributed system, there is no global clock. Machines&rsquo; clocks drift, network delays cause message reordering, and concurrent events are impossible to order without explicit mechanisms. These patterns address event ordering.">
+<meta name="keywords" content="">
+
+
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Patterns of Distributed Systems | Time & Ordering">
+	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group D — Time &amp; Ordering Lamport Clock Hybrid Clock Clock-Bound Wait Version Vector Group D — Time &amp; Ordering Link to heading In a distributed system, there is no global clock. Machines’ clocks drift, network delays cause message reordering, and concurrent events are impossible to order without explicit mechanisms. These patterns address event ordering.">
+
+<meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-11-group-d-time-ordering/">
+	<meta property="og:site_name" content="The Insane Techie">
+	<meta property="og:title" content="Patterns of Distributed Systems | Time & Ordering">
+	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+Table of Contents Link to heading Group D — Time &amp; Ordering Lamport Clock Hybrid Clock Clock-Bound Wait Version Vector Group D — Time &amp; Ordering Link to heading In a distributed system, there is no global clock. Machines’ clocks drift, network delays cause message reordering, and concurrent events are impossible to order without explicit mechanisms. These patterns address event ordering.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-06-11T14:10:00+05:30">
+		<meta property="article:modified_time" content="2026-06-11T14:10:00+05:30">
+		<meta property="article:tag" content="Distributed-Systems">
+		<meta property="article:tag" content="Design-Patterns">
+
+
+
+
+<link rel="canonical" href="https://dhanoopbhaskar.github.io/posts/2026-06-11-group-d-time-ordering/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://dhanoopbhaskar.github.io/">
+      The Insane Techie
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pencils/">Pencils</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/categories/">Categories</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://dhanoopbhaskar.github.io/posts/2026-06-11-group-d-time-ordering/">
+              Patterns of Distributed Systems | Time &amp; Ordering
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2026-06-11T14:10:00&#43;05:30">
+                June 11, 2026
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              7-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/distributed-systems/">Distributed-Systems</a>
+      <span class="separator">•</span>
+    <a href="/categories/design-patterns/">Design-Patterns</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/distributed-systems/">Distributed-Systems</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/design-patterns/">Design-Patterns</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="patterns-of-distributed-systems">
+  Patterns of Distributed Systems
+  <a class="heading-link" href="#patterns-of-distributed-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="heading-link" href="#table-of-contents">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li><a href="#group-d--time--ordering" >Group D — Time &amp; Ordering</a>
+<ul>
+<li><a href="#d1-lamport-clock" >Lamport Clock</a></li>
+<li><a href="#d2-hybrid-clock" >Hybrid Clock</a></li>
+<li><a href="#d3-clock-bound-wait" >Clock-Bound Wait</a></li>
+<li><a href="#d4-version-vector" >Version Vector</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="group-d--time--ordering">
+  Group D — Time &amp; Ordering
+  <a class="heading-link" href="#group-d--time--ordering">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>In a distributed system, there is no global clock. Machines&rsquo; clocks drift, network delays cause message reordering, and concurrent events are impossible to order without explicit mechanisms. These patterns address event ordering.</p>
+<hr>
+<h3 id="d1-lamport-clock">
+  D1. Lamport Clock
+  <a class="heading-link" href="#d1-lamport-clock">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Logical time: if A happened before B, then clock(A) &lt; clock(B).</strong></p>
+<h4 id="problem">
+  Problem
+  <a class="heading-link" href="#problem">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Two events on different servers each have a timestamp from their local system clock. But clocks drift. You cannot tell from wall-clock timestamps alone which event happened first.</p>
+<h4 id="solution">
+  Solution
+  <a class="heading-link" href="#solution">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Use <em>logical timestamps</em>: each node maintains an integer counter. The counter obeys one rule: <strong>if event A causally preceded event B, then A&rsquo;s counter value is less than B&rsquo;s</strong>. This gives a partial ordering of events without relying on synchronized clocks.</p>
+<h4 id="how-it-works">
+  How it works
+  <a class="heading-link" href="#how-it-works">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p><strong>Rules:</strong></p>
+<ol>
+<li>Increment your counter before every event you generate</li>
+<li>When you send a message, include your current counter value</li>
+<li>When you receive a message, set your counter to <code>max(local, received) + 1</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Initial state: Node A counter=0, Node B counter=0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Node A does something:  A.counter=1  (event a1)
+</span></span><span style="display:flex;"><span>Node A sends message to B with timestamp=1
+</span></span><span style="display:flex;"><span>Node B receives message: B.counter = max(0, 1) + 1 = 2
+</span></span><span style="display:flex;"><span>Node B does something:  B.counter=3  (event b1)
+</span></span><span style="display:flex;"><span>Node A does something:  A.counter=2  (event a2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Ordering: a1(1) → b1(3), a2(2) → b1(3)
+</span></span><span style="display:flex;"><span>But: a1 and a2 are on the same node, so a1(1) &lt; a2(2) ✓
+</span></span></code></pre></div><p><strong>Limitation:</strong> If two events are concurrent (no causal relationship), their Lamport timestamps may be identical or inverted — you can&rsquo;t distinguish them.</p>
+<h4 id="real-world-analogy">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A project timeline that only records &ldquo;Task B started after Task A finished&rdquo; rather than actual calendar dates. The sequence is correct, even if you don&rsquo;t know the exact dates.</p>
+<h4 id="example-systems">
+  Example systems
+  <a class="heading-link" href="#example-systems">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Distributed databases for version numbering, message ordering in distributed logs</p>
+<h4 id="trade-offs">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Simple to implement</td>
+					<td>Cannot distinguish truly concurrent events</td>
+			</tr>
+			<tr>
+					<td>No clock synchronization needed</td>
+					<td>Only provides a partial ordering</td>
+			</tr>
+			<tr>
+					<td>Enables causal reasoning</td>
+					<td>Not human-readable (not real time)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns">
+  Related patterns
+  <a class="heading-link" href="#related-patterns">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="/posts/2026-06-02-group-a-durability-and-storage#a5-versioned-value" >Versioned Value</a> (Lamport timestamps used as versions)
+→ <a href="#d4-version-vector" >Version Vector</a> (extends Lamport to track per-node causality)
+→ <a href="#d2-hybrid-clock" >Hybrid Clock</a> (adds real-time component)</p>
+<hr>
+<h3 id="d2-hybrid-clock">
+  D2. Hybrid Clock
+  <a class="heading-link" href="#d2-hybrid-clock">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Wall-clock time + logical counter: the best of both worlds.</strong></p>
+<h4 id="problem-1">
+  Problem
+  <a class="heading-link" href="#problem-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Lamport Clocks give correct ordering but produce timestamps that are meaningless to humans (they are just integers). Real-world systems often need to query data &ldquo;as of a point in time&rdquo; — which requires real timestamps. But wall-clock timestamps alone are unreliable due to clock drift and NTP jumps.</p>
+<h4 id="solution-1">
+  Solution
+  <a class="heading-link" href="#solution-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A <em>hybrid logical clock (HLC)</em> combines a physical wall-clock component with a logical counter. It:</p>
+<ol>
+<li>Advances to match the physical clock when possible</li>
+<li>Falls back to a pure logical counter when the physical clock would go backwards or when causality requires it</li>
+</ol>
+<h4 id="how-it-works-1">
+  How it works
+  <a class="heading-link" href="#how-it-works-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A hybrid timestamp is a pair: <code>(wall_time, logical_counter)</code></p>
+<p><strong>Rules:</strong></p>
+<ul>
+<li>On a local event: if wall clock &gt; current HLC time → use wall clock, reset counter to 0; else increment counter</li>
+<li>On receiving a message: take max of (local HLC, received HLC), then handle counter</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Node A: HLC = (10:00:01.000, 0)
+</span></span><span style="display:flex;"><span>  Local event → wall time is 10:00:01.500 → HLC = (10:00:01.500, 0)
+</span></span><span style="display:flex;"><span>  Send message with HLC (10:00:01.500, 0)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Node B (wall clock slightly behind at 10:00:01.300):
+</span></span><span style="display:flex;"><span>  Receives message with (10:00:01.500, 0)
+</span></span><span style="display:flex;"><span>  HLC = max(local=10:00:01.300, received=10:00:01.500) = (10:00:01.500, 1)
+</span></span><span style="display:flex;"><span>  → Logical counter increments because wall times matched
+</span></span></code></pre></div><h4 id="real-world-analogy-1">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A traveler adjusts their watch to the local timezone when they arrive (physical), but also keeps a universal logical sequence number for all events in their trip journal.</p>
+<h4 id="example-systems-1">
+  Example systems
+  <a class="heading-link" href="#example-systems-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>CockroachDB (HLC for MVCC), YugabyteDB, MongoDB (oplog timestamps)</p>
+<h4 id="trade-offs-1">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Human-readable timestamps</td>
+					<td>More complex than pure Lamport or pure wall clock</td>
+			</tr>
+			<tr>
+					<td>Maintains causality guarantees</td>
+					<td>Requires bounded clock skew between nodes (e.g., 500ms)</td>
+			</tr>
+			<tr>
+					<td>Enables time-travel queries with real timestamps</td>
+					<td>—</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-1">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#d1-lamport-clock" >Lamport Clock</a> (the logical component)
+→ <a href="/posts/2026-06-02-group-a-durability-and-storage#a5-versioned-value" >Versioned Value</a> (HLC values used as versions)
+→ <a href="#d3-clock-bound-wait" >Clock-Bound Wait</a> (deals with clock uncertainty)</p>
+<hr>
+<h3 id="d3-clock-bound-wait">
+  D3. Clock-Bound Wait
+  <a class="heading-link" href="#d3-clock-bound-wait">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Wait out the clock uncertainty window before making decisions.</strong></p>
+<h4 id="problem-2">
+  Problem
+  <a class="heading-link" href="#problem-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Even with Hybrid Clocks, there is <em>uncertainty</em> about the exact current time. Two nodes&rsquo; clocks can differ by up to some maximum skew <code>ε</code>. If Node A writes a value at time T and Node B reads at time T (where both T values could be off by ε), they may disagree on ordering.</p>
+<p><strong>Google Spanner</strong> makes this concrete: it uses GPS and atomic clocks to know that the real time is within <code>[T-ε, T+ε]</code>. Before committing a transaction, it <em>waits</em> until the lower bound of the interval has definitely passed.</p>
+<h4 id="solution-2">
+  Solution
+  <a class="heading-link" href="#solution-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Before reading or writing a value that must be ordered relative to another, wait for <code>2ε</code> (the maximum possible clock uncertainty) to elapse. This guarantees that by the time you proceed, all other nodes&rsquo; clocks have definitely passed the same point in real time.</p>
+<h4 id="how-it-works-2">
+  How it works
+  <a class="heading-link" href="#how-it-works-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Node A wants to commit transaction at real time T_real:
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">1.</span> Capture TrueTime interval: [T_now - ε, T_now + ε]
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">2.</span> Assign commit timestamp = T_now + ε  (upper bound)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">3.</span> Wait until wall clock ≥ commit timestamp  (the &#34;commit wait&#34;)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">4.</span> Commit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Result: Any transaction that started after this one
+</span></span><span style="display:flex;"><span>        will have a commit timestamp &gt; T_now + ε ✓
+</span></span></code></pre></div><p>The wait is typically small (10–20ms in Spanner with GPS/atomic clocks; potentially longer with NTP).</p>
+<h4 id="real-world-analogy-2">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Before announcing a policy change that must take effect &ldquo;simultaneously&rdquo; across all offices worldwide, you schedule a delay to ensure the announcement has reached every office (accounting for communication lag).</p>
+<h4 id="example-systems-2">
+  Example systems
+  <a class="heading-link" href="#example-systems-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Google Spanner (TrueTime API), CockroachDB (approximate clock-bound wait with HLC)</p>
+<h4 id="trade-offs-2">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Enables externally consistent distributed transactions</td>
+					<td>Adds latency equal to clock uncertainty</td>
+			</tr>
+			<tr>
+					<td>Correct global ordering without communication overhead</td>
+					<td>Requires precise clock infrastructure (GPS, atomic clocks for short waits)</td>
+			</tr>
+			<tr>
+					<td>Simplifies transaction protocols</td>
+					<td>Standard NTP makes uncertainty too large for most practical use</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-2">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#d2-hybrid-clock" >Hybrid Clock</a>
+→ <a href="/posts/2026-06-15-group-h-distributed-transactions#h1-two-phase-commit" >Two-Phase Commit</a> (Clock-Bound Wait is used here)
+→ <a href="/posts/2026-06-02-group-a-durability-and-storage#a5-versioned-value" >Versioned Value</a></p>
+<hr>
+<h3 id="d4-version-vector">
+  D4. Version Vector
+  <a class="heading-link" href="#d4-version-vector">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><strong>Track causality per-node: detect concurrent writes.</strong></p>
+<h4 id="problem-3">
+  Problem
+  <a class="heading-link" href="#problem-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Lamport Clocks tell you if A happened before B, but cannot tell you if A and B happened <em>concurrently</em> (neither caused the other). In multi-master systems (where multiple nodes can accept writes for the same key), you need to detect conflicts: did server 1&rsquo;s write of key K happen before or after server 2&rsquo;s write? Or simultaneously?</p>
+<h4 id="solution-3">
+  Solution
+  <a class="heading-link" href="#solution-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Instead of a single counter, maintain a <em>vector</em> of counters — one per node. Each node increments only its own counter. Comparing two version vectors:</p>
+<ul>
+<li>V1 <strong>dominates</strong> V2 if every element of V1 ≥ V2 (V2 happened before V1)</li>
+<li>V1 and V2 are <strong>concurrent</strong> if neither dominates the other</li>
+</ul>
+<h4 id="how-it-works-3">
+  How it works
+  <a class="heading-link" href="#how-it-works-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>3-node cluster: [A, B, C]
+</span></span><span style="display:flex;"><span>Initial: all version vectors = [0, 0, 0]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Node A writes key K:  version vector = [1, 0, 0]
+</span></span><span style="display:flex;"><span>Node B writes key K:  version vector = [0, 1, 0]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>These are concurrent writes! Neither [1,0,0] nor [0,1,0] dominates the other.
+</span></span><span style="display:flex;"><span>→ System detects conflict → merge or present both to user
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Node A receives B&#39;s update, merges:
+</span></span><span style="display:flex;"><span>  New vector = [max(1,0), max(0,1), max(0,0)] = [1, 1, 0]
+</span></span><span style="display:flex;"><span>  → This version causally follows both ✓
+</span></span></code></pre></div><h4 id="real-world-analogy-3">
+  Real-world analogy
+  <a class="heading-link" href="#real-world-analogy-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>A shared document edited by two authors simultaneously. Track which edits each author made. If author A edited section 3 while author B also edited section 3 independently, you have a conflict. If A&rsquo;s edit was sent to B first and B then made changes, there&rsquo;s no conflict — B&rsquo;s version is newer.</p>
+<h4 id="example-systems-3">
+  Example systems
+  <a class="heading-link" href="#example-systems-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Riak (vector clocks), Amazon Dynamo (inspired much of the theory), CouchDB, Git (similar concept)</p>
+<h4 id="trade-offs-3">
+  Trade-offs
+  <a class="heading-link" href="#trade-offs-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Pro</th>
+					<th>Con</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Detects concurrent writes reliably</td>
+					<td>Vector size grows with number of nodes</td>
+			</tr>
+			<tr>
+					<td>Enables &ldquo;last-write-wins&rdquo; or &ldquo;merge&rdquo; conflict resolution</td>
+					<td>Complex to reason about with many nodes</td>
+			</tr>
+			<tr>
+					<td>Works in eventually consistent, multi-master systems</td>
+					<td>Requires nodes to share their vectors on sync</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="related-patterns-3">
+  Related patterns
+  <a class="heading-link" href="#related-patterns-3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>→ <a href="#d1-lamport-clock" >Lamport Clock</a> (simpler predecessor)
+→ <a href="/posts/2026-06-02-group-a-durability-and-storage#a5-versioned-value" >Versioned Value</a>
+→ <a href="/posts/2026-06-14-group-g-data-propagation-observation#g1-gossip-dissemination" >Gossip Dissemination</a> (how vectors are exchanged)</p>
+<hr>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    
+    <p>Hey, let's talk with the computers!</p>
+    
+    ©
+    
+      2019 -
+    
+    2026
+     Dhanoop Bhaskar 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169392426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169392426-1');
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
