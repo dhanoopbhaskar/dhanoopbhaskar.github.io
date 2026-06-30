@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Multithreading on The Insane Techie</title>
+		<link>https://dhanoopbhaskar.github.io/categories/multithreading/</link>
+		<description>Recent content in Multithreading on The Insane Techie</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 30 Jun 2026 14:10:00 +0530</lastBuildDate>
+		
+			<atom:link href="https://dhanoopbhaskar.github.io/categories/multithreading/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Java Multi-threading</title>
+				<link>https://dhanoopbhaskar.github.io/posts/2026-06-30-multi-threading-in-java/</link>
+				<pubDate>Tue, 30 Jun 2026 14:10:00 +0530</pubDate>
+				<guid>https://dhanoopbhaskar.github.io/posts/2026-06-30-multi-threading-in-java/</guid>
+				<description>&lt;h2 id=&#34;fundamentals--the-java-thread-life-cycle&#34;&gt;&#xA;  Fundamentals &amp;amp; The Java Thread Life Cycle&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#fundamentals--the-java-thread-life-cycle&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-process-vs-thread&#34;&gt;&#xA;  1. Process vs. Thread&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#1-process-vs-thread&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Process:&lt;/strong&gt; An isolated execution environment allocated by the OS with its own memory space (Heap).&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Thread:&lt;/strong&gt; A lightweight subprocess. Threads within the same process share the &lt;strong&gt;Heap&lt;/strong&gt; memory but have their own private &lt;strong&gt;Stack&lt;/strong&gt; (local variables, method execution frames).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-creating-threads-thread-vs-runnable&#34;&gt;&#xA;  2. Creating Threads: &lt;code&gt;Thread&lt;/code&gt; vs. &lt;code&gt;Runnable&lt;/code&gt;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#2-creating-threads-thread-vs-runnable&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Never inherit the &lt;code&gt;Thread&lt;/code&gt; class unless you are modifying the base behavior. Always implement &lt;code&gt;Runnable&lt;/code&gt; (or use lambdas) to keep your code decoupled and adhere to the single responsibility principle.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -3,7 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://dhanoopbhaskar.github.io/categories/</loc>
-    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
+    <lastmod>2026-06-30T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/categories/java/</loc>
+    <lastmod>2026-06-30T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/java/</loc>
+    <lastmod>2026-06-30T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-30-multi-threading-in-java/</loc>
+    <lastmod>2026-06-30T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/categories/multithreading/</loc>
+    <lastmod>2026-06-30T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/multithreading/</loc>
+    <lastmod>2026-06-30T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/</loc>
+    <lastmod>2026-06-30T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/tags/</loc>
+    <lastmod>2026-06-30T14:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/</loc>
+    <lastmod>2026-06-30T14:10:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/categories/design-patterns/</loc>
     <lastmod>2026-06-17T14:10:00+05:30</lastmod>
@@ -20,20 +44,8 @@
     <loc>https://dhanoopbhaskar.github.io/posts/2026-06-17-patterns-of-distributed-systems-quick-reference/</loc>
     <lastmod>2026-06-17T14:10:00+05:30</lastmod>
   </url><url>
-    <loc>https://dhanoopbhaskar.github.io/posts/</loc>
-    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/tags/</loc>
-    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/</loc>
-    <lastmod>2026-06-17T14:10:00+05:30</lastmod>
-  </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2026-06-16-patterns-of-distributed-systems-a-layered-view/</loc>
     <lastmod>2026-06-16T14:10:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-15-group-h-distributed-transactions/</loc>
-    <lastmod>2026-06-15T14:10:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2026-06-14-group-g-data-propagation-observation/</loc>
     <lastmod>2026-06-14T14:10:00+05:30</lastmod>
@@ -43,9 +55,6 @@
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2026-06-12-group-e-data-distribution-partitioning/</loc>
     <lastmod>2026-06-12T14:10:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-11-group-d-time-ordering/</loc>
-    <lastmod>2026-06-11T14:10:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2026-06-04-group-c-replication-consensus/</loc>
     <lastmod>2026-06-04T14:10:00+05:30</lastmod>
@@ -259,12 +268,6 @@
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2018-07-02-mounting-an-iphone-to-linux-mint-as-an-external-drive-to-copy-images-and-videos/</loc>
     <lastmod>2018-07-02T20:01:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/categories/java/</loc>
-    <lastmod>2016-08-22T20:13:00+05:30</lastmod>
-  </url><url>
-    <loc>https://dhanoopbhaskar.github.io/tags/java/</loc>
-    <lastmod>2016-08-22T20:13:00+05:30</lastmod>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/tags/java-ws/</loc>
     <lastmod>2016-08-22T20:13:00+05:30</lastmod>
@@ -979,6 +982,10 @@
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/posts/2009-04-23-data-structure-programs-in-c/</loc>
     <lastmod>2009-04-23T19:10:00+05:30</lastmod>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-11-group-d-time-ordering/</loc>
+  </url><url>
+    <loc>https://dhanoopbhaskar.github.io/posts/2026-06-15-group-h-distributed-transactions/</loc>
   </url><url>
     <loc>https://dhanoopbhaskar.github.io/authors/</loc>
   </url><url>
