@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Spring on The Insane Techie</title>
+		<link>https://dhanoopbhaskar.github.io/tags/spring/</link>
+		<description>Recent content in Spring on The Insane Techie</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 01 Jul 2026 14:10:00 +0530</lastBuildDate>
+		
+			<atom:link href="https://dhanoopbhaskar.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Java / Spring Refresher</title>
+				<link>https://dhanoopbhaskar.github.io/posts/2026-07-01-java-spring-refresher/</link>
+				<pubDate>Wed, 01 Jul 2026 14:10:00 +0530</pubDate>
+				<guid>https://dhanoopbhaskar.github.io/posts/2026-07-01-java-spring-refresher/</guid>
+				<description>&lt;h1 id=&#34;1-java-core-language&#34;&gt;&#xA;  1. Java Core Language&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#1-java-core-language&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;11-interface-default--private-methods&#34;&gt;&#xA;  1.1 Interface Default &amp;amp; Private Methods&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#11-interface-default--private-methods&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Backward Compatibility&lt;/strong&gt;: The &lt;code&gt;default&lt;/code&gt; method feature was introduced in Java 8 to allow developers to safely append new methods to existing interfaces without breaking legacy code or modifying implementing classes.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Private Methods (Java 9)&lt;/strong&gt;: Introduced explicitly to eliminate redundant, duplicated logic inside multiple &lt;code&gt;default&lt;/code&gt; methods by encapsulating shared routines locally inside the interface body.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
