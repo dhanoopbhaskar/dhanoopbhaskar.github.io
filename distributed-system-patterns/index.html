@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patterns of Distributed Systems - All 30 Patterns Catalog</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#111827',
+                            950: '#030712'
+                        },
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            900: '#312e81',
+                        },
+                        accent: {
+                            400: '#38bdf8',
+                            500: '#0ea5e9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #4b5563;
+        }
+
+        @keyframes modalScale {
+            from { opacity: 0; transform: scale(0.97) translateY(8px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-modal {
+            animation: modalScale 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar bg-slate-950 text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Sticky Glassmorphism Header -->
+    <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur-md sticky top-0 z-30 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                
+                <!-- Branding -->
+                <div class="flex items-center space-x-3.5">
+                    <div class="p-2.5 bg-brand-500/10 border border-brand-500/30 rounded-xl text-brand-400 shadow-inner">
+                        <i data-lucide="boxes" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white">
+                                Distributed System Patterns
+                            </h1>
+                            <span class="px-2 py-0.5 text-[10px] font-mono tracking-wide font-semibold uppercase bg-brand-500/20 text-brand-300 border border-brand-500/30 rounded-md">30 Patterns</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-400">Complete catalog based on Martin Fowler & Unmesh Joshi's reference work</p>
+                    </div>
+                </div>
+
+                <!-- Stats & Links -->
+                <div class="flex items-center space-x-3 text-xs sm:text-sm">
+                    <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300">
+                        <span id="pattern-counter" class="font-bold font-mono text-brand-400 mr-1.5">30</span> / 30 Visible
+                    </span>
+                    <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-medium transition shadow-sm">
+                        <span>Fowler Catalog</span>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Search & Filters Container -->
+            <div class="mt-5 flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between pt-4 border-t border-slate-800/60">
+                <!-- Search Box -->
+                <div class="relative flex-1 max-w-md">
+                    <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="search-input" 
+                           placeholder="Search patterns, tech (e.g., Paxos, Raft, Kafka, Clock)..." 
+                           class="w-full pl-10 pr-9 py-2 bg-slate-950 border border-slate-800 rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                    <button id="clear-search" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Category Filters Pill Bar -->
+                <div class="flex items-center space-x-2 overflow-x-auto pb-1 lg:pb-0 custom-scrollbar text-xs" id="category-filters">
+                    <!-- Dynamic categories -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Pattern Grid -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div id="patterns-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Rendered Pattern Cards -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden flex-col items-center justify-center py-20 text-center">
+            <div class="p-4 bg-slate-900 border border-slate-800 rounded-2xl text-slate-500 mb-4 shadow-xl">
+                <i data-lucide="search-x" class="w-10 h-10 stroke-1"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-200">No patterns match your search</h3>
+            <p class="text-slate-400 text-sm mt-1 max-w-md">Try searching for keywords like "Consensus", "Log", "Clock", "Partitions", or "Write".</p>
+            <button id="reset-filters-btn" class="mt-5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-brand-400 text-xs font-semibold rounded-lg border border-slate-700 transition">
+                Reset All Filters
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-900/40 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+            <p>Interactive Distributed System Patterns Catalog • Inspired by Martin Fowler & Unmesh Joshi</p>
+        </div>
+    </footer>
+
+    <!-- Modal Detail Overlay -->
+    <div id="pattern-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto custom-scrollbar">
+        <!-- Overlay Backdrop -->
+        <div class="fixed inset-0" id="modal-backdrop"></div>
+
+        <!-- Modal Container -->
+        <div class="relative bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl z-10 animate-modal overflow-hidden">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-5 border-b border-slate-800 flex items-start justify-between bg-slate-900/90 sticky top-0 z-20 backdrop-blur-md">
+                <div>
+                    <div class="flex items-center gap-2 mb-1.5">
+                        <span id="modal-category" class="px-2.5 py-0.5 text-xs font-semibold rounded-md bg-brand-500/10 text-brand-400 border border-brand-500/20">Category</span>
+                        <span id="modal-slug" class="text-xs font-mono text-slate-500">slug</span>
+                    </div>
+                    <h2 id="modal-title" class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Pattern Name</h2>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a id="modal-fowler-link" href="#" target="_blank" rel="noopener noreferrer" 
+                       class="p-2 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition" title="Open on Martin Fowler's Site">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                    <button id="close-modal-btn" class="p-2 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition" title="Close (ESC)">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-6 overflow-y-auto space-y-6 custom-scrollbar text-slate-300">
+                
+                <!-- Overview & Problem -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-rose-400 mb-1.5 flex items-center gap-1.5">
+                            <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i> The Problem
+                        </h3>
+                        <p id="modal-problem" class="text-sm text-slate-300 leading-relaxed"></p>
+                    </div>
+                    <div class="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1.5">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> The Solution
+                        </h3>
+                        <p id="modal-solution" class="text-sm text-slate-300 leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <!-- SVG Diagram Viewport -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-xs uppercase tracking-wider text-slate-400 font-bold flex items-center gap-2">
+                            <i data-lucide="network" class="w-4 h-4 text-brand-400"></i> Sequence & Architecture Diagram
+                        </h3>
+                        <span class="text-[11px] font-mono text-slate-500">Interactive Visualization</span>
+                    </div>
+                    <div id="modal-diagram-container" class="bg-slate-950 border border-slate-800 p-4 sm:p-6 rounded-xl overflow-x-auto flex items-center justify-center min-h-[220px]">
+                        <!-- Dynamic SVG SVG Diagram -->
+                    </div>
+                </div>
+
+                <!-- Implementation Details & Mechanism -->
+                <div>
+                    <h3 class="text-xs uppercase tracking-wider text-slate-400 font-bold mb-2">Key Mechanism & Implementation</h3>
+                    <div id="modal-mechanism" class="bg-slate-950/40 border border-slate-800/60 rounded-xl p-4 text-sm text-slate-300 leading-relaxed"></div>
+                </div>
+
+                <!-- Real World Examples -->
+                <div>
+                    <h3 class="text-xs uppercase tracking-wider text-slate-400 font-bold mb-2 flex items-center gap-1.5">
+                        <i data-lucide="cpu" class="w-3.5 h-3.5 text-accent-400"></i> Real-World Systems & Adoption
+                    </h3>
+                    <div id="modal-examples" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Related Patterns Navigation -->
+                <div>
+                    <h3 class="text-xs uppercase tracking-wider text-slate-400 font-bold mb-2">Related Catalog Patterns</h3>
+                    <div id="modal-related" class="flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <!-- Modal Footer Navigation Controls -->
+            <div class="px-6 py-4 border-t border-slate-800 bg-slate-900/90 flex items-center justify-between text-xs">
+                <button id="prev-pattern-btn" class="flex items-center gap-1.5 px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Previous Pattern</span>
+                </button>
+                <span id="modal-position-indicator" class="font-mono text-slate-500">Pattern 1 of 30</span>
+                <button id="next-pattern-btn" class="flex items-center gap-1.5 px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition">
+                    <span>Next Pattern</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // The complete catalog of ALL 30 Patterns from Martin Fowler and Unmesh Joshi
+        const patternsData = [
+            {
+                id: 'clock-bound-wait',
+                slug: 'clock-bound-wait',
+                name: 'Clock-Bound Wait',
+                category: 'Time & Ordering',
+                problem: 'Unsynchronized physical clocks across nodes can lead to ordering anomalies where a write appears to happen before a preceding write in physical wall-clock time.',
+                solution: 'Wait for the maximum uncertainty bound of the physical clock before committing state changes, ensuring linearizable ordering across distributed nodes.',
+                mechanism: 'When a transaction commits, the node obtains the current time range [Earliest, Latest] from TrueTime or synchronized NTP with error bounds. The transaction delays its commit reply until physical clock time is guaranteed to be later than Latest.',
+                examples: ['Google Spanner (TrueTime API)', 'CockroachDB (Hybrid Logical Clocks + Uncertainty Window)'],
+                related: ['Hybrid Clock', 'Lamport Clock', 'Versioned Value'],
+                diagram: `
+                    <svg viewBox="0 0 600 180" class="w-full max-w-xl">
+                        <line x1="50" y1="90" x2="550" y2="90" stroke="#4b5563" stroke-width="2"/>
+                        <circle cx="150" cy="90" r="8" fill="#6366f1"/>
+                        <text x="150" y="65" fill="#818cf8" font-size="11" font-weight="bold" text-anchor="middle">Write T1</text>
+                        <rect x="150" y="80" width="180" height="20" fill="#f59e0b" opacity="0.25" rx="4"/>
+                        <line x1="330" y1="70" x2="330" y2="110" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4"/>
+                        <text x="240" y="118" fill="#fbbf24" font-size="10" font-weight="bold" text-anchor="middle">Clock Uncertainty Wait Window (ε)</text>
+                        <circle cx="380" cy="90" r="8" fill="#10b981"/>
+                        <text x="380" y="65" fill="#34d399" font-size="11" font-weight="bold" text-anchor="middle">Safe Commit Reply</text>
+                        <text x="380" y="145" fill="#9ca3af" font-size="10" text-anchor="middle">Guarantees T1 < T2 across all physical clocks</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'consistent-core',
+                name: 'Consistent Core',
+                slug: 'consistent-core',
+                category: 'Consensus & Coordination',
+                problem: 'Managing state across hundreds of microservices nodes requires strong consistency without incurring consensus overhead on every server.',
+                solution: 'Maintain a small dedicated cluster (3 to 5 nodes) running strong consensus (Raft/Paxos) to manage cluster metadata, coordination locks, and memberships for larger clusters.',
+                mechanism: 'A small core cluster handles atomic metadata updates and leases. Larger data worker nodes register themselves with the Consistent Core, relying on it for leader election, schema metadata, and partition mappings.',
+                examples: ['ZooKeeper (used by Kafka/Hadoop)', 'etcd (used by Kubernetes)', 'Consul'],
+                related: ['Leader and Followers', 'Paxos', 'Lease'],
+                diagram: `
+                    <svg viewBox="0 0 600 180" class="w-full max-w-xl">
+                        <!-- Core Cluster Box -->
+                        <rect x="50" y="25" width="220" height="130" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-width="2" stroke-dasharray="4"/>
+                        <text x="160" y="45" fill="#818cf8" font-size="11" font-weight="bold" text-anchor="middle">Consistent Core (3-5 Nodes)</text>
+                        <circle cx="90" cy="95" r="16" fill="#4f46e5"/><text x="90" y="99" fill="#fff" font-size="10" text-anchor="middle">Node 1</text>
+                        <circle cx="160" cy="95" r="16" fill="#4f46e5"/><text x="160" y="99" fill="#fff" font-size="10" text-anchor="middle">Node 2</text>
+                        <circle cx="230" cy="95" r="16" fill="#4f46e5"/><text x="230" y="99" fill="#fff" font-size="10" text-anchor="middle">Node 3</text>
+                        <text x="160" y="140" fill="#a5b4fc" font-size="9" text-anchor="middle">Raft / Paxos Metadata Group</text>
+                        
+                        <!-- Arrows to Worker Fleet -->
+                        <path d="M 270 95 L 360 95" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+                        
+                        <!-- Worker Nodes -->
+                        <rect x="370" y="25" width="180" height="130" rx="10" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+                        <text x="460" y="45" fill="#9ca3af" font-size="11" font-weight="bold" text-anchor="middle">Worker Nodes Fleet (100s)</text>
+                        <rect x="390" y="65" width="140" height="25" rx="4" fill="#1f2937"/><text x="460" y="82" fill="#cbd5e1" font-size="10" text-anchor="middle">Data Node A</text>
+                        <rect x="390" y="100" width="140" height="25" rx="4" fill="#1f2937"/><text x="460" y="117" fill="#cbd5e1" font-size="10" text-anchor="middle">Data Node B</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'emergent-leader',
+                slug: 'emergent-leader',
+                name: 'Emergent Leader',
+                category: 'Consensus & Coordination',
+                problem: 'Selecting a leader in a dynamic cluster where nodes join and leave without relying on a pre-configured static master.',
+                solution: 'Allow nodes to dynamically elect a leader among themselves based on node IDs, uptime, or randomized heartbeats when no leader is detected.',
+                mechanism: 'When a node detects a missing heartbeat from the current leader, it transitions to candidate state, increments its generation term, and requests votes from peers. The first node to achieve a majority quorum becomes the new leader.',
+                examples: ['Raft Leader Election', 'Elasticsearch Master Node Election'],
+                related: ['Leader and Followers', 'Generation Clock', 'Heartbeat'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <circle cx="100" cy="85" r="28" fill="#1f2937" stroke="#f43f5e" stroke-width="2"/>
+                        <text x="100" y="89" fill="#f87171" font-size="10" text-anchor="middle">Dead Leader</text>
+                        
+                        <path d="M 140 85 L 220 85" stroke="#f43f5e" stroke-width="2" stroke-dasharray="3"/>
+                        <text x="180" y="75" fill="#f87171" font-size="9" text-anchor="middle">Timeout</text>
+
+                        <circle cx="260" cy="85" r="30" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
+                        <text x="260" y="82" fill="#a5b4fc" font-size="10" font-weight="bold" text-anchor="middle">Candidate</text>
+                        <text x="260" y="96" fill="#818cf8" font-size="9" text-anchor="middle">Vote Request</text>
+
+                        <path d="M 300 65 L 400 45" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <path d="M 300 105 L 400 125" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                        <circle cx="430" cy="40" r="22" fill="#1f2937" stroke="#10b981" stroke-width="1.5"/>
+                        <text x="430" y="44" fill="#34d399" font-size="9" text-anchor="middle">Vote Granted</text>
+
+                        <circle cx="430" cy="130" r="22" fill="#1f2937" stroke="#10b981" stroke-width="1.5"/>
+                        <text x="430" y="134" fill="#34d399" font-size="9" text-anchor="middle">Vote Granted</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'fixed-partitions',
+                slug: 'fixed-partitions',
+                name: 'Fixed Partitions',
+                category: 'Partitioning & Scaling',
+                problem: 'Dynamically rebalancing data partitions across changing cluster nodes can lead to complex data migration and unpredictable performance.',
+                solution: 'Divide the dataset into a fixed number of logical partitions higher than the number of nodes, moving whole partitions when nodes are added or removed.',
+                mechanism: 'The cluster statically configures e.g., 1024 fixed partitions. Keys are mapped to partitions using hash(key) % 1024. Nodes own sets of partitions. Adding a new node simply reassigns ownership of existing complete partitions without splitting data.',
+                examples: ['Redis Cluster', 'Elasticsearch Shard Allocation', 'Couchbase'],
+                related: ['Key-Range Partitions', 'Consistent Hashing'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <text x="300" y="30" fill="#818cf8" font-size="11" font-weight="bold" text-anchor="middle">Fixed 8 Logical Partitions (P0 - P7)</text>
+                        
+                        <!-- Node 1 -->
+                        <rect x="80" y="55" width="180" height="90" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="170" y="75" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Node A</text>
+                        <rect x="95" y="90" width="32" height="30" rx="4" fill="#4f46e5"/><text x="111" y="108" fill="#fff" font-size="10" text-anchor="middle">P0</text>
+                        <rect x="135" y="90" width="32" height="30" rx="4" fill="#4f46e5"/><text x="151" y="108" fill="#fff" font-size="10" text-anchor="middle">P1</text>
+                        <rect x="175" y="90" width="32" height="30" rx="4" fill="#4f46e5"/><text x="191" y="108" fill="#fff" font-size="10" text-anchor="middle">P2</text>
+                        <rect x="215" y="90" width="32" height="30" rx="4" fill="#4f46e5"/><text x="231" y="108" fill="#fff" font-size="10" text-anchor="middle">P3</text>
+
+                        <!-- Node 2 -->
+                        <rect x="340" y="55" width="180" height="90" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="430" y="75" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Node B</text>
+                        <rect x="355" y="90" width="32" height="30" rx="4" fill="#0284c7"/><text x="371" y="108" fill="#fff" font-size="10" text-anchor="middle">P4</text>
+                        <rect x="395" y="90" width="32" height="30" rx="4" fill="#0284c7"/><text x="411" y="108" fill="#fff" font-size="10" text-anchor="middle">P5</text>
+                        <rect x="435" y="90" width="32" height="30" rx="4" fill="#0284c7"/><text x="451" y="108" fill="#fff" font-size="10" text-anchor="middle">P6</text>
+                        <rect x="475" y="90" width="32" height="30" rx="4" fill="#0284c7"/><text x="491" y="108" fill="#fff" font-size="10" text-anchor="middle">P7</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'follower-reads',
+                slug: 'follower-reads',
+                name: 'Follower Reads',
+                category: 'Data Replication & Storage',
+                problem: 'Directing all read traffic to the Leader node limits overall cluster query throughput and underutilizes follower node resources.',
+                solution: 'Allow followers to serve read requests directly, offloading queries from the leader while ensuring safety against uncommitted reads.',
+                mechanism: 'Followers inspect their local replicated Write-Ahead Log up to the High-Water Mark. If a client requires strong consistency, the follower verifies its lease status with the leader or waits until its local log index catches up with the requested offset.',
+                examples: ['CockroachDB Follower Reads', 'Kafka Consumer Read from Follower Replica', 'etcd Read Index'],
+                related: ['Leader and Followers', 'High-Water Mark', 'Lease'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <!-- Client -->
+                        <rect x="30" y="65" width="80" height="40" rx="6" fill="#0ea5e9" opacity="0.2" stroke="#0ea5e9" stroke-width="2"/>
+                        <text x="70" y="90" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">Read Client</text>
+
+                        <!-- Read Request Arrow directly to Follower -->
+                        <path d="M 120 85 L 350 120" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+                        <text x="210" y="120" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle">Read Query (Bypasses Leader)</text>
+
+                        <!-- Leader Node -->
+                        <rect x="360" y="20" width="160" height="50" rx="6" fill="#1f2937" stroke="#eab308" stroke-width="1.5"/>
+                        <text x="440" y="42" fill="#eab308" font-size="11" font-weight="bold" text-anchor="middle">Leader Node</text>
+                        <text x="440" y="58" fill="#9ca3af" font-size="9" text-anchor="middle">Handles Writes Only</text>
+
+                        <!-- Follower Node -->
+                        <rect x="360" y="100" width="160" height="50" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="440" y="122" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Follower Node</text>
+                        <text x="440" y="138" fill="#34d399" font-size="9" font-anchor="middle">Serves Read from Committed Log</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'generation-clock',
+                slug: 'generation-clock',
+                name: 'Generation Clock',
+                category: 'Time & Ordering',
+                problem: 'When a network partition resolves, an old partitioned leader might attempt to execute write commands, corrupting state.',
+                solution: 'Maintain a monotonically increasing generation number (term/epoch) that updates on every leader transition to ignore commands from legacy leaders.',
+                mechanism: 'Every cluster node stores the highest generation number it has seen. Any RPC message sent by a leader includes its current generation number. Recipients instantly reject messages if the generation number is lower than their local clock value.',
+                examples: ['Raft Term Number', 'Paxos Ballot Number', 'Kafka Controller Epoch', 'ZooKeeper zxid epoch'],
+                related: ['Leader and Followers', 'Lease', 'Heartbeat'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <!-- Old Stale Leader -->
+                        <rect x="40" y="45" width="140" height="80" rx="8" fill="#1f2937" stroke="#f43f5e" stroke-width="2"/>
+                        <text x="110" y="70" fill="#f87171" font-size="11" font-weight="bold" text-anchor="middle">Stale Leader</text>
+                        <text x="110" y="90" fill="#9ca3af" font-size="10" text-anchor="middle">Gen Clock: 1</text>
+
+                        <!-- Message -->
+                        <path d="M 190 85 L 370 85" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrow-red)"/>
+                        <text x="280" y="75" fill="#f87171" font-size="10" font-weight="bold" text-anchor="middle">AppendEntries(Gen=1)</text>
+
+                        <!-- Receiver Node -->
+                        <rect x="380" y="45" width="160" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="460" y="70" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Follower Node</text>
+                        <text x="460" y="90" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle">Gen Clock: 2</text>
+                        <text x="460" y="110" fill="#f87171" font-size="9" text-anchor="middle">REJECT: 1 < 2</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'gossip-dissemination',
+                slug: 'gossip-dissemination',
+                name: 'Gossip Dissemination',
+                category: 'Network & Messaging',
+                problem: 'Centralized state broadcasting doesn\'t scale efficiently to thousands of nodes and creates a single point of network congestion.',
+                solution: 'Nodes periodically pick a few random peers and exchange cluster metadata state, spreading information across the cluster like an epidemic.',
+                mechanism: 'Every node maintains a table of peer statuses and incarnation numbers. Every T milliseconds, a node sends its table to k random nodes. State updates spread in O(log N) rounds through the network exponentially.',
+                examples: ['Cassandra Cluster Membership', 'HashiCorp Consul/Serf (SWIM protocol)', 'Amazon Dynamo Ring'],
+                related: ['Heartbeat', 'Consistent Hashing'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <circle cx="100" cy="85" r="24" fill="#4f46e5"/><text x="100" y="89" fill="#fff" font-size="10" text-anchor="middle">Node A</text>
+                        
+                        <path d="M 125 70 L 225 40" stroke="#818cf8" stroke-width="2" stroke-dasharray="3"/>
+                        <path d="M 125 100 L 225 130" stroke="#818cf8" stroke-width="2" stroke-dasharray="3"/>
+
+                        <circle cx="250" cy="35" r="24" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/><text x="250" y="39" fill="#fff" font-size="10" text-anchor="middle">Node B</text>
+                        <circle cx="250" cy="135" r="24" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/><text x="250" y="139" fill="#fff" font-size="10" text-anchor="middle">Node C</text>
+
+                        <path d="M 275 35 L 425 60" stroke="#818cf8" stroke-width="2" stroke-dasharray="3"/>
+                        <path d="M 275 135 L 425 110" stroke="#818cf8" stroke-width="2" stroke-dasharray="3"/>
+
+                        <circle cx="450" cy="60" r="24" fill="#0284c7"/><text x="450" y="64" fill="#fff" font-size="10" text-anchor="middle">Node D</text>
+                        <circle cx="450" cy="110" r="24" fill="#0284c7"/><text x="450" y="114" fill="#fff" font-size="10" text-anchor="middle">Node E</text>
+                        
+                        <text x="280" y="90" fill="#9ca3af" font-size="10" text-anchor="middle">Epidemic Peer State Exchange</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'heartbeat',
+                slug: 'heartbeat',
+                name: 'Heartbeat',
+                category: 'Consensus & Coordination',
+                problem: 'Nodes in a cluster can fail or become network partitioned silently without explicit disconnection events.',
+                solution: 'Periodically send small periodic availability ping messages between nodes to verify active connectivity and health.',
+                mechanism: 'A sender (leader or peer) dispatches Heartbeat RPCs every T interval. The receiver resets its local failure timer upon receiving each heartbeat. If no heartbeat arrives before timeout window ET, the receiver declares the peer dead.',
+                examples: ['Kubernetes Node Lease Heartbeats', 'ZooKeeper Session Ping', 'Raft Leader Heartbeat'],
+                related: ['Lease', 'Gossip Dissemination', 'Emergent Leader'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="50" y="45" width="120" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="110" y="80" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Leader Node</text>
+                        <text x="110" y="98" fill="#818cf8" font-size="9" text-anchor="middle">Interval = 100ms</text>
+
+                        <path d="M 180 70 L 390 70" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrow-red)"/>
+                        <text x="285" y="60" fill="#f87171" font-size="10" font-weight="bold" text-anchor="middle">Heartbeat Pulse 1 [ACK]</text>
+
+                        <path d="M 180 100 L 390 100" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrow-red)"/>
+                        <text x="285" y="118" fill="#f87171" font-size="10" font-weight="bold" text-anchor="middle">Heartbeat Pulse 2 [ACK]</text>
+
+                        <rect x="400" y="45" width="140" height="80" rx="8" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+                        <text x="470" y="80" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">Follower Node</text>
+                        <text x="470" y="98" fill="#34d399" font-size="9" text-anchor="middle">Resets Timeout Timer</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'high-water-mark',
+                slug: 'high-watermark',
+                name: 'High-Water Mark',
+                category: 'Data Replication & Storage',
+                problem: 'Preventing clients from reading log entries that have been written to a leader but are not yet guaranteed to survive a leader crash.',
+                solution: 'Maintain an index tracking the highest log entry replicated to a majority quorum of followers, exposing data to clients only up to this mark.',
+                mechanism: 'The leader updates its High-Water Mark index whenever a log entry is acknowledged by a majority quorum. Reads are restricted to log indices <= High-Water Mark. If a leader fails, uncommitted entries beyond the mark are truncated.',
+                examples: ['Kafka Partition High Watermark', 'Raft Committed Index'],
+                related: ['Low-Water Mark', 'Leader and Followers', 'Write-Ahead Log'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="40" y="50" width="520" height="80" rx="8" fill="#111827" stroke="#374151" stroke-width="2"/>
+                        
+                        <rect x="60" y="70" width="60" height="40" rx="4" fill="#065f46" stroke="#10b981"/><text x="90" y="94" fill="#fff" font-size="10" text-anchor="middle">Idx 1</text>
+                        <rect x="130" y="70" width="60" height="40" rx="4" fill="#065f46" stroke="#10b981"/><text x="160" y="94" fill="#fff" font-size="10" text-anchor="middle">Idx 2</text>
+                        <rect x="200" y="70" width="60" height="40" rx="4" fill="#065f46" stroke="#10b981"/><text x="230" y="94" fill="#fff" font-size="10" text-anchor="middle">Idx 3</text>
+
+                        <!-- HW Line -->
+                        <line x1="280" y1="35" x2="280" y2="145" stroke="#f59e0b" stroke-width="3" stroke-dasharray="4"/>
+                        <text x="280" y="25" fill="#f59e0b" font-size="11" font-weight="bold" text-anchor="middle">High-Water Mark (HW = 3)</text>
+
+                        <rect x="300" y="70" width="60" height="40" rx="4" fill="#1f2937" stroke="#4b5563"/><text x="330" y="94" fill="#9ca3af" font-size="10" text-anchor="middle">Idx 4</text>
+                        <rect x="370" y="70" width="60" height="40" rx="4" fill="#1f2937" stroke="#4b5563"/><text x="400" y="94" fill="#9ca3af" font-size="10" text-anchor="middle">Idx 5</text>
+
+                        <text x="160" y="125" fill="#34d399" font-size="9" text-anchor="middle">Committed & Visibly Readable</text>
+                        <text x="365" y="125" fill="#f87171" font-size="9" text-anchor="middle">Uncommitted (Unsafe to read)</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'hybrid-clock',
+                slug: 'hybrid-clock',
+                name: 'Hybrid Clock',
+                category: 'Time & Ordering',
+                problem: 'Physical NTP clocks can jump backwards, while pure logical Lamport clocks lack any correlation with real-world wall-clock timestamps.',
+                solution: 'Combine physical wall-clock timestamps with logical counters to create monotonic Hybrid Logical Clocks (HLC).',
+                mechanism: 'An HLC timestamp consists of a physical component l and a logical counter c. On local events or message receives, if physical time advances, the logical counter resets to 0; if physical time lags behind, the logical counter increments monotonically.',
+                examples: ['CockroachDB HLC', 'MongoDB Logical Clock', 'Apache YugabyteDB'],
+                related: ['Lamport Clock', 'Clock-Bound Wait', 'Version Vector'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="60" y="45" width="200" height="90" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="160" y="70" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Hybrid Logical Clock (HLC)</text>
+                        <rect x="80" y="85" width="75" height="30" rx="4" fill="#312e81"/><text x="117" y="104" fill="#818cf8" font-size="10" font-weight="bold" text-anchor="middle">Physical (l)</text>
+                        <rect x="165" y="85" width="75" height="30" rx="4" fill="#0ea5e9" opacity="0.3" stroke="#38bdf8"/><text x="202" y="104" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle">Logical (c)</text>
+
+                        <path d="M 270 90 L 350 90" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <rect x="360" y="45" width="180" height="90" rx="8" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+                        <text x="450" y="70" fill="#34d399" font-size="11" font-weight="bold" text-anchor="middle">Monotonicity Guaranteed</text>
+                        <text x="450" y="92" fill="#9ca3af" font-size="10" text-anchor="middle">Captures Causality</text>
+                        <text x="450" y="110" fill="#9ca3af" font-size="10" text-anchor="middle">Bounded to Physical NTP</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'idempotent-receiver',
+                slug: 'idempotent-receiver',
+                name: 'Idempotent Receiver',
+                category: 'Network & Messaging',
+                problem: 'Network retries in distributed messaging systems cause duplicate commands to be processed multiple times, corrupting data state.',
+                solution: 'Assign every incoming request a unique request ID and deduplicate requests on the receiver before applying state updates.',
+                mechanism: 'Clients generate a unique sequence number or UUID for each RPC. The receiver keeps a persistent index of processed request IDs. If a duplicate request arrives, the receiver returns the saved result without re-executing logic.',
+                examples: ['Kafka Producer Idempotence (Producer ID + Sequence Number)', 'Stripe Payment API Requests', 'gRPC Retries'],
+                related: ['Request Pipeline', 'Singular Update Queue'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="40" y="55" width="100" height="60" rx="6" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/>
+                        <text x="90" y="90" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">Client Retries</text>
+
+                        <path d="M 150 70 L 360 70" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+                        <text x="255" y="60" fill="#9ca3af" font-size="10" text-anchor="middle">Req #UUID-101 (Original)</text>
+
+                        <path d="M 150 100 L 360 100" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrow)"/>
+                        <text x="255" y="115" fill="#fbbf24" font-size="10" text-anchor="middle">Req #UUID-101 (Duplicate Retry)</text>
+
+                        <rect x="370" y="40" width="180" height="90" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="460" y="65" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Deduplication Guard</text>
+                        <rect x="390" y="80" width="140" height="35" rx="4" fill="#111827" stroke="#374151"/>
+                        <text x="460" y="102" fill="#34d399" font-size="10" font-mono text-anchor="middle">UUID-101: EXECUTED</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'key-range-partitions',
+                slug: 'key-range-partitions',
+                name: 'Key-Range Partitions',
+                category: 'Partitioning & Scaling',
+                problem: 'Hash partitioning destroys key ordering, making range queries across sorted data inefficient across cluster nodes.',
+                solution: 'Partition keys in continuous sorted ranges, assigning each range to a node to support fast range scans.',
+                mechanism: 'Keys are kept sorted. Each partition owns a contiguous range [StartKey, EndKey). Scans spanning multiple keys only consult nodes holding matching ranges. Dynamic splitting breaks ranges in half when partitions grow too large.',
+                examples: ['Google Bigtable', 'Apache HBase', 'CockroachDB Ranges', 'TiKV'],
+                related: ['Fixed Partitions', 'Consistent Hashing'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <!-- Partition 1 -->
+                        <rect x="50" y="50" width="150" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="125" y="75" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Partition 1 (Node A)</text>
+                        <text x="125" y="100" fill="#38bdf8" font-size="10" font-mono text-anchor="middle">['A' ... 'G']</text>
+
+                        <!-- Partition 2 -->
+                        <rect x="225" y="50" width="150" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="300" y="75" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Partition 2 (Node B)</text>
+                        <text x="300" y="100" fill="#38bdf8" font-size="10" font-mono text-anchor="middle">['H' ... 'P']</text>
+
+                        <!-- Partition 3 -->
+                        <rect x="400" y="50" width="150" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="475" y="75" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Partition 3 (Node C)</text>
+                        <text x="475" y="100" fill="#38bdf8" font-size="10" font-mono text-anchor="middle">['Q' ... 'Z']</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'lamport-clock',
+                slug: 'lamport-clock',
+                name: 'Lamport Clock',
+                category: 'Time & Ordering',
+                problem: 'Physical clocks cannot establish causal sequence order in distributed systems due to clock skew and drift.',
+                solution: 'Maintain a simple logical integer counter on every node that increments with local events and advances on message reception.',
+                mechanism: 'Every node increments its counter L = L + 1 before generating an event. When sending a message, it includes L. When receiving a message with clock L_msg, the recipient sets its clock to max(L_local, L_msg) + 1.',
+                examples: ['Distributed Causality Tracking', 'Vector Clocks Foundation'],
+                related: ['Hybrid Clock', 'Version Vector', 'Clock-Bound Wait'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <!-- Node A -->
+                        <line x1="50" y1="50" x2="550" y2="50" stroke="#4b5563" stroke-width="2"/>
+                        <text x="30" y="54" fill="#818cf8" font-size="10" font-weight="bold">Node A</text>
+                        <circle cx="100" cy="50" r="6" fill="#6366f1"/><text x="100" y="38" fill="#a5b4fc" font-size="9" text-anchor="middle">L=1</text>
+                        <circle cx="250" cy="50" r="6" fill="#6366f1"/><text x="250" y="38" fill="#a5b4fc" font-size="9" text-anchor="middle">L=2 (Send)</text>
+
+                        <!-- Arrow -->
+                        <path d="M 250 50 L 400 120" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+                        <text x="340" y="75" fill="#38bdf8" font-size="10" text-anchor="middle">Msg(L=2)</text>
+
+                        <!-- Node B -->
+                        <line x1="50" y1="120" x2="550" y2="120" stroke="#4b5563" stroke-width="2"/>
+                        <text x="30" y="124" fill="#818cf8" font-size="10" font-weight="bold">Node B</text>
+                        <circle cx="150" cy="120" r="6" fill="#0ea5e9"/><text x="150" y="140" fill="#38bdf8" font-size="9" text-anchor="middle">L=1</text>
+                        <circle cx="400" cy="120" r="6" fill="#10b981"/><text x="400" y="140" fill="#34d399" font-size="9" text-anchor="middle">L=max(1,2)+1 = 3</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'leader-and-followers',
+                slug: 'leader-follower',
+                name: 'Leader and Followers',
+                category: 'Consensus & Coordination',
+                problem: 'Simultaneous uncoordinated writes across multiple cluster nodes lead to update conflicts and data divergence.',
+                solution: 'Elect one single node as Leader to process all cluster write requests and replicate updates sequentially to Follower nodes.',
+                mechanism: 'Clients dispatch write operations exclusively to the Leader. The Leader appends the change to its Write-Ahead Log and forwards log entries to Followers. Followers apply updates in the identical order designated by the leader.',
+                examples: ['MySQL Master-Replica', 'ZooKeeper Leader/Follower', 'MongoDB Replica Sets'],
+                related: ['High-Water Mark', 'Emergent Leader', 'Follower Reads'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="20" y="65" width="80" height="40" rx="6" fill="#0ea5e9" opacity="0.2" stroke="#0ea5e9" stroke-width="2"/>
+                        <text x="60" y="90" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">Client Write</text>
+
+                        <path d="M 105 85 L 180 85" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <rect x="190" y="45" width="130" height="80" rx="8" fill="#1e1b4b" stroke="#eab308" stroke-width="2"/>
+                        <text x="255" y="70" fill="#eab308" font-size="11" font-weight="bold" text-anchor="middle">Leader Node</text>
+                        <text x="255" y="90" fill="#9ca3af" font-size="9" text-anchor="middle">Serializes Writes</text>
+
+                        <path d="M 325 65 L 425 35" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3" marker-end="url(#arrow)"/>
+                        <path d="M 325 105 L 425 135" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3" marker-end="url(#arrow)"/>
+
+                        <rect x="430" y="15" width="130" height="45" rx="6" fill="#111827" stroke="#374151"/><text x="495" y="42" fill="#fff" font-size="10" text-anchor="middle">Follower 1</text>
+                        <rect x="430" y="115" width="130" height="45" rx="6" fill="#111827" stroke="#374151"/><text x="495" y="142" fill="#fff" font-size="10" text-anchor="middle">Follower 2</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'lease',
+                slug: 'lease',
+                name: 'Lease',
+                category: 'Consensus & Coordination',
+                problem: 'Node crashes or network partitions can leave locks or leader roles held indefinitely without automatic cleanup.',
+                solution: 'Grant time-bounded exclusive rights (leases) to a node that automatically expire unless periodically renewed.',
+                mechanism: 'A coordinator issues a lease token with a Time-To-Live (TTL). The lease holder executes operations bounded by this timeframe. To retain rights, the holder must send renewal heartbeats prior to TTL expiration.',
+                examples: ['Google Chubby Locks', 'Kubernetes Leader Election Leases', 'Consul Session Leases'],
+                related: ['Heartbeat', 'Generation Clock', 'Clock-Bound Wait'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="50" y="45" width="130" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="115" y="75" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Lease Granter</text>
+                        <text x="115" y="95" fill="#818cf8" font-size="9" text-anchor="middle">Grants TTL = 5 Sec</text>
+
+                        <path d="M 185 70 L 395 70" stroke="#a855f7" stroke-width="2" marker-end="url(#arrow)"/>
+                        <text x="290" y="60" fill="#c084fc" font-size="10" font-weight="bold" text-anchor="middle">Grant Lease (Token #101)</text>
+
+                        <path d="M 395 100 L 185 100" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3" marker-end="url(#arrow)"/>
+                        <text x="290" y="118" fill="#38bdf8" font-size="10" text-anchor="middle">Renew Request (T - 1s)</text>
+
+                        <rect x="400" y="45" width="140" height="80" rx="8" fill="#111827" stroke="#374151"/>
+                        <text x="470" y="75" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">Lease Holder</text>
+                        <text x="470" y="95" fill="#34d399" font-size="9" text-anchor="middle">Active Lock Owner</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'low-water-mark',
+                slug: 'low-watermark',
+                name: 'Low-Water Mark',
+                category: 'Data Replication & Storage',
+                problem: 'Write-ahead logs grow indefinitely over time, consuming all available server disk space if old entries are never pruned.',
+                solution: 'Track the lowest log offset required by all followers or state machine snapshots, safely truncating log entries below this mark.',
+                mechanism: 'The leader collects replicated indices from all cluster followers and local snapshot managers. The minimum index is marked as the Low-Water Mark. Disk log segments prior to this index are safely deleted or archived.',
+                examples: ['Kafka Log Retention & Segment Deletion', 'Raft Log Compaction / Snapshots'],
+                related: ['High-Water Mark', 'Segmented Log', 'Write-Ahead Log'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="40" y="50" width="520" height="70" rx="8" fill="#111827" stroke="#374151" stroke-width="2"/>
+                        
+                        <rect x="60" y="65" width="60" height="40" rx="4" fill="#991b1b" stroke="#ef4444"/><text x="90" y="89" fill="#fca5a5" font-size="10" text-anchor="middle">Idx 1</text>
+                        <rect x="130" y="65" width="60" height="40" rx="4" fill="#991b1b" stroke="#ef4444"/><text x="160" y="89" fill="#fca5a5" font-size="10" text-anchor="middle">Idx 2</text>
+
+                        <line x1="205" y1="35" x2="205" y2="135" stroke="#ef4444" stroke-width="3" stroke-dasharray="4"/>
+                        <text x="205" y="25" fill="#ef4444" font-size="11" font-weight="bold" text-anchor="middle">Low-Water Mark (Safely Pruned)</text>
+
+                        <rect x="220" y="65" width="60" height="40" rx="4" fill="#065f46" stroke="#10b981"/><text x="250" y="89" fill="#fff" font-size="10" text-anchor="middle">Idx 3</text>
+                        <rect x="290" y="65" width="60" height="40" rx="4" fill="#065f46" stroke="#10b981"/><text x="320" y="89" fill="#fff" font-size="10" text-anchor="middle">Idx 4</text>
+                        <rect x="360" y="65" width="60" height="40" rx="4" fill="#065f46" stroke="#10b981"/><text x="390" y="89" fill="#fff" font-size="10" text-anchor="middle">Idx 5</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'majority-quorum',
+                slug: 'majority-quorum',
+                name: 'Majority Quorum',
+                category: 'Consensus & Coordination',
+                problem: 'Network partitions can split a cluster into groups; both sides making writes independently creates catastrophic split-brain state divergence.',
+                solution: 'Require operations to be acknowledged by a strict majority of nodes (N/2 + 1) to ensure progress occurs in only one partition.',
+                mechanism: 'In a cluster of N nodes, any decision requires responses from at least ⌊N/2⌋ + 1 nodes. Because any two majority sets overlap by at least one node, state updates on one majority are guaranteed to be visible to subsequent quorums.',
+                examples: ['Raft Commit Quorum', 'Paxos Quorum', 'Cassandra Quorum Consistency (LOCAL_QUORUM)'],
+                related: ['Paxos', 'Replicated Log', 'Emergent Leader'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <!-- Cluster 5 Nodes -->
+                        <text x="300" y="25" fill="#818cf8" font-size="11" font-weight="bold" text-anchor="middle">5-Node Cluster (Majority Quorum = 3)</text>
+                        
+                        <rect x="60" y="45" width="280" height="100" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+                        <text x="200" y="65" fill="#34d399" font-size="10" font-weight="bold" text-anchor="middle">Partition A: 3 Nodes (Active Majority)</text>
+                        <circle cx="110" cy="100" r="18" fill="#10b981"/><text x="110" y="104" fill="#fff" font-size="10" text-anchor="middle">N1</text>
+                        <circle cx="200" cy="100" r="18" fill="#10b981"/><text x="200" y="104" fill="#fff" font-size="10" text-anchor="middle">N2</text>
+                        <circle cx="290" cy="100" r="18" fill="#10b981"/><text x="290" y="104" fill="#fff" font-size="10" text-anchor="middle">N3</text>
+
+                        <rect x="370" y="45" width="170" height="100" rx="10" fill="#7f1d1d" stroke="#ef4444" stroke-width="2"/>
+                        <text x="455" y="65" fill="#fca5a5" font-size="10" font-weight="bold" text-anchor="middle">Partition B: 2 Nodes (ReadOnly)</text>
+                        <circle cx="415" cy="100" r="18" fill="#ef4444"/><text x="415" y="104" fill="#fff" font-size="10" text-anchor="middle">N4</text>
+                        <circle cx="495" cy="100" r="18" fill="#ef4444"/><text x="495" y="104" fill="#fff" font-size="10" text-anchor="middle">N5</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'paxos',
+                slug: 'paxos',
+                name: 'Paxos',
+                category: 'Consensus & Coordination',
+                problem: 'Reaching consensus on a state update across untrusted, asynchronous network nodes prone to dropping or delaying messages.',
+                solution: 'Execute a two-phase protocol (Prepare/Promise, Accept/Accepted) across a majority quorum to safely reach consensus.',
+                mechanism: 'Phase 1: Proposer broadcasts Prepare(n). Acceptors respond Promise(n) if n > highest promised proposal. Phase 2: Proposer broadcasts Accept(n, value). If accepted by a majority quorum, the proposed value is permanently decided.',
+                examples: ['Google Chubby', 'Spanner Consensus', 'Apache Cassandra Lightweight Transactions'],
+                related: ['Majority Quorum', 'Replicated Log', 'Two-Phase Commit'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <!-- Proposer -->
+                        <rect x="40" y="50" width="100" height="70" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="90" y="80" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Proposer</text>
+
+                        <!-- Phase 1 -->
+                        <path d="M 145 65 L 375 45" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <text x="260" y="50" fill="#38bdf8" font-size="9" text-anchor="middle">1. Prepare(n)</text>
+
+                        <!-- Phase 2 -->
+                        <path d="M 145 105 L 375 125" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <text x="260" y="120" fill="#34d399" font-size="9" text-anchor="middle">2. Accept(n, val)</text>
+
+                        <!-- Acceptors Quorum -->
+                        <rect x="380" y="30" width="170" height="110" rx="8" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+                        <text x="465" y="50" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">Acceptors Quorum</text>
+                        <rect x="400" y="65" width="130" height="25" rx="4" fill="#1f2937"/><text x="465" y="81" fill="#cbd5e1" font-size="9" text-anchor="middle">Promise / Accepted</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'replicated-log',
+                slug: 'replicated-log',
+                name: 'Replicated Log',
+                category: 'Data Replication & Storage',
+                problem: 'Keeping state machines synchronized across multiple independent server instances in exact identical order.',
+                solution: 'Model all state changes as an ordered sequence of log entries, replicating log updates across servers before applying them to state machines.',
+                mechanism: 'The leader assigns monotonically increasing sequence indices to client commands, appending them to its local log and replicating log frames to followers. Nodes apply log commands in index order, achieving deterministic state.',
+                examples: ['Raft Replicated State Machine', 'etcd Engine', 'Apache Kafka Partition Logs'],
+                related: ['Write-Ahead Log', 'Leader and Followers', 'High-Water Mark'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <!-- Node A Log -->
+                        <rect x="50" y="35" width="480" height="40" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+                        <text x="100" y="25" fill="#818cf8" font-size="10" font-weight="bold">Node A Log</text>
+                        <rect x="60" y="42" width="80" height="26" rx="4" fill="#4f46e5"/><text x="100" y="59" fill="#fff" font-size="9" text-anchor="middle">1: x=5</text>
+                        <rect x="150" y="42" width="80" height="26" rx="4" fill="#4f46e5"/><text x="190" y="59" fill="#fff" font-size="9" text-anchor="middle">2: y=2</text>
+                        <rect x="240" y="42" width="80" height="26" rx="4" fill="#4f46e5"/><text x="280" y="59" fill="#fff" font-size="9" text-anchor="middle">3: z=9</text>
+
+                        <!-- Node B Log -->
+                        <rect x="50" y="110" width="480" height="40" rx="6" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+                        <text x="100" y="100" fill="#9ca3af" font-size="10" font-weight="bold">Node B Log (Replicated)</text>
+                        <rect x="60" y="117" width="80" height="26" rx="4" fill="#0284c7"/><text x="100" y="134" fill="#fff" font-size="9" text-anchor="middle">1: x=5</text>
+                        <rect x="150" y="117" width="80" height="26" rx="4" fill="#0284c7"/><text x="190" y="134" fill="#fff" font-size="9" text-anchor="middle">2: y=2</text>
+                        <rect x="240" y="117" width="80" height="26" rx="4" fill="#0284c7"/><text x="280" y="134" fill="#fff" font-size="9" text-anchor="middle">3: z=9</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'request-batch',
+                slug: 'request-batch',
+                name: 'Request Batch',
+                category: 'Network & Messaging',
+                problem: 'High network IO overhead and system call costs when transmitting thousands of small individual network requests.',
+                solution: 'Group multiple individual requests into a single network payload buffer before transmitting over TCP.',
+                mechanism: 'The client or broker buffers outgoing requests until either a maximum byte threshold or a time window (linger.ms) expires. The combined batch is written to the socket in a single network transfer.',
+                examples: ['Kafka Producer Batching (batch.size)', 'Database Bulk Insert APIs', 'Elasticsearch Bulk API'],
+                related: ['Request Pipeline', 'Singular Update Queue'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="40" y="50" width="140" height="80" rx="8" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/>
+                        <text x="110" y="75" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">Individual Items</text>
+                        <text x="110" y="95" fill="#9ca3af" font-size="10" text-anchor="middle">Item 1, Item 2, Item 3</text>
+
+                        <path d="M 190 90 L 350 90" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <rect x="360" y="45" width="190" height="90" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="455" y="70" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Single Batch Payload</text>
+                        <rect x="380" y="85" width="150" height="30" rx="4" fill="#4f46e5"/><text x="455" y="104" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">[ Msg 1 | Msg 2 | Msg 3 ]</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'request-pipeline',
+                slug: 'request-pipeline',
+                name: 'Request Pipeline',
+                category: 'Network & Messaging',
+                problem: 'Network latency delays throughput when clients wait for a response before dispatching the next request.',
+                solution: 'Send multiple requests continuously over a single TCP socket without waiting for individual synchronous responses.',
+                mechanism: 'The client writes a stream of requests onto the socket socket buffer. The server processes incoming requests and replies back in the same order received, maximizing link utilization.',
+                examples: ['HTTP/2 Multiplexing / Pipelining', 'Redis Pipelining', 'Kafka Network Client'],
+                related: ['Idempotent Receiver', 'Single-Socket Channel'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="40" y="50" width="90" height="70" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="85" y="90" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Client</text>
+
+                        <!-- Pipe -->
+                        <rect x="150" y="60" width="280" height="50" rx="6" fill="#111827" stroke="#374151"/>
+                        <rect x="170" y="70" width="60" height="30" rx="4" fill="#0284c7"/><text x="200" y="89" fill="#fff" font-size="9" text-anchor="middle">Req 3</text>
+                        <rect x="250" y="70" width="60" height="30" rx="4" fill="#0284c7"/><text x="280" y="89" fill="#fff" font-size="9" text-anchor="middle">Req 2</text>
+                        <rect x="330" y="70" width="60" height="30" rx="4" fill="#0284c7"/><text x="360" y="89" fill="#fff" font-size="9" text-anchor="middle">Req 1</text>
+
+                        <rect x="450" y="50" width="90" height="70" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="495" y="90" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Server</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'request-waiting-list',
+                slug: 'request-waiting-list',
+                name: 'Request Waiting List',
+                category: 'Network & Messaging',
+                problem: 'Asynchronous responses can arrive out of order or require waiting for majority consensus, blocking worker threads.',
+                solution: 'Park pending client request futures in a waiting map keyed by correlation ID, resuming execution when consensus replies arrive.',
+                mechanism: 'When a request is initiated, a callback promise is placed into a Request Waiting List index. The worker thread continues processing other operations. When matching consensus responses arrive, the promise completes.',
+                examples: ['Raft Request Manager', 'ZooKeeper Request Processor', 'Netty Response Futures'],
+                related: ['Single-Socket Channel', 'Request Pipeline'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="40" y="50" width="130" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="105" y="75" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Request Processor</text>
+                        <text x="105" y="95" fill="#38bdf8" font-size="9" text-anchor="middle">Async Dispatch</text>
+
+                        <path d="M 180 90 L 250 90" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <rect x="260" y="40" width="180" height="100" rx="8" fill="#111827" stroke="#374151" stroke-width="2"/>
+                        <text x="350" y="60" fill="#f59e0b" font-size="11" font-weight="bold" text-anchor="middle">Request Waiting List</text>
+                        <rect x="280" y="70" width="140" height="25" rx="4" fill="#1f2937"/><text x="350" y="86" fill="#cbd5e1" font-size="9" font-mono text-anchor="middle">CorrID_1: Pending(Ack >= 2)</text>
+                        <rect x="280" y="102" width="140" height="25" rx="4" fill="#1f2937"/><text x="350" y="118" fill="#cbd5e1" font-size="9" font-mono text-anchor="middle">CorrID_2: Completed</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'segmented-log',
+                slug: 'segmented-log',
+                name: 'Segmented Log',
+                category: 'Data Replication & Storage',
+                problem: 'A single monolithic log file causes slow search lookups, disk lock contention, and difficult log garbage collection.',
+                solution: 'Divide the log into multiple smaller segment files, closing old segments and appending writes exclusively to the active segment.',
+                mechanism: 'Log entries append to the active segment. When a segment file reaches max byte size, it becomes immutable/closed and a new segment is created. Searching uses segment offset indexes; old segments are cleaned safely.',
+                examples: ['Apache Kafka Log Segments (.log / .index)', 'Apache Pulsar Ledger Segments'],
+                related: ['Write-Ahead Log', 'Low-Water Mark'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <g opacity="0.5">
+                            <rect x="40" y="50" width="130" height="80" rx="6" fill="#1f2937" stroke="#4b5563" stroke-width="1.5"/>
+                            <text x="105" y="80" fill="#9ca3af" font-size="11" font-weight="bold" text-anchor="middle">Segment 001.log</text>
+                            <text x="105" y="100" fill="#f87171" font-size="9" text-anchor="middle">[Closed / Read-Only]</text>
+                        </g>
+
+                        <g opacity="0.7">
+                            <rect x="190" y="50" width="130" height="80" rx="6" fill="#1f2937" stroke="#4b5563" stroke-width="1.5"/>
+                            <text x="255" y="80" fill="#9ca3af" font-size="11" font-weight="bold" text-anchor="middle">Segment 002.log</text>
+                            <text x="255" y="100" fill="#f87171" font-size="9" text-anchor="middle">[Closed / Read-Only]</text>
+                        </g>
+
+                        <rect x="340" y="50" width="150" height="80" rx="6" fill="#1e1b4b" stroke="#10b981" stroke-width="2"/>
+                        <text x="415" y="80" fill="#34d399" font-size="11" font-weight="bold" text-anchor="middle">Segment 003.log</text>
+                        <text x="415" y="100" fill="#34d399" font-size="9" font-weight="bold" text-anchor="middle">← ACTIVE APPENDS</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'single-socket-channel',
+                slug: 'single-socket-channel',
+                name: 'Single-Socket Channel',
+                category: 'Network & Messaging',
+                problem: 'Opening multiple parallel TCP connections between the same two nodes causes out-of-order message delivery and high socket overhead.',
+                solution: 'Maintain a single dedicated TCP socket connection between any pair of cluster nodes for all communications.',
+                mechanism: 'All RPC communication between Node A and Node B is multiplexed over one persistent TCP socket. This guarantees strict FIFO network frame ordering at the TCP layer and reduces socket context switching.',
+                examples: ['Raft Peer Connections', 'Kafka Broker-to-Broker Connections', 'Cassandra Internode Messaging'],
+                related: ['Request Pipeline', 'Singular Update Queue'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="50" y="50" width="110" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="105" y="95" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Node A</text>
+
+                        <!-- Single Socket Connection -->
+                        <line x1="160" y1="90" x2="430" y2="90" stroke="#38bdf8" stroke-width="4"/>
+                        <text x="295" y="80" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle">Single Multiplexed TCP Channel (FIFO)</text>
+
+                        <rect x="430" y="50" width="110" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="485" y="95" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Node B</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'singular-update-queue',
+                slug: 'singular-update-queue',
+                name: 'Singular Update Queue',
+                category: 'Consensus & Coordination',
+                problem: 'Concurrent multi-threaded state updates require complex lock synchronization, causing race conditions and thread contention.',
+                solution: 'Process all state updates sequentially using a single dedicated worker thread consuming from a concurrent queue.',
+                mechanism: 'Multiple caller threads submit update tasks into an unbounded concurrent queue. A single dedicated thread processes queue items one-by-one in strict FIFO order, eliminating mutex lock overhead on internal state structures.',
+                examples: ['LMAX Disruptor', 'Actor Models (Akka/Erlang)', 'Kafka Request Processor Pipeline'],
+                related: ['Idempotent Receiver', 'Request Batch'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <!-- Multiple Producers -->
+                        <text x="70" y="35" fill="#9ca3af" font-size="10" text-anchor="middle">Concurrent Callers</text>
+                        <circle cx="70" cy="55" r="12" fill="#38bdf8"/><circle cx="70" cy="90" r="12" fill="#38bdf8"/><circle cx="70" cy="125" r="12" fill="#38bdf8"/>
+
+                        <path d="M 90 90 L 150 90" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <!-- Queue -->
+                        <rect x="160" y="65" width="220" height="50" rx="6" fill="#111827" stroke="#374151" stroke-width="2"/>
+                        <text x="270" y="55" fill="#818cf8" font-size="10" font-weight="bold" text-anchor="middle">FIFO Work Queue</text>
+                        <rect x="180" y="75" width="30" height="30" rx="4" fill="#4f46e5"/>
+                        <rect x="220" y="75" width="30" height="30" rx="4" fill="#4f46e5"/>
+                        <rect x="260" y="75" width="30" height="30" rx="4" fill="#4f46e5"/>
+
+                        <path d="M 390 90 L 440 90" stroke="#34d399" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <!-- Single Thread -->
+                        <rect x="450" y="50" width="110" height="80" rx="8" fill="#1e1b4b" stroke="#10b981" stroke-width="2"/>
+                        <text x="505" y="85" fill="#34d399" font-size="11" font-weight="bold" text-anchor="middle">Single Worker</text>
+                        <text x="505" y="102" fill="#9ca3af" font-size="9" text-anchor="middle">No Lock Contention</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'state-watch',
+                slug: 'state-watch',
+                name: 'State Watch',
+                category: 'Consensus & Coordination',
+                problem: 'Constant client polling to detect server state changes causes unnecessary network traffic and delayed reaction times.',
+                solution: 'Allow clients to register watchers on specific state keys, receiving instant push notifications when key values change.',
+                mechanism: 'Clients issue a watch request for key K. The server maintains a list of active watchers for key K. When state modifications occur on K, the server pushes an event notification directly over the streaming connection to subscribers.',
+                examples: ['etcd Watch API (Kubernetes Controller Loops)', 'ZooKeeper Watches'],
+                related: ['Consistent Core', 'Follower Reads'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="40" y="50" width="110" height="70" rx="8" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/>
+                        <text x="95" y="80" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">Client App</text>
+
+                        <path d="M 155 70 L 375 70" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+                        <text x="265" y="60" fill="#38bdf8" font-size="10" text-anchor="middle">1. Watch(Key="/config")</text>
+
+                        <path d="M 375 100 L 155 100" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3" marker-end="url(#arrow)"/>
+                        <text x="265" y="118" fill="#fbbf24" font-size="10" font-weight="bold" text-anchor="middle">2. Push Notification: State Changed!</text>
+
+                        <rect x="380" y="45" width="170" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="465" y="70" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">State Store (etcd)</text>
+                        <text x="465" y="90" fill="#34d399" font-size="9" text-anchor="middle">Watchers Registry</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'two-phase-commit',
+                slug: 'two-phase-commit',
+                name: 'Two-Phase Commit',
+                category: 'Consensus & Coordination',
+                problem: 'Executing atomic transactions across multiple distinct storage nodes where all nodes must either commit or abort together.',
+                solution: 'Execute transaction commits in two steps: a Prepare phase to gain consensus, followed by a Commit or Rollback phase.',
+                mechanism: 'Phase 1: Coordinator sends Prepare to all participants. Participants execute local validation and reply VOTE_COMMIT or VOTE_ABORT. Phase 2: If all vote yes, coordinator logs Commit and broadcasts Commit command; otherwise sends Abort.',
+                examples: ['XA Distributed Transactions', 'CockroachDB Cross-Range Transactions', 'Spanner Distributed Transactions'],
+                related: ['Paxos', 'Write-Ahead Log', 'Leader and Followers'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="40" y="45" width="120" height="90" rx="8" fill="#1e1b4b" stroke="#eab308" stroke-width="2"/>
+                        <text x="100" y="75" fill="#eab308" font-size="11" font-weight="bold" text-anchor="middle">Coordinator</text>
+                        <text x="100" y="95" fill="#38bdf8" font-size="9" text-anchor="middle">1. Prepare?</text>
+                        <text x="100" y="110" fill="#34d399" font-size="9" text-anchor="middle">2. Commit / Abort</text>
+
+                        <path d="M 165 70 L 385 50" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <path d="M 165 110 L 385 130" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                        <rect x="390" y="25" width="150" height="50" rx="6" fill="#111827" stroke="#374151"/><text x="465" y="52" fill="#fff" font-size="10" text-anchor="middle">Participant Node A</text>
+                        <rect x="390" y="105" width="150" height="50" rx="6" fill="#111827" stroke="#374151"/><text x="465" y="132" fill="#fff" font-size="10" text-anchor="middle">Participant Node B</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'version-vector',
+                slug: 'version-vector',
+                name: 'Version Vector',
+                category: 'Time & Ordering',
+                problem: 'Detecting concurrent data update conflicts in masterless distributed databases without relying on synchronized physical clocks.',
+                solution: 'Maintain a vector array of clock counters mapping [NodeID -> Counter] associated with every key version.',
+                mechanism: 'When Node A updates a key, it increments its own counter in the key\'s version vector. When comparing two version vectors, if Vector 1 dominates Vector 2 across all node counters, V1 causally succeeded V2; otherwise concurrent conflict exists.',
+                examples: ['Amazon DynamoDB', 'Riak KV Version Vectors', 'Cassandra Multi-datacenter Conflict Detection'],
+                related: ['Versioned Value', 'Lamport Clock', 'Hybrid Clock'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="50" y="45" width="220" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="160" y="70" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Version Vector A</text>
+                        <rect x="70" y="85" width="180" height="25" rx="4" fill="#111827"/><text x="160" y="102" fill="#38bdf8" font-size="10" font-mono text-anchor="middle">{ Node1: 2, Node2: 1 }</text>
+
+                        <text x="300" y="85" fill="#f59e0b" font-size="12" font-weight="bold" text-anchor="middle">Vs</text>
+
+                        <rect x="330" y="45" width="220" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="440" y="70" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Version Vector B</text>
+                        <rect x="350" y="85" width="180" height="25" rx="4" fill="#111827"/><text x="440" y="102" fill="#34d399" font-size="10" font-mono text-anchor="middle">{ Node1: 2, Node2: 2 }</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'versioned-value',
+                slug: 'versioned-value',
+                name: 'Versioned Value',
+                category: 'Data Replication & Storage',
+                problem: 'Overwriting key values directly in place makes concurrent transaction isolation (MVCC) and point-in-time reads impossible.',
+                solution: 'Store data as immutable versioned key-value entries tagged with monotonic transaction timestamps or sequence numbers.',
+                mechanism: 'Every write creates a new version record: Key_Timestamp -> Value. Read operations specify a target read timestamp T_read, returning the newest version whose timestamp is <= T_read without locking write operations.',
+                examples: ['Multi-Version Concurrency Control (MVCC in PostgreSQL/InnoDB)', 'CockroachDB MVCC', 'ScyllaDB / Cassandra'],
+                related: ['Version Vector', 'Clock-Bound Wait', 'Low-Water Mark'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <text x="300" y="25" fill="#818cf8" font-size="11" font-weight="bold" text-anchor="middle">MVCC Key: "user_account"</text>
+                        
+                        <rect x="50" y="45" width="150" height="90" rx="6" fill="#1f2937" stroke="#4b5563" stroke-width="1.5"/>
+                        <text x="125" y="70" fill="#9ca3af" font-size="11" font-weight="bold" text-anchor="middle">Ver 1 (T=100)</text>
+                        <text x="125" y="95" fill="#cbd5e1" font-size="10" font-mono text-anchor="middle">Balance: $50</text>
+
+                        <rect x="225" y="45" width="150" height="90" rx="6" fill="#1f2937" stroke="#4b5563" stroke-width="1.5"/>
+                        <text x="300" y="70" fill="#9ca3af" font-size="11" font-weight="bold" text-anchor="middle">Ver 2 (T=150)</text>
+                        <text x="300" y="95" fill="#cbd5e1" font-size="10" font-mono text-anchor="middle">Balance: $80</text>
+
+                        <rect x="400" y="45" width="150" height="90" rx="6" fill="#1e1b4b" stroke="#10b981" stroke-width="2"/>
+                        <text x="475" y="70" fill="#34d399" font-size="11" font-weight="bold" text-anchor="middle">Ver 3 (T=200)</text>
+                        <text x="475" y="95" fill="#34d399" font-size="10" font-mono text-anchor="middle">Balance: $120</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'write-ahead-log',
+                slug: 'write-ahead-log',
+                name: 'Write-Ahead Log',
+                category: 'Data Replication & Storage',
+                problem: 'Loss of in-memory state during unexpected power outages or server node crashes.',
+                solution: 'Append state updates to an immutable sequential log file on durable disk before applying changes to in-memory state.',
+                mechanism: 'When a write request arrives, the command is appended sequentially to disk. Only after the disk flush completes is the change applied to memory and acknowledged to the client. Upon crash recovery, the WAL is replayed.',
+                examples: ['PostgreSQL WAL', 'InnoDB Redo Log', 'Raft Commit Log', 'RocksDB WAL'],
+                related: ['Segmented Log', 'High-Water Mark', 'Low-Water Mark'],
+                diagram: `
+                    <svg viewBox="0 0 600 170" class="w-full max-w-xl">
+                        <rect x="30" y="65" width="80" height="40" rx="6" fill="#0ea5e9" opacity="0.2" stroke="#0ea5e9" stroke-width="2"/>
+                        <text x="70" y="90" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">Write Req</text>
+
+                        <path d="M 115 85 L 175 85" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+                        <text x="145" y="75" fill="#38bdf8" font-size="9" text-anchor="middle">1. Append</text>
+
+                        <rect x="180" y="40" width="170" height="90" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+                        <text x="265" y="65" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Disk WAL File</text>
+                        <rect x="195" y="80" width="140" height="30" rx="4" fill="#4f46e5"/><text x="265" y="99" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">Sequential Write</text>
+
+                        <path d="M 355 85 L 415 85" stroke="#34d399" stroke-width="2" marker-end="url(#arrow)"/>
+                        <text x="385" y="75" fill="#34d399" font-size="9" text-anchor="middle">2. Apply</text>
+
+                        <rect x="420" y="40" width="150" height="90" rx="8" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+                        <text x="495" y="65" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">Memory State</text>
+                        <rect x="435" y="80" width="120" height="30" rx="4" fill="#1f2937"/><text x="495" y="99" fill="#cbd5e1" font-size="10" text-anchor="middle">{ Key: Value }</text>
+
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8" />
+                            </marker>
+                            <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#f43f5e" />
+                            </marker>
+                        </defs>
+                    </svg>
+                `
+            }
+        ];
+
+        let currentCategory = 'All';
+        let searchQuery = '';
+        let filteredPatterns = [...patternsData];
+        let activePatternIndex = 0;
+
+        // Cache UI elements
+        const patternsGrid = document.getElementById('patterns-grid');
+        const emptyState = document.getElementById('empty-state');
+        const searchInput = document.getElementById('search-input');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const categoryFiltersContainer = document.getElementById('category-filters');
+        const patternCounterEl = document.getElementById('pattern-counter');
+        const resetFiltersBtn = document.getElementById('reset-filters-btn');
+
+        // Modal Elements
+        const patternModal = document.getElementById('pattern-modal');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const prevPatternBtn = document.getElementById('prev-pattern-btn');
+        const nextPatternBtn = document.getElementById('next-pattern-btn');
+        const modalPositionIndicator = document.getElementById('modal-position-indicator');
+
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalSlug = document.getElementById('modal-slug');
+        const modalFowlerLink = document.getElementById('modal-fowler-link');
+        const modalProblem = document.getElementById('modal-problem');
+        const modalSolution = document.getElementById('modal-solution');
+        const modalDiagramContainer = document.getElementById('modal-diagram-container');
+        const modalMechanism = document.getElementById('modal-mechanism');
+        const modalExamples = document.getElementById('modal-examples');
+        const modalRelated = document.getElementById('modal-related');
+
+        // Extract Categories
+        const categories = ['All', ...new Set(patternsData.map(p => p.category))];
+
+        // Render Category Pill Filters
+        function renderCategoryFilters() {
+            categoryFiltersContainer.innerHTML = categories.map(cat => {
+                const isActive = cat === currentCategory;
+                return `
+                    <button 
+                        onclick="selectCategory('${cat}')"
+                        class="px-3 py-1.5 rounded-xl font-medium transition whitespace-nowrap ${
+                            isActive 
+                            ? 'bg-brand-600 text-white shadow-md shadow-brand-500/20' 
+                            : 'bg-slate-900 text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-slate-800'
+                        }">
+                        ${cat}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Apply Filter & Search Logic
+        function updateFilteredPatterns() {
+            filteredPatterns = patternsData.filter(pattern => {
+                const matchesCategory = currentCategory === 'All' || pattern.category === currentCategory;
+                const query = searchQuery.toLowerCase();
+                const matchesSearch = searchQuery === '' ||
+                    pattern.name.toLowerCase().includes(query) ||
+                    pattern.problem.toLowerCase().includes(query) ||
+                    pattern.solution.toLowerCase().includes(query) ||
+                    pattern.category.toLowerCase().includes(query) ||
+                    pattern.examples.some(e => e.toLowerCase().includes(query));
+                
+                return matchesCategory && matchesSearch;
+            });
+
+            patternCounterEl.textContent = filteredPatterns.length;
+            renderGrid();
+        }
+
+        function renderGrid() {
+            if (filteredPatterns.length === 0) {
+                patternsGrid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            emptyState.classList.remove('flex');
+
+            patternsGrid.innerHTML = filteredPatterns.map((pattern, index) => `
+                <div 
+                    onclick="openModalByIndex(${index})"
+                    class="group bg-slate-900/90 border border-slate-800/80 hover:border-brand-500/60 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-500/10 cursor-pointer flex flex-col justify-between relative overflow-hidden">
+                    
+                    <div class="absolute -right-12 -top-12 w-28 h-28 bg-brand-500/5 rounded-full blur-xl group-hover:bg-brand-500/15 transition-all duration-500"></div>
+
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="px-2.5 py-0.5 text-[11px] font-semibold rounded-md bg-brand-500/10 text-brand-400 border border-brand-500/20 tracking-wide">
+                                ${pattern.category}
+                            </span>
+                            <span class="text-xs font-mono text-slate-500 flex items-center gap-1 group-hover:text-brand-400 transition">
+                                <i data-lucide="network" class="w-3.5 h-3.5"></i> Diagram
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-brand-300 transition-colors mb-2 tracking-tight">
+                            ${pattern.name}
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-3 mb-4">
+                            ${pattern.solution}
+                        </p>
+                    </div>
+
+                    <div>
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            ${pattern.examples.slice(0, 2).map(ex => `
+                                <span class="px-2 py-0.5 text-[10px] rounded bg-slate-950 text-slate-400 border border-slate-800">
+                                    ${ex}
+                                </span>
+                            `).join('')}
+                            ${pattern.examples.length > 2 ? `<span class="text-[10px] text-slate-500 align-middle self-center">+${pattern.examples.length - 2} more</span>` : ''}
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
+                            <span class="font-mono text-[11px] group-hover:text-slate-300 transition">Explore Pattern</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-500 group-hover:text-brand-400 group-hover:translate-x-1 transition-all"></i>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        window.selectCategory = function(category) {
+            currentCategory = category;
+            renderCategoryFilters();
+            updateFilteredPatterns();
+        };
+
+        window.openModalByIndex = function(index) {
+            if (index < 0 || index >= filteredPatterns.length) return;
+            activePatternIndex = index;
+            const pattern = filteredPatterns[activePatternIndex];
+
+            modalTitle.textContent = pattern.name;
+            modalCategory.textContent = pattern.category;
+            modalSlug.textContent = pattern.slug;
+            modalProblem.textContent = pattern.problem;
+            modalSolution.textContent = pattern.solution;
+            modalMechanism.textContent = pattern.mechanism;
+
+            // Direct link to Martin Fowler article
+            modalFowlerLink.href = `https://martinfowler.com/articles/patterns-of-distributed-systems/${pattern.slug}.html`;
+
+            // SVG Diagram
+            modalDiagramContainer.innerHTML = pattern.diagram;
+
+            // Real World Examples
+            modalExamples.innerHTML = pattern.examples.map(ex => `
+                <span class="px-3 py-1 bg-slate-950 text-slate-200 border border-slate-800 rounded-lg text-xs font-mono flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent-400"></span>
+                    ${ex}
+                </span>
+            `).join('');
+
+            // Related Patterns Tags
+            modalRelated.innerHTML = pattern.related.map(rel => {
+                const targetPattern = patternsData.find(p => p.name.toLowerCase() === rel.toLowerCase());
+                if (targetPattern) {
+                    return `
+                        <button onclick="openModalById('${targetPattern.id}')" 
+                                class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-brand-300 border border-slate-700 text-xs rounded-lg transition flex items-center gap-1">
+                            <span>${rel}</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    `;
+                }
+                return `<span class="px-3 py-1 bg-slate-950 text-slate-500 text-xs rounded-lg border border-slate-800">${rel}</span>`;
+            }).join('');
+
+            // Indicator and Nav Buttons
+            modalPositionIndicator.textContent = `Pattern ${activePatternIndex + 1} of ${filteredPatterns.length}`;
+            prevPatternBtn.disabled = activePatternIndex === 0;
+            nextPatternBtn.disabled = activePatternIndex === filteredPatterns.length - 1;
+
+            prevPatternBtn.style.opacity = activePatternIndex === 0 ? '0.4' : '1';
+            nextPatternBtn.style.opacity = activePatternIndex === filteredPatterns.length - 1 ? '0.4' : '1';
+
+            patternModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            lucide.createIcons();
+        };
+
+        window.openModalById = function(id) {
+            const index = filteredPatterns.findIndex(p => p.id === id);
+            if (index !== -1) {
+                openModalByIndex(index);
+            } else {
+                // Fallback search in full dataset
+                const fullIndex = patternsData.findIndex(p => p.id === id);
+                if (fullIndex !== -1) {
+                    currentCategory = 'All';
+                    searchQuery = '';
+                    searchInput.value = '';
+                    renderCategoryFilters();
+                    updateFilteredPatterns();
+                    const newIndex = filteredPatterns.findIndex(p => p.id === id);
+                    openModalByIndex(newIndex);
+                }
+            }
+        };
+
+        function closeModal() {
+            patternModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        closeModalBtn.addEventListener('click', closeModal);
+        modalBackdrop.addEventListener('click', closeModal);
+
+        prevPatternBtn.addEventListener('click', () => {
+            if (activePatternIndex > 0) openModalByIndex(activePatternIndex - 1);
+        });
+
+        nextPatternBtn.addEventListener('click', () => {
+            if (activePatternIndex < filteredPatterns.length - 1) openModalByIndex(activePatternIndex + 1);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (patternModal.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft' && activePatternIndex > 0) openModalByIndex(activePatternIndex - 1);
+            if (e.key === 'ArrowRight' && activePatternIndex < filteredPatterns.length - 1) openModalByIndex(activePatternIndex + 1);
+        });
+
+        // Search Handlers
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.trim();
+            clearSearchBtn.classList.toggle('hidden', searchQuery === '');
+            updateFilteredPatterns();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            clearSearchBtn.classList.add('hidden');
+            updateFilteredPatterns();
+        });
+
+        resetFiltersBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            currentCategory = 'All';
+            clearSearchBtn.classList.add('hidden');
+            renderCategoryFilters();
+            updateFilteredPatterns();
+        });
+
+        // App Initialization
+        window.onload = function() {
+            renderCategoryFilters();
+            updateFilteredPatterns();
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
