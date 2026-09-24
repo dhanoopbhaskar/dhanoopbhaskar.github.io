@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Patterns Catalog</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Highlight.js for Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
+  
+  <style>
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(51, 65, 85, 0.8);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(71, 85, 105, 1);
+    }
+    .glass-panel {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col font-sans antialiased text-slate-200 bg-slate-950 selection:bg-indigo-500 selection:text-white">
+
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md px-4 lg:px-8 py-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="p-2 rounded-lg bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">
+            <i data-lucide="boxes" class="w-6 h-6"></i>
+          </div>
+          <h1 class="text-2xl font-bold bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">
+            GoF Design Patterns Catalog
+          </h1>
+        </div>
+        <p class="text-xs text-slate-400 mt-1 pl-10">
+          Interactive reference guide based on Gang of Four patterns with Java code examples
+        </p>
+      </div>
+
+      <!-- Search and Filter Tools -->
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="relative flex-1 sm:w-72">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="searchInput"
+            placeholder="Search patterns or keywords..." 
+            class="w-full pl-9 pr-8 py-2 text-sm bg-slate-900 border border-slate-700/80 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-slate-100 placeholder-slate-500 transition-all"
+            oninput="handleSearch()"
+          >
+          <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <button onclick="resetFilters()" class="px-3 py-2 text-xs font-medium rounded-xl border border-slate-700 bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800 transition">
+          Reset Filter
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Grid -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 lg:p-8">
+    <div id="noResultsMsg" class="hidden text-center py-16 text-slate-400">
+      <i data-lucide="search-x" class="w-12 h-12 mx-auto mb-3 opacity-40 text-indigo-400"></i>
+      <h3 class="text-lg font-semibold text-slate-200">No patterns match your search</h3>
+      <p class="text-sm text-slate-400 mt-1">Try searching for terms like "object creation", "decorator", or "java".</p>
+    </div>
+
+    <div id="patternsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+      
+      <!-- Creational Patterns Column -->
+      <div class="column-container space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-sky-500/20">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-sky-400 shadow-sm shadow-sky-400/50"></span>
+            <h2 class="font-bold text-slate-100 uppercase tracking-wider text-sm">Creational Patterns</h2>
+          </div>
+          <span id="count-creational" class="text-xs px-2 py-0.5 rounded-full bg-sky-950/80 text-sky-300 border border-sky-800/50 font-mono">5</span>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Provide object creation mechanisms that increase flexibility and reuse of existing code.
+        </p>
+        <div id="col-creational" class="space-y-3 min-h-[100px]">
+          <!-- Creational pattern cards injected here -->
+        </div>
+      </div>
+
+      <!-- Structural Patterns Column -->
+      <div class="column-container space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-emerald-500/20">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
+            <h2 class="font-bold text-slate-100 uppercase tracking-wider text-sm">Structural Patterns</h2>
+          </div>
+          <span id="count-structural" class="text-xs px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800/50 font-mono">7</span>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Explain how to assemble objects and classes into larger structures while keeping these structures flexible and efficient.
+        </p>
+        <div id="col-structural" class="space-y-3 min-h-[100px]">
+          <!-- Structural pattern cards injected here -->
+        </div>
+      </div>
+
+      <!-- Behavioral Patterns Column -->
+      <div class="column-container space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-purple-500/20">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-purple-400 shadow-sm shadow-purple-400/50"></span>
+            <h2 class="font-bold text-slate-100 uppercase tracking-wider text-sm">Behavioral Patterns</h2>
+          </div>
+          <span id="count-behavioral" class="text-xs px-2 py-0.5 rounded-full bg-purple-950/80 text-purple-300 border border-purple-800/50 font-mono">11</span>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Take care of effective communication and the assignment of responsibilities between objects.
+        </p>
+        <div id="col-behavioral" class="space-y-3 min-h-[100px]">
+          <!-- Behavioral pattern cards injected here -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Pattern Detail Modal Overlay -->
+  <div id="patternModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-200">
+    <!-- Backdrop -->
+    <div id="modalBackdrop" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity"></div>
+
+    <!-- Modal Content Card -->
+    <div class="relative w-full max-w-4xl max-h-[90vh] bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl flex flex-col overflow-hidden z-10 transform scale-95 transition-transform duration-200" id="modalContainer">
+      
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 border-b border-slate-800 flex items-start justify-between gap-4 bg-slate-900/90">
+        <div class="space-y-1">
+          <div class="flex items-center gap-3 flex-wrap">
+            <span id="modalCategoryBadge" class="text-xs px-2.5 py-1 rounded-full font-semibold border"></span>
+            <span id="modalComplexityBadge" class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="gauge" class="w-3.5 h-3.5"></i> <span id="modalComplexityText"></span>
+            </span>
+          </div>
+          <h2 id="modalTitle" class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1"></h2>
+          <p id="modalIntent" class="text-sm text-slate-300 font-medium italic"></p>
+        </div>
+        <button onclick="closeModal()" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition focus:outline-none">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6">
+        
+        <!-- Problem & Solution Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-red-950/20 border border-red-900/30">
+            <h4 class="text-sm font-semibold text-red-400 flex items-center gap-2 mb-2">
+              <i data-lucide="alert-circle" class="w-4 h-4"></i> Problem
+            </h4>
+            <p id="modalProblem" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+          </div>
+          <div class="p-4 rounded-xl bg-emerald-950/20 border border-emerald-900/30">
+            <h4 class="text-sm font-semibold text-emerald-400 flex items-center gap-2 mb-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4"></i> Solution
+            </h4>
+            <p id="modalSolution" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- Applicability -->
+        <div class="p-4 rounded-xl bg-slate-800/40 border border-slate-700/50">
+          <h4 class="text-sm font-semibold text-indigo-300 flex items-center gap-2 mb-2">
+            <i data-lucide="target" class="w-4 h-4"></i> Applicability & Use Cases
+          </h4>
+          <ul id="modalApplicability" class="list-disc list-inside space-y-1 text-xs sm:text-sm text-slate-300"></ul>
+        </div>
+
+        <!-- Code Example Section -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+              <i data-lucide="code-2" class="w-4 h-4 text-amber-400"></i> Java Code Example
+            </h4>
+            <button id="copyCodeBtn" onclick="copyCodeSnippet()" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white transition">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> <span id="copyBtnText">Copy Code</span>
+            </button>
+          </div>
+
+          <div class="relative rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
+            <pre class="p-4 text-xs sm:text-sm overflow-x-auto"><code id="modalCode" class="language-java"></code></pre>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-800 bg-slate-900/90 flex items-center justify-between text-xs text-slate-400">
+        <span>GoF Pattern Specification</span>
+        <button onclick="closeModal()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-medium transition">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-800 border border-slate-700 text-slate-100 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2 text-sm">
+    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toastMsg">Code copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Complete 23 GoF Design Patterns Data
+    const patternsData = [
+      // CREATIONAL
+      {
+        id: "factory-method",
+        name: "Factory Method",
+        category: "creational",
+        icon: "factory",
+        summary: "Provides an interface for creating objects in a superclass, allowing subclasses to alter the type of objects created.",
+        intent: "Define an interface for creating an object, but let subclasses decide which class to instantiate.",
+        complexity: "Easy",
+        problem: "Creating objects directly leads to tight coupling. If product classes change, you must update the entire instantiation logic.",
+        solution: "Replace direct construction calls with a call to a special factory method. Subclasses override this method to create specific instances.",
+        applicability: [
+          "Use when you don't know exact types and dependencies of the objects your code should work with.",
+          "Use when you want to provide users of your library or framework with a way to extend its internal components."
+        ],
+        code: `// Product Interface
+interface Button {
+    void render();
+    void onClick();
+}
+
+// Concrete Products
+class HtmlButton implements Button {
+    public void render() { System.out.println("<button>HTML Button</button>"); }
+    public void onClick() { System.out.println("Click! HTML Button event."); }
+}
+
+class WindowsButton implements Button {
+    public void render() { System.out.println("Rendering Windows style button."); }
+    public void onClick() { System.out.println("Click! Windows Button event."); }
+}
+
+// Creator Abstract Class
+abstract class Dialog {
+    public void renderWindow() {
+        Button okButton = createButton();
+        okButton.render();
+    }
+    // Factory Method
+    public abstract Button createButton();
+}
+
+// Concrete Creators
+class HtmlDialog extends Dialog {
+    @Override
+    public Button createButton() { return new HtmlButton(); }
+}
+
+class WindowsDialog extends Dialog {
+    @Override
+    public Button createButton() { return new WindowsButton(); }
+}`
+      },
+      {
+        id: "abstract-factory",
+        name: "Abstract Factory",
+        category: "creational",
+        icon: "boxes",
+        summary: "Lets you produce families of related objects without specifying their concrete classes.",
+        intent: "Provide an interface for creating families of related or dependent objects without specifying their concrete classes.",
+        complexity: "Medium",
+        problem: "Code needs to work with various families of related products, but shouldn't depend on concrete classes of those products.",
+        solution: "Declare interfaces for each distinct product in the product family, then declare the Abstract Factory interface to create all abstract products.",
+        applicability: [
+          "Use when your code needs to work with various families of related products.",
+          "Use when a class has a set of Factory Methods that blur its primary responsibility."
+        ],
+        code: `// Abstract Products
+interface Chair { void sitOn(); }
+interface CoffeeTable { void placeOn(); }
+
+// Concrete Products Family A (Victorian)
+class VictorianChair implements Chair {
+    public void sitOn() { System.out.println("Sitting on a Victorian chair."); }
+}
+
+// Abstract Factory
+interface FurnitureFactory {
+    Chair createChair();
+    CoffeeTable createCoffeeTable();
+}
+
+// Concrete Factory
+class VictorianFurnitureFactory implements FurnitureFactory {
+    public Chair createChair() { return new VictorianChair(); }
+    public CoffeeTable createCoffeeTable() { return () -> System.out.println("Placed on Victorian table."); }
+}`
+      },
+      {
+        id: "builder",
+        name: "Builder",
+        category: "creational",
+        icon: "hammer",
+        summary: "Lets you construct complex objects step by step, allowing different representations of the same code.",
+        intent: "Separate the construction of a complex object from its representation so that the same construction process can create different representations.",
+        complexity: "Medium",
+        problem: "A giant constructor with numerous parameters (telescoping constructor anti-pattern) or complex step-by-step creation logic.",
+        solution: "Extract the object construction code out of its own class and move it to separate objects called builders.",
+        applicability: [
+          "Use the Builder pattern to get rid of a 'telescoping constructor'.",
+          "Use when you want your code to be able to create different representations of some product (e.g. stone and wooden houses)."
+        ],
+        code: `class Car {
+    private final String engine;
+    private final int seats;
+    private final boolean hasGPS;
+
+    private Car(Builder builder) {
+        this.engine = builder.engine;
+        this.seats = builder.seats;
+        this.hasGPS = builder.hasGPS;
+    }
+
+    public static class Builder {
+        private String engine;
+        private int seats = 4;
+        private boolean hasGPS = false;
+
+        public Builder setEngine(String engine) {
+            this.engine = engine;
+            return this;
+        }
+
+        public Builder setSeats(int seats) {
+            this.seats = seats;
+            return this;
+        }
+
+        public Builder setGPS(boolean hasGPS) {
+            this.hasGPS = hasGPS;
+            return this;
+        }
+
+        public Car build() {
+            return new Car(this);
+        }
+    }
+}`
+      },
+      {
+        id: "prototype",
+        name: "Prototype",
+        category: "creational",
+        icon: "copy",
+        summary: "Lets you copy existing objects without making your code dependent on their classes.",
+        intent: "Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype.",
+        complexity: "Easy",
+        problem: "Creating a duplicate of an object from the outside is often impossible due to private fields or class coupling.",
+        solution: "Declare a common interface for all objects that support cloning, delegating the cloning process to the actual object being cloned.",
+        applicability: [
+          "Use when your code shouldn't depend on the concrete classes of objects that you need to copy.",
+          "Use when you want to reduce the number of subclasses that only differ in the way they initialize their respective objects."
+        ],
+        code: `abstract class Shape {
+    public int x;
+    public int y;
+    public String color;
+
+    public Shape() {}
+
+    public Shape(Shape target) {
+        if (target != null) {
+            this.x = target.x;
+            this.y = target.y;
+            this.color = target.color;
+        }
+    }
+
+    public abstract Shape clone();
+}
+
+class Circle extends Shape {
+    public int radius;
+
+    public Circle() {}
+
+    public Circle(Circle target) {
+        super(target);
+        if (target != null) {
+            this.radius = target.radius;
+        }
+    }
+
+    @Override
+    public Shape clone() {
+        return new Circle(this);
+    }
+}`
+      },
+      {
+        id: "singleton",
+        name: "Singleton",
+        category: "creational",
+        icon: "shield-check",
+        summary: "Ensures that a class has only one instance, while providing a global access point to this instance.",
+        intent: "Ensure a class only has one instance, and provide a global point of access to it.",
+        complexity: "Easy",
+        problem: "Ensuring a class has just one instance (e.g. database connection, thread pool) while controlling global access.",
+        solution: "Make the default constructor private and create a static creation method that acts as a constructor.",
+        applicability: [
+          "Use when a class in your program should have just a single instance available to all clients.",
+          "Use when you need stricter control over global variables."
+        ],
+        code: `public final class DatabaseSingleton {
+    private static volatile DatabaseSingleton instance;
+    private String value;
+
+    private DatabaseSingleton(String value) {
+        this.value = value;
+    }
+
+    public static DatabaseSingleton getInstance(String value) {
+        DatabaseSingleton result = instance;
+        if (result != null) {
+            return result;
+        }
+        synchronized(DatabaseSingleton.class) {
+            if (instance == null) {
+                instance = new DatabaseSingleton(value);
+            }
+            return instance;
+        }
+    }
+}`
+      },
+
+      // STRUCTURAL
+      {
+        id: "adapter",
+        name: "Adapter",
+        category: "structural",
+        icon: "plug",
+        summary: "Allows objects with incompatible interfaces to collaborate.",
+        intent: "Convert the interface of a class into another interface clients expect.",
+        complexity: "Easy",
+        problem: "Incompatibility between legacy or third-party code interfaces and your core application interface.",
+        solution: "Create an adapter class that wraps one object to hide the complexity of conversion behind the scenes.",
+        applicability: [
+          "Use when you want to use an existing class, but its interface isn't compatible with the rest of your code.",
+          "Use when you want to reuse several existing subclasses that lack common functionality."
+        ],
+        code: `// Target Interface
+interface RoundPeg { double getRadius(); }
+
+// Incompatible Adaptee
+class SquarePeg {
+    private double width;
+    public SquarePeg(double width) { this.width = width; }
+    public double getWidth() { return width; }
+}
+
+// Adapter
+class SquarePegAdapter implements RoundPeg {
+    private SquarePeg peg;
+
+    public SquarePegAdapter(SquarePeg peg) {
+        this.peg = peg;
+    }
+
+    @Override
+    public double getRadius() {
+        // Calculate minimum radius to fit square peg
+        return Math.sqrt(Math.pow((peg.getWidth() / 2), 2) * 2);
+    }
+}`
+      },
+      {
+        id: "bridge",
+        name: "Bridge",
+        category: "structural",
+        icon: "git-fork",
+        summary: "Lets you divide a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation.",
+        intent: "Decouple an abstraction from its implementation so that the two can vary independently.",
+        complexity: "Medium",
+        problem: "Class explosion caused by combining two orthogonal dimensions (e.g. Remote Controls x Device Types).",
+        solution: "Switch from inheritance to object composition by extracting one dimension into a separate class hierarchy.",
+        applicability: [
+          "Use when you want to divide and organize a monolithic class that has several variants of functionality.",
+          "Use when you need to extend a class in several independent dimensions."
+        ],
+        code: `// Implementation Interface
+interface Device {
+    boolean isEnabled();
+    void enable();
+    void disable();
+}
+
+// Abstraction
+class RemoteControl {
+    protected Device device;
+
+    public RemoteControl(Device device) { this.device = device; }
+
+    public void togglePower() {
+        if (device.isEnabled()) device.disable();
+        else device.enable();
+    }
+}
+
+// Concrete Implementation
+class Tv implements Device {
+    private boolean on = false;
+    public boolean isEnabled() { return on; }
+    public void enable() { on = true; }
+    public void disable() { on = false; }
+}`
+      },
+      {
+        id: "composite",
+        name: "Composite",
+        category: "structural",
+        icon: "folder-tree",
+        summary: "Lets you compose objects into tree structures and then work with these structures as if they were individual objects.",
+        intent: "Compose objects into tree structures to represent part-whole hierarchies.",
+        complexity: "Medium",
+        problem: "Working with complex tree-like structures (e.g., File System, UI Elements) where leaves and containers need similar treatment.",
+        solution: "Work with simple and complex elements through a common interface that declares methods for executing operations.",
+        applicability: [
+          "Use when you have to implement a tree-like object structure.",
+          "Use when you want client code to treat simple and complex elements uniformly."
+        ],
+        code: `import java.util.*;
+
+// Component Interface
+interface Component {
+    void execute();
+}
+
+// Leaf
+class GraphicLeaf implements Component {
+    public void execute() { System.out.println("Draw Leaf Graphic"); }
+}
+
+// Composite
+class CompoundGraphic implements Component {
+    private List<Component> children = new ArrayList<>();
+
+    public void add(Component child) { children.add(child); }
+    
+    public void execute() {
+        for (Component child : children) {
+            child.execute();
+        }
+    }
+}`
+      },
+      {
+        id: "decorator",
+        name: "Decorator",
+        category: "structural",
+        icon: "layers",
+        summary: "Lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.",
+        intent: "Attach additional responsibilities to an object dynamically.",
+        complexity: "Medium",
+        problem: "Extending object behavior using inheritance creates rigid hierarchies and leads to class explosion.",
+        solution: "Wrap the original object inside a target decorator class that implements the same interface.",
+        applicability: [
+          "Use when you need to assign extra behaviors to objects at runtime without breaking code.",
+          "Use when it's awkward or impossible to extend an object's behavior using inheritance."
+        ],
+        code: `interface DataSource {
+    void writeData(String data);
+}
+
+class FileDataSource implements DataSource {
+    public void writeData(String data) { System.out.println("Writing: " + data); }
+}
+
+// Base Decorator
+class DataSourceDecorator implements DataSource {
+    protected DataSource wrappee;
+
+    public DataSourceDecorator(DataSource source) { this.wrappee = source; }
+
+    public void writeData(String data) { wrappee.writeData(data); }
+}
+
+// Concrete Decorator
+class EncryptionDecorator extends DataSourceDecorator {
+    public EncryptionDecorator(DataSource source) { super(source); }
+
+    @Override
+    public void writeData(String data) {
+        String encrypted = "Encrypted(" + data + ")";
+        super.writeData(encrypted);
+    }
+}`
+      },
+      {
+        id: "facade",
+        name: "Facade",
+        category: "structural",
+        icon: "layout",
+        summary: "Provides a simplified interface to a library, a framework, or any other complex set of classes.",
+        intent: "Provide a unified interface to a set of interfaces in a subsystem.",
+        complexity: "Easy",
+        problem: "Your code must interact with dozens of objects belonging to a complex framework or third-party library.",
+        solution: "A facade class provides a simple interface to a complex subsystem containing many moving parts.",
+        applicability: [
+          "Use when you need to have a limited but straightforward interface to a complex subsystem.",
+          "Use when you want to structure a subsystem into layers."
+        ],
+        code: `class VideoConverterFacade {
+    public void convertVideo(String fileName, String format) {
+        System.out.println("Reading file: " + fileName);
+        System.out.println("Encoding to format: " + format);
+        System.out.println("Audio processing complete.");
+        System.out.println("Video successfully converted!");
+    }
+}
+
+// Client
+class Application {
+    public static void main(String[] args) {
+        VideoConverterFacade converter = new VideoConverterFacade();
+        converter.convertVideo("movie.ogg", "mp4");
+    }
+}`
+      },
+      {
+        id: "flyweight",
+        name: "Flyweight",
+        category: "structural",
+        icon: "feather",
+        summary: "Lets you fit more objects into the available amount of RAM by sharing common parts of state between multiple objects.",
+        intent: "Use sharing to support large numbers of fine-grained objects efficiently.",
+        complexity: "Hard",
+        problem: "Application consumes too much RAM because of creating thousands of heavy duplicate objects.",
+        solution: "Separate intrinsic state (shared/constant) from extrinsic state (contextual) and reuse shared flyweight instances.",
+        applicability: [
+          "Use the Flyweight pattern only when your program must spawn a huge number of objects which barely fit in RAM."
+        ],
+        code: `import java.util.*;
+
+// Shared Flyweight
+class TreeType {
+    private String name;
+    private String color;
+
+    public TreeType(String name, String color) {
+        this.name = name;
+        this.color = color;
+    }
+
+    public void draw(int x, int y) {
+        System.out.println("Drawing tree " + name + " at " + x + "," + y);
+    }
+}
+
+// Factory for caching
+class TreeFactory {
+    private static Map<String, TreeType> treeTypes = new HashMap<>();
+
+    public static TreeType getTreeType(String name, String color) {
+        String key = name + "_" + color;
+        if (!treeTypes.containsKey(key)) {
+            treeTypes.put(key, new TreeType(name, color));
+        }
+        return treeTypes.get(key);
+    }
+}`
+      },
+      {
+        id: "proxy",
+        name: "Proxy",
+        category: "structural",
+        icon: "shield-alert",
+        summary: "Lets you provide a substitute or placeholder for another object to control access to it.",
+        intent: "Provide a surrogate or placeholder for another object to control access to it.",
+        complexity: "Medium",
+        problem: "Lazy initialization, access control, caching, or logging overhead before delegating calls to an expensive object.",
+        solution: "Create a proxy class with the same interface as the target object, intercepting client requests.",
+        applicability: [
+          "Lazy initialization (virtual proxy).",
+          "Access control (protection proxy).",
+          "Local execution of a remote service (remote proxy)."
+        ],
+        code: `interface ThirdPartyYouTubeLib {
+    void downloadVideo(String id);
+}
+
+class ThirdPartyYouTubeClass implements ThirdPartyYouTubeLib {
+    public void downloadVideo(String id) {
+        System.out.println("Downloading video from API: " + id);
+    }
+}
+
+class CachedYouTubeClass implements ThirdPartyYouTubeLib {
+    private ThirdPartyYouTubeLib service;
+    private boolean downloaded = false;
+
+    public CachedYouTubeClass(ThirdPartyYouTubeLib service) {
+        this.service = service;
+    }
+
+    public void downloadVideo(String id) {
+        if (!downloaded) {
+            service.downloadVideo(id);
+            downloaded = true;
+        } else {
+            System.out.println("Retrieved video " + id + " from cache.");
+        }
+    }
+}`
+      },
+
+      // BEHAVIORAL
+      {
+        id: "chain-of-responsibility",
+        name: "Chain of Responsibility",
+        category: "behavioral",
+        icon: "link",
+        summary: "Lets you pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler.",
+        intent: "Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request.",
+        complexity: "Medium",
+        problem: "Processing sequential request steps (auth, authorization, validation) conditionally without coupling code.",
+        solution: "Link sequential handlers into a chain; each holds a reference to the next.",
+        applicability: [
+          "Use when your program is expected to process different kinds of requests in various ways, but exact types aren't known in advance."
+        ],
+        code: `abstract class Handler {
+    private Handler next;
+
+    public Handler linkWith(Handler next) {
+        this.next = next;
+        return next;
+    }
+
+    public abstract boolean check(String email, String password);
+
+    protected boolean checkNext(String email, String password) {
+        if (next == null) return true;
+        return next.check(email, password);
+    }
+}
+
+class UserExistsHandler extends Handler {
+    public boolean check(String email, String password) {
+        if (!email.equals("admin@site.com")) return false;
+        return checkNext(email, password);
+    }
+}`
+      },
+      {
+        id: "command",
+        name: "Command",
+        category: "behavioral",
+        icon: "terminal",
+        summary: "Turns a request into a stand-alone object that contains all information about the request.",
+        intent: "Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.",
+        complexity: "Medium",
+        problem: "Direct execution calls between UI elements and business logic classes create heavy coupling.",
+        solution: "Extract request details into a standalone command class with a simple execution interface.",
+        applicability: [
+          "Use when you want to parameterize objects with operations.",
+          "Use when you want to queue operations, schedule their execution, or execute them remotely."
+        ],
+        code: `// Command Interface
+interface Command {
+    void execute();
+}
+
+class SaveCommand implements Command {
+    private TextEditor editor;
+    public SaveCommand(TextEditor editor) { this.editor = editor; }
+    
+    public void execute() {
+        editor.save();
+    }
+}
+
+class Button {
+    private Command command;
+    public void setCommand(Command c) { this.command = c; }
+    public void click() { command.execute(); }
+}`
+      },
+      {
+        id: "interpreter",
+        name: "Interpreter",
+        category: "behavioral",
+        icon: "languages",
+        summary: "Given a language, defines a representation for its grammar along with an interpreter that uses this representation to interpret sentences in the language.",
+        intent: "Given a language, define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language.",
+        complexity: "Hard",
+        problem: "A recurring problem, such as evaluating expressions or rule sets, keeps being solved with ad-hoc parsing and evaluation logic scattered across the codebase.",
+        solution: "Model each grammar rule as a class capable of interpreting itself, then compose these classes into a syntax tree that represents and evaluates a sentence in the language.",
+        applicability: [
+          "Use when the grammar of the language is relatively simple and efficiency is not a critical concern.",
+          "Use when you have a recurring problem that can be represented as sentences in a simple language, such as rule engines or expression evaluators."
+        ],
+        code: `// Abstract Expression
+interface Expression {
+    int interpret();
+}
+
+// Terminal Expression
+class NumberExpression implements Expression {
+    private int number;
+    public NumberExpression(int number) { this.number = number; }
+    public int interpret() { return number; }
+}
+
+// Non-terminal Expressions
+class AddExpression implements Expression {
+    private Expression left;
+    private Expression right;
+
+    public AddExpression(Expression left, Expression right) {
+        this.left = left;
+        this.right = right;
+    }
+
+    public int interpret() {
+        return left.interpret() + right.interpret();
+    }
+}
+
+class SubtractExpression implements Expression {
+    private Expression left;
+    private Expression right;
+
+    public SubtractExpression(Expression left, Expression right) {
+        this.left = left;
+        this.right = right;
+    }
+
+    public int interpret() {
+        return left.interpret() - right.interpret();
+    }
+}
+
+// Client builds and evaluates "5 + 10 - 3"
+class InterpreterDemo {
+    public static void main(String[] args) {
+        Expression expression = new SubtractExpression(
+            new AddExpression(new NumberExpression(5), new NumberExpression(10)),
+            new NumberExpression(3)
+        );
+        System.out.println("Result: " + expression.interpret());
+    }
+}`
+      },
+      {
+        id: "iterator",
+        name: "Iterator",
+        category: "behavioral",
+        icon: "list-ordered",
+        summary: "Lets you traverse elements of a collection without exposing its underlying representation.",
+        intent: "Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.",
+        complexity: "Easy",
+        problem: "Complex collection data structures (trees, graphs, lists) require varied traversal algorithms without cluttering core logic.",
+        solution: "Extract traversal behavior into separate Iterator objects.",
+        applicability: [
+          "Use when your collection has a complex data structure under the hood, but you want to hide its complexity from clients."
+        ],
+        code: `interface Iterator<T> {
+    boolean hasNext();
+    T next();
+}
+
+class NameRepository {
+    public String[] names = {"Robert", "John", "Julie", "Lora"};
+
+    public Iterator<String> getIterator() {
+        return new NameIterator();
+    }
+
+    private class NameIterator implements Iterator<String> {
+        int index = 0;
+        public boolean hasNext() { return index < names.length; }
+        public String next() { return this.hasNext() ? names[index++] : null; }
+    }
+}`
+      },
+      {
+        id: "mediator",
+        name: "Mediator",
+        category: "behavioral",
+        icon: "users",
+        summary: "Lets you reduce chaotic dependencies between objects. The pattern restricts direct communications between the objects and forces them to collaborate only via a mediator object.",
+        intent: "Define an object that encapsulates how a set of objects interact.",
+        complexity: "Medium",
+        problem: "Tightly coupled components communicating directly create spaghetti code and hard-to-maintain dependencies.",
+        solution: "Redirect all communications between components through a central mediator object.",
+        applicability: [
+          "Use when it's hard to change some of the classes because they are tightly coupled to a dozen of other classes."
+        ],
+        code: `interface Mediator {
+    void notify(Object sender, String event);
+}
+
+class DialogMediator implements Mediator {
+    public void notify(Object sender, String event) {
+        if (event.equals("click")) {
+            System.out.println("Mediator handling click and updating UI.");
+        }
+    }
+}`
+      },
+      {
+        id: "memento",
+        name: "Memento",
+        category: "behavioral",
+        icon: "history",
+        summary: "Lets you save and restore the previous state of an object without revealing the details of its implementation.",
+        intent: "Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later.",
+        complexity: "Medium",
+        problem: "Implementing undo/redo features while preserving private encapsulation of state.",
+        solution: "Delegate creating state snapshots to the actual owner of that state (the Originator).",
+        applicability: [
+          "Use when you want to produce snapshots of the object's state to be able to restore a previous state of the object."
+        ],
+        code: `// Memento stores state
+class EditorMemento {
+    private final String content;
+    public EditorMemento(String content) { this.content = content; }
+    public String getContent() { return content; }
+}
+
+// Originator creates & restores
+class TextEditor {
+    private String content;
+    public void setText(String text) { this.content = text; }
+    public EditorMemento save() { return new EditorMemento(content); }
+    public void restore(EditorMemento memento) { this.content = memento.getContent(); }
+}`
+      },
+      {
+        id: "observer",
+        name: "Observer",
+        category: "behavioral",
+        icon: "bell",
+        summary: "Lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they're observing.",
+        intent: "Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified.",
+        complexity: "Easy",
+        problem: "Objects need to react to changes in state of another object without polling or tight coupling.",
+        solution: "A publisher object maintains a list of subscribers and notifies them automatically upon state change.",
+        applicability: [
+          "Use when changes to the state of one object may require changing other objects, and the actual set of objects is unknown in advance."
+        ],
+        code: `import java.util.*;
+
+interface EventListener {
+    void update(String eventType, String file);
+}
+
+class EventManager {
+    Map<String, List<EventListener>> listeners = new HashMap<>();
+
+    public void subscribe(String eventType, EventListener listener) {
+        listeners.computeIfAbsent(eventType, k -> new ArrayList<>()).add(listener);
+    }
+
+    public void notify(String eventType, String file) {
+        List<EventListener> users = listeners.get(eventType);
+        if (users != null) for (EventListener l : users) l.update(eventType, file);
+    }
+}`
+      },
+      {
+        id: "state",
+        name: "State",
+        category: "behavioral",
+        icon: "toggle-right",
+        summary: "Lets an object alter its behavior when its internal state changes. It appears as if the object changed its class.",
+        intent: "Allow an object to alter its behavior when its internal state changes.",
+        complexity: "Medium",
+        problem: "Monolithic conditional state-machine switches (`switch` / `if-else`) that alter class behavior dynamically.",
+        solution: "Extract state-specific behaviors into separate state classes and delegate calls.",
+        applicability: [
+          "Use when you have an object that behaves differently depending on its current state, the number of states is enormous, and state code changes frequently."
+        ],
+        code: `abstract class State {
+    protected Player player;
+    public State(Player player) { this.player = player; }
+    public abstract void clickPlay();
+}
+
+class PlayingState extends State {
+    public PlayingState(Player player) { super(player); }
+    public void clickPlay() {
+        player.changeState(new ReadyState(player));
+        System.out.println("Paused playing.");
+    }
+}`
+      },
+      {
+        id: "strategy",
+        name: "Strategy",
+        category: "behavioral",
+        icon: "compass",
+        summary: "Lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable.",
+        intent: "Define a family of algorithms, encapsulate each one, and make them interchangeable.",
+        complexity: "Easy",
+        problem: "Having multiple algorithms for a specific task leads to massive conditional blocks in context code.",
+        solution: "Extract algorithms into standalone classes conforming to a common strategy interface.",
+        applicability: [
+          "Use when you want to use different variants of an algorithm within an object and be able to switch from one algorithm to another during runtime."
+        ],
+        code: `interface PayStrategy {
+    boolean pay(int paymentAmount);
+}
+
+class PayByCreditCard implements PayStrategy {
+    public boolean pay(int amount) {
+        System.out.println("Paying " + amount + " using Credit Card.");
+        return true;
+    }
+}
+
+class Order {
+    public void processOrder(PayStrategy strategy, int amount) {
+        strategy.pay(amount);
+    }
+}`
+      },
+      {
+        id: "template-method",
+        name: "Template Method",
+        category: "behavioral",
+        icon: "file-code",
+        summary: "Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.",
+        intent: "Define the skeleton of an algorithm in an operation, deferring some steps to subclasses.",
+        complexity: "Easy",
+        problem: "Duplicate algorithm structure across multiple classes with slight variations in individual steps.",
+        solution: "Break down algorithm steps into methods and call them sequentially in a template method inside abstract superclass.",
+        applicability: [
+          "Use when you want to let clients extend only particular steps of an algorithm, but not the whole algorithm or its structure."
+        ],
+        code: `abstract class DataMiner {
+    // Template Method
+    public final void mine(String path) {
+        openFile(path);
+        extractData();
+        closeFile();
+    }
+
+    abstract void openFile(String path);
+    abstract void extractData();
+    void closeFile() { System.out.println("Closing file."); }
+}
+
+class PDFDataMiner extends DataMiner {
+    void openFile(String path) { System.out.println("Opening PDF file: " + path); }
+    void extractData() { System.out.println("Extracting PDF data..."); }
+}`
+      },
+      {
+        id: "visitor",
+        name: "Visitor",
+        category: "behavioral",
+        icon: "footprints",
+        summary: "Lets you separate algorithms from the objects on which they operate.",
+        intent: "Represent an operation to be performed on the elements of an object structure without changing their classes.",
+        complexity: "Hard",
+        problem: "Adding new behaviors to a complex object tree requires modifying all existing element classes.",
+        solution: "Place the new behavior into a separate visitor object that gets passed to elements via double dispatch.",
+        applicability: [
+          "Use when you need to perform an operation on all elements of a complex object structure (e.g. an object tree)."
+        ],
+        code: `interface Visitor {
+    void visitDot(Dot dot);
+}
+
+interface ShapeElement {
+    void accept(Visitor visitor);
+}
+
+class Dot implements ShapeElement {
+    public void accept(Visitor visitor) { visitor.visitDot(this); }
+}
+
+class XmlExportVisitor implements Visitor {
+    public void visitDot(Dot dot) {
+        System.out.println("Exporting Dot coordinates to XML format.");
+    }
+}`
+      }
+    ];
+
+    // App Logic & DOM Manipulation
+    let activePattern = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCards(patternsData);
+      lucide.createIcons();
+      setupEventListeners();
+    });
+
+    function setupEventListeners() {
+      // ESC Key to close modal
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      // Backdrop click to close modal
+      document.getElementById("modalBackdrop").addEventListener("click", closeModal);
+    }
+
+    function renderCards(data) {
+      const creationalCol = document.getElementById("col-creational");
+      const structuralCol = document.getElementById("col-structural");
+      const behavioralCol = document.getElementById("col-behavioral");
+
+      creationalCol.innerHTML = "";
+      structuralCol.innerHTML = "";
+      behavioralCol.innerHTML = "";
+
+      let counts = { creational: 0, structural: 0, behavioral: 0 };
+
+      data.forEach(p => {
+        counts[p.category]++;
+        const cardHtml = createCardElement(p);
+
+        if (p.category === "creational") creationalCol.insertAdjacentHTML("beforeend", cardHtml);
+        else if (p.category === "structural") structuralCol.insertAdjacentHTML("beforeend", cardHtml);
+        else if (p.category === "behavioral") behavioralCol.insertAdjacentHTML("beforeend", cardHtml);
+      });
+
+      // Update counters
+      document.getElementById("count-creational").innerText = counts.creational;
+      document.getElementById("count-structural").innerText = counts.structural;
+      document.getElementById("count-behavioral").innerText = counts.behavioral;
+
+      // Show empty state if no results
+      const total = counts.creational + counts.structural + counts.behavioral;
+      document.getElementById("noResultsMsg").classList.toggle("hidden", total > 0);
+      document.getElementById("patternsGrid").classList.toggle("hidden", total === 0);
+
+      // Re-initialize icons for dynamically rendered elements
+      lucide.createIcons();
+    }
+
+    function createCardElement(pattern) {
+      const themeMap = {
+        creational: { border: "hover:border-sky-500/50", badge: "bg-sky-950/60 text-sky-300 border-sky-800/40", iconColor: "text-sky-400" },
+        structural: { border: "hover:border-emerald-500/50", badge: "bg-emerald-950/60 text-emerald-300 border-emerald-800/40", iconColor: "text-emerald-400" },
+        behavioral: { border: "hover:border-purple-500/50", badge: "bg-purple-950/60 text-purple-300 border-purple-800/40", iconColor: "text-purple-400" }
+      };
+
+      const theme = themeMap[pattern.category];
+
+      return `
+        <div 
+          onclick="openModal('${pattern.id}')"
+          class="group glass-panel rounded-xl p-4 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/5 border ${theme.border} flex flex-col justify-between space-y-3"
+        >
+          <div class="space-y-2">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <i data-lucide="${pattern.icon}" class="w-5 h-5 ${theme.iconColor}"></i>
+                <h3 class="font-semibold text-slate-100 group-hover:text-indigo-300 transition-colors text-base">${pattern.name}</h3>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${pattern.summary}</p>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-800/60 text-[11px] text-slate-400">
+            <span class="px-2 py-0.5 rounded-full border ${theme.badge} capitalize">${pattern.category}</span>
+            <span class="flex items-center gap-1 group-hover:translate-x-0.5 transition-transform text-slate-400 group-hover:text-slate-200">
+              Details <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </span>
+          </div>
+        </div>
+      `;
+    }
+
+    // Search functionality
+    function handleSearch() {
+      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+      const clearBtn = document.getElementById("clearSearchBtn");
+      
+      clearBtn.classList.toggle("hidden", query.length === 0);
+
+      const filtered = patternsData.filter(p => 
+        p.name.toLowerCase().includes(query) ||
+        p.summary.toLowerCase().includes(query) ||
+        p.intent.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query)
+      );
+
+      renderCards(filtered);
+    }
+
+    function clearSearch() {
+      document.getElementById("searchInput").value = "";
+      handleSearch();
+    }
+
+    function resetFilters() {
+      clearSearch();
+    }
+
+    // Modal Operations
+    function openModal(patternId) {
+      const pattern = patternsData.find(p => p.id === patternId);
+      if (!pattern) return;
+
+      activePattern = pattern;
+
+      // Fill modal details
+      document.getElementById("modalTitle").innerText = pattern.name;
+      document.getElementById("modalIntent").innerText = `"${pattern.intent}"`;
+      document.getElementById("modalProblem").innerText = pattern.problem;
+      document.getElementById("modalSolution").innerText = pattern.solution;
+      document.getElementById("modalComplexityText").innerText = `${pattern.complexity} Complexity`;
+
+      // Category badge styling
+      const badge = document.getElementById("modalCategoryBadge");
+      badge.innerText = pattern.category.toUpperCase();
+      badge.className = "text-xs px-2.5 py-1 rounded-full font-semibold border ";
+      if (pattern.category === "creational") badge.className += "bg-sky-950 text-sky-300 border-sky-700";
+      else if (pattern.category === "structural") badge.className += "bg-emerald-950 text-emerald-300 border-emerald-700";
+      else badge.className += "bg-purple-950 text-purple-300 border-purple-700";
+
+      // Applicability items
+      const appList = document.getElementById("modalApplicability");
+      appList.innerHTML = pattern.applicability.map(item => `<li class="leading-relaxed">${item}</li>`).join("");
+
+      // Code Block with Syntax Highlighting
+      const codeElem = document.getElementById("modalCode");
+      codeElem.textContent = pattern.code;
+      delete codeElem.dataset.highlighted;
+      hljs.highlightElement(codeElem);
+
+      // Open Modal Animation
+      const modal = document.getElementById("patternModal");
+      const container = document.getElementById("modalContainer");
+
+      modal.classList.remove("opacity-0", "pointer-events-none");
+      container.classList.remove("scale-95");
+      container.classList.add("scale-100");
+
+      document.body.style.overflow = "hidden"; // Prevent background scroll
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("patternModal");
+      const container = document.getElementById("modalContainer");
+
+      modal.classList.add("opacity-0", "pointer-events-none");
+      container.classList.remove("scale-100");
+      container.classList.add("scale-95");
+
+      document.body.style.overflow = ""; // Restore background scroll
+      activePattern = null;
+    }
+
+    // Copy Code Snippet
+    function copyCodeSnippet() {
+      if (!activePattern) return;
+      
+      const textToCopy = activePattern.code;
+      
+      // Fallback copy execution
+      const textArea = document.createElement("textarea");
+      textArea.value = textToCopy;
+      document.body.appendChild(textArea);
+      textArea.select();
+      
+      try {
+        document.execCommand("copy");
+        showToast("Java code example copied to clipboard!");
+      } catch (err) {
+        showToast("Failed to copy code.");
+      }
+      
+      document.body.removeChild(textArea);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toastMsg").innerText = msg;
+
+      toast.classList.remove("translate-y-20", "opacity-0");
+      setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
