@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microservices Patterns Explorer (All 52 Patterns)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0B0F19',
+                        darkcard: '#111827',
+                        darkcardhover: '#1F2937',
+                        darkborder: '#1F2937',
+                        accent: {
+                            50: '#EEF2FF',
+                            100: '#E0E7FF',
+                            500: '#6366F1',
+                            600: '#4F46E5',
+                            700: '#4338CA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #374151; border-radius: 9999px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #4B5563; }
+        .diagram-node { transition: transform 0.2s ease, filter 0.2s ease; }
+        .diagram-node:hover { transform: translateY(-2px); filter: brightness(1.2); }
+    </style>
+</head>
+<body class="bg-darkbg text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+    <header class="sticky top-0 z-30 bg-darkbg/90 backdrop-blur-xl border-b border-darkborder px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            
+            <!-- Logo & Badge Stats -->
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2.5 bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-600 rounded-xl text-white shadow-lg shadow-indigo-500/20 ring-1 ring-white/20">
+                        <i class="fa-solid fa-cubes-stacked text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="font-extrabold text-lg sm:text-xl tracking-tight text-white">Microservices Patterns</h1>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/30">52 Patterns</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-0.5">Complete Pattern Language from <a href="https://microservices.io/patterns/index.html" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">microservices.io</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Input Bar -->
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <div class="relative flex-1 md:w-96">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
+                    <input type="text" id="searchInput" placeholder="Search 52 patterns, problem keywords, tags..." 
+                           class="w-full pl-10 pr-10 py-2 bg-darkcard border border-darkborder rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all">
+                    <button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300">
+                        <i class="fa-solid fa-circle-xmark text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-6 flex-1 w-full">
+        
+        <!-- Category Filter Pills Bar -->
+        <div class="mb-6">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-indigo-400"></i> Domain Categories (15)
+                </h2>
+                <span id="patternCountLabel" class="text-xs text-slate-400 font-medium">Showing 52 of 52 patterns</span>
+            </div>
+            <div id="categoryContainer" class="flex items-center gap-2 overflow-x-auto pb-2 custom-scrollbar">
+                <!-- Dynamic Category Buttons -->
+            </div>
+        </div>
+
+        <!-- Patterns Cards Grid -->
+        <div id="patternsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Pattern Cards Populated Dynamically via JavaScript -->
+        </div>
+
+        <!-- Empty Filter Results State -->
+        <div id="emptyState" class="hidden text-center py-20 bg-darkcard/50 rounded-2xl border border-darkborder my-8">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl">
+                <i class="fa-solid fa-filter-circle-xmark"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-200">No matching patterns found</h3>
+            <p class="text-sm text-slate-400 mt-1 max-w-md mx-auto">Try broadening your search term or select "All Categories" to view available architectural patterns.</p>
+            <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold transition-colors">
+                Reset All Filters
+            </button>
+        </div>
+    </main>
+
+    <div id="patternModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
+        <div id="modalContent" class="bg-darkcard border border-darkborder w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] my-auto transform transition-all duration-200 opacity-0 scale-95">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-darkborder flex items-center justify-between sticky top-0 bg-darkcard/95 backdrop-blur-md z-10">
+                <div class="flex items-center space-x-3">
+                    <span id="modalCategoryBadge" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                        Category
+                    </span>
+                    <h3 id="modalPatternTitle" class="text-xl font-extrabold text-white tracking-tight">Pattern Title</h3>
+                </div>
+                <button id="closeModalBtn" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar space-y-6">
+                <!-- Overview -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info"></i> Pattern Overview
+                    </h4>
+                    <p id="modalOverview" class="text-slate-300 leading-relaxed text-sm sm:text-base font-normal"></p>
+                </div>
+
+                <!-- Context -->
+                <div id="modalContextSection" class="hidden">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> Context
+                    </h4>
+                    <p id="modalContext" class="text-slate-300 leading-relaxed text-xs sm:text-sm font-normal"></p>
+                </div>
+
+                <!-- Diagram Container -->
+                <div id="modalDiagramContainer" class="p-4 bg-slate-950/80 rounded-xl border border-darkborder">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project"></i> Architecture Blueprint
+                        </span>
+                        <span class="text-[11px] text-slate-500 italic">Visual Component Model</span>
+                    </div>
+                    <div id="diagramSvgWrapper" class="w-full flex justify-center items-center min-h-[180px] overflow-x-auto">
+                        <!-- Custom SVG dynamic diagrams -->
+                    </div>
+                </div>
+
+                <!-- Problem & Solution Block -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-amber-950/20 rounded-xl border border-amber-500/20">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-question"></i> Problem / Context
+                        </h4>
+                        <p id="modalProblem" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+                    </div>
+                    <div class="p-4 bg-emerald-950/20 rounded-xl border border-emerald-500/20">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved"></i> Solution Strategy
+                        </h4>
+                        <p id="modalSolution" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <!-- Forces -->
+                <div id="modalForcesSection" class="hidden">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced"></i> Forces
+                    </h4>
+                    <div id="modalForces" class="grid md:grid-cols-2 gap-4"></div>
+                </div>
+
+                <!-- Example -->
+                <div id="modalExampleSection" class="hidden">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb"></i> Example
+                    </h4>
+                    <p id="modalExample" class="text-slate-300 leading-relaxed text-xs sm:text-sm font-normal"></p>
+                </div>
+
+                <!-- Benefits vs Drawbacks -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div id="modalBenefitsCard" class="p-4 bg-slate-900/60 rounded-xl border border-darkborder">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-plus"></i> Key Benefits
+                        </h4>
+                        <ul id="modalBenefits" class="space-y-2 text-xs sm:text-sm text-slate-300">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+                    <div id="modalDrawbacksCard" class="p-4 bg-slate-900/60 rounded-xl border border-darkborder">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-rose-400 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-minus"></i> Trade-offs & Drawbacks
+                        </h4>
+                        <ul id="modalDrawbacks" class="space-y-2 text-xs sm:text-sm text-slate-300">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Issues -->
+                <div id="modalIssuesSection" class="hidden">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Key Issues
+                    </h4>
+                    <p id="modalIssues" class="text-slate-300 leading-relaxed text-xs sm:text-sm font-normal"></p>
+                </div>
+
+                <!-- Known Uses -->
+                <div id="modalKnownUsesSection" class="hidden">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-tower-broadcast"></i> Known Uses
+                    </h4>
+                    <p id="modalKnownUses" class="text-slate-300 leading-relaxed text-xs sm:text-sm font-normal"></p>
+                </div>
+
+                <!-- Related Links -->
+                <div class="pt-2 border-t border-darkborder">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">Related Patterns</h4>
+                    <div id="modalRelated" class="flex flex-wrap gap-2">
+                        <!-- Related pattern pill tags -->
+                    </div>
+                    <a id="modalSourceLink" href="#" target="_blank" rel="noopener noreferrer"
+                       class="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View full pattern on microservices.io
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Full catalog of all 52 Microservices Patterns from microservices.io
+        const PATTERNS_DATA = [
+            // Category 1: Architectural Style (2)
+            {
+                id: "monolithic-architecture",
+                name: "Monolithic Architecture",
+                category: "Architectural Style",
+                icon: "fa-box-archive",
+                shortDesc: "Structure an application as a single deployable software unit.",
+                overview: "Architect an application as a single deployable/executable component that uses a single database and contains all of the application's subdomains.",
+                context: "You are developing a business-critical enterprise application that must deliver changes rapidly, frequently and reliably (measured by the DORA metrics). The engineering organization is made up of small, loosely coupled, cross-functional teams (Team Topologies) practicing DevOps and continuous deployment. Each team owns one or more subdomains - an implementable model of a slice of business functionality (a.k.a. business capability), consisting of business entities (DDD aggregates) that implement business rules plus adapters to the outside world. Subdomains implement the application's operations, which are invoked by synchronous or asynchronous requests from clients, events published by other applications and services, or the passing of time.",
+                problem: "How to organize the subdomains into one or more deployable/executable components?",
+                solution: "Design the architecture as a single deployable/executable component that uses a single database. The component contains all of the application's subdomains, and because there is a single component every operation is local. Multiple instances can be run behind a load balancer to scale and improve availability.",
+                forces: {
+                    energy: [
+                        "Simple components - components consisting of few subdomains are easier to understand and maintain.",
+                        "Team autonomy - a team must be able to develop, test and deploy its software independently of other teams.",
+                        "Fast deployment pipeline - fast feedback and high deployment frequency require components that are fast to build and test.",
+                        "Support multiple technology stacks - subdomains may use a variety of technologies, and stacks need to evolve to current language and framework versions.",
+                        "Segregate by characteristics - separate subdomains by resource, availability or security requirements to improve scalability, availability and security."
+                    ],
+                    matter: [
+                        "Simple interactions - local operations, or a few simple interactions, are easier to understand and troubleshoot than complex distributed operations.",
+                        "Efficient interactions - distributed operations with many network round trips and large data transfers can be too inefficient.",
+                        "Prefer ACID over BASE - it is easier to implement an operation as an ACID transaction than as an eventually consistent saga.",
+                        "Minimize runtime coupling - to maximize availability and reduce the latency of an operation.",
+                        "Minimize design-time coupling - reduce the likelihood of changing services in lockstep, which reduces productivity."
+                    ]
+                },
+                benefits: [
+                    "Simple interactions - interactions are generally easier to understand and troubleshoot (though interactions between subdomains can still be complex).",
+                    "Efficient interactions - all communication is local, so interactions are typically more efficient.",
+                    "Prefer ACID over BASE - operations can usually be implemented as ACID transactions.",
+                    "Minimize runtime coupling - there is no runtime coupling between components.",
+                    "Minimize design-time coupling - there is no design-time coupling between components (subdomains within the monolith can still be coupled)."
+                ],
+                drawbacks: [
+                    "Simple components - a single component is potentially difficult to understand and maintain due to its size and complexity.",
+                    "Team autonomy - less autonomy because all teams contribute to the same codebase and must coordinate their work.",
+                    "Fast deployment pipeline - the pipeline is potentially slow because one large application must be built and tested.",
+                    "Support multiple technology stacks - the application uses a single stack, which may not suit every subdomain, and upgrading it can be very time consuming.",
+                    "Segregate by characteristics - subdomains cannot be segregated by characteristics, potentially reducing scalability, availability and security."
+                ],
+                issues: "A key challenge is minimizing the potential drawbacks as the application grows in size and the number of teams increases. Approaches include modularizing the monolith into vertical slices (presentation, business and persistence logic) instead of a layered architecture, and accelerating the deployment pipeline via physical design principles, an automated merge queue, incremental build/test tooling, and parallelized clustered build and test steps.",
+                examples: "A fictitious e-commerce application that takes orders from customers, verifies inventory and available credit, and ships them. It is deployed as a single monolithic application - for example a Java web application packaged as a single WAR running on Tomcat, or a Rails application deployed on Passenger/Nginx. Multiple instances run behind a load balancer to scale and improve availability.",
+                knownUses: "Well-known internet services such as Netflix, Amazon.com and eBay initially had a monolithic architecture. Most web applications developed by the author prior to 2012 had a monolithic architecture.",
+                related: ["Microservice Architecture"],
+                hasDiagram: false
+            },
+            {
+                id: "microservice-architecture",
+                name: "Microservice Architecture",
+                category: "Architectural Style",
+                icon: "fa-cubes",
+                shortDesc: "Architect an application as a collection of independently deployable services.",
+                overview: "Design an architecture that structures the application as a set of two or more independently deployable, loosely coupled components (services). Each service consists of one or more subdomains and is owned by the team(s) that own those subdomains.",
+                context: "You are developing a business-critical enterprise application that must deliver changes rapidly, frequently and reliably (measured by the DORA metrics). The engineering organization is made up of small, loosely coupled, cross-functional teams (Team Topologies) practicing DevOps and continuous deployment. Each team owns one or more subdomains - an implementable model of a slice of business functionality (a.k.a. business capability), consisting of business entities (DDD aggregates) that implement business rules plus adapters to the outside world. Subdomains implement the application's operations, which are invoked by synchronous or asynchronous requests from clients, events published by other applications and services, or the passing of time.",
+                problem: "How to organize the subdomains into one or more deployable/executable components?",
+                solution: "Structure the application as two or more independently deployable, loosely coupled services (components). Each service consists of one or more subdomains, and each subdomain is part of a single service except for shared library subdomains used by multiple services. A service is owned by the team(s) that own its (non-library) subdomains. An API gateway is typically the application's entry point; some system operations are local to a single service while others are distributed across multiple services, and a distributed system operation is implemented using the service collaboration patterns. In order to be independently deployable, each service typically has its own source code repository and its own deployment pipeline that builds, tests and deploys the service.",
+                forces: {
+                    energy: [
+                        "Simple components - components consisting of few subdomains are easier to understand and maintain.",
+                        "Team autonomy - a team must be able to develop, test and deploy its software independently of other teams.",
+                        "Fast deployment pipeline - fast feedback and high deployment frequency require components that are fast to build and test.",
+                        "Support multiple technology stacks - subdomains may use a variety of technologies, and stacks need to evolve to current language and framework versions.",
+                        "Segregate by characteristics - separate subdomains by resource, availability or security requirements to improve scalability, availability and security."
+                    ],
+                    matter: [
+                        "Simple interactions - local operations, or a few simple interactions, are easier to understand and troubleshoot than complex distributed operations.",
+                        "Efficient interactions - distributed operations with many network round trips and large data transfers can be too inefficient.",
+                        "Prefer ACID over BASE - it is easier to implement an operation as an ACID transaction than as an eventually consistent saga.",
+                        "Minimize runtime coupling - to maximize availability and reduce the latency of an operation.",
+                        "Minimize design-time coupling - reduce the likelihood of changing services in lockstep, which reduces productivity."
+                    ]
+                },
+                benefits: [
+                    "Simple services - each service consists of a small number of subdomains (possibly just one), so it is easier to understand and maintain.",
+                    "Team autonomy - a team can develop, test and deploy its service independently of other teams.",
+                    "Fast deployment pipeline - each service is relatively small and fast to test, and can be deployed independently.",
+                    "Support multiple technology stacks - different services can use different stacks and be upgraded independently.",
+                    "Segregate subdomains by characteristics - subdomains can be segregated into separate services to improve scalability, availability and security."
+                ],
+                drawbacks: [
+                    "Some distributed operations might be complex, and difficult to understand and troubleshoot.",
+                    "Some distributed operations might be potentially inefficient.",
+                    "Some operations might need to be implemented using complex, eventually consistent (non-ACID) transaction management because loose coupling requires each service to have its own database.",
+                    "Some distributed operations might involve tight runtime coupling, which reduces their availability.",
+                    "Risk of tight design-time coupling between services, which requires time-consuming lockstep changes."
+                ],
+                issues: "Two key issues must be addressed: first, whether to use the monolithic or microservice architecture; then, if using microservices, how to define a good service architecture. Use Assemblage - an architecture definition process driven by the dark energy and dark matter forces - to group subdomains into services and avoid the potential drawbacks (complex or inefficient interactions, complex eventually consistent transactions, and tight runtime coupling). Distributed operations are implemented with the service collaboration patterns - Saga, Command-side replica, API composition and CQRS - typically using asynchronous messaging and the Transactional Outbox pattern.",
+                examples: "A fictitious e-commerce application that takes orders from customers, verifies inventory and available credit, and ships them. It consists of a StoreFrontUI plus independently deployable backend services for credit checking, inventory and shipping. The example applications developed by Chris Richardson illustrate various aspects of the pattern.",
+                knownUses: "Most large-scale web sites - including Netflix, Amazon and eBay - evolved from a monolithic architecture to a microservice architecture. Netflix handles over a billion API calls per day from over 800 device types, with each call fanning out to about six backend services on average. Amazon migrated from a two-tier architecture to hundreds of backend services (its website calls 100-150 services to build a page). eBay evolved to a service-oriented architecture using X-, Y- and Z-axis scaling.",
+                related: ["Monolithic Architecture", "Saga", "Command-side Replica", "API Composition", "CQRS", "Messaging", "Remote Procedure Invocation (RPI)", "Database per Service", "API Gateway", "Client-side Discovery", "Server-side Discovery", "Service Component Test", "Service Integration Contract Test", "Circuit Breaker", "Access Token", "Log Aggregation", "Application Metrics", "Audit Logging", "Distributed Tracing", "Exception Tracking", "Health Check API", "Log Deployments and Changes", "Server-Side Page Fragment Composition", "Client-Side UI Composition", "Single Service per Host", "Multiple Services per Host", "Microservice Chassis", "Externalized Configuration"],
+                hasDiagram: true,
+                diagramType: "microservices"
+            },
+
+            // Category 2: Service Boundaries / Decomposition (4)
+            {
+                id: "decompose-by-business-capability",
+                name: "Decompose by Business Capability",
+                category: "Service Boundaries",
+                icon: "fa-sitemap",
+                shortDesc: "Define services corresponding to enterprise business capabilities.",
+                overview: "Organize microservices around functional business capabilities (what a business actually does to create value).",
+                context: "You are developing a large, complex application and want to use the microservice architecture, whose goal is to accelerate software development by enabling continuous delivery/deployment. These benefits are not automatic: they require careful functional decomposition into services that follow the Single Responsibility Principle and the Common Closure Principle, so that most changes affect only one service.",
+                problem: "How to decompose an application into services?",
+                forces: [
+                    "The architecture must be stable.",
+                    "Services must be cohesive - a service should implement a small set of strongly related functions.",
+                    "Services must conform to the Common Closure Principle - things that change together should be packaged together so each change affects only one service.",
+                    "Services must be loosely coupled - each service has an API that encapsulates its implementation.",
+                    "A service should be testable.",
+                    "Each service should be small enough to be developed by a 'two pizza' team of 6-10 people.",
+                    "Each team that owns one or more services must be autonomous - able to develop and deploy with minimal collaboration with other teams."
+                ],
+                solution: "Define services corresponding to business capabilities. A business capability is something a business does in order to generate value, and often corresponds to a business object (e.g. Order Management is responsible for orders, Customer Management for customers). Business capabilities are often organized into a multi-level hierarchy.",
+                examples: "The business capabilities of an online store include product catalog management, inventory management, order management and delivery management; the microservice architecture would have a service corresponding to each capability.",
+                benefits: ["Stable architecture since the business capabilities are relatively stable.", "Development teams are cross-functional, autonomous, and organized around delivering business value rather than technical features.", "Services are cohesive and loosely coupled."],
+                drawbacks: [],
+                issues: "How to identify business capabilities? Identifying them requires an understanding of the business, analyzed via its purpose, structure, business processes and areas of expertise, and is best done iteratively. Good starting points are the organization structure and the high-level domain model.",
+                related: ["Decompose by Subdomain", "Service per Team"],
+                hasDiagram: true,
+                diagramType: "decomposition"
+            },
+            {
+                id: "decompose-by-subdomain",
+                name: "Decompose by Subdomain",
+                category: "Service Boundaries",
+                icon: "fa-layer-group",
+                shortDesc: "Define services using Domain-Driven Design (DDD) bounded contexts.",
+                overview: "Decompose applications into bounded contexts representing core, supporting, and generic subdomains.",
+                context: "You are developing a large, complex application and want to use the microservice architecture, whose goal is to accelerate software development by enabling continuous delivery/deployment. These benefits are not automatic: they require careful functional decomposition into services that follow the Single Responsibility Principle and the Common Closure Principle, so that most changes affect only one service.",
+                problem: "How to decompose an application into services?",
+                forces: [
+                    "The architecture must be stable.",
+                    "Services must be cohesive - a service should implement a small set of strongly related functions.",
+                    "Services must conform to the Common Closure Principle - things that change together should be packaged together so each change affects only one service.",
+                    "Services must be loosely coupled - each service has an API that encapsulates its implementation.",
+                    "A service should be testable.",
+                    "Each service should be small enough to be developed by a 'two pizza' team of 6-10 people.",
+                    "Each team that owns one or more services must be autonomous - able to develop and deploy with minimal collaboration with other teams."
+                ],
+                solution: "Define services corresponding to Domain-Driven Design (DDD) subdomains. DDD calls the application's problem space the domain; a domain consists of multiple subdomains, each corresponding to a different part of the business. Subdomains are classified as Core (the key differentiator), Supporting (related to the business but not a differentiator), or Generic (not specific to the business, ideally off-the-shelf).",
+                examples: "The subdomains of an online store include product catalog, inventory management, order management and delivery management; the microservice architecture would have a service corresponding to each subdomain.",
+                benefits: ["Stable architecture since the subdomains are relatively stable.", "Development teams are cross-functional, autonomous, and organized around delivering business value rather than technical features.", "Services are cohesive and loosely coupled."],
+                drawbacks: [],
+                issues: "How to identify the subdomains? Identifying them requires an understanding of the business and its organizational structure and areas of expertise, and is best done iteratively. Good starting points are the organization structure and the high-level domain model, where subdomains often have a key domain object.",
+                related: ["Decompose by Business Capability"],
+                hasDiagram: false
+            },
+            {
+                id: "self-contained-service",
+                name: "Self-contained Service",
+                category: "Service Boundaries",
+                icon: "fa-shield-cat",
+                shortDesc: "Design services to respond to requests without invoking other synchronous services.",
+                overview: "Avoid synchronous runtime dependencies so a service can fulfill incoming user requests using locally replicated data.",
+                context: "In a microservice architecture the responsibility for handling a request is often distributed across multiple services. The client of a synchronous request (e.g. an HTTP POST) expects a timely response (e.g. within 600ms), but synchronously invoking collaborator services reduces availability because an unavailable collaborator prevents the request from completing.",
+                problem: "How should a service collaborate with other services when handling a synchronous request?",
+                forces: [
+                    "The microservice architecture often distributes the responsibility of handling a request amongst multiple services.",
+                    "An operation is typically required to be highly available with a low response time.",
+                    "The availability of an operation is roughly the product of the availabilities of the services invoked synchronously.",
+                    "A service can retry a request to a failed collaborator, but this increases response time."
+                ],
+                solution: "Design a service so that it can respond to a synchronous request without waiting for a response from any other service. Either implement the needed functionality as a module within the service rather than as a separate service, or collaborate asynchronously using CQRS (the service maintains a replica of data owned by other services) and Saga (to maintain data consistency).",
+                examples: "In the FTGO food delivery application, the Order Service's createOrder() operation queries a CQRS replica of data owned by the Restaurant Service to validate and price the order, then initiates a saga to finish creating the order, so the POST /orders response does not wait on other services.",
+                benefits: ["Improved availability and response time."],
+                drawbacks: ["Increased cost and complexity of using CQRS.", "Increased complexity of using sagas.", "Less straightforward API when using sagas.", "A larger service because functionality is implemented inside the service instead of as a separate service."],
+                related: ["Microservice Architecture", "Saga", "CQRS"],
+                hasDiagram: false
+            },
+            {
+                id: "service-per-team",
+                name: "Service per Team",
+                category: "Service Boundaries",
+                icon: "fa-people-group",
+                shortDesc: "Assign team ownership such that each service is owned by a single cross-functional team.",
+                overview: "Conway's Law alignment: align team structures with software architecture by giving each team 1 to N services.",
+                context: "A high-performance development organization consists of multiple long-lived, small (5-9 people), loosely coupled, autonomous, cross-functional teams. Conway's law says an architecture mirrors the organization's communication structure, so loosely coupled teams need a loosely coupled architecture such as microservices. While Decompose by Subdomain and Decompose by Business Capability identify services, the relationship between services and teams matters.",
+                problem: "What's the relationship between teams and services?",
+                forces: [
+                    "A team should be small, e.g. 5-9 people.",
+                    "A team should be autonomous and loosely coupled.",
+                    "The size and complexity of the team's code base must not exceed the team's cognitive capacity.",
+                    "Finer-grained service decomposition improves maintainability, testability and deployability.",
+                    "Finer-grained service decomposition adds complexity."
+                ],
+                solution: "Each service is owned by a team that has sole responsibility for making changes, and ideally each team owns only one service. Each team owns a code base of one or more modules sized to fit the team's cognitive capacity, deployed as one or more services. A team should have exactly one service unless there is a proven need for more.",
+                benefits: ["Enables each team to be autonomous and work with minimal coordination.", "Enables teams to be loosely coupled.", "Achieves team autonomy and loose coupling with the minimum number of services.", "Improves code quality due to long-term code ownership."],
+                drawbacks: ["Teams are not necessarily aligned with end-user features.", "Implementing features that span services is more complicated and requires teams to collaborate."],
+                related: ["Microservice Architecture", "Decompose by Subdomain", "Decompose by Business Capability"],
+                hasDiagram: false
+            },
+
+            // Category 3: Refactoring to Services (2)
+            {
+                id: "strangler-application",
+                name: "Strangler Application",
+                category: "Refactoring to Services",
+                icon: "fa-tree",
+                shortDesc: "Incrementally migrate a legacy monolith by replacing features with microservices.",
+                overview: "Interceptor proxies intercept incoming requests and route specific functionality to new microservices as they are built.",
+                problem: "How do you migrate a legacy monolithic application to a microservice architecture?",
+                solution: "Modernize the application by incrementally developing a new 'strangler' application around the legacy application. The strangler application has a microservice architecture and consists of two types of services: services that implement functionality that previously resided in the monolith, and services that implement new features (the latter are particularly useful for demonstrating the value of microservices to the business).",
+                benefits: ["Lowers migration risk through incremental updates", "Delivers immediate business value during rewrite"],
+                drawbacks: ["Requires managing dual infrastructure", "Routing and sync proxies add temporary complexity"],
+                related: ["API Gateway", "Anti-corruption Layer", "Microservice Architecture"],
+                hasDiagram: true,
+                diagramType: "strangler"
+            },
+            {
+                id: "anti-corruption-layer",
+                name: "Anti-corruption Layer",
+                category: "Refactoring to Services",
+                icon: "fa-filter",
+                shortDesc: "Translate interactions between new microservices and legacy domain models.",
+                overview: "Insert a translation layer between modern microservices and legacy systems so neither domain model contaminates the other.",
+                problem: "How do you prevent a legacy monolith's domain model from polluting the domain model of a new service?",
+                solution: "Define an anti-corruption layer that translates between the two domain models, so the new service's clean domain model is insulated from the legacy model.",
+                benefits: ["Protects new microservices from legacy debt", "Allows clean domain design in new microservices"],
+                drawbacks: ["Adds latency overhead during translation", "Requires maintaining custom mapping logic"],
+                related: ["Strangler Application"],
+                hasDiagram: false
+            },
+
+            // Category 4: Service Collaboration / Data Management (8)
+            {
+                id: "database-per-service",
+                name: "Database per Service",
+                category: "Service Collaboration",
+                icon: "fa-database",
+                shortDesc: "Keep each microservice's persistent data private and accessible only via API.",
+                overview: "Isolate microservice data. Other services must query data through published APIs rather than directly accessing tables.",
+                context: "You are developing an online store application using the microservice architecture. Most services need to persist data in some kind of database; for example, the Order Service stores orders and the Customer Service stores customers.",
+                problem: "What's the database architecture in a microservices application?",
+                forces: [
+                    "Services must be loosely coupled so that they can be developed, deployed and scaled independently.",
+                    "Some business transactions must enforce invariants that span multiple services (e.g. Place Order must verify a new Order will not exceed the customer's credit limit).",
+                    "Some business transactions need to query data owned by multiple services (e.g. View Available Credit queries the customer creditLimit and Orders' open orders).",
+                    "Some queries must join data owned by multiple services (e.g. finding customers in a region and their recent orders).",
+                    "Databases must sometimes be replicated and sharded in order to scale.",
+                    "Different services have different data storage requirements (relational, MongoDB for unstructured data, Neo4j for graph data)."
+                ],
+                solution: "Keep each microservice's persistent data private to that service and accessible only via its API; a service's transactions only involve its database, and its database is part of its implementation and cannot be accessed directly by other services. A database server per service is not required: with a relational database, options are private-tables-per-service, schema-per-service and database-server-per-service (the first two have the lowest overhead, and schema-per-service makes ownership clearer). Create barriers such as per-service database users and grants to enforce encapsulation.",
+                examples: "The FTGO application uses this approach: each service has database credentials that only grant it access to its own logical database on a shared MySQL server.",
+                benefits: ["Helps ensure services are loosely coupled - changes to one service's database do not impact other services.", "Each service can use the type of database best suited to its needs (e.g. ElasticSearch for text search, Neo4j for a social graph)."],
+                drawbacks: ["Implementing business transactions that span multiple services is not straightforward; distributed transactions are best avoided because of the CAP theorem and because many NoSQL databases don't support them.", "Implementing queries that join data now in multiple databases is challenging.", "Complexity of managing multiple SQL and NoSQL databases."],
+                related: ["Microservice Architecture", "Saga Pattern", "API Composition", "CQRS", "Shared Database"],
+                hasDiagram: true,
+                diagramType: "db-per-service"
+            },
+            {
+                id: "shared-database",
+                name: "Shared Database",
+                category: "Service Collaboration",
+                icon: "fa-border-all",
+                shortDesc: "Services share a single central database (migration pattern / anti-pattern).",
+                overview: "Multiple services connect directly to a single central database instance.",
+                context: "You are developing an online store application using the microservice architecture. Most services need to persist data in some kind of database; for example, the Order Service stores orders and the Customer Service stores customers.",
+                problem: "What's the database architecture in a microservices application?",
+                forces: [
+                    "Services must be loosely coupled so that they can be developed, deployed and scaled independently.",
+                    "Some business transactions must enforce invariants that span multiple services (e.g. Place Order must verify a new Order will not exceed the customer's credit limit).",
+                    "Some business transactions need to query data owned by multiple services (e.g. View Available Credit queries the customer creditLimit and Orders' open orders).",
+                    "Some queries must join data owned by multiple services (e.g. finding customers in a region and their recent orders).",
+                    "Databases must sometimes be replicated and sharded in order to scale.",
+                    "Different services have different data storage requirements (relational, MongoDB for unstructured data, Neo4j for graph data)."
+                ],
+                solution: "Use a single database that is shared by multiple services, with each service freely accessing data owned by other services using local ACID transactions. For example, OrderService and CustomerService freely access each other's tables, and an ACID transaction can ensure a new order will not violate the customer's credit limit even with simultaneous transactions.",
+                benefits: ["A developer uses familiar and straightforward ACID transactions to enforce data consistency.", "A single database is simpler to operate."],
+                drawbacks: ["Development-time coupling - a developer working on one service must coordinate schema changes with developers of other services accessing the same tables, slowing development.", "Runtime coupling - since all services access the same database they can interfere with one another (e.g. a long-running CustomerService transaction locking the ORDER table blocks OrderService).", "A single database might not satisfy the data storage and access requirements of all services."],
+                related: ["Database per Service"],
+                hasDiagram: false
+            },
+            {
+                id: "saga-pattern",
+                name: "Saga Pattern",
+                category: "Service Collaboration",
+                icon: "fa-diagram-next",
+                shortDesc: "Maintain data consistency using a sequence of local service transactions.",
+                overview: "Execute distributed operations as a series of local transactions. If a step fails, trigger compensating transactions.",
+                context: "You have applied the Database per Service pattern, so each service has its own database, but some business transactions span multiple services and need a mechanism to implement them. For example, in an e-commerce store where customers have a credit limit, the application must ensure a new order will not exceed the limit, but since Orders and Customers are in different databases the application cannot simply use a local ACID transaction.",
+                problem: "How to implement transactions that span services?",
+                forces: ["2PC is not an option."],
+                solution: "Implement each business transaction that spans multiple services as a saga - a sequence of local transactions where each local transaction updates the database and publishes a message or event to trigger the next local transaction. If a local transaction fails because it violates a business rule then the saga executes a series of compensating transactions that undo the changes made by the preceding local transactions. Sagas can be coordinated via choreography (each local transaction publishes domain events that trigger local transactions in other services) or orchestration (a central orchestrator tells participants which local transactions to execute).",
+                examples: "In an e-commerce application, a choreography-based saga has the Order Service create a PENDING Order and emit Order Created, the Customer Service reserve credit and emit the outcome, and the Order Service approve or reject. In an orchestration-based saga the Order Service creates a saga orchestrator that creates the PENDING Order, sends a Reserve Credit command to the Customer Service, then approves or rejects based on the reply.",
+                benefits: ["Enables an application to maintain data consistency across multiple services without using distributed transactions."],
+                drawbacks: ["Lack of automatic rollback - a developer must design compensating transactions that explicitly undo earlier changes rather than relying on ACID automatic rollback.", "Lack of isolation - concurrent execution of multiple sagas and transactions can cause data anomalies, so developers must implement countermeasures with careful analysis."],
+                issues: "A service must atomically update its database and publish a message/event, which cannot be done with a distributed transaction spanning the database and message broker, so a related pattern such as Transactional Outbox must be used. A client that initiates the saga via a synchronous request must be able to determine its outcome: respond once the saga completes, respond after initiation then poll, or respond after initiation then send an event once the saga completes.",
+                related: ["Database per Service", "Event Sourcing", "Transactional Outbox", "Command-side Replica"],
+                hasDiagram: true,
+                diagramType: "saga"
+            },
+            {
+                id: "command-side-replica",
+                name: "Command-side Replica",
+                category: "Service Collaboration",
+                icon: "fa-clone",
+                shortDesc: "Maintain a read-only replica of external data inside a command service.",
+                overview: "A service replicates data owned by other services locally to validate command execution without calling APIs.",
+                context: "You have applied the microservice architecture and the Database per Service pattern. As a result, a service that implements a system command often needs to query other services; for example, the createOrder() command is implemented by the Order Service, which needs to retrieve the restaurant's menu from the Restaurant Service to price and validate line items. Querying the Restaurant Service each time (synchronously or as a saga step) has drawbacks such as more network traffic and a runtime dependency; an alternative is to replicate the menu to the Order Service.",
+                problem: "How can a service that implements a command retrieve data from another service?",
+                forces: {
+                    energy: [
+                        "Simple components - components consisting of few subdomains are easier to understand and maintain than complex components.",
+                        "Team autonomy - a team needs to be able to develop, test and deploy their software independently of other teams.",
+                        "Fast deployment pipeline - fast feedback and high deployment frequency require components that are fast to build and test.",
+                        "Support multiple technology stacks - subdomains are sometimes implemented using a variety of technologies, and developers need to evolve the technology stack.",
+                        "Segregate by characteristics - e.g. resource, availability and security requirements."
+                    ],
+                    matter: [
+                        "Simple interactions - local operations, or a few simple interactions, are easier to understand and troubleshoot than complex distributed operations.",
+                        "Efficient interactions - distributed operations with many network round trips and large data transfers can be too inefficient.",
+                        "Prefer ACID over BASE - it is easier to implement an operation as an ACID transaction than as an eventually consistent saga.",
+                        "Minimize runtime coupling - to maximize the availability and reduce the latency of an operation.",
+                        "Minimize design-time coupling - reduce the likelihood of changing services in lockstep."
+                    ]
+                },
+                solution: "The solution consists of a command service (the service that implements the command), a provider service (the service that owns the data the command service needs), and a replica database (a read-only replica of the provider's data). The command service keeps the replica up to date by subscribing to domain events published by the provider service.",
+                benefits: ["Support multiple technology stacks - the replica database can use a stack optimized for the command.", "Segregate by characteristics - the provider service is no longer invoked by the command and need not be as performant or available.", "Simple interactions - the command no longer interacts with the provider service.", "Efficient interactions - the command is more efficient since it no longer interacts with the provider service.", "Minimize runtime coupling - runtime coupling is reduced since the command no longer interacts with the provider service."],
+                drawbacks: ["Simple components - the command service is more complicated because it must maintain the replica, and the provider service is complicated because it must publish events.", "Team autonomy - the provider team might need to coordinate more with the command team due to increased design-time coupling.", "Fast deployment pipeline - the command service's pipeline might be slower because it must test the replica.", "Segregate by characteristics - potentially increased, e.g. if the replica contains regulated data such as PII.", "Efficient interactions - potentially less efficient since the provider might publish a large volume of events.", "Minimize design-time coupling - risk of tight design-time coupling because the command service must know the replicated data's structure and lifecycle events."],
+                related: ["Database per Service", "Saga", "Domain Event", "CQRS"],
+                hasDiagram: false
+            },
+            {
+                id: "api-composition",
+                name: "API Composition",
+                category: "Service Collaboration",
+                icon: "fa-puzzle-piece",
+                shortDesc: "Query data by invoking multiple services and combining results in memory.",
+                overview: "An API Composer queries multiple downstream microservices and aggregates their response payloads.",
+                context: "You have applied the microservice architecture and the Database per Service pattern. As a result, it is no longer straightforward to implement queries that join data from multiple services.",
+                problem: "How to implement queries in a microservice architecture?",
+                solution: "Implement a query by defining an API Composer, which invokes the services that own the data and performs an in-memory join of the results. An API gateway often does API composition.",
+                benefits: ["It is a simple way to query data in a microservice architecture."],
+                drawbacks: ["Some queries would result in inefficient, in-memory joins of large datasets."],
+                related: ["Database per Service", "CQRS", "API Gateway"],
+                hasDiagram: false
+            },
+            {
+                id: "cqrs",
+                name: "CQRS (Command Query Responsibility Segregation)",
+                category: "Service Collaboration",
+                icon: "fa-right-left",
+                shortDesc: "Separate read and write data models to optimize performance and queries.",
+                overview: "Split operations into Commands (writes) and Queries (reads). Use event streams to sync optimized read database views.",
+                context: "You have applied the microservice architecture and the Database per Service pattern, so it is no longer straightforward to implement queries that join data from multiple services. Also, if you have applied Event Sourcing then the data is no longer easily queried.",
+                problem: "How to implement a query that retrieves data from multiple services in a microservice architecture?",
+                solution: "Define a view database, which is a read-only 'replica' designed specifically to support a query or a group of related queries. The application keeps the database up to date by subscribing to domain events published by the services that own the data, and the type of database and its schema are optimized for the query (often a NoSQL document database or key-value store).",
+                examples: "The FTGO example application's Order History Service implements this pattern, and several Eventuate-based example applications illustrate how to use it.",
+                benefits: ["Supports multiple denormalized views that are scalable and performant.", "Improved separation of concerns - simpler command and query models.", "Necessary in an event-sourced architecture."],
+                drawbacks: ["Increased complexity.", "Potential code duplication.", "Replication lag / eventually consistent views."],
+                related: ["Database per Service", "API Composition", "Domain Event", "Event Sourcing"],
+                hasDiagram: true,
+                diagramType: "cqrs"
+            },
+            {
+                id: "domain-event",
+                name: "Domain Event",
+                category: "Service Collaboration",
+                icon: "fa-bolt",
+                shortDesc: "Publish an event whenever something noteworthy happens in the domain.",
+                overview: "Notify interested consumer microservices about state changes by emitting asynchronous event payloads.",
+                context: "A service often needs to publish events when it updates its data. These events might be needed, for example, to update a CQRS view. Alternatively, the service might participate in a choreography-based saga, which uses events for coordination.",
+                problem: "How does a service publish an event when it updates its data?",
+                solution: "Organize the business logic of a service as a collection of DDD aggregates that emit domain events when they are created or updated. The service publishes these domain events so that they can be consumed by other services.",
+                benefits: [],
+                drawbacks: [],
+                related: ["Saga", "CQRS", "Aggregate", "Transactional Outbox", "Event Sourcing"],
+                hasDiagram: false
+            },
+            {
+                id: "event-sourcing",
+                name: "Event Sourcing",
+                category: "Service Collaboration",
+                icon: "fa-clock-rotate-left",
+                shortDesc: "Persist entity state as an immutable sequence of state-changing events.",
+                overview: "Instead of storing current state values, append state transitions to an Event Store log and reconstruct entity state by replaying events.",
+                context: "A service command typically needs to create/update/delete aggregates in the database and send messages/events to a message broker - e.g. a service participating in a saga updates business entities and sends messages, or a service publishing a domain event updates an aggregate and publishes an event. The command must atomically update the database and send messages to avoid inconsistencies, but a traditional distributed transaction (2PC) spanning the database and message broker is not viable, and without 2PC sending a message is unreliable. Messages must also be sent in the order they were sent.",
+                problem: "How to atomically update the database and send messages to a message broker?",
+                forces: [
+                    "2PC is not an option - the database and/or the message broker might not support it, and it is often undesirable to couple the service to both.",
+                    "If the database transaction commits then the messages must be sent; conversely, if the database rolls back, the messages must not be sent.",
+                    "Messages must be sent to the message broker in the order they were sent by the service, preserved across multiple service instances that update the same aggregate."
+                ],
+                solution: "Persist the state of a business entity such as an Order or Customer as a sequence of state-changing events, appending a new event whenever its state changes (saving an event is a single, inherently atomic operation), and reconstruct an entity's current state by replaying the events. Events are persisted in an event store - a database of events with an API for adding and retrieving an entity's events that also behaves like a message broker and delivers saved events to all interested subscribers. To optimize loading of entities with many events, periodically save a snapshot of an entity's state and replay only the events since the most recent snapshot.",
+                examples: "The Customers and Orders application is built using Event Sourcing and CQRS in Java with Spring Boot and Eventuate. Instead of storing each order's current state as a row in an ORDERS table, it persists each Order as a sequence of events, and the CustomerService subscribes to order events and updates its own state.",
+                benefits: ["Solves one of the key problems in implementing an event-driven architecture and makes it possible to reliably publish events whenever state changes.", "Because it persists events rather than domain objects, it mostly avoids the object-relational impedance mismatch problem.", "Provides a 100% reliable audit log of the changes made to a business entity.", "Makes it possible to implement temporal queries that determine the state of an entity at any point in time.", "Event sourcing-based business logic consists of loosely coupled business entities that exchange events, making it easier to migrate from a monolith to microservices."],
+                drawbacks: ["It is a different and unfamiliar style of programming, so there is a learning curve.", "The event store is difficult to query since queries must reconstruct the state of business entities, which is likely complex and inefficient; as a result the application must use CQRS, which means handling eventually consistent data."],
+                related: ["Saga", "Domain Event", "CQRS", "Audit Logging"],
+                hasDiagram: true,
+                diagramType: "event-sourcing"
+            },
+
+            // Category 5: Transactional Messaging (3)
+            {
+                id: "transactional-outbox",
+                name: "Transactional Outbox",
+                category: "Transactional Messaging",
+                icon: "fa-box-archive",
+                shortDesc: "Atomically save DB changes and events into an outbox table in one local transaction.",
+                overview: "Insert outgoing messages into an Outbox table in the same local database transaction that updates business entities.",
+                context: "A service command typically needs to create/update/delete aggregates in the database and send messages/events to a message broker. For example, a service participating in a saga must update business entities and send messages, and a service publishing a domain event must update an aggregate and publish an event. The command must atomically update the database and send messages, but a 2PC across the database and broker is not viable and unreliable without it.",
+                problem: "How to atomically update the database and send messages to a message broker?",
+                forces: [
+                    "2PC is not an option - the database and/or message broker might not support it, and it's undesirable to couple the service to both.",
+                    "Delivery - if the database transaction commits the messages must be sent; if it rolls back the messages must not be sent.",
+                    "Ordering - messages must be sent to the broker in the order they were sent by the service, preserved across multiple service instances that update the same aggregate."
+                ],
+                solution: "The service that sends the message first stores it in the database as part of the transaction that updates the business entities, and a separate process sends the stored messages to the message broker. Participants are the Sender (service sending the message), the Database (stores business entities and the message outbox), the Message outbox (an outbox table for relational databases, or a property of each record for NoSQL), and the Message relay.",
+                benefits: ["2PC is not used.", "Messages are guaranteed to be sent if and only if the database transaction commits.", "Messages are sent to the message broker in the order they were sent by the application."],
+                drawbacks: ["Potentially error prone since the developer might forget to publish the message/event after updating the database."],
+                issues: "The Message relay might publish a message more than once, e.g. it crashes after publishing but before recording that it has done so. A consumer must therefore be idempotent, perhaps by tracking processed message IDs; this is typically not a problem since consumers usually need to be idempotent anyway.",
+                related: ["Saga", "Domain Event", "Event Sourcing", "Transaction Log Tailing", "Polling Publisher"],
+                hasDiagram: true,
+                diagramType: "outbox"
+            },
+            {
+                id: "transaction-log-tailing",
+                name: "Transaction Log Tailing",
+                category: "Transactional Messaging",
+                icon: "fa-scroll",
+                shortDesc: "Publish events by tailing the database transaction log.",
+                overview: "Use CDC (Change Data Capture) tools like Debezium to stream database transaction log updates directly to a message broker.",
+                context: "You have applied the Transactional Outbox pattern.",
+                problem: "How to publish messages/events inserted into the outbox in the database to the message broker?",
+                solution: "Tail the database transaction log and publish each message/event inserted into the outbox to the message broker. The mechanism depends on the database: MySQL binlog, Postgres WAL, or AWS DynamoDB table streams.",
+                examples: "The Eventuate Tram framework implements transaction log tailing.",
+                benefits: ["No 2PC.", "Guaranteed to be accurate."],
+                drawbacks: ["Relatively obscure although becoming increasingly common.", "Requires database-specific solutions.", "Tricky to avoid duplicate publishing."],
+                related: ["Transactional Outbox", "Polling Publisher"],
+                hasDiagram: false
+            },
+            {
+                id: "polling-publisher",
+                name: "Polling Publisher",
+                category: "Transactional Messaging",
+                icon: "fa-arrows-rotate",
+                shortDesc: "Publish messages by periodically polling an outbox table in the DB.",
+                overview: "Run a background application worker thread that polls the Outbox table for unpublished rows and sends them to the broker.",
+                context: "You have applied the Transactional Outbox pattern.",
+                problem: "How to publish messages/events inserted into the outbox in the database to the message broker?",
+                solution: "Publish messages by polling the database's outbox table.",
+                examples: "The Eventuate Tram framework implements polling.",
+                benefits: ["Works with any SQL database."],
+                drawbacks: ["Tricky to publish events in order.", "Not all NoSQL databases support this pattern."],
+                related: ["Transactional Outbox", "Transaction Log Tailing"],
+                hasDiagram: false
+            },
+
+            // Category 6: External API (2)
+            {
+                id: "api-gateway",
+                name: "API Gateway",
+                category: "External API",
+                icon: "fa-route",
+                shortDesc: "Single entry point that routes, transforms, and secures API traffic for clients.",
+                overview: "An entry point reverse-proxy handling request routing, protocol translation, authentication, rate limiting, and SSL termination.",
+                context: "Imagine building an online store using the microservice architecture and implementing the product details page, which needs multiple versions of the UI: HTML5/JavaScript for desktop and mobile browsers, native Android and iPhone clients via REST APIs, and a REST API for 3rd party applications. The product details data is spread over multiple services (product info, pricing, order, inventory, review), so the code displaying details must fetch from all of them.",
+                problem: "How do the clients of a microservices-based application access the individual services?",
+                forces: [
+                    "API granularity - microservices typically provide fine-grained APIs, so clients need to interact with multiple services.",
+                    "Different clients need different data - e.g. the desktop browser product details page is typically more elaborate than the mobile version.",
+                    "Network performance differs by client - a mobile network is slower and higher latency than a non-mobile network, and any WAN is slower than a LAN.",
+                    "Service instances - the number and locations (host+port) of service instances change dynamically.",
+                    "Hidden partitioning - partitioning into services can change over time and should be hidden from clients.",
+                    "Diverse protocols - services might use a diverse set of protocols, some of which might not be web friendly."
+                ],
+                solution: "Implement an API gateway that is the single entry point for all clients. The gateway either proxies/routes requests to the appropriate service or fans out to multiple services. Rather than a one-size-fits-all API, it can expose a different API for each client, and it might also implement security such as verifying that the client is authorized. A common variation is the Backends for frontends (BFF) pattern, which defines a separate API gateway for each kind of client (e.g. web, mobile and external 3rd-party applications).",
+                examples: "Netflix's API gateway, or the simple Java/Spring API gateway from the Money Transfer example application.",
+                benefits: ["Insulates the clients from how the application is partitioned into microservices.", "Insulates the clients from determining the locations of service instances.", "Provides the optimal API for each client.", "Reduces the number of requests/roundtrips, letting clients retrieve data from multiple services in a single round-trip - essential for mobile applications.", "Simplifies the client by moving logic for calling multiple services into the gateway.", "Translates from a standard public web-friendly API protocol to whatever protocols are used internally."],
+                drawbacks: ["Increased complexity - the API gateway is yet another moving part that must be developed, deployed and managed.", "Increased response time due to the additional network hop, though for most applications the cost of an extra roundtrip is insignificant."],
+                issues: "How to implement the API gateway? An event-driven/reactive approach is best if it must scale to handle high loads; on the JVM, NIO-based libraries such as Netty or Spring Reactor make sense, and NodeJS is another option.",
+                knownUses: "Netflix's API gateway.",
+                related: ["Microservice Architecture", "Client-side Discovery", "Server-side Discovery", "Access Token", "Circuit Breaker", "API Composition"],
+                hasDiagram: true,
+                diagramType: "api-gateway"
+            },
+            {
+                id: "backend-for-frontend",
+                name: "Backend for Front-End",
+                category: "External API",
+                icon: "fa-mobile-screen-button",
+                shortDesc: "Create a separate API gateway tailored for each specific client type.",
+                overview: "Define a dedicated API gateway for each specific client variant (e.g. mobile, web and 3rd-party public clients).",
+                context: "You have applied the API Gateway pattern, but a single one-size-fits-all gateway struggles to satisfy the differing needs of desktop browsers, mobile apps and third-party clients, which require different data formats, network characteristics and update cadences.",
+                problem: "How do you tailor API gateways for varying client requirements without building a single monolithic gateway?",
+                forces: [
+                    "A single API gateway serving all clients becomes a bottleneck owned by a central team, slowing down client teams.",
+                    "Different clients have different data, protocol and network requirements.",
+                    "Client teams need to evolve their APIs independently of backend service changes."
+                ],
+                solution: "Implement a separate API gateway (backend) for each client experience team, keeping each gateway tightly coupled to its client's requirements rather than to the backend implementations. Examples include Mobile, Web, and Business-to-Business (3rd-party/public) gateways.",
+                benefits: ["Insulates client teams so they can evolve independently.", "Provides the optimal API for each client and optimizes network transport for specific form factors.", "Reduces contention on a single central gateway team."],
+                drawbacks: ["Potential code duplication across gateway instances.", "Requires deploying and operating multiple gateway services."],
+                related: ["API Gateway"],
+                hasDiagram: false
+            },
+            // Category 7: Communication Styles (4)
+            {
+                id: "rpi",
+                name: "Remote Procedure Invocation (RPI)",
+                category: "Communication Styles",
+                icon: "fa-network-wired",
+                shortDesc: "Inter-service synchronous communication using REST or gRPC.",
+                overview: "A service invokes another service using a synchronous request-response protocol like HTTP/REST, gRPC, or GraphQL.",
+                context: "You have applied the microservice architecture. Services must handle requests from the application's clients, and occasionally services must collaborate to handle those requests, so they must use an inter-process communication protocol.",
+                problem: "How do services in a microservice architecture communicate?",
+                forces: [
+                    "Services often need to collaborate.",
+                    "Synchronous communication results in tight runtime coupling - both the client and service must be available for the duration of the request."
+                ],
+                solution: "Use RPI for inter-service communication. The client uses a request/reply-based protocol to make requests to a service.",
+                examples: "RPI technologies include REST, gRPC and Apache Thrift. RegistrationServiceProxy from the Microservices Example application is a Scala component that makes a REST request using Spring's RestTemplate.",
+                benefits: ["Simple and familiar.", "Request/reply is easy.", "A simpler system since there is no intermediate broker."],
+                drawbacks: ["Usually only supports request/reply and not other interaction patterns such as notifications, request/async response, publish/subscribe and publish/async response.", "Reduced availability since the client and the service must be available for the duration of the interaction."],
+                issues: "The client needs to discover the locations of service instances.",
+                related: ["Domain-Specific Protocol", "Messaging", "Externalized Configuration", "Client-side Discovery", "Server-side Discovery", "Circuit Breaker"],
+                hasDiagram: false
+            },
+            {
+                id: "messaging",
+                name: "Messaging",
+                category: "Communication Styles",
+                icon: "fa-envelope-open-text",
+                shortDesc: "Asynchronous inter-service communication via message brokers.",
+                overview: "Services communicate by exchanging messages asynchronously through channels (e.g., Kafka, RabbitMQ).",
+                context: "You have applied the microservice architecture. Services must handle requests from the application's clients, and services often collaborate to handle those requests, so they must use an inter-process communication protocol.",
+                problem: "How do services in a microservice architecture communicate?",
+                forces: [
+                    "Services often need to collaborate.",
+                    "Synchronous communication results in tight runtime coupling - both the client and service must be available for the duration of the request."
+                ],
+                solution: "Use asynchronous messaging for inter-service communication, with services exchanging messages over messaging channels. Styles include request/response, notifications, request/asynchronous response, publish/subscribe, and publish/asynchronous response.",
+                examples: "Asynchronous messaging technologies include Apache Kafka and RabbitMQ. OrderService from the FTGO example application publishes an Order Created event when it creates an Order.",
+                benefits: ["Loose runtime coupling since it decouples the message sender from the consumer.", "Improved availability since the message broker buffers messages until the consumer is able to process them.", "Supports a variety of communication patterns including request/reply, notifications, request/async response, publish/subscribe and publish/async response."],
+                drawbacks: ["Additional complexity of a message broker, which must be highly available."],
+                issues: "Request/reply-style communication is more complex.",
+                related: ["Saga Pattern", "CQRS", "Transactional Outbox", "Externalized Configuration", "Domain-Specific Protocol", "RPI"],
+                hasDiagram: false
+            },
+            {
+                id: "domain-specific-protocol",
+                name: "Domain-Specific Protocol",
+                category: "Communication Styles",
+                icon: "fa-satellite-dish",
+                shortDesc: "Communicate using specialized domain protocols (e.g., MQTT, AMQP, WebSockets).",
+                overview: "Utilize protocols customized for specialized hardware, IoT devices, or real-time streaming requirements.",
+                context: "You have applied the microservice architecture. Services must handle requests from the application's clients, and services must sometimes collaborate to handle those requests, so they must use an inter-process communication protocol.",
+                problem: "How do services in a microservice architecture communicate?",
+                solution: "Use a domain-specific protocol for inter-service communication.",
+                examples: "Domain-specific protocols include email protocols such as SMTP and IMAP, and media streaming protocols such as RTMP, HLS and HDS.",
+                benefits: [],
+                drawbacks: [],
+                related: ["Messaging", "RPI"],
+                hasDiagram: false
+            },
+            {
+                id: "idempotent-consumer",
+                name: "Idempotent Consumer",
+                category: "Communication Styles",
+                icon: "fa-repeat",
+                shortDesc: "Ensure message processing produces identical results even if received multiple times.",
+                overview: "Track processed message IDs in a database to detect and safely drop duplicate event payloads.",
+                context: "It's usually a good idea to use a message broker that guarantees at-least-once delivery, which delivers a message to a consumer even if errors occur. A side-effect is that the consumer can be invoked repeatedly for the same message, so a consumer must be idempotent: processing the same message repeatedly must have the same outcome as processing it once.",
+                problem: "How does a message consumer handle duplicate messages correctly?",
+                solution: "Make a consumer idempotent by having it record the IDs of processed messages in the database, so it can detect and discard duplicates by querying the database. IDs can be stored in a separate PROCESSED_MESSAGES table or in the business entities the consumer creates or updates. With the PROCESSED_MESSAGES table, after starting the database transaction the message handler inserts the message's ID; since (subscriberId, messageID) is the primary key the INSERT fails if the message was already processed, and the handler can roll back and ignore the message.",
+                benefits: [],
+                drawbacks: [],
+                related: ["Transactional Outbox", "Messaging"],
+                hasDiagram: false
+            },
+
+            // Category 8: Service Discovery (5)
+            {
+                id: "client-side-discovery",
+                name: "Client-side Discovery",
+                category: "Service Discovery",
+                icon: "fa-laptop-code",
+                shortDesc: "Clients query a Service Registry to determine target network addresses.",
+                overview: "The client queries a Service Registry, selects an available instance using load-balancing algorithms, and makes direct calls.",
+                context: "Services typically need to call one another. In a modern microservice-based application running in virtualized or containerized environments, the number of instances of a service and their locations change dynamically. Consequently, you must implement a mechanism enabling clients of a service to make requests to a dynamically changing set of ephemeral service instances.",
+                problem: "How does the client of a service - the API gateway or another service - discover the location of a service instance?",
+                forces: [
+                    "Each instance of a service exposes a remote API such as HTTP/REST or Thrift at a particular location (host and port).",
+                    "The number of service instances and their locations change dynamically.",
+                    "Virtual machines and containers are usually assigned dynamic IP addresses.",
+                    "The number of service instances might vary dynamically, e.g. an EC2 Autoscaling Group adjusts the number of instances based on load."
+                ],
+                solution: "When making a request to a service, the client obtains the location of a service instance by querying a Service Registry, which knows the locations of all service instances. This is typically handled by a Microservice chassis framework.",
+                examples: "The Microservices Example application (Scala, Spring Boot, Spring Cloud) uses client-side service discovery via Netflix OSS: Eureka as the Service Registry and Ribbon as an HTTP client that queries Eureka to route requests to an available instance.",
+                benefits: ["Fewer moving parts and network hops compared to Server-side Discovery."],
+                drawbacks: ["Couples the client to the Service Registry.", "You need to implement client-side service discovery logic for each programming language/framework used, e.g. Java/Scala, JavaScript/NodeJS."],
+                related: ["Service Registry", "Microservice Chassis", "Server-side Discovery"],
+                hasDiagram: false
+            },
+            {
+                id: "server-side-discovery",
+                name: "Server-side Discovery",
+                category: "Service Discovery",
+                icon: "fa-server",
+                shortDesc: "Routers/load balancers query a Service Registry to route incoming requests.",
+                overview: "Clients make requests to a router/load balancer. The router queries the service registry and forwards the request.",
+                context: "Services typically need to call one another. In a modern microservice-based application running in virtualized or containerized environments, the number of instances of a service and their locations change dynamically. Consequently, you must implement a mechanism enabling clients of a service to make requests to a dynamically changing set of ephemeral service instances.",
+                problem: "How does the client of a service - the API gateway or another service - discover the location of a service instance?",
+                forces: [
+                    "Each instance of a service exposes a remote API such as HTTP/REST or Thrift at a particular location (host and port).",
+                    "The number of service instances and their locations change dynamically.",
+                    "Virtual machines and containers are usually assigned dynamic IP addresses.",
+                    "The number of service instances might vary dynamically, e.g. an EC2 Autoscaling Group adjusts the number of instances based on load."
+                ],
+                solution: "When making a request to a service, the client makes a request via a router (a.k.a. load balancer) that runs at a well-known location. The router queries a service registry, which might be built into the router, and forwards the request to an available service instance.",
+                examples: "An AWS Elastic Load Balancer is a server-side discovery router: clients make requests to the ELB, which load balances traffic amongst EC2 instances and also functions as a Service Registry. Some clustering solutions such as Kubernetes and Marathon run a proxy on each host; clients connect to the local proxy and it forwards the request to a service instance in the cluster.",
+                benefits: ["Compared to client-side discovery, the client code is simpler since it does not have to deal with discovery - it simply makes a request to the router.", "Some cloud environments provide this functionality, e.g. AWS Elastic Load Balancer."],
+                drawbacks: ["Unless it is part of the cloud environment, the router is another system component that must be installed and configured, and replicated for availability and capacity.", "The router must support the necessary communication protocols (e.g. HTTP, gRPC, Thrift) unless it is a TCP-based router.", "More network hops are required than when using client-side discovery."],
+                related: ["Service Registry", "Circuit Breaker", "Client-side Discovery"],
+                hasDiagram: false
+            },
+            {
+                id: "service-registry",
+                name: "Service Registry",
+                category: "Service Discovery",
+                icon: "fa-address-book",
+                shortDesc: "Centralized directory containing physical locations of active service instances.",
+                overview: "Maintain a database of service instance locations (IP address and port) updated dynamically via heartbeats.",
+                context: "Clients of a service use either Client-side discovery or Server-side discovery to determine the location of a service instance to which to send requests.",
+                problem: "How do clients of a service (in the case of Client-side discovery) and/or routers (in the case of Server-side discovery) know about the available instances of a service?",
+                forces: [
+                    "Each instance of a service exposes a remote API such as HTTP/REST or Thrift at a particular location (host and port).",
+                    "The number of service instances and their locations change dynamically; VMs and containers are usually assigned a dynamic IP address, and an EC2 Autoscaling Group adjusts the number of instances based on load."
+                ],
+                solution: "Implement a service registry, which is a database of services, their instances and their locations. Service instances are registered on startup and deregistered on shutdown. Clients and/or routers query the registry to find the available instances of a service. A service registry might invoke a service instance's health check API to verify that it is able to handle requests.",
+                examples: "The Microservices Example application uses a Netflix Eureka service registry, deployed as a small Spring Boot application via Docker. Other examples include Apache Zookeeper, Consul and Etcd; some systems such as Kubernetes, Marathon and AWS ELB have an implicit service registry.",
+                benefits: ["Clients of the service and/or routers can discover the location of service instances."],
+                drawbacks: ["Unless built into the infrastructure, the service registry is yet another infrastructure component that must be set up, configured and managed, and it is a critical system component.", "Clients should cache registry data, but if the registry fails that data will eventually become stale; consequently the registry must be highly available."],
+                related: ["Client-side Discovery", "Server-side Discovery", "Self Registration", "3rd Party Registration", "Health Check API"],
+                hasDiagram: false
+            },
+            {
+                id: "self-registration",
+                name: "Self Registration",
+                category: "Service Discovery",
+                icon: "fa-id-card",
+                shortDesc: "Service instances register themselves directly with the registry on boot.",
+                overview: "On startup, a service instance registers its IP/port with the registry and sends continuous health heartbeats.",
+                context: "You have applied either the Client-side Service Discovery pattern or the Server-side Service Discovery pattern. Service instances must be registered with the service registry on startup so that they can be discovered and unregistered on shutdown.",
+                problem: "How are service instances registered with and unregistered from the service registry?",
+                forces: [
+                    "Service instances must be registered with the service registry on startup and unregistered on shutdown.",
+                    "Service instances that crash must be unregistered from the service registry.",
+                    "Service instances that are running but incapable of handling requests must be unregistered from the service registry."
+                ],
+                solution: "A service instance is responsible for registering itself with the service registry. On startup it registers its host and IP address and makes itself available for discovery, typically periodically renewing its registration so the registry knows it is still alive. On shutdown it unregisters itself. This is typically handled by a Microservice chassis framework.",
+                examples: "The Microservices Example application (Scala, Spring Boot, Spring Cloud) uses self-registration with the Netflix Eureka Service Registry, configured with the @EnableEurekaClient annotation.",
+                benefits: ["A service instance knows its own state so it can implement a state model more complex than UP/DOWN, e.g. STARTING, AVAILABLE."],
+                drawbacks: ["Couples the service to the Service Registry.", "You must implement registration logic in each programming language/framework used to write your services.", "A service instance that is running yet unable to handle requests will often lack the self-awareness to unregister itself."],
+                related: ["Service Registry", "Client-side Discovery", "Server-side Discovery", "Microservice Chassis", "3rd Party Registration"],
+                hasDiagram: false
+            },
+            {
+                id: "third-party-registration",
+                name: "3rd Party Registration",
+                category: "Service Discovery",
+                icon: "fa-gears",
+                shortDesc: "An external manager tracks containers and updates the service registry.",
+                overview: "A registrar component (e.g., Kubernetes kubelet) monitors running containers and manages registry entries.",
+                context: "You have applied either the Client-side Service Discovery pattern or the Server-side Service Discovery pattern. Service instances must be registered with the service registry on startup so that they can be discovered and unregistered on shutdown.",
+                problem: "How are service instances registered with and unregistered from the service registry?",
+                forces: [
+                    "Service instances must be registered with the service registry on startup and unregistered on shutdown.",
+                    "Service instances that crash must be unregistered from the service registry.",
+                    "Service instances that are running but incapable of handling requests must be unregistered from the service registry."
+                ],
+                solution: "A 3rd party registrar is responsible for registering and unregistering a service instance with the service registry. When the service instance starts up, the registrar registers it; when it shuts down, the registrar unregisters it.",
+                examples: "Examples include Netflix Prana (a sidecar that registers non-JVM applications with Eureka), AWS Autoscaling Groups (automatically register/unregister EC2 instances with an ELB), Containerbuddy, Registrator, and clustering frameworks such as Kubernetes and Marathon.",
+                benefits: ["The service code is less complex than with Self Registration since it is not responsible for registering itself.", "The registrar can perform health checks and register/unregister the instance based on the health check."],
+                drawbacks: ["The registrar might only have superficial knowledge of the service instance's state (e.g. RUNNING or NOT RUNNING) and might not know whether it can handle requests, although some registrars such as Netflix Prana perform a health check.", "Unless part of the infrastructure, the registrar is another component that must be installed, configured and maintained, and since it is critical it must be highly available."],
+                related: ["Service Registry", "Client-side Discovery", "Server-side Discovery", "Self Registration"],
+                hasDiagram: false
+            },
+
+            // Category 9: Reliability (1)
+            {
+                id: "circuit-breaker",
+                name: "Circuit Breaker",
+                category: "Reliability",
+                icon: "fa-plug-circle-bolt",
+                shortDesc: "Fail fast when downstream services are unresponsive to prevent cascading outages.",
+                overview: "Wrap remote network calls in a proxy that trips when errors breach a threshold, failing immediately to allow recovery.",
+                context: "You have applied the microservice architecture. Services sometimes collaborate when handling requests. When one service synchronously invokes another there is always the possibility that the other service is unavailable or exhibits such high latency it is essentially unusable. Precious resources such as threads might be consumed in the caller while waiting, leading to resource exhaustion and cascading failures throughout the application.",
+                problem: "How to prevent a network or service failure from cascading to other services?",
+                solution: "A service client should invoke a remote service via a proxy that functions similarly to an electrical circuit breaker. When the number of consecutive failures crosses a threshold, the circuit breaker trips, and for the duration of a timeout period all attempts to invoke the remote service fail immediately. After the timeout expires the circuit breaker allows a limited number of test requests to pass through. If those requests succeed the circuit breaker resumes normal operation; otherwise the timeout period begins again.",
+                examples: "RegistrationServiceProxy from the Microservices Example application (Scala) uses a circuit breaker, using @HystrixCommand to run registerUser() through a circuit breaker, enabled with @EnableCircuitBreaker.",
+                benefits: ["Services handle the failure of the services that they invoke."],
+                drawbacks: [],
+                issues: "It is challenging to choose timeout values without creating false positives or introducing excessive latency.",
+                related: ["Microservice Chassis", "API Gateway", "Server-side Discovery", "RPI"],
+                hasDiagram: true,
+                diagramType: "circuit-breaker"
+            },
+
+            // Category 10: Observability (7)
+            {
+                id: "log-aggregation",
+                name: "Log Aggregation",
+                category: "Observability",
+                icon: "fa-file-lines",
+                shortDesc: "Consolidate log outputs from all service instances into a central searchable store.",
+                overview: "Ship stdout/stderr logs from all distributed instances to a central platform (e.g., OpenSearch, ELK, Grafana Loki).",
+                context: "You have applied the microservice architecture. The application consists of multiple services and service instances running on multiple machines, and requests often span multiple service instances. Each service instance writes information about what it is doing to a standardized log file containing errors, warnings, information and debug messages.",
+                problem: "How to understand the behavior of an application and troubleshoot problems?",
+                forces: ["Any solution should have minimal runtime overhead."],
+                solution: "Use a centralized logging service that aggregates logs from each service instance. Users can search and analyze the logs, and can configure alerts triggered when certain messages appear in the logs.",
+                examples: "AWS CloudWatch.",
+                benefits: [],
+                drawbacks: [],
+                issues: "Handling a large volume of logs requires substantial infrastructure.",
+                related: ["Distributed Tracing", "Exception Tracking"],
+                hasDiagram: false
+            },
+            {
+                id: "application-metrics",
+                name: "Application Metrics",
+                category: "Observability",
+                icon: "fa-chart-line",
+                shortDesc: "Instrument services to collect operational metrics (counters, gauges, latency timers).",
+                overview: "Expose numeric metric counters and timers for scrapers (e.g., Prometheus) to power dashboards (Grafana).",
+                context: "You have applied the microservice architecture.",
+                problem: "How to understand the behavior of an application and troubleshoot problems?",
+                forces: ["Any solution should have minimal runtime overhead."],
+                solution: "Instrument a service to gather statistics about individual operations. Aggregate metrics in a centralized metrics service, which provides reporting and alerting. There are two models for aggregating metrics: push (the service pushes metrics to the metrics service) and pull (the metrics service pulls metrics from the service).",
+                examples: "Instrumentation libraries include the Coda Hale/Yammer Java Metrics Library and Prometheus client libraries. Metrics aggregation services include Prometheus and AWS CloudWatch.",
+                benefits: ["It provides deep insight into application behavior."],
+                drawbacks: ["Metrics code is intertwined with business logic, making it more complicated."],
+                issues: "Aggregating metrics can require significant infrastructure.",
+                related: ["Health Check API", "Log Aggregation"],
+                hasDiagram: false
+            },
+            {
+                id: "audit-logging",
+                name: "Audit Logging",
+                category: "Observability",
+                icon: "fa-user-shield",
+                shortDesc: "Record customer actions and operational events in an immutable audit trail.",
+                overview: "Log security-critical user operations (login, payment, permissions edit) to an append-only compliance ledger.",
+                context: "You have applied the microservice architecture.",
+                problem: "How to understand the behavior of users and the application and troubleshoot problems?",
+                forces: ["It is useful to know what actions a user has recently performed: customer support, compliance, security, etc."],
+                solution: "Record user activity in a database.",
+                examples: "This pattern is widely used.",
+                benefits: ["Provides a record of user actions."],
+                drawbacks: ["The auditing code is intertwined with the business logic, which makes the business logic more complicated."],
+                related: ["Event Sourcing", "Log Aggregation", "Domain Event"],
+                hasDiagram: false
+            },
+            {
+                id: "distributed-tracing",
+                name: "Distributed Tracing",
+                category: "Observability",
+                icon: "fa-shoe-prints",
+                shortDesc: "Track requests across service invocations using unique correlation Trace IDs.",
+                overview: "Assign a unique Trace ID to incoming requests and forward context headers to visualize full call cascades in Jaeger/Zipkin.",
+                context: "You have applied the microservice architecture. Requests often span multiple services. Each service handles a request by performing one or more operations, e.g. database queries or publishing messages.",
+                problem: "How to understand the behavior of an application and troubleshoot problems?",
+                forces: [
+                    "External monitoring only tells you the overall response time and number of invocations - no insight into the individual operations.",
+                    "Any solution should have minimal runtime overhead.",
+                    "Log entries for a request are scattered across numerous logs."
+                ],
+                solution: "Instrument services with code that assigns each external request a unique external request id, passes the id to all services involved in handling the request, includes the id in all log messages, and records information (e.g. start time, end time) about the requests and operations in a centralized service. This instrumentation might be provided by a Microservice Chassis framework.",
+                examples: "The Microservices Example application (Scala, Spring Boot, Spring Cloud) uses Spring Cloud Sleuth to gather trace information and deliver it to a Zipkin Server, with RabbitMQ delivering traces to Zipkin.",
+                benefits: ["Provides useful insight into the behavior of the system, including the sources of latency.", "Enables developers to see how an individual request is handled by searching across aggregated logs for its external request id."],
+                drawbacks: [],
+                issues: "Aggregating and storing traces can require significant infrastructure.",
+                related: ["Log Aggregation", "Exception Tracking"],
+                hasDiagram: false
+            },
+            {
+                id: "exception-tracking",
+                name: "Exception Tracking",
+                category: "Observability",
+                icon: "fa-bug",
+                shortDesc: "Aggregate and deduplicate unhandled runtime exceptions to a central portal.",
+                overview: "Capture unhandled runtime errors with stack traces and group them in platforms like Sentry or Rollbar.",
+                context: "You have applied the microservice architecture. The application consists of multiple services and service instances running on multiple machines. Errors sometimes occur when handling requests; when an error occurs, a service instance throws an exception containing an error message and a stack trace.",
+                problem: "How to understand the behavior of an application and troubleshoot problems?",
+                solution: "Report all exceptions to a centralized exception tracking service that aggregates and tracks exceptions and notifies developers.",
+                benefits: ["It is easier to view exceptions and track their resolution."],
+                drawbacks: ["The exception tracking service is additional infrastructure."],
+                related: ["Log Aggregation"],
+                hasDiagram: false
+            },
+            {
+                id: "health-check-api",
+                name: "Health Check API",
+                category: "Observability",
+                icon: "fa-heart-pulse",
+                shortDesc: "Expose endpoints (e.g., /health) to report service instance readiness and liveness.",
+                overview: "Provide an HTTP endpoint that tests database connectivity and dependencies to report overall instance health status.",
+                context: "You have applied the microservice architecture. Sometimes a service instance can be incapable of handling requests yet still be running, for example because it ran out of database connections. The monitoring system should then generate an alert, and the load balancer or service registry should not route requests to the failed instance.",
+                problem: "How to detect that a running service instance is unable to handle requests?",
+                forces: [
+                    "An alert should be generated when a service instance fails.",
+                    "Requests should be routed to working service instances."
+                ],
+                solution: "A service has a health check API endpoint (e.g. HTTP /health) that returns the health of the service. The handler performs checks such as the status of connections to infrastructure services, the status of the host (e.g. disk space), and application-specific logic. A health check client - a monitoring service, service registry or load balancer - periodically invokes the endpoint to check the health of the service instance.",
+                examples: "The Microservices Example application implements a health check API using Spring Boot and Spring Cloud; the endpoint is provided by the Spring Boot Actuator module, with extensible health check logic via custom HealthIndicator beans.",
+                benefits: ["The health check endpoint enables the health of a service instance to be periodically tested."],
+                drawbacks: ["The health check might not be sufficiently comprehensive, or the service instance might fail between health checks, so requests might still be routed to a failed instance."],
+                related: ["Service Registry", "Application Metrics"],
+                hasDiagram: false
+            },
+            {
+                id: "log-deployments-and-changes",
+                name: "Log Deployments and Changes",
+                category: "Observability",
+                icon: "fa-rocket",
+                shortDesc: "Record deployment events and configuration changes on metric timelines.",
+                overview: "Overlay CI/CD pipeline deployment timestamps directly onto operational metric charts and dashboards.",
+                context: "You have applied the microservice architecture.",
+                problem: "How to understand the behavior of an application and troubleshoot problems?",
+                forces: ["It is useful to see when deployments and other changes occur, since issues usually occur immediately after a change."],
+                solution: "Log every deployment and every change to the (production) environment.",
+                examples: "A deployment tool can publish a pseudo-metric whenever it deploys a new version of a service, which can be displayed alongside other metrics so changes in behavior can be correlated with deployments. AWS CloudTrail provides logs of AWS API calls.",
+                benefits: ["Enables deployments and changes to be easily correlated with issues, leading to faster resolution."],
+                drawbacks: [],
+                related: ["Application Metrics"],
+                hasDiagram: false
+            },
+
+            // Category 11: Security (1)
+            {
+                id: "access-token",
+                name: "Access Token",
+                category: "Security",
+                icon: "fa-key",
+                shortDesc: "Pass cryptographically signed tokens (JWT) to securely share user identity across services.",
+                overview: "API Gateway authenticates users and issues a signed JWT containing identity and roles. Services verify the token locally.",
+                context: "You have applied the microservice architecture and API Gateway patterns. The application consists of numerous services; the API gateway is the single entry point for client requests. It authenticates requests and forwards them to other services, which might in turn invoke other services.",
+                problem: "How to communicate the identity of the requestor to the services that handle the request?",
+                forces: ["Services often need to verify that a user is authorized to perform an operation."],
+                solution: "The API Gateway authenticates the request and passes an access token (e.g. JSON Web Token) that securely identifies the requestor in each request to the services. A service can include the access token in requests it makes to other services.",
+                examples: "See JSON Web Token for usage examples and supporting libraries.",
+                benefits: ["The identity of the requestor is securely passed around the system.", "Services can verify that the requestor is authorized to perform an operation."],
+                drawbacks: [],
+                related: ["API Gateway"],
+                hasDiagram: false
+            },
+
+            // Category 12: Testing (2)
+            {
+                id: "service-integration-contract-test",
+                name: "Service Integration Contract Test",
+                category: "Testing",
+                icon: "fa-file-signature",
+                shortDesc: "Contract tests written by consumers verify a provider service meets their expectations.",
+                overview: "Client teams define expected API interactions in contract files (e.g., Pact). Providers execute the consumer-written contract tests so breaking changes are caught before deployment.",
+                context: "You have applied the microservice architecture, so the application consists of numerous services that often invoke one another. You must write automated tests that verify that a service behaves correctly.",
+                problem: "How to easily test that a service provides an API that its clients expect?",
+                forces: ["End-to-end testing (tests that launch multiple services) is difficult, slow, brittle and expensive."],
+                solution: "Write a test suite for a service that is written by the developers of another service that consumes it; the suite verifies that the service meets the consuming service's expectations. The same contract can be exercised from both sides - the provider runs the consumer-written contract tests against its API, and the consumer verifies its client code against a mock server generated from the contract.",
+                examples: "Spring Cloud Contract is an open source project that supports this style of testing.",
+                benefits: ["Testing a service in isolation is easier, faster, more reliable and cheaper."],
+                drawbacks: ["Tests might pass but the application will fail in production."],
+                issues: "How to ensure that the consumer-provided tests match what the consumer actually requires?",
+                related: ["Service Component Test"],
+                hasDiagram: false
+            },
+            {
+                id: "service-component-test",
+                name: "Service Component Test",
+                category: "Testing",
+                icon: "fa-microchip",
+                shortDesc: "Test a service in complete isolation by mocking external dependencies with test doubles.",
+                overview: "Exercise service APIs end-to-end in isolation while replacing external services and databases with stubs or containers.",
+                context: "You have applied the microservice architecture, so the application consists of numerous services that often invoke one another. You must write automated tests that verify that a service behaves correctly.",
+                problem: "How do you easily test a service?",
+                forces: ["End-to-end testing (tests that launch multiple services) is difficult, slow, brittle and expensive."],
+                solution: "A test suite that tests a service in isolation using test doubles for any services that it invokes.",
+                examples: "Spring Cloud Contract is an open source project that supports this style of testing.",
+                benefits: ["Testing a service in isolation is easier, faster, more reliable and cheaper."],
+                drawbacks: ["Tests might pass but the application will fail in production."],
+                issues: "How to ensure that the test doubles always correctly emulate the behavior of the invoked services?",
+                related: ["Service Integration Contract Test"],
+                hasDiagram: false
+            },
+
+            // Category 13: Deployment (6)
+            {
+                id: "multiple-service-instances-per-host",
+                name: "Multiple Services per Host",
+                category: "Deployment",
+                icon: "fa-server",
+                shortDesc: "Run multiple service instances on a single shared physical or virtual host.",
+                overview: "Deploy multiple instances of different services as processes on a single shared VM or bare-metal server.",
+                context: "You have applied the microservice architecture and architected your system as a set of services. Each service is deployed as a set of service instances for throughput and availability.",
+                problem: "How are services packaged and deployed?",
+                forces: [
+                    "Services are written using a variety of languages, frameworks and framework versions.",
+                    "Each service consists of multiple service instances for throughput and availability.",
+                    "Services must be independently deployable and scalable.",
+                    "Service instances need to be isolated from one another.",
+                    "You need to be able to quickly build and deploy a service.",
+                    "You need to be able to constrain the resources (CPU and memory) consumed by a service.",
+                    "You need to monitor the behavior of each service instance.",
+                    "You want deployment to be reliable.",
+                    "You must deploy the application as cost-effectively as possible."
+                ],
+                solution: "Run multiple instances of different services on a host (physical or virtual machine). Service instances can be deployed on a shared host in various ways, including each service instance as a JVM process (e.g. a Tomcat or Jetty instance per service instance), or multiple service instances in the same JVM (e.g. as web applications or OSGi bundles).",
+                benefits: ["More efficient resource utilization than the Single Service per Host pattern."],
+                drawbacks: ["Risk of conflicting resource requirements.", "Risk of conflicting dependency versions.", "Difficult to limit the resources consumed by a service instance.", "If multiple service instances share a process it is difficult to monitor each instance's resource consumption, and impossible to isolate each instance."],
+                related: ["Single Service per Host", "Serverless Deployment"],
+                hasDiagram: false
+            },
+            {
+                id: "service-instance-per-host",
+                name: "Single Service per Host",
+                category: "Deployment",
+                icon: "fa-hard-drive",
+                shortDesc: "Dedicate a physical server exclusively to a single service instance.",
+                overview: "Run only one service instance on each dedicated bare-metal server to guarantee complete isolation.",
+                context: "You have applied the microservice architecture and architected your system as a set of services. Each service is deployed as a set of service instances for throughput and availability.",
+                problem: "How are services packaged and deployed?",
+                forces: [
+                    "Services are written using a variety of languages, frameworks and framework versions.",
+                    "Each service consists of multiple service instances for throughput and availability.",
+                    "Services must be independently deployable and scalable.",
+                    "Service instances need to be isolated from one another.",
+                    "You need to be able to quickly build and deploy a service.",
+                    "You need to be able to constrain the resources (CPU and memory) consumed by a service.",
+                    "You need to monitor the behavior of each service instance.",
+                    "You want deployment to be reliable.",
+                    "You must deploy the application as cost-effectively as possible."
+                ],
+                solution: "Deploy each single service instance on its own host.",
+                benefits: ["Service instances are isolated from one another.", "There is no possibility of conflicting resource requirements or dependency versions.", "A service instance can consume at most the resources of a single host.", "It is straightforward to monitor, manage and redeploy each service instance."],
+                drawbacks: ["Potentially less efficient resource utilization compared to Multiple Services per Host because there are more hosts."],
+                related: ["Multiple Services per Host", "Service per VM", "Service per Container", "Serverless Deployment"],
+                hasDiagram: false
+            },
+            {
+                id: "service-instance-per-vm",
+                name: "Service per VM",
+                category: "Deployment",
+                icon: "fa-cloud-meatball",
+                shortDesc: "Package each service instance inside its own dedicated Virtual Machine.",
+                overview: "Deploy each service instance as an AMI/VM image (e.g., AWS EC2) with fixed resource limits.",
+                context: "You have applied the microservice architecture and architected your system as a set of services. Each service is deployed as a set of service instances for throughput and availability.",
+                problem: "How are services packaged and deployed?",
+                forces: [
+                    "Services are written using a variety of languages, frameworks and framework versions.",
+                    "Each service consists of multiple service instances for throughput and availability.",
+                    "Services must be independently deployable and scalable.",
+                    "Service instances need to be isolated from one another.",
+                    "You need to be able to quickly build and deploy a service.",
+                    "You need to be able to constrain the resources (CPU and memory) consumed by a service.",
+                    "You need to monitor the behavior of each service instance.",
+                    "You want deployment to be reliable.",
+                    "You must deploy the application as cost-effectively as possible."
+                ],
+                solution: "Package the service as a virtual machine image and deploy each service instance as a separate VM.",
+                examples: "Netflix packages each service as an EC2 AMI and deploys each service instance as an EC2 instance.",
+                benefits: ["It is straightforward to scale the service by increasing the number of instances; Amazon Autoscaling Groups can even do this automatically based on load.", "The VM encapsulates the details of the technology used to build the service - all services are started and stopped in the same way.", "Each service instance is isolated.", "A VM imposes limits on the CPU and memory consumed by a service instance.", "IaaS solutions such as AWS provide mature infrastructure for deploying and managing VMs, e.g. Elastic Load Balancer and Autoscaling groups."],
+                drawbacks: ["Building a VM image is slow and time consuming."],
+                related: ["Single Service per Host", "Service per Container", "Serverless Deployment"],
+                hasDiagram: false
+            },
+            {
+                id: "service-instance-per-container",
+                name: "Service per Container",
+                category: "Deployment",
+                icon: "fa-docker",
+                shortDesc: "Run each service instance in an isolated lightweight container (Docker/OCI).",
+                overview: "Package application code and dependencies into container images deployed on Kubernetes clusters.",
+                context: "You have applied the microservice architecture and architected your system as a set of services. Each service is deployed as a set of service instances for throughput and availability.",
+                problem: "How are services packaged and deployed?",
+                forces: [
+                    "Services are written using a variety of languages, frameworks and framework versions.",
+                    "Each service consists of multiple service instances for throughput and availability.",
+                    "Services must be independently deployable and scalable.",
+                    "Service instances need to be isolated from one another.",
+                    "You need to be able to quickly build and deploy a service.",
+                    "You need to be able to constrain the resources (CPU and memory) consumed by a service.",
+                    "You need to monitor the behavior of each service instance.",
+                    "You want deployment to be reliable.",
+                    "You must deploy the application as cost-effectively as possible."
+                ],
+                solution: "Package the service as a (Docker) container image and deploy each service instance as a container.",
+                examples: "Docker is a popular way of packaging and deploying services; each service is a Docker image and each service instance a Docker container. Docker clustering frameworks include Kubernetes, Marathon/Mesos and Amazon EC2 Container Service.",
+                benefits: ["It is straightforward to scale a service up and down by changing the number of container instances.", "The container encapsulates the technology used to build the service - all services are started and stopped the same way.", "Each service instance is isolated.", "A container imposes limits on the CPU and memory consumed by a service instance.", "Containers are extremely fast to build and start - about 100x faster than packaging an AMI, and faster to start than a VM since only the application process starts."],
+                drawbacks: ["The infrastructure for deploying containers is not as rich as the infrastructure for deploying virtual machines."],
+                related: ["Single Service per Host", "Service per VM", "Serverless Deployment", "Service Deployment Platform"],
+                hasDiagram: false
+            },
+            {
+                id: "serverless-deployment",
+                name: "Serverless Deployment",
+                category: "Deployment",
+                icon: "fa-bolt-lightning",
+                shortDesc: "Deploy services using platform-managed Function-as-a-Service (FaaS).",
+                overview: "Deploy service functions directly to cloud platforms (AWS Lambda, GCP Cloud Run) that scale to zero automatically.",
+                context: "You have applied the microservice architecture and architected your system as a set of services. Each service is deployed as a set of service instances for throughput and availability.",
+                problem: "How are services packaged and deployed?",
+                forces: [
+                    "Services are written using a variety of languages, frameworks and framework versions.",
+                    "Each service consists of multiple service instances for throughput and availability.",
+                    "Services must be independently deployable and scalable.",
+                    "Service instances need to be isolated from one another.",
+                    "You need to be able to quickly build and deploy a service.",
+                    "You need to be able to constrain the resources (CPU and memory) consumed by a service.",
+                    "You need to monitor the behavior of each service instance.",
+                    "You want deployment to be reliable.",
+                    "You must deploy the application as cost-effectively as possible."
+                ],
+                solution: "Use a deployment infrastructure that hides any concept of servers (physical or virtual hosts, or containers). The infrastructure takes your service's code and runs it, charging you for each request based on the resources consumed. To deploy, you package the code (e.g. as a ZIP file), upload it, and describe the desired performance characteristics. The infrastructure is a utility operated by a public cloud provider that typically uses containers or virtual machines internally, but those details are hidden.",
+                examples: "Serverless deployment environments include AWS Lambda, Google Cloud Functions and Azure Functions, with AWS Lambda offering the richest feature set. A Lambda function is a stateless component invoked to handle events: you package code in a ZIP file, specify the handler and resource limits, and Lambda runs enough instances to handle the load. Lambdas can be invoked by events from AWS services, via API Gateway for HTTP requests, via the AWS Lambda Web Service API, or on a cron-like schedule; cost depends on invocation duration and memory.",
+                benefits: ["It eliminates the undifferentiated heavy lifting of managing low-level infrastructure so you can focus on your code.", "The serverless infrastructure is extremely elastic and automatically scales your services to handle the load.", "You pay for each request rather than provisioning potentially under-utilized VMs or containers."],
+                drawbacks: ["Significant limitations and constraints - e.g. AWS Lambda only supports a few languages and is only suitable for stateless, request-driven applications (you cannot deploy a long-running stateful application such as a database or message broker).", "Limited input sources - lambdas can only respond to a limited set of input sources; AWS Lambda is not intended to run services that subscribe to a message broker such as RabbitMQ.", "Applications must start up quickly - serverless is not a good fit if your service takes a long time to start.", "Risk of high latency - provisioning and initializing a function can cause significant latency, and the infrastructure can only react to load increases, so sudden spikes may initially show high latency."],
+                related: ["Multiple Services per Host", "Single Service per Host", "Service per Container"],
+                hasDiagram: false
+            },
+            {
+                id: "service-deployment-platform",
+                name: "Service Deployment Platform",
+                category: "Deployment",
+                icon: "fa-cubes-stacked",
+                shortDesc: "Utilize automated orchestration platforms (Kubernetes) providing abstract service primitives.",
+                overview: "Deploy applications to a platform that automates provisioning, scaling, health checks, and rolling updates.",
+                context: "You have applied the microservice architecture and architected your system as a set of services. Each service is deployed as a set of service instances for throughput and availability.",
+                problem: "How are services packaged and deployed?",
+                forces: [
+                    "Services are written using a variety of languages, frameworks and framework versions.",
+                    "Each service consists of multiple service instances for throughput and availability.",
+                    "Services must be independently deployable and scalable.",
+                    "Service instances need to be isolated from one another.",
+                    "You need to be able to quickly build and deploy a service.",
+                    "You need to be able to constrain the resources (CPU and memory) consumed by a service.",
+                    "You need to monitor the behavior of each service instance.",
+                    "You want deployment to be reliable.",
+                    "You must deploy the application as cost-effectively as possible."
+                ],
+                solution: "Use a deployment platform, which is automated infrastructure for application deployment. It provides a service abstraction, which is a named, set of highly available (e.g. load balanced) service instances.",
+                examples: "Docker orchestration frameworks including Docker swarm mode and Kubernetes; serverless platforms such as AWS Lambda; and PaaS including Cloud Foundry and AWS Elastic Beanstalk.",
+                benefits: ["Automated provisioning, scaling, health checks and rolling updates."],
+                drawbacks: ["Significant platform complexity and learning curve."],
+                related: ["Service Registry", "Server-side Discovery", "Service per Container", "Service per VM"],
+                hasDiagram: false
+            },
+
+            // Category 14: Cross-Cutting Concerns (3)
+            {
+                id: "microservice-chassis",
+                name: "Microservice Chassis",
+                category: "Cross-Cutting Concerns",
+                icon: "fa-toolbox",
+                shortDesc: "Framework handling cross-cutting concerns (logging, metrics, tracing, security).",
+                overview: "Build services on top of a foundational framework (e.g., Spring Boot, Quarkus) that handles infrastructure concerns.",
+                context: "Starting an application requires significant time writing build logic and implementing cross-cutting concerns such as security, externalized configuration, logging, health checks, metrics and distributed tracing, plus technology-specific boilerplate like connection pools. In a microservice architecture with tens or hundreds of services, you frequently create new services and cannot afford days setting up each one.",
+                problem: "How can a team quickly create and set up a maintainable code base for a production-ready service so they can start developing its business logic?",
+                forces: [
+                    "A service must implement build logic that builds, tests and packages it into a production-ready format, and cross-cutting concerns such as externalized configuration, logging, health checks, metrics, service registration and discovery, and circuit breakers, plus technology-specific concerns.",
+                    "Creating a new microservice should be fast and easy.",
+                    "It should be fast and straightforward to update existing services when the requirements for build logic and cross-cutting concerns change."
+                ],
+                solution: "Create a microservice chassis framework that can be the foundation for developing your microservices. The chassis implements reusable build logic (e.g. Gradle plugins) and mechanisms that handle cross-cutting concerns by assembling and configuring a collection of frameworks and libraries. A Service Template is a sample service that uses the microservice chassis.",
+                examples: "Frameworks that are starting points for creating a microservice chassis include Spring Boot and Spring Cloud, and Dropwizard (Java), and Gizmo, Micro and Go kit (Go).",
+                benefits: ["Faster and easier to keep dependencies, build logic and cross-cutting concern logic up to date by releasing a new chassis version and updating each service to use it."],
+                drawbacks: [],
+                issues: "You need a microservice chassis for each programming language/framework you want to use, which can be an obstacle to adopting a new programming language or framework.",
+                related: ["Service Template", "Externalized Configuration", "Self Registration", "Client-side Discovery", "Circuit Breaker", "Distributed Tracing"],
+                hasDiagram: true,
+                diagramType: "chassis"
+            },
+            {
+                id: "externalized-configuration",
+                name: "Externalized Configuration",
+                category: "Cross-Cutting Concerns",
+                icon: "fa-sliders",
+                shortDesc: "Externalize parameters (credentials, URLs) so services adapt per environment without rebuilds.",
+                overview: "Supply environment variables or load properties from central configuration servers (e.g., Spring Cloud Config, HashiCorp Vault) at runtime.",
+                context: "An application typically uses one or more infrastructure and 3rd party services. Examples of infrastructure services include a service registry, a message broker and a database server; examples of 3rd party services include payment processing, email and messaging.",
+                problem: "How to enable a service to run in multiple environments without modification?",
+                forces: [
+                    "Configuration data - a service must be provided with data (e.g. database network location and credentials) telling it how to connect to the external/3rd party services.",
+                    "A service must run in multiple environments - dev, test, qa, staging, production - without modification and/or recompilation.",
+                    "Different environments have different instances of the external/3rd party services, e.g. QA database vs. production database, test credit card account vs. production credit card account."
+                ],
+                solution: "Externalize all application configuration including the database credentials and network location. On startup, a service reads the configuration from an external source, e.g. OS environment variables, property files, or command line arguments.",
+                examples: "Spring Boot externalized configuration reads values from OS environment variables, property files and command line arguments. RegistrationServiceProxy from the Microservices Example application (Scala) is configured with the variable user_registration_url, supplied by docker-compose.yml as an OS environment variable.",
+                benefits: ["The application runs in multiple environments without modification and/or recompilation."],
+                drawbacks: [],
+                issues: "How to ensure that when an application is deployed the supplied configuration matches what is expected?",
+                related: ["Microservice Chassis", "Server-side Discovery", "Client-side Discovery"],
+                hasDiagram: false
+            },
+            {
+                id: "service-template",
+                name: "Service Template",
+                category: "Cross-Cutting Concerns",
+                icon: "fa-copy",
+                shortDesc: "Pre-configured boilerplate repository developers copy to quickly launch new services.",
+                overview: "Provide a template repository containing build scripts, Dockerfiles, CI/CD pipelines, and chassis libraries ready to clone.",
+                context: "Starting an application requires significant time writing build logic and implementing cross-cutting concerns such as security, externalized configuration, logging, health checks, metrics and distributed tracing, plus technology-specific boilerplate. In a microservice architecture with tens or hundreds of services, you cannot afford to spend a few days setting up every service.",
+                problem: "How can a team quickly create and set up a maintainable code base for a production-ready service so they can start developing its business logic?",
+                forces: [
+                    "A service must implement build logic that builds, tests and packages it into a production-ready format, and cross-cutting concerns such as externalized configuration, logging, health checks, metrics, service registration and discovery, and circuit breakers, plus technology-specific concerns.",
+                    "Creating a new microservice should be fast and easy.",
+                    "It should be fast and straightforward to update existing services when the requirements for build logic and cross-cutting concerns change."
+                ],
+                solution: "Create a source code template that a developer can copy in order to quickly start developing a new service. A template is a simple runnable service that implements the required build logic and cross-cutting concerns along with sample application logic.",
+                benefits: ["A developer can quickly and easily start developing a new microservice.", "It ensures that cross-cutting concerns are implemented in a standardized, consistent way.", "It encourages developers to 'do the right thing'."],
+                drawbacks: ["It's a form of copy/paste programming. When you change the service template you must update existing services individually; creating service repositories by forking the template repository can minimize the work by leveraging Git, but services created at different times will diverge."],
+                issues: "You need a service template for each programming language/framework you want to use, which can be an obstacle to adopting a new programming language or framework.",
+                related: ["Microservice Chassis"],
+                hasDiagram: false
+            },
+
+            // Category 15: UI Design (2)
+            {
+                id: "server-side-page-fragment-composition",
+                name: "Server-Side Page Fragment Composition",
+                category: "UI Design",
+                icon: "fa-window-restore",
+                shortDesc: "Compose HTML page fragments generated by multiple microservices on the server.",
+                overview: "An HTML page router aggregates HTML fragments rendered by backend microservices into a single cohesive webpage.",
+                context: "You have applied the microservice architecture. Services are developed by business capability/subdomain-oriented teams that are also responsible for the user experience. Some UI screens/pages display data from multiple services, with each data item corresponding to a separate service owned by a different team.",
+                problem: "How to implement a UI screen or page that displays data from multiple services?",
+                solution: "Each team develops a web application that generates the HTML fragment implementing the region of the page for their service. A UI team is responsible for developing the page templates that build pages by performing server-side aggregation (e.g. a server-side include style mechanism) of the service-specific HTML fragments.",
+                benefits: ["Teams own their feature UI end-to-end, from data to HTML."],
+                drawbacks: ["Requires a server-side aggregation mechanism (e.g. server-side includes) and coordination on page templates."],
+                related: ["Client-Side UI Composition"],
+                hasDiagram: false
+            },
+            {
+                id: "client-side-ui-composition",
+                name: "Client-Side UI Composition",
+                category: "UI Design",
+                icon: "fa-border-top-left",
+                shortDesc: "Compose Micro-Frontends directly inside the client browser at runtime.",
+                overview: "The client browser app loads independent JavaScript UI components (Micro-Frontends) from separate microservices.",
+                context: "You have applied the microservice architecture. Services are developed by business capability/subdomain-oriented teams that are also responsible for the user experience. Some UI screens/pages display data from multiple services, with each data item corresponding to a separate service owned by a different team.",
+                problem: "How to implement a UI screen or page that displays data from multiple services?",
+                solution: "Each team develops a client-side UI component, such as an AngularJS directive, that implements the region of the page/screen for their service. A UI team is responsible for implementing the page skeletons that build pages/screens by composing multiple, service-specific UI components.",
+                benefits: ["Independent development and deployment of UI components by each team."],
+                drawbacks: ["Requires a client-side composition mechanism and coordination on shared page skeletons."],
+                related: ["Server-Side Page Fragment Composition"],
+                hasDiagram: false
+            }
+        ];
+
+        // 15 Domain Categories (plus "All")
+        const CATEGORIES_LIST = [
+            "All",
+            "Architectural Style",
+            "Service Boundaries",
+            "Refactoring to Services",
+            "Service Collaboration",
+            "Transactional Messaging",
+            "External API",
+            "Communication Styles",
+            "Service Discovery",
+            "Reliability",
+            "Observability",
+            "Security",
+            "Testing",
+            "Deployment",
+            "Cross-Cutting Concerns",
+            "UI Design"
+        ];
+
+        // Canonical source page for every pattern on microservices.io
+        const SOURCE_URLS = {
+            "monolithic-architecture": "https://microservices.io/patterns/monolithic.html",
+            "microservice-architecture": "https://microservices.io/patterns/microservices.html",
+            "decompose-by-business-capability": "https://microservices.io/patterns/decomposition/decompose-by-business-capability.html",
+            "decompose-by-subdomain": "https://microservices.io/patterns/decomposition/decompose-by-subdomain.html",
+            "self-contained-service": "https://microservices.io/patterns/decomposition/self-contained-service.html",
+            "service-per-team": "https://microservices.io/patterns/decomposition/service-per-team.html",
+            "strangler-application": "https://microservices.io/patterns/refactoring/strangler-application.html",
+            "anti-corruption-layer": "https://microservices.io/patterns/refactoring/anti-corruption-layer.html",
+            "database-per-service": "https://microservices.io/patterns/data/database-per-service.html",
+            "shared-database": "https://microservices.io/patterns/data/shared-database.html",
+            "saga-pattern": "https://microservices.io/patterns/data/saga.html",
+            "command-side-replica": "https://microservices.io/patterns/data/command-side-replica.html",
+            "api-composition": "https://microservices.io/patterns/data/api-composition.html",
+            "cqrs": "https://microservices.io/patterns/data/cqrs.html",
+            "domain-event": "https://microservices.io/patterns/data/domain-event.html",
+            "event-sourcing": "https://microservices.io/patterns/data/event-sourcing.html",
+            "transactional-outbox": "https://microservices.io/patterns/data/transactional-outbox.html",
+            "transaction-log-tailing": "https://microservices.io/patterns/data/transaction-log-tailing.html",
+            "polling-publisher": "https://microservices.io/patterns/data/polling-publisher.html",
+            "api-gateway": "https://microservices.io/patterns/apigateway.html",
+            "backend-for-frontend": "https://microservices.io/patterns/apigateway.html",
+            "rpi": "https://microservices.io/patterns/communication-style/rpi.html",
+            "messaging": "https://microservices.io/patterns/communication-style/messaging.html",
+            "domain-specific-protocol": "https://microservices.io/patterns/communication-style/domain-specific.html",
+            "idempotent-consumer": "https://microservices.io/patterns/communication-style/idempotent-consumer.html",
+            "client-side-discovery": "https://microservices.io/patterns/client-side-discovery.html",
+            "server-side-discovery": "https://microservices.io/patterns/server-side-discovery.html",
+            "service-registry": "https://microservices.io/patterns/service-registry.html",
+            "self-registration": "https://microservices.io/patterns/self-registration.html",
+            "third-party-registration": "https://microservices.io/patterns/3rd-party-registration.html",
+            "circuit-breaker": "https://microservices.io/patterns/reliability/circuit-breaker.html",
+            "log-aggregation": "https://microservices.io/patterns/observability/application-logging.html",
+            "application-metrics": "https://microservices.io/patterns/observability/application-metrics.html",
+            "audit-logging": "https://microservices.io/patterns/observability/audit-logging.html",
+            "distributed-tracing": "https://microservices.io/patterns/observability/distributed-tracing.html",
+            "exception-tracking": "https://microservices.io/patterns/observability/exception-tracking.html",
+            "health-check-api": "https://microservices.io/patterns/observability/health-check-api.html",
+            "log-deployments-and-changes": "https://microservices.io/patterns/observability/log-deployments-and-changes.html",
+            "access-token": "https://microservices.io/patterns/security/access-token.html",
+            "service-integration-contract-test": "https://microservices.io/patterns/testing/service-integration-contract-test.html",
+            "service-component-test": "https://microservices.io/patterns/testing/service-component-test.html",
+            "multiple-service-instances-per-host": "https://microservices.io/patterns/deployment/multiple-services-per-host.html",
+            "service-instance-per-host": "https://microservices.io/patterns/deployment/single-service-per-host.html",
+            "service-instance-per-vm": "https://microservices.io/patterns/deployment/service-per-vm.html",
+            "service-instance-per-container": "https://microservices.io/patterns/deployment/service-per-container.html",
+            "serverless-deployment": "https://microservices.io/patterns/deployment/serverless-deployment.html",
+            "service-deployment-platform": "https://microservices.io/patterns/deployment/service-deployment-platform.html",
+            "microservice-chassis": "https://microservices.io/patterns/microservice-chassis.html",
+            "externalized-configuration": "https://microservices.io/patterns/externalized-configuration.html",
+            "service-template": "https://microservices.io/patterns/service-template.html",
+            "server-side-page-fragment-composition": "https://microservices.io/patterns/ui/server-side-page-fragment-composition.html",
+            "client-side-ui-composition": "https://microservices.io/patterns/ui/client-side-ui-composition.html"
+        };
+
+        // Aliases for `related` labels that use a short form of the pattern name
+        const RELATED_ALIASES = {
+            "CQRS": "cqrs",
+            "Saga": "saga-pattern",
+            "RPI": "rpi"
+        };
+
+        const RELATED_URLS = PATTERNS_DATA.reduce((acc, p) => {
+            acc[p.name] = SOURCE_URLS[p.id];
+            return acc;
+        }, {});
+
+        // Related patterns that are DDD building blocks rather than services patterns
+        const EXTRA_RELATED_URLS = {
+            "Aggregate": "https://microservices.io/patterns/data/aggregate.html"
+        };
+
+        function resolveRelatedUrl(name) {
+            if (RELATED_URLS[name]) return RELATED_URLS[name];
+            if (EXTRA_RELATED_URLS[name]) return EXTRA_RELATED_URLS[name];
+            const aliasId = RELATED_ALIASES[name];
+            return aliasId ? SOURCE_URLS[aliasId] : null;
+        }
+
+        let activeCategory = "All";
+        let searchQuery = "";
+
+        const categoryContainer = document.getElementById('categoryContainer');
+        const patternsGrid = document.getElementById('patternsGrid');
+        const patternCountLabel = document.getElementById('patternCountLabel');
+        const emptyState = document.getElementById('emptyState');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+        const modal = document.getElementById('patternModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalPatternTitle = document.getElementById('modalPatternTitle');
+        const modalCategoryBadge = document.getElementById('modalCategoryBadge');
+        const modalOverview = document.getElementById('modalOverview');
+        const modalProblem = document.getElementById('modalProblem');
+        const modalSolution = document.getElementById('modalSolution');
+        const modalBenefitsCard = document.getElementById('modalBenefitsCard');
+        const modalBenefits = document.getElementById('modalBenefits');
+        const modalDrawbacksCard = document.getElementById('modalDrawbacksCard');
+        const modalDrawbacks = document.getElementById('modalDrawbacks');
+        const modalRelated = document.getElementById('modalRelated');
+        const modalSourceLink = document.getElementById('modalSourceLink');
+        const modalContextSection = document.getElementById('modalContextSection');
+        const modalContext = document.getElementById('modalContext');
+        const modalForcesSection = document.getElementById('modalForcesSection');
+        const modalForces = document.getElementById('modalForces');
+        const modalExampleSection = document.getElementById('modalExampleSection');
+        const modalExample = document.getElementById('modalExample');
+        const modalIssuesSection = document.getElementById('modalIssuesSection');
+        const modalIssues = document.getElementById('modalIssues');
+        const modalKnownUsesSection = document.getElementById('modalKnownUsesSection');
+        const modalKnownUses = document.getElementById('modalKnownUses');
+        const diagramWrapper = document.getElementById('diagramSvgWrapper');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        function renderCategoryFilterPills() {
+            categoryContainer.innerHTML = CATEGORIES_LIST.map(cat => {
+                const count = cat === "All" ? PATTERNS_DATA.length : PATTERNS_DATA.filter(p => p.category === cat).length;
+                const isActive = cat === activeCategory;
+                const activeStyle = isActive 
+                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 border-indigo-500" 
+                    : "bg-darkcard text-slate-300 border-darkborder hover:bg-darkcardhover hover:border-slate-700";
+                
+                return `
+                    <button onclick="selectCategory('${cat}')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold border whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${activeStyle}">
+                        <span>${cat}</span>
+                        <span class="px-1.5 py-0.5 leading-none text-[10px] rounded-full ${isActive ? 'bg-indigo-700 text-white' : 'bg-slate-800 text-slate-400'}">${count}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        window.selectCategory = function(cat) {
+            activeCategory = cat;
+            renderCategoryFilterPills();
+            filterAndRenderPatterns();
+        };
+
+        window.resetFilters = function() {
+            activeCategory = "All";
+            searchQuery = "";
+            searchInput.value = "";
+            clearSearchBtn.classList.add('hidden');
+            renderCategoryFilterPills();
+            filterAndRenderPatterns();
+        };
+
+        function filterAndRenderPatterns() {
+            const filtered = PATTERNS_DATA.filter(p => {
+                const matchesCat = activeCategory === "All" || p.category === activeCategory;
+                const q = searchQuery.toLowerCase().trim();
+                const matchesSearch = !q || 
+                    p.name.toLowerCase().includes(q) || 
+                    p.shortDesc.toLowerCase().includes(q) ||
+                    p.category.toLowerCase().includes(q) ||
+                    p.problem.toLowerCase().includes(q) ||
+                    p.solution.toLowerCase().includes(q);
+
+                return matchesCat && matchesSearch;
+            });
+
+            patternCountLabel.textContent = `Showing ${filtered.length} of ${PATTERNS_DATA.length} patterns`;
+
+            if (filtered.length === 0) {
+                patternsGrid.innerHTML = "";
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            patternsGrid.innerHTML = filtered.map(p => `
+                <div onclick="openModal('${p.id}')" 
+                     class="group bg-darkcard border border-darkborder hover:border-indigo-500/80 rounded-2xl p-5 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/5 flex flex-col justify-between">
+                    <div>
+                        <!-- Category Badge & Diagram Indicator -->
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                                ${p.category}
+                            </span>
+                            ${p.hasDiagram ? '<span class="text-[11px] text-indigo-400 font-semibold flex items-center gap-1.5"><i class="fa-solid fa-diagram-project"></i> Diagram</span>' : ''}
+                        </div>
+
+                        <!-- Card Header -->
+                        <div class="flex items-start space-x-3 mb-3">
+                            <div class="p-2.5 rounded-xl bg-slate-800 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-200 flex-shrink-0">
+                                <i class="${p.icon.includes('fa-docker') ? 'fa-brands' : 'fa-solid'} ${p.icon} text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-100 text-base group-hover:text-indigo-400 transition-colors leading-snug">
+                                    ${p.name}
+                                </h3>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4 line-clamp-3">
+                            ${p.shortDesc}
+                        </p>
+                    </div>
+
+                    <div class="pt-3 border-t border-darkborder/60 flex items-center justify-between text-xs text-slate-500">
+                        <span>Click to view breakdown</span>
+                        <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform text-indigo-400"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function generateSVGDiagram(type) {
+            switch(type) {
+                case 'microservices':
+                    return `
+                    <svg viewBox="0 0 700 180" class="w-full h-auto max-h-52">
+                        <rect x="15" y="55" width="90" height="70" rx="10" fill="#1F2937" stroke="#4B5563" stroke-width="1.5"/>
+                        <text x="60" y="95" fill="#9CA3AF" font-weight="bold" font-size="11" text-anchor="middle">API Client</text>
+                        <path d="M 105 90 L 165 90" stroke="#6366F1" stroke-width="2" stroke-dasharray="4"/>
+                        <rect x="165" y="45" width="110" height="90" rx="10" fill="#4338CA" stroke="#6366F1" stroke-width="2"/>
+                        <text x="220" y="85" fill="#E0E7FF" font-weight="bold" font-size="11" text-anchor="middle">API Gateway</text>
+                        <text x="220" y="103" fill="#C7D2FE" font-size="9" text-anchor="middle">Routing / Auth</text>
+                        <path d="M 275 70 L 355 45" stroke="#6366F1" stroke-width="2"/>
+                        <path d="M 275 110 L 355 135" stroke="#10B981" stroke-width="2"/>
+                        <rect x="355" y="25" width="130" height="45" rx="8" fill="#312E81" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="420" y="52" fill="#C7D2FE" font-weight="bold" font-size="11" text-anchor="middle">Order Service</text>
+                        <rect x="355" y="110" width="130" height="45" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="420" y="137" fill="#A7F3D0" font-weight="bold" font-size="11" text-anchor="middle">Stock Service</text>
+                        <path d="M 485 47 L 560 47" stroke="#6366F1" stroke-width="2"/>
+                        <path d="M 485 132 L 560 132" stroke="#10B981" stroke-width="2"/>
+                        <rect x="560" y="25" width="110" height="45" rx="6" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="615" y="52" fill="#9CA3AF" font-size="10" text-anchor="middle">Order DB</text>
+                        <rect x="560" y="110" width="110" height="45" rx="6" fill="#111827" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="615" y="137" fill="#9CA3AF" font-size="10" text-anchor="middle">Stock DB</text>
+                    </svg>`;
+
+                case 'decomposition':
+                    return `
+                    <svg viewBox="0 0 600 175" class="w-full h-auto max-h-52">
+                        <rect x="230" y="15" width="140" height="45" rx="10" fill="#312E81" stroke="#6366F1" stroke-width="2"/>
+                        <text x="300" y="43" fill="#C7D2FE" font-weight="bold" font-size="12" text-anchor="middle">Application</text>
+                        <path d="M 300 60 L 75 105" stroke="#6366F1" stroke-width="1.5"/>
+                        <path d="M 300 60 L 220 105" stroke="#6366F1" stroke-width="1.5"/>
+                        <path d="M 300 60 L 365 105" stroke="#6366F1" stroke-width="1.5"/>
+                        <path d="M 300 60 L 510 105" stroke="#6366F1" stroke-width="1.5"/>
+                        <rect x="10" y="105" width="130" height="50" rx="8" fill="#1F2937" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="75" y="135" fill="#C7D2FE" font-size="10" text-anchor="middle">Product Catalog</text>
+                        <rect x="155" y="105" width="130" height="50" rx="8" fill="#1F2937" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="220" y="135" fill="#C7D2FE" font-size="10" text-anchor="middle">Inventory</text>
+                        <rect x="300" y="105" width="130" height="50" rx="8" fill="#1F2937" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="365" y="135" fill="#C7D2FE" font-size="10" text-anchor="middle">Order Mgmt</text>
+                        <rect x="445" y="105" width="130" height="50" rx="8" fill="#1F2937" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="510" y="135" fill="#C7D2FE" font-size="10" text-anchor="middle">Delivery</text>
+                    </svg>`;
+
+                case 'circuit-breaker':
+                    return `
+                    <svg viewBox="0 0 600 180" class="w-full h-auto max-h-52">
+                        <g class="diagram-node">
+                            <rect x="30" y="60" width="140" height="60" rx="12" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
+                            <text x="100" y="88" fill="#A7F3D0" font-weight="bold" font-size="13" text-anchor="middle">CLOSED</text>
+                            <text x="100" y="105" fill="#6EE7B7" font-size="9" text-anchor="middle">Normal Calls Allowed</text>
+                        </g>
+                        <g class="diagram-node">
+                            <rect x="430" y="60" width="140" height="60" rx="12" fill="#7F1D1D" stroke="#EF4444" stroke-width="2"/>
+                            <text x="500" y="88" fill="#FCA5A5" font-weight="bold" font-size="13" text-anchor="middle">OPEN</text>
+                            <text x="500" y="105" fill="#F87171" font-size="9" text-anchor="middle">Fast Fail / Fallback</text>
+                        </g>
+                        <g class="diagram-node">
+                            <rect x="230" y="110" width="140" height="55" rx="12" fill="#78350F" stroke="#F59E0B" stroke-width="2"/>
+                            <text x="300" y="135" fill="#FDE68A" font-weight="bold" font-size="12" text-anchor="middle">HALF-OPEN</text>
+                            <text x="300" y="150" fill="#FBBF24" font-size="9" text-anchor="middle">Trial Requests Probe</text>
+                        </g>
+                        <path d="M 170 75 L 420 75" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4"/>
+                        <text x="295" y="65" fill="#9CA3AF" font-size="9" text-anchor="middle">Errors > Threshold</text>
+                        <path d="M 470 120 L 380 140" stroke="#9CA3AF" stroke-width="1.5"/>
+                        <path d="M 230 135 L 140 110" stroke="#10B981" stroke-width="1.5"/>
+                    </svg>`;
+
+                case 'db-per-service':
+                    return `
+                    <svg viewBox="0 0 600 170" class="w-full h-auto max-h-52">
+                        <rect x="50" y="25" width="150" height="50" rx="10" fill="#312E81" stroke="#6366F1" stroke-width="2"/>
+                        <text x="125" y="55" fill="#C7D2FE" font-weight="bold" font-size="12" text-anchor="middle">Order Service</text>
+                        <rect x="85" y="100" width="80" height="50" rx="8" fill="#111827" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="125" y="130" fill="#9CA3AF" font-size="11" text-anchor="middle">Order DB</text>
+                        <path d="M 125 75 L 125 100" stroke="#6366F1" stroke-width="2"/>
+
+                        <path d="M 200 50 L 390 50" stroke="#10B981" stroke-width="2"/>
+                        <text x="295" y="40" fill="#10B981" font-size="10" font-weight="bold" text-anchor="middle">REST / gRPC API Call Only</text>
+
+                        <rect x="400" y="25" width="150" height="50" rx="10" fill="#581C87" stroke="#A855F7" stroke-width="2"/>
+                        <text x="475" y="55" fill="#E9D5FF" font-weight="bold" font-size="12" text-anchor="middle">Customer Service</text>
+                        <rect x="435" y="100" width="80" height="50" rx="8" fill="#111827" stroke="#A855F7" stroke-width="1.5"/>
+                        <text x="475" y="130" fill="#9CA3AF" font-size="11" text-anchor="middle">Customer DB</text>
+                        <path d="M 475 75 L 475 100" stroke="#A855F7" stroke-width="2"/>
+                    </svg>`;
+
+                case 'saga':
+                    return `
+                    <svg viewBox="0 0 600 160" class="w-full h-auto max-h-52">
+                        <rect x="20" y="30" width="130" height="55" rx="8" fill="#312E81" stroke="#6366F1" stroke-width="2"/>
+                        <text x="85" y="55" fill="#C7D2FE" font-weight="bold" font-size="11" text-anchor="middle">1. Create Order</text>
+                        <text x="85" y="70" fill="#818CF8" font-size="9" text-anchor="middle">(Local Tx 1)</text>
+
+                        <path d="M 150 55 L 220 55" stroke="#6366F1" stroke-width="2"/>
+
+                        <rect x="220" y="30" width="130" height="55" rx="8" fill="#78350F" stroke="#F59E0B" stroke-width="2"/>
+                        <text x="285" y="55" fill="#FDE68A" font-weight="bold" font-size="11" text-anchor="middle">2. Process Payment</text>
+                        <text x="285" y="70" fill="#FBBF24" font-size="9" text-anchor="middle">(Local Tx 2)</text>
+
+                        <path d="M 350 55 L 420 55" stroke="#6366F1" stroke-width="2"/>
+
+                        <rect x="420" y="30" width="150" height="55" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
+                        <text x="495" y="55" fill="#A7F3D0" font-weight="bold" font-size="11" text-anchor="middle">3. Reserve Inventory</text>
+                        <text x="495" y="70" fill="#34D399" font-size="9" text-anchor="middle">(Local Tx 3)</text>
+
+                        <path d="M 495 85 Q 285 145 85 85" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4"/>
+                        <text x="285" y="130" fill="#F87171" font-size="10" font-weight="bold" text-anchor="middle">Compensating Transactions on Failure</text>
+                    </svg>`;
+
+                case 'cqrs':
+                    return `
+                    <svg viewBox="0 0 600 170" class="w-full h-auto max-h-52">
+                        <rect x="20" y="60" width="70" height="50" rx="8" fill="#1F2937" stroke="#4B5563" stroke-width="1.5"/>
+                        <text x="55" y="90" fill="#9CA3AF" font-size="11" font-weight="bold" text-anchor="middle">Client</text>
+
+                        <path d="M 90 70 L 180 35" stroke="#EF4444" stroke-width="2"/>
+                        <rect x="180" y="15" width="130" height="45" rx="8" fill="#7F1D1D" stroke="#EF4444" stroke-width="1.5"/>
+                        <text x="245" y="42" fill="#FCA5A5" font-weight="bold" font-size="11" text-anchor="middle">Write Service</text>
+                        <rect x="360" y="15" width="90" height="45" rx="6" fill="#111827" stroke="#EF4444" stroke-width="1.5"/>
+                        <text x="405" y="42" fill="#9CA3AF" font-size="10" text-anchor="middle">Write DB</text>
+                        <path d="M 310 38 L 360 38" stroke="#EF4444" stroke-width="1.5"/>
+
+                        <path d="M 405 60 L 405 110" stroke="#F59E0B" stroke-width="2" stroke-dasharray="3"/>
+                        <text x="465" y="90" fill="#FBBF24" font-size="9">Sync Domain Events</text>
+
+                        <path d="M 90 100 L 180 135" stroke="#10B981" stroke-width="2"/>
+                        <rect x="180" y="110" width="130" height="45" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="245" y="137" fill="#A7F3D0" font-weight="bold" font-size="11" text-anchor="middle">Read Service</text>
+                        <rect x="360" y="110" width="90" height="45" rx="6" fill="#111827" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="405" y="137" fill="#9CA3AF" font-size="10" text-anchor="middle">Read View DB</text>
+                        <path d="M 360 132 L 310 132" stroke="#10B981" stroke-width="1.5"/>
+                    </svg>`;
+
+                case 'api-gateway':
+                    return `
+                    <svg viewBox="0 0 600 160" class="w-full h-auto max-h-52">
+                        <rect x="20" y="20" width="80" height="35" rx="6" fill="#1F2937" stroke="#4B5563"/>
+                        <text x="60" y="42" fill="#D1D5DB" font-size="10" text-anchor="middle">Web App</text>
+                        <rect x="20" y="105" width="80" height="35" rx="6" fill="#1F2937" stroke="#4B5563"/>
+                        <text x="60" y="127" fill="#D1D5DB" font-size="10" text-anchor="middle">Mobile App</text>
+
+                        <rect x="180" y="15" width="130" height="130" rx="12" fill="#312E81" stroke="#6366F1" stroke-width="2.5"/>
+                        <text x="245" y="70" fill="#C7D2FE" font-weight="bold" font-size="13" text-anchor="middle">API Gateway</text>
+                        <text x="245" y="90" fill="#818CF8" font-size="9" text-anchor="middle">Auth | Authz | Routing</text>
+
+                        <rect x="420" y="15" width="120" height="35" rx="6" fill="#064E3B" stroke="#10B981"/>
+                        <text x="480" y="37" fill="#A7F3D0" font-size="10" font-weight="bold" text-anchor="middle">Orders Service</text>
+                        <rect x="420" y="62" width="120" height="35" rx="6" fill="#581C87" stroke="#A855F7"/>
+                        <text x="480" y="84" fill="#E9D5FF" font-size="10" font-weight="bold" text-anchor="middle">Users Service</text>
+                        <rect x="420" y="110" width="120" height="35" rx="6" fill="#78350F" stroke="#F59E0B"/>
+                        <text x="480" y="132" fill="#FDE68A" font-size="10" font-weight="bold" text-anchor="middle">Billing Service</text>
+
+                        <path d="M 100 37 L 180 60" stroke="#9CA3AF" stroke-width="1.5"/>
+                        <path d="M 100 122 L 180 100" stroke="#9CA3AF" stroke-width="1.5"/>
+                        <path d="M 310 50 L 420 32" stroke="#10B981" stroke-width="1.5"/>
+                        <path d="M 310 80 L 420 80" stroke="#A855F7" stroke-width="1.5"/>
+                        <path d="M 310 110 L 420 127" stroke="#F59E0B" stroke-width="1.5"/>
+                    </svg>`;
+
+                case 'outbox':
+                    return `
+                    <svg viewBox="0 0 600 160" class="w-full h-auto max-h-52">
+                        <rect x="30" y="30" width="120" height="100" rx="10" fill="#312E81" stroke="#6366F1" stroke-width="2"/>
+                        <text x="90" y="55" fill="#C7D2FE" font-weight="bold" font-size="11" text-anchor="middle">Service DB Tx</text>
+                        <rect x="45" y="70" width="90" height="22" rx="4" fill="#1E1B4B" stroke="#818CF8"/>
+                        <text x="90" y="85" fill="#A5B4FC" font-size="9" text-anchor="middle">Business Entity</text>
+                        <rect x="45" y="98" width="90" height="22" rx="4" fill="#78350F" stroke="#F59E0B"/>
+                        <text x="90" y="113" fill="#FDE68A" font-size="9" font-weight="bold" text-anchor="middle">Outbox Table</text>
+
+                        <path d="M 150 110 L 250 110" stroke="#F59E0B" stroke-width="2"/>
+                        <rect x="250" y="85" width="110" height="50" rx="8" fill="#1F2937" stroke="#F59E0B" stroke-width="1.5"/>
+                        <text x="305" y="115" fill="#FBBF24" font-weight="bold" font-size="10" text-anchor="middle">Outbox Publisher</text>
+
+                        <path d="M 360 110 L 450 110" stroke="#10B981" stroke-width="2"/>
+                        <rect x="450" y="85" width="120" height="50" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="510" y="115" fill="#A7F3D0" font-weight="bold" font-size="11" text-anchor="middle">Message Broker</text>
+                    </svg>`;
+
+                case 'event-sourcing':
+                    return `
+                    <svg viewBox="0 0 600 150" class="w-full h-auto max-h-52">
+                        <rect x="30" y="50" width="100" height="50" rx="8" fill="#312E81" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="80" y="80" fill="#C7D2FE" font-weight="bold" font-size="10" text-anchor="middle">Event: Created</text>
+                        <path d="M 130 75 L 180 75" stroke="#6366F1" stroke-width="2"/>
+
+                        <rect x="180" y="50" width="100" height="50" rx="8" fill="#312E81" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="230" y="80" fill="#C7D2FE" font-weight="bold" font-size="10" text-anchor="middle">Event: Updated</text>
+                        <path d="M 280 75 L 330 75" stroke="#6366F1" stroke-width="2"/>
+
+                        <rect x="330" y="50" width="100" height="50" rx="8" fill="#312E81" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="380" y="80" fill="#C7D2FE" font-weight="bold" font-size="10" text-anchor="middle">Event: Shipped</text>
+
+                        <path d="M 430 75 L 480 75" stroke="#10B981" stroke-width="2"/>
+                        <rect x="480" y="40" width="90" height="70" rx="10" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
+                        <text x="525" y="70" fill="#A7F3D0" font-weight="bold" font-size="10" text-anchor="middle">Reconstructed</text>
+                        <text x="525" y="85" fill="#34D399" font-size="9" text-anchor="middle">Current State</text>
+                    </svg>`;
+
+                case 'strangler':
+                    return `
+                    <svg viewBox="0 0 600 160" class="w-full h-auto max-h-52">
+                        <rect x="20" y="60" width="80" height="40" rx="6" fill="#1F2937" stroke="#4B5563"/>
+                        <text x="60" y="84" fill="#D1D5DB" font-size="10" text-anchor="middle">Client Traffic</text>
+
+                        <path d="M 100 80 L 170 80" stroke="#6366F1" stroke-width="2"/>
+
+                        <rect x="170" y="30" width="110" height="100" rx="10" fill="#312E81" stroke="#6366F1" stroke-width="2"/>
+                        <text x="225" y="75" fill="#C7D2FE" font-weight="bold" font-size="11" text-anchor="middle">Interceptor</text>
+                        <text x="225" y="90" fill="#818CF8" font-size="9" text-anchor="middle">Router Proxy</text>
+
+                        <path d="M 280 55 L 400 35" stroke="#10B981" stroke-width="2"/>
+                        <rect x="400" y="15" width="160" height="40" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+                        <text x="480" y="39" fill="#A7F3D0" font-weight="bold" font-size="10" text-anchor="middle">New Microservice (Orders)</text>
+
+                        <path d="M 280 105 L 400 120" stroke="#EF4444" stroke-width="2" stroke-dasharray="3"/>
+                        <rect x="400" y="100" width="160" height="45" rx="8" fill="#7F1D1D" stroke="#EF4444" stroke-width="1.5"/>
+                        <text x="480" y="120" fill="#FCA5A5" font-weight="bold" font-size="10" text-anchor="middle">Legacy Monolith</text>
+                        <text x="480" y="133" fill="#F87171" font-size="8" text-anchor="middle">(Shrinking over time)</text>
+                    </svg>`;
+
+                case 'chassis':
+                    return `
+                    <svg viewBox="0 0 600 150" class="w-full h-auto max-h-52">
+                        <rect x="50" y="20" width="500" height="110" rx="12" fill="#1F2937" stroke="#4B5563" stroke-width="2"/>
+                        <rect x="80" y="35" width="440" height="35" rx="6" fill="#312E81" stroke="#6366F1" stroke-width="1.5"/>
+                        <text x="300" y="57" fill="#C7D2FE" font-weight="bold" font-size="12" text-anchor="middle">Business Service Domain Code</text>
+
+                        <rect x="80" y="80" width="100" height="35" rx="6" fill="#064E3B" stroke="#10B981"/>
+                        <text x="130" y="102" fill="#A7F3D0" font-size="9" font-weight="bold" text-anchor="middle">Logging / Tracing</text>
+
+                        <rect x="195" y="80" width="100" height="35" rx="6" fill="#78350F" stroke="#F59E0B"/>
+                        <text x="245" y="102" fill="#FDE68A" font-size="9" font-weight="bold" text-anchor="middle">Metrics / Health</text>
+
+                        <rect x="310" y="80" width="100" height="35" rx="6" fill="#581C87" stroke="#A855F7"/>
+                        <text x="360" y="102" fill="#E9D5FF" font-size="9" font-weight="bold" text-anchor="middle">Security / Auth</text>
+
+                        <rect x="420" y="80" width="100" height="35" rx="6" fill="#831843" stroke="#EC4899"/>
+                        <text x="470" y="102" fill="#FBCFE8" font-size="9" font-weight="bold" text-anchor="middle">Config / Circuit Bkr</text>
+                    </svg>`;
+
+                default:
+                    return `<div class="text-slate-500 text-xs italic py-6 text-center">Structural diagram component</div>`;
+            }
+        }
+
+        window.openModal = function(id) {
+            const pattern = PATTERNS_DATA.find(p => p.id === id);
+            if (!pattern) return;
+
+            modalPatternTitle.textContent = pattern.name;
+            modalCategoryBadge.textContent = pattern.category;
+            modalOverview.textContent = pattern.overview;
+            modalProblem.textContent = pattern.problem;
+            modalSolution.textContent = pattern.solution;
+
+            // Benefits
+            const benefits = pattern.benefits || [];
+            modalBenefitsCard.classList.toggle('hidden', !benefits.length);
+            modalBenefits.innerHTML = benefits.map(b =>
+                `<li class="flex items-start space-x-2"><i class="fa-solid fa-check text-emerald-400 mt-1"></i><span>${b}</span></li>`
+            ).join('');
+
+            // Drawbacks
+            const drawbacks = pattern.drawbacks || [];
+            modalDrawbacksCard.classList.toggle('hidden', !drawbacks.length);
+            modalDrawbacks.innerHTML = drawbacks.map(d =>
+                `<li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-rose-400 mt-1"></i><span>${d}</span></li>`
+            ).join('');
+
+            // Optional richer sections (architectural style patterns)
+            modalContextSection.classList.toggle('hidden', !pattern.context);
+            if (pattern.context) modalContext.textContent = pattern.context;
+
+            const forces = pattern.forces;
+            let forceGroups = null;
+            if (Array.isArray(forces)) {
+                forceGroups = [{ label: null, items: forces, accent: 'text-indigo-400', icon: 'fa-circle-dot' }];
+            } else if (forces && (forces.energy || forces.matter)) {
+                forceGroups = [
+                    { label: 'Dark Energy Forces', items: forces.energy || [], accent: 'text-amber-400', icon: 'fa-bolt' },
+                    { label: 'Dark Matter Forces', items: forces.matter || [], accent: 'text-cyan-400', icon: 'fa-circle-dot' }
+                ];
+            }
+            modalForcesSection.classList.toggle('hidden', !forceGroups);
+            if (forceGroups) {
+                modalForces.innerHTML = forceGroups.map(g => `
+                    <div class="p-4 bg-slate-900/60 rounded-xl border border-darkborder ${g.label ? '' : 'md:col-span-2'}">
+                        ${g.label ? `<h5 class="text-[11px] font-bold uppercase tracking-wider ${g.accent} mb-2">${g.label}</h5>` : ''}
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                            ${g.items.map(f => `<li class="flex items-start space-x-2"><i class="fa-solid ${g.icon} ${g.accent} mt-1 text-xs"></i><span>${f}</span></li>`).join('')}
+                        </ul>
+                    </div>
+                `).join('');
+            }
+
+            modalExampleSection.classList.toggle('hidden', !pattern.examples);
+            if (pattern.examples) modalExample.textContent = pattern.examples;
+
+            modalIssuesSection.classList.toggle('hidden', !pattern.issues);
+            if (pattern.issues) modalIssues.textContent = pattern.issues;
+
+            modalKnownUsesSection.classList.toggle('hidden', !pattern.knownUses);
+            if (pattern.knownUses) modalKnownUses.textContent = pattern.knownUses;
+
+            // Related Tags
+            modalRelated.innerHTML = pattern.related.map(r => {
+                const url = resolveRelatedUrl(r);
+                return url
+                    ? `<a href="${url}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs border border-darkborder hover:border-indigo-500/60 hover:text-indigo-300 transition-colors">${r} <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1 opacity-70"></i></a>`
+                    : `<span class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs border border-darkborder">${r}</span>`;
+            }).join('');
+
+            // Canonical source link
+            modalSourceLink.href = SOURCE_URLS[pattern.id] || "https://microservices.io/patterns/index.html";
+
+            // SVG Diagrams
+            if (pattern.hasDiagram && pattern.diagramType) {
+                document.getElementById('modalDiagramContainer').classList.remove('hidden');
+                diagramWrapper.innerHTML = generateSVGDiagram(pattern.diagramType);
+            } else {
+                document.getElementById('modalDiagramContainer').classList.add('hidden');
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('opacity-0', 'scale-95');
+                modalContent.classList.add('opacity-100', 'scale-100');
+            }, 10);
+
+            document.body.style.overflow = 'hidden';
+        };
+
+        function closeModal() {
+            modalContent.classList.remove('opacity-100', 'scale-100');
+            modalContent.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 150);
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Search Input listeners
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            if (searchQuery.trim() !== "") {
+                clearSearchBtn.classList.remove('hidden');
+            } else {
+                clearSearchBtn.classList.add('hidden');
+            }
+            filterAndRenderPatterns();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchQuery = "";
+            searchInput.value = "";
+            clearSearchBtn.classList.add('hidden');
+            filterAndRenderPatterns();
+        });
+
+        // Window Boot initialization
+        window.onload = function() {
+            renderCategoryFilterPills();
+            filterAndRenderPatterns();
+        };
+    </script>
+</body>
+</html>
