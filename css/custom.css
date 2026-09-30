@@ -3,3 +3,61 @@
   min-width: 2.2rem;
   white-space: nowrap;
 }
+
+.pagefind-search {
+  margin-top: 2rem;
+}
+
+.pagefind-search pagefind-input {
+  width: 100%;
+}
+
+.pagefind-search pagefind-summary {
+  margin-top: 0.5rem;
+}
+
+.pagefind-results-wrap {
+  max-height: 24rem;
+  margin-top: 0.5rem;
+  overflow-y: auto;
+}
+
+body.colorscheme-light,
+body.colorscheme-auto {
+  --pf-background: #fafafa;
+  --pf-text: #212121;
+  --pf-text-secondary: #424242;
+  --pf-border: #e0e0e0;
+  --pf-hover: #eeeeee;
+  --pf-outline-focus: #1565c0;
+}
+
+body.colorscheme-dark {
+  --pf-background: #212121;
+  --pf-text: #dadada;
+  --pf-text-secondary: #a0a0a0;
+  --pf-text-muted: #949494;
+  --pf-border: #424242;
+  --pf-border-focus: #555555;
+  --pf-skeleton: #2a2a2a;
+  --pf-skeleton-shine: #333333;
+  --pf-hover: #424242;
+  --pf-mark: #e5e5e5;
+  --pf-outline-focus: #42a5f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    --pf-background: #212121;
+    --pf-text: #dadada;
+    --pf-text-secondary: #a0a0a0;
+    --pf-text-muted: #949494;
+    --pf-border: #424242;
+    --pf-border-focus: #555555;
+    --pf-skeleton: #2a2a2a;
+    --pf-skeleton-shine: #333333;
+    --pf-hover: #424242;
+    --pf-mark: #e5e5e5;
+    --pf-outline-focus: #42a5f5;
+  }
+}

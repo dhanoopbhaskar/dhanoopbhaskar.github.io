@@ -128,7 +128,7 @@ FROM ros:melodic MAINTAINER dhanoopbhaskar@gmail.com RUN apt-get update &amp;&am
  
   
     
-    <link rel="stylesheet" href="/css/custom.min.d6f0cbee218b0684c1dabb426632437baf471246de6a422057e910db6e657442.css" integrity="sha256-1vDL7iGLBoTB2rtCZjJDe69HEkbeakIgV&#43;kQ225ldEI=" crossorigin="anonymous" media="screen" />
+    <link rel="stylesheet" href="/css/custom.min.2194a9836c42e72a819da9ee6473a964edad1b75871caa832adb86ec80a4d9d2.css" integrity="sha256-IZSpg2xC5yqBnanuZHOpZO2tG3WHHKqDKtuG7ICk2dI=" crossorigin="anonymous" media="screen" />
   
 
 
@@ -392,23 +392,16 @@ FROM ros:melodic MAINTAINER dhanoopbhaskar@gmail.com RUN apt-get update &amp;&am
 
     <br/>
     <br/>
-    <script src="/js/pagefind/pagefind-ui.js" type="text/javascript"></script>
-    <script>
-      window.addEventListener('DOMContentLoaded', (event) => {
-        new PagefindUI({
-          baseUrl: "/",
-          
-          element: "#search",
-          
-          showImages: false,
-          
-          resetStyles: true,
-          
-          showSubResults: false,
-        });
-      });
-    </script>
-    <div id="search" style="border-radius: 15px;"></div>
+    <link href="/js/pagefind/pagefind-component-ui.css" rel="stylesheet">
+    <script src="/js/pagefind/pagefind-component-ui.js" type="module"></script>
+    <div id="search" class="pagefind-search">
+      <pagefind-config instance="site" bundle-path="/js/pagefind/" base-url="/"></pagefind-config>
+      <pagefind-input instance="site" placeholder="Search&hellip;"></pagefind-input>
+      <pagefind-summary instance="site"></pagefind-summary>
+      <div class="pagefind-results-wrap">
+        <pagefind-results instance="site"></pagefind-results>
+      </div>
+    </div>
   </section>
 </footer>
 
