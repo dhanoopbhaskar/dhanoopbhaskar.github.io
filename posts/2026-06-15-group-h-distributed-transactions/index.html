@@ -24,7 +24,6 @@
 Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
 
 
-
   Table of Contents
   
     
@@ -51,23 +50,23 @@ Sometimes you need to update data on multiple nodes atomically — all updates s
 
 
 
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Patterns of Distributed Systems | Distributed Transactions">
-	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Patterns of Distributed Systems | Distributed Transactions">
+  <meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
 Table of Contents Link to heading Group H — Distributed Transactions Two-Phase Commit Group H — Distributed Transactions Link to heading Sometimes you need to update data on multiple nodes atomically — all updates succeed or all fail.">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-15-group-h-distributed-transactions/">
-	<meta property="og:site_name" content="The Insane Techie">
-	<meta property="og:title" content="Patterns of Distributed Systems | Distributed Transactions">
-	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Patterns of Distributed Systems | Distributed Transactions">
+  <meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
 Table of Contents Link to heading Group H — Distributed Transactions Two-Phase Commit Group H — Distributed Transactions Link to heading Sometimes you need to update data on multiple nodes atomically — all updates succeed or all fail.">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-06-15T14:10:00+05:30">
-		<meta property="article:modified_time" content="2026-06-15T14:10:00+05:30">
-		<meta property="article:tag" content="Distributed-Systems">
-		<meta property="article:tag" content="Design-Patterns">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-15T14:10:00+05:30">
+    <meta property="article:modified_time" content="2026-06-15T14:10:00+05:30">
+    <meta property="article:tag" content="Distributed-Systems">
+    <meta property="article:tag" content="Design-Patterns">
 
 
 
@@ -253,8 +252,7 @@ Table of Contents Link to heading Group H — Distributed Transactions Two-Phase
   </a>
 </h1>
 <blockquote>
-<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
-</blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p></blockquote>
 <hr>
 <h2 id="table-of-contents">
   Table of Contents
@@ -324,7 +322,7 @@ The coordinator asks each participant: &ldquo;Are you ready to commit?&rdquo; Ea
     <span class="sr-only">Link to heading</span>
   </a>
 </h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Coordinator: &#34;Prepare tx-123: debit A=$100, credit B=$100&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Coordinator: &#34;Prepare tx-123: debit A=$100, credit B=$100&#34;
 </span></span><span style="display:flex;"><span>  Node 1 (has Account A): locks A, writes to WAL, votes YES
 </span></span><span style="display:flex;"><span>  Node 2 (has Account B): locks B, writes to WAL, votes YES
 </span></span><span style="display:flex;"><span>
@@ -362,30 +360,30 @@ The coordinator asks each participant: &ldquo;Are you ready to commit?&rdquo; Ea
   </a>
 </h4>
 <table>
-	<thead>
-			<tr>
-					<th>Pro</th>
-					<th>Con</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Atomic updates across multiple nodes</td>
-					<td><strong>Blocking protocol</strong> — coordinator failure leaves participants locked</td>
-			</tr>
-			<tr>
-					<td>Well-understood, widely implemented</td>
-					<td>Latency: 2 round trips minimum</td>
-			</tr>
-			<tr>
-					<td>Works with heterogeneous systems (via XA)</td>
-					<td>Locks held for the entire 2PC duration — poor for high contention</td>
-			</tr>
-			<tr>
-					<td></td>
-					<td>Not fault-tolerant on its own — needs a coordinator that can recover</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Pro</th>
+          <th>Con</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Atomic updates across multiple nodes</td>
+          <td><strong>Blocking protocol</strong> — coordinator failure leaves participants locked</td>
+      </tr>
+      <tr>
+          <td>Well-understood, widely implemented</td>
+          <td>Latency: 2 round trips minimum</td>
+      </tr>
+      <tr>
+          <td>Works with heterogeneous systems (via XA)</td>
+          <td>Locks held for the entire 2PC duration — poor for high contention</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Not fault-tolerant on its own — needs a coordinator that can recover</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Mitigations for blocking:</strong></p>
 <ul>

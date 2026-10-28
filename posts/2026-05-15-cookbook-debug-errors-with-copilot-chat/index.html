@@ -57,9 +57,9 @@ Diagnosing test failures
 
 
 
-	
-		
-			
+  
+    
+      
 
 
 
@@ -243,8 +243,8 @@ c
 e
 
 
-		
-	
+    
+  
 
 
   1) Debugging invalid JSON
@@ -258,25 +258,25 @@ Scenario from the cookbook:">
 
 
 
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Copilot Chat Cookbook Deep Dive: Debug Errors">
-	<meta name="twitter:description" content="Why this category matters Link to heading Debugging prompts are most useful when they include concrete failure context: error text, logs, and relevant files.
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Copilot Chat Cookbook Deep Dive: Debug Errors">
+  <meta name="twitter:description" content="Why this category matters Link to heading Debugging prompts are most useful when they include concrete failure context: error text, logs, and relevant files.
 The Debug errors category demonstrates this pattern with three practical examples.
 Use cases Link to heading Developers debugging production-like failures under time pressure QA and CI owners diagnosing flaky test behavior Developers learning to write high-signal debugging prompts The 3 examples in this category Link to heading Debugging invalid JSON Handling API rate limits Diagnosing test failures Diagram: Debug prompt-to-fix loop Link to heading C - - - P - - V - - - a r a p e l r o a a l r r c t r o e m s s i e e h u r g l p k k d r p e r o s e t a u r c e r v r t t n o k a C o a e d f m n o o r t u r a e t p t g f e c e i s i e i s e g l s c l c t x t r u a o o a e s s e r g d t u d c s e e e s e s / C e f n i e f h i a o v i a x r n i l t i s d e o e s n c e 1) Debugging invalid JSON Link to heading Scenario from the cookbook:">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-15-cookbook-debug-errors-with-copilot-chat/">
-	<meta property="og:site_name" content="The Insane Techie">
-	<meta property="og:title" content="Copilot Chat Cookbook Deep Dive: Debug Errors">
-	<meta property="og:description" content="Why this category matters Link to heading Debugging prompts are most useful when they include concrete failure context: error text, logs, and relevant files.
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Copilot Chat Cookbook Deep Dive: Debug Errors">
+  <meta property="og:description" content="Why this category matters Link to heading Debugging prompts are most useful when they include concrete failure context: error text, logs, and relevant files.
 The Debug errors category demonstrates this pattern with three practical examples.
 Use cases Link to heading Developers debugging production-like failures under time pressure QA and CI owners diagnosing flaky test behavior Developers learning to write high-signal debugging prompts The 3 examples in this category Link to heading Debugging invalid JSON Handling API rate limits Diagnosing test failures Diagram: Debug prompt-to-fix loop Link to heading C - - - P - - V - - - a r a p e l r o a a l r r c t r o e m s s i e e h u r g l p k k d r p e r o s e t a u r c e r v r t t n o k a C o a e d f m n o o r t u r a e t p t g f e c e i s i e i s e g l s c l c t x t r u a o o a e s s e r g d t u d c s e e e s e s / C e f n i e f h i a o v i a x r n i l t i s d e o e s n c e 1) Debugging invalid JSON Link to heading Scenario from the cookbook:">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-05-15T19:10:00+05:30">
-		<meta property="article:modified_time" content="2026-05-15T19:10:00+05:30">
-		<meta property="article:tag" content="Github-Copilot">
-		<meta property="article:tag" content="Prompt-Engineering">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-15T19:10:00+05:30">
+    <meta property="article:modified_time" content="2026-05-15T19:10:00+05:30">
+    <meta property="article:tag" content="Github-Copilot">
+    <meta property="article:tag" content="Prompt-Engineering">
 
 
 
@@ -498,14 +498,14 @@ Use cases Link to heading Developers debugging production-like failures under ti
 
 
 <div class="goat svg-container ">
-	
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			font-family="Menlo,Lucida Console,monospace"
-			
-				viewBox="0 0 248 345"
-			>
-			<g transform='translate(8,16)'>
+  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      font-family="Menlo,Lucida Console,monospace"
+      
+        viewBox="0 0 248 345"
+      >
+      <g transform='translate(8,16)'>
 <path d='M 0,0 L 232,0' fill='none' stroke='currentColor'></path>
 <path d='M 0,80 L 232,80' fill='none' stroke='currentColor'></path>
 <path d='M 0,128 L 232,128' fill='none' stroke='currentColor'></path>
@@ -689,8 +689,8 @@ Use cases Link to heading Developers debugging production-like failures under ti
 <text text-anchor='middle' x='200' y='20' fill='currentColor' style='font-size:1em'>e</text>
 </g>
 
-		</svg>
-	
+    </svg>
+  
 </div>
 <h2 id="1-debugging-invalid-json">
   1) Debugging invalid JSON
@@ -705,7 +705,7 @@ Use cases Link to heading Developers debugging production-like failures under ti
 <li>Prompt asks why JSON is invalid and how to fix it.</li>
 </ul>
 <p>Prompt pattern:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Why is my JSON object invalid and how can I fix it?
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Why is my JSON object invalid and how can I fix it?
 </span></span></code></pre></div><p>Expected response style:</p>
 <ul>
 <li>Pinpoint exact syntax issue.</li>
@@ -729,7 +729,7 @@ Use cases Link to heading Developers debugging production-like failures under ti
 <li>API calls can fail due to limits; app needs resilient retry behavior.</li>
 </ul>
 <p>Prompt pattern:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>How can I handle API rate limits within get_weather().
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>How can I handle API rate limits within get_weather().
 </span></span></code></pre></div><p>Typical improvement pattern in response:</p>
 <ul>
 <li>Retry session</li>
@@ -755,7 +755,7 @@ Use cases Link to heading Developers debugging production-like failures under ti
 <li>Intermittent failures (race condition in async/background workflow).</li>
 </ul>
 <p>Prompt pattern with strong context:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Please take a look at this CI failure message.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Please take a look at this CI failure message.
 </span></span><span style="display:flex;"><span>The test passes locally, but intermittently fails in CI.
 </span></span><span style="display:flex;"><span>Can you help me figure out if this looks like a code bug,
 </span></span><span style="display:flex;"><span>environment issue, or a flaky test?
@@ -810,7 +810,7 @@ Use cases Link to heading Developers debugging production-like failures under ti
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># order.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># order.py</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> date, timedelta
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">expected_delivery_date</span>(order_date: date) <span style="color:#f92672">-&gt;</span> date:
@@ -820,7 +820,7 @@ Use cases Link to heading Developers debugging production-like failures under ti
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
 </span></span><span style="display:flex;"><span>        days_ahead <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> order_date <span style="color:#f92672">+</span> timedelta(days<span style="color:#f92672">=</span>days_ahead)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># test_order_service.py</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># test_order_service.py</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> date
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> order <span style="color:#f92672">import</span> expected_delivery_date
 </span></span><span style="display:flex;"><span>
@@ -848,7 +848,7 @@ Use cases Link to heading Developers debugging production-like failures under ti
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Classify this failure as code bug, environment issue, or flaky test.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Classify this failure as code bug, environment issue, or flaky test.
 </span></span><span style="display:flex;"><span>Then provide:
 </span></span><span style="display:flex;"><span>1) likely root cause,
 </span></span><span style="display:flex;"><span>2) minimal patch,

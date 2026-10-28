@@ -57,9 +57,9 @@ Updating unit tests to match code changes
 
 
 
-	
-		
-			
+  
+    
+      
 
 
 
@@ -266,8 +266,8 @@ t
 s
 
 
-		
-	
+    
+  
 
 
   1) Generating unit tests
@@ -281,23 +281,23 @@ Cookbook scenario:">
 
 
 
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Copilot Chat Cookbook Deep Dive: Testing Code">
-	<meta name="twitter:description" content="Why this category matters Link to heading The Testing code category focuses on keeping test suites effective as code evolves. It covers generation, isolation, browser-level coverage, and adaptation after logic changes.
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Copilot Chat Cookbook Deep Dive: Testing Code">
+  <meta name="twitter:description" content="Why this category matters Link to heading The Testing code category focuses on keeping test suites effective as code evolves. It covers generation, isolation, browser-level coverage, and adaptation after logic changes.
 Use cases Link to heading Developers adding or repairing test coverage quickly QA engineers validating AI-generated tests for reliability Developers learning to review and strengthen AI-generated tests The 4 examples in this category Link to heading Generating unit tests Creating mock objects to abstract layers Creating end-to-end tests for a webpage Updating unit tests to match code changes Diagram: Test generation and maintenance loop Link to heading P P - - - E - - - R - - - r r x e o o n f e e f m p f m f u d m o a d c l i o i o i p u p r i g u a s o n c x d c t m l e t k s r e k t a t a u e i i s u t i f l r c n n i t / r e o o e a a e g s e s e d n r p s s n s o s t s a e d s a l t u e c t t s s a s b x o e h i s t s p d s s n e i e e t s r o c s p t n t i e i a n c o t t t n i e s o n n t s 1) Generating unit tests Link to heading Cookbook scenario:">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-19-cookbook-testing-code-with-copilot-chat/">
-	<meta property="og:site_name" content="The Insane Techie">
-	<meta property="og:title" content="Copilot Chat Cookbook Deep Dive: Testing Code">
-	<meta property="og:description" content="Why this category matters Link to heading The Testing code category focuses on keeping test suites effective as code evolves. It covers generation, isolation, browser-level coverage, and adaptation after logic changes.
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Copilot Chat Cookbook Deep Dive: Testing Code">
+  <meta property="og:description" content="Why this category matters Link to heading The Testing code category focuses on keeping test suites effective as code evolves. It covers generation, isolation, browser-level coverage, and adaptation after logic changes.
 Use cases Link to heading Developers adding or repairing test coverage quickly QA engineers validating AI-generated tests for reliability Developers learning to review and strengthen AI-generated tests The 4 examples in this category Link to heading Generating unit tests Creating mock objects to abstract layers Creating end-to-end tests for a webpage Updating unit tests to match code changes Diagram: Test generation and maintenance loop Link to heading P P - - - E - - - R - - - r r x e o o n f e e f m p f m f u d m o a d c l i o i o i p u p r i g u a s o n c x d c t m l e t k s r e k t a t a u e i i s u t i f l r c n n i t / r e o o e a a e g s e s e d n r p s s n s o s t s a e d s a l t u e c t t s s a s b x o e h i s t s p d s s n e i e e t s r o c s p t n t i e i a n c o t t t n i e s o n n t s 1) Generating unit tests Link to heading Cookbook scenario:">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-05-19T19:10:00+05:30">
-		<meta property="article:modified_time" content="2026-05-19T19:10:00+05:30">
-		<meta property="article:tag" content="Github-Copilot">
-		<meta property="article:tag" content="Prompt-Engineering">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-19T19:10:00+05:30">
+    <meta property="article:modified_time" content="2026-05-19T19:10:00+05:30">
+    <meta property="article:tag" content="Github-Copilot">
+    <meta property="article:tag" content="Prompt-Engineering">
 
 
 
@@ -519,14 +519,14 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
 
 
 <div class="goat svg-container ">
-	
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			font-family="Menlo,Lucida Console,monospace"
-			
-				viewBox="0 0 264 441"
-			>
-			<g transform='translate(8,16)'>
+  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      font-family="Menlo,Lucida Console,monospace"
+      
+        viewBox="0 0 264 441"
+      >
+      <g transform='translate(8,16)'>
 <path d='M 0,0 L 248,0' fill='none' stroke='currentColor'></path>
 <path d='M 0,32 L 248,32' fill='none' stroke='currentColor'></path>
 <path d='M 0,80 L 248,80' fill='none' stroke='currentColor'></path>
@@ -733,8 +733,8 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
 <text text-anchor='middle' x='184' y='404' fill='currentColor' style='font-size:1em'>s</text>
 </g>
 
-		</svg>
-	
+    </svg>
+  
 </div>
 <h2 id="1-generating-unit-tests">
   1) Generating unit tests
@@ -748,7 +748,7 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
 <li>Generate tests for input validation logic with success and failure paths.</li>
 </ul>
 <p>Prompt pattern:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Generate unit tests for this function.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Generate unit tests for this function.
 </span></span><span style="display:flex;"><span>Validate both success and failure, and include edge cases.
 </span></span></code></pre></div><p>What to verify:</p>
 <ul>
@@ -768,7 +768,7 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
 <li>Mock a service dependency so server-side logic can be tested without database access.</li>
 </ul>
 <p>Prompt pattern:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Create a unit test to ensure the service is called correctly.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Create a unit test to ensure the service is called correctly.
 </span></span><span style="display:flex;"><span>Mock the service object.
 </span></span></code></pre></div><p>Practical notes from cookbook:</p>
 <ul>
@@ -793,7 +793,7 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
 <li>Generate Playwright tests for loading, success, and error states.</li>
 </ul>
 <p>Prompt pattern:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Using Playwright, generate an e2e test to ensure the product displays correctly.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Using Playwright, generate an e2e test to ensure the product displays correctly.
 </span></span></code></pre></div><p>What to verify:</p>
 <ul>
 <li>Stable selectors.</li>
@@ -812,7 +812,7 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
 <li>Discount logic changed thresholds and tiers, requiring test updates.</li>
 </ul>
 <p>Prompt pattern:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Given the update to the function, update unit tests that may fail or become outdated.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Given the update to the function, update unit tests that may fail or become outdated.
 </span></span></code></pre></div><p>Expected response quality:</p>
 <ul>
 <li>Identifies which old tests fail.</li>
@@ -847,8 +847,8 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
   </a>
 </h3>
 <p>You changed discount logic and need unit tests updated safely.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// src/pricing/calculateDiscount.ts (original)
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateDiscount</span>(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// src/pricing/calculateDiscount.ts (original)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateDiscount</span>(
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">price</span>: <span style="color:#66d9ef">number</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tier</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;standard&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;premium&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;vip&#34;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span> {
@@ -865,7 +865,7 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Generate unit tests for this function.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Generate unit tests for this function.
 </span></span><span style="display:flex;"><span>Cover normal path, boundary values, and invalid input.
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>#file:src/pricing/calculateDiscount.ts
@@ -876,7 +876,7 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>If this function depends on external services, generate mock-based tests that verify call arguments and error handling.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>If this function depends on external services, generate mock-based tests that verify call arguments and error handling.
 </span></span></code></pre></div><h3 id="prompt-3-update-after-rule-change">
   Prompt 3 (update after rule change)
   <a class="heading-link" href="#prompt-3-update-after-rule-change">
@@ -884,7 +884,7 @@ Use cases Link to heading Developers adding or repairing test coverage quickly Q
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Given the new discount thresholds, update existing tests and list any obsolete assertions.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Given the new discount thresholds, update existing tests and list any obsolete assertions.
 </span></span></code></pre></div><h3 id="validation-checklist">
   Validation checklist
   <a class="heading-link" href="#validation-checklist">

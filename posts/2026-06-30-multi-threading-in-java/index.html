@@ -43,21 +43,21 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
 
 
 
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Java Multi-threading">
-	<meta name="twitter:description" content="Fundamentals &amp; The Java Thread Life Cycle Link to heading 1. Process vs. Thread Link to heading Process: An isolated execution environment allocated by the OS with its own memory space (Heap). Thread: A lightweight subprocess. Threads within the same process share the Heap memory but have their own private Stack (local variables, method execution frames). 2. Creating Threads: Thread vs. Runnable Link to heading Never inherit the Thread class unless you are modifying the base behavior. Always implement Runnable (or use lambdas) to keep your code decoupled and adhere to the single responsibility principle.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java Multi-threading">
+  <meta name="twitter:description" content="Fundamentals &amp; The Java Thread Life Cycle Link to heading 1. Process vs. Thread Link to heading Process: An isolated execution environment allocated by the OS with its own memory space (Heap). Thread: A lightweight subprocess. Threads within the same process share the Heap memory but have their own private Stack (local variables, method execution frames). 2. Creating Threads: Thread vs. Runnable Link to heading Never inherit the Thread class unless you are modifying the base behavior. Always implement Runnable (or use lambdas) to keep your code decoupled and adhere to the single responsibility principle.">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-30-multi-threading-in-java/">
-	<meta property="og:site_name" content="The Insane Techie">
-	<meta property="og:title" content="Java Multi-threading">
-	<meta property="og:description" content="Fundamentals &amp; The Java Thread Life Cycle Link to heading 1. Process vs. Thread Link to heading Process: An isolated execution environment allocated by the OS with its own memory space (Heap). Thread: A lightweight subprocess. Threads within the same process share the Heap memory but have their own private Stack (local variables, method execution frames). 2. Creating Threads: Thread vs. Runnable Link to heading Never inherit the Thread class unless you are modifying the base behavior. Always implement Runnable (or use lambdas) to keep your code decoupled and adhere to the single responsibility principle.">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-06-30T14:10:00+05:30">
-		<meta property="article:modified_time" content="2026-06-30T14:10:00+05:30">
-		<meta property="article:tag" content="Multithreading">
-		<meta property="article:tag" content="Java">
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Java Multi-threading">
+  <meta property="og:description" content="Fundamentals &amp; The Java Thread Life Cycle Link to heading 1. Process vs. Thread Link to heading Process: An isolated execution environment allocated by the OS with its own memory space (Heap). Thread: A lightweight subprocess. Threads within the same process share the Heap memory but have their own private Stack (local variables, method execution frames). 2. Creating Threads: Thread vs. Runnable Link to heading Never inherit the Thread class unless you are modifying the base behavior. Always implement Runnable (or use lambdas) to keep your code decoupled and adhere to the single responsibility principle.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-30T14:10:00+05:30">
+    <meta property="article:modified_time" content="2026-06-30T14:10:00+05:30">
+    <meta property="article:tag" content="Multithreading">
+    <meta property="article:tag" content="Java">
 
 
 
@@ -261,7 +261,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>Never inherit the <code>Thread</code> class unless you are modifying the base behavior. Always implement <code>Runnable</code> (or use lambdas) to keep your code decoupled and adhere to the single responsibility principle.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// The modern, clean approach using Lambdas</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// The modern, clean approach using Lambdas</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadBasics</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
 </span></span><span style="display:flex;"><span>        Runnable task <span style="color:#f92672">=</span> () <span style="color:#f92672">-&gt;</span> {
@@ -313,7 +313,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>Every object in Java has an intrinsic lock (Monitor).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SynchronizedCounter</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SynchronizedCounter</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> 0;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Locks the intrinsic monitor of &#34;this&#34; instance</span>
@@ -340,7 +340,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>Used for coordinating dependent tasks. Must <strong>always</strong> be called inside a <code>synchronized</code> context on the object being locked, wrapped in a <code>while</code> loop to protect against spurious wakeups.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Classic Bounded Buffer / Producer-Consumer Snippet</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Classic Bounded Buffer / Producer-Consumer Snippet</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SharedQueue</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> LIMIT <span style="color:#f92672">=</span> 5;
@@ -391,7 +391,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>Atomic classes (like <code>AtomicInteger</code>) leverage CPU-level <strong>Compare-And-Swap (CAS)</strong> instructions. This is non-blocking and highly performant under low-to-medium contention.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.atomic.AtomicInteger;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.atomic.AtomicInteger;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AtomicExample</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> AtomicInteger count <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomicInteger(0);
@@ -409,7 +409,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>Provides greater flexibility than standard <code>synchronized</code> keywords: timed lock polling, interruptible lock attempts, and fairness choices.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.locks.ReentrantLock;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.locks.ReentrantLock;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExplicitLocking</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ReentrantLock lock <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ReentrantLock();
@@ -440,7 +440,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>Recycles a fixed set of threads to run incoming tasks, preventing resource exhaustion.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.ExecutorService;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.ExecutorService;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.Executors;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadPoolMastery</span> {
@@ -466,7 +466,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>Unlike <code>Runnable</code>, <code>Callable&lt;V&gt;</code> returns a value and throws checked exceptions.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.*;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.*;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FutureExample</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
@@ -516,7 +516,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h2>
 <p>This solution spawns multiple threads using lambdas and captures their states using a monitoring thread to observe how they transition from <code>RUNNABLE</code> to <code>TIMED_WAITING</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.management.ManagementFactory;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.management.ManagementFactory;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.management.ThreadInfo;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.management.ThreadMXBean;
 </span></span><span style="display:flex;"><span>
@@ -552,7 +552,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
 </span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;State after completion: &#34;</span> <span style="color:#f92672">+</span> worker.<span style="color:#a6e22e">getState</span>());
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sample Output</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sample Output</span>
 </span></span><span style="display:flex;"><span>State immediately after creation: NEW
 </span></span><span style="display:flex;"><span>State immediately after <span style="color:#a6e22e">start</span>(): RUNNABLE
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span> Production<span style="color:#f92672">-</span>Worker<span style="color:#f92672">-</span>1 <span style="color:#f92672">]</span> Starting execution...
@@ -568,7 +568,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h2>
 <p>This is the standard architectural pattern for a custom Producer-Consumer queue. It fixes race conditions and visibility bugs using an explicit <code>synchronized</code> block, a tracking monitor, and standard loop guard-conditions.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.LinkedList;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.LinkedList;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Queue;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BoundedBuffer</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
@@ -618,7 +618,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h2>
 <p>This script sets up a race to show you the performance metrics between heavy intrinsic synchronization (<code>ReentrantLock</code>) and low-level hardware orchestration (<code>AtomicInteger</code>).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.atomic.AtomicInteger;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.atomic.AtomicInteger;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.locks.ReentrantLock;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PerformanceBenchmark</span> {
@@ -669,7 +669,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
 </span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;AtomicInteger Time : &#34;</span> <span style="color:#f92672">+</span> (endAtomic <span style="color:#f92672">-</span> startAtomic) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; ms | Final Count: &#34;</span> <span style="color:#f92672">+</span> atomicCounter.<span style="color:#a6e22e">get</span>());
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sample Output</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sample Output</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">===</span> BENCHMARK RESULTS <span style="color:#f92672">===</span>
 </span></span><span style="display:flex;"><span>ReentrantLock Time : 131 ms <span style="color:#f92672">|</span> Final Count: 10000000
 </span></span><span style="display:flex;"><span>AtomicInteger Time : 80 ms <span style="color:#f92672">|</span> Final Count: 10000000
@@ -682,7 +682,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h2>
 <p>This combines thread pools (<code>ExecutorService</code>), asynchronous tracking (<code>Future</code>), and thread-safe hash collections (<code>ConcurrentHashMap</code>) to map processing statuses concurrently.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.ArrayList;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.ArrayList;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.*;
 </span></span><span style="display:flex;"><span>
@@ -769,7 +769,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sample Output</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sample Output</span>
 </span></span><span style="display:flex;"><span>Initializing thread pool with 12 workers.
 </span></span><span style="display:flex;"><span>Successfully aggregated data from: Log_Archive_001.<span style="color:#a6e22e">txt</span> (1641 lines)
 </span></span><span style="display:flex;"><span>Successfully aggregated data from: Log_Archive_002.<span style="color:#a6e22e">txt</span> (1586 lines)
@@ -812,35 +812,35 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <table>
-	<thead>
-			<tr>
-					<th>Feature</th>
-					<th><code>notify()</code></th>
-					<th><code>notifyAll()</code></th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Behavior</strong></td>
-					<td>Wakes up a <strong>single</strong> random thread waiting on the object&rsquo;s monitor.</td>
-					<td>Wakes up <strong>all</strong> threads waiting on the object&rsquo;s monitor.</td>
-			</tr>
-			<tr>
-					<td><strong>Lock Acquisition</strong></td>
-					<td>The single awakened thread moves to the &ldquo;Blocked&rdquo; state and competes for the lock.</td>
-					<td>All awakened threads move to the &ldquo;Blocked&rdquo; state and compete for the lock.</td>
-			</tr>
-			<tr>
-					<td><strong>Risk of Deadlock</strong></td>
-					<td><strong>High.</strong> If the chosen thread cannot proceed and dies/waits again, other threads remain asleep forever.</td>
-					<td><strong>Low.</strong> Ensures that every waiting thread gets a chance to check its condition.</td>
-			</tr>
-			<tr>
-					<td><strong>Performance Overhead</strong></td>
-					<td>Lower (only one thread is context-switched).</td>
-					<td>Higher (causes a &ldquo;thundering herd&rdquo; effect where all threads compete, but only one wins).</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th><code>notify()</code></th>
+          <th><code>notifyAll()</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Behavior</strong></td>
+          <td>Wakes up a <strong>single</strong> random thread waiting on the object&rsquo;s monitor.</td>
+          <td>Wakes up <strong>all</strong> threads waiting on the object&rsquo;s monitor.</td>
+      </tr>
+      <tr>
+          <td><strong>Lock Acquisition</strong></td>
+          <td>The single awakened thread moves to the &ldquo;Blocked&rdquo; state and competes for the lock.</td>
+          <td>All awakened threads move to the &ldquo;Blocked&rdquo; state and compete for the lock.</td>
+      </tr>
+      <tr>
+          <td><strong>Risk of Deadlock</strong></td>
+          <td><strong>High.</strong> If the chosen thread cannot proceed and dies/waits again, other threads remain asleep forever.</td>
+          <td><strong>Low.</strong> Ensures that every waiting thread gets a chance to check its condition.</td>
+      </tr>
+      <tr>
+          <td><strong>Performance Overhead</strong></td>
+          <td>Lower (only one thread is context-switched).</td>
+          <td>Higher (causes a &ldquo;thundering herd&rdquo; effect where all threads compete, but only one wins).</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h3 id="how-they-work-under-the-hood">
@@ -856,8 +856,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
 <li><strong><code>notifyAll()</code></strong> moves <strong>all</strong> threads from the Wait Set to the Entry Set.</li>
 </ul>
 <blockquote>
-<p>⚠️ <strong>Crucial Note:</strong> Neither method releases the lock immediately. The current thread continues executing until it exits the <code>synchronized</code> block. Only then can the notified thread(s) actually acquire the lock.</p>
-</blockquote>
+<p>⚠️ <strong>Crucial Note:</strong> Neither method releases the lock immediately. The current thread continues executing until it exits the <code>synchronized</code> block. Only then can the notified thread(s) actually acquire the lock.</p></blockquote>
 <hr>
 <h3 id="the-danger-of-notify-starvation-and-deadlocks">
   The Danger of <code>notify()</code>: Starvation and Deadlocks
@@ -889,7 +888,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
 <li>**Default to <code>notifyAll()**</code>: Unless you have a highly optimized, benchmarked reason to do otherwise, always prefer <code>notifyAll()</code>. The safety against deadlocks almost always outweighs the minor performance cost of thread contention.</li>
 <li><strong>Always wait in a loop</strong>: Never use <code>if (condition) wait();</code>. Always use a <code>while</code> loop to protect against spurious wakeups and state changes before a thread re-acquires the lock:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">synchronized</span>(lock) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">synchronized</span>(lock) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>condition) {
 </span></span><span style="display:flex;"><span>        lock.<span style="color:#a6e22e">wait</span>();
 </span></span><span style="display:flex;"><span>    }
@@ -933,40 +932,40 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Feature</th>
-					<th><code>Future</code></th>
-					<th><code>CompletableFuture</code></th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Blocking vs. Non-Blocking</strong></td>
-					<td><strong>Blocking.</strong> You must use <code>.get()</code>, which pauses the current thread until the result is ready.</td>
-					<td><strong>Non-Blocking.</strong> Supports callbacks (<code>thenAccept</code>, <code>thenApply</code>) that execute automatically when the result is ready.</td>
-			</tr>
-			<tr>
-					<td><strong>Manual Completion</strong></td>
-					<td><strong>No.</strong> You cannot manually mark it as &ldquo;done&rdquo; or force a specific return value.</td>
-					<td><strong>Yes.</strong> You can explicitly complete it using <code>.complete(value)</code> from any thread.</td>
-			</tr>
-			<tr>
-					<td><strong>Chaining / Piping</strong></td>
-					<td><strong>No.</strong> You cannot easily say &ldquo;do Task A, then pass the result to Task B.&rdquo;</td>
-					<td><strong>Yes.</strong> Seamlessly chains tasks using methods like <code>thenCompose()</code> and <code>thenCombine()</code>.</td>
-			</tr>
-			<tr>
-					<td><strong>Error Handling</strong></td>
-					<td><strong>Poor.</strong> You have to catch exceptions inside a <code>try-catch</code> block around the <code>.get()</code> method.</td>
-					<td><strong>Excellent.</strong> Offers functional error handling via <code>.exceptionally()</code> or <code>.handle()</code>.</td>
-			</tr>
-			<tr>
-					<td><strong>Combining Multiple Futures</strong></td>
-					<td><strong>No.</strong> You have to loop through a list of Futures and blockingly check each one.</td>
-					<td><strong>Yes.</strong> You can combine multiple futures using <code>allOf()</code> (wait for all) or <code>anyOf()</code> (wait for the fastest).</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th><code>Future</code></th>
+          <th><code>CompletableFuture</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Blocking vs. Non-Blocking</strong></td>
+          <td><strong>Blocking.</strong> You must use <code>.get()</code>, which pauses the current thread until the result is ready.</td>
+          <td><strong>Non-Blocking.</strong> Supports callbacks (<code>thenAccept</code>, <code>thenApply</code>) that execute automatically when the result is ready.</td>
+      </tr>
+      <tr>
+          <td><strong>Manual Completion</strong></td>
+          <td><strong>No.</strong> You cannot manually mark it as &ldquo;done&rdquo; or force a specific return value.</td>
+          <td><strong>Yes.</strong> You can explicitly complete it using <code>.complete(value)</code> from any thread.</td>
+      </tr>
+      <tr>
+          <td><strong>Chaining / Piping</strong></td>
+          <td><strong>No.</strong> You cannot easily say &ldquo;do Task A, then pass the result to Task B.&rdquo;</td>
+          <td><strong>Yes.</strong> Seamlessly chains tasks using methods like <code>thenCompose()</code> and <code>thenCombine()</code>.</td>
+      </tr>
+      <tr>
+          <td><strong>Error Handling</strong></td>
+          <td><strong>Poor.</strong> You have to catch exceptions inside a <code>try-catch</code> block around the <code>.get()</code> method.</td>
+          <td><strong>Excellent.</strong> Offers functional error handling via <code>.exceptionally()</code> or <code>.handle()</code>.</td>
+      </tr>
+      <tr>
+          <td><strong>Combining Multiple Futures</strong></td>
+          <td><strong>No.</strong> You have to loop through a list of Futures and blockingly check each one.</td>
+          <td><strong>Yes.</strong> You can combine multiple futures using <code>allOf()</code> (wait for all) or <code>anyOf()</code> (wait for the fastest).</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="how-they-look-in-code">
@@ -984,7 +983,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>With a standard <code>Future</code>, if you want to do something with the result, your main thread has to sit around and wait.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ExecutorService executor <span style="color:#f92672">=</span> Executors.<span style="color:#a6e22e">newFixedThreadPool</span>(2);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ExecutorService executor <span style="color:#f92672">=</span> Executors.<span style="color:#a6e22e">newFixedThreadPool</span>(2);
 </span></span><span style="display:flex;"><span>Future<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> future <span style="color:#f92672">=</span> executor.<span style="color:#a6e22e">submit</span>(() <span style="color:#f92672">-&gt;</span> {
 </span></span><span style="display:flex;"><span>    Thread.<span style="color:#a6e22e">sleep</span>(1000);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Data from API&#34;</span>;
@@ -1005,7 +1004,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>With <code>CompletableFuture</code>, you define a pipeline. The main thread kicks off the task and immediately moves on. When the background task finishes, the next steps trigger automatically.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CompletableFuture.<span style="color:#a6e22e">supplyAsync</span>(() <span style="color:#f92672">-&gt;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CompletableFuture.<span style="color:#a6e22e">supplyAsync</span>(() <span style="color:#f92672">-&gt;</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Simulating fetching data</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Data from API&#34;</span>;
 </span></span><span style="display:flex;"><span>})
@@ -1048,7 +1047,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>Override your async executor bean so that it wraps the threads with Spring Security’s context:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EnableAsync</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AsyncConfig</span> {
 </span></span><span style="display:flex;"><span>
@@ -1081,7 +1080,7 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
   </a>
 </h3>
 <p>You must pass your wrapped security executor bean directly into the <code>CompletableFuture</code> method as the second argument:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Autowired</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Autowired</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Qualifier</span>(<span style="color:#e6db74">&#34;asyncExecutor&#34;</span>) <span style="color:#75715e">// The wrapped executor we defined above</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Executor securedExecutor;
 </span></span><span style="display:flex;"><span>
@@ -1102,14 +1101,13 @@ Never inherit the Thread class unless you are modifying the base behavior. Alway
 </h2>
 <p>If you don&rsquo;t want to mess with wrapping executors, you can tell Spring Security to change its underlying storage strategy from <code>ThreadLocal</code> to an <code>InheritableThreadLocal</code>. This automatically copies the context to any <em>child</em> threads created by the parent thread.</p>
 <p>You can set this globally in your application&rsquo;s <code>main</code> method or via a property:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Allows child threads to inherit the security context</span>
 </span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">setProperty</span>(SecurityContextHolder.<span style="color:#a6e22e">SYSTEM_PROPERTY</span>, SecurityContextHolder.<span style="color:#a6e22e">MODE_INHERITABLETHREADLOCAL</span>);
 </span></span><span style="display:flex;"><span>    SpringApplication.<span style="color:#a6e22e">run</span>(YourApplication.<span style="color:#a6e22e">class</span>, args);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><blockquote>
-<p>⚠️ <strong>Warning on <code>MODE_INHERITABLETHREADLOCAL</code>:</strong> This approach is convenient but can be risky if you are using thread pools (like <code>ForkJoinPool</code> or Tomcat&rsquo;s request pool). Because threads are reused, a thread might accidentally retain the security context of a previous user if not cleaned up properly. Wrapping your executor (Method 1 &amp; 2) is considered the best practice for production.</p>
-</blockquote>
+<p>⚠️ <strong>Warning on <code>MODE_INHERITABLETHREADLOCAL</code>:</strong> This approach is convenient but can be risky if you are using thread pools (like <code>ForkJoinPool</code> or Tomcat&rsquo;s request pool). Because threads are reused, a thread might accidentally retain the security context of a previous user if not cleaned up properly. Wrapping your executor (Method 1 &amp; 2) is considered the best practice for production.</p></blockquote>
 <hr>
 
       </div>

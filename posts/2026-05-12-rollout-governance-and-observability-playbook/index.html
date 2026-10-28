@@ -60,27 +60,27 @@ Assign explicit owners for:">
 
 
 
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Rollout, Governance, and Observability Playbook for Copilot Customization">
-	<meta name="twitter:description" content="Why operating model matters Link to heading Creating customization files is easy. Operating them safely and consistently across teams is the hard part.
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rollout, Governance, and Observability Playbook for Copilot Customization">
+  <meta name="twitter:description" content="Why operating model matters Link to heading Creating customization files is easy. Operating them safely and consistently across teams is the hard part.
 Without an operating model, teams usually face:
 Conflicting instruction layers Tool over-permission in agents Drifting prompt quality Unclear ownership and weak auditability This playbook provides a practical step-by-step rollout framework.
 Use cases Link to heading Engineering managers rolling out Copilot customization across teams Staff engineers owning standards and review quality Platform teams setting governance and auditability controls Phase 1: Establish the baseline Link to heading Step 1: Define ownership and change policy Link to heading Assign explicit owners for:">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-05-12-rollout-governance-and-observability-playbook/">
-	<meta property="og:site_name" content="The Insane Techie">
-	<meta property="og:title" content="Rollout, Governance, and Observability Playbook for Copilot Customization">
-	<meta property="og:description" content="Why operating model matters Link to heading Creating customization files is easy. Operating them safely and consistently across teams is the hard part.
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Rollout, Governance, and Observability Playbook for Copilot Customization">
+  <meta property="og:description" content="Why operating model matters Link to heading Creating customization files is easy. Operating them safely and consistently across teams is the hard part.
 Without an operating model, teams usually face:
 Conflicting instruction layers Tool over-permission in agents Drifting prompt quality Unclear ownership and weak auditability This playbook provides a practical step-by-step rollout framework.
 Use cases Link to heading Engineering managers rolling out Copilot customization across teams Staff engineers owning standards and review quality Platform teams setting governance and auditability controls Phase 1: Establish the baseline Link to heading Step 1: Define ownership and change policy Link to heading Assign explicit owners for:">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-05-12T19:10:00+05:30">
-		<meta property="article:modified_time" content="2026-05-12T19:10:00+05:30">
-		<meta property="article:tag" content="Github-Copilot">
-		<meta property="article:tag" content="Prompt-Engineering">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-12T19:10:00+05:30">
+    <meta property="article:modified_time" content="2026-05-12T19:10:00+05:30">
+    <meta property="article:tag" content="Github-Copilot">
+    <meta property="article:tag" content="Prompt-Engineering">
 
 
 
@@ -417,9 +417,9 @@ Use cases Link to heading Engineering managers rolling out Copilot customization
 <p>Resolve conflicts by tightening scope and clarifying language.</p>
 <p><strong>Example of a conflict to catch in review:</strong></p>
 <p>A repository-wide instruction says:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add JSDoc comments to all exported functions.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Add JSDoc comments to all exported functions.
 </span></span></code></pre></div><p>A path-specific instruction for <code>src/legacy/**</code> says:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Do not modify existing comments; the legacy codebase uses a different comment format.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Do not modify existing comments; the legacy codebase uses a different comment format.
 </span></span></code></pre></div><p>These two instructions conflict for any exported function inside <code>src/legacy/</code>. Resolution: tighten the repository-wide rule&rsquo;s scope with an <code>applyTo</code> pattern that excludes the legacy directory, or add an <code>excludeAgent</code> field to the legacy instruction to limit where it applies.</p>
 <h2 id="step-9-control-context-size-and-relevance">
   Step 9: Control context size and relevance
@@ -496,14 +496,14 @@ Use cases Link to heading Engineering managers rolling out Copilot customization
 
 
 <div class="goat svg-container ">
-	
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			font-family="Menlo,Lucida Console,monospace"
-			
-				viewBox="0 0 248 377"
-			>
-			<g transform='translate(8,16)'>
+  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      font-family="Menlo,Lucida Console,monospace"
+      
+        viewBox="0 0 248 377"
+      >
+      <g transform='translate(8,16)'>
 <path d='M 0,0 L 232,0' fill='none' stroke='currentColor'></path>
 <path d='M 0,32 L 232,32' fill='none' stroke='currentColor'></path>
 <path d='M 0,80 L 232,80' fill='none' stroke='currentColor'></path>
@@ -656,8 +656,8 @@ Use cases Link to heading Engineering managers rolling out Copilot customization
 <text text-anchor='middle' x='216' y='340' fill='currentColor' style='font-size:1em'>x</text>
 </g>
 
-		</svg>
-	
+    </svg>
+  
 </div>
 <h2 id="suggested-adoption-timeline">
   Suggested adoption timeline
@@ -688,7 +688,7 @@ Use cases Link to heading Engineering managers rolling out Copilot customization
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Copilot customization ownership
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Copilot customization ownership
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> <span style="color:#e6db74">`.github/copilot-instructions.md`</span>: owned by Platform + one service maintainer
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> <span style="color:#e6db74">`.github/prompts/*.prompt.md`</span>: owned by workflow domain teams
@@ -702,7 +702,7 @@ Use cases Link to heading Engineering managers rolling out Copilot customization
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Copilot customization PR checklist
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Copilot customization PR checklist
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> Scope is correct (repo-wide vs path-specific vs prompt vs agent)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> No conflicting rules with higher/lower precedence layers
@@ -716,7 +716,7 @@ Use cases Link to heading Engineering managers rolling out Copilot customization
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Monthly Copilot customization scorecard
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span># Monthly Copilot customization scorecard
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Rework rate after AI-assisted changes: ___
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Time to merge for AI-assisted PRs: ___

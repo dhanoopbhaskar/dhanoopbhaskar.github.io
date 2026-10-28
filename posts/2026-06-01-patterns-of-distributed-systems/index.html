@@ -24,7 +24,6 @@
 Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
 
 
-
   Table of Contents
   
     
@@ -48,23 +47,23 @@ A distributed system is a collection of independent computers that work together
 
 
 
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Patterns of Distributed Systems">
-	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Patterns of Distributed Systems">
+  <meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
 Table of Contents Link to heading Why Distributed Systems Are Hard Pattern Groups at a Glance 1. Why Distributed Systems Are Hard Link to heading A distributed system is a collection of independent computers that work together and appear to users as a single coherent system. Your bank, your email, your cloud storage — all of these are distributed systems.">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-01-patterns-of-distributed-systems/">
-	<meta property="og:site_name" content="The Insane Techie">
-	<meta property="og:title" content="Patterns of Distributed Systems">
-	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Patterns of Distributed Systems">
+  <meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
 Table of Contents Link to heading Why Distributed Systems Are Hard Pattern Groups at a Glance 1. Why Distributed Systems Are Hard Link to heading A distributed system is a collection of independent computers that work together and appear to users as a single coherent system. Your bank, your email, your cloud storage — all of these are distributed systems.">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-06-01T14:10:00+05:30">
-		<meta property="article:modified_time" content="2026-06-01T14:10:00+05:30">
-		<meta property="article:tag" content="Distributed-Systems">
-		<meta property="article:tag" content="Design-Patterns">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-01T14:10:00+05:30">
+    <meta property="article:modified_time" content="2026-06-01T14:10:00+05:30">
+    <meta property="article:tag" content="Distributed-Systems">
+    <meta property="article:tag" content="Design-Patterns">
 
 
 
@@ -250,8 +249,7 @@ Table of Contents Link to heading Why Distributed Systems Are Hard Pattern Group
   </a>
 </h1>
 <blockquote>
-<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
-</blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p></blockquote>
 <hr>
 <h2 id="table-of-contents">
   Table of Contents
@@ -275,30 +273,30 @@ Table of Contents Link to heading Why Distributed Systems Are Hard Pattern Group
 <p>A <em>distributed system</em> is a collection of independent computers that work together and appear to users as a single coherent system. Your bank, your email, your cloud storage — all of these are distributed systems.</p>
 <p>The core challenges fall into three buckets:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Challenge</th>
-					<th>Plain English</th>
-					<th>Example</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Partial failure</strong></td>
-					<td>Some nodes crash; others keep running</td>
-					<td>One database server dies mid-transaction</td>
-			</tr>
-			<tr>
-					<td><strong>Network unreliability</strong></td>
-					<td>Messages can be lost, delayed, or duplicated</td>
-					<td>A &ldquo;save&rdquo; request arrives twice</td>
-			</tr>
-			<tr>
-					<td><strong>No shared clock</strong></td>
-					<td>Machines can&rsquo;t agree on what &ldquo;now&rdquo; means</td>
-					<td>Two writes arrive simultaneously — which one wins?</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Challenge</th>
+          <th>Plain English</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Partial failure</strong></td>
+          <td>Some nodes crash; others keep running</td>
+          <td>One database server dies mid-transaction</td>
+      </tr>
+      <tr>
+          <td><strong>Network unreliability</strong></td>
+          <td>Messages can be lost, delayed, or duplicated</td>
+          <td>A &ldquo;save&rdquo; request arrives twice</td>
+      </tr>
+      <tr>
+          <td><strong>No shared clock</strong></td>
+          <td>Machines can&rsquo;t agree on what &ldquo;now&rdquo; means</td>
+          <td>Two writes arrive simultaneously — which one wins?</td>
+      </tr>
+  </tbody>
 </table>
 <p>The patterns in this guide are battle-tested solutions to these recurring problems. They are not new inventions; they are codified wisdom extracted from systems like ZooKeeper, Kafka, etcd, Cassandra, and Spanner.</p>
 <hr>

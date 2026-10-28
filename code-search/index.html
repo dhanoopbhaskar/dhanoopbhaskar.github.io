@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>code-search — AI code context engine for air-gapped environments</title>
+<meta name="description" content="code-search combines Tree-sitter AST graphs with BM25 + Model2Vec hybrid search, exposed through a CLI and an MCP server. CPU-only, offline, and secret-aware.">
+<meta property="og:title" content="code-search">
+<meta property="og:description" content="AI code context engine for air-gapped, CPU-only enterprise environments.">
+<meta property="og:type" content="website">
+<script>
+  // Apply the colour theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    var theme = null;
+    try { theme = localStorage.getItem("cs-theme"); } catch (e) {}
+    if (theme !== "light" && theme !== "dark") {
+      theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    }
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0f14'/%3E%3Cpath d='M40 28 20 50l20 22M60 28l20 22-20 22M54 22 46 78' stroke='%232dd4bf' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-elev: #0f151d;
+    --surface: #111a24;
+    --surface-2: #16212d;
+    --border: #1f2d3a;
+    --border-strong: #2b3d4d;
+    --text: #e6edf3;
+    --text-soft: #c2ced9;
+    --muted: #8b9bab;
+    --accent: #2dd4bf;
+    --accent-soft: rgba(45, 212, 191, 0.12);
+    --accent-2: #818cf8;
+    --accent-2-soft: rgba(129, 140, 248, 0.12);
+    --warn: #fbbf24;
+    --code-bg: #0a1017;
+    --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8);
+    --radius: 14px;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  html[data-theme="light"] {
+    --bg: #f6f8fa;
+    --bg-elev: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f0f4f8;
+    --border: #d8e1ea;
+    --border-strong: #b9c7d4;
+    --text: #0d1b26;
+    --text-soft: #243746;
+    --muted: #5b6f80;
+    --accent: #0f9e8e;
+    --accent-soft: rgba(15, 158, 142, 0.1);
+    --accent-2: #5b5fe0;
+    --accent-2-soft: rgba(91, 95, 224, 0.1);
+    --code-bg: #0b1220;
+    --shadow: 0 18px 40px -22px rgba(15, 30, 45, 0.35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(700px 400px at 12% -8%, rgba(45, 212, 191, 0.14), transparent 65%),
+      radial-gradient(600px 380px at 88% 4%, rgba(129, 140, 248, 0.12), transparent 65%);
+    z-index: 0;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -0.02em; margin: 0; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); }
+  h3 { font-size: 1.12rem; }
+  p { margin: 0; }
+  code, pre, kbd { font-family: var(--mono); }
+  :not(pre) > code {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.12em 0.4em;
+    font-size: 0.86em;
+    color: var(--text-soft);
+    white-space: nowrap;
+  }
+  .wrap { width: min(1140px, calc(100% - 40px)); margin: 0 auto; position: relative; z-index: 1; }
+
+  /* ---------- header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    height: 66px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    font-size: 1.02rem;
+    white-space: nowrap;
+  }
+  .brand:hover { text-decoration: none; }
+  .brand svg { width: 28px; height: 28px; flex: none; }
+  .brand span b { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-weight: 500;
+    padding: 7px 11px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--text);
+    background: var(--surface-2);
+    text-decoration: none;
+  }
+  .nav-actions { display: flex; align-items: center; gap: 8px; }
+  .icon-btn {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-soft);
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .icon-btn:hover { border-color: var(--border-strong); color: var(--text); }
+  .icon-btn svg { width: 17px; height: 17px; }
+  html[data-theme="light"] .moon { display: none; }
+  html[data-theme="dark"] .sun { display: none; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 78px 0 54px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    max-width: 18ch;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(100deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lede {
+    margin-top: 20px;
+    max-width: 66ch;
+    color: var(--text-soft);
+    font-size: 1.06rem;
+  }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    border: 1px solid transparent;
+    transition: transform .15s, background .15s, border-color .15s;
+  }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn svg { width: 17px; height: 17px; }
+  .btn-primary { background: var(--accent); color: #05130f; }
+  .btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, white); }
+  .btn-ghost { background: var(--surface); border-color: var(--border-strong); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    margin-top: 26px;
+    color: var(--muted);
+    font-size: 0.83rem;
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+  .hero-meta svg { width: 15px; height: 15px; color: var(--accent); }
+
+  /* ---------- pipeline ---------- */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 44px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, var(--surface), var(--bg-elev));
+    box-shadow: var(--shadow);
+  }
+  .step { padding: 14px 13px; border-radius: 10px; position: relative; }
+  .step:hover { background: var(--surface-2); }
+  .step .n {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+  }
+  .step strong { display: block; font-size: 0.9rem; margin: 4px 0 4px; }
+  .step p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+  /* ---------- sections ---------- */
+  section.block { padding: 64px 0; border-top: 1px solid var(--border); }
+  .section-head { margin-bottom: 34px; max-width: 70ch; }
+  .kicker {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .section-head p { color: var(--muted); margin-top: 12px; }
+
+  /* ---------- cards ---------- */
+  .grid { display: grid; gap: 16px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+  .card .ico {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: var(--accent-soft);
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .card .ico.violet { background: var(--accent-2-soft); color: var(--accent-2); }
+  .card .ico svg { width: 19px; height: 19px; }
+  .card h3 { font-size: 0.98rem; margin-bottom: 7px; }
+  .card p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+  /* ---------- code blocks ---------- */
+  .code {
+    position: relative;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0;
+  }
+  .code-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px 8px 15px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.015);
+  }
+  .code-top .label {
+    font-family: var(--mono);
+    font-size: 0.71rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #7c8c9c;
+  }
+  .copy {
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #9fb0c0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 4px 9px;
+    cursor: pointer;
+  }
+  .copy:hover { color: #fff; border-color: rgba(255, 255, 255, 0.28); }
+  .copy.done { color: var(--accent); border-color: var(--accent); }
+  pre {
+    margin: 0;
+    padding: 16px;
+    overflow-x: auto;
+    color: #d7e2ec;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    tab-size: 2;
+    scrollbar-width: thin;
+    scrollbar-color: #33475a transparent;
+  }
+  pre::-webkit-scrollbar { height: 8px; }
+  pre::-webkit-scrollbar-thumb { background: #33475a; border-radius: 4px; }
+  pre::-webkit-scrollbar-track { background: transparent; }
+  .tok-c { color: #5f7688; }
+  .tok-k { color: #7dd3fc; }
+  .tok-s { color: #86efac; }
+  .tok-a { color: #fbbf24; }
+  .tok-v { color: #c4b5fd; }
+
+  /* ---------- install tabs ---------- */
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px; }
+  .tab {
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 7px 13px;
+    cursor: pointer;
+  }
+  .tab:hover { color: var(--text); background: var(--surface); }
+  .tab[aria-selected="true"] {
+    color: var(--text);
+    background: var(--surface);
+    border-color: var(--border-strong);
+  }
+  .tab-panel[hidden] { display: none; }
+  .tab-panel .note { color: var(--muted); font-size: 0.84rem; margin-top: 12px; }
+
+  /* ---------- quick start steps ---------- */
+  .steps { display: grid; gap: 0; }
+  .qstep {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+  }
+  .qstep:first-child { border-top: 0; padding-top: 0; }
+  .qstep .num {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    background: var(--accent-soft);
+  }
+  .qstep h3 { margin-bottom: 6px; }
+  .qstep p { color: var(--muted); font-size: 0.9rem; margin-bottom: 12px; }
+
+  /* ---------- command reference ---------- */
+  .cmd-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .cmd {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 18px 16px;
+  }
+  .cmd:hover { border-color: var(--border-strong); }
+  .cmd .name { font-family: var(--mono); font-size: 0.86rem; color: var(--accent); font-weight: 600; }
+  .cmd .desc { color: var(--muted); font-size: 0.85rem; margin: 6px 0 12px; min-height: 2.6em; }
+  .cmd pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.76rem;
+    line-height: 1.6;
+  }
+
+  /* ---------- tables ---------- */
+  .table-wrap {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: auto;
+    background: var(--surface);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    background: var(--surface-2);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  tr:last-child td { border-bottom: 0; }
+  tbody tr:hover { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
+  td code { background: transparent; border: 0; padding: 0; color: var(--accent); white-space: nowrap; }
+  td.def { color: var(--text-soft); white-space: nowrap; font-family: var(--mono); font-size: 0.8rem; }
+  td .muted { color: var(--muted); }
+
+  .filter-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+  .filter {
+    flex: 1 1 280px;
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    color: var(--text);
+    font: inherit;
+    font-size: 0.88rem;
+    padding: 10px 13px;
+  }
+  .filter:focus { outline: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 1px; border-color: var(--accent); }
+  .count { color: var(--muted); font-size: 0.8rem; font-family: var(--mono); }
+
+  /* ---------- callouts ---------- */
+  .callout {
+    display: flex;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 1px solid color-mix(in srgb, var(--warn) 28%, var(--border));
+    background: color-mix(in srgb, var(--warn) 7%, var(--surface));
+    font-size: 0.88rem;
+    color: var(--text-soft);
+  }
+  .callout svg { width: 19px; height: 19px; flex: none; color: var(--warn); margin-top: 2px; }
+  .callout.info { border-color: color-mix(in srgb, var(--accent) 30%, var(--border)); background: var(--accent-soft); }
+  .callout.info svg { color: var(--accent); }
+
+  .pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    color: var(--muted);
+    background: var(--surface-2);
+    white-space: nowrap;
+  }
+  .pill.ok { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); background: var(--accent-soft); }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0 50px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .foot { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 18px; }
+  .foot-links a { color: var(--muted); }
+  .foot-links a:hover { color: var(--accent); }
+
+  /* ---------- misc ---------- */
+  .split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 34px; align-items: start; }
+  .stack { display: grid; gap: 16px; }
+  .split > *, .grid > *, .cmd-grid > *, .stack > *, .pipeline > *, .card, .cmd, .code, .table-wrap, .qstep > div { min-width: 0; }
+  .checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 11px; }
+  .checklist li { display: flex; gap: 11px; font-size: 0.9rem; color: var(--text-soft); }
+  .checklist svg { width: 17px; height: 17px; color: var(--accent); flex: none; margin-top: 3px; }
+  .muted { color: var(--muted); }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+
+  @media (max-width: 900px) {
+    .grid-3, .grid-2, .cmd-grid, .split { grid-template-columns: 1fr; }
+    .pipeline { grid-template-columns: repeat(2, 1fr); }
+    .pipeline .step:last-child { grid-column: span 2; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 560px) {
+    .wrap { width: calc(100% - 28px); }
+    .hero { padding: 48px 0 36px; }
+    .pipeline { grid-template-columns: 1fr; padding: 4px 15px; gap: 0; }
+    .pipeline .step { padding: 13px 0; }
+    .pipeline .step + .step { border-top: 1px solid var(--border); }
+    .pipeline .step:last-child { grid-column: auto; }
+    .qstep { grid-template-columns: 1fr; gap: 10px; }
+    th, td { padding: 10px 12px; }
+    table { min-width: 640px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="code-search home">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <rect width="100" height="100" rx="22" fill="none" stroke="currentColor" stroke-width="5" opacity=".18"/>
+        <path d="M40 28 20 50l20 22M60 28l20 22-20 22M54 22 46 78" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span>code<b>-search</b></span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="#quickstart">Quick start</a>
+      <a href="#cli">CLI</a>
+      <a href="#mcp">MCP</a>
+      <a href="#configuration">Configuration</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/dhanoopbhaskar/code-search" target="_blank" rel="noopener" aria-label="GitHub repository">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="wrap hero">
+    <span class="eyebrow"><span class="dot"></span> CPU-only · Offline · MIT licensed</span>
+    <h1>Code context that <em>never leaves</em> your network.</h1>
+    <p class="lede">
+      <strong>code-search</strong> is an AI code context engine for air-gapped, CPU-only enterprise
+      environments. It combines Tree-sitter AST structural graphing with static Model2Vec embeddings
+      and BM25 hybrid search — exposed through a fast CLI and a Model Context Protocol server.
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/dhanoopbhaskar/code-search" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+        View on GitHub
+      </a>
+      <a class="btn btn-ghost" href="#quickstart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg>
+        Quick start
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/dhanoopbhaskar/code-search/blob/main/QUICK_START.md" target="_blank" rel="noopener">
+        Full manual
+      </a>
+    </div>
+    <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M3 12h18"/></svg> Python 3.11+</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg> CPU-only, no GPU</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 0v20M2 12h20"/></svg> Zero outbound calls</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-4z"/></svg> Secrets redacted</span>
+    </div>
+
+    <div class="pipeline" aria-label="Indexing and search pipeline">
+      <div class="step"><span class="n">01</span><strong>Discover</strong><p>Walks the repo, honours <code>.gitignore</code>, skips artifacts.</p></div>
+      <div class="step"><span class="n">02</span><strong>Parse</strong><p>Tree-sitter builds an AST and emits typed chunks.</p></div>
+      <div class="step"><span class="n">03</span><strong>Index</strong><p>SQLite symbols + edges, BM25 corpus, 32-dim vectors.</p></div>
+      <div class="step"><span class="n">04</span><strong>Rank</strong><p>BM25 + vector scores fused with Reciprocal Rank Fusion.</p></div>
+      <div class="step"><span class="n">05</span><strong>Answer</strong><p>Ranked results, symbols, call paths — via CLI or MCP.</p></div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="block" id="overview">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="kicker">What it is</p>
+          <h2>Ask questions about code. Get ranked context, not a wall of matches.</h2>
+          <p class="muted mt-16">
+            Traditional grep tells you every place a string appears. code-search tells you
+            <em>where the answer lives</em>. Natural-language queries are scored by a hybrid of
+            lexical BM25 and a static embedding model, then fused into one ranked list. When the
+            question is structural — “who calls this”, “what implements this interface” — it
+            answers from a real call graph instead of guessing.
+          </p>
+          <p class="muted mt-16">
+            Everything runs locally: a static model, a local SQLite index under
+            <code>.context/</code>, and a background daemon over a local IPC socket. The MCP
+            server enforces air-gap mode by blocking outbound sockets, redacts secrets in results,
+            and writes an append-only audit log.
+          </p>
+          <div class="cta">
+            <a class="btn btn-ghost" href="https://github.com/dhanoopbhaskar/code-search/blob/main/docs/indexing-and-search-walkthrough.md" target="_blank" rel="noopener">
+              Read the pipeline walkthrough
+            </a>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="code">
+            <div class="code-top"><span class="label">Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre><span class="tok-c"># Find the implementation, not every occurrence</span>
+$ code-search search <span class="tok-s">"how is JWT validation implemented"</span> --limit 5
+
+<span class="tok-c"># Resolve a symbol by fully qualified name</span>
+$ code-search symbol <span class="tok-s">"auth.jwt.validate_token"</span>
+
+<span class="tok-c"># Trace who calls it</span>
+$ code-search graph <span class="tok-s">"auth.jwt.validate_token"</span> --direction callers --depth 2
+
+<span class="tok-c"># Exact enumeration when you need every hit</span>
+$ code-search search <span class="tok-s">"TODO"</span> --mode exhaustive --matching literal</pre>
+          </div>
+          <div class="callout info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <div><strong>When to use it.</strong> Reach for code-search when you don’t know the identifier, need ranked definitions, or the question is structural. Reach for <code>grep</code> for exact strings and counts — or stay in the tool with <code>--mode exhaustive</code>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="block" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Capabilities</p>
+        <h2>Built for real codebases and strict networks</h2>
+        <p>Search, navigate, and audit a repository from one index — with no GPU and no network dependency at query time.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>Hybrid semantic search</h3>
+          <p>BM25 and 32-dim Model2Vec vectors fused with RRF, then reranked with definition and test-file multipliers. Falls back to lexical-only when the model is unavailable — and says so.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h6v6H4zM14 12h6v6h-6z"/><path d="M10 9h4M17 9v3M7 12v3h7"/></svg></div>
+          <h3>Call graph traversal</h3>
+          <p>Callers, callees, implementations, multi-hop queries, and shortest paths. Receiver-qualified calls resolve through declared field, parameter, and local types.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h10M7 17h6"/></svg></div>
+          <h3>MCP server</h3>
+          <p>Nineteen tools for search, symbols, graph, architecture, coverage, dead code, and Cypher queries — ready for OpenCode, Claude Desktop, or any MCP client.</p>
+        </article>
+        <article class="card">
+          <div class="ico violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Air-gap enforcement</h3>
+          <p>Outbound sockets are blocked while serving. The embedding model ships with the bundle, so vector search works on a machine that has never had internet access.</p>
+        </article>
+        <article class="card">
+          <div class="ico violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h18M6 7V5h12v2M5 7l1 13h12l1-13"/><path d="M10 11v5M14 11v5"/></svg></div>
+          <h3>Incremental &amp; watched indexes</h3>
+          <p>SHA256-based incremental re-indexing, optional file watching, stale-index notices, and stale-row pruning. Discovery respects <code>.gitignore</code> by default.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+          <h3>Quality &amp; compliance</h3>
+          <p>Confidence bands, ranking explanations, dependency-free evaluation harness, secret redaction, and an append-only audit log. MIT licensed.</p>
+        </article>
+      </div>
+      <div class="mt-24">
+        <p class="muted" style="font-size:.85rem">
+          <strong style="color:var(--text)">Languages.</strong>
+          Python, Java, JavaScript, TypeScript, C#, C++, Bash, Go, Kotlin, Groovy, YAML, TOML are built in.
+          Rust, Ruby, Swift, and PHP are available through the <code>[lang]</code> extra. Custom languages can be added with a JSON config.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="block" id="install">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Installation</p>
+        <h2>Install it your way</h2>
+        <p>Python 3.11+, 4+ cores, 8&nbsp;GB RAM. Linux, macOS, or Windows 10 1803+.</p>
+      </div>
+      <div class="split">
+        <div>
+          <div class="tabs" role="tablist" aria-label="Installation methods">
+            <button class="tab" role="tab" aria-selected="true" data-tab="pipx">pipx</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="wheel">Wheel</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="source">Source</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="bundle">Air-gapped bundle</button>
+          </div>
+
+          <div class="tab-panel" data-panel="pipx">
+            <div class="code">
+              <div class="code-top"><span class="label">Recommended</span><button class="copy" type="button">Copy</button></div>
+<pre>pipx install --force <span class="tok-s">"git+https://github.com/dhanoopbhaskar/code-search"</span></pre>
+            </div>
+            <p class="note">Installs the CLI into an isolated environment already on your <code>PATH</code>.</p>
+          </div>
+
+          <div class="tab-panel" data-panel="wheel" hidden>
+            <div class="code">
+              <div class="code-top"><span class="label">From a built wheel</span><button class="copy" type="button">Copy</button></div>
+<pre>pip install dist/code_search-*.whl
+
+<span class="tok-c"># Optional extra grammars: Rust, Ruby, Swift, PHP</span>
+pip install <span class="tok-s">"dist/code_search-0.1.0-py3-none-any.whl[lang]"</span></pre>
+            </div>
+            <p class="note">Build first with <code>make build</code> if <code>dist/</code> is empty.</p>
+          </div>
+
+          <div class="tab-panel" data-panel="source" hidden>
+            <div class="code">
+              <div class="code-top"><span class="label">Editable development install</span><button class="copy" type="button">Copy</button></div>
+<pre>python3 -m venv .venv
+source .venv/bin/activate
+pip install -e <span class="tok-s">".[dev]"</span></pre>
+            </div>
+            <p class="note">Activate the virtualenv before running <code>code-search</code>.</p>
+          </div>
+
+          <div class="tab-panel" data-panel="bundle" hidden>
+            <div class="code">
+              <div class="code-top"><span class="label">Offline / air-gapped target</span><button class="copy" type="button">Copy</button></div>
+<pre><span class="tok-c"># On a networked machine</span>
+./scripts/bundle.sh --deps
+
+<span class="tok-c"># Copy the tarball, then on the target</span>
+tar xzf code-search-*-bundle.tar.gz
+<span class="tok-k">cd</span> bundle
+python install-from-bundle.py</pre>
+            </div>
+            <p class="note">Installs into <code>./.venv</code> with the embedding model bundled. Only <code>--deps</code> bundles include dependency wheels.</p>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+            <div><strong>Add <code>.context/</code> to <code>.gitignore</code>.</strong> That directory <em>is</em> your index — SQLite databases and vector files generated per repository.</div>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom:12px">Verify the install</h3>
+            <div class="code">
+              <div class="code-top"><span class="label">Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>code-search --help
+code-search list-languages
+code-search doctor</pre>
+            </div>
+            <p class="muted mt-16" style="font-size:.85rem">
+              <code>doctor</code> reports index, model, daemon, and graph health in one pass.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK START -->
+  <section class="block" id="quickstart">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Quick start</p>
+        <h2>From clone to answer in four commands</h2>
+      </div>
+      <div class="split">
+        <div class="steps">
+          <div class="qstep">
+            <div class="num">1</div>
+            <div>
+              <h3>Get the embedding model</h3>
+              <p>Fetches <code>potion-code-16m-32d</code> from MinishLab. Skip if you installed from a bundle that includes it. Without a model, search degrades to BM25-only.</p>
+              <div class="code">
+                <div class="code-top"><span class="label">Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>code-search download-models</pre>
+              </div>
+            </div>
+          </div>
+          <div class="qstep">
+            <div class="num">2</div>
+            <div>
+              <h3>Index the codebase</h3>
+              <p>Writes <code>.context/</code> in the repository root. Use <code>--incremental</code> on later runs and <code>--watch</code> to keep it current.</p>
+              <div class="code">
+                <div class="code-top"><span class="label">Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre><span class="tok-k">cd</span> /path/to/your/repo
+code-search index --path .
+
+<span class="tok-c"># later, only changed files</span>
+code-search index --incremental
+code-search index --watch      <span class="tok-c"># keep it live</span></pre>
+              </div>
+            </div>
+          </div>
+          <div class="qstep">
+            <div class="num">3</div>
+            <div>
+              <h3>Warm the daemon</h3>
+              <p>Loads the model and index once. Repeated CLI calls forward to it, so the first query is the only slow one.</p>
+              <div class="code">
+                <div class="code-top"><span class="label">Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>code-search start
+code-search status
+code-search daemon wait --timeout 30</pre>
+              </div>
+            </div>
+          </div>
+          <div class="qstep">
+            <div class="num">4</div>
+            <div>
+              <h3>Search</h3>
+              <p>Use short keyword phrases (2–6 words). Add <code>--json</code> for structured output, <code>--paths-only</code> for a compact discovery pass.</p>
+              <div class="code">
+                <div class="code-top"><span class="label">Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>code-search search <span class="tok-s">"how is JWT validation implemented"</span> --limit 5
+code-search search <span class="tok-s">"database connection pool"</span> --content config
+code-search search <span class="tok-s">"deployment guide"</span> --content docs
+code-search search <span class="tok-s">"validate.*token"</span> --mode exhaustive --regex</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="card">
+            <h3 style="margin-bottom:10px">Recommended warm invocation</h3>
+            <div class="code">
+              <div class="code-top"><span class="label">Daily driver</span><button class="copy" type="button">Copy</button></div>
+<pre>code-search start                       <span class="tok-c"># once per session</span>
+code-search search <span class="tok-s">"&lt;query&gt;"</span> --json --paths-only
+code-search symbol &lt;Fqn&gt;
+code-search view &lt;Fqn|file&gt; --budget 2000
+code-search graph &lt;Fqn&gt; --explain-unresolved</pre>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom:10px">Let an agent read the manual</h3>
+            <p class="muted" style="font-size:.87rem;margin-bottom:12px">
+              Prints a Markdown guide covering which tool answers which question, the search-and-trace workflow, how to check vector health, and patterns to avoid. Static, so it works before the first index.
+            </p>
+            <div class="code">
+              <div class="code-top"><span class="label">Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>code-search instructions</pre>
+            </div>
+          </div>
+          <div class="callout info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <div><strong>Tests are excluded by default.</strong> Add <code>--include-tests</code> when the test itself is the answer. They stay demoted rather than treated as equal candidates.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLI -->
+  <section class="block" id="cli">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">CLI reference</p>
+        <h2>One command per question</h2>
+        <p>Every command accepts <code>--json</code> for structured output. Graph answers label each edge with its provenance, and ambiguous symbols are refused with ranked candidates instead of guessed.</p>
+      </div>
+
+      <div class="cmd-grid">
+        <div class="cmd">
+          <div class="name">search</div>
+          <p class="desc">Hybrid BM25 + vector search with RRF fusion. Modes: ranked, exhaustive, enumerate.</p>
+<pre>code-search search <span class="tok-s">"retry with exponential backoff"</span> --limit 5
+code-search search <span class="tok-s">"TODO"</span> --matching literal
+code-search search <span class="tok-s">"list all controllers"</span> --mode enumerate</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">symbol</div>
+          <p class="desc">Resolve a symbol by FQN. Java overloads accept a full signature.</p>
+<pre>code-search symbol <span class="tok-s">"auth.jwt.validate_token"</span>
+code-search symbol <span class="tok-s">"ArticleService"</span> --outline</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">view</div>
+          <p class="desc">Read a symbol or file with a compact outline/body contract and token budget.</p>
+<pre>code-search view <span class="tok-s">"ArticleService"</span> --outline
+code-search view src/auth.py --body --max-lines 80
+code-search view <span class="tok-s">"ArticleService"</span> --budget 2000</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">graph</div>
+          <p class="desc">Traverse callers, callees, or implementations. Depth is bounded at 5.</p>
+<pre>code-search graph <span class="tok-s">"auth.jwt.validate_token"</span> --direction callers
+code-search graph <span class="tok-s">"TokenService"</span> --transitive --depth 2</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">implementations</div>
+          <p class="desc">Static implementers of an interface method or type, with direct/indirect provenance.</p>
+<pre>code-search implementations <span class="tok-s">"ArticleRepository.findBySlug"</span></pre>
+        </div>
+        <div class="cmd">
+          <div class="name">find-related</div>
+          <p class="desc">Semantically similar chunks anchored at a file and line.</p>
+<pre>code-search find-related src/service.py --line 42 --limit 10</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">query</div>
+          <p class="desc">Multi-hop graph question seeded from hybrid search. Labels every edge.</p>
+<pre>code-search query <span class="tok-s">"how does favoriting flow from controller to repository"</span> --depth 3</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">path</div>
+          <p class="desc">Shortest directed path between two symbols. Ambiguous endpoints are refused.</p>
+<pre>code-search path <span class="tok-s">"ArticleController.favorite"</span> <span class="tok-s">"ArticleRepository.save"</span></pre>
+        </div>
+        <div class="cmd">
+          <div class="name">explain</div>
+          <p class="desc">Metadata, relations, rationale comments, and offline documentation links.</p>
+<pre>code-search explain <span class="tok-s">"auth.jwt.validate_token"</span></pre>
+        </div>
+        <div class="cmd">
+          <div class="name">affected · detect-changes</div>
+          <p class="desc">Map a git diff (or explicit paths) to seeds and impacted symbols.</p>
+<pre>code-search affected src/auth.py --depth 2</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">map · architecture</div>
+          <p class="desc">Bounded architecture report: entry points, communities, core symbols.</p>
+<pre>code-search map --top 15</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">schema</div>
+          <p class="desc">Stored labels, edge types, resolution tiers, and coverage diagnostics.</p>
+<pre>code-search schema --diagnostics</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">outline · symbols</div>
+          <p class="desc">One file’s declarations in order; structural symbol search by kind, regex, or degree.</p>
+<pre>code-search outline src/auth.py
+code-search symbols --kind class --file-pattern <span class="tok-s">"src/**"</span></pre>
+        </div>
+        <div class="cmd">
+          <div class="name">dead-code · coverage</div>
+          <p class="desc">Callables with no proven production reference; per-file index gaps.</p>
+<pre>code-search dead-code
+code-search coverage src/auth.py</pre>
+        </div>
+        <div class="cmd">
+          <div class="name">cypher</div>
+          <p class="desc">Read-only Cypher subset over the indexed graph.</p>
+<pre>code-search cypher <span class="tok-s">"MATCH (f:Function)-[:CALLS]-&gt;(g) RETURN g.name LIMIT 20"</span></pre>
+        </div>
+        <div class="cmd">
+          <div class="name">stats · doctor · metrics</div>
+          <p class="desc">Index/profile stats, combined health diagnosis, and query metrics.</p>
+<pre>code-search stats --format json
+code-search doctor
+code-search metrics</pre>
+        </div>
+      </div>
+
+      <div class="card mt-24">
+        <h3 style="margin-bottom:8px">Useful search flags</h3>
+        <div class="table-wrap mt-16" style="border:0">
+          <table>
+            <thead><tr><th>Flag</th><th>Default</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><code>--mode</code></td><td class="def">ranked</td><td>Hybrid ranking, exhaustive line scan, or symbol-kind enumeration.</td></tr>
+              <tr><td><code>--content</code></td><td class="def">intent</td><td><code>code</code>, <code>config</code>, <code>docs</code>, <code>all</code>, or <code>code_focused</code>. Inferred from the query when omitted.</td></tr>
+              <tr><td><code>--matching</code></td><td class="def">all_tokens</td><td><code>literal</code>, <code>all_tokens</code>, or <code>any_token</code>. Implies exhaustive mode.</td></tr>
+              <tr><td><code>--regex</code></td><td class="def">off</td><td>Treat the query as a Python regex (exhaustive mode only).</td></tr>
+              <tr><td><code>--include-tests</code></td><td class="def">off</td><td>Opt test files back into the result set.</td></tr>
+              <tr><td><code>--explain-ranking</code></td><td class="def">off</td><td>Attach <code>score_sources</code> explaining how each score was built.</td></tr>
+              <tr><td><code>--paths-only</code></td><td class="def">off</td><td>Return only paths, line ranges, symbol names, and classification fields.</td></tr>
+              <tr><td><code>--no-model</code></td><td class="def">off</td><td>Skip vectors; fuse lexical signals only (response marked <code>lexical_degraded</code>).</td></tr>
+              <tr><td><code>--strict</code></td><td class="def">off</td><td>Turn a weak ranked pool into <code>no_match</code>, keeping rows as alternatives.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MCP -->
+  <section class="block" id="mcp">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">MCP server</p>
+        <h2>Plug the index into your AI assistant</h2>
+        <p><code>code-search serve</code> speaks JSON-RPC 2.0 over stdio. Index the target repository before starting it.</p>
+      </div>
+
+      <div class="split">
+        <div class="stack">
+          <div class="code">
+            <div class="code-top"><span class="label">OpenCode — ~/.config/opencode/opencode.jsonc</span><button class="copy" type="button">Copy</button></div>
+<pre>{
+  <span class="tok-a">"$schema"</span>: <span class="tok-s">"https://opencode.ai/config.json"</span>,
+  <span class="tok-a">"mcp"</span>: {
+    <span class="tok-a">"code-search"</span>: {
+      <span class="tok-a">"type"</span>: <span class="tok-s">"local"</span>,
+      <span class="tok-a">"command"</span>: [<span class="tok-s">"code-search"</span>, <span class="tok-s">"serve"</span>],
+      <span class="tok-a">"environment"</span>: {
+        <span class="tok-a">"CODE_SEARCH_CONTEXT_DIR"</span>: <span class="tok-s">"/path/to/your/project/.context"</span>,
+        <span class="tok-a">"CODE_SEARCH_LOG_LEVEL"</span>: <span class="tok-s">"WARNING"</span>
+      },
+      <span class="tok-a">"enabled"</span>: <span class="tok-v">true</span>
+    }
+  }
+}</pre>
+          </div>
+          <div class="code">
+            <div class="code-top"><span class="label">Claude Desktop — claude_desktop_config.json</span><button class="copy" type="button">Copy</button></div>
+<pre>{
+  <span class="tok-a">"mcpServers"</span>: {
+    <span class="tok-a">"code-search"</span>: {
+      <span class="tok-a">"command"</span>: <span class="tok-s">"code-search"</span>,
+      <span class="tok-a">"args"</span>: [<span class="tok-s">"serve"</span>],
+      <span class="tok-a">"env"</span>: {
+        <span class="tok-a">"CODE_SEARCH_CONTEXT_DIR"</span>: <span class="tok-s">"/path/to/your/project/.context"</span>
+      }
+    }
+  }
+}</pre>
+          </div>
+        </div>
+
+        <div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>MCP tool</th><th>Answers</th></tr></thead>
+              <tbody>
+                <tr><td><code>search</code></td><td>Hybrid semantic search</td></tr>
+                <tr><td><code>ask</code></td><td>Route one question to the right surface</td></tr>
+                <tr><td><code>get_symbol_definition</code></td><td>Read a symbol by FQN</td></tr>
+                <tr><td><code>get_call_neighbors</code></td><td>Callers and callees</td></tr>
+                <tr><td><code>get_implementations</code></td><td>Interface implementers</td></tr>
+                <tr><td><code>find_related</code></td><td>Similar chunks at a file/line</td></tr>
+                <tr><td><code>query_graph</code></td><td>Bounded multi-hop questions</td></tr>
+                <tr><td><code>shortest_path</code></td><td>Path between two symbols</td></tr>
+                <tr><td><code>explain_symbol</code></td><td>Metadata, relations, docs</td></tr>
+                <tr><td><code>get_impact</code></td><td>Symbols impacted by changes</td></tr>
+                <tr><td><code>detect_changes</code></td><td>Map a git diff to seeds</td></tr>
+                <tr><td><code>get_architecture</code></td><td>Bounded architecture report</td></tr>
+                <tr><td><code>get_graph_schema</code></td><td>Edge types and coverage</td></tr>
+                <tr><td><code>get_file_outline</code></td><td>File declarations in order</td></tr>
+                <tr><td><code>search_symbols</code></td><td>Structural symbol search</td></tr>
+                <tr><td><code>check_index_coverage</code></td><td>Per-file index gaps</td></tr>
+                <tr><td><code>find_dead_code</code></td><td>Unreferenced callables</td></tr>
+                <tr><td><code>cypher_query</code></td><td>Read-only graph queries</td></tr>
+                <tr><td><code>doctor</code></td><td>Index, model, daemon health</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout info mt-16">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <div>Every tool redacts secrets and attaches a <code>freshness</code> object. High-volume tools accept <code>max_output_tokens</code> and a <code>profile</code> of <code>compact</code>, <code>outline</code>, or <code>full</code>.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-24">
+        <h3 style="margin-bottom:12px">Typical agent workflow</h3>
+        <ol class="muted" style="margin:0;padding-left:22px;font-size:.9rem;line-height:2">
+          <li><strong style="color:var(--text)">Verify the layer</strong> — run a search and confirm the vector layer is healthy before trusting semantic ranking.</li>
+          <li><strong style="color:var(--text)">Explore with search</strong> — short keyword phrases beat long prose.</li>
+          <li><strong style="color:var(--text)">Check confidence</strong> — inspect <code>confidence</code>, <code>confidence_band</code>, and <code>borderline</code>; verify low-confidence rows.</li>
+          <li><strong style="color:var(--text)">Read the symbol</strong> — <code>get_symbol_definition</code> for the full implementation.</li>
+          <li><strong style="color:var(--text)">Trace the graph</strong> — <code>get_call_neighbors</code> to understand dependencies.</li>
+          <li><strong style="color:var(--text)">Verify exactly</strong> — use <code>grep</code> for strings and counts, or exhaustive search mode.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIGURATION -->
+  <section class="block" id="configuration">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Configuration</p>
+        <h2>Environment-driven, no config server required</h2>
+        <p>Configuration is read from environment variables. Language definitions can be extended with an optional <code>language_config.json</code> or <code>CODE_SEARCH_LANGUAGE_CONFIG</code>.</p>
+      </div>
+
+      <div class="filter-row">
+        <input class="filter" id="env-filter" type="search" placeholder="Filter settings — try “cache”, “sqlite”, “gitignore”…" aria-label="Filter configuration settings">
+        <span class="count" id="env-count"></span>
+      </div>
+
+      <div class="table-wrap">
+        <table id="env-table">
+          <thead><tr><th>Variable</th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>CODE_SEARCH_CONTEXT_DIR</code></td><td class="def">.context</td><td>Storage directory for the index (SQLite + vectors).</td></tr>
+            <tr><td><code>CODE_SEARCH_LOG_LEVEL</code></td><td class="def">WARNING</td><td>Log verbosity: <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, or <code>ERROR</code>.</td></tr>
+            <tr><td><code>CODE_SEARCH_EMBEDDING_MODEL</code></td><td class="def">potion-code-16m-32d</td><td>Model2Vec model used for the vector layer.</td></tr>
+            <tr><td><code>CODE_SEARCH_EMBEDDING_DIM</code></td><td class="def">32</td><td>Embedding vector dimension.</td></tr>
+            <tr><td><code>CODE_SEARCH_BM25_K1</code></td><td class="def">1.5</td><td>BM25 term-frequency saturation.</td></tr>
+            <tr><td><code>CODE_SEARCH_BM25_B</code></td><td class="def">0.75</td><td>BM25 document-length normalization.</td></tr>
+            <tr><td><code>CODE_SEARCH_RRF_K</code></td><td class="def">60</td><td>Reciprocal Rank Fusion constant.</td></tr>
+            <tr><td><code>CODE_SEARCH_MAX_RESULTS</code></td><td class="def">50</td><td>Maximum results returned per search.</td></tr>
+            <tr><td><code>CODE_SEARCH_RELEVANCE_THRESHOLD</code></td><td class="def">0.05</td><td>Minimum relevance score for a result.</td></tr>
+            <tr><td><code>CODE_SEARCH_DEFINITION_BOOST</code></td><td class="def">1.2</td><td>Score multiplier for definition chunks.</td></tr>
+            <tr><td><code>CODE_SEARCH_NOISE_PENALTY</code></td><td class="def">0.5</td><td>Score multiplier applied to test files.</td></tr>
+            <tr><td><code>CODE_SEARCH_SESSION_TTL_HOURS</code></td><td class="def">24</td><td>Session entry time-to-live; recent files rank higher.</td></tr>
+            <tr><td><code>CODE_SEARCH_FILTER_STOPWORDS</code></td><td class="def">false</td><td>Filter English stopwords from queries.</td></tr>
+            <tr><td><code>CODE_SEARCH_FIND_RELATED_LIMIT</code></td><td class="def">100</td><td>Maximum candidates considered by <code>find_related</code>.</td></tr>
+            <tr><td><code>CODE_SEARCH_MAX_GRAPH_DEPTH</code></td><td class="def">5</td><td>Maximum call-graph traversal depth.</td></tr>
+            <tr><td><code>CODE_SEARCH_WARMUP_WAIT_S</code></td><td class="def">5.0</td><td>Seconds the daemon and MCP server wait for model warmup before using the cold path.</td></tr>
+            <tr><td><code>CODE_SEARCH_RESPECT_GITIGNORE</code></td><td class="def">true</td><td>Honour <code>.gitignore</code> during discovery; <code>false</code> indexes ignored paths too.</td></tr>
+            <tr><td><code>CODE_SEARCH_INTENT_SCOPE_ENABLED</code></td><td class="def">true</td><td>Infer <code>search --content</code> scope from the query.</td></tr>
+            <tr><td><code>CODE_SEARCH_INDEX_DOC_LINKS</code></td><td class="def">false</td><td>Compute offline doc links at index time (local model only).</td></tr>
+            <tr><td><code>CODE_SEARCH_GRAPH_CACHE_ENABLED</code></td><td class="def">true</td><td>Enable the generation-keyed in-memory adjacency cache.</td></tr>
+            <tr><td><code>CODE_SEARCH_GRAPH_CACHE_MAX_BYTES</code></td><td class="def">min(256 MB, 25% RAM)</td><td>Cache byte budget; <code>0</code> disables the cache and forces SQL.</td></tr>
+            <tr><td><code>CODE_SEARCH_GRAPH_CACHE_IDLE_SECONDS</code></td><td class="def">900</td><td>Drop snapshots unused for this long; <code>0</code> disables idle expiry.</td></tr>
+            <tr><td><code>CODE_SEARCH_SQLITE_CACHE_KIB</code></td><td class="def">65536</td><td>Per-connection SQLite page cache in KiB; <code>0</code> keeps the SQLite default.</td></tr>
+            <tr><td><code>CODE_SEARCH_SQLITE_MMAP_BYTES</code></td><td class="def">268435456</td><td>SQLite memory-mapped I/O window; <code>0</code> disables memory mapping.</td></tr>
+            <tr><td><code>CODE_SEARCH_SQLITE_TEMP_STORE_MEMORY</code></td><td class="def">true</td><td>Keep temporary SQLite tables in memory.</td></tr>
+            <tr><td><code>CODE_SEARCH_LANGUAGE_CONFIG</code></td><td class="def">language_config.json</td><td>Path to a JSON file extending built-in language definitions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted mt-16" style="font-size:.84rem">
+        Ranking, chunking, and content-weighting knobs are documented in
+        <a href="https://github.com/dhanoopbhaskar/code-search/blob/main/QUICK_START.md#configuration" target="_blank" rel="noopener">QUICK_START.md</a>;
+        the authoritative list lives in
+        <a href="https://github.com/dhanoopbhaskar/code-search/blob/main/code_search/engine/config.py" target="_blank" rel="noopener"><code>code_search/engine/config.py</code></a>.
+      </p>
+
+      <div class="grid grid-2 mt-24">
+        <div class="card">
+          <h3 style="margin-bottom:10px">Runtime profiles</h3>
+          <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px"><code>standard</code> is the default: legacy index layout, blocking freshness. <code>small</code> enables the compact layout and deferred freshness. Existing indexes are never migrated implicitly.</p>
+          <div class="code">
+            <div class="code-top"><span class="label">Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>code-search index --runtime-profile small --index-layout compact --path .
+code-search index --no-graph --force --path .   <span class="tok-c"># search-only</span>
+code-search search <span class="tok-s">"validate token"</span> --paths-only --meta full</pre>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px">Air-gapped checklist</h3>
+          <ul class="checklist">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Build with <code>./scripts/bundle.sh --deps</code> to include wheels and the model.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Install with <code>python install-from-bundle.py</code> — no index download prompt.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>The daemon uses an <code>AF_UNIX</code> socket (or named pipe), never a network listener.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Serve with outbound sockets blocked, secrets redacted, and audit logging on.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY / KEY POINTS -->
+  <section class="block" id="operations">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="kicker">Operating notes</p>
+          <h2>Keep it fast and trustworthy</h2>
+          <ul class="checklist mt-24">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Add <code>.context/</code> to <code>.gitignore</code> — it is generated state, not source.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Keep the daemon warm for interactive use; <code>--no-daemon</code> serves one invocation in-process.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Run <code>code-search stats --format json</code> to see profile, layout, per-store sizes, and graph coverage.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>When an answer is empty, check coverage before assuming absence — <code>parse_partial</code> and <code>skipped_oversized</code> files are reported explicitly.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Prefer short queries. If ranked search misses, try alternate phrasing before falling back to grep.</span></li>
+          </ul>
+        </div>
+        <div class="stack">
+          <div class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+            <div><strong>Don’t use ranked search for exact enumeration.</strong> For literal strings, regex, or counts, switch to <code>--mode exhaustive</code> (with <code>--matching</code> / <code>--regex</code>) — or use grep.</div>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom:10px">Health check</h3>
+            <div class="code">
+              <div class="code-top"><span class="label">Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>code-search doctor
+code-search status
+code-search stats --format json</pre>
+            </div>
+            <p class="muted mt-16" style="font-size:.85rem">If <code>Vector Model Avail</code> is false, search is lexical-only. Check the model path or rerun <code>download-models</code>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="block">
+    <div class="wrap" style="text-align:center">
+      <p class="kicker">Get started</p>
+      <h2 style="max-width:22ch;margin:0 auto">Give your agent the context it’s missing.</h2>
+      <p class="muted mt-16" style="max-width:56ch;margin-left:auto;margin-right:auto">
+        Clone the repository, index a project, and point your MCP client at it. MIT licensed and ready for an air-gapped network.
+      </p>
+      <div class="cta" style="justify-content:center">
+        <a class="btn btn-primary" href="https://github.com/dhanoopbhaskar/code-search" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+          dhanoopbhaskar/code-search
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/dhanoopbhaskar/code-search/blob/main/README.md" target="_blank" rel="noopener">README</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <strong style="color:var(--text)">code-search</strong> <span class="pill ok">MIT</span>
+      <div style="margin-top:6px">AI code context for air-gapped, CPU-only environments.</div>
+    </div>
+    <nav class="foot-links" aria-label="Links">
+      <a href="https://github.com/dhanoopbhaskar/code-search" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/dhanoopbhaskar/code-search/blob/main/README.md" target="_blank" rel="noopener">README</a>
+      <a href="https://github.com/dhanoopbhaskar/code-search/blob/main/QUICK_START.md" target="_blank" rel="noopener">User manual</a>
+      <a href="https://github.com/dhanoopbhaskar/code-search/blob/main/docs/indexing-and-search-walkthrough.md" target="_blank" rel="noopener">Pipeline walkthrough</a>
+      <a href="https://github.com/dhanoopbhaskar/code-search/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // Theme ---------------------------------------------------------------
+  var root = document.documentElement;
+  var toggle = document.getElementById("theme-toggle");
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("cs-theme", next); } catch (e) {}
+    });
+  }
+
+  // Copy buttons --------------------------------------------------------
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var block = btn.closest(".code");
+      var pre = block ? block.querySelector("pre") : null;
+      if (!pre) return;
+      var text = pre.innerText;
+      var done = function () {
+        btn.textContent = "Copied";
+        btn.classList.add("done");
+        setTimeout(function () {
+          btn.textContent = "Copy";
+          btn.classList.remove("done");
+        }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () {});
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    });
+  });
+
+  // Install tabs --------------------------------------------------------
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      tabs.forEach(function (t) { t.setAttribute("aria-selected", "false"); });
+      tab.setAttribute("aria-selected", "true");
+      document.querySelectorAll(".tab-panel").forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-panel") !== tab.getAttribute("data-tab");
+      });
+    });
+  });
+
+  // Env var filter ------------------------------------------------------
+  var filter = document.getElementById("env-filter");
+  var table = document.getElementById("env-table");
+  var count = document.getElementById("env-count");
+  if (filter && table) {
+    var rows = Array.prototype.slice.call(table.querySelectorAll("tbody tr"));
+    var update = function () {
+      var q = filter.value.trim().toLowerCase();
+      var shown = 0;
+      rows.forEach(function (row) {
+        var hit = !q || row.textContent.toLowerCase().indexOf(q) !== -1;
+        row.style.display = hit ? "" : "none";
+        if (hit) shown++;
+      });
+      if (count) count.textContent = shown + " / " + rows.length + " settings";
+    };
+    filter.addEventListener("input", update);
+    update();
+  }
+
+  // Scrollspy -----------------------------------------------------------
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+  var targets = links
+    .map(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      var el = document.getElementById(id);
+      return el ? { link: a, el: el } : null;
+    })
+    .filter(Boolean);
+  if ("IntersectionObserver" in window && targets.length) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        targets.forEach(function (t) {
+          t.link.classList.toggle("active", t.el === entry.target);
+        });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    targets.forEach(function (t) { observer.observe(t.el); });
+  }
+})();
+</script>
+</body>
+</html>

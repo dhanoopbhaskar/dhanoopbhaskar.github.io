@@ -24,7 +24,6 @@
 Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
 
 
-
   Table of Contents
   
     
@@ -56,23 +55,23 @@ Reliable data structures and leader election aren&rsquo;t enough. Nodes must com
 
 
 
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Patterns of Distributed Systems | Network Communication & Request Handling">
-	<meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Patterns of Distributed Systems | Network Communication & Request Handling">
+  <meta name="twitter:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
 Table of Contents Link to heading Group F — Network Communication &amp; Request Handling Single-Socket Channel Request Pipeline Request Batch Singular Update Queue Request Waiting List Idempotent Receiver Group F — Network Communication &amp; Request Handling Link to heading Reliable data structures and leader election aren’t enough. Nodes must communicate efficiently and correctly over unreliable networks.">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-06-13-group-f-network-communication-request-handling/">
-	<meta property="og:site_name" content="The Insane Techie">
-	<meta property="og:title" content="Patterns of Distributed Systems | Network Communication & Request Handling">
-	<meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Patterns of Distributed Systems | Network Communication & Request Handling">
+  <meta property="og:description" content="Patterns of Distributed Systems Link to heading Based on: Catalog of Patterns of Distributed Systems by Unmesh Joshi (published on martinfowler.com, Nov 2023)
 Table of Contents Link to heading Group F — Network Communication &amp; Request Handling Single-Socket Channel Request Pipeline Request Batch Singular Update Queue Request Waiting List Idempotent Receiver Group F — Network Communication &amp; Request Handling Link to heading Reliable data structures and leader election aren’t enough. Nodes must communicate efficiently and correctly over unreliable networks.">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-06-13T14:10:00+05:30">
-		<meta property="article:modified_time" content="2026-06-13T14:10:00+05:30">
-		<meta property="article:tag" content="Distributed-Systems">
-		<meta property="article:tag" content="Design-Patterns">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-13T14:10:00+05:30">
+    <meta property="article:modified_time" content="2026-06-13T14:10:00+05:30">
+    <meta property="article:tag" content="Distributed-Systems">
+    <meta property="article:tag" content="Design-Patterns">
 
 
 
@@ -258,8 +257,7 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
   </a>
 </h1>
 <blockquote>
-<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p>
-</blockquote>
+<p><strong>Based on:</strong> <a href="https://martinfowler.com/articles/patterns-of-distributed-systems/"  class="external-link" target="_blank" rel="noopener">Catalog of Patterns of Distributed Systems</a> by Unmesh Joshi (published on martinfowler.com, Nov 2023)</p></blockquote>
 <hr>
 <h2 id="table-of-contents">
   Table of Contents
@@ -321,7 +319,7 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
     <span class="sr-only">Link to heading</span>
   </a>
 </h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Node A ◄═══ single TCP socket ═══► Node B
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Node A ◄═══ single TCP socket ═══► Node B
 </span></span><span style="display:flex;"><span>                                     (reused for all messages between A and B)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Message ordering:
@@ -357,26 +355,26 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
   </a>
 </h4>
 <table>
-	<thead>
-			<tr>
-					<th>Pro</th>
-					<th>Con</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Guaranteed message ordering at no extra cost</td>
-					<td>Head-of-line blocking: a slow message delays all subsequent messages</td>
-			</tr>
-			<tr>
-					<td>Simple — no sequence numbering needed</td>
-					<td>Connection management complexity (reconnection, multiplexing)</td>
-			</tr>
-			<tr>
-					<td>Efficient (reuse TCP handshake cost)</td>
-					<td>Single socket limits throughput if messages are large</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Pro</th>
+          <th>Con</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Guaranteed message ordering at no extra cost</td>
+          <td>Head-of-line blocking: a slow message delays all subsequent messages</td>
+      </tr>
+      <tr>
+          <td>Simple — no sequence numbering needed</td>
+          <td>Connection management complexity (reconnection, multiplexing)</td>
+      </tr>
+      <tr>
+          <td>Efficient (reuse TCP handshake cost)</td>
+          <td>Single socket limits throughput if messages are large</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="related-patterns">
   Related patterns
@@ -420,7 +418,7 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
     <span class="sr-only">Link to heading</span>
   </a>
 </h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Without pipelining:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Without pipelining:
 </span></span><span style="display:flex;"><span>  Send Req1 → wait → Recv Resp1 → Send Req2 → wait → Recv Resp2
 </span></span><span style="display:flex;"><span>  Time = 2 × RTT per operation
 </span></span><span style="display:flex;"><span>
@@ -453,26 +451,26 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
   </a>
 </h4>
 <table>
-	<thead>
-			<tr>
-					<th>Pro</th>
-					<th>Con</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Dramatically improves throughput</td>
-					<td>Errors are harder to handle (which request failed?)</td>
-			</tr>
-			<tr>
-					<td>Reduces effective latency under load</td>
-					<td>Window sizing is tricky — too large can overwhelm receiver</td>
-			</tr>
-			<tr>
-					<td>Utilizes network bandwidth efficiently</td>
-					<td>Out-of-order responses (if using multiplexed channels) require correlation IDs</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Pro</th>
+          <th>Con</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Dramatically improves throughput</td>
+          <td>Errors are harder to handle (which request failed?)</td>
+      </tr>
+      <tr>
+          <td>Reduces effective latency under load</td>
+          <td>Window sizing is tricky — too large can overwhelm receiver</td>
+      </tr>
+      <tr>
+          <td>Utilizes network bandwidth efficiently</td>
+          <td>Out-of-order responses (if using multiplexed channels) require correlation IDs</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="related-patterns-1">
   Related patterns
@@ -516,7 +514,7 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
     <span class="sr-only">Link to heading</span>
   </a>
 </h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Without batching (N small requests):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Without batching (N small requests):
 </span></span><span style="display:flex;"><span>  [req1] → network → [resp1]
 </span></span><span style="display:flex;"><span>  [req2] → network → [resp2]
 </span></span><span style="display:flex;"><span>  [req3] → network → [resp3]
@@ -555,26 +553,26 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
   </a>
 </h4>
 <table>
-	<thead>
-			<tr>
-					<th>Pro</th>
-					<th>Con</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Major throughput improvements</td>
-					<td>Increases latency for individual requests (must wait for batch to fill)</td>
-			</tr>
-			<tr>
-					<td>Reduces per-request overhead</td>
-					<td>More complex error handling (partial batch failures)</td>
-			</tr>
-			<tr>
-					<td>Efficient network utilization</td>
-					<td>Buffering introduces memory overhead</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Pro</th>
+          <th>Con</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Major throughput improvements</td>
+          <td>Increases latency for individual requests (must wait for batch to fill)</td>
+      </tr>
+      <tr>
+          <td>Reduces per-request overhead</td>
+          <td>More complex error handling (partial batch failures)</td>
+      </tr>
+      <tr>
+          <td>Efficient network utilization</td>
+          <td>Buffering introduces memory overhead</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="related-patterns-2">
   Related patterns
@@ -618,7 +616,7 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
     <span class="sr-only">Link to heading</span>
   </a>
 </h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Thread 1 ─────► ┌─────────────────────┐
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Thread 1 ─────► ┌─────────────────────┐
 </span></span><span style="display:flex;"><span>Thread 2 ─────► │    Request Queue    │ ◄──── Single Worker Thread
 </span></span><span style="display:flex;"><span>Thread 3 ─────► │  [req1, req2, req3] │          (processes serially)
 </span></span><span style="display:flex;"><span>                └─────────────────────┘
@@ -648,26 +646,26 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
   </a>
 </h4>
 <table>
-	<thead>
-			<tr>
-					<th>Pro</th>
-					<th>Con</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Eliminates concurrency bugs on shared state</td>
-					<td>Single thread is a throughput ceiling</td>
-			</tr>
-			<tr>
-					<td>Dramatically simplified code — no locks needed</td>
-					<td>Queue can become a bottleneck under high load</td>
-			</tr>
-			<tr>
-					<td>Easy to reason about state transitions</td>
-					<td>Slow operations in the queue block everything</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Pro</th>
+          <th>Con</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Eliminates concurrency bugs on shared state</td>
+          <td>Single thread is a throughput ceiling</td>
+      </tr>
+      <tr>
+          <td>Dramatically simplified code — no locks needed</td>
+          <td>Queue can become a bottleneck under high load</td>
+      </tr>
+      <tr>
+          <td>Easy to reason about state transitions</td>
+          <td>Slow operations in the queue block everything</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="related-patterns-3">
   Related patterns
@@ -717,7 +715,7 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
     <span class="sr-only">Link to heading</span>
   </a>
 </h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Client sends write request → Server creates WaitEntry {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Client sends write request → Server creates WaitEntry {
 </span></span><span style="display:flex;"><span>  requestId: &#34;abc123&#34;,
 </span></span><span style="display:flex;"><span>  requiredAcks: 3,  (majority of 5)
 </span></span><span style="display:flex;"><span>  receivedAcks: [],
@@ -755,26 +753,26 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
   </a>
 </h4>
 <table>
-	<thead>
-			<tr>
-					<th>Pro</th>
-					<th>Con</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Non-blocking — server doesn&rsquo;t stall</td>
-					<td>Must handle timeouts explicitly</td>
-			</tr>
-			<tr>
-					<td>Clean separation of request receipt and response</td>
-					<td>Memory grows with in-flight requests</td>
-			</tr>
-			<tr>
-					<td>Natural place to implement retry and timeout logic</td>
-					<td>Correlating responses with requests requires unique IDs</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Pro</th>
+          <th>Con</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Non-blocking — server doesn&rsquo;t stall</td>
+          <td>Must handle timeouts explicitly</td>
+      </tr>
+      <tr>
+          <td>Clean separation of request receipt and response</td>
+          <td>Memory grows with in-flight requests</td>
+      </tr>
+      <tr>
+          <td>Natural place to implement retry and timeout logic</td>
+          <td>Correlating responses with requests requires unique IDs</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="related-patterns-4">
   Related patterns
@@ -822,7 +820,7 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
     <span class="sr-only">Link to heading</span>
   </a>
 </h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Client:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Client:
 </span></span><span style="display:flex;"><span>  requestId = UUID()  ← unique per request attempt
 </span></span><span style="display:flex;"><span>  Send: {clientId: &#34;client-1&#34;, requestId: &#34;req-abc&#34;, data: &#34;charge $100&#34;}
 </span></span><span style="display:flex;"><span>
@@ -861,26 +859,26 @@ Table of Contents Link to heading Group F — Network Communication &amp; Reques
   </a>
 </h4>
 <table>
-	<thead>
-			<tr>
-					<th>Pro</th>
-					<th>Con</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Safe retries — clients can always retry on timeout</td>
-					<td>Requires persistent deduplication storage</td>
-			</tr>
-			<tr>
-					<td>Simplifies client logic (just retry on any failure)</td>
-					<td>Dedup store must be consulted on every request (overhead)</td>
-			</tr>
-			<tr>
-					<td>Enables exactly-once semantics</td>
-					<td>Old dedup entries must be cleaned up eventually</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Pro</th>
+          <th>Con</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Safe retries — clients can always retry on timeout</td>
+          <td>Requires persistent deduplication storage</td>
+      </tr>
+      <tr>
+          <td>Simplifies client logic (just retry on any failure)</td>
+          <td>Dedup store must be consulted on every request (overhead)</td>
+      </tr>
+      <tr>
+          <td>Enables exactly-once semantics</td>
+          <td>Old dedup entries must be cleaned up eventually</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="related-patterns-5">
   Related patterns

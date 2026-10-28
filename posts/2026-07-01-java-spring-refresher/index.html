@@ -33,24 +33,24 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 
 
 
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Java / Spring Refresher">
-	<meta name="twitter:description" content="1. Java Core Language Link to heading 1.1 Interface Default &amp; Private Methods Link to heading Backward Compatibility: The default method feature was introduced in Java 8 to allow developers to safely append new methods to existing interfaces without breaking legacy code or modifying implementing classes.
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java / Spring Refresher">
+  <meta name="twitter:description" content="1. Java Core Language Link to heading 1.1 Interface Default &amp; Private Methods Link to heading Backward Compatibility: The default method feature was introduced in Java 8 to allow developers to safely append new methods to existing interfaces without breaking legacy code or modifying implementing classes.
 Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicated logic inside multiple default methods by encapsulating shared routines locally inside the interface body.">
 
 <meta property="og:url" content="https://dhanoopbhaskar.github.io/posts/2026-07-01-java-spring-refresher/">
-	<meta property="og:site_name" content="The Insane Techie">
-	<meta property="og:title" content="Java / Spring Refresher">
-	<meta property="og:description" content="1. Java Core Language Link to heading 1.1 Interface Default &amp; Private Methods Link to heading Backward Compatibility: The default method feature was introduced in Java 8 to allow developers to safely append new methods to existing interfaces without breaking legacy code or modifying implementing classes.
+  <meta property="og:site_name" content="The Insane Techie">
+  <meta property="og:title" content="Java / Spring Refresher">
+  <meta property="og:description" content="1. Java Core Language Link to heading 1.1 Interface Default &amp; Private Methods Link to heading Backward Compatibility: The default method feature was introduced in Java 8 to allow developers to safely append new methods to existing interfaces without breaking legacy code or modifying implementing classes.
 Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicated logic inside multiple default methods by encapsulating shared routines locally inside the interface body.">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-07-01T14:10:00+05:30">
-		<meta property="article:modified_time" content="2026-07-01T14:10:00+05:30">
-		<meta property="article:tag" content="Spring">
-		<meta property="article:tag" content="Java">
-		<meta property="article:tag" content="Spring Boot">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-01T14:10:00+05:30">
+    <meta property="article:modified_time" content="2026-07-01T14:10:00+05:30">
+    <meta property="article:tag" content="Spring">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Spring Boot">
 
 
 
@@ -250,7 +250,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </h2>
 <p><strong>Backward Compatibility</strong>: The <code>default</code> method feature was introduced in Java 8 to allow developers to safely append new methods to existing interfaces without breaking legacy code or modifying implementing classes.</p>
 <p><strong>Private Methods (Java 9)</strong>: Introduced explicitly to eliminate redundant, duplicated logic inside multiple <code>default</code> methods by encapsulating shared routines locally inside the interface body.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">DBLogging</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">DBLogging</span> {
 </span></span><span style="display:flex;"><span>    String MONGO_DB_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABC_Mongo_Datastore&#34;</span>;
 </span></span><span style="display:flex;"><span>    String NEO4J_DB_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABC_Neo4J_Datastore&#34;</span>;
 </span></span><span style="display:flex;"><span>    String CASSANDRA_DB_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABC_Cassandra_Datastore&#34;</span>;
@@ -275,7 +275,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </h2>
 <p><strong>Runtime Polymorphism</strong>: Static methods <strong>cannot</strong> be overridden in Java because method overriding relies entirely on runtime dynamic binding, whereas static methods utilize static compile-time binding.</p>
 <p><strong>Method Hiding</strong>: If a subclass declares a static method with an identical signature to a static method in its parent class, the subclass version hides the parent version.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">staticDisplay</span>() {
 </span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Static method from Base&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
@@ -305,8 +305,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </span></span></code></pre></div><p><strong>Static Methods (<code>obj1.staticDisplay()</code>):</strong> Calls the method from the <code>Base</code> class. Static methods are not polymorphic — they use <strong>compile-time (static) binding</strong>. Because the reference variable <code>obj1</code> is declared as type <code>Base</code>, the compiler binds the call to <code>Base.staticDisplay()</code>, ignoring the actual object type at runtime.</p>
 <p><strong>Non-Static Methods (<code>obj1.print()</code>):</strong> Calls the method from the <code>Derived</code> class. Instance methods use <strong>runtime (dynamic) binding</strong>. Java looks at the actual object in memory (<code>new Derived()</code>) rather than the reference type.</p>
 <blockquote>
-<p><strong>Quick Tip:</strong> Because static methods belong to the class rather than an instance, calling <code>obj1.staticDisplay()</code> is misleading. Write <code>Base.staticDisplay()</code> instead.</p>
-</blockquote>
+<p><strong>Quick Tip:</strong> Because static methods belong to the class rather than an instance, calling <code>obj1.staticDisplay()</code> is misleading. Write <code>Base.staticDisplay()</code> instead.</p></blockquote>
 <h2 id="13-inner-classes">
   1.3 Inner Classes
   <a class="heading-link" href="#13-inner-classes">
@@ -322,7 +321,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h3>
 <p>Can declare static members and be instantiated without creating an instance of the outer class. They do <strong>not</strong> hold an implicit reference to an enclosing instance.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OuterStatic</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OuterStatic</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String staticOuterField <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Static Outer Field&#34;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String instanceOuterField <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Instance Outer Field&#34;</span>;
 </span></span><span style="display:flex;"><span>
@@ -337,7 +336,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>Instantiation:</strong> You do <strong>not</strong> need an instance of <code>OuterStatic</code> to create <code>StaticNested</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>OuterStatic.<span style="color:#a6e22e">StaticNested</span> nested <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OuterStatic.<span style="color:#a6e22e">StaticNested</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>OuterStatic.<span style="color:#a6e22e">StaticNested</span> nested <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OuterStatic.<span style="color:#a6e22e">StaticNested</span>();
 </span></span><span style="display:flex;"><span>nested.<span style="color:#a6e22e">display</span>();
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(OuterStatic.<span style="color:#a6e22e">StaticNested</span>.<span style="color:#a6e22e">staticInnerField</span>);
 </span></span></code></pre></div><h3 id="non-static-inner-classes">
@@ -348,7 +347,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h3>
 <p>A non-static inner class is bound to a specific <em>instance</em> of the enclosing outer class. It captures an implicit pointer (<code>Outer.this</code>) to that instance.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OuterNonStatic</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OuterNonStatic</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String instanceOuterField <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Instance Outer Field&#34;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InnerClass</span> {
@@ -364,40 +363,40 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>Instantiation:</strong> You <strong>must</strong> create an instance of <code>OuterNonStatic</code> first.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>OuterNonStatic outer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OuterNonStatic();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>OuterNonStatic outer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OuterNonStatic();
 </span></span><span style="display:flex;"><span>OuterNonStatic.<span style="color:#a6e22e">InnerClass</span> inner <span style="color:#f92672">=</span> outer.<span style="color:#a6e22e">new</span> <span style="color:#a6e22e">InnerClass</span>();
 </span></span><span style="display:flex;"><span>inner.<span style="color:#a6e22e">display</span>();
 </span></span></code></pre></div><p><strong>Quick Memory Check:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Feature</th>
-					<th>Static Inner Class</th>
-					<th>Non-Static Inner Class</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Instantiation Syntax</td>
-					<td><code>new Outer.StaticInner()</code></td>
-					<td><code>outerInstance.new Inner()</code></td>
-			</tr>
-			<tr>
-					<td>Implicit Outer Reference?</td>
-					<td>No</td>
-					<td>Yes (risk of memory leaks if lifecycles differ)</td>
-			</tr>
-			<tr>
-					<td>Static Members Allowed?</td>
-					<td>Yes</td>
-					<td>Only <code>static final</code> constants</td>
-			</tr>
-			<tr>
-					<td>Direct Access to Outer Private Instance Fields?</td>
-					<td>No</td>
-					<td>Yes</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Static Inner Class</th>
+          <th>Non-Static Inner Class</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Instantiation Syntax</td>
+          <td><code>new Outer.StaticInner()</code></td>
+          <td><code>outerInstance.new Inner()</code></td>
+      </tr>
+      <tr>
+          <td>Implicit Outer Reference?</td>
+          <td>No</td>
+          <td>Yes (risk of memory leaks if lifecycles differ)</td>
+      </tr>
+      <tr>
+          <td>Static Members Allowed?</td>
+          <td>Yes</td>
+          <td>Only <code>static final</code> constants</td>
+      </tr>
+      <tr>
+          <td>Direct Access to Outer Private Instance Fields?</td>
+          <td>No</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="14-lambda-expressions--functional-interfaces">
   1.4 Lambda Expressions &amp; Functional Interfaces
@@ -420,35 +419,35 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h3>
 <table>
-	<thead>
-			<tr>
-					<th>Interface</th>
-					<th>Abstract Method</th>
-					<th>Purpose</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong><code>Predicate&lt;T&gt;</code></strong></td>
-					<td><code>boolean test(T t)</code></td>
-					<td>Evaluates a condition</td>
-			</tr>
-			<tr>
-					<td><strong><code>Function&lt;T,R&gt;</code></strong></td>
-					<td><code>R apply(T t)</code></td>
-					<td>Transforms input to output</td>
-			</tr>
-			<tr>
-					<td><strong><code>Consumer&lt;T&gt;</code></strong></td>
-					<td><code>void accept(T t)</code></td>
-					<td>Performs side-effect operations</td>
-			</tr>
-			<tr>
-					<td><strong><code>Supplier&lt;T&gt;</code></strong></td>
-					<td><code>T get()</code></td>
-					<td>Lazily generates typed data</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Interface</th>
+          <th>Abstract Method</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>Predicate&lt;T&gt;</code></strong></td>
+          <td><code>boolean test(T t)</code></td>
+          <td>Evaluates a condition</td>
+      </tr>
+      <tr>
+          <td><strong><code>Function&lt;T,R&gt;</code></strong></td>
+          <td><code>R apply(T t)</code></td>
+          <td>Transforms input to output</td>
+      </tr>
+      <tr>
+          <td><strong><code>Consumer&lt;T&gt;</code></strong></td>
+          <td><code>void accept(T t)</code></td>
+          <td>Performs side-effect operations</td>
+      </tr>
+      <tr>
+          <td><strong><code>Supplier&lt;T&gt;</code></strong></td>
+          <td><code>T get()</code></td>
+          <td>Lazily generates typed data</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="handling-checked-exceptions-in-lambdas">
   Handling Checked Exceptions in Lambdas
@@ -458,7 +457,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h3>
 <p>Lambdas cannot throw checked exceptions directly from functional interface methods that don&rsquo;t declare them.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Option 1: Wrap in try-catch inside the lambda</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Option 1: Wrap in try-catch inside the lambda</span>
 </span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">forEach</span>(item <span style="color:#f92672">-&gt;</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>        process(item); <span style="color:#75715e">// throws IOException</span>
@@ -489,26 +488,26 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Type</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong><code>Exception</code></strong></td>
-					<td>Conditions a well-written application should catch and recover from (e.g., <code>IOException</code>)</td>
-			</tr>
-			<tr>
-					<td><strong><code>Error</code></strong></td>
-					<td>Serious fatal problems an application should not try to handle (e.g., <code>OutOfMemoryError</code>, <code>StackOverflowError</code>)</td>
-			</tr>
-			<tr>
-					<td><strong><code>RuntimeException</code></strong></td>
-					<td>Unchecked exceptions indicating programming errors (e.g., <code>NullPointerException</code>). No <code>throws</code> clause needed.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>Exception</code></strong></td>
+          <td>Conditions a well-written application should catch and recover from (e.g., <code>IOException</code>)</td>
+      </tr>
+      <tr>
+          <td><strong><code>Error</code></strong></td>
+          <td>Serious fatal problems an application should not try to handle (e.g., <code>OutOfMemoryError</code>, <code>StackOverflowError</code>)</td>
+      </tr>
+      <tr>
+          <td><strong><code>RuntimeException</code></strong></td>
+          <td>Unchecked exceptions indicating programming errors (e.g., <code>NullPointerException</code>). No <code>throws</code> clause needed.</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="16-custom-annotations">
   1.6 Custom Annotations
@@ -517,7 +516,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.annotation.*;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.annotation.*;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Retention</span>(RetentionPolicy.<span style="color:#a6e22e">RUNTIME</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Target</span>(ElementType.<span style="color:#a6e22e">METHOD</span>)
@@ -525,14 +524,14 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </span></span><span style="display:flex;"><span>    String <span style="color:#a6e22e">name</span>() <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#34;&#34;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>Usage:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@LogExecute</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>() {
 </span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>Processing at runtime:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Method method <span style="color:#f92672">=</span> Employee.<span style="color:#a6e22e">class</span>.<span style="color:#a6e22e">getMethod</span>(<span style="color:#e6db74">&#34;print&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Method method <span style="color:#f92672">=</span> Employee.<span style="color:#a6e22e">class</span>.<span style="color:#a6e22e">getMethod</span>(<span style="color:#e6db74">&#34;print&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (method.<span style="color:#a6e22e">isAnnotationPresent</span>(LogExecute.<span style="color:#a6e22e">class</span>)) {
 </span></span><span style="display:flex;"><span>    LogExecute annotation <span style="color:#f92672">=</span> method.<span style="color:#a6e22e">getAnnotation</span>(LogExecute.<span style="color:#a6e22e">class</span>);
 </span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Logging for: &#34;</span> <span style="color:#f92672">+</span> annotation.<span style="color:#a6e22e">name</span>());
@@ -552,7 +551,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <p>Reflection allows inspecting and manipulating classes, methods, and fields at <strong>runtime</strong>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Class<span style="color:#f92672">&lt;?&gt;</span> clazz <span style="color:#f92672">=</span> Class.<span style="color:#a6e22e">forName</span>(<span style="color:#e6db74">&#34;com.example.Employee&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Class<span style="color:#f92672">&lt;?&gt;</span> clazz <span style="color:#f92672">=</span> Class.<span style="color:#a6e22e">forName</span>(<span style="color:#e6db74">&#34;com.example.Employee&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Get all methods</span>
 </span></span><span style="display:flex;"><span>Method<span style="color:#f92672">[]</span> methods <span style="color:#f92672">=</span> clazz.<span style="color:#a6e22e">getDeclaredMethods</span>();
@@ -576,37 +575,37 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Aspect</th>
-					<th><code>Serializable</code></th>
-					<th><code>Externalizable</code></th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Methods Required</td>
-					<td>None (marker interface)</td>
-					<td><code>writeExternal()</code>, <code>readExternal()</code></td>
-			</tr>
-			<tr>
-					<td>Serialization Control</td>
-					<td>JVM default (all non-transient fields)</td>
-					<td>Full manual control</td>
-			</tr>
-			<tr>
-					<td>Performance</td>
-					<td>Slower (reflection-based)</td>
-					<td>Faster (explicit control)</td>
-			</tr>
-			<tr>
-					<td>Constructor Called on Deserialization</td>
-					<td>No</td>
-					<td>Yes (no-arg constructor required)</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th><code>Serializable</code></th>
+          <th><code>Externalizable</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Methods Required</td>
+          <td>None (marker interface)</td>
+          <td><code>writeExternal()</code>, <code>readExternal()</code></td>
+      </tr>
+      <tr>
+          <td>Serialization Control</td>
+          <td>JVM default (all non-transient fields)</td>
+          <td>Full manual control</td>
+      </tr>
+      <tr>
+          <td>Performance</td>
+          <td>Slower (reflection-based)</td>
+          <td>Faster (explicit control)</td>
+      </tr>
+      <tr>
+          <td>Constructor Called on Deserialization</td>
+          <td>No</td>
+          <td>Yes (no-arg constructor required)</td>
+      </tr>
+  </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Serializable (marker interface)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Serializable (marker interface)</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> <span style="color:#66d9ef">implements</span> Serializable {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">long</span> serialVersionUID <span style="color:#f92672">=</span> 1L;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String name;
@@ -640,37 +639,37 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Aspect</th>
-					<th>Classic I/O (java.io)</th>
-					<th>NIO (java.nio)</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Model</td>
-					<td>Stream-oriented (byte/char)</td>
-					<td>Buffer &amp; Channel oriented</td>
-			</tr>
-			<tr>
-					<td>Blocking</td>
-					<td>Blocking</td>
-					<td>Non-blocking capable</td>
-			</tr>
-			<tr>
-					<td>Selectors</td>
-					<td>No</td>
-					<td>Yes (<code>Selector</code> for multiplexing)</td>
-			</tr>
-			<tr>
-					<td>Key classes</td>
-					<td><code>InputStream</code>, <code>FileReader</code></td>
-					<td><code>ByteBuffer</code>, <code>FileChannel</code>, <code>Selector</code></td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Classic I/O (java.io)</th>
+          <th>NIO (java.nio)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Model</td>
+          <td>Stream-oriented (byte/char)</td>
+          <td>Buffer &amp; Channel oriented</td>
+      </tr>
+      <tr>
+          <td>Blocking</td>
+          <td>Blocking</td>
+          <td>Non-blocking capable</td>
+      </tr>
+      <tr>
+          <td>Selectors</td>
+          <td>No</td>
+          <td>Yes (<code>Selector</code> for multiplexing)</td>
+      </tr>
+      <tr>
+          <td>Key classes</td>
+          <td><code>InputStream</code>, <code>FileReader</code></td>
+          <td><code>ByteBuffer</code>, <code>FileChannel</code>, <code>Selector</code></td>
+      </tr>
+  </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// NIO non-blocking server (simplified)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// NIO non-blocking server (simplified)</span>
 </span></span><span style="display:flex;"><span>Selector selector <span style="color:#f92672">=</span> Selector.<span style="color:#a6e22e">open</span>();
 </span></span><span style="display:flex;"><span>ServerSocketChannel server <span style="color:#f92672">=</span> ServerSocketChannel.<span style="color:#a6e22e">open</span>();
 </span></span><span style="display:flex;"><span>server.<span style="color:#a6e22e">configureBlocking</span>(<span style="color:#66d9ef">false</span>);
@@ -714,7 +713,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <p>Includes new convenience string processing abstractions: <code>.lines()</code>, <code>.isBlank()</code>, <code>.strip()</code>, <code>.stripLeading()</code>, <code>.stripTrailing()</code>, and <code>.repeat()</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String multilineString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Baeldung helps \n \n developers \n explore Java.&#34;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String multilineString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Baeldung helps \n \n developers \n explore Java.&#34;</span>;
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> lines <span style="color:#f92672">=</span> multilineString.<span style="color:#a6e22e">lines</span>()
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">filter</span>(line <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">!</span>line.<span style="color:#a6e22e">isBlank</span>())
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">map</span>(String::strip)
@@ -730,7 +729,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </h2>
 <p><strong>File Operations</strong>: Introduces single-step text operations: <code>Files.readString(Path)</code> and <code>Files.writeString(Path, CharSequence)</code>.</p>
 <p><strong>Collection Conversions</strong>: Simplifies streaming outputs directly into typed arrays using constructor references via <code>.toArray()</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> sampleList <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;Java&#34;</span>, <span style="color:#e6db74">&#34;Kotlin&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> sampleList <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;Java&#34;</span>, <span style="color:#e6db74">&#34;Kotlin&#34;</span>);
 </span></span><span style="display:flex;"><span>String<span style="color:#f92672">[]</span> sampleArray <span style="color:#f92672">=</span> sampleList.<span style="color:#a6e22e">toArray</span>(String<span style="color:#f92672">[]</span>::<span style="color:#66d9ef">new</span>);
 </span></span></code></pre></div><h2 id="24-local-variable-syntax-for-lambdas">
   2.4 Local Variable Syntax for Lambdas
@@ -741,7 +740,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </h2>
 <p>Using <code>var</code> inside a lambda parameter list allows direct support for modifiers like <code>@Nonnull</code> or <code>@Nullable</code>.</p>
 <p><strong>Rules</strong>: If <code>var</code> is declared on a lambda parameter, it must be applied uniformly to all parameters, and parentheses are strictly mandatory.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> sampleList <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;Java&#34;</span>, <span style="color:#e6db74">&#34;Kotlin&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> sampleList <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;Java&#34;</span>, <span style="color:#e6db74">&#34;Kotlin&#34;</span>);
 </span></span><span style="display:flex;"><span>String resultString <span style="color:#f92672">=</span> sampleList.<span style="color:#a6e22e">stream</span>()
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">@Nonnull</span> <span style="color:#66d9ef">var</span> x) <span style="color:#f92672">-&gt;</span> x.<span style="color:#a6e22e">toUpperCase</span>())
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">joining</span>(<span style="color:#e6db74">&#34;, &#34;</span>));
@@ -753,7 +752,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <p>Feature-rich, asynchronous <code>HttpClient</code> replacing older options like Apache <code>HttpClient</code> or Spring&rsquo;s <code>RestTemplate</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.URI;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.URI;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.http.HttpClient;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.http.HttpRequest;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.http.HttpResponse;
@@ -800,7 +799,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 <ul>
 <li><strong>Reuse the Client</strong>: Create a single <code>HttpClient</code> instance and reuse it.</li>
 <li><strong>Synchronous Alternative</strong>: Use <code>.send()</code> instead of <code>.sendAsync()</code> for blocking requests:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>HttpResponse<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> response <span style="color:#f92672">=</span> httpClient.<span style="color:#a6e22e">send</span>(request, HttpResponse.<span style="color:#a6e22e">BodyHandlers</span>.<span style="color:#a6e22e">ofString</span>());
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>HttpResponse<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> response <span style="color:#f92672">=</span> httpClient.<span style="color:#a6e22e">send</span>(request, HttpResponse.<span style="color:#a6e22e">BodyHandlers</span>.<span style="color:#a6e22e">ofString</span>());
 </span></span></code></pre></div></li>
 <li><strong>Body Handlers</strong>: <code>HttpResponse.BodyHandlers.ofString()</code> for text, <code>HttpResponse.BodyHandlers.ofFile(Paths.get(&quot;file.json&quot;))</code> for file downloads.</li>
 </ul>
@@ -857,25 +856,25 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h3>
 <table>
-	<thead>
-			<tr>
-					<th>Context</th>
-					<th>What a &ldquo;Producer&rdquo; does</th>
-					<th>What a &ldquo;Consumer&rdquo; does</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Kafka / Systems</strong></td>
-					<td><strong>Writes</strong> data (pushes to a topic)</td>
-					<td><strong>Reads</strong> data (pulls from a topic)</td>
-			</tr>
-			<tr>
-					<td><strong>PECS / Java Generics</strong></td>
-					<td><strong>Reads</strong> data (collection <em>produces</em> items)</td>
-					<td><strong>Writes</strong> data (collection <em>consumes</em> items)</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Context</th>
+          <th>What a &ldquo;Producer&rdquo; does</th>
+          <th>What a &ldquo;Consumer&rdquo; does</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Kafka / Systems</strong></td>
+          <td><strong>Writes</strong> data (pushes to a topic)</td>
+          <td><strong>Reads</strong> data (pulls from a topic)</td>
+      </tr>
+      <tr>
+          <td><strong>PECS / Java Generics</strong></td>
+          <td><strong>Reads</strong> data (collection <em>produces</em> items)</td>
+          <td><strong>Writes</strong> data (collection <em>consumes</em> items)</td>
+      </tr>
+  </tbody>
 </table>
 <p>So, if you are writing a Kafka producer in Java, the <code>Producer.send()</code> method might internally use <code>? extends Serializer</code> because it needs to <em>read</em> the configuration out of it.</p>
 <h2 id="35-type-erasure">
@@ -886,7 +885,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <p>At compile time, generic type parameters are erased and replaced with <code>Object</code> (or bounded type). Generic type info is not available at runtime.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> strings <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> strings <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> ints <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// At runtime: both are just List</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(strings.<span style="color:#a6e22e">getClass</span>() <span style="color:#f92672">==</span> ints.<span style="color:#a6e22e">getClass</span>()); <span style="color:#75715e">// true</span>
@@ -897,7 +896,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 <li>Method overloading with only generic type differences doesn&rsquo;t work after erasure</li>
 </ul>
 <p><strong>Bounded type parameters:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>T <span style="color:#66d9ef">extends</span> Comparable<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>   <span style="color:#75715e">// upper bound</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>T <span style="color:#66d9ef">extends</span> Comparable<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>   <span style="color:#75715e">// upper bound</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> Integer<span style="color:#f92672">&gt;</span>            <span style="color:#75715e">// lower bound (wildcard)</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> Number<span style="color:#f92672">&gt;</span>           <span style="color:#75715e">// upper bound (wildcard)</span>
 </span></span></code></pre></div><h2 id="36-identity-resolution-instanceof-vs-getclass">
@@ -925,35 +924,35 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Aspect</th>
-					<th>ArrayList</th>
-					<th>LinkedList</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Internal Structure</td>
-					<td>Resizable array</td>
-					<td>Doubly linked list</td>
-			</tr>
-			<tr>
-					<td>Random Access</td>
-					<td>O(1)</td>
-					<td>O(n)</td>
-			</tr>
-			<tr>
-					<td>Insert/Delete at ends</td>
-					<td>O(n) (amortized O(1) for add at tail)</td>
-					<td>O(1)</td>
-			</tr>
-			<tr>
-					<td>Memory Overhead</td>
-					<td>Less (only array)</td>
-					<td>More (node objects)</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>ArrayList</th>
+          <th>LinkedList</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Internal Structure</td>
+          <td>Resizable array</td>
+          <td>Doubly linked list</td>
+      </tr>
+      <tr>
+          <td>Random Access</td>
+          <td>O(1)</td>
+          <td>O(n)</td>
+      </tr>
+      <tr>
+          <td>Insert/Delete at ends</td>
+          <td>O(n) (amortized O(1) for add at tail)</td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td>Memory Overhead</td>
+          <td>Less (only array)</td>
+          <td>More (node objects)</td>
+      </tr>
+  </tbody>
 </table>
 <p>Choose <code>LinkedList</code> for workflows reliant on dynamic element manipulation. Choose <code>ArrayList</code> for O(1) random access.</p>
 <h2 id="42-fail-fast-vs-fail-safe-iterators">
@@ -972,7 +971,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Method 1: Collections Wrapper</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Method 1: Collections Wrapper</span>
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> namesList <span style="color:#f92672">=</span> Collections.<span style="color:#a6e22e">synchronizedList</span>(<span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>());
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Note: Manual looping blocks still require explicit synchronized block.</span>
 </span></span><span style="display:flex;"><span>
@@ -988,7 +987,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </h2>
 <p><strong><code>Arrays.equals()</code></strong>: Compares arrays containing flat elements. Does <strong>not</strong> evaluate nested inner arrays.</p>
 <p><strong><code>Arrays.deepEquals()</code></strong>: Validates arrays recursively for structural equivalences across all nested dimensions.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> a1 <span style="color:#f92672">=</span> {{10, 20}, {40, 50}};
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> a1 <span style="color:#f92672">=</span> {{10, 20}, {40, 50}};
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> a3 <span style="color:#f92672">=</span> {{10, 20}, {40, 50}};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Arrays.<span style="color:#a6e22e">equals</span>(a1, a3);     <span style="color:#75715e">// false (top-level reference pointers)</span>
@@ -1027,36 +1026,36 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Map Type</th>
-					<th>Key Equality</th>
-					<th>GC Interaction</th>
-					<th>Use Cases</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong><code>HashMap</code></strong></td>
-					<td><code>.equals()</code> + <code>.hashCode()</code></td>
-					<td>Strong References</td>
-					<td>General-purpose</td>
-			</tr>
-			<tr>
-					<td><strong><code>IdentityHashMap</code></strong></td>
-					<td><code>==</code> reference equality + <code>System.identityHashCode()</code></td>
-					<td>Strong References</td>
-					<td>Graph transformations, object topology cloning</td>
-			</tr>
-			<tr>
-					<td><strong><code>WeakHashMap</code></strong></td>
-					<td><code>.equals()</code> + <code>.hashCode()</code></td>
-					<td>Weak References (auto-evicted when key has no strong refs)</td>
-					<td>Metadata management, runtime lookups</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Map Type</th>
+          <th>Key Equality</th>
+          <th>GC Interaction</th>
+          <th>Use Cases</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>HashMap</code></strong></td>
+          <td><code>.equals()</code> + <code>.hashCode()</code></td>
+          <td>Strong References</td>
+          <td>General-purpose</td>
+      </tr>
+      <tr>
+          <td><strong><code>IdentityHashMap</code></strong></td>
+          <td><code>==</code> reference equality + <code>System.identityHashCode()</code></td>
+          <td>Strong References</td>
+          <td>Graph transformations, object topology cloning</td>
+      </tr>
+      <tr>
+          <td><strong><code>WeakHashMap</code></strong></td>
+          <td><code>.equals()</code> + <code>.hashCode()</code></td>
+          <td>Weak References (auto-evicted when key has no strong refs)</td>
+          <td>Metadata management, runtime lookups</td>
+      </tr>
+  </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// IdentityHashMap</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// IdentityHashMap</span>
 </span></span><span style="display:flex;"><span>String a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;key&#34;</span>);
 </span></span><span style="display:flex;"><span>String b <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;key&#34;</span>);
 </span></span><span style="display:flex;"><span>Map<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> IdentityHashMap<span style="color:#f92672">&lt;&gt;</span>();
@@ -1079,40 +1078,40 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Collection</th>
-					<th>Thread-Safe?</th>
-					<th>Notes</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>ArrayList</code></td>
-					<td>No</td>
-					<td>Use <code>Collections.synchronizedList()</code> or <code>CopyOnWriteArrayList</code></td>
-			</tr>
-			<tr>
-					<td><code>Vector</code></td>
-					<td>Yes (legacy)</td>
-					<td>All methods synchronized; poor throughput</td>
-			</tr>
-			<tr>
-					<td><code>HashMap</code></td>
-					<td>No</td>
-					<td>Use <code>ConcurrentHashMap</code></td>
-			</tr>
-			<tr>
-					<td><code>ConcurrentHashMap</code></td>
-					<td>Yes</td>
-					<td>CAS + synchronized bins (Java 8+)</td>
-			</tr>
-			<tr>
-					<td><code>CopyOnWriteArrayList</code></td>
-					<td>Yes</td>
-					<td>All writes create a new copy; ideal for read-heavy workloads</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Collection</th>
+          <th>Thread-Safe?</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>ArrayList</code></td>
+          <td>No</td>
+          <td>Use <code>Collections.synchronizedList()</code> or <code>CopyOnWriteArrayList</code></td>
+      </tr>
+      <tr>
+          <td><code>Vector</code></td>
+          <td>Yes (legacy)</td>
+          <td>All methods synchronized; poor throughput</td>
+      </tr>
+      <tr>
+          <td><code>HashMap</code></td>
+          <td>No</td>
+          <td>Use <code>ConcurrentHashMap</code></td>
+      </tr>
+      <tr>
+          <td><code>ConcurrentHashMap</code></td>
+          <td>Yes</td>
+          <td>CAS + synchronized bins (Java 8+)</td>
+      </tr>
+      <tr>
+          <td><code>CopyOnWriteArrayList</code></td>
+          <td>Yes</td>
+          <td>All writes create a new copy; ideal for read-heavy workloads</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h1 id="5-memory-model-garbage-collection--classloaders">
@@ -1131,34 +1130,34 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 </h2>
 <p>The JMM defines how the JVM handles memory communication between hardware and application threads, establishing when actions by one thread become visible to another.</p>
 <table>
-	<thead>
-			<tr>
-					<th>Concept</th>
-					<th>Explanation</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Visibility</strong></td>
-					<td>A write to a variable may not be immediately visible to another thread unless a happens-before relationship exists</td>
-			</tr>
-			<tr>
-					<td><strong>Atomicity</strong></td>
-					<td>An operation is atomic if it completes in a single step</td>
-			</tr>
-			<tr>
-					<td><strong>Volatile</strong></td>
-					<td>Guarantees visibility (not atomicity). A write to a <code>volatile</code> variable happens-before every subsequent read</td>
-			</tr>
-			<tr>
-					<td><strong>Happens-Before</strong></td>
-					<td>All memory writes before a happens-before action are visible to code that comes after</td>
-			</tr>
-			<tr>
-					<td><strong>Synchronization</strong></td>
-					<td><code>synchronized</code> establishes happens-before between unlock and subsequent lock on the same monitor</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Explanation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Visibility</strong></td>
+          <td>A write to a variable may not be immediately visible to another thread unless a happens-before relationship exists</td>
+      </tr>
+      <tr>
+          <td><strong>Atomicity</strong></td>
+          <td>An operation is atomic if it completes in a single step</td>
+      </tr>
+      <tr>
+          <td><strong>Volatile</strong></td>
+          <td>Guarantees visibility (not atomicity). A write to a <code>volatile</code> variable happens-before every subsequent read</td>
+      </tr>
+      <tr>
+          <td><strong>Happens-Before</strong></td>
+          <td>All memory writes before a happens-before action are visible to code that comes after</td>
+      </tr>
+      <tr>
+          <td><strong>Synchronization</strong></td>
+          <td><code>synchronized</code> establishes happens-before between unlock and subsequent lock on the same monitor</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="instruction-reordering">
   Instruction Reordering
@@ -1180,7 +1179,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 <li><strong>Instruction Reordering Inhibition</strong>: Establishes a strict <strong>Happens-Before guarantee</strong>.</li>
 <li><strong>Atomicity Limitation</strong>: <code>volatile</code> only guarantees visibility, <strong>not atomicity</strong>. Compound operations like <code>count++</code> still require locks or <code>AtomicInteger</code>.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">boolean</span> running <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">boolean</span> running <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Thread 1 writes:</span>
 </span></span><span style="display:flex;"><span>running <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
@@ -1213,7 +1212,7 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
 <li><strong>Memory Leak Hazard</strong>: <code>ThreadLocalMap</code> uses weak references for keys but <em>strong references</em> for values. If the <code>ThreadLocal</code> key is GC&rsquo;d, the value remains pinned by the thread&rsquo;s strong reference path.</li>
 <li><strong>Mitigation</strong>: Always call <code>.remove()</code> inside a <code>finally</code> block when the thread finishes its work.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserRequestContext</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserRequestContext</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> ThreadLocal<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> userSecurityToken <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadLocal<span style="color:#f92672">&lt;&gt;</span>();
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setToken</span>(String token) {
@@ -1254,30 +1253,30 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h3>
 <table>
-	<thead>
-			<tr>
-					<th>GC</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Serial GC</strong> (<code>-XX:+UseSerialGC</code>)</td>
-					<td>Single-threaded; stop-the-world; suitable for small client apps</td>
-			</tr>
-			<tr>
-					<td><strong>Parallel GC</strong> (<code>-XX:+UseParallelGC</code>)</td>
-					<td>Multi-threaded; default in Java 8 for high throughput</td>
-			</tr>
-			<tr>
-					<td><strong>G1 GC</strong> (<code>-XX:+UseG1GC</code>)</td>
-					<td>Region-based; balances throughput and pause time; default Java 9+</td>
-			</tr>
-			<tr>
-					<td><strong>ZGC / Shenandoah</strong></td>
-					<td>Low-latency; sub-millisecond pauses; concurrent</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>GC</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Serial GC</strong> (<code>-XX:+UseSerialGC</code>)</td>
+          <td>Single-threaded; stop-the-world; suitable for small client apps</td>
+      </tr>
+      <tr>
+          <td><strong>Parallel GC</strong> (<code>-XX:+UseParallelGC</code>)</td>
+          <td>Multi-threaded; default in Java 8 for high throughput</td>
+      </tr>
+      <tr>
+          <td><strong>G1 GC</strong> (<code>-XX:+UseG1GC</code>)</td>
+          <td>Region-based; balances throughput and pause time; default Java 9+</td>
+      </tr>
+      <tr>
+          <td><strong>ZGC / Shenandoah</strong></td>
+          <td>Low-latency; sub-millisecond pauses; concurrent</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Key terms:</strong></p>
 <ul>
@@ -1313,26 +1312,26 @@ Private Methods (Java 9): Introduced explicitly to eliminate redundant, duplicat
   </a>
 </h3>
 <table>
-	<thead>
-			<tr>
-					<th>Class Loader</th>
-					<th>Loads</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Bootstrap</strong></td>
-					<td>Core Java classes (<code>java.lang.*</code>) from JDK modules</td>
-			</tr>
-			<tr>
-					<td><strong>Extension (Platform)</strong></td>
-					<td>JDK extension modules</td>
-			</tr>
-			<tr>
-					<td><strong>Application (System)</strong></td>
-					<td>Classes on the application&rsquo;s classpath</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Class Loader</th>
+          <th>Loads</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Bootstrap</strong></td>
+          <td>Core Java classes (<code>java.lang.*</code>) from JDK modules</td>
+      </tr>
+      <tr>
+          <td><strong>Extension (Platform)</strong></td>
+          <td>JDK extension modules</td>
+      </tr>
+      <tr>
+          <td><strong>Application (System)</strong></td>
+          <td>Classes on the application&rsquo;s classpath</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="parent-delegation-model">
   Parent Delegation Model
@@ -1362,8 +1361,7 @@ Custom Class Loader
 <li>A mutable static field in <code>T</code> is accessed.</li>
 </ul>
 <blockquote>
-<p><strong>Exclusion</strong>: Accessing a compile-time constant (<code>public static final int</code>) does <strong>not</strong> trigger initialization. Initializing an outer class does <strong>not</strong> initialize its static inner classes.</p>
-</blockquote>
+<p><strong>Exclusion</strong>: Accessing a compile-time constant (<code>public static final int</code>) does <strong>not</strong> trigger initialization. Initializing an outer class does <strong>not</strong> initialize its static inner classes.</p></blockquote>
 <h3 id="custom-class-loader-use-cases">
   Custom Class Loader Use Cases
   <a class="heading-link" href="#custom-class-loader-use-cases">
@@ -1398,7 +1396,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.example.demo;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.example.demo;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> lombok.AllArgsConstructor;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.locks.Lock;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.locks.ReentrantLock;
@@ -1445,7 +1443,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Printer</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Printer</span> {
 </span></span><span style="display:flex;"><span>    Semaphore odd <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Semaphore(1);
 </span></span><span style="display:flex;"><span>    Semaphore even <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Semaphore(0);
 </span></span><span style="display:flex;"><span>
@@ -1468,7 +1466,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Printer</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Printer</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> isOddTurn;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Printer</span>(<span style="color:#66d9ef">boolean</span> startWithOdd) {
@@ -1524,7 +1522,7 @@ Custom Class Loader
 <p><strong>Reentrancy</strong>: A thread that holds the lock can re-enter it instantly. Trackable via <code>.isHeldByCurrentThread()</code> and <code>.getHoldCount()</code>.</p>
 <p><strong>Fairness Policy</strong>: Optional parameter. When <code>true</code>, the JVM allocates the lock to the longest-waiting thread. Eliminates starvation but reduces throughput.</p>
 <p><strong>Best Practice</strong>: Always follow <code>.lock()</code> with <code>try-finally</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">X</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">X</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ReentrantLock lock <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ReentrantLock();
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">m</span>() {
 </span></span><span style="display:flex;"><span>        lock.<span style="color:#a6e22e">lock</span>();
@@ -1549,7 +1547,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SharedBuffer</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SharedBuffer</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Queue<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;</span>();
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> CAPACITY <span style="color:#f92672">=</span> 5;
 </span></span><span style="display:flex;"><span>
@@ -1581,7 +1579,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>BlockingQueue<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;</span>(5);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>BlockingQueue<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;</span>(5);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Producer:</span>
 </span></span><span style="display:flex;"><span>queue.<span style="color:#a6e22e">put</span>(item);    <span style="color:#75715e">// blocks if full</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Consumer:</span>
@@ -1593,7 +1591,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.LinkedList;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.LinkedList;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Queue;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.locks.Condition;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.locks.Lock;
@@ -1631,7 +1629,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.LinkedList;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.LinkedList;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Queue;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.locks.Condition;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.locks.Lock;
@@ -1678,7 +1676,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomCountDownLatch</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomCountDownLatch</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> count;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">CustomCountDownLatch</span>(<span style="color:#66d9ef">int</span> count) {
@@ -1710,7 +1708,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.ArrayList;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.ArrayList;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomThreadPool</span> {
@@ -1764,7 +1762,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LRUCache</span> {
@@ -1841,7 +1839,7 @@ Custom Class Loader
   </a>
 </h2>
 <p>Enables non-blocking, asynchronous programming with chaining.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Basic async computation</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Basic async computation</span>
 </span></span><span style="display:flex;"><span>CompletableFuture<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> future <span style="color:#f92672">=</span> CompletableFuture.<span style="color:#a6e22e">supplyAsync</span>(() <span style="color:#f92672">-&gt;</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> fetchDataFromDB(); <span style="color:#75715e">// runs in ForkJoinPool thread</span>
 </span></span><span style="display:flex;"><span>});
@@ -1872,42 +1870,42 @@ Custom Class Loader
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result;
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><table>
-	<thead>
-			<tr>
-					<th>Method</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>thenApply</code></td>
-					<td>Transform result (like <code>map</code>)</td>
-			</tr>
-			<tr>
-					<td><code>thenCompose</code></td>
-					<td>Chain async steps (like <code>flatMap</code>)</td>
-			</tr>
-			<tr>
-					<td><code>thenCombine</code></td>
-					<td>Combine two independent futures</td>
-			</tr>
-			<tr>
-					<td><code>allOf</code></td>
-					<td>Wait for all futures to complete</td>
-			</tr>
-			<tr>
-					<td><code>anyOf</code></td>
-					<td>Complete when the first future completes</td>
-			</tr>
-			<tr>
-					<td><code>exceptionally</code></td>
-					<td>Handle exceptions with fallback</td>
-			</tr>
-			<tr>
-					<td><code>handle</code></td>
-					<td>Handle both result and exception</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>thenApply</code></td>
+          <td>Transform result (like <code>map</code>)</td>
+      </tr>
+      <tr>
+          <td><code>thenCompose</code></td>
+          <td>Chain async steps (like <code>flatMap</code>)</td>
+      </tr>
+      <tr>
+          <td><code>thenCombine</code></td>
+          <td>Combine two independent futures</td>
+      </tr>
+      <tr>
+          <td><code>allOf</code></td>
+          <td>Wait for all futures to complete</td>
+      </tr>
+      <tr>
+          <td><code>anyOf</code></td>
+          <td>Complete when the first future completes</td>
+      </tr>
+      <tr>
+          <td><code>exceptionally</code></td>
+          <td>Handle exceptions with fallback</td>
+      </tr>
+      <tr>
+          <td><code>handle</code></td>
+          <td>Handle both result and exception</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="610-streams--fork-join-framework">
   6.10 Streams &amp; Fork-Join Framework
@@ -1924,32 +1922,32 @@ Custom Class Loader
   </a>
 </h3>
 <table>
-	<thead>
-			<tr>
-					<th>Aspect</th>
-					<th>Sequential</th>
-					<th>Parallel</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Execution</td>
-					<td>Single thread</td>
-					<td>Multiple threads (ForkJoinPool.commonPool())</td>
-			</tr>
-			<tr>
-					<td>Order</td>
-					<td>Preserved</td>
-					<td>Not guaranteed (use <code>forEachOrdered</code> if needed)</td>
-			</tr>
-			<tr>
-					<td>Use case</td>
-					<td>Small data, ordered ops</td>
-					<td>CPU-bound, large independent data</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Sequential</th>
+          <th>Parallel</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Execution</td>
+          <td>Single thread</td>
+          <td>Multiple threads (ForkJoinPool.commonPool())</td>
+      </tr>
+      <tr>
+          <td>Order</td>
+          <td>Preserved</td>
+          <td>Not guaranteed (use <code>forEachOrdered</code> if needed)</td>
+      </tr>
+      <tr>
+          <td>Use case</td>
+          <td>Small data, ordered ops</td>
+          <td>CPU-bound, large independent data</td>
+      </tr>
+  </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sequential</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sequential</span>
 </span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">filter</span>(n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">&gt;</span> 5).<span style="color:#a6e22e">map</span>(n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">*</span> 2).<span style="color:#a6e22e">collect</span>(toList());
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Parallel</span>
@@ -1963,7 +1961,7 @@ Custom Class Loader
 </h3>
 <p><strong><code>map()</code></strong>: One-to-one mapping — each input maps to a single transformed value.</p>
 <p><strong><code>flatMap()</code></strong>: One-to-many mapping — converts each element into a stream of child values, then flattens into a single combined stream.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;&gt;</span> dynamicNestedList <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;&gt;</span> dynamicNestedList <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(
 </span></span><span style="display:flex;"><span>    Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#e6db74">&#34;B&#34;</span>),
 </span></span><span style="display:flex;"><span>    Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;C&#34;</span>, <span style="color:#e6db74">&#34;D&#34;</span>)
 </span></span><span style="display:flex;"><span>);
@@ -1980,7 +1978,7 @@ Custom Class Loader
   </a>
 </h3>
 <p>Uses <strong>work-stealing</strong>: idle threads steal tasks from busy threads&rsquo; deques. Based on <code>ForkJoinTask</code> (<code>RecursiveAction</code> — no return, <code>RecursiveTask&lt;V&gt;</code> — returns value).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SumTask</span> <span style="color:#66d9ef">extends</span> RecursiveTask<span style="color:#f92672">&lt;</span>Long<span style="color:#f92672">&gt;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SumTask</span> <span style="color:#66d9ef">extends</span> RecursiveTask<span style="color:#f92672">&lt;</span>Long<span style="color:#f92672">&gt;</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> start, end;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> THRESHOLD <span style="color:#f92672">=</span> 1000;
@@ -2028,9 +2026,8 @@ Custom Class Loader
   </a>
 </h3>
 <blockquote>
-<p>A class should have only one reason to change.</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation: One class handles both user data AND email sending</span>
+<p>A class should have only one reason to change.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation: One class handles both user data AND email sending</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">saveToDatabase</span>() { ... }
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sendWelcomeEmail</span>() { ... }
@@ -2047,9 +2044,8 @@ Custom Class Loader
   </a>
 </h3>
 <blockquote>
-<p>Open for extension, closed for modification.</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Shape</span> { <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">area</span>(); }
+<p>Open for extension, closed for modification.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Shape</span> { <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">area</span>(); }
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Circle</span> <span style="color:#66d9ef">implements</span> Shape { ... }
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Rectangle</span> <span style="color:#66d9ef">implements</span> Shape { ... }
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Adding Triangle does NOT modify existing code</span>
@@ -2062,9 +2058,8 @@ Custom Class Loader
   </a>
 </h3>
 <blockquote>
-<p>Subtypes must be substitutable for their base types without altering program correctness.</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation: Square extends Rectangle but breaks the contract</span>
+<p>Subtypes must be substitutable for their base types without altering program correctness.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation: Square extends Rectangle but breaks the contract</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Rectangle</span> { <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setWidth</span>(<span style="color:#66d9ef">int</span> w); <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setHeight</span>(<span style="color:#66d9ef">int</span> h); }
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Square</span> <span style="color:#66d9ef">extends</span> Rectangle {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Must set both — breaks caller assumptions</span>
@@ -2077,9 +2072,8 @@ Custom Class Loader
   </a>
 </h3>
 <blockquote>
-<p>No client should be forced to implement methods it does not use.</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation</span>
+<p>No client should be forced to implement methods it does not use.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Animal</span> { <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">eat</span>(); <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fly</span>(); <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swim</span>(); }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Fix</span>
@@ -2096,9 +2090,8 @@ Custom Class Loader
   </a>
 </h3>
 <blockquote>
-<p>High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation</span>
+<p>High-level modules should not depend on low-level modules. Both should depend on abstractions.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderService</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> MySQLDatabase db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MySQLDatabase();
 </span></span><span style="display:flex;"><span>}
@@ -2117,9 +2110,8 @@ Custom Class Loader
   </a>
 </h2>
 <blockquote>
-<p>Every piece of knowledge must have a single, unambiguous, authoritative representation.</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation: tax calc repeated inline</span>
+<p>Every piece of knowledge must have a single, unambiguous, authoritative representation.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Violation: tax calc repeated inline</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> priceWithTax1 <span style="color:#f92672">=</span> price <span style="color:#f92672">*</span> 1.<span style="color:#a6e22e">18</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> priceWithTax2 <span style="color:#f92672">=</span> total <span style="color:#f92672">*</span> 1.<span style="color:#a6e22e">18</span>;
 </span></span><span style="display:flex;"><span>
@@ -2133,9 +2125,8 @@ Custom Class Loader
   </a>
 </h2>
 <blockquote>
-<p>Simplicity should be the key design goal.</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Over-engineered</span>
+<p>Simplicity should be the key design goal.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Over-engineered</span>
 </span></span><span style="display:flex;"><span>AbstractVisitorFactoryStrategyBuilder.<span style="color:#a6e22e">getInstance</span>()
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">withStrategy</span>(<span style="color:#66d9ef">new</span> DefaultStrategy())
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">build</span>()
@@ -2158,7 +2149,7 @@ Custom Class Loader
 <li>Provide <strong>no setter methods</strong>.</li>
 <li><strong>Deep Defensive Copying</strong>: For mutable object types (e.g., <code>Date</code>, <code>Collection</code>), clone during initialization and in getters.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Date;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Date;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ImmutableEmployee</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> String name;
@@ -2195,7 +2186,7 @@ Custom Class Loader
 </h2>
 <p><strong>IoC Container</strong>: The Spring container creates, configures, and manages beans.</p>
 <p><strong>Dependency Injection types:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 1. Constructor Injection (preferred — immutable, testable)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 1. Constructor Injection (preferred — immutable, testable)</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderService</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> PaymentService paymentService;
@@ -2222,34 +2213,34 @@ Custom Class Loader
 </h2>
 <p><strong>Bean Scopes:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Scope</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>singleton</code></td>
-					<td>(Default) One instance per Spring container</td>
-			</tr>
-			<tr>
-					<td><code>prototype</code></td>
-					<td>New instance every time requested</td>
-			</tr>
-			<tr>
-					<td><code>request</code></td>
-					<td>One per HTTP request (web-aware)</td>
-			</tr>
-			<tr>
-					<td><code>session</code></td>
-					<td>One per HTTP session (web-aware)</td>
-			</tr>
-			<tr>
-					<td><code>application</code></td>
-					<td>One per <code>ServletContext</code></td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Scope</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>singleton</code></td>
+          <td>(Default) One instance per Spring container</td>
+      </tr>
+      <tr>
+          <td><code>prototype</code></td>
+          <td>New instance every time requested</td>
+      </tr>
+      <tr>
+          <td><code>request</code></td>
+          <td>One per HTTP request (web-aware)</td>
+      </tr>
+      <tr>
+          <td><code>session</code></td>
+          <td>One per HTTP session (web-aware)</td>
+      </tr>
+      <tr>
+          <td><code>application</code></td>
+          <td>One per <code>ServletContext</code></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Bean Lifecycle:</strong></p>
 <ol>
@@ -2274,67 +2265,67 @@ Custom Class Loader
 <p>Spring AOP decouples cross-cutting concerns (auditing, logging, security) from business logic using runtime proxies.</p>
 <p><strong>Key Terms:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Term</th>
-					<th>Definition</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Aspect</strong></td>
-					<td>The module encapsulating the cross-cutting concern</td>
-			</tr>
-			<tr>
-					<td><strong>Join Point</strong></td>
-					<td>A point in program execution (method execution in Spring AOP)</td>
-			</tr>
-			<tr>
-					<td><strong>Pointcut</strong></td>
-					<td>Expression that selects join points</td>
-			</tr>
-			<tr>
-					<td><strong>Advice</strong></td>
-					<td>Action taken at a join point</td>
-			</tr>
-			<tr>
-					<td><strong>Weaving</strong></td>
-					<td>Linking aspects with application objects</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Aspect</strong></td>
+          <td>The module encapsulating the cross-cutting concern</td>
+      </tr>
+      <tr>
+          <td><strong>Join Point</strong></td>
+          <td>A point in program execution (method execution in Spring AOP)</td>
+      </tr>
+      <tr>
+          <td><strong>Pointcut</strong></td>
+          <td>Expression that selects join points</td>
+      </tr>
+      <tr>
+          <td><strong>Advice</strong></td>
+          <td>Action taken at a join point</td>
+      </tr>
+      <tr>
+          <td><strong>Weaving</strong></td>
+          <td>Linking aspects with application objects</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Advice Types:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Type</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong><code>@Before</code></strong></td>
-					<td>Executes prior to the target method invocation</td>
-			</tr>
-			<tr>
-					<td><strong><code>@After</code></strong></td>
-					<td>Executes following method termination (regardless of outcome)</td>
-			</tr>
-			<tr>
-					<td><strong><code>@AfterReturning</code></strong></td>
-					<td>Executes only after successful completion</td>
-			</tr>
-			<tr>
-					<td><strong><code>@AfterThrowing</code></strong></td>
-					<td>Triggers exclusively if the method throws an exception</td>
-			</tr>
-			<tr>
-					<td><strong><code>@Around</code></strong></td>
-					<td>Wraps the target method; can modify parameters, bypass execution, or alter return value</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>@Before</code></strong></td>
+          <td>Executes prior to the target method invocation</td>
+      </tr>
+      <tr>
+          <td><strong><code>@After</code></strong></td>
+          <td>Executes following method termination (regardless of outcome)</td>
+      </tr>
+      <tr>
+          <td><strong><code>@AfterReturning</code></strong></td>
+          <td>Executes only after successful completion</td>
+      </tr>
+      <tr>
+          <td><strong><code>@AfterThrowing</code></strong></td>
+          <td>Triggers exclusively if the method throws an exception</td>
+      </tr>
+      <tr>
+          <td><strong><code>@Around</code></strong></td>
+          <td>Wraps the target method; can modify parameters, bypass execution, or alter return value</td>
+      </tr>
+  </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Aspect</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Aspect</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Component</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LoggingAspect</span> {
 </span></span><span style="display:flex;"><span>
@@ -2369,35 +2360,35 @@ Custom Class Loader
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Feature</th>
-					<th>JDK Dynamic Proxies</th>
-					<th>CGLIB Proxies</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Structural Requirement</td>
-					<td>Target class <strong>must implement at least one interface</strong></td>
-					<td>Can proxy concrete classes via subclassing</td>
-			</tr>
-			<tr>
-					<td>Generation Strategy</td>
-					<td><code>java.lang.reflect.Proxy</code> (built into JDK)</td>
-					<td>Bytecode manipulation to generate subclass</td>
-			</tr>
-			<tr>
-					<td>Method Constraints</td>
-					<td>Only proxies interface methods</td>
-					<td>Cannot proxy <code>final</code> or <code>private</code> methods</td>
-			</tr>
-			<tr>
-					<td>Spring Boot Default</td>
-					<td>Spring Boot 1.x (for interface beans)</td>
-					<td>Spring Boot 2.x+ for all beans</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>JDK Dynamic Proxies</th>
+          <th>CGLIB Proxies</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Structural Requirement</td>
+          <td>Target class <strong>must implement at least one interface</strong></td>
+          <td>Can proxy concrete classes via subclassing</td>
+      </tr>
+      <tr>
+          <td>Generation Strategy</td>
+          <td><code>java.lang.reflect.Proxy</code> (built into JDK)</td>
+          <td>Bytecode manipulation to generate subclass</td>
+      </tr>
+      <tr>
+          <td>Method Constraints</td>
+          <td>Only proxies interface methods</td>
+          <td>Cannot proxy <code>final</code> or <code>private</code> methods</td>
+      </tr>
+      <tr>
+          <td>Spring Boot Default</td>
+          <td>Spring Boot 1.x (for interface beans)</td>
+          <td>Spring Boot 2.x+ for all beans</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="the-self-invocation-trap">
   The Self-Invocation Trap
@@ -2412,7 +2403,7 @@ Custom Class Loader
 <li>Extract <code>B()</code> into a separate Spring service component.</li>
 <li>Inject the proxy via <code>@Autowired</code> or lazy self-injection.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderService</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Transactional</span>
@@ -2436,7 +2427,7 @@ Custom Class Loader
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.reflect.InvocationHandler;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.reflect.InvocationHandler;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.reflect.Method;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.reflect.Proxy;
 </span></span><span style="display:flex;"><span>
@@ -2524,7 +2515,7 @@ HTTP Response to Client
 <li><strong>View Resolution</strong>: <code>ViewResolver</code> converts view names to physical pages; <code>HttpMessageConverter</code> serializes to JSON for APIs.</li>
 <li><strong>Post-Processing</strong>: Request moves back through interceptor pipeline: <code>postHandle()</code> → <code>afterCompletion()</code>.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(<span style="color:#e6db74">&#34;/employees&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeController</span> {
 </span></span><span style="display:flex;"><span>
@@ -2551,40 +2542,40 @@ HTTP Response to Client
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Feature</th>
-					<th>Servlet Filters</th>
-					<th>Spring Handler Interceptors</th>
-					<th>AOP</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>System Layer</td>
-					<td>Servlet Container (Tomcat)</td>
-					<td>Spring MVC framework</td>
-					<td>JVM proxy method execution</td>
-			</tr>
-			<tr>
-					<td>Context Access</td>
-					<td>Via <code>DelegatingFilterProxy</code> or no direct access</td>
-					<td>Full access to handler</td>
-					<td>Full access via JoinPoint</td>
-			</tr>
-			<tr>
-					<td>Execution Trigger</td>
-					<td>Before <code>DispatcherServlet</code></td>
-					<td>After front controller, before controller</td>
-					<td>Around wrapped methods</td>
-			</tr>
-			<tr>
-					<td>Typical Use Cases</td>
-					<td>Security filtering, compression, encoding</td>
-					<td>Session auth, token validation, locale</td>
-					<td>Logging, auditing, profiling, transactions</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Servlet Filters</th>
+          <th>Spring Handler Interceptors</th>
+          <th>AOP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>System Layer</td>
+          <td>Servlet Container (Tomcat)</td>
+          <td>Spring MVC framework</td>
+          <td>JVM proxy method execution</td>
+      </tr>
+      <tr>
+          <td>Context Access</td>
+          <td>Via <code>DelegatingFilterProxy</code> or no direct access</td>
+          <td>Full access to handler</td>
+          <td>Full access via JoinPoint</td>
+      </tr>
+      <tr>
+          <td>Execution Trigger</td>
+          <td>Before <code>DispatcherServlet</code></td>
+          <td>After front controller, before controller</td>
+          <td>Around wrapped methods</td>
+      </tr>
+      <tr>
+          <td>Typical Use Cases</td>
+          <td>Security filtering, compression, encoding</td>
+          <td>Session auth, token validation, locale</td>
+          <td>Logging, auditing, profiling, transactions</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="93-handlerinterceptor-configuration">
   9.3 HandlerInterceptor Configuration
@@ -2593,7 +2584,7 @@ HTTP Response to Client
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.servlet.HandlerInterceptor;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.servlet.ModelAndView;
@@ -2620,7 +2611,7 @@ HTTP Response to Client
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>Interceptor registration:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WebConfig</span> <span style="color:#66d9ef">implements</span> WebMvcConfigurer {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addInterceptors</span>(InterceptorRegistry registry) {
@@ -2641,7 +2632,7 @@ HTTP Response to Client
 </h2>
 <p><strong>Localized (<code>@ExceptionHandler</code>)</strong>: Defined inside a single controller. Catches exceptions from that controller only.</p>
 <p><strong>Global (<code>@ControllerAdvice</code>)</strong>: Centralized global exception hub across all controllers.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@ControllerAdvice</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@ControllerAdvice</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RestResponseEntityExceptionHandler</span> <span style="color:#66d9ef">extends</span> ResponseEntityExceptionHandler {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ExceptionHandler</span>(value <span style="color:#f92672">=</span> { IllegalArgumentException.<span style="color:#a6e22e">class</span>, IllegalStateException.<span style="color:#a6e22e">class</span> })
@@ -2651,7 +2642,7 @@ HTTP Response to Client
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>Declarative (<code>@ResponseStatus</code>)</strong>: Placed on custom exception classes to auto-map to HTTP status codes.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@ResponseStatus</span>(value <span style="color:#f92672">=</span> HttpStatus.<span style="color:#a6e22e">NOT_FOUND</span>, reason <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Resource does not exist.&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@ResponseStatus</span>(value <span style="color:#f92672">=</span> HttpStatus.<span style="color:#a6e22e">NOT_FOUND</span>, reason <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Resource does not exist.&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResourceNotFoundException</span> <span style="color:#66d9ef">extends</span> RuntimeException {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ResourceNotFoundException</span>(String message) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(message);
@@ -2695,7 +2686,7 @@ Controller
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 1. Login → generate JWT</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 1. Login → generate JWT</span>
 </span></span><span style="display:flex;"><span>SecretKey key <span style="color:#f92672">=</span> Keys.<span style="color:#a6e22e">hmacShaKeyFor</span>(secretKey.<span style="color:#a6e22e">getBytes</span>(StandardCharsets.<span style="color:#a6e22e">UTF_8</span>));
 </span></span><span style="display:flex;"><span>String token <span style="color:#f92672">=</span> Jwts.<span style="color:#a6e22e">builder</span>()
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">subject</span>(username)
@@ -2711,11 +2702,11 @@ Controller
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">getPayload</span>();
 </span></span><span style="display:flex;"><span>String username <span style="color:#f92672">=</span> claims.<span style="color:#a6e22e">getSubject</span>();
 </span></span></code></pre></div><p><strong>JWT Structure:</strong> <code>Header.Payload.Signature</code> (Base64URL encoded)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// Header
-</span></span></span><span style="display:flex;"><span>{ <span style="color:#f92672">&#34;alg&#34;</span>: <span style="color:#e6db74">&#34;HS256&#34;</span>, <span style="color:#f92672">&#34;typ&#34;</span>: <span style="color:#e6db74">&#34;JWT&#34;</span> }
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// Header
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{ <span style="color:#f92672">&#34;alg&#34;</span>: <span style="color:#e6db74">&#34;HS256&#34;</span>, <span style="color:#f92672">&#34;typ&#34;</span>: <span style="color:#e6db74">&#34;JWT&#34;</span> }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Payload
-</span></span></span><span style="display:flex;"><span>{
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;sub&#34;</span>: <span style="color:#e6db74">&#34;user123&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;John&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;roles&#34;</span>: [<span style="color:#e6db74">&#34;ADMIN&#34;</span>],
@@ -2730,26 +2721,26 @@ Controller
   </a>
 </h3>
 <table>
-	<thead>
-			<tr>
-					<th>Flow</th>
-					<th>Use Case</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Client Credentials</strong></td>
-					<td>Machine-to-machine (no user). Client authenticates with client_id + client_secret.</td>
-			</tr>
-			<tr>
-					<td><strong>Authorization Code</strong></td>
-					<td>User-facing web apps. User logs in on auth server; code exchanged for token.</td>
-			</tr>
-			<tr>
-					<td><strong>Auth Code + PKCE</strong></td>
-					<td>Mobile/SPA apps. Code verifier/challenge prevents code interception.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Flow</th>
+          <th>Use Case</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Client Credentials</strong></td>
+          <td>Machine-to-machine (no user). Client authenticates with client_id + client_secret.</td>
+      </tr>
+      <tr>
+          <td><strong>Authorization Code</strong></td>
+          <td>User-facing web apps. User logs in on auth server; code exchanged for token.</td>
+      </tr>
+      <tr>
+          <td><strong>Auth Code + PKCE</strong></td>
+          <td>Mobile/SPA apps. Code verifier/challenge prevents code interception.</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>PKCE Flow:</strong></p>
 <pre tabindex="0"><code>1. Client generates random code_verifier
@@ -2774,34 +2765,34 @@ Controller
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Behavior</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong><code>REQUIRED</code></strong> (Default)</td>
-					<td>Supports current transaction; creates new one if none exists</td>
-			</tr>
-			<tr>
-					<td><strong><code>REQUIRES_NEW</code></strong></td>
-					<td>Suspends current transaction; creates independent one. Inner rollback doesn&rsquo;t affect outer.</td>
-			</tr>
-			<tr>
-					<td><strong><code>NESTED</code></strong></td>
-					<td>Uses database Savepoint. Inner failure rolls back to savepoint without affecting outer.</td>
-			</tr>
-			<tr>
-					<td><strong><code>MANDATORY</code></strong></td>
-					<td>Supports current transaction; throws if none exists</td>
-			</tr>
-			<tr>
-					<td><strong><code>NEVER</code></strong></td>
-					<td>Executes non-transactionally; throws if transaction exists</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Behavior</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>REQUIRED</code></strong> (Default)</td>
+          <td>Supports current transaction; creates new one if none exists</td>
+      </tr>
+      <tr>
+          <td><strong><code>REQUIRES_NEW</code></strong></td>
+          <td>Suspends current transaction; creates independent one. Inner rollback doesn&rsquo;t affect outer.</td>
+      </tr>
+      <tr>
+          <td><strong><code>NESTED</code></strong></td>
+          <td>Uses database Savepoint. Inner failure rolls back to savepoint without affecting outer.</td>
+      </tr>
+      <tr>
+          <td><strong><code>MANDATORY</code></strong></td>
+          <td>Supports current transaction; throws if none exists</td>
+      </tr>
+      <tr>
+          <td><strong><code>NEVER</code></strong></td>
+          <td>Executes non-transactionally; throws if transaction exists</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="102-transaction-isolation-levels">
   10.2 Transaction Isolation Levels
@@ -2812,64 +2803,64 @@ Controller
 </h2>
 <p>Problems that isolation levels prevent:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Problem</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Dirty Read</strong></td>
-					<td>Read uncommitted data from another transaction</td>
-			</tr>
-			<tr>
-					<td><strong>Non-Repeatable Read</strong></td>
-					<td>Same row yields different values (another TX committed between reads)</td>
-			</tr>
-			<tr>
-					<td><strong>Phantom Read</strong></td>
-					<td>Re-running a query returns different rows (another TX inserted/deleted)</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Problem</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Dirty Read</strong></td>
+          <td>Read uncommitted data from another transaction</td>
+      </tr>
+      <tr>
+          <td><strong>Non-Repeatable Read</strong></td>
+          <td>Same row yields different values (another TX committed between reads)</td>
+      </tr>
+      <tr>
+          <td><strong>Phantom Read</strong></td>
+          <td>Re-running a query returns different rows (another TX inserted/deleted)</td>
+      </tr>
+  </tbody>
 </table>
 <table>
-	<thead>
-			<tr>
-					<th>Isolation Level</th>
-					<th>Dirty Read</th>
-					<th>Non-Repeatable Read</th>
-					<th>Phantom Read</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>READ UNCOMMITTED</code></td>
-					<td>Possible</td>
-					<td>Possible</td>
-					<td>Possible</td>
-			</tr>
-			<tr>
-					<td><code>READ COMMITTED</code></td>
-					<td>Prevented</td>
-					<td>Possible</td>
-					<td>Possible</td>
-			</tr>
-			<tr>
-					<td><code>REPEATABLE READ</code></td>
-					<td>Prevented</td>
-					<td>Prevented</td>
-					<td>Possible</td>
-			</tr>
-			<tr>
-					<td><code>SERIALIZABLE</code></td>
-					<td>Prevented</td>
-					<td>Prevented</td>
-					<td>Prevented</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Isolation Level</th>
+          <th>Dirty Read</th>
+          <th>Non-Repeatable Read</th>
+          <th>Phantom Read</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>READ UNCOMMITTED</code></td>
+          <td>Possible</td>
+          <td>Possible</td>
+          <td>Possible</td>
+      </tr>
+      <tr>
+          <td><code>READ COMMITTED</code></td>
+          <td>Prevented</td>
+          <td>Possible</td>
+          <td>Possible</td>
+      </tr>
+      <tr>
+          <td><code>REPEATABLE READ</code></td>
+          <td>Prevented</td>
+          <td>Prevented</td>
+          <td>Possible</td>
+      </tr>
+      <tr>
+          <td><code>SERIALIZABLE</code></td>
+          <td>Prevented</td>
+          <td>Prevented</td>
+          <td>Prevented</td>
+      </tr>
+  </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>(isolation <span style="color:#f92672">=</span> Isolation.<span style="color:#a6e22e">REPEATABLE_READ</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>(isolation <span style="color:#f92672">=</span> Isolation.<span style="color:#a6e22e">REPEATABLE_READ</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">performOperation</span>() { ... }
 </span></span></code></pre></div><h2 id="103-acid-properties">
   10.3 ACID Properties
@@ -2879,30 +2870,30 @@ Controller
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Property</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Atomicity</strong></td>
-					<td>All operations succeed or all fail (no partial updates)</td>
-			</tr>
-			<tr>
-					<td><strong>Consistency</strong></td>
-					<td>DB transitions from one valid state to another; constraints always satisfied</td>
-			</tr>
-			<tr>
-					<td><strong>Isolation</strong></td>
-					<td>Concurrent transactions do not interfere with each other</td>
-			</tr>
-			<tr>
-					<td><strong>Durability</strong></td>
-					<td>Committed transactions survive system failures</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Atomicity</strong></td>
+          <td>All operations succeed or all fail (no partial updates)</td>
+      </tr>
+      <tr>
+          <td><strong>Consistency</strong></td>
+          <td>DB transitions from one valid state to another; constraints always satisfied</td>
+      </tr>
+      <tr>
+          <td><strong>Isolation</strong></td>
+          <td>Concurrent transactions do not interfere with each other</td>
+      </tr>
+      <tr>
+          <td><strong>Durability</strong></td>
+          <td>Committed transactions survive system failures</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="104-spring-data-jpa">
   10.4 Spring Data JPA
@@ -2918,17 +2909,17 @@ Controller
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// N+1: For each Order, a separate query fetches items</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// N+1: For each Order, a separate query fetches items</span>
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">&gt;</span> orders <span style="color:#f92672">=</span> orderRepository.<span style="color:#a6e22e">findAll</span>(); <span style="color:#75715e">// 1 query</span>
 </span></span><span style="display:flex;"><span>orders.<span style="color:#a6e22e">forEach</span>(o <span style="color:#f92672">-&gt;</span> o.<span style="color:#a6e22e">getItems</span>().<span style="color:#a6e22e">size</span>()); <span style="color:#75715e">// N queries</span>
 </span></span></code></pre></div><p><strong>Fix 1: <code>JOIN FETCH</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Query</span>(<span style="color:#e6db74">&#34;SELECT o FROM Order o JOIN FETCH o.items&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Query</span>(<span style="color:#e6db74">&#34;SELECT o FROM Order o JOIN FETCH o.items&#34;</span>)
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">findAllWithItems</span>();
 </span></span></code></pre></div><p><strong>Fix 2: <code>@EntityGraph</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@EntityGraph</span>(attributePaths <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;items&#34;</span>})
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@EntityGraph</span>(attributePaths <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;items&#34;</span>})
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">findAll</span>();
 </span></span></code></pre></div><p><strong>Fix 3: <code>@BatchSize</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@BatchSize</span>(size <span style="color:#f92672">=</span> 20)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@BatchSize</span>(size <span style="color:#f92672">=</span> 20)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@OneToMany</span>(fetch <span style="color:#f92672">=</span> FetchType.<span style="color:#a6e22e">LAZY</span>)
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>OrderItem<span style="color:#f92672">&gt;</span> items;
 </span></span></code></pre></div><h3 id="lazy-vs-eager-fetching">
@@ -2939,37 +2930,37 @@ Controller
   </a>
 </h3>
 <table>
-	<thead>
-			<tr>
-					<th></th>
-					<th>Lazy</th>
-					<th>Eager</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>When loaded</td>
-					<td>On first access</td>
-					<td>When parent entity is loaded</td>
-			</tr>
-			<tr>
-					<td>Default for <code>@OneToMany</code></td>
-					<td>Lazy</td>
-					<td>—</td>
-			</tr>
-			<tr>
-					<td>Default for <code>@ManyToOne</code></td>
-					<td>—</td>
-					<td>Eager</td>
-			</tr>
-			<tr>
-					<td>Risk</td>
-					<td><code>LazyInitializationException</code> outside session</td>
-					<td>N+1 if not needed</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Lazy</th>
+          <th>Eager</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>When loaded</td>
+          <td>On first access</td>
+          <td>When parent entity is loaded</td>
+      </tr>
+      <tr>
+          <td>Default for <code>@OneToMany</code></td>
+          <td>Lazy</td>
+          <td>—</td>
+      </tr>
+      <tr>
+          <td>Default for <code>@ManyToOne</code></td>
+          <td>—</td>
+          <td>Eager</td>
+      </tr>
+      <tr>
+          <td>Risk</td>
+          <td><code>LazyInitializationException</code> outside session</td>
+          <td>N+1 if not needed</td>
+      </tr>
+  </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@OneToMany</span>(fetch <span style="color:#f92672">=</span> FetchType.<span style="color:#a6e22e">LAZY</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@OneToMany</span>(fetch <span style="color:#f92672">=</span> FetchType.<span style="color:#a6e22e">LAZY</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ManyToOne</span>(fetch <span style="color:#f92672">=</span> FetchType.<span style="color:#a6e22e">EAGER</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// LazyInitializationException fix: ensure access within transaction</span>
@@ -2986,7 +2977,7 @@ Controller
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Query</span>(value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT * FROM employees WHERE department = :dept&#34;</span>, nativeQuery <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Query</span>(value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT * FROM employees WHERE department = :dept&#34;</span>, nativeQuery <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>)
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Employee<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">findByDepartment</span>(<span style="color:#a6e22e">@Param</span>(<span style="color:#e6db74">&#34;dept&#34;</span>) String department);
 </span></span></code></pre></div><h2 id="105-database-indexing">
   10.5 Database Indexing
@@ -2997,34 +2988,34 @@ Controller
 </h2>
 <p>An index is a data structure (typically B-tree) for fast row lookup without full table scans.</p>
 <table>
-	<thead>
-			<tr>
-					<th>Type</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Clustered Index</strong></td>
-					<td>Rows stored in index order. One per table (usually PK).</td>
-			</tr>
-			<tr>
-					<td><strong>Non-Clustered Index</strong></td>
-					<td>Separate structure pointing to rows. Multiple per table.</td>
-			</tr>
-			<tr>
-					<td><strong>Unique Index</strong></td>
-					<td>Ensures all values are unique</td>
-			</tr>
-			<tr>
-					<td><strong>Composite Index</strong></td>
-					<td>Index on multiple columns. Order matters — leftmost prefix rule.</td>
-			</tr>
-			<tr>
-					<td><strong>Covering Index</strong></td>
-					<td>All query columns in the index — no row lookup needed.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Clustered Index</strong></td>
+          <td>Rows stored in index order. One per table (usually PK).</td>
+      </tr>
+      <tr>
+          <td><strong>Non-Clustered Index</strong></td>
+          <td>Separate structure pointing to rows. Multiple per table.</td>
+      </tr>
+      <tr>
+          <td><strong>Unique Index</strong></td>
+          <td>Ensures all values are unique</td>
+      </tr>
+      <tr>
+          <td><strong>Composite Index</strong></td>
+          <td>Index on multiple columns. Order matters — leftmost prefix rule.</td>
+      </tr>
+      <tr>
+          <td><strong>Covering Index</strong></td>
+          <td>All query columns in the index — no row lookup needed.</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>When indexes help:</strong> <code>WHERE</code>, <code>JOIN ON</code>, <code>ORDER BY</code>, <code>GROUP BY</code>.
 <strong>When indexes hurt:</strong> Frequent <code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code> — index maintenance overhead.</p>
@@ -3045,38 +3036,38 @@ Controller
 </h2>
 <p>REST is based on 6 constraints:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Constraint</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Client-Server</strong></td>
-					<td>UI and data storage are separated</td>
-			</tr>
-			<tr>
-					<td><strong>Stateless</strong></td>
-					<td>Each request contains all necessary information; no server session</td>
-			</tr>
-			<tr>
-					<td><strong>Cacheable</strong></td>
-					<td>Responses must define whether they are cacheable</td>
-			</tr>
-			<tr>
-					<td><strong>Uniform Interface</strong></td>
-					<td>Resources identified by URIs; standard HTTP methods</td>
-			</tr>
-			<tr>
-					<td><strong>Layered System</strong></td>
-					<td>Client cannot tell if it&rsquo;s connected directly to the server</td>
-			</tr>
-			<tr>
-					<td><strong>Code on Demand</strong></td>
-					<td>(Optional) Server can send executable code</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Constraint</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Client-Server</strong></td>
+          <td>UI and data storage are separated</td>
+      </tr>
+      <tr>
+          <td><strong>Stateless</strong></td>
+          <td>Each request contains all necessary information; no server session</td>
+      </tr>
+      <tr>
+          <td><strong>Cacheable</strong></td>
+          <td>Responses must define whether they are cacheable</td>
+      </tr>
+      <tr>
+          <td><strong>Uniform Interface</strong></td>
+          <td>Resources identified by URIs; standard HTTP methods</td>
+      </tr>
+      <tr>
+          <td><strong>Layered System</strong></td>
+          <td>Client cannot tell if it&rsquo;s connected directly to the server</td>
+      </tr>
+      <tr>
+          <td><strong>Code on Demand</strong></td>
+          <td>(Optional) Server can send executable code</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="112-http-methods--status-codes">
   11.2 HTTP Methods &amp; Status Codes
@@ -3086,82 +3077,82 @@ Controller
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Method</th>
-					<th>Purpose</th>
-					<th>Idempotent</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>GET</td>
-					<td>Read resource</td>
-					<td>Yes</td>
-			</tr>
-			<tr>
-					<td>POST</td>
-					<td>Create resource</td>
-					<td>No</td>
-			</tr>
-			<tr>
-					<td>PUT</td>
-					<td>Replace resource</td>
-					<td>Yes</td>
-			</tr>
-			<tr>
-					<td>PATCH</td>
-					<td>Partial update</td>
-					<td>No</td>
-			</tr>
-			<tr>
-					<td>DELETE</td>
-					<td>Delete resource</td>
-					<td>Yes</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Purpose</th>
+          <th>Idempotent</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>GET</td>
+          <td>Read resource</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>POST</td>
+          <td>Create resource</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>PUT</td>
+          <td>Replace resource</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>PATCH</td>
+          <td>Partial update</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>DELETE</td>
+          <td>Delete resource</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
 </table>
 <table>
-	<thead>
-			<tr>
-					<th>Status Code</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>200 OK</td>
-					<td>Successful GET/PUT</td>
-			</tr>
-			<tr>
-					<td>201 Created</td>
-					<td>Successful POST</td>
-			</tr>
-			<tr>
-					<td>204 No Content</td>
-					<td>DELETE successful</td>
-			</tr>
-			<tr>
-					<td>400 Bad Request</td>
-					<td>Invalid input</td>
-			</tr>
-			<tr>
-					<td>401 Unauthorized</td>
-					<td>Not authenticated</td>
-			</tr>
-			<tr>
-					<td>403 Forbidden</td>
-					<td>Authenticated but not authorized</td>
-			</tr>
-			<tr>
-					<td>404 Not Found</td>
-					<td>Resource doesn&rsquo;t exist</td>
-			</tr>
-			<tr>
-					<td>500 Internal Server Error</td>
-					<td>Server-side error</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Status Code</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>200 OK</td>
+          <td>Successful GET/PUT</td>
+      </tr>
+      <tr>
+          <td>201 Created</td>
+          <td>Successful POST</td>
+      </tr>
+      <tr>
+          <td>204 No Content</td>
+          <td>DELETE successful</td>
+      </tr>
+      <tr>
+          <td>400 Bad Request</td>
+          <td>Invalid input</td>
+      </tr>
+      <tr>
+          <td>401 Unauthorized</td>
+          <td>Not authenticated</td>
+      </tr>
+      <tr>
+          <td>403 Forbidden</td>
+          <td>Authenticated but not authorized</td>
+      </tr>
+      <tr>
+          <td>404 Not Found</td>
+          <td>Resource doesn&rsquo;t exist</td>
+      </tr>
+      <tr>
+          <td>500 Internal Server Error</td>
+          <td>Server-side error</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="113-rest-api-with-spring-boot">
   11.3 REST API with Spring Boot
@@ -3170,7 +3161,7 @@ Controller
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(<span style="color:#e6db74">&#34;/api/v1/employees&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeController</span> {
 </span></span><span style="display:flex;"><span>
@@ -3212,7 +3203,7 @@ Controller
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SwaggerConfig</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Bean</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> OpenAPI <span style="color:#a6e22e">customOpenAPI</span>() {
@@ -3220,7 +3211,7 @@ Controller
 </span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">info</span>(<span style="color:#66d9ef">new</span> Info().<span style="color:#a6e22e">title</span>(<span style="color:#e6db74">&#34;Employee API&#34;</span>).<span style="color:#a6e22e">version</span>(<span style="color:#e6db74">&#34;1.0&#34;</span>));
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Operation</span>(summary <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Get employee by ID&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Operation</span>(summary <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Get employee by ID&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ApiResponse</span>(responseCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;200&#34;</span>, description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Employee found&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ApiResponse</span>(responseCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;404&#34;</span>, description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Not found&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/{id}&#34;</span>)
@@ -3234,45 +3225,45 @@ Controller
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th>Aspect</th>
-					<th>REST</th>
-					<th>SOAP</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Protocol</td>
-					<td>HTTP</td>
-					<td>HTTP, SMTP, TCP</td>
-			</tr>
-			<tr>
-					<td>Format</td>
-					<td>JSON, XML, any</td>
-					<td>XML only</td>
-			</tr>
-			<tr>
-					<td>Contract</td>
-					<td>OpenAPI (optional)</td>
-					<td>WSDL (mandatory)</td>
-			</tr>
-			<tr>
-					<td>State</td>
-					<td>Stateless</td>
-					<td>Can be stateful</td>
-			</tr>
-			<tr>
-					<td>Performance</td>
-					<td>Lightweight, faster</td>
-					<td>Heavier (XML envelope)</td>
-			</tr>
-			<tr>
-					<td>Use case</td>
-					<td>Web/mobile APIs</td>
-					<td>Enterprise, banking, legacy</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>REST</th>
+          <th>SOAP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Protocol</td>
+          <td>HTTP</td>
+          <td>HTTP, SMTP, TCP</td>
+      </tr>
+      <tr>
+          <td>Format</td>
+          <td>JSON, XML, any</td>
+          <td>XML only</td>
+      </tr>
+      <tr>
+          <td>Contract</td>
+          <td>OpenAPI (optional)</td>
+          <td>WSDL (mandatory)</td>
+      </tr>
+      <tr>
+          <td>State</td>
+          <td>Stateless</td>
+          <td>Can be stateful</td>
+      </tr>
+      <tr>
+          <td>Performance</td>
+          <td>Lightweight, faster</td>
+          <td>Heavier (XML envelope)</td>
+      </tr>
+      <tr>
+          <td>Use case</td>
+          <td>Web/mobile APIs</td>
+          <td>Enterprise, banking, legacy</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>WSDL (Web Services Description Language):</strong> The contract file for SOAP services defining Types, Messages, PortType, Binding, and Service.</p>
 <hr>
@@ -3322,7 +3313,7 @@ Client Request ──→   │    API Gateway /     │
 <li>SSL Termination, Request/Response transformation</li>
 </ul>
 <p>Popular implementations: <strong>Spring Cloud Gateway</strong>, Netflix Zuul, Kong, AWS API Gateway.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Spring Cloud Gateway example</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Spring Cloud Gateway example</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">spring</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">cloud</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">gateway</span>:
@@ -3341,7 +3332,7 @@ Client Request ──→   │    API Gateway /     │
   </a>
 </h2>
 <p>Microservices register themselves and discover other services dynamically.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Eureka Server</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Eureka Server</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootApplication</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EnableEurekaServer</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EurekaServerApp</span> { <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) { SpringApplication.<span style="color:#a6e22e">run</span>(...); } }
@@ -3350,7 +3341,7 @@ Client Request ──→   │    API Gateway /     │
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootApplication</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EnableEurekaClient</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeServiceApp</span> { ... }
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">eureka</span>:
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">eureka</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">client</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">serviceUrl</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">defaultZone</span>: <span style="color:#ae81ff">http://localhost:8761/eureka/</span>
@@ -3388,7 +3379,7 @@ Client Request ──→   │    API Gateway /     │
               ↑                                                       |
               └───────────────────────────────────────────────────────┘
                             (success in HALF_OPEN → CLOSED)
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">resilience4j</span>:
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">resilience4j</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">circuitbreaker</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">instances</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">inventoryService</span>:
@@ -3396,7 +3387,7 @@ Client Request ──→   │    API Gateway /     │
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">failureRateThreshold</span>: <span style="color:#ae81ff">50</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">waitDurationInOpenState</span>: <span style="color:#ae81ff">10s</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">permittedNumberOfCallsInHalfOpenState</span>: <span style="color:#ae81ff">3</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@CircuitBreaker</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;inventoryService&#34;</span>, fallbackMethod <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fallback&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@CircuitBreaker</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;inventoryService&#34;</span>, fallbackMethod <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fallback&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">callInventory</span>(String productId) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> inventoryClient.<span style="color:#a6e22e">check</span>(productId);
 </span></span><span style="display:flex;"><span>}
@@ -3422,46 +3413,46 @@ Client Request ──→   │    API Gateway /     │
 <p>Kafka is a distributed, partitioned, replicated commit log (publish-subscribe system).</p>
 <p><strong>Core Concepts:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Concept</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Topic</strong></td>
-					<td>Logical category of messages (analogous to a DB table)</td>
-			</tr>
-			<tr>
-					<td><strong>Partition</strong></td>
-					<td>Topics split into partitions for parallelism; messages within a partition are ordered</td>
-			</tr>
-			<tr>
-					<td><strong>Offset</strong></td>
-					<td>Unique sequential ID of a message within a partition</td>
-			</tr>
-			<tr>
-					<td><strong>Producer</strong></td>
-					<td>Writes messages to topics</td>
-			</tr>
-			<tr>
-					<td><strong>Consumer</strong></td>
-					<td>Reads messages from topics</td>
-			</tr>
-			<tr>
-					<td><strong>Consumer Group</strong></td>
-					<td>Consumers sharing work — each partition consumed by one consumer in the group</td>
-			</tr>
-			<tr>
-					<td><strong>Broker</strong></td>
-					<td>A Kafka server</td>
-			</tr>
-			<tr>
-					<td><strong>Zookeeper / KRaft</strong></td>
-					<td>Cluster coordination</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Topic</strong></td>
+          <td>Logical category of messages (analogous to a DB table)</td>
+      </tr>
+      <tr>
+          <td><strong>Partition</strong></td>
+          <td>Topics split into partitions for parallelism; messages within a partition are ordered</td>
+      </tr>
+      <tr>
+          <td><strong>Offset</strong></td>
+          <td>Unique sequential ID of a message within a partition</td>
+      </tr>
+      <tr>
+          <td><strong>Producer</strong></td>
+          <td>Writes messages to topics</td>
+      </tr>
+      <tr>
+          <td><strong>Consumer</strong></td>
+          <td>Reads messages from topics</td>
+      </tr>
+      <tr>
+          <td><strong>Consumer Group</strong></td>
+          <td>Consumers sharing work — each partition consumed by one consumer in the group</td>
+      </tr>
+      <tr>
+          <td><strong>Broker</strong></td>
+          <td>A Kafka server</td>
+      </tr>
+      <tr>
+          <td><strong>Zookeeper / KRaft</strong></td>
+          <td>Cluster coordination</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="reply-template-pattern-request-response-over-kafka">
   Reply Template Pattern (Request-Response over Kafka)
@@ -3470,7 +3461,7 @@ Client Request ──→   │    API Gateway /     │
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Producer (requester)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Producer (requester)</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Autowired</span> ReplyingKafkaTemplate<span style="color:#f92672">&lt;</span>String, Request, Response<span style="color:#f92672">&gt;</span> replyingTemplate;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>RequestReplyFuture<span style="color:#f92672">&lt;</span>String, Request, Response<span style="color:#f92672">&gt;</span> future <span style="color:#f92672">=</span>
@@ -3494,7 +3485,7 @@ Client Request ──→   │    API Gateway /     │
 <p><strong>JMS (Java Message Service)</strong> is a Java API for message-oriented middleware.</p>
 <p><strong>Message types:</strong> <code>TextMessage</code>, <code>ObjectMessage</code>, <code>BytesMessage</code>, <code>MapMessage</code>, <code>StreamMessage</code></p>
 <p><strong>Destinations:</strong> Queue (point-to-point) vs. Topic (publish-subscribe)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sending with Spring JMS</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sending with Spring JMS</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Autowired</span> JmsTemplate jmsTemplate;
 </span></span><span style="display:flex;"><span>jmsTemplate.<span style="color:#a6e22e">convertAndSend</span>(<span style="color:#e6db74">&#34;payment-queue&#34;</span>, paymentRequest);
 </span></span><span style="display:flex;"><span>
@@ -3521,46 +3512,46 @@ Client Request ──→   │    API Gateway /     │
   </a>
 </h2>
 <table>
-	<thead>
-			<tr>
-					<th></th>
-					<th>Kafka</th>
-					<th>RabbitMQ</th>
-					<th>ActiveMQ</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Protocol</td>
-					<td>Custom (TCP)</td>
-					<td>AMQP</td>
-					<td>JMS/AMQP/STOMP</td>
-			</tr>
-			<tr>
-					<td>Model</td>
-					<td>Log (replay-able)</td>
-					<td>Queue (consumed and deleted)</td>
-					<td>Queue or Topic</td>
-			</tr>
-			<tr>
-					<td>Throughput</td>
-					<td>Very high</td>
-					<td>High</td>
-					<td>Medium</td>
-			</tr>
-			<tr>
-					<td>Message retention</td>
-					<td>Configurable (time/size)</td>
-					<td>Until consumed</td>
-					<td>Until consumed</td>
-			</tr>
-			<tr>
-					<td>Use case</td>
-					<td>Event streaming, analytics</td>
-					<td>Task queues, RPC</td>
-					<td>Enterprise JMS, legacy</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Kafka</th>
+          <th>RabbitMQ</th>
+          <th>ActiveMQ</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Protocol</td>
+          <td>Custom (TCP)</td>
+          <td>AMQP</td>
+          <td>JMS/AMQP/STOMP</td>
+      </tr>
+      <tr>
+          <td>Model</td>
+          <td>Log (replay-able)</td>
+          <td>Queue (consumed and deleted)</td>
+          <td>Queue or Topic</td>
+      </tr>
+      <tr>
+          <td>Throughput</td>
+          <td>Very high</td>
+          <td>High</td>
+          <td>Medium</td>
+      </tr>
+      <tr>
+          <td>Message retention</td>
+          <td>Configurable (time/size)</td>
+          <td>Until consumed</td>
+          <td>Until consumed</td>
+      </tr>
+      <tr>
+          <td>Use case</td>
+          <td>Event streaming, analytics</td>
+          <td>Task queues, RPC</td>
+          <td>Enterprise JMS, legacy</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="135-request-response-messaging-pattern">
   13.5 Request-Response Messaging Pattern
@@ -3609,7 +3600,7 @@ Integration/E2E Tests
 Manual Approval Gate
       ↓
 Deploy to Production
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># .github/workflows/ci.yml (simplified)</span>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># .github/workflows/ci.yml (simplified)</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
@@ -3632,19 +3623,19 @@ Deploy to Production
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># Multi-stage Dockerfile for Spring Boot</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">maven:3.9-eclipse-temurin-17</span> <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">build</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">WORKDIR</span> <span style="color:#e6db74">/app</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> pom.xml .<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mvn dependency:go-offline<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> src ./src<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mvn package -DskipTests<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># Multi-stage Dockerfile for Spring Boot</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> maven:3.9-eclipse-temurin-17 AS build</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> pom.xml .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mvn dependency:go-offline<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> src ./src<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mvn package -DskipTests<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">eclipse-temurin:17-jre-alpine</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">WORKDIR</span> <span style="color:#e6db74">/app</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>build /app/target/*.jar app.jar<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">EXPOSE</span> <span style="color:#e6db74">8080</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;java&#34;</span>, <span style="color:#e6db74">&#34;-jar&#34;</span>, <span style="color:#e6db74">&#34;app.jar&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> eclipse-temurin:17-jre-alpine</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>build /app/target/*.jar app.jar<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8080</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;java&#34;</span>, <span style="color:#e6db74">&#34;-jar&#34;</span>, <span style="color:#e6db74">&#34;app.jar&#34;</span>]<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>Key concepts:</strong></p>
 <ul>
 <li><strong>Image</strong>: Immutable blueprint (layers)</li>
@@ -3696,7 +3687,7 @@ Deploy to Production
 <li><strong>Green</strong>: Write the minimum code to make it pass.</li>
 <li><strong>Refactor</strong>: Clean up while keeping tests green.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Step 1: RED — write failing test</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Step 1: RED — write failing test</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldReturnTaxInclusivePrice</span>() {
 </span></span><span style="display:flex;"><span>    PriceCalculator calc <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PriceCalculator();
@@ -3725,9 +3716,9 @@ Deploy to Production
   </a>
 </h2>
 <p>BDD extends TDD using <strong>Given-When-Then</strong> syntax in human-readable format.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-gherkin" data-lang="gherkin"><span style="display:flex;"><span><span style="color:#66d9ef">Feature:</span><span style="color:#a6e22e"> Price Calculation
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gherkin" data-lang="gherkin"><span style="display:flex;"><span><span style="color:#66d9ef">Feature:</span><span style="color:#a6e22e"> Price Calculation
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">  </span><span style="color:#66d9ef">Scenario:</span><span style="color:#a6e22e"> Calculate price with tax
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">    Given </span><span style="color:#a6e22e">a product price of </span><span style="color:#e6db74">100.0</span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#66d9ef">    Given </span><span style="color:#a6e22e">a product price of </span><span style="color:#e6db74">100.0</span><span style="color:#a6e22e">
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">    </span><span style="color:#66d9ef">When </span><span style="color:#a6e22e">I calculate the tax-inclusive price
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">    </span><span style="color:#66d9ef">Then </span><span style="color:#a6e22e">the result should be </span><span style="color:#e6db74">118.0</span><span style="color:#a6e22e">
 </span></span></span></code></pre></div><p>Popular tools: <strong>Cucumber</strong> (Java), <strong>JBehave</strong>.</p>
@@ -3743,7 +3734,7 @@ Deploy to Production
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@ExtendWith</span>(MockitoExtension.<span style="color:#a6e22e">class</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@ExtendWith</span>(MockitoExtension.<span style="color:#a6e22e">class</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeServiceTest</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Mock</span>
@@ -3771,42 +3762,42 @@ Deploy to Production
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>Mockito key methods:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Method</th>
-					<th>Purpose</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>when(...).thenReturn(...)</code></td>
-					<td>Stub method to return value</td>
-			</tr>
-			<tr>
-					<td><code>when(...).thenThrow(...)</code></td>
-					<td>Stub method to throw exception</td>
-			</tr>
-			<tr>
-					<td><code>verify(mock).method()</code></td>
-					<td>Verify interaction</td>
-			</tr>
-			<tr>
-					<td><code>verify(mock, times(n))</code></td>
-					<td>Verify call count</td>
-			</tr>
-			<tr>
-					<td><code>verify(mock, never())</code></td>
-					<td>Verify method was never called</td>
-			</tr>
-			<tr>
-					<td><code>@Captor ArgumentCaptor</code></td>
-					<td>Capture arguments passed to mock</td>
-			</tr>
-			<tr>
-					<td><code>doReturn / doThrow</code></td>
-					<td>For void methods or spies</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>when(...).thenReturn(...)</code></td>
+          <td>Stub method to return value</td>
+      </tr>
+      <tr>
+          <td><code>when(...).thenThrow(...)</code></td>
+          <td>Stub method to throw exception</td>
+      </tr>
+      <tr>
+          <td><code>verify(mock).method()</code></td>
+          <td>Verify interaction</td>
+      </tr>
+      <tr>
+          <td><code>verify(mock, times(n))</code></td>
+          <td>Verify call count</td>
+      </tr>
+      <tr>
+          <td><code>verify(mock, never())</code></td>
+          <td>Verify method was never called</td>
+      </tr>
+      <tr>
+          <td><code>@Captor ArgumentCaptor</code></td>
+          <td>Capture arguments passed to mock</td>
+      </tr>
+      <tr>
+          <td><code>doReturn / doThrow</code></td>
+          <td>For void methods or spies</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="154-parameterized-tests">
   15.4 Parameterized Tests
@@ -3815,7 +3806,7 @@ Deploy to Production
     <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@ParameterizedTest</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@ParameterizedTest</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ValueSource</span>(ints <span style="color:#f92672">=</span> {1, 2, 3, 5, 8, 13})
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">shouldBePositive</span>(<span style="color:#66d9ef">int</span> number) {
 </span></span><span style="display:flex;"><span>    assertTrue(number <span style="color:#f92672">&gt;</span> 0);
@@ -3857,37 +3848,37 @@ Deploy to Production
       ╱   Unit Tests      ╲   ← Many, fast, cheap
      ╱─────────────────────╲
 </code></pre><table>
-	<thead>
-			<tr>
-					<th>Level</th>
-					<th>Scope</th>
-					<th>Tools</th>
-					<th>Count</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Unit</strong></td>
-					<td>Single class/method</td>
-					<td>JUnit, Mockito</td>
-					<td>Many (70%)</td>
-			</tr>
-			<tr>
-					<td><strong>Integration</strong></td>
-					<td>Multiple components, DB, messaging</td>
-					<td>Spring Boot Test, Testcontainers</td>
-					<td>Medium (20%)</td>
-			</tr>
-			<tr>
-					<td><strong>E2E</strong></td>
-					<td>Full system, UI</td>
-					<td>Selenium, Cypress, Playwright</td>
-					<td>Few (10%)</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Level</th>
+          <th>Scope</th>
+          <th>Tools</th>
+          <th>Count</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Unit</strong></td>
+          <td>Single class/method</td>
+          <td>JUnit, Mockito</td>
+          <td>Many (70%)</td>
+      </tr>
+      <tr>
+          <td><strong>Integration</strong></td>
+          <td>Multiple components, DB, messaging</td>
+          <td>Spring Boot Test, Testcontainers</td>
+          <td>Medium (20%)</td>
+      </tr>
+      <tr>
+          <td><strong>E2E</strong></td>
+          <td>Full system, UI</td>
+          <td>Selenium, Cypress, Playwright</td>
+          <td>Few (10%)</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Key annotations:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootTest</span>          <span style="color:#75715e">// Full application context</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootTest</span>          <span style="color:#75715e">// Full application context</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@WebMvcTest</span>              <span style="color:#75715e">// Only MVC layer</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@DataJpaTest</span>             <span style="color:#75715e">// Only JPA layer</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@MockBean</span>                <span style="color:#75715e">// Replace a Spring bean with a mock</span>
